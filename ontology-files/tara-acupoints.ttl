@@ -8,7 +8,7 @@
 
 <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl> rdf:type owl:Ontology ;
                                                                   owl:versionIRI <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl/1.0.0> ;
-                                                                  owl:imports <http://www.acupunctureresearch.org/tara/ontology/tara-acupoints-upper.owl> ;
+                                                                  owl:imports <https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/tara-acupoints-upper.ttl> ;
                                                                   <http://purl.org/dc/elements/1.1/description> "The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH)."@en ;
                                                                   <http://purl.org/dc/elements/1.1/title> "TARA Acupoints Ontology"@en ;
                                                                   <http://www.geneontology.org/formats/oboInOwl#creation_date> "May 27, 2024" ;
