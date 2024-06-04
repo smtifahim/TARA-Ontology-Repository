@@ -1,3 +1,3 @@
 # TARA Ontology Files
 
-* List of ontology files.
+* List of ontology files needed for the adapeter.
