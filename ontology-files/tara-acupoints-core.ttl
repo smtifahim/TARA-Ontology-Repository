@@ -1,0 +1,229 @@
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix OboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix RO: <http://purl.obolibrary.org/obo/RO_> .
+@prefix TARA: <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#> .
+@prefix UBERON: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+
+dc:title a owl:AnnotationProperty .
+
+<http://www.acupunctureresearch.org/tara/ontology/acupoints.owl> a owl:Ontology ;
+    dc:date "June 4, 2024" ;
+    dc:description "The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH)."@en ;
+    dc:title "TARA Acupoints Ontology"@en ;
+    owl:imports <https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/tara-acupoints-upper.ttl> ;
+    owl:versionIRI <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl/1.0.0> ;
+    owl:versionInfo "1.0.0" .
+
+TARA:Extra_Acupoint a owl:Class ;
+    rdfs:label "Extra Acupoint" ;
+    dc:description "Extra points are experiential points with specific names and definite locations, but arc not attributed to the fourteen meridians. They are effective in the treatment of certain diseases. Although scattered over the body, they are still related to the meridians system. Some extra points are distributed along the courses of the fourteen meridians, for example, Yimang (Extra I) i; related to the Governor Vessel, Lanwei (Extra 18) to the Stomach Meridian of Foot-Yangming." ;
+    dcterms:bibliographicCitation "\"Chinese Acupuncture and Moxibustion\" (1999), Page 116, ISBN-13: 978-7119017587." ;
+    TARA:hasSynonym "Extra Acupuncture Point",
+        "Extra point" ;
+    rdfs:subClassOf TARA:Acupoint .
+
+TARA:Extra_Meridian a owl:Class ;
+    rdfs:label "Extra Meridian" ;
+    dc:description "Represents the extra meridians. The eight extra meridians are the Governor Vessel, Conception Vessel, Thoroughfare Vessel, Belt Vessel, Yang Heel Vessel, Yin Heel Vessel, Yang Link Vessel and Yin Link Vessel. They are different from the twelve main meridians because none of them pertains to the zang organs and communicates with the fu organs of pertains to the fu organs and communicates with the zang organs. And they are not exteriorly-interiorly related. Apart from the Governor Vessel and Conception Vessel which have their own acupuncture points, the extra meridians share their points with other main meridians." ;
+    dcterms:bibliographicCitation "\"Chinese Acupuncture and Moxibustion\" (1999), Page 82, ISBN-13: 978-7119017587." ;
+    rdfs:subClassOf TARA:Meridian .
+
+TARA:Meridian_Acupoint a owl:Class ;
+    rdfs:label "Meridian Acupoint" ;
+    dc:description "Acupuncture points of the fourteen meridians, also known as \"meridian points,\" acupuncture points of the fourteen meridians are distributed along the twelve main meridian, the Governor Vessel and the Conception Vessel, totally amounting to 361." ;
+    dcterms:bibliographicCitation "\"Chinese Acupuncture and Moxibustion\" (1999), Page 115, ISBN-13: 978-7119017587." ;
+    TARA:hasSynonym "Acupoint of meridian",
+        "Meridian Acupuncture Point",
+        "Meridian point",
+        "meridian points" ;
+    rdfs:subClassOf TARA:Acupoint .
+
+TARA:Primary_Meridian a owl:Class ;
+    rdfs:label "Main Meridian" ;
+    dc:description """As the major part in the meridian system, the twelve main meridians share the following features. Each with its own acupuncture peints is distributed on a fixed portion of the body surface; each pertains to either a zang or a fu organ (those that pertain to the zang organ communicating with the fu organ, and vice versa). 
+
+The twelve main meridians link one another in a fixed order. A cyclical now of qi is maintained by the connection of the meridians of the hand and foot, yin and yang, exterior and interior.""" ;
+    dcterms:bibliographicCitation "\"Chinese Acupuncture and Moxibustion\" (1999), Page 65, ISBN-13: 978-7119017587." ;
+    TARA:hasSynonym "Primary meridian" ;
+    rdfs:subClassOf TARA:Meridian .
+
+TARA:Special_Point a owl:Class ;
+    rdfs:label "Special Point" ;
+    dc:description "Special points refer to the specific points of the fourteen meridians that have special properties and are grouped under special names. In view of their locations, they can be classified into two major groups: one on the limbs, and the other one on the head and the trunk." ;
+    dcterms:bibliographicCitation "\"Chinese Acupuncture and Moxibustion\" (1999), page 122, ISBN-13: 978-7119017587" ;
+    TARA:hasSynonym "Special Acupoint",
+        "Special Acupuncture Point" ;
+    rdfs:subClassOf TARA:Acupoint .
+
+TARA:hasAbbreviation a owl:AnnotationProperty ;
+    rdfs:label "Abbreviation" ;
+    rdfs:subPropertyOf IAO:0000118 .
+
+TARA:hasAcronym a owl:AnnotationProperty ;
+    rdfs:label "Acronym" ;
+    rdfs:subPropertyOf IAO:0000118 .
+
+TARA:hasAcupointLocation a owl:AnnotationProperty ;
+    rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty .
+
+TARA:hasAssociatedOrgan a owl:ObjectProperty .
+
+TARA:hasChineseName a owl:AnnotationProperty ;
+    rdfs:label "Chinese Name" ;
+    rdfs:subPropertyOf IAO:0000118 .
+
+TARA:hasDesignatedOrgan a owl:AnnotationProperty ;
+    rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty .
+
+TARA:hasDesignatedSpecialPointRole a owl:AnnotationProperty ;
+    rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty .
+
+TARA:hasEnglishName a owl:AnnotationProperty ;
+    rdfs:label "English Name" ;
+    rdfs:subPropertyOf IAO:0000118 .
+
+TARA:hasFigureSource a owl:AnnotationProperty ;
+    rdfs:subPropertyOf dc:source .
+
+TARA:hasIndicationsDescription a owl:AnnotationProperty ;
+    rdfs:label "Indications" ;
+    rdfs:subPropertyOf TARA:hasAcupointDescription .
+
+TARA:hasInnervationDescription a owl:AnnotationProperty ;
+    rdfs:label "Innervation" ;
+    rdfs:subPropertyOf TARA:hasAcupointDescription .
+
+TARA:hasLocationalDescription a owl:AnnotationProperty ;
+    rdfs:label "Acupoint Location" ;
+    rdfs:subPropertyOf TARA:hasAcupointDescription .
+
+TARA:hasMemberAcupoint a owl:ObjectProperty ;
+    rdfs:domain TARA:Meridian ;
+    rdfs:range TARA:Acupoint ;
+    rdfs:subPropertyOf RO:0002351 ;
+    owl:inverseOf TARA:isMemberAcupointOf .
+
+TARA:hasMeridian a owl:AnnotationProperty ;
+    rdfs:domain TARA:Acupoint ;
+    rdfs:range TARA:Meridian ;
+    rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty .
+
+TARA:hasMethodDescription a owl:AnnotationProperty ;
+    rdfs:label "Acupuncture Method" ;
+    rdfs:subPropertyOf TARA:hasAcupointDescription .
+
+TARA:hasReference a owl:AnnotationProperty ;
+    rdfs:label "Reference" ;
+    rdfs:subPropertyOf dcterms:bibliographicCitation .
+
+TARA:hasSynonym a owl:AnnotationProperty ;
+    rdfs:label "Synonym" ;
+    rdfs:subPropertyOf IAO:0000118 .
+
+TARA:hasVasculatureDescription a owl:AnnotationProperty ;
+    rdfs:label "Vasculature" ;
+    rdfs:subPropertyOf TARA:hasAcupointDescription .
+
+OboInOwl:creation_date a owl:AnnotationProperty .
+
+BFO:0000023 a owl:Class .
+
+RO:0000052 a owl:ObjectProperty .
+
+RO:0000053 a owl:ObjectProperty .
+
+RO:0000081 a owl:ObjectProperty .
+
+RO:0000087 a owl:ObjectProperty .
+
+RO:0002350 a owl:ObjectProperty .
+
+RO:0002351 a owl:ObjectProperty .
+
+UBERON:0006800 a owl:Class .
+
+UBERON:0006983 a owl:Class .
+
+dc:description a owl:AnnotationProperty .
+
+dc:source a owl:AnnotationProperty .
+
+dcterms:bibliographicCitation a owl:AnnotationProperty .
+
+TARA:hasSpecialPointDesignation a owl:ObjectProperty ;
+    rdfs:subPropertyOf RO:0000053 ;
+    owl:inverseOf TARA:isSpecialPointDesignationOf .
+
+TARA:hasSpecialPointRole a owl:ObjectProperty ;
+    rdfs:subPropertyOf RO:0000087 ;
+    owl:inverseOf TARA:isSpecialPointRoleOf .
+
+TARA:isMemberAcupointOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf RO:0002350 .
+
+TARA:isSpecialPointDesignationOf a owl:ObjectProperty ;
+    rdfs:label "isSpecialPointDesignationOf" ;
+    rdfs:domain TARA:Special_Acupoint_Role ;
+    rdfs:range TARA:Acupoint ;
+    rdfs:subPropertyOf RO:0000052 .
+
+TARA:isSpecialPointRoleOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf RO:0000081 .
+
+TARA:Special_Acupoint_Role a owl:Class ;
+    rdfs:label "Special Point Role" ;
+    dc:description "Represents the special roles associated with the acupoints of the main meridan. These roles are named after the special properties of the special points. Special points are the specific acupoints of the 14 meridans that have special properties and are groupd under special names. This class is used to classify the acupoints based on their special roles." ;
+    TARA:hasSynonym "Special Acupoint Role" ;
+    rdfs:subClassOf BFO:0000023 .
+
+<urn:swrl:var#e> a swrl:Variable .
+
+<urn:swrl:var#d> a swrl:Variable .
+
+TARA:Meridian a owl:Class ;
+    rdfs:label "Meridian" ;
+    dc:description "In traditional Chinese Medicine (TCM), meridians are strings connecting acupuncture points, which are considered as passageways through which energy flows throughout the body. The meridian system is composed of 12 principal meridians, each of which connects to an organ system and extends to an extremity and eight collaterals." ;
+    dcterms:bibliographicCitation "Maurer, N., Nissel, H., Egerbacher, M., Gornik, E., Schuller, P., & Traxler, H. (2019). Anatomical evidence of acupuncture meridians in the human extracellular matrix: results from a macroscopic and microscopic interdisciplinary multicentre study on human corpses. Evidence-Based Complementary and Alternative Medicine, 2019. https://doi.org/10.1155/2019/6976892" ;
+    TARA:hasSynonym "Acupuncture meridian" ;
+    rdfs:subClassOf UBERON:0006800 .
+
+TARA:hasAcupointAnnotaionProperty a owl:AnnotationProperty .
+
+IAO:0000118 a owl:AnnotationProperty .
+
+TARA:hasAcupointDescription a owl:AnnotationProperty ;
+    rdfs:label "Acupoint Description" ;
+    rdfs:subPropertyOf dc:description .
+
+TARA:Acupoint a owl:Class ;
+    rdfs:label "Acupoint" ;
+    dc:description "According to traditional Chinese medicine (TCM) theory, acupoints are specifically chosen sites of acupuncture manipulation, and also the basis for studying the mechanism of acupuncture. Stimulating different acupoints on the body surface could provide various therapeutic benefits. However, what is the acupoint? This question is not clear." ;
+    dcterms:bibliographicCitation "Fang Li, Tian He, Qian Xu, Li-Ting Lin, Hui Li, Yan Liu, Guang-Xia Shi, Cun-Zhi Liu, What is the Acupoint? A preliminary review of Acupoints, Pain Medicine, Volume 16, Issue 10, October 2015, Pages 1905–1915, https://doi.org/10.1111/pme.12761" ;
+    TARA:hasSynonym "Acupuncture Point" ;
+    rdfs:subClassOf UBERON:0006983 .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <urn:swrl:var#d> ;
+                    swrl:classPredicate TARA:Special_Acupoint_Role ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 <urn:swrl:var#e> ;
+                            swrl:argument2 <urn:swrl:var#d> ;
+                            swrl:propertyPredicate TARA:hasSpecialPointDesignation ] ;
+                    rdf:rest () ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 <urn:swrl:var#e> ;
+                    swrl:argument2 <urn:swrl:var#d> ;
+                    swrl:propertyPredicate TARA:hasSpecialPointRole ] ;
+            rdf:rest () ] .
+

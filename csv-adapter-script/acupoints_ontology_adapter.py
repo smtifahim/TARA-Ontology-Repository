@@ -29,8 +29,8 @@ namespaces = {
 # Ontology files and their relative paths
 ontology_files = {
                    "tara-acupoints-upper.ttl"   : "../ontology-files/tara-acupoints-upper.ttl",
-                   "tara-acupoints.ttl"         : "../ontology-files/tara-acupoints.ttl",
-                   "tara-acupoints-merged.ttl"  : "../ontology-files/generated/tara-acupoints-merged.ttl"                  
+                   "tara-acupoints-core.ttl"         : "../ontology-files/tara-acupoints-core.ttl",
+                   "tara-acupoints.ttl"  : "../ontology-files/generated/tara-acupoints.ttl"                
                  }
 
 # CSV input files and their relative paths
@@ -468,7 +468,7 @@ def main():
         # Instantiate the Adepter       
         a = AcupointsOntologyAdapter()
         
-        a.addBaseOntology (ontology_files.get("tara-acupoints.ttl"))
+        a.addBaseOntology (ontology_files.get("tara-acupoints-core.ttl"))
         # a.saveUpdatedOntology(ontology_files.get("tara-acupoints-merged.ttl"))
 
         a.addMeridians (csv_files.get("meridians.csv"))
@@ -488,7 +488,7 @@ def main():
         
         a.addSpecialPointsAssociation (csv_files.get("special-points-association.csv"))
         
-        a.saveUpdatedOntology(ontology_files.get("tara-acupoints-merged.ttl"))
+        a.saveUpdatedOntology(ontology_files.get("tara-acupoints.ttl"))
 
 if __name__ == "__main__":
     main()
