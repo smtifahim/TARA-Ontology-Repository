@@ -238,11 +238,14 @@ class AcupointsOntologyAdapter:
                 
                 if meridian:
                     # First add meridian entity as an annotation property
-                    g.add((acupoint_uri, TARA.hasMeridian, meridian_uri))
-                
+                    g.add((acupoint_uri, TARA.hasMeridian, meridian_uri))     
+                    
+                    g.add ((acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint))
+                    self.addSimpleOWLRestriction (g, acupoint_uri, TARA.isMemberAcupointOf, meridian_uri)
+                    
                     # Then add OWL restriction to associate the acupoint with corresponding meridan
-                    g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint, 
-                            TARA.isMemberAcupointOf, meridian_uri)
+                    # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint, 
+                    #      TARA.isMemberAcupointOf, meridian_uri)
 
         self.addGraph(g)
         print ("  Acupoints Added Successfully.")
@@ -299,8 +302,11 @@ class AcupointsOntologyAdapter:
         g = Graph()
         print("\n> Adding Special Points From: " + file_path)
         
+        # g = g + self.getOWLAxiom (TARA.Special_Point, OWL.equivalentClass, TARA.Acupoint, 
+        #                           TARA.hasSpecialPointDesignation, TARA.Special_Point_Role)
+        
         with open(file_path, newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)    
+            reader = csv.DictReader(csvfile)
             for row in reader:
                 if not any(row.values()):
                     continue
@@ -382,10 +388,10 @@ class AcupointsOntologyAdapter:
                     g.add((special_point_1_role_uri, RDF.type, OWL.Class))
                     g.add((acupoint_uri, TARA.hasDesignatedSpecialPointRole, special_point_1_role_uri)) # Add annotation
                     
-                    g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
-                                                 TARA.hasSpecialPointDesignation, special_point_1_role_uri)
+                    # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
+                    #                              TARA.hasSpecialPointDesignation, special_point_1_role_uri)
                     
-                    # addOWLRestriction(g, acupoint_uri, TARA.hasSpecialPointDesignation,special_point_1_role_uri )
+                    self.addSimpleOWLRestriction(g, acupoint_uri, TARA.hasSpecialPointDesignation, special_point_1_role_uri )
                 
                 if special_point_2:
                     special_point_2_role = special_point_2 + " Role"
@@ -393,10 +399,10 @@ class AcupointsOntologyAdapter:
                     g.add((special_point_2_role_uri, RDF.type, OWL.Class))
                     g.add((acupoint_uri, TARA.hasDesignatedSpecialPointRole, special_point_2_role_uri)) # Add annotation
                     
-                    g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
-                                                 TARA.hasSpecialPointDesignation, special_point_2_role_uri)
+                    # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
+                    #                              TARA.hasSpecialPointDesignation, special_point_2_role_uri)
                     
-                    # addOWLRestriction(g, acupoint_uri, TARA.hasSpecialPointDesignation,special_point_2_role_uri )
+                    self.addSimpleOWLRestriction(g, acupoint_uri, TARA.hasSpecialPointDesignation, special_point_2_role_uri )
                 
                 if special_point_3:
                     special_point_3_role = special_point_3 + " Role"
@@ -404,10 +410,11 @@ class AcupointsOntologyAdapter:
                     g.add((special_point_3_role_uri, RDF.type, OWL.Class))
                     g.add((acupoint_uri, TARA.hasDesignatedSpecialPointRole, special_point_3_role_uri)) # Add annotation
                     
-                    g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
-                                                 TARA.hasSpecialPointDesignation, special_point_3_role_uri)
+                    # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
+                    #                              TARA.hasSpecialPointDesignation, special_point_3_role_uri)
                     
-                    # addOWLRestriction(g, acupoint_uri, TARA.hasSpecialPointDesignation,special_point_3_role_uri )
+                    self.addSimpleOWLRestriction(g, acupoint_uri, TARA.hasSpecialPointDesignation, special_point_3_role_uri )
+        
         self.addGraph(g)
         print ("  Special Points Association Added Successfully.")
     
@@ -451,8 +458,7 @@ class AcupointsOntologyAdapter:
     # To add OWL restrictions without intersecting with genus. 
     # Example :a :hasProperty some :x
     def addSimpleOWLRestriction (self, g, sub, property, obj):
-        # Add OWL restriction for the special point using OWL axiom
-            # First, create a blank node for the restriction
+        # First, create a blank node for the restriction
         restriction_node = BNode()
         # Then, add triples for the restriction
         g.add((restriction_node, RDF.type, OWL.Restriction))
