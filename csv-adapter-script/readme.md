@@ -1,6 +1,6 @@
 # TARA Acupoints Ontology Adapter
 
-The python script `acupoints_ontology_adapter.py` automates the CSV to OWL transformation process for the TARA Acupoints Ontology Project. The script automatically extracts information from a set of [CSV files relevant to the project](../csv-files) and transforms the information into an intergated OWL-DL ontology. After running the script the generated ontology file `tara-acupoints.ttl` will be saved under `../ontology-files/generated` directory.  Observing the [Sample Execution](#sample-execution) of the script should provide an understanding of the overall transformation process.
+The python script `acupoints_ontology_adapter.py` automates the CSV to OWL transformation process for the TARA Acupoints Ontology Project. The script automatically extracts information from a set of [CSV files relevant to the project](../csv-files) and transforms the information into an intergated OWL-DL ontology. After running the script the generated ontology file `tara-acupoints.ttl` will be saved under `../ontology-files/generated` directory.  Observing the [Sample Execution](#sample-execution) of the script should provide an understanding about the ontology adapter.
 
 ## Prerequisites
 
