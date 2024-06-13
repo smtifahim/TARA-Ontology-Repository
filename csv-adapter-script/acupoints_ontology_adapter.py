@@ -29,8 +29,8 @@ namespaces = {
 # Ontology files and their relative paths
 ontology_files = {
                    "tara-acupoints-upper.ttl"   : "../ontology-files/tara-acupoints-upper.ttl",
-                   "tara-acupoints-core.ttl"         : "../ontology-files/tara-acupoints-core.ttl",
-                   "tara-acupoints.ttl"  : "../ontology-files/generated/tara-acupoints.ttl"                
+                   "tara-acupoints-core.ttl"    : "../ontology-files/tara-acupoints-core.ttl",
+                   "tara-acupoints.ttl"         : "../ontology-files/generated/tara-acupoints.ttl" 
                  }
 
 # CSV input files and their relative paths
