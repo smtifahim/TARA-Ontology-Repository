@@ -29,4 +29,10 @@ This section will be updated periodically based on the release of the newer vers
 Download the ontology from [this link](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl) and load it in Protege.
 
 
+## Basic Model of Relationships
+
+![1718304880191](image/readme/1718304880191.png)
+
+The diagram above provides a high-level depiction of relationships for Acupoints in TARA Acupoints Ontology (Version 0.5).
+
 ## DL Query Examples
