@@ -7,8 +7,8 @@ The python script `acupoints_ontology_adapter.py` automates the CSV to OWL trans
 * Set your Python interpreter to `Python 3.8.X` or higher
 * Install [RDFLib 7.0.0 from PyPi](https://pypi.org/project/rdflib/): `$ pip install rdflib`
 * The script assumes that you have all the necessary input files available as follows:
-  * All the input CSV files under [../csv_files](csv-files) directory
-  * All the ontology files (.ttl files) under [../ontology_files](ontology-files) directory
+  * All the input CSV files under [../csv_files](../csv-files) directory
+  * All the ontology files (.ttl files) under [../ontology_files](../ontology-files) directory
 
 ## Sample Execution
 
