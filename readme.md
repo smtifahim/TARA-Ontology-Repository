@@ -7,6 +7,6 @@ This repository contains the files relevant to the TARA Acupoints Ontology devel
 * [CSV Adapter](./csv-adapter)
   * Contains an ontology adapter script written in Python to generate the TARA Acupoints Ontology based on a set of CSV files as inputs.
 * [CSV Files](./csv-files)
-  * Contains all the curated set of CSV files needed by the adapter to generate the TARA Acupoints Ontology
+  * Contains all the curated set of CSV files needed by the adapter to generate the TARA Acupoints Ontology.
 * [Ontology Files](./ontology-files)
   * Contains the input ontology files for the adapter. Also contains a directory to store the generated ontology files by the adapter.
