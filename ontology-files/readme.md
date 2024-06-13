@@ -10,7 +10,7 @@ The upper-level ontology for TARA Acupoints Ontology (`tara-acupoints-upper.ttl`
 
 ## TARA Acupoints Ontology - Core
 
-The core ontology (`tara-acupoints-core.ttl`) includes the core classes and properties specific to the acupoints ontology along with logical axioms. It imports the upper ontology and extends the upper level classes and and properties. This ontology is used as the base to generate the TARA Acupoints Ontology. The Protege screenshots below show the core classes and properties (the ones in bold fonts) specific to the acupoints ontology extedning the upper level classes and properties.
+The core ontology (`tara-acupoints-core.ttl`) includes the core classes and properties specific to the acupoints ontology along with logical axioms. It imports the upper ontology and extends the upper level classes and and properties. This ontology is used as the base to generate the TARA Acupoints Ontology. The Protege screenshots below show the examples of core classes and properties (the ones in bold fonts) specific to the acupoints ontology extedning the upper level classes and properties.
 
 ![1718296053855](image/readme/1718296053855.png)
 
