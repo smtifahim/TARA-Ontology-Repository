@@ -226,11 +226,11 @@ TARA:BL_11 a owl:Class ;
         "Influential Point of Bone" ;
     TARA:hasVasculatureDescription "The medial cutaneous branches of the posterior branches of the intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Influential_Point_of_Bone_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Bladder_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Influential_Point_of_Bone_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_12 a owl:Class ;
@@ -340,11 +340,11 @@ TARA:BL_17 a owl:Class ;
         "Influential Point of Blood" ;
     TARA:hasVasculatureDescription "The medial branches of the posterior branches of the intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Bladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Influential_Point_of_Blood_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Bladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_18 a owl:Class ;
@@ -482,11 +482,11 @@ TARA:BL_23 a owl:Class ;
         "Bladder 23" ;
     TARA:hasVasculatureDescription "The posterior branches of the second lumbar artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Bladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Back-Shu_Point_of_the_Kidney_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Bladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_24 a owl:Class ;
@@ -518,11 +518,11 @@ TARA:BL_25 a owl:Class ;
         "Bladder 25" ;
     TARA:hasVasculatureDescription "The posterior branch of the fourth lumbar artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Bladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Back-Shu_Point_of_the_Large_Intestine_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Bladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_26 a owl:Class ;
@@ -553,11 +553,11 @@ TARA:BL_27 a owl:Class ;
         "Bladder 27" ;
     TARA:hasVasculatureDescription "The lateral branch of the posterior ramus of the first sacral nerve." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Bladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Back-Shu_Point_of_the_Small_Intestine_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Bladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_28 a owl:Class ;
@@ -767,11 +767,11 @@ TARA:BL_39 a owl:Class ;
         "Lower He-Sea Point of Triple Energizer" ;
     TARA:hasVasculatureDescription "See Fuxi (BL 38)" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Bladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Lower_He-Sea_Point_of_Triple_Energizer_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Bladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_4 a owl:Class ;
@@ -803,11 +803,11 @@ TARA:BL_40 a owl:Class ;
     TARA:hasSynonym "Bladder 40" ;
     TARA:hasVasculatureDescription "Superficially, the femoro-popliteal vein; deeper and medially, the popliteal vein; deepest, the popliteal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:He-Sea_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Bladder_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:He-Sea_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_41 a owl:Class ;
@@ -1104,11 +1104,11 @@ TARA:BL_58 a owl:Class ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 128" ;
     TARA:hasSynonym "Bladder 58" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Bladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Bladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_59 a owl:Class ;
@@ -1124,11 +1124,11 @@ TARA:BL_59 a owl:Class ;
     TARA:hasSynonym "Bladder 59" ;
     TARA:hasVasculatureDescription "The small saphenous vein; deeper, the terminal branch of the peroneal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Bladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Xi-Cleft_Point_of_the_Yang_Heel_Vessel_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Bladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_6 a owl:Class ;
@@ -1160,11 +1160,11 @@ TARA:BL_60 a owl:Class ;
     TARA:hasSynonym "Bladder 60" ;
     TARA:hasVasculatureDescription "The small saphenous vein, the posteroexternal malleolar artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Jing-River_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Bladder_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Jing-River_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_61 a owl:Class ;
@@ -1216,11 +1216,11 @@ TARA:BL_63 a owl:Class ;
     TARA:hasSynonym "Bladder 63" ;
     TARA:hasVasculatureDescription "The lateral plantar artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Bladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Bladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:BL_64 a owl:Class ;
@@ -1543,11 +1543,11 @@ TARA:Du_1 a owl:Class ;
         "Governor Vessel 1" ;
     TARA:hasVasculatureDescription "The branches of the inferior hemorrhoid artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Du_Channel ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:Du_10 a owl:Class ;
@@ -2382,11 +2382,11 @@ TARA:GB_24 a owl:Class ;
         "Gallbladder 24" ;
     TARA:hasVasculatureDescription "The seventh intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Gallbladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Front-Mu_Point_of_the_Gallbladder_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Gallbladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:GB_25 a owl:Class ;
@@ -2402,11 +2402,11 @@ TARA:GB_25 a owl:Class ;
     TARA:hasSynonym "Front-Mu Point of the Kidney",
         "Gallbladder 25" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Gallbladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Front-Mu_Point_of_the_Kidney_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Gallbladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:GB_26 a owl:Class ;
@@ -2568,11 +2568,11 @@ TARA:GB_34 a owl:Class ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Influential_Point_of_Tendon_Role ],
         [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Gallbladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:He-Sea_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Gallbladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:GB_35 a owl:Class ;
@@ -2647,11 +2647,11 @@ TARA:GB_38 a owl:Class ;
     TARA:hasSynonym "Gallbladder 38" ;
     TARA:hasVasculatureDescription "See Guangming (GB 37)." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Gallbladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Jing-River_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Gallbladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:GB_39 a owl:Class ;
@@ -2666,11 +2666,11 @@ TARA:GB_39 a owl:Class ;
     TARA:hasSynonym "Gallbladder 39" ;
     TARA:hasVasculatureDescription "See Guangming (GB 37)." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Gallbladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Influential_Point_of_the_Marrow_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Gallbladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:GB_4 a owl:Class ;
@@ -2724,13 +2724,13 @@ TARA:GB_41 a owl:Class ;
     TARA:hasVasculatureDescription "The dorsal arterial and venous network of foot, the fourth dorsal metatarsal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
-        [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Confluent_Point_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Gallbladder_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:GB_42 a owl:Class ;
@@ -2761,11 +2761,11 @@ TARA:GB_43 a owl:Class ;
     TARA:hasSynonym "Gallbladder 43" ;
     TARA:hasVasculatureDescription "The dorsal digital artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Gallbladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Ying-Spring_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Gallbladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:GB_44 a owl:Class ;
@@ -2781,11 +2781,11 @@ TARA:GB_44 a owl:Class ;
     TARA:hasSynonym "Gallbladder 44" ;
     TARA:hasVasculatureDescription "The arterial and venous network formed by the dorsal digital artery and vein and plantar digital artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Gallbladder_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Jing-Well_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Gallbladder_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:GB_5 a owl:Class ;
@@ -2910,11 +2910,11 @@ TARA:HT_3 a owl:Class ;
     TARA:hasSynonym "Heart 3" ;
     TARA:hasVasculatureDescription "The basilic vein, the inferior ulnar collateral artery, the ulnar recurrent artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:He-Sea_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Heart_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:He-Sea_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:HT_4 a owl:Class ;
@@ -2930,11 +2930,11 @@ TARA:HT_4 a owl:Class ;
     TARA:hasSynonym "Heart 4" ;
     TARA:hasVasculatureDescription "The ulnar artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Jing-River_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Heart_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Jing-River_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:HT_5 a owl:Class ;
@@ -2949,11 +2949,11 @@ TARA:HT_5 a owl:Class ;
     TARA:hasSynonym "Heart 5" ;
     TARA:hasVasculatureDescription "See Lingdao (HT 4)" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Heart_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Heart_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:HT_6 a owl:Class ;
@@ -2968,11 +2968,11 @@ TARA:HT_6 a owl:Class ;
     TARA:hasSynonym "Heart 6" ;
     TARA:hasVasculatureDescription "See Lingdao (HT 4)." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Heart_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:HT_7 a owl:Class ;
@@ -2988,14 +2988,14 @@ TARA:HT_7 a owl:Class ;
     TARA:hasSynonym "Heart 7" ;
     TARA:hasVasculatureDescription "See Lingdao (HT 4)" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Heart_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Yuan-Primary_Point_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Heart_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:HT_8 a owl:Class ;
@@ -3011,11 +3011,11 @@ TARA:HT_8 a owl:Class ;
     TARA:hasSynonym "Heart 8" ;
     TARA:hasVasculatureDescription "The common palmar digital artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Heart_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Ying-Spring_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Heart_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:HT_9 a owl:Class ;
@@ -3031,11 +3031,11 @@ TARA:HT_9 a owl:Class ;
     TARA:hasSynonym "Heart 9" ;
     TARA:hasVasculatureDescription "The arterial and venous network formed by the palmar digital proprial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Jing-Well_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Heart_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Jing-Well_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:Heding a owl:Class ;
@@ -3207,11 +3207,11 @@ TARA:KI_1 a owl:Class ;
     TARA:hasSynonym "Kidney 1" ;
     TARA:hasVasculatureDescription "Deeper, the plantar arterial arch." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Jing-Well_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Kidney_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Jing-Well_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:KI_10 a owl:Class ;
@@ -3226,11 +3226,11 @@ TARA:KI_10 a owl:Class ;
     TARA:hasSynonym "Kidney 10" ;
     TARA:hasVasculatureDescription "The medial superior genicular artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:He-Sea_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Kidney_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:He-Sea_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:KI_11 a owl:Class ;
@@ -3378,11 +3378,11 @@ TARA:KI_2 a owl:Class ;
     TARA:hasSynonym "Kidney 2" ;
     TARA:hasVasculatureDescription "The branches of the medial plantar and medial tarsal arteries." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Kidney_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Ying-Spring_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Kidney_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:KI_20 a owl:Class ;
@@ -3516,14 +3516,14 @@ TARA:KI_3 a owl:Class ;
     TARA:hasSynonym "Kidney 3" ;
     TARA:hasVasculatureDescription "Anteriorly, the posterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Kidney_Meridian ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Yuan-Primary_Point_Role ],
         [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Kidney_Meridian ],
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:KI_4 a owl:Class ;
@@ -3556,11 +3556,11 @@ TARA:KI_5 a owl:Class ;
     TARA:hasSynonym "Kidney 5" ;
     TARA:hasVasculatureDescription "See Dazhong (KI 4)." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Kidney_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:KI_6 a owl:Class ;
@@ -3575,11 +3575,11 @@ TARA:KI_6 a owl:Class ;
     TARA:hasSynonym "Kidney 6" ;
     TARA:hasVasculatureDescription "Posteriorly, the posterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Confluent_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Kidney_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Confluent_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:KI_7 a owl:Class ;
@@ -3613,11 +3613,11 @@ TARA:KI_8 a owl:Class ;
     TARA:hasSynonym "Kidney 8" ;
     TARA:hasVasculatureDescription "Deeper, the posterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Xi-Cleft_Point_of_the_Yin_Heel_Vessel_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Kidney_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Xi-Cleft_Point_of_the_Yin_Heel_Vessel_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:KI_9 a owl:Class ;
@@ -3652,11 +3652,11 @@ TARA:LI_1 a owl:Class ;
     TARA:hasSynonym "Large Intestine 1" ;
     TARA:hasVasculatureDescription "The arterial and venous network formed by the dorsal digital arteries and veins." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Large_Intestine_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Jing-Well_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Large_Intestine_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:LI_10 a owl:Class ;
@@ -3872,11 +3872,11 @@ TARA:LI_3 a owl:Class ;
     TARA:hasSynonym "Large Intestine 3" ;
     TARA:hasVasculatureDescription "The dorsal venous network of the hand and the branch of the first dorsal metacarpal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Large_Intestine_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Large_Intestine_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:LI_4 a owl:Class ;
@@ -3952,11 +3952,11 @@ TARA:LI_7 a owl:Class ;
     TARA:hasSynonym "Large Intestine 7" ;
     TARA:hasVasculatureDescription "The muscular branch of the radial artery, the cephalic vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Large_Intestine_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Large_Intestine_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:LI_8 a owl:Class ;
@@ -4071,14 +4071,14 @@ TARA:LR_13 a owl:Class ;
         "Liver 13" ;
     TARA:hasVasculatureDescription "The terminal branch of the tenth intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Front-Mu_Point_of_the_Spleen_Role ],
+        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Liver_Meridian ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Influential_Point_of_Zang_Organs_Role ],
-        [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Front-Mu_Point_of_the_Spleen_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:LR_14 a owl:Class ;
@@ -4095,11 +4095,11 @@ TARA:LR_14 a owl:Class ;
         "Liver 14" ;
     TARA:hasVasculatureDescription "The sixth intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Liver_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Front-Mu_Point_of_the_Liver_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Liver_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:LR_2 a owl:Class ;
@@ -4199,11 +4199,11 @@ TARA:LR_6 a owl:Class ;
     TARA:hasSynonym "Liver 6" ;
     TARA:hasVasculatureDescription "The great saphenous vem." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Liver_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Liver_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:LR_7 a owl:Class ;
@@ -4293,11 +4293,11 @@ TARA:LU_10 a owl:Class ;
     TARA:hasSynonym "Lung 10" ;
     TARA:hasVasculatureDescription "Venules of the thumb draining to the cephalic vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Ying-Spring_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Lung_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Ying-Spring_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:LU_11 a owl:Class ;
@@ -4427,10 +4427,10 @@ TARA:LU_7 a owl:Class ;
             owl:someValuesFrom TARA:Lung_Meridian ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
+            owl:someValuesFrom TARA:Confluent_Point_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Confluent_Point_Role ],
+            owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:LU_8 a owl:Class ;
@@ -4446,11 +4446,11 @@ TARA:LU_8 a owl:Class ;
     TARA:hasSynonym "Lung 8" ;
     TARA:hasVasculatureDescription "Laterally, the radial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Jing-River_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Lung_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Jing-River_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:LU_9 a owl:Class ;
@@ -4469,14 +4469,14 @@ TARA:LU_9 a owl:Class ;
         "Lung 9" ;
     TARA:hasVasculatureDescription "The radial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Lung_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Yuan-Primary_Point_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Lung_Meridian ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Influential_Point_of_Vessels_Role ],
@@ -4559,11 +4559,11 @@ TARA:PC_3 a owl:Class ;
     TARA:hasSynonym "Pericardium 3" ;
     TARA:hasVasculatureDescription "On the pathway of the brachial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Pericardium_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:He-Sea_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Pericardium_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:PC_4 a owl:Class ;
@@ -4599,11 +4599,11 @@ TARA:PC_5 a owl:Class ;
     TARA:hasSynonym "Pericardium 5" ;
     TARA:hasVasculatureDescription "The median artery and vein; deeper, the anterior interosseous artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Jing-River_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Pericardium_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Jing-River_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:PC_6 a owl:Class ;
@@ -4619,10 +4619,10 @@ TARA:PC_6 a owl:Class ;
     TARA:hasSynonym "Pericardium 6" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
+            owl:someValuesFrom TARA:Confluent_Point_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Confluent_Point_Role ],
+            owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Pericardium_Meridian ],
@@ -4665,11 +4665,11 @@ TARA:PC_8 a owl:Class ;
     TARA:hasSynonym "Pericardium 8" ;
     TARA:hasVasculatureDescription "The Common palmar digital artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Ying-Spring_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Pericardium_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Ying-Spring_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:PC_9 a owl:Class ;
@@ -4783,14 +4783,14 @@ TARA:RN_12 a owl:Class ;
         "Front-Mu Point of the Stomach" ;
     TARA:hasVasculatureDescription "The superior epigastric artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Ren_Channel ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Front-Mu_Point_of_the_Stomach_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Influential_Point_of_the_Fu_Organs_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Ren_Channel ],
         TARA:Meridian_Acupoint .
 
 TARA:RN_13 a owl:Class ;
@@ -4884,13 +4884,13 @@ TARA:RN_17 a owl:Class ;
     TARA:hasVasculatureDescription "See Zhongting (CV 16)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Influential_Point_of_Qi_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Front-Mu_Point_of_the_Pericardium_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Ren_Channel ],
-        [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Influential_Point_of_Qi_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:RN_18 a owl:Class ;
@@ -5044,11 +5044,11 @@ TARA:RN_3 a owl:Class ;
         "Front-Mu Point of the Bladder" ;
     TARA:hasVasculatureDescription "The branches of superficial epigastric artery and vein, and the branches of inferior epigastric artery and vem." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Ren_Channel ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Front-Mu_Point_of_the_Bladder_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Ren_Channel ],
         TARA:Meridian_Acupoint .
 
 TARA:RN_4 a owl:Class ;
@@ -5066,11 +5066,11 @@ TARA:RN_4 a owl:Class ;
         "Front-Mu Point of the Small Intestine" ;
     TARA:hasVasculatureDescription "See Zhongji (CV 3)." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Front-Mu_Point_of_the_Small_Intestine_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Ren_Channel ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Front-Mu_Point_of_the_Small_Intestine_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:RN_5 a owl:Class ;
@@ -5173,11 +5173,11 @@ TARA:SI_1 a owl:Class ;
     TARA:hasSynonym "Small Intestine 1" ;
     TARA:hasVasculatureDescription "The arterial and venous network formed by the palmar digital proprial artery and vein and the dorsal digital artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Small_Intestine_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Jing-Well_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Small_Intestine_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:SI_10 a owl:Class ;
@@ -5351,11 +5351,11 @@ TARA:SI_2 a owl:Class ;
     TARA:hasSynonym "Small Intestine 2" ;
     TARA:hasVasculatureDescription "The dorsal digital artery and vein arising from the ulnar artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Small_Intestine_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Ying-Spring_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Small_Intestine_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:SI_3 a owl:Class ;
@@ -5372,14 +5372,14 @@ TARA:SI_3 a owl:Class ;
     TARA:hasSynonym "Small Intestine 3" ;
     TARA:hasVasculatureDescription "The dorsal digital artery and vein, the dorsal venous network of the hand." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Small_Intestine_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Confluent_Point_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Small_Intestine_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:SI_4 a owl:Class ;
@@ -5435,11 +5435,11 @@ TARA:SI_6 a owl:Class ;
     TARA:hasSynonym "Small Intestine 6" ;
     TARA:hasVasculatureDescription "The terminal branches of the posterior interosseous artery and vein, the dorsal venous network of the wrist." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Small_Intestine_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:SI_7 a owl:Class ;
@@ -5475,11 +5475,11 @@ TARA:SI_8 a owl:Class ;
     TARA:hasSynonym "Small Intestine 8" ;
     TARA:hasVasculatureDescription "The superior and inferior ulnar collateral arteries and veins, the ulnar recurrent artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:He-Sea_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Small_Intestine_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:He-Sea_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:SI_9 a owl:Class ;
@@ -5747,11 +5747,11 @@ TARA:SP_3 a owl:Class ;
     TARA:hasSynonym "Spleen 3" ;
     TARA:hasVasculatureDescription "The dorsal venous network of the foot, the medial plantar artery and the branches of the medial tarsal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Spleen_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Yuan-Primary_Point_Role ],
@@ -5771,11 +5771,11 @@ TARA:SP_4 a owl:Class ;
     TARA:hasSynonym "Spleen 4" ;
     TARA:hasVasculatureDescription "The medial tarsal artery and the dorsal venous network of the foot." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Spleen_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Spleen_Meridian ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Confluent_Point_Role ],
@@ -5844,11 +5844,11 @@ TARA:SP_8 a owl:Class ;
     TARA:hasSynonym "Spleen 8" ;
     TARA:hasVasculatureDescription "Anteriorly, the great saphenous vein and the branch of the genu suprema artery; deeper, the posterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Spleen_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Spleen_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:SP_9 a owl:Class ;
@@ -6142,11 +6142,11 @@ TARA:ST_25 a owl:Class ;
     TARA:hasSynonym "Front-Mu Point of the Large Intestine",
         "Stomach 25" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Stomach_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Front-Mu_Point_of_the_Large_Intestine_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Stomach_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:ST_26 a owl:Class ;
@@ -6300,11 +6300,11 @@ TARA:ST_34 a owl:Class ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 63" ;
     TARA:hasSynonym "Stomach 34" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Stomach_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Xi-Cleft_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Stomach_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:ST_35 a owl:Class ;
@@ -6390,11 +6390,11 @@ TARA:ST_39 a owl:Class ;
         "The Lower He-Sea Point of the Small Intestine" ;
     TARA:hasVasculatureDescription "The anterior tibial artery and anterior tibial vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Stomach_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:The_Lower_He-Sea_Point_of_the_Small_Intestine_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Stomach_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:ST_4 a owl:Class ;
@@ -6425,11 +6425,11 @@ TARA:ST_40 a owl:Class ;
     TARA:hasSynonym "Stomach 40" ;
     TARA:hasVasculatureDescription "The branches of the anterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Stomach_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:ST_41 a owl:Class ;
@@ -6465,11 +6465,11 @@ TARA:ST_42 a owl:Class ;
     TARA:hasSynonym "Stomach 42" ;
     TARA:hasVasculatureDescription "The dorsal artery and vein of foot, the dorsal venous network of foot." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:Yuan-Primary_Point_Role ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:Stomach_Meridian ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:Yuan-Primary_Point_Role ],
         TARA:Meridian_Acupoint .
 
 TARA:ST_43 a owl:Class ;
@@ -6485,11 +6485,11 @@ TARA:ST_43 a owl:Class ;
     TARA:hasSynonym "Stomach 43" ;
     TARA:hasVasculatureDescription "The dorsal venous network of foot." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Stomach_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Stomach_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:ST_44 a owl:Class ;
@@ -6939,11 +6939,11 @@ TARA:TE_3 a owl:Class ;
     TARA:hasSynonym "Triple Energizer" ;
     TARA:hasVasculatureDescription "The dorsal venous network of hand and the fourth dorsal metacarpal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Triple_Energizer_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Shu-Stream_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Triple_Energizer_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:TE_4 a owl:Class ;
@@ -6983,11 +6983,11 @@ TARA:TE_5 a owl:Class ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Confluent_Point_Role ],
         [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Triple_Energizer_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Luo-Connecting_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Triple_Energizer_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:TE_6 a owl:Class ;
@@ -7002,11 +7002,11 @@ TARA:TE_6 a owl:Class ;
     TARA:hasSynonym "Triple Energizer" ;
     TARA:hasVasculatureDescription "See Waiguan (TE 5)." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:Triple_Energizer_Meridian ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:Jing-River_Point_Role ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:Triple_Energizer_Meridian ],
         TARA:Meridian_Acupoint .
 
 TARA:TE_7 a owl:Class ;
