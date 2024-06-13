@@ -8,9 +8,8 @@ import csv, os
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
 from rdflib.namespace import RDF, RDFS, OWL
 from rdflib.collection import Collection
-# from curie_to_iri import curie_to_iri
 
-# Declaration of global variables
+## Declaration of global variables
 
 # Defined namespace prefixes for the URIs in a dictionary
 namespaces = {
@@ -68,8 +67,8 @@ def create_uri(text_string):
  
 class AcupointsOntologyAdapter:
     def __init__(self):
-        self.onology_graph = Graph() # ontology graph for tara
-        self.setNamespacePrefixes (namespaces)
+        self.onology_graph = Graph() # Instantiate an empty ontology graph.
+        self.setNamespacePrefixes (namespaces) # Set the namespaces.
         
     
     # Load the base ontology from file
@@ -90,7 +89,7 @@ class AcupointsOntologyAdapter:
     def saveUpdatedOntology(self, file_path):
         print("\n> Saving Updated Ontology At: " + file_path)
         
-        # Serialize the updated graph to a file in RDF/XML format
+        # Serialize the updated graph to a file in turtle format
         self.setNamespacePrefixes (namespaces) #important to respecify the namespaces
         self.onology_graph.serialize(destination=file_path, format='turtle')        
         print ("  Gerenerated Turtle File Location: " + file_path + "\n")
