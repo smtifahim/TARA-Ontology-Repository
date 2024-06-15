@@ -1,8 +1,11 @@
-# This purpose of this script is to read different CSV files relevant to TARA Acupoints ontology,
-# extract the csv contents, and transform the contents into generated TARA Acupoints Ontology.
-# The AcupointsOntologyAdapter is the class with member functions to parse and extract different 
-# csv files, and transform each of them into corresponding rdf graph, and subsequently merge the graphs 
-# into TARA Acupoints Ontology file in turtle format.
+"""
+This purpose of this script is to read different CSV files relevant to TARA Acupoints ontology,
+extract the csv contents, and transform the contents into generated TARA Acupoints Ontology.
+The AcupointsOntologyAdapter is the class with member functions to parse and extract different 
+csv files, and transform each of them into corresponding rdf graph, and subsequently merge the graphs 
+into TARA Acupoints Ontology file in turtle format. 
+- Fahim Imam
+"""
 
 import csv, os
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
