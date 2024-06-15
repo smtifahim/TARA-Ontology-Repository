@@ -7,7 +7,7 @@ Link to the google Sheet: https://docs.google.com/spreadsheets/d/1hvUcTrw-b9ly8Y
 import requests
 import os
 
-# Sheet ID and GIDs for each tab. Make sure the CSV file names are consitent with the ones used in the ontology adapter code.
+# Sheet ID and GIDs for each tab. Make sure the CSV file names are consistent with the ones used in the ontology adapter code.
 SHEET_ID = '1hvUcTrw-b9ly8Yn1P706px22li0vsjslukYhxkTDlA8'
 GIDS = {
         'meridians'                 : '152592560',
