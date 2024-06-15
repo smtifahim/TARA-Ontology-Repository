@@ -22,7 +22,7 @@ dc:title a owl:AnnotationProperty .
 
 TARA:Extra_Acupoint a owl:Class ;
     rdfs:label "Extra Acupoint" ;
-    dc:description "Extra points are experiential points with specific names and definite locations, but arc not attributed to the fourteen meridians. They are effective in the treatment of certain diseases. Although scattered over the body, they are still related to the meridians system. Some extra points are distributed along the courses of the fourteen meridians, for example, Yimang (Extra I) i; related to the Governor Vessel, Lanwei (Extra 18) to the Stomach Meridian of Foot-Yangming." ;
+    dc:description "Extra points are experiential points with specific names and definite locations, but are not attributed to the fourteen meridians. They are effective in the treatment of certain diseases. Although scattered over the body, they are still related to the meridians system. Some extra points are distributed along the courses of the fourteen meridians, for example, Yimang (Extra I) i; related to the Governor Vessel, Lanwei (Extra 18) to the Stomach Meridian of Foot-Yangming." ;
     dcterms:bibliographicCitation "\"Chinese Acupuncture and Moxibustion\" (1999), Page 116, ISBN-13: 978-7119017587." ;
     TARA:hasSynonym "Extra Acupuncture Point",
         "Extra point" ;
@@ -46,7 +46,7 @@ TARA:Meridian_Acupoint a owl:Class ;
 
 TARA:Primary_Meridian a owl:Class ;
     rdfs:label "Main Meridian" ;
-    dc:description """As the major part in the meridian system, the twelve main meridians share the following features. Each with its own acupuncture peints is distributed on a fixed portion of the body surface; each pertains to either a zang or a fu organ (those that pertain to the zang organ communicating with the fu organ, and vice versa). 
+    dc:description """As the major part in the meridian system, the twelve main meridians share the following features. Each with its own acupuncture points is distributed on a fixed portion of the body surface; each pertains to either a zang or a fu organ (those that pertain to the zang organ communicating with the fu organ, and vice versa). 
 
 The twelve main meridians link one another in a fixed order. A cyclical now of qi is maintained by the connection of the meridians of the hand and foot, yin and yang, exterior and interior.""" ;
     dcterms:bibliographicCitation "\"Chinese Acupuncture and Moxibustion\" (1999), Page 65, ISBN-13: 978-7119017587." ;
