@@ -77,7 +77,7 @@ The diagram above provides a high-level depiction of possible relationships for 
 
 ## DL Query Examples
 
-The DL Query tab in Protege provides a powerful feature for testing a classified ontology using class expressions in a standard Description Logic (DL) syntax called the Manchester OWL syntax.
+[The DL Query tab](https://protegewiki.stanford.edu/wiki/DLQueryTab) in Protege provides a powerful feature for testing a classified ontology using class expressions in a standard Description Logic (DL) syntax called the Manchester OWL syntax.
 
 * Before using the DL Query tab, make sure to run the reasoner by selecting `Reasoner > Select HermiT > Start reasoner` in Protege.
 
