@@ -40,13 +40,10 @@ This section will be updated periodically based on the release of the newer vers
 
 ## Accessing and Exploring the Ontology
 
-The easiest way to explore the ontology is to load it in Protege. Protege is a free, open-source ontology editor which you can download from [this link](https://protege.stanford.edu/software.php#desktop-protege).
+The most recent version of the TARA Acupoints Ontology is [linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl). The easiest way to explore the ontology is to load it in Protege. Protege is a free, open-source ontology editor which you can download from [this link](https://protege.stanford.edu/software.php#desktop-protege).
 
 * Make sure to download the Protege Desktop Version 5.5.X or higher. If you are not familiar with the Protege interface there is a "Getting Started" document [linked here](https://protegeproject.github.io/protege/getting-started/).
-
-The most recent version of the **[TARA Acupoints Ontology is Linked Here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl)**. Copy the link and load the ontology in Protege.
-
-* Click `File > Open From URL..` in Protege and paste the ontology link under the `URI` field. Clicking the `OK` button will load the TARA Acupoints Ontology.
+* Click `File > Open From URL..` in Protege and copy/paste the [**TARA Acupoints Ontology Link**](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl) under the `URI` field. Clicking the `OK` button will load the ontology in Protege.
 
 ![1718383103389](image/readme/1718383103389.png)
 
