@@ -6,7 +6,8 @@ The python script `acupoints_ontology_adapter.py` automates the CSV to OWL trans
 
 * Set your Python interpreter to `Python 3.8.X` or higher
 * Install [RDFLib 7.0.0 from PyPi](https://pypi.org/project/rdflib/): `$ pip install rdflib`
-* The script assumes that you have all the necessary input files available as follows:
+* Run the script `google_sheet_to_csvs.py` to automatically download the tabs in CSV format from the [Official TARA Ontology Curation Google Sheet](https://docs.google.com/spreadsheets/d/1hvUcTrw-b9ly8Yn1P706px22li0vsjslukYhxkTDlA8/) under [../csv_files](../csv-files) directory
+* **Note:** The `acupoints_ontology_adapter.py` script assumes that you have all the necessary input files available as follows:
   * All the input CSV files under [../csv_files](../csv-files) directory
   * All the ontology files (.ttl files) under [../ontology_files](../ontology-files) directory
 
