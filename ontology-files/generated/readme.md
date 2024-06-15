@@ -25,7 +25,7 @@ This section will be updated periodically based on the release of the newer vers
 ### Version 0.5 (June 4, 2024)
 
 * Classes representing the Meridians
-  * Includes 12 main meridians and 2 extra meridinas (Du Channel and Ren Channel)
+  * Includes 12 main meridians and 2 extra meridians (Du Channel and Ren Channel)
   * Includes associated organs from UBERON for 11 main meridians
 * Classification of the Meridian Acupoints
   * Classes representing acupoints located in each of the 14 meridians (Total: 361)
@@ -76,6 +76,6 @@ The example shows the inferred subclasses of a special acupuncture point called 
 
 ![1718304880191](image/readme/1718304880191.png)
 
-The diagram above provides a high-level depiction of relationships for Acupoints in TARA Acupoints Ontology (Version 0.5).
+The diagram above provides a high-level depiction of possible relationships for Acupoints in TARA Acupoints Ontology (Version 0.5). It should be noted that not all acupoints require the relationships with meridians as there are many acupoints that do not belong to the standard meridian system. Also, not all acupoints have the special point designations. Only the acupoints of the 12 main meridans and 2 extra meridians, namely the Du Channel and the Ren Channel, have some special point roles.
 
 ## DL Query Examples
