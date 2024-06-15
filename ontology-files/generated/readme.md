@@ -76,3 +76,76 @@ The example shows the inferred subclasses of a special acupuncture point called 
 The diagram above provides a high-level depiction of possible relationships for Acupoints in TARA Acupoints Ontology (Version 0.5). It should be noted that not all acupoints require the relationships with meridians as there are many acupoints that do not belong to the standard meridian system. Also, not all acupoints have the special point designations. Only the acupoints of the 12 main meridans and 2 extra meridians, namely the Du Channel and the Ren Channel, have some special point roles.
 
 ## DL Query Examples
+
+The DL Query tab in Protege provides a powerful feature for testing a classified ontology using class expressions in a standard Description Logic (DL) syntax called the Manchester OWL syntax.
+
+* Before using the DL Query tab, make sure to run the reasoner by selecting `Reasoner > Select HermiT > Start reasoner` in Protege.
+
+This section provides a set of example DL queries to test the basic classifications of the TARA Acupoints Ontology.
+
+**Q: What are the acupuncture points in the Heart Meridan?**
+
+```
+'Meridian Acupoint' that isMemberAcupointOf some 'Heart Meridian'
+```
+
+Since we have a defined a named class called `'Acupoint of the Heart Meridian'` in the ontology that is equivalent to the class expression above, we can achieve the same result by simply typing the named class as the DL Query.
+
+```
+'Acupoint of the Heart Meridian' 
+```
+
+![1718430667694](image/readme/1718430667694.png)
+
+**Q. What are the Xi-Cleft Points in the main meridians?**
+
+```
+'Meridian Acupoint' that hasSpecialPointDesignation some 'Xi-Cleft Point Role'
+```
+
+Again, since we have defined a named class called 'Xi-Cleft Point' in the ontology as equivalent to the class expression above, we can achive the same result by typing `'Meridian Acupoint' and 'Xi-Cleft Point'`.
+
+![1718432154575](image/readme/1718432154575.png)
+
+**Q: What are the Xi-Cleft Points associated with Kidney?**
+
+```
+'Xi-Cleft Point' and isMemberAcupointOf some (Meridian 
+                 and hasAssociatedOrgan some kidney)
+```
+
+We are essentially looking for the Xi-Cleft points in the Kidney Meridian; i.e., the acupoints of the kidney meridian that are considered Xi-Cleft points. Since we have a defined class called the 'Acupoint of the Kidney Meridian' as equivalent to the class expression `'Meridian Acupoint' and (isMemberAcupointOf some 'Kidney Meridian')` and we also have 'Kidney Meridan' specified as a subclass of the class expression `'Main Meridian'and (hasAssociatedOrgan some kidney)`, we can simply type the following expression to achieve the same query result.
+
+```
+'Xi-Cleft Point' and 'Acupoint of the Kidney Meridian'
+```
+
+![1718433021098](image/readme/1718433021098.png)
+
+**Q. What are the 8 Confluent Points of the main meridians?**
+
+```
+'Confluent Point' and isMemberAcupointOf some 'Main Meridian'
+```
+
+Without using the defined class called 'Confluent Point', we would need to use the following expression to achieve the same result.
+
+```
+'Meridian Acupoint' and (hasSpecialPointDesignation some 'Confluent Point Role')
+```
+
+![1718434002421](image/readme/1718434002421.png)
+
+**Q. What are the 15 Luo-Connecting Points of the meridians?**
+
+```
+'Meridian Acupoint' and 'Luo-Connecting Point'
+```
+
+Again, without using the defined class called 'Luo-Connecting Point' one would need to use the following expression.
+
+```
+'Meridian Acupoint' and hasSpecialPointDesignation some 'Luo-Connecting Point Role'
+```
+
+![1718435147757](image/readme/1718435147757.png)
