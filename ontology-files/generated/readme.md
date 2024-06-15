@@ -1,16 +1,16 @@
 # TARA Acupoints Ontology
 
-* [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
-* [Ontology Versions Summary](#ontology-versions-summary)
-  + [Version 0.5 (June 4, 2024)](#version-05--june-4--2024-)
-* [Accessing and Exploring the Ontology](#accessing-and-exploring-the-ontology)
-  + [Examples of the Basic Hierarchies](#examples-of-the-basic-hierarchies)
-    - [Hierarchy of the Meridians](#hierarchy-of-the-meridians)
-    - [Hierarchy of the Meridian Acupoints](#hierarchy-of-the-meridian-acupoints)
-    - [Classification of the Special Acupoints](#classification-of-the-special-acupoints)
-    - [Inferred Subclasses of a Special Point](#inferred-subclasses-of-a-special-point)
-* [Basic Model of Relationships](#basic-model-of-relationships)
-* [DL Query Examples](#dl-query-examples)
+1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
+1. [Ontology Versions Summary](#ontology-versions-summary)
+   + [Version 0.5 (June 4, 2024)](#ontology-versions-summary)
+1. [Accessing and Exploring the Ontology](#accessing-and-exploring-the-ontology)
+   + [Examples of the Basic Hierarchies](#examples-of-the-basic-hierarchies)
+     - [Hierarchy of the Meridians](#hierarchy-of-the-meridians)
+     - [Hierarchy of the Meridian Acupoints](#hierarchy-of-the-meridian-acupoints)
+     - [Classification of the Special Acupoints](#classification-of-the-special-acupoints)
+     - [Inferred Subclasses of a Special Point](#inferred-subclasses-of-a-special-point)
+1. [Basic Model of Relationships](#basic-model-of-relationships)
+1. [DL Query Examples](#dl-query-examples)
 
 ## About TARA Acupoints Ontology
 
