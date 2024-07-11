@@ -2,13 +2,16 @@
 
 1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
 2. [Ontology Versions Summary](#ontology-versions-summary)
+   + [Version 0.5.1 (July 10, 2024)](#exploring-the-ontology-in-webprotégé)
    + [Version 0.5 (June 4, 2024)](#ontology-versions-summary)
 3. [Accessing and Exploring the Ontology](#accessing-and-exploring-the-ontology)
-   + [Examples of the Basic Hierarchies](#examples-of-the-basic-hierarchies)
-     - [Hierarchy of the Meridians](#hierarchy-of-the-meridians)
-     - [Hierarchy of the Meridian Acupoints](#hierarchy-of-the-meridian-acupoints)
-     - [Classification of the Special Acupoints](#classification-of-the-special-acupoints)
-     - [Inferred Subclasses of a Special Point](#inferred-subclasses-of-a-special-point)
+   + [Loading the Ontology in Protégé Desktop](#loading-the-ontology-in-protégé-desktop)
+   + [Exploring the Ontology in WebProtégé](#exploring-the-ontology-in-webprotégé)
+4. [Examples of the Basic Hierarchies](#examples-of-the-basic-hierarchies)
+    + [Hierarchy of the Meridians](#hierarchy-of-the-meridians)
+    + [Hierarchy of the Meridian Acupoints](#hierarchy-of-the-meridian-acupoints)
+    + [Classification of the Special Acupoints](#classification-of-the-special-acupoints)
+    + [Inferred Subclasses of a Special Point](#inferred-subclasses-of-a-special-point)
 4. [Basic Model of Relationships](#basic-model-of-relationships)
 5. [DL Query Examples](#dl-query-examples)
 
@@ -21,6 +24,11 @@ Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/
 ## Ontology Versions Summary
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
+
+### Version 0.5.1 (July 10, 2024)
+
+* All the textual IRI suffixes of the class IRIs are automatically converted to numeric suffixes.
+  * Example: the OWL class `TARA:Meridian_Acupoint` is converted to `TARA:TARA_5151019`
 
 ### Version 0.5 (June 4, 2024)
 
@@ -40,16 +48,30 @@ This section will be updated periodically based on the release of the newer vers
 
 ## Accessing and Exploring the Ontology
 
-The most recent version of the TARA Acupoints Ontology is [linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl). The easiest way to explore the ontology is to load it in Protege. Protege is a free, open-source ontology editor which you can download from [this link](https://protege.stanford.edu/software.php#desktop-protege).
+The most recent version of the TARA Acupoints Ontology is [linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl). The easiest way to explore the ontology is to load it in **Protégé**. Protégé is a free, open-source ontology editor which you can download from [this link](https://protege.stanford.edu/software.php#desktop-protege).
 
-* Make sure to download the Protege Desktop Version 5.5.X or higher. If you are not familiar with the Protege interface there is a "Getting Started" document [linked here](https://protegeproject.github.io/protege/getting-started/).
-* Click `File > Open From URL..` in Protege and copy/paste the [**TARA Acupoints Ontology Link**](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl) under the `URI` field. Clicking the `OK` button will load the ontology in Protege.
+### Loading the Ontology in Protégé Desktop
+
+* Make sure to download the Protégé Desktop Version 5.5.X or higher. If you are not familiar with the Protégé interface there is a "Getting Started" document [linked here](https://protegeproject.github.io/protege/getting-started/).
+* Click `File > Open From URL..` in Protégé and copy/paste the [**TARA Acupoints Ontology Link**](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl) under the `URI` field. Clicking the `OK` button will load the ontology in Protege.
 
 ![1718383103389](image/readme/1718383103389.png)
 
-### Examples of the Basic Hierarchies
+The screenshot above is from TARA Acupoints Ontology Version 0.5.
 
-This sections provides a set of Protege screenshot examples of the basic hierarchies used in the TARA Acupoints Ontology.
+### Exploring the Ontology in WebProtégé
+
+The inferred version of the TARA Acupoints Ontology is available explore via the **WebProtégé**. WebProtégé is an open source, lightweight, web-based ontology viewer and editor. The ontology is available in WebProtégé *only for viewing and commenting*. The idea is to gather feedback from acupoint experts.
+
+* If you don't have an account in WebProtégé, [create an account using this link](https://webprotege.stanford.edu/#accounts/new).
+* Simply navigate to the following link: [TARA Acupoints Ontology in WebProtege](https://webprotege.stanford.edu/#projects/7c97eaa5-7c13-4a73-ab3c-5cb6eeec4fb4/edit/Classes?selection=Class(%3Chttp://www.acupunctureresearch.org/tara/ontology/acupoints.owl%23TARA_5151019%3E))
+* If you are new to WebProtégé, please visit the [WebProtégé User Guide]().
+
+![1720703169244](image/readme/1720703169244.png)
+
+## Examples of the Basic Hierarchies
+
+This sections provides a set of Protégé screenshot examples of the basic hierarchies used in the TARA Acupoints Ontology.
 
 #### Hierarchy of the Meridians
 
@@ -107,7 +129,7 @@ Again, since we have defined a named class called 'Xi-Cleft Point' in the ontolo
 
 ![1718432154575](image/readme/1718432154575.png)
 
-**Q: What are the Xi-Cleft Points associated with Kidney?**
+**Q: What are the Xi-Cleft Points on the Kidney Meridian?**
 
 ```
 'Xi-Cleft Point' and isMemberAcupointOf some (Meridian 
