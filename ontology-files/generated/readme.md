@@ -3,7 +3,7 @@
 1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
 2. [Ontology Versions Summary](#ontology-versions-summary)
    + [Version 0.5.1 (July 10, 2024)](#version-051-july-10-2024)
-   + [Version 0.5 (June 4, 2024)](#ontology-versions-summary)
+   + [Version 0.5 (June 4, 2024)](#version-05-june-4-2024)
 3. [Accessing and Exploring the Ontology](#accessing-and-exploring-the-ontology)
    + [Loading the Ontology in Protégé Desktop](#loading-the-ontology-in-protégé-desktop)
    + [Exploring the Ontology in WebProtégé](#exploring-the-ontology-in-webprotégé)
