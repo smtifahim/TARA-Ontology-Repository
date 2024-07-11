@@ -11,6 +11,8 @@ import csv, os
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
 from rdflib.namespace import RDF, RDFS, OWL
 from rdflib.collection import Collection
+from convert_class_iris import convert_iri_suffixes_to_numeric
+from ontology_merger import merge_ontologies
 
 ## Declaration of global variables
 
@@ -32,7 +34,8 @@ namespaces = {
 ontology_files = {
                    "tara-acupoints-upper.ttl"   : "../ontology-files/tara-acupoints-upper.ttl",
                    "tara-acupoints-core.ttl"    : "../ontology-files/tara-acupoints-core.ttl",
-                   "tara-acupoints.ttl"         : "../ontology-files/generated/tara-acupoints.ttl" 
+                   "tara-acupoints.ttl"         : "../ontology-files/generated/tara-acupoints.ttl",
+                   "tara-acupoints-merged.ttl"  : "../ontology-files/generated/tara-acupoints-merged.ttl"
                  }
 
 # CSV input files and their relative paths
@@ -497,6 +500,19 @@ def main():
         a.addSpecialPointsAssociation (csv_files.get("special-points-association.csv"))
         
         a.saveUpdatedOntology(ontology_files.get("tara-acupoints.ttl"))
+        
+        # Path to the Turtle files for IRI conversions
+        input_ttl_file = ontology_files.get("tara-acupoints.ttl")
+        output_ttl_file = ontology_files.get("tara-acupoints.ttl") # saving the output in the same input ttl
+        
+        print ("> Converting Textual IRI Suffixes Into Numeric Values For: " +  input_ttl_file)  
+        convert_iri_suffixes_to_numeric(input_ttl_file, output_ttl_file)
+        
+        print ("\n> Merging Generated Ontology With Upper Ontology From: " + ontology_files.get("tara-acupoints-upper.ttl"))
+        merge_ontologies (output_ttl_file, ontology_files.get("tara-acupoints-upper.ttl"),
+                          ontology_files.get("tara-acupoints-merged.ttl"))
+        
+        print ("\n> End of Program Execution. All Steps Executed Succussfully.\n")
 
 if __name__ == "__main__":
     main()
