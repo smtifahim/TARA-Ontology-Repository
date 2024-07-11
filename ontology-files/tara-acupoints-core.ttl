@@ -14,11 +14,12 @@
 dc:title a owl:AnnotationProperty .
 
 <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl> a owl:Ontology ;
-    dc:date "June 4, 2024" ;
+    dc:date "July 10, 2024" ;
     dc:description "The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH)."@en ;
     dc:title "TARA Acupoints Ontology"@en ;
     owl:imports <https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/tara-acupoints-upper.ttl> ;
-    owl:versionIRI <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl/0.5> .
+    owl:versionIRI <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl/0.5.1> ;
+		owl:versionInfo "0.5.1" .
 
 TARA:Extra_Acupoint a owl:Class ;
     rdfs:label "Extra Acupoint" ;
