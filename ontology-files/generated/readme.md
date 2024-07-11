@@ -8,12 +8,12 @@
    + [Loading the Ontology in Protégé Desktop](#loading-the-ontology-in-protégé-desktop)
    + [Exploring the Ontology in WebProtégé](#exploring-the-ontology-in-webprotégé)
 4. [Examples of the Basic Hierarchies](#examples-of-the-basic-hierarchies)
-    + [Hierarchy of the Meridians](#hierarchy-of-the-meridians)
-    + [Hierarchy of the Meridian Acupoints](#hierarchy-of-the-meridian-acupoints)
-    + [Classification of the Special Acupoints](#classification-of-the-special-acupoints)
-    + [Inferred Subclasses of a Special Point](#inferred-subclasses-of-a-special-point)
-4. [Basic Model of Relationships](#basic-model-of-relationships)
-5. [DL Query Examples](#dl-query-examples)
+   + [Hierarchy of the Meridians](#hierarchy-of-the-meridians)
+   + [Hierarchy of the Meridian Acupoints](#hierarchy-of-the-meridian-acupoints)
+   + [Classification of the Special Acupoints](#classification-of-the-special-acupoints)
+   + [Inferred Subclasses of a Special Point](#inferred-subclasses-of-a-special-point)
+5. [Basic Model of Relationships](#basic-model-of-relationships)
+6. [DL Query Examples](#dl-query-examples)
 
 ## About TARA Acupoints Ontology
 
@@ -63,9 +63,9 @@ The screenshot above is from TARA Acupoints Ontology Version 0.5.
 
 The inferred version of the TARA Acupoints Ontology is available explore via the **WebProtégé**. WebProtégé is an open source, lightweight, web-based ontology viewer and editor. The ontology is available in WebProtégé *only for viewing and commenting*. The idea is to gather feedback from acupoint experts.
 
-* If you don't have an account in WebProtégé, [create an account using this link](https://webprotege.stanford.edu/#accounts/new).
+* If you don't have an account in WebProtégé, [create an account using this link](https://webprotege.stanford.edu/).
 * Simply navigate to the following link: [TARA Acupoints Ontology in WebProtege](https://webprotege.stanford.edu/#projects/7c97eaa5-7c13-4a73-ab3c-5cb6eeec4fb4/edit/Classes?selection=Class(%3Chttp://www.acupunctureresearch.org/tara/ontology/acupoints.owl%23TARA_5151019%3E))
-* If you are new to WebProtégé, please visit the [WebProtégé User Guide]().
+* If you are new to WebProtégé, please visit the [WebProtégé User Guide](https://protegewiki.stanford.edu/wiki/WebProtegeUsersGuide).
 
 ![1720703169244](image/readme/1720703169244.png)
 
