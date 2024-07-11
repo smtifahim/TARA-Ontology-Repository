@@ -2,7 +2,7 @@
 
 1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
 2. [Ontology Versions Summary](#ontology-versions-summary)
-   + [Version 0.5.1 (July 10, 2024)](#exploring-the-ontology-in-webprotégé)
+   + [Version 0.5.1 (July 10, 2024)](#version-051-july-10-2024)
    + [Version 0.5 (June 4, 2024)](#ontology-versions-summary)
 3. [Accessing and Exploring the Ontology](#accessing-and-exploring-the-ontology)
    + [Loading the Ontology in Protégé Desktop](#loading-the-ontology-in-protégé-desktop)
@@ -57,7 +57,7 @@ The most recent version of the TARA Acupoints Ontology is [linked here](https://
 
 ![1718383103389](image/readme/1718383103389.png)
 
-The screenshot above is from TARA Acupoints Ontology Version 0.5.
+The screenshot above is from TARA Acupoints Ontology - Version 0.5.
 
 ### Exploring the Ontology in WebProtégé
 
