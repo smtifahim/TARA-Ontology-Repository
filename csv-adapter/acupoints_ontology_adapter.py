@@ -111,14 +111,14 @@ class AcupointsOntologyAdapter:
                     continue
                 
                 meridian, organ, superclass = row['Meridian'], row['Associated Organ'], row['Superclass']
-                synonyms, abbreviations = row['Synonym'], row['Abbreviation']
+                label, synonyms, abbreviations = row['Label'], row['Synonym'], row['Abbreviation']
                 
                 # Create the URI for the meridian
                 meridian_uri = create_uri(meridian)
 
                 # Add the meridian
                 g.add((meridian_uri, RDF.type, OWL.Class))
-                g.add((meridian_uri, RDFS.label, Literal(meridian)))
+                g.add((meridian_uri, RDFS.label, Literal(label)))
 
                 # Add each synonym and abbreviation as an annotation property
                 if synonyms:
@@ -159,6 +159,7 @@ class AcupointsOntologyAdapter:
                 if not any(row.values()):
                     continue
                 acupoint = row['Acupoints']
+                label = row['Label']
                 meridian = row['Meridian']
                 synonyms = row['Synonym']
 
@@ -169,7 +170,7 @@ class AcupointsOntologyAdapter:
 
                 # Add the meridian
                 g.add((acupoint_uri, RDF.type, OWL.Class))
-                g.add((acupoint_uri, RDFS.label, Literal(acupoint)))
+                g.add((acupoint_uri, RDFS.label, Literal(label)))
                 #  g.add ((acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint))
 
                 # Add each synonym as an annotation property
@@ -198,7 +199,7 @@ class AcupointsOntologyAdapter:
                 if not any(row.values()):
                     continue
                 
-                acupoint, meridian = row['Acupoint'], row['Meridian']
+                acupoint, label, meridian = row['Acupoint'], row['Label'], row['Meridian']
                 synonyms, chinese_names = row['Synonym'], row['Chinese Name']
                 location_info, reference, indications = row['WHO Location'], row['Reference'], row ['Indications']
                 method, vasculature, innervation = row['Acupuncture Method'], row['Vasculature'], row['Innervation']
@@ -211,7 +212,7 @@ class AcupointsOntologyAdapter:
 
                 # Add the meridian
                 g.add((acupoint_uri, RDF.type, OWL.Class))
-                g.add((acupoint_uri, RDFS.label, Literal(acupoint)))
+                g.add((acupoint_uri, RDFS.label, Literal(label)))
                 # g.add ((acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint))
 
                 # Add each synonym and abbreviation as an annotation property
@@ -266,7 +267,7 @@ class AcupointsOntologyAdapter:
                 if not any(row.values()):
                     continue
                 
-                acupoint, superclass, synonyms = row['Acupoint'], row['Superclass'], row['Synonym']
+                acupoint, superclass, label , synonyms = row['Acupoint'], row['Superclass'], row['Label'], row['Synonym']
                 location, indications, method = row['Location'], row['Indications'], row['Acupuncture Method']
                 reference = row ['Reference']
               
@@ -275,7 +276,7 @@ class AcupointsOntologyAdapter:
                 
                 # Add the acupoint
                 g.add((acupoint_uri, RDF.type, OWL.Class))
-                g.add((acupoint_uri, RDFS.label, Literal(acupoint)))
+                g.add((acupoint_uri, RDFS.label, Literal(label)))
                 
                 if superclass:
                     g.add ((acupoint_uri, RDFS.subClassOf, TARA.Extra_Acupoint))
@@ -316,7 +317,7 @@ class AcupointsOntologyAdapter:
                 if not any(row.values()):
                     continue
                 
-                special_point, superclass = row['Special Point'], row['Superclass']
+                special_point, label, superclass = row['Special Point'], row['Label'], row['Superclass']
                 description, reference = row['Description'], row['Reference']
                                 
                 # Create the URI for the special point
@@ -324,7 +325,7 @@ class AcupointsOntologyAdapter:
 
                 # Add the special point as an OWL class
                 g.add((special_point_uri, RDF.type, OWL.Class))
-                g.add((special_point_uri, RDFS.label, Literal(special_point)))
+                g.add((special_point_uri, RDFS.label, Literal(label)))
                 
                 # Add the corresponding special point role as a class
                 special_point_role = special_point + " Role"
