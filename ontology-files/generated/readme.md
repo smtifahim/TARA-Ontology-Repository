@@ -29,8 +29,10 @@ This section will be updated periodically based on the release of the newer vers
 
 * All the textual IRI suffixes of the class IRIs are automatically converted to numeric suffixes.
   * Example: the OWL class `TARA:Meridian_Acupoint` is converted to `TARA:TARA_5151019`
-* Updated preferred labels for Du Channel and Ren Channel to be Governor Vessel and Conception Vessel respectively
+* Updated preferred labels for `Du Channel` and `Ren Channel` to be `Governor Vessel` and `Conception Vessel` respectively
   * Du Channel and Ren Channel are kept as synonyms
+* Updated preferred labels for `Acupoint of the Du Channel` and `Acupoint of the Ren Channel` to be `Acupoint of the Governor Vessel` and `Acupoint of the Conception Vessel` respectively
+  * `Acupoint of the Du Channel` and `Acupoint of the Ren Channel` are kept as synonyms
 
 ### Version 0.5 (June 4, 2024)
 
