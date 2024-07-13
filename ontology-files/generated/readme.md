@@ -25,10 +25,12 @@ Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
 
-### Version 0.5.1 (July 10, 2024)
+### Version 0.5.1 (July 11, 2024)
 
 * All the textual IRI suffixes of the class IRIs are automatically converted to numeric suffixes.
   * Example: the OWL class `TARA:Meridian_Acupoint` is converted to `TARA:TARA_5151019`
+* Updated preferred labels for Du Channel and Ren Channel to be Governor Vessel and Conception Vessel respectively
+  * Du Channel and Ren Channel are kept as synonyms
 
 ### Version 0.5 (June 4, 2024)
 
