@@ -14,8 +14,6 @@ The python script `acupoints_ontology_adapter.py` automates the CSV to OWL trans
 ## Sample Execution
 
 ```
-csv-adapter-script % python acupoints_ontology_adapter.py
-
 > Adding Base Ontology From: ../ontology-files/tara-acupoints-core.ttl
   Base Ontology Added Successfully.
 
@@ -39,6 +37,12 @@ csv-adapter-script % python acupoints_ontology_adapter.py
 
 > Saving Updated Ontology At: ../ontology-files/generated/tara-acupoints.ttl
   Gerenerated Turtle File Location: ../ontology-files/generated/tara-acupoints.ttl
-```
 
----
+> Converting Textual IRI Suffixes Into Numeric Values For: ../ontology-files/generated/tara-acupoints.ttl
+  Generated Turtle File With Converted IRI Suffixes: ../ontology-files/generated/tara-acupoints.ttl
+
+> Merging Generated Ontology With Upper Ontology From: ../ontology-files/tara-acupoints-upper.ttl
+  Merged Ontology Saved At: ../ontology-files/generated/tara-acupoints-merged.ttl
+
+> End of Program Execution. All Steps Executed Succussfully.
+```
