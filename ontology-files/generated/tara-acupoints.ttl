@@ -22,7 +22,7 @@ dc:title a owl:AnnotationProperty .
     owl:versionInfo "0.5.1" .
 
 TARA:TARA_0022762 a owl:Class ;
-    rdfs:label "RN 3" ;
+    rdfs:label "CV 3" ;
     TARA:hasChineseName "Zhongji" ;
     TARA:hasDesignatedSpecialPointRole TARA:TARA_1670028 ;
     TARA:hasIndicationsDescription "Enuresis, nocturnal emission, impotence, hernia, uterine bleeding, irregular menstruation, dysmenorrhea, morbid leukorrhea, frequency of urination, retention of urine, pain in the lower abdomen, prolapse of the uterus, vaginitis." ;
@@ -31,16 +31,16 @@ TARA:TARA_0022762 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 221" ;
-    TARA:hasSynonym "CV 3",
-        "Conception Vessel 3",
-        "Front-Mu Point of the Bladder" ;
+    TARA:hasSynonym "Conception Vessel 3",
+        "Front-Mu Point of the Bladder",
+        "RN 3" ;
     TARA:hasVasculatureDescription "The branches of superficial epigastric artery and vein, and the branches of inferior epigastric artery and vem." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_6789717 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_1670028 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_6789717 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_0077876 a owl:Class ;
@@ -97,11 +97,11 @@ TARA:TARA_0214009 a owl:Class ;
         "Gallbladder 24" ;
     TARA:hasVasculatureDescription "The seventh intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_9940480 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_5283975 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_9940480 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_0220312 a owl:Class ;
@@ -130,15 +130,16 @@ TARA:TARA_0220496 a owl:Class ;
             owl:someValuesFrom TARA:TARA_9093316 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3091322 ],
+            owl:someValuesFrom TARA:TARA_1716565 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1716565 ],
+            owl:someValuesFrom TARA:TARA_3091322 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_0228386 a owl:Class ;
     rdfs:label "TE 18" ;
-    TARA:hasChineseName "Qimai" ;
+    TARA:hasChineseName "Chimai",
+        "Qimai" ;
     TARA:hasIndicationsDescription "Headache, tinnitus, deafness, infantile convulsion." ;
     TARA:hasInnervationDescription "The posterior auricular branch of the great auricular nerve." ;
     TARA:hasLocationalDescription "On the head, at the centre of the mastoid process, at the junction of the upper two thirds and lower one third of the curved line from tE17 to tE20." ;
@@ -250,15 +251,15 @@ TARA:TARA_0341289 a owl:Class ;
     TARA:hasSynonym "Kidney 4" ;
     TARA:hasVasculatureDescription "The medial calcaneal branch of the posterior tibial artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4813389 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2162578 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4813389 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_0411625 a owl:Class ;
-    rdfs:label "RN 7" ;
+    rdfs:label "CV 7" ;
     TARA:hasChineseName "Yinjiao" ;
     TARA:hasIndicationsDescription "Abdominal distention, edema, hernia, irregular menstruation," ;
     TARA:hasInnervationDescription "The anterior cutaneous branch of the tenth intercostal nerve." ;
@@ -266,8 +267,8 @@ TARA:TARA_0411625 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.8-1.2 inches. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 223" ;
-    TARA:hasSynonym "CV 7",
-        "Conception Vessel 7" ;
+    TARA:hasSynonym "Conception Vessel 7",
+        "RN 7" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_6789717 ],
@@ -306,7 +307,7 @@ TARA:TARA_0427594 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_0434959 a owl:Class ;
-    rdfs:label "RN 12" ;
+    rdfs:label "CV 12" ;
     TARA:hasChineseName "Zhongwan" ;
     TARA:hasDesignatedSpecialPointRole TARA:TARA_5906686,
         TARA:TARA_6782137 ;
@@ -316,9 +317,9 @@ TARA:TARA_0434959 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.2 inches. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 225" ;
-    TARA:hasSynonym "CV 12",
-        "Conception Vessel 12",
-        "Front-Mu Point of the Stomach" ;
+    TARA:hasSynonym "Conception Vessel 12",
+        "Front-Mu Point of the Stomach",
+        "RN 12" ;
     TARA:hasVasculatureDescription "The superior epigastric artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -444,11 +445,11 @@ TARA:TARA_0669306 a owl:Class ;
     TARA:hasSynonym "Small Intestine 5" ;
     TARA:hasVasculatureDescription "The posterior carpal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_9093316 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_1758929 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_9093316 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_0670229 a owl:Class ;
@@ -490,7 +491,7 @@ TARA:TARA_0683404 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_0726105 a owl:Class ;
-    rdfs:label "RN 20" ;
+    rdfs:label "CV 20" ;
     TARA:hasChineseName "Huagai" ;
     TARA:hasIndicationsDescription "Pain and fullness in the chest and intercostal region, asthma, cough." ;
     TARA:hasInnervationDescription "The anterior cutaneous branch of the first intercostal nerve." ;
@@ -498,8 +499,8 @@ TARA:TARA_0726105 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 229" ;
-    TARA:hasSynonym "CV 20",
-        "Conception Vessel 20" ;
+    TARA:hasSynonym "Conception Vessel 20",
+        "RN 20" ;
     TARA:hasVasculatureDescription "See Zhongting (CV 16)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -570,17 +571,17 @@ TARA:TARA_0794971 a owl:Class ;
     TARA:hasVasculatureDescription "The terminal branch of the tenth intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1028514 ],
+            owl:someValuesFrom TARA:TARA_8203632 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_5419503 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_8203632 ],
+            owl:someValuesFrom TARA:TARA_1028514 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_0829128 a owl:Class ;
-    rdfs:label "Du 26" ;
+    rdfs:label "GV 26" ;
     TARA:hasChineseName "Renzhong",
         "Shuigou" ;
     TARA:hasIndicationsDescription "Puncture obliquely upward OJ-0.5 inch." ;
@@ -588,7 +589,7 @@ TARA:TARA_0829128 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "The superior labial artery and vein." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 216" ;
-    TARA:hasSynonym "GV 26",
+    TARA:hasSynonym "Du 26",
         "Governor Vessel 26" ;
     TARA:hasVasculatureDescription "The buccal branch of the facial nerve, and the branch of the intraorbital nerve." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -673,11 +674,11 @@ Note 2: ST14, KI26, CV20 and LU1 are located on the transverse line along the fi
         "Lung 1" ;
     TARA:hasVasculatureDescription "Superolaterally, the axillary artery and vein, the thoracoacromial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_9964503 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2259948 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_9964503 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_0926802 a owl:Class ;
@@ -749,11 +750,11 @@ TARA:TARA_1051162 a owl:Class ;
     TARA:hasSynonym "Small Intestine 7" ;
     TARA:hasVasculatureDescription "The terminal branches of the posterior interosseous artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2162578 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_9093316 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2162578 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_1055536 a owl:Class ;
@@ -804,11 +805,11 @@ TARA:TARA_1074531 a owl:Class ;
     TARA:hasSynonym "Liver 8" ;
     TARA:hasVasculatureDescription "Anteriorly, the great saphenous vein, on the pathway of the genu su prema artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_4109407 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_5419503 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_4109407 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_1092703 a owl:Class ;
@@ -850,11 +851,11 @@ TARA:TARA_1124682 a owl:Class ;
         "Influential Point of Blood" ;
     TARA:hasVasculatureDescription "The medial branches of the posterior branches of the intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3965890 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_7525476 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_3965890 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_1137686 a owl:Class ;
@@ -941,7 +942,7 @@ TARA:TARA_1194553 a owl:Class ;
                         owl:someValuesFrom TARA:TARA_9474009 ] ) ] .
 
 TARA:TARA_1205186 a owl:Class ;
-    rdfs:label "RN 5" ;
+    rdfs:label "CV 5" ;
     TARA:hasChineseName "Shimen" ;
     TARA:hasDesignatedSpecialPointRole TARA:TARA_3606292 ;
     TARA:hasIndicationsDescription "Abdominal pain, diarrhea, edema, hernia, anuria, enuresis, amenorrhea, morbid leukorrhea, uterine bleeding, postpartum hemorrhage." ;
@@ -950,9 +951,9 @@ TARA:TARA_1205186 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 222" ;
-    TARA:hasSynonym "CV 5",
-        "Conception Vessel 5",
-        "Front-Mu Point of Triple Energizer" ;
+    TARA:hasSynonym "Conception Vessel 5",
+        "Front-Mu Point of Triple Energizer",
+        "RN 5" ;
     TARA:hasVasculatureDescription "See Zhongji (CV 3)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
@@ -1044,11 +1045,11 @@ TARA:TARA_1282828 a owl:Class ;
     TARA:hasSynonym "Heart 5" ;
     TARA:hasVasculatureDescription "See Lingdao (HT 4)" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_9474009 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2162578 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_9474009 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_1285513 a owl:Class ;
@@ -1166,7 +1167,7 @@ TARA:TARA_1429314 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_1450183 a owl:Class ;
-    rdfs:label "RN 21" ;
+    rdfs:label "CV 21" ;
     TARA:hasChineseName "Xuanji" ;
     TARA:hasIndicationsDescription "Pain in the chest, cough, asthma." ;
     TARA:hasInnervationDescription "The anterior branch of the supraclavicular nerve and the anterior cutaneous branch of the first intercostal nerve." ;
@@ -1174,8 +1175,8 @@ TARA:TARA_1450183 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 230" ;
-    TARA:hasSynonym "CV 21",
-        "Conception Vessel 21" ;
+    TARA:hasSynonym "Conception Vessel 21",
+        "RN 21" ;
     TARA:hasVasculatureDescription "See Zhongting (CV 16)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -1286,11 +1287,11 @@ TARA:TARA_1594912 a owl:Class ;
     TARA:hasSynonym "Triple Energizer" ;
     TARA:hasVasculatureDescription "The dorsal venous network of the wrist and the posterior carpal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3455429 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_3898257 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_3455429 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_1628341 a owl:Class ;
@@ -1361,14 +1362,14 @@ TARA:TARA_1661723 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_1697302 a owl:Class ;
-    rdfs:label "Du 5" ;
+    rdfs:label "GV 5" ;
     TARA:hasChineseName "Xuanshu" ;
     TARA:hasIndicationsDescription "Pain and stiffness of the lower back, diarrhea, indigestion." ;
     TARA:hasLocationalDescription "In the lumbar region, in the depression inferior to the spinous process of the first lumbar vertebra (L1), on the posterior median line." ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 206" ;
-    TARA:hasSynonym "GV 5",
+    TARA:hasSynonym "Du 5",
         "Governor Vessel 5" ;
     TARA:hasVasculatureDescription "See Yaoyangguan (GY 3)." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1447,7 +1448,7 @@ TARA:TARA_1772472 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_1822260 a owl:Class ;
-    rdfs:label "RN 10" ;
+    rdfs:label "CV 10" ;
     TARA:hasChineseName "Xiawan" ;
     TARA:hasIndicationsDescription "Epigastric pain, abdominal pain, borborygmus, indigestion, vomiting, diarrhea." ;
     TARA:hasInnervationDescription "The anterior cutaneous branch of the eighth intercostal nerve." ;
@@ -1455,8 +1456,8 @@ TARA:TARA_1822260 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.2 inches. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 224" ;
-    TARA:hasSynonym "CV 10",
-        "Conception Vessel 10" ;
+    TARA:hasSynonym "Conception Vessel 10",
+        "RN 10" ;
     TARA:hasVasculatureDescription "See Shenque (CV 8)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -1641,11 +1642,11 @@ TARA:TARA_2108622 a owl:Class ;
     TARA:hasSynonym "Kidney 6" ;
     TARA:hasVasculatureDescription "Posteriorly, the posterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3091322 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4813389 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_3091322 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_2125533 a owl:Class ;
@@ -1676,15 +1677,15 @@ TARA:TARA_2131658 a owl:Class ;
     TARA:hasSynonym "Liver 1" ;
     TARA:hasVasculatureDescription "The dorsal digital artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_5419503 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3839815 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_5419503 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_2168429 a owl:Class ;
-    rdfs:label "Du 22" ;
+    rdfs:label "GV 22" ;
     TARA:hasChineseName "Xinhui" ;
     TARA:hasIndicationsDescription "Headache, blurring of vision, rhinorrhea, infantile convulsIon." ;
     TARA:hasInnervationDescription "The branch of the frontal nerve." ;
@@ -1692,7 +1693,7 @@ TARA:TARA_2168429 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. This point is prohibited in infants with metopism. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 214" ;
-    TARA:hasSynonym "GV 22",
+    TARA:hasSynonym "Du 22",
         "Governor Vessel 22" ;
     TARA:hasVasculatureDescription "The anastomotic network formed by the right and left superficial tempor-al artery and vein and the frontal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1713,11 +1714,11 @@ TARA:TARA_2186848 a owl:Class ;
         "Lower He-Sea Point of Triple Energizer" ;
     TARA:hasVasculatureDescription "See Fuxi (BL 38)" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_7525476 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_4955207 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_7525476 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_2187225 a owl:Class ;
@@ -1837,14 +1838,14 @@ TARA:TARA_2442762 a owl:Class ;
     TARA:hasSynonym "Heart 7" ;
     TARA:hasVasculatureDescription "See Lingdao (HT 4)" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_9474009 ],
+        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_1716565 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3455429 ],
-        [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_9474009 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_2454652 a owl:Class ;
@@ -1949,15 +1950,15 @@ TARA:TARA_2645290 a owl:Class ;
     TARA:hasSynonym "Pericardium 4" ;
     TARA:hasVasculatureDescription "The median artery and vein; deeper, the anterior interosseous artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4694897 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2798650 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4694897 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_2678362 a owl:Class ;
-    rdfs:label "Du 2" ;
+    rdfs:label "GV 2" ;
     TARA:hasChineseName "Yaoshu" ;
     TARA:hasIndicationsDescription "Irregular menstruation, pain and stiffness of the lower back, hemorrhoids, muscular atrophy of the lower extremities, epilepsy." ;
     TARA:hasInnervationDescription "The branch of the coccygeal nerve." ;
@@ -1965,7 +1966,7 @@ TARA:TARA_2678362 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 204" ;
-    TARA:hasSynonym "GV 2",
+    TARA:hasSynonym "Du 2",
         "Governor Vessel 2" ;
     TARA:hasVasculatureDescription "The branches of the median sacral artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -2134,14 +2135,14 @@ TARA:TARA_3003448 a owl:Class ;
     TARA:hasSynonym "Spleen 3" ;
     TARA:hasVasculatureDescription "The dorsal venous network of the foot, the medial plantar artery and the branches of the medial tarsal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_1716565 ],
+        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4167850 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3455429 ],
-        [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1716565 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_3079460 a owl:Class ;
@@ -2179,11 +2180,11 @@ TARA:TARA_3114756 a owl:Class ;
     TARA:hasSynonym "Kidney 2" ;
     TARA:hasVasculatureDescription "The branches of the medial plantar and medial tarsal arteries." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4813389 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2478120 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4813389 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_3135569 a owl:Class ;
@@ -2309,7 +2310,7 @@ TARA:TARA_3361879 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_3361967 a owl:Class ;
-    rdfs:label "Du 16" ;
+    rdfs:label "GV 16" ;
     TARA:hasChineseName "Fengfu" ;
     TARA:hasIndicationsDescription "Headache, neck rigidity, blurring of vision, epistaxis, sore throat, post-apoplexy aphasia, hemiplegia, mental disorders." ;
     TARA:hasInnervationDescription "The branches of the third cervical nerve and the great occipital nerve." ;
@@ -2317,7 +2318,7 @@ TARA:TARA_3361967 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-0.8 inch. Deep puncture is not advisable. Medullary bulb is in the deep layer, special attention should be paid in acupuncture." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 211" ;
-    TARA:hasSynonym "GV 16",
+    TARA:hasSynonym "Du 16",
         "Governor Vessel 16" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -2337,15 +2338,15 @@ TARA:TARA_3369897 a owl:Class ;
     TARA:hasSynonym "Triple Energizer" ;
     TARA:hasVasculatureDescription "The arterial and venous network formed by the palmar digital proprial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3839815 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_3898257 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_3839815 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_3386254 a owl:Class ;
-    rdfs:label "Du 20" ;
+    rdfs:label "GV 20" ;
     TARA:hasChineseName "Baihui" ;
     TARA:hasIndicationsDescription "Headache, vertigo, tinnitus, nasal obstruction, aphasia by apoplexy, coma, mental disorders, prolapse of the rectum and the uterus." ;
     TARA:hasInnervationDescription "The branch of the great occipital nerve." ;
@@ -2353,7 +2354,7 @@ TARA:TARA_3386254 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 213" ;
-    TARA:hasSynonym "GV 20",
+    TARA:hasSynonym "Du 20",
         "Governor Vessel 20" ;
     TARA:hasVasculatureDescription "The anastomotic network formed by the superficial temporal arteries and veins and the occipital arteries and veins on both sides." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -2389,7 +2390,7 @@ TARA:TARA_3452202 a owl:Class ;
                         owl:someValuesFrom TARA:TARA_9093316 ] ) ] .
 
 TARA:TARA_3472408 a owl:Class ;
-    rdfs:label "RN 17" ;
+    rdfs:label "CV 17" ;
     TARA:hasChineseName "Tanzhong" ;
     TARA:hasDesignatedSpecialPointRole TARA:TARA_0521663,
         TARA:TARA_5568565 ;
@@ -2399,19 +2400,19 @@ TARA:TARA_3472408 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 228" ;
-    TARA:hasSynonym "CV 17",
-        "Conception Vessel 17",
-        "Front-Mu Point of the Pericardium" ;
+    TARA:hasSynonym "Conception Vessel 17",
+        "Front-Mu Point of the Pericardium",
+        "RN 17" ;
     TARA:hasVasculatureDescription "See Zhongting (CV 16)." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_5568565 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_6789717 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_0521663 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_5568565 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_3480360 a owl:Class ;
@@ -2450,11 +2451,11 @@ TARA:TARA_3496812 a owl:Class ;
     TARA:hasSynonym "Lung 6" ;
     TARA:hasVasculatureDescription "The cephalic vein, the radial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_9964503 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2798650 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_9964503 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_3515622 a owl:Class ;
@@ -2470,14 +2471,14 @@ TARA:TARA_3515622 a owl:Class ;
     TARA:hasSynonym "Lung 7" ;
     TARA:hasVasculatureDescription "The cephalic vein, branches of the radial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2162578 ],
+        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_9964503 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3091322 ],
-        [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2162578 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_3549064 a owl:Class ;
@@ -2508,11 +2509,11 @@ TARA:TARA_3553465 a owl:Class ;
     TARA:hasSynonym "Spleen 9" ;
     TARA:hasVasculatureDescription "Anteriorly, the great saphenous vein, the genu suprema artery; deeper, the posterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_4109407 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4167850 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_4109407 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_3566953 a owl:Class ;
@@ -2573,7 +2574,7 @@ TARA:TARA_3682571 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_3683574 a owl:Class ;
-    rdfs:label "Du 10" ;
+    rdfs:label "GV 10" ;
     TARA:hasChineseName "Lingtai" ;
     TARA:hasIndicationsDescription "Cough, asthma, furundes, back pain, neck rigidity." ;
     TARA:hasInnervationDescription "The medial branch of the posterior ramus of the thoracic nerve." ;
@@ -2581,7 +2582,7 @@ TARA:TARA_3683574 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 208" ;
-    TARA:hasSynonym "GV 10",
+    TARA:hasSynonym "Du 10",
         "Governor Vessel 10" ;
     TARA:hasVasculatureDescription "The posterior branch of the sixth intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -2667,11 +2668,11 @@ TARA:TARA_3770332 a owl:Class ;
     TARA:hasSynonym "Gallbladder 39" ;
     TARA:hasVasculatureDescription "See Guangming (GB 37)." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_5283975 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_5049050 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_5283975 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_3779268 a owl:Class ;
@@ -2703,7 +2704,7 @@ TARA:TARA_3810639 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_3865403 a owl:Class ;
-    rdfs:label "Du 1" ;
+    rdfs:label "GV 1" ;
     TARA:hasChineseName "Changqiang" ;
     TARA:hasDesignatedSpecialPointRole TARA:TARA_2162578 ;
     TARA:hasIndicationsDescription "Diarrhea, bloody stools, hemorrhoids, prolapse of the rectum, constipation, pain in the lower back, epilepsy." ;
@@ -2712,7 +2713,7 @@ TARA:TARA_3865403 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-0.1 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 204" ;
-    TARA:hasSynonym "GV 1",
+    TARA:hasSynonym "Du 1",
         "Governor Vessel 1" ;
     TARA:hasVasculatureDescription "The branches of the inferior hemorrhoid artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -2768,11 +2769,11 @@ TARA:TARA_3963382 a owl:Class ;
         "Bladder 22" ;
     TARA:hasVasculatureDescription "The posterior branches of the first lumber artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_0109829 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_7525476 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_0109829 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_3966458 a owl:Class ;
@@ -2852,11 +2853,11 @@ TARA:TARA_4125415 a owl:Class ;
     TARA:hasSynonym "Small Intestine 6" ;
     TARA:hasVasculatureDescription "The terminal branches of the posterior interosseous artery and vein, the dorsal venous network of the wrist." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2798650 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_9093316 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2798650 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_4157768 a owl:Class ;
@@ -2935,11 +2936,11 @@ TARA:TARA_4311153 a owl:Class ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 154" ;
     TARA:hasSynonym "Pericardium 6" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2162578 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4694897 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2162578 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3091322 ],
@@ -2958,11 +2959,11 @@ TARA:TARA_4325595 a owl:Class ;
     TARA:hasSynonym "Liver 4" ;
     TARA:hasVasculatureDescription "The dorsal venous ne work of the foot and the anterior medial malleolar artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1758929 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_5419503 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_1758929 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_4352504 a owl:Class ;
@@ -2994,13 +2995,13 @@ TARA:TARA_4362146 a owl:Class ;
     TARA:hasVasculatureDescription "Anteriorly, the posterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1716565 ],
+            owl:someValuesFrom TARA:TARA_3455429 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4813389 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3455429 ],
+            owl:someValuesFrom TARA:TARA_1716565 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_4369524 a owl:Class ;
@@ -3051,7 +3052,7 @@ TARA:TARA_4385250 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_4427404 a owl:Class ;
-    rdfs:label "Du 15" ;
+    rdfs:label "GV 15" ;
     TARA:hasChineseName "Yamen" ;
     TARA:hasIndicationsDescription "Mental disorders, epilepsy, deafness and mute, sudden hoarseness of voice, apoplexy, stiffness of the tongue and aphasia, occipital headache, neck rigidity." ;
     TARA:hasInnervationDescription "The third occipital nerve." ;
@@ -3059,7 +3060,7 @@ TARA:TARA_4427404 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-0.8 inch. Neither upward obliquely nor deep puncture is advisable. It is near the medullary bulb in the deep layer, and the depth and angle of the puncture should be paid strict attention to." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 211" ;
-    TARA:hasSynonym "GV 15",
+    TARA:hasSynonym "Du 15",
         "Governor Vessel 15" ;
     TARA:hasVasculatureDescription "The branches of the occipital artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -3083,7 +3084,7 @@ TARA:TARA_4459765 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_4510130 a owl:Class ;
-    rdfs:label "Du 21" ;
+    rdfs:label "GV 21" ;
     TARA:hasChineseName "Qianding" ;
     TARA:hasIndicationsDescription "Epilepsy, dizziness, blurring of vision, vertical headache, rhinorrhea." ;
     TARA:hasInnervationDescription "On the communicating site of the branch of the frontal nerve with the branch of the great occipital nerve." ;
@@ -3091,7 +3092,7 @@ TARA:TARA_4510130 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 214" ;
-    TARA:hasSynonym "GV 21",
+    TARA:hasSynonym "Du 21",
         "Governor Vessel 21" ;
     TARA:hasVasculatureDescription "The anastomotic network formed by the right and left superficial temporal arteries and veins." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -3133,15 +3134,15 @@ TARA:TARA_4514038 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_4525270 a owl:Class ;
-    rdfs:label "RN 13" ;
+    rdfs:label "CV 13" ;
     TARA:hasChineseName "Shangwan" ;
     TARA:hasIndicationsDescription "Stomachache, abdominal distention, nausea, vomiting, epilepsy, insomma." ;
     TARA:hasLocationalDescription "On the upper abdomen, 5 B-cun superior to the centre of the umbilicus, on the anterior median line." ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.2 inches. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 226" ;
-    TARA:hasSynonym "CV 13",
-        "Conception Vessel 13" ;
+    TARA:hasSynonym "Conception Vessel 13",
+        "RN 13" ;
     TARA:hasVasculatureDescription "See Zhongwan (CV 12)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -3149,7 +3150,7 @@ TARA:TARA_4525270 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_4534524 a owl:Class ;
-    rdfs:label "RN 9" ;
+    rdfs:label "CV 9" ;
     TARA:hasChineseName "Shuifen" ;
     TARA:hasIndicationsDescription "Abdominal pain, borborygmus, edema, retention of the urine, diarrhea." ;
     TARA:hasInnervationDescription "The anterior cutaneous branch of the eighth and ninth intercostal nerves." ;
@@ -3157,8 +3158,8 @@ TARA:TARA_4534524 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 224" ;
-    TARA:hasSynonym "CV 9",
-        "Conception Vessel 9" ;
+    TARA:hasSynonym "Conception Vessel 9",
+        "RN 9" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_6789717 ],
@@ -3212,7 +3213,7 @@ TARA:TARA_4613316 a owl:Class ;
     rdfs:subClassOf TARA:TARA_3535998 .
 
 TARA:TARA_4631343 a owl:Class ;
-    rdfs:label "RN 16" ;
+    rdfs:label "CV 16" ;
     TARA:hasChineseName "Zhongting" ;
     TARA:hasIndicationsDescription "Distension and fullness in the chest and intercostal region, hiccup, nausea, anorexia." ;
     TARA:hasInnervationDescription "The medial branch of the anterior cutaneous branch of the sixth intercostal nerve." ;
@@ -3220,8 +3221,8 @@ TARA:TARA_4631343 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 227" ;
-    TARA:hasSynonym "CV 16",
-        "Conception Vessel 16" ;
+    TARA:hasSynonym "Conception Vessel 16",
+        "RN 16" ;
     TARA:hasVasculatureDescription "The anterior perforating branches of the internal mammary artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -3340,7 +3341,7 @@ TARA:TARA_4819578 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_4823591 a owl:Class ;
-    rdfs:label "RN 14" ;
+    rdfs:label "CV 14" ;
     TARA:hasChineseName "Juque" ;
     TARA:hasDesignatedSpecialPointRole TARA:TARA_9515358 ;
     TARA:hasIndicationsDescription "Pain in the cardiac region and the chest, nausea, acid regurgitation, difficulty in swallowing, vomiting, mental disorders, epilepsy, palpitation." ;
@@ -3348,9 +3349,9 @@ TARA:TARA_4823591 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.3-0.8 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 226" ;
-    TARA:hasSynonym "CV 14",
-        "Conception Vessel 14",
-        "Front-Mu Point of the Heart" ;
+    TARA:hasSynonym "Conception Vessel 14",
+        "Front-Mu Point of the Heart",
+        "RN 14" ;
     TARA:hasVasculatureDescription "See Zhongwan (CV 12)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
@@ -3374,15 +3375,15 @@ TARA:TARA_4839095 a owl:Class ;
         "Bladder 21" ;
     TARA:hasVasculatureDescription "The medial branches of the posterior branches of the subcostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_6397214 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_7525476 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_6397214 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_4904054 a owl:Class ;
-    rdfs:label "RN 11" ;
+    rdfs:label "CV 11" ;
     TARA:hasChineseName "Jianli" ;
     TARA:hasIndicationsDescription "Stomachache, vomiting, abdominal distention, borborygmus, edema, anorexia." ;
     TARA:hasInnervationDescription "The anterior cutaneous branch of the eighth intercostal nerve." ;
@@ -3390,8 +3391,8 @@ TARA:TARA_4904054 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.2 inches. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 225" ;
-    TARA:hasSynonym "CV 11",
-        "Conception Vessel 11" ;
+    TARA:hasSynonym "Conception Vessel 11",
+        "RN 11" ;
     TARA:hasVasculatureDescription "The branches of the superior and inferior epigastric arteries." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -3427,11 +3428,11 @@ TARA:TARA_4995021 a owl:Class ;
     TARA:hasSynonym "Bladder 59" ;
     TARA:hasVasculatureDescription "The small saphenous vein; deeper, the terminal branch of the peroneal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_7525476 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_1317876 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_7525476 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_5017471 a owl:Class ;
@@ -3471,11 +3472,11 @@ TARA:TARA_5047947 a owl:Class ;
     TARA:hasSynonym "Bladder 60" ;
     TARA:hasVasculatureDescription "The small saphenous vein, the posteroexternal malleolar artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1758929 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_7525476 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_1758929 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_5090379 a owl:Class ;
@@ -3521,11 +3522,11 @@ TARA:TARA_5122409 a owl:Class ;
     TARA:hasSynonym "Kidney 5" ;
     TARA:hasVasculatureDescription "See Dazhong (KI 4)." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4813389 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2798650 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4813389 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_5138859 a owl:Class ;
@@ -3541,11 +3542,11 @@ TARA:TARA_5138859 a owl:Class ;
     TARA:hasSynonym "Pericardium 9" ;
     TARA:hasVasculatureDescription "The arterial and venous network formed by the palmar digital proprial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4694897 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3839815 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4694897 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_5153816 a owl:Class ;
@@ -3569,11 +3570,11 @@ TARA:TARA_5212832 a owl:Class ;
     TARA:hasSynonym "Pericardium 8" ;
     TARA:hasVasculatureDescription "The Common palmar digital artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2478120 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4694897 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2478120 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_5246417 a owl:Class ;
@@ -3632,11 +3633,11 @@ TARA:TARA_5290080 a owl:Class ;
     TARA:hasSynonym "Bladder 40" ;
     TARA:hasVasculatureDescription "Superficially, the femoro-popliteal vein; deeper and medially, the popliteal vein; deepest, the popliteal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_4109407 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_7525476 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_4109407 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_5308180 a owl:Class ;
@@ -3824,14 +3825,14 @@ TARA:TARA_5435505 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_5455543 a owl:Class ;
-    rdfs:label "Du 19" ;
+    rdfs:label "GV 19" ;
     TARA:hasChineseName "Houding" ;
     TARA:hasIndicationsDescription "Headache, vertigo, mania, epilepsy." ;
     TARA:hasLocationalDescription "On the head, 5.5 B-cun superior to the posterior hairline, on the posterior median line. Note: GV19 is located 1.5 B-cun posterior to gV20." ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable. ." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 213" ;
-    TARA:hasSynonym "GV 19",
+    TARA:hasSynonym "Du 19",
         "Governor Vessel 19" ;
     TARA:hasVasculatureDescription "See Naohu (GV 17)." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -3957,11 +3958,11 @@ TARA:TARA_5677319 a owl:Class ;
     TARA:hasSynonym "Large Intestine 5" ;
     TARA:hasVasculatureDescription "The cephalic vein, the radial artery and its dorsal carpal branch." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1758929 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4610474 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_1758929 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_5717468 a owl:Class ;
@@ -3977,11 +3978,11 @@ TARA:TARA_5717468 a owl:Class ;
     TARA:hasSynonym "Front-Mu Point of the Large Intestine",
         "Stomach 25" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_4713556 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_6221269 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_4713556 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_5721784 a owl:Class ;
@@ -4027,15 +4028,15 @@ TARA:TARA_5797983 a owl:Class ;
         "Bladder 15" ;
     TARA:hasVasculatureDescription "The medial cutaneous branches of the posterior branches of the intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2065487 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_7525476 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2065487 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_5804897 a owl:Class ;
-    rdfs:label "RN 23" ;
+    rdfs:label "CV 23" ;
     TARA:hasChineseName "Lianquan" ;
     TARA:hasIndicationsDescription "Swel1ing and pain of the subglossal region, salivation with glossoplegia, aphasia with stiffness of tongue by apoplexy, sudden hoarseness of the voice, difficulty in swal1owing." ;
     TARA:hasInnervationDescription "The branch of the cutaneous cervical nerve, the hypoglossal nerve, and the branch of the glossopharyngeal nerve." ;
@@ -4043,8 +4044,8 @@ TARA:TARA_5804897 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture obliquely 0.5-1.0 inch toward the tongue root. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 231" ;
-    TARA:hasSynonym "CV 23",
-        "Conception Vessel 23" ;
+    TARA:hasSynonym "Conception Vessel 23",
+        "RN 23" ;
     TARA:hasVasculatureDescription "The anterior jugular vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -4168,7 +4169,7 @@ TARA:TARA_5894876 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_5902217 a owl:Class ;
-    rdfs:label "Du 6" ;
+    rdfs:label "GV 6" ;
     TARA:hasChineseName "Jizhong" ;
     TARA:hasIndicationsDescription "Pain in the epigastric region, diarrhea, jaundice, epilepsy, stiffness and pain of the back." ;
     TARA:hasInnervationDescription "The medial branch of the posterior ramus of the eleventh thoracic nerve." ;
@@ -4176,7 +4177,7 @@ TARA:TARA_5902217 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 206" ;
-    TARA:hasSynonym "GV 6",
+    TARA:hasSynonym "Du 6",
         "Governor Vessel 6" ;
     TARA:hasVasculatureDescription "The posterior branch of the eleventh intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -4204,7 +4205,7 @@ TARA:TARA_5918799 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_5928999 a owl:Class ;
-    rdfs:label "RN 19" ;
+    rdfs:label "CV 19" ;
     TARA:hasChineseName "Zigong" ;
     TARA:hasIndicationsDescription "Pain in the chest, asthma, cough." ;
     TARA:hasInnervationDescription "The anterior cutaneous branch of the second intercostal nerve." ;
@@ -4212,8 +4213,8 @@ TARA:TARA_5928999 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 229" ;
-    TARA:hasSynonym "CV 19",
-        "Conception Vessel 19" ;
+    TARA:hasSynonym "Conception Vessel 19",
+        "RN 19" ;
     TARA:hasVasculatureDescription "See Zhongting (CV 16)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -4241,11 +4242,11 @@ TARA:TARA_6019290 a owl:Class ;
     TARA:hasSynonym "Stomach 41" ;
     TARA:hasVasculatureDescription "The anterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1758929 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_6221269 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_1758929 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6046086 a owl:Class ;
@@ -4281,11 +4282,11 @@ TARA:TARA_6050541 a owl:Class ;
         "Bladder 13" ;
     TARA:hasVasculatureDescription "The medial cutaneous branches of the posterior branches of the intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2442963 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_7525476 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2442963 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6091821 a owl:Class ;
@@ -4305,7 +4306,7 @@ TARA:TARA_6091821 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_6135195 a owl:Class ;
-    rdfs:label "Du 17" ;
+    rdfs:label "GV 17" ;
     TARA:hasChineseName "Naohu" ;
     TARA:hasIndicationsDescription "Epilepsy, dizziness, pain and stiffness of the neck." ;
     TARA:hasInnervationDescription "The branch of the great occipital nerve." ;
@@ -4313,7 +4314,7 @@ TARA:TARA_6135195 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 212" ;
-    TARA:hasSynonym "GV 17",
+    TARA:hasSynonym "Du 17",
         "Governor Vessel 17" ;
     TARA:hasVasculatureDescription "The branches of the occipital arteries and veins of the both sides." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -4335,11 +4336,11 @@ TARA:TARA_6145687 a owl:Class ;
         "Bladder 19" ;
     TARA:hasVasculatureDescription "The medial branches of the posterior branches of the intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_6203934 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_7525476 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_6203934 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6213780 a owl:Class ;
@@ -4396,11 +4397,11 @@ TARA:TARA_6314936 a owl:Class ;
     TARA:hasSynonym "Large Intestine 1" ;
     TARA:hasVasculatureDescription "The arterial and venous network formed by the dorsal digital arteries and veins." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4610474 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3839815 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4610474 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6320058 a owl:Class ;
@@ -4416,11 +4417,11 @@ TARA:TARA_6320058 a owl:Class ;
     TARA:hasSynonym "Gallbladder 37" ;
     TARA:hasVasculatureDescription "The branches of the anterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2162578 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_5283975 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2162578 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6392753 a owl:Class ;
@@ -4495,7 +4496,7 @@ TARA:TARA_6463344 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_6472655 a owl:Class ;
-    rdfs:label "RN 22" ;
+    rdfs:label "CV 22" ;
     TARA:hasChineseName "Tiantu" ;
     TARA:hasIndicationsDescription "Asthma, cough, sore throat, dry throat, hiccup, sudden hoarseness of the voice, difficulty in swallowing, goiter." ;
     TARA:hasInnervationDescription "The anterior branch of the supraclavicular nerve." ;
@@ -4503,8 +4504,8 @@ TARA:TARA_6472655 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "First puncture perpendicularly 0.2 inch and then insert the needle tip downward along the posterior aspect of the sternum 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 230" ;
-    TARA:hasSynonym "CV 22",
-        "Conception Vessel 22" ;
+    TARA:hasSynonym "Conception Vessel 22",
+        "RN 22" ;
     TARA:hasVasculatureDescription "Superficially, the jugular arch and the branch of the inferior thyroid artery; deeper, the trachea; inferiorly, at the posterior aspect of the sternum, the inominate vein at aortic arch." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -4524,11 +4525,11 @@ TARA:TARA_6477399 a owl:Class ;
     TARA:hasSynonym "Pericardium 5" ;
     TARA:hasVasculatureDescription "The median artery and vein; deeper, the anterior interosseous artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4694897 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_1758929 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4694897 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6484209 a owl:Class ;
@@ -4553,14 +4554,14 @@ TARA:TARA_6499349 a owl:Class ;
     TARA:hasSynonym "Liver 3" ;
     TARA:hasVasculatureDescription "The dorsal venous network of the foot, the first dorsal metatarsal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_5419503 ],
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_1716565 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3455429 ],
         [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1716565 ],
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_5419503 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6515979 a owl:Class ;
@@ -4600,7 +4601,7 @@ TARA:TARA_6531052 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_6574583 a owl:Class ;
-    rdfs:label "Du 27" ;
+    rdfs:label "GV 27" ;
     TARA:hasChineseName "Duiduan" ;
     TARA:hasIndicationsDescription "Mental disorders, lip twitching, lip stiffness, pain and swelling of the gums." ;
     TARA:hasInnervationDescription "The buccal branch of the facial nerve, and the branch of the infraorbital nerve." ;
@@ -4608,7 +4609,7 @@ TARA:TARA_6574583 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.2-0.3 inch." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 217" ;
-    TARA:hasSynonym "GV 27",
+    TARA:hasSynonym "Du 27",
         "Governor Vessel 27" ;
     TARA:hasVasculatureDescription "The superior labial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -4714,11 +4715,11 @@ TARA:TARA_6714942 a owl:Class ;
     TARA:hasSynonym "Gallbladder 35" ;
     TARA:hasVasculatureDescription "The branches of the peroneal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_5208890 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_5283975 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_5208890 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6728804 a owl:Class ;
@@ -4819,11 +4820,11 @@ TARA:TARA_6845331 a owl:Class ;
     TARA:hasSynonym "Gallbladder 44" ;
     TARA:hasVasculatureDescription "The arterial and venous network formed by the dorsal digital artery and vein and plantar digital artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3839815 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_5283975 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_3839815 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6846652 a owl:Class ;
@@ -4855,11 +4856,11 @@ TARA:TARA_6848518 a owl:Class ;
     TARA:hasSynonym "Spleen 8" ;
     TARA:hasVasculatureDescription "Anteriorly, the great saphenous vein and the branch of the genu suprema artery; deeper, the posterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2798650 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4167850 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2798650 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6850321 a owl:Class ;
@@ -4891,11 +4892,11 @@ TARA:TARA_6862058 a owl:Class ;
     TARA:hasSynonym "Liver 2" ;
     TARA:hasVasculatureDescription "The dorsal venous network of the foot and the first dorsal digital artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_5419503 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2478120 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_5419503 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_6890771 a owl:Class ;
@@ -4958,7 +4959,7 @@ TARA:TARA_6904005 a owl:Class ;
                         owl:someValuesFrom TARA:TARA_3996418 ] ) ] .
 
 TARA:TARA_6924908 a owl:Class ;
-    rdfs:label "Du 25" ;
+    rdfs:label "GV 25" ;
     TARA:hasChineseName "Suliao" ;
     TARA:hasIndicationsDescription "Loss of consciousness, nasal obstruction, epistaxis, rhinorrhea, rosacea." ;
     TARA:hasInnervationDescription "The external nasal branch of the anterior ethmoidal nerve." ;
@@ -4966,7 +4967,7 @@ TARA:TARA_6924908 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.2-0.3 inch, or prick to cause bleeding." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 216" ;
-    TARA:hasSynonym "GV 25",
+    TARA:hasSynonym "Du 25",
         "Governor Vessel 25" ;
     TARA:hasVasculatureDescription "The lateral nasal branches of the facial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -5027,7 +5028,7 @@ TARA:TARA_6946713 a owl:Class ;
     rdfs:subClassOf TARA:TARA_3535998 .
 
 TARA:TARA_6969962 a owl:Class ;
-    rdfs:label "RN 2" ;
+    rdfs:label "CV 2" ;
     TARA:hasChineseName "Qugu" ;
     TARA:hasIndicationsDescription "Retention and dribbling of urine, enuresis, nocturnal emission, impotence, morbid leukorrhea, irregular menstruation, dysmenorrhea, hernia." ;
     TARA:hasInnervationDescription "The branch of the iliohypogastric nerve." ;
@@ -5035,8 +5036,8 @@ TARA:TARA_6969962 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch. Great care should be taken to puncture the points from Qugu (CV 2) to Shangwan (CV 13) of this meridian in pregnant women. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 220" ;
-    TARA:hasSynonym "CV 2",
-        "Conception Vessel 2" ;
+    TARA:hasSynonym "Conception Vessel 2",
+        "RN 2" ;
     TARA:hasVasculatureDescription "The branches of the inferior epigastric artery and the obturator artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -5066,11 +5067,11 @@ TARA:TARA_7178938 a owl:Class ;
     TARA:hasSynonym "Stomach 42" ;
     TARA:hasVasculatureDescription "The dorsal artery and vein of foot, the dorsal venous network of foot." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3455429 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_6221269 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_3455429 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_7218725 a owl:Class ;
@@ -5086,11 +5087,11 @@ TARA:TARA_7218725 a owl:Class ;
     TARA:hasSynonym "Bladder 67" ;
     TARA:hasVasculatureDescription "The network formed by the dorsal digital artery and plantar digital proprial artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3839815 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_7525476 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_3839815 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_7228895 a owl:Class ;
@@ -5233,11 +5234,11 @@ TARA:TARA_7430197 a owl:Class ;
     TARA:hasSynonym "Bladder 65" ;
     TARA:hasVasculatureDescription "The fourth common plantar digital artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_7525476 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_1716565 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_7525476 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_7443484 a owl:Class ;
@@ -5269,11 +5270,11 @@ TARA:TARA_7479763 a owl:Class ;
         "Liver 14" ;
     TARA:hasVasculatureDescription "The sixth intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_6173621 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_5419503 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_6173621 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_7510801 a owl:Class ;
@@ -5308,11 +5309,11 @@ TARA:TARA_7517723 a owl:Class ;
     TARA:hasSynonym "Triple Energizer" ;
     TARA:hasVasculatureDescription "The arterial and venous network of the elbow." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_4109407 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_3898257 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_4109407 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_7524444 a owl:Class ;
@@ -5349,14 +5350,14 @@ TARA:TARA_7584875 a owl:Class ;
     rdfs:subClassOf TARA:TARA_3535998 .
 
 TARA:TARA_7589061 a owl:Class ;
-    rdfs:label "Du 18" ;
+    rdfs:label "GV 18" ;
     TARA:hasChineseName "Qiangjian" ;
     TARA:hasIndicationsDescription "Headache, neck rigidity, blurring of vision, mania." ;
     TARA:hasLocationalDescription "On the head, 4 B-cun superior to the posterior hairline, on the posterior median line. Note: GV18 is located in the depression 1.5 B-cun superior to gV17." ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 212" ;
-    TARA:hasSynonym "GV 18",
+    TARA:hasSynonym "Du 18",
         "Governor Vessel 18" ;
     TARA:hasVasculatureDescription "See Naohu (GV 17)." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -5373,7 +5374,7 @@ TARA:TARA_7596288 a owl:Class ;
     rdfs:subClassOf TARA:TARA_3535998 .
 
 TARA:TARA_7624267 a owl:Class ;
-    rdfs:label "RN 15" ;
+    rdfs:label "CV 15" ;
     TARA:hasChineseName "Jiuwei" ;
     TARA:hasDesignatedSpecialPointRole TARA:TARA_2162578 ;
     TARA:hasIndicationsDescription "Pain in the cardiac region and the chest, nausea, mental disorders, epilepsy." ;
@@ -5381,8 +5382,8 @@ TARA:TARA_7624267 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture obliquely downward 0.4-0.6 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 227" ;
-    TARA:hasSynonym "CV 15",
-        "Conception Vessel 15" ;
+    TARA:hasSynonym "Conception Vessel 15",
+        "RN 15" ;
     TARA:hasVasculatureDescription "See Zhongwan (CV 12)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
@@ -5405,11 +5406,11 @@ TARA:TARA_7634323 a owl:Class ;
     TARA:hasSynonym "Pericardium 3" ;
     TARA:hasVasculatureDescription "On the pathway of the brachial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4694897 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_4109407 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4694897 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_7641637 a owl:Class ;
@@ -5481,7 +5482,7 @@ TARA:TARA_7661549 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_7679931 a owl:Class ;
-    rdfs:label "Du 24" ;
+    rdfs:label "GV 24" ;
     TARA:hasChineseName "Shenting" ;
     TARA:hasIndicationsDescription "Epilepsy, anxiety, palpitation, insomnia, headache, vertigo, rhinorrhea." ;
     TARA:hasInnervationDescription "The branch of the frontal nerve." ;
@@ -5489,7 +5490,7 @@ TARA:TARA_7679931 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch, or prick to cause bleeding." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 215" ;
-    TARA:hasSynonym "GV 24",
+    TARA:hasSynonym "Du 24",
         "Governor Vessel 24" ;
     TARA:hasVasculatureDescription "The branch of the frontal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -5498,7 +5499,7 @@ TARA:TARA_7679931 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_7690229 a owl:Class ;
-    rdfs:label "Du 23" ;
+    rdfs:label "GV 23" ;
     TARA:hasChineseName "Shangxing" ;
     TARA:hasIndicationsDescription "Headache, ophthalmalgia, epistaxis. rhinorrhea, mental disorders." ;
     TARA:hasInnervationDescription "The branch of the frontal nerve." ;
@@ -5506,7 +5507,7 @@ TARA:TARA_7690229 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch or prick to cause bleeding. This point is prohibited in infants with metopism. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 215" ;
-    TARA:hasSynonym "GV 23",
+    TARA:hasSynonym "Du 23",
         "Governor Vessel 23" ;
     TARA:hasVasculatureDescription "The branches of the frontal artery and vein, and the branches of the superficial temporal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -5581,7 +5582,7 @@ TARA:TARA_7809864 a owl:Class ;
                         owl:someValuesFrom TARA:TARA_8203632 ] ) ] .
 
 TARA:TARA_7813782 a owl:Class ;
-    rdfs:label "RN 18" ;
+    rdfs:label "CV 18" ;
     TARA:hasChineseName "Yutang" ;
     TARA:hasIndicationsDescription "pain in the chest, cough, asthma, vomiting." ;
     TARA:hasInnervationDescription "The anterior cutaneous branch of the third intercostal nerve." ;
@@ -5589,8 +5590,8 @@ TARA:TARA_7813782 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture subcutaneously 0.3-0.5 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 228" ;
-    TARA:hasSynonym "CV 18",
-        "Conception Vessel 18" ;
+    TARA:hasSynonym "Conception Vessel 18",
+        "RN 18" ;
     TARA:hasVasculatureDescription "See Zhongting (CV 16)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -5626,11 +5627,11 @@ TARA:TARA_7831710 a owl:Class ;
     TARA:hasSynonym "Spleen 5" ;
     TARA:hasVasculatureDescription "The medial tarsal artery and the great saphenous vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1758929 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4167850 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_1758929 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_7834226 a owl:Class ;
@@ -5696,11 +5697,11 @@ TARA:TARA_7896553 a owl:Class ;
     TARA:hasSynonym "Triple Energizer" ;
     TARA:hasVasculatureDescription "The dorsal digital artery of the ulnar artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2478120 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_3898257 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2478120 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_7932600 a owl:Class ;
@@ -5777,7 +5778,7 @@ TARA:TARA_8088170 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_8093645 a owl:Class ;
-    rdfs:label "Du 8" ;
+    rdfs:label "GV 8" ;
     TARA:hasChineseName "Jinsuo" ;
     TARA:hasIndicationsDescription "Epilepsy, stiffness of the back, gastric pain." ;
     TARA:hasInnervationDescription "The medial branch of the posterior ramus of the ninth thoracic nerve." ;
@@ -5785,7 +5786,7 @@ TARA:TARA_8093645 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 207" ;
-    TARA:hasSynonym "GV 8",
+    TARA:hasSynonym "Du 8",
         "Governor Vessel 8" ;
     TARA:hasVasculatureDescription "The posterior branch of the ninth intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -5861,6 +5862,9 @@ TARA:TARA_8122277 a owl:Class ;
         "Lung 9" ;
     TARA:hasVasculatureDescription "The radial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2238176 ],
+        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_9964503 ],
         [ a owl:Restriction ;
@@ -5869,13 +5873,10 @@ TARA:TARA_8122277 a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3455429 ],
-        [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2238176 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_8131302 a owl:Class ;
-    rdfs:label "Du 28" ;
+    rdfs:label "GV 28" ;
     TARA:hasChineseName "Yinjiao" ;
     TARA:hasIndicationsDescription "Mental disorders, pain and swelling of the gums, rhinorrhea." ;
     TARA:hasInnervationDescription "The branch of the superior alveolar nerve." ;
@@ -5883,7 +5884,7 @@ TARA:TARA_8131302 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.1 -0.2 inch, or prick to cause bleeding." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 217" ;
-    TARA:hasSynonym "GV 28",
+    TARA:hasSynonym "Du 28",
         "Governor Vessel 28" ;
     TARA:hasVasculatureDescription "The superior labial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -5944,11 +5945,11 @@ TARA:TARA_8267317 a owl:Class ;
     TARA:hasSynonym "Liver 6" ;
     TARA:hasVasculatureDescription "The great saphenous vem." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_5419503 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2798650 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_5419503 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_8294181 a owl:Class ;
@@ -5988,7 +5989,7 @@ TARA:TARA_8298978 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_8300996 a owl:Class ;
-    rdfs:label "Du 11" ;
+    rdfs:label "GV 11" ;
     TARA:hasChineseName "Shendao" ;
     TARA:hasIndicationsDescription "Poor memory, anxiety, palpitation, pain and stiffness of the back, cough, cardiac pain." ;
     TARA:hasInnervationDescription "The medial branch of the posterior ramus of the fifth thoracic nerve." ;
@@ -5996,7 +5997,7 @@ TARA:TARA_8300996 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 209" ;
-    TARA:hasSynonym "GV 11",
+    TARA:hasSynonym "Du 11",
         "Governor Vessel 11" ;
     TARA:hasVasculatureDescription "The posterior branch of the' fifth intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -6036,11 +6037,11 @@ TARA:TARA_8393005 a owl:Class ;
     TARA:hasSynonym "Triple Energizer" ;
     TARA:hasVasculatureDescription "Deeper, the posterior and anterior antebrachial interosseous arteries and veins." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3091322 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_3898257 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_3091322 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2162578 ],
@@ -6111,15 +6112,15 @@ TARA:TARA_8440155 a owl:Class ;
     TARA:hasSynonym "Stomach 44" ;
     TARA:hasVasculatureDescription "The dorsal venous network of foot." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_6221269 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2478120 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_6221269 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_8452754 a owl:Class ;
-    rdfs:label "Du 14" ;
+    rdfs:label "GV 14" ;
     TARA:hasChineseName "Dazhui" ;
     TARA:hasIndicationsDescription "Neck pain and rigidity, malaria, febrile diseases, epilepsy, afternoon fever, cough, asthma, common cold, back stiffness." ;
     TARA:hasInnervationDescription "The posterior ramus of the eighth cervical nerve and the medial branch of the posterior ramus of the first thoracic nerve." ;
@@ -6127,7 +6128,7 @@ TARA:TARA_8452754 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 210" ;
-    TARA:hasSynonym "GV 14",
+    TARA:hasSynonym "Du 14",
         "Governor Vessel 14" ;
     TARA:hasVasculatureDescription "The branch of the transverse cervical artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -6166,13 +6167,13 @@ TARA:TARA_8458036 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_8557069 a owl:Class ;
-    rdfs:label "Du 4" ;
+    rdfs:label "GV 4" ;
     TARA:hasIndicationsDescription "Stiffness of the back, lumbago, impotence, nocturnal emission, irregular menstruation, diarrhea, indigestion, leukorrhea." ;
     TARA:hasLocationalDescription "In the lumbar region, in the depression inferior to the spinous process of the second lumbar vertebra (L2), on the posterior median line." ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 205" ;
-    TARA:hasSynonym "GV 4",
+    TARA:hasSynonym "Du 4",
         "Governor Vessel 4",
         "Mingmen" ;
     TARA:hasVasculatureDescription "See Yaoyangguan (GY 3)." ;
@@ -6190,7 +6191,7 @@ TARA:TARA_8574156 a owl:Class ;
     rdfs:subClassOf TARA:TARA_3535998 .
 
 TARA:TARA_8607646 a owl:Class ;
-    rdfs:label "Du 12" ;
+    rdfs:label "GV 12" ;
     TARA:hasChineseName "Shenzhu" ;
     TARA:hasIndicationsDescription "Cough, asthma, epilepsy, pain and stiffness of the back, furuncles." ;
     TARA:hasInnervationDescription "The medial branch of the posterior ramus of the third thoracic nerve." ;
@@ -6198,7 +6199,7 @@ TARA:TARA_8607646 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 209" ;
-    TARA:hasSynonym "GV 12",
+    TARA:hasSynonym "Du 12",
         "Governor Vessel 12" ;
     TARA:hasVasculatureDescription "The posterior branch of the third intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -6256,7 +6257,7 @@ TARA:TARA_8665273 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_8693603 a owl:Class ;
-    rdfs:label "RN 1" ;
+    rdfs:label "CV 1" ;
     TARA:hasChineseName "Huiyin" ;
     TARA:hasIndicationsDescription "Vaginitis, retention of urine hemorrhoids, nocturnal emission, enuresis, irregular menstruation, mental disorders." ;
     TARA:hasInnervationDescription "The branch of the perineal nerve." ;
@@ -6264,8 +6265,8 @@ TARA:TARA_8693603 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 220" ;
-    TARA:hasSynonym "CV 1",
-        "Conception Vessel 1" ;
+    TARA:hasSynonym "Conception Vessel 1",
+        "RN 1" ;
     TARA:hasVasculatureDescription "The branches of the perineal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -6320,14 +6321,14 @@ TARA:TARA_8758950 a owl:Class ;
     TARA:hasSynonym "Gallbladder 34" ;
     TARA:hasVasculatureDescription "Just where the common peroneal nerve bifurcates into the superficial and deep peroneal nerves." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_5283975 ],
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_4109407 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_4591653 ],
         [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_4109407 ],
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_5283975 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_8773594 a owl:Class ;
@@ -6357,14 +6358,14 @@ TARA:TARA_8784353 a owl:Class ;
                         owl:someValuesFrom TARA:TARA_2510634 ] ) ] .
 
 TARA:TARA_8807122 a owl:Class ;
-    rdfs:label "Du 3" ;
+    rdfs:label "GV 3" ;
     TARA:hasChineseName "Yaoyangguan" ;
     TARA:hasIndicationsDescription "Puncture perpendicularly 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasLocationalDescription "In the lumbar region, in the depression inferior to the spinous process of the fourth lumbar vertebra (L4), on the posterior median line. Note: GV3 can be located by first palpating the highest points of the iliac crests and the spinous process of the fourth lumbar vertebra (L4) can then be found at the midpoint of the highest points of both iliac crests." ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "The posterior branch of the lumbar artery." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 205" ;
-    TARA:hasSynonym "GV 3",
+    TARA:hasSynonym "Du 3",
         "Governor Vessel 3" ;
     TARA:hasVasculatureDescription "The medial branch of the posterior ramus of the lumbar nerve." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -6395,15 +6396,15 @@ TARA:TARA_8826565 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_8833337 a owl:Class ;
-    rdfs:label "RN 6" ;
+    rdfs:label "CV 6" ;
     TARA:hasChineseName "Qihai" ;
     TARA:hasIndicationsDescription "Abdominal pain, enuresis, nocturnal emission, impotence, hernia, edema, diarrhea, dysentery, uterine bleeding, irregular menstruation, dysmenorrhea, amenorrhea, morbid leukorrhea, postpartum hemorrhage, constipation, flaccid type of apoplexy, asthma." ;
     TARA:hasLocationalDescription "On the lower abdomen, 1.5 B-cun inferior to the centre of the umbilicus, on the ante- rior median line." ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.8-1.2 inches. This is one of the important points for tonification. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 222" ;
-    TARA:hasSynonym "CV 6",
-        "Conception Vessel 6" ;
+    TARA:hasSynonym "Conception Vessel 6",
+        "RN 6" ;
     TARA:hasVasculatureDescription "See Shimen (CV 5)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -6453,7 +6454,7 @@ TARA:TARA_8876235 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_8876563 a owl:Class ;
-    rdfs:label "RN 24" ;
+    rdfs:label "CV 24" ;
     TARA:hasChineseName "Chengjiang" ;
     TARA:hasIndicationsDescription "Facial puffiness, swel1ing of the gums, toothache, salivation, mental disorders, deviation of the eyes and mouth." ;
     TARA:hasInnervationDescription "The branch of the facial nerve." ;
@@ -6461,8 +6462,8 @@ TARA:TARA_8876563 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.2-0.3 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 231" ;
-    TARA:hasSynonym "CV 24",
-        "Conception Vessel 24" ;
+    TARA:hasSynonym "Conception Vessel 24",
+        "RN 24" ;
     TARA:hasVasculatureDescription "The branches of the inferior labial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -6553,11 +6554,11 @@ TARA:TARA_8929565 a owl:Class ;
     TARA:hasSynonym "Spleen 1" ;
     TARA:hasVasculatureDescription "The dorsal digital artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3839815 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4167850 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_3839815 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_8937265 a owl:Class ;
@@ -6577,7 +6578,7 @@ TARA:TARA_8937265 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_8982235 a owl:Class ;
-    rdfs:label "Du 9" ;
+    rdfs:label "GV 9" ;
     TARA:hasChineseName "Zhiyang" ;
     TARA:hasIndicationsDescription "Jaundice, cough, asthma, stiffness of the back, pain in the chest and back." ;
     TARA:hasInnervationDescription "The medial branch of the posterior ramus of the seventh thoracic nerve." ;
@@ -6585,7 +6586,7 @@ TARA:TARA_8982235 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 208" ;
-    TARA:hasSynonym "GV 9",
+    TARA:hasSynonym "Du 9",
         "Governor Vessel 9" ;
     TARA:hasVasculatureDescription "The posterior branch of the seventh intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -6594,7 +6595,7 @@ TARA:TARA_8982235 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_8998025 a owl:Class ;
-    rdfs:label "Du 13" ;
+    rdfs:label "GV 13" ;
     TARA:hasChineseName "Taodao" ;
     TARA:hasIndicationsDescription "Stiffness of the back, headache, malaria, febrile diseases." ;
     TARA:hasInnervationDescription "The medial branch of the posterior ramus of the first thoracic nerve." ;
@@ -6602,7 +6603,7 @@ TARA:TARA_8998025 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture obliquely upward 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 210" ;
-    TARA:hasSynonym "GV 13",
+    TARA:hasSynonym "Du 13",
         "Governor Vessel 13" ;
     TARA:hasVasculatureDescription "The posterior branch of the first intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -6612,7 +6613,7 @@ TARA:TARA_8998025 a owl:Class ;
 
 TARA:TARA_9020892 a owl:Class ;
     rdfs:label "PC 7" ;
-    TARA:hasChineseName "Dating" ;
+    TARA:hasChineseName "Daling" ;
     TARA:hasDesignatedSpecialPointRole TARA:TARA_1716565,
         TARA:TARA_3455429 ;
     TARA:hasIndicationsDescription "Cardiac pain, palpitation, stomachache, vomiting, mental disorders, epilepsy, stuffy chest, pain in the hypochondriac region, convulsion, insomnia, irritability, foul breath." ;
@@ -6625,13 +6626,13 @@ TARA:TARA_9020892 a owl:Class ;
     TARA:hasVasculatureDescription "The palmar arterial and venous network of the wrist." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_1716565 ],
+            owl:someValuesFrom TARA:TARA_3455429 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_4694897 ],
         [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_3455429 ],
+            owl:someValuesFrom TARA:TARA_1716565 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_9116386 a owl:Class ;
@@ -6759,11 +6760,11 @@ TARA:TARA_9254368 a owl:Class ;
     TARA:hasSynonym "Gallbladder 40" ;
     TARA:hasVasculatureDescription "The branch of the anterolateral malleolar artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_5283975 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_3455429 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_5283975 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_9268434 a owl:Class ;
@@ -6806,7 +6807,7 @@ TARA:TARA_9378285 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_9392275 a owl:Class ;
-    rdfs:label "RN 8" ;
+    rdfs:label "CV 8" ;
     TARA:hasChineseName "Shenque" ;
     TARA:hasIndicationsDescription "Abdominal pain, borborygmus, flaccid type of apoplexy, prolapse of the rectum, unchecked diarrhea." ;
     TARA:hasInnervationDescription "The anterior cutaneous branch of the tenth intercostal nerve." ;
@@ -6814,8 +6815,8 @@ TARA:TARA_9392275 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture is prohibited! Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 223" ;
-    TARA:hasSynonym "CV 8",
-        "Conception Vessel 8" ;
+    TARA:hasSynonym "Conception Vessel 8",
+        "RN 8" ;
     TARA:hasVasculatureDescription "The inferior epigastric artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
@@ -6877,11 +6878,11 @@ TARA:TARA_9523348 a owl:Class ;
         "Bladder 14" ;
     TARA:hasVasculatureDescription "The medial cutaneous branches of the posterior branches of the intercostal artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_7525476 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_7888153 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_7525476 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_9531666 a owl:Class ;
@@ -6897,11 +6898,11 @@ TARA:TARA_9531666 a owl:Class ;
     TARA:hasSynonym "Stomach 40" ;
     TARA:hasVasculatureDescription "The branches of the anterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:hasSpecialPointDesignation ;
-            owl:someValuesFrom TARA:TARA_2162578 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:isMemberAcupointOf ;
             owl:someValuesFrom TARA:TARA_6221269 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:hasSpecialPointDesignation ;
+            owl:someValuesFrom TARA:TARA_2162578 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_9534465 a owl:Class ;
@@ -6929,7 +6930,7 @@ TARA:TARA_9554328 a owl:Class ;
         TARA:TARA_5151019 .
 
 TARA:TARA_9586774 a owl:Class ;
-    rdfs:label "Du 7" ;
+    rdfs:label "GV 7" ;
     TARA:hasChineseName "Zhongshu" ;
     TARA:hasIndicationsDescription "Pain in the epigastric region, low back pain, stiffness of the back." ;
     TARA:hasInnervationDescription "The medial branch of the posterior ramus of the tenth thoracic nerve." ;
@@ -6937,7 +6938,7 @@ TARA:TARA_9586774 a owl:Class ;
     TARA:hasMeridian TARA:TARA_0386099 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.5-1.0 inch. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 207" ;
-    TARA:hasSynonym "GV 7",
+    TARA:hasSynonym "Du 7",
         "Governor Vessel 7" ;
     TARA:hasVasculatureDescription "The posterior branch of the tenth intercostal artery." ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -7079,11 +7080,11 @@ TARA:TARA_9876402 a owl:Class ;
     TARA:hasSynonym "Large Intestine 6" ;
     TARA:hasVasculatureDescription "The cephalic vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4610474 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_2162578 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4610474 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_9881298 a owl:Class ;
@@ -7098,11 +7099,11 @@ TARA:TARA_9881298 a owl:Class ;
     TARA:hasSynonym "Kidney 7" ;
     TARA:hasVasculatureDescription "Deeper, anteriorly, the posterior tibial artery and vein." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty TARA:isMemberAcupointOf ;
-            owl:someValuesFrom TARA:TARA_4813389 ],
-        [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
             owl:someValuesFrom TARA:TARA_1758929 ],
+        [ a owl:Restriction ;
+            owl:onProperty TARA:isMemberAcupointOf ;
+            owl:someValuesFrom TARA:TARA_4813389 ],
         TARA:TARA_5151019 .
 
 TARA:TARA_9907701 a owl:Class ;
@@ -7114,7 +7115,7 @@ TARA:TARA_9907701 a owl:Class ;
     rdfs:subClassOf TARA:TARA_3535998 .
 
 TARA:TARA_9921528 a owl:Class ;
-    rdfs:label "RN 4" ;
+    rdfs:label "CV 4" ;
     TARA:hasChineseName "Guanyuan" ;
     TARA:hasDesignatedSpecialPointRole TARA:TARA_5430806 ;
     TARA:hasIndicationsDescription "Enuresis, nocturnal emission, frequency of urination, retention of urine, hernia, irregular menstruation, morbid leukorrhea, dysmenorrhea, uterine bleeding, postpartum hemorrhage, lower abdominal pain, indigestion, diarrhea, prolapse of the rectum, flaccid type of apoplexy." ;
@@ -7123,9 +7124,9 @@ TARA:TARA_9921528 a owl:Class ;
     TARA:hasMeridian TARA:TARA_6789717 ;
     TARA:hasMethodDescription "Puncture perpendicularly 0.8-1.2 inches. This is one of the important points for tonification. Moxibustion is applicable." ;
     TARA:hasReference "WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. Page 221" ;
-    TARA:hasSynonym "CV 4",
-        "Conception Vessel 4",
-        "Front-Mu Point of the Small Intestine" ;
+    TARA:hasSynonym "Conception Vessel 4",
+        "Front-Mu Point of the Small Intestine",
+        "RN 4" ;
     TARA:hasVasculatureDescription "See Zhongji (CV 3)." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty TARA:hasSpecialPointDesignation ;
