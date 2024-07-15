@@ -210,7 +210,7 @@ class AcupointsOntologyAdapter:
                 # Create the URI for the meridian
                 meridian_uri = URIRef(create_uri(meridian))
 
-                # Add the meridian
+                # Add the acupoint
                 g.add((acupoint_uri, RDF.type, OWL.Class))
                 g.add((acupoint_uri, RDFS.label, Literal(label)))
                 # g.add ((acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint))
@@ -385,8 +385,8 @@ class AcupointsOntologyAdapter:
                 acupoint_uri = URIRef(create_uri(acupoint))
 
                 # Add the acupoint as an OWL class
-                g.add((acupoint_uri, RDF.type, OWL.Class))
-                g.add((acupoint_uri, RDFS.label, Literal(acupoint)))
+            #    g.add((acupoint_uri, RDF.type, OWL.Class))
+            #    g.add((acupoint_uri, RDFS.label, Literal(acupoint))) # acupoint class created already as part of addAcupoints() function
                 
                 if special_point_1:
                     special_point_1_role = special_point_1 + " Role"
