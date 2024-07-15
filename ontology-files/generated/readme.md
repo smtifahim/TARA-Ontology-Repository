@@ -25,6 +25,12 @@ Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
 
+### Version 0.5.1 (July 12, 2024)
+
+* Updated the labels for the acupoints of the Governer Vessel and Conception Vessel
+  * Du 1...Du N are udated to GV 1...GV N; Du X are kept as synonyms
+  * RN 1...RN N are updated to CV 1...CV N; RN X are kept as synonyms
+
 ### Version 0.5.1 (July 11, 2024)
 
 * All the textual IRI suffixes of the class IRIs are automatically converted to numeric suffixes.
@@ -53,6 +59,8 @@ This section will be updated periodically based on the release of the newer vers
 ## Accessing and Exploring the Ontology
 
 The most recent version of the TARA Acupoints Ontology is [linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl). The easiest way to explore the ontology is to load it in **Protégé**. Protégé is a free, open-source ontology editor which you can download from [this link](https://protege.stanford.edu/software.php#desktop-protege).
+
+* The [inferred version of the ontology is linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints-inferred.ttl). This inferred ontology merges the asserted and inferred axioms of the acupoints ontology plus the upper ontology into a single turtle file.
 
 ### Loading the Ontology in Protégé Desktop
 
