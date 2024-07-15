@@ -28,7 +28,7 @@ This section will be updated periodically based on the release of the newer vers
 
 ### Version 0.5.1 (July 12, 2024)
 
-* Updated the labels for the acupoints of the Governer Vessel and Conception Vessel
+* Updated the labels for the acupoints of the Governor Vessel and the Conception Vessel
   * Du 1...Du N are udated to GV 1...GV N; Du X are kept as synonyms
   * RN 1...RN N are updated to CV 1...CV N; RN X are kept as synonyms
 
