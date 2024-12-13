@@ -16,6 +16,7 @@
    + [Inferred Subclasses of a Special Point](#inferred-subclasses-of-a-special-point)
 5. [Basic Model of Relationships](#basic-model-of-relationships)
 6. [DL Query Examples](#dl-query-examples)
+7. [SPARQL Query Examples] (#sparql-query-examples)
 
 ## About TARA Acupoints Ontology
 
