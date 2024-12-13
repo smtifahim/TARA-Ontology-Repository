@@ -34,7 +34,7 @@ This section will be updated periodically based on the release of the newer vers
     * `TARA:locatedInRelationTo`: A relation between an acupoint and its proximal location on the body surface.
 * This version includes all surface locations for the acupoints of the Lung (LU) and Liver (LI) meridians (total 31 acupoints)
   * Anatomical terms associated with surface regions are drawn from UBERON (200+ terms) and InterLex (ILX). The ILX terms are drawn from FMA. A total of 55 ILX terms related to surface anatomy were created and imported into the ontology. 
-* For the rest of the meridian acupoints, this version only includes the surface regions associated with UEBRON and ILX terms. We have excluded the regions associated with FMA (which will be replaced by ILX terms) pending future release.
+  * For the rest of the meridian acupoints, this version only includes the surface regions associated with UEBRON and ILX terms. We have excluded the regions associated with FMA (which will be replaced by ILX terms) pending future release.
 
 
 ### Version 0.5.1 (July 12, 2024)
