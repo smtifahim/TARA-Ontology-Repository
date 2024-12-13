@@ -30,13 +30,12 @@ This section will be updated periodically based on the release of the newer vers
 ### Version 0.6 (December 12, 2024)
 
 * Updated ontology to include the axioms associating the surface locations with the acupoints
-  *  Added two sepcial properties `TARA:locatedOnTheSurfaceOf` and `TARA:locatedInRelationTo` to specify the surface anatomy for each acupoint.
-    * `TARA:locatedOnTheSurfaceOf`: A relation between an acupoint and its general regional location on the body surface.
-    * `TARA:locatedInRelationTo`: A relation between an acupoint and its proximal location on the body surface.
+  * Added two sepcial properties `TARA:locatedOnTheSurfaceOf` and `TARA:locatedInRelationTo` to specify the surface anatomy for each acupoint.
+  * `TARA:locatedOnTheSurfaceOf`: A relation between an acupoint and its general regional location on the body surface.
+  * `TARA:locatedInRelationTo`: A relation between an acupoint and its proximal location on the body surface.
 * This version includes all surface locations for the acupoints of the Lung (LU) and Liver (LI) meridians (total 31 acupoints)
-  * Anatomical terms associated with surface regions are drawn from UBERON (200+ terms) and InterLex (ILX). The ILX terms are drawn from FMA. A total of 55 ILX terms related to surface anatomy were created and imported into the ontology. 
+  * Anatomical terms associated with surface regions are drawn from UBERON (200+ terms) and InterLex (ILX). The ILX terms are drawn from FMA. A total of 55 ILX terms related to surface anatomy were created and imported into the ontology.
   * For the rest of the meridian acupoints, this version only includes the surface regions associated with UEBRON and ILX terms. We have excluded the regions associated with FMA (which will be replaced by ILX terms) pending future release.
-
 
 ### Version 0.5.1 (July 12, 2024)
 
@@ -196,3 +195,148 @@ Again, without using the defined class called 'Luo-Connecting Point' one would n
 ```
 
 ![1718435147757](image/readme/1718435147757.png)
+
+### DL Queries Related to Surface Locations
+
+**Q. What meridian acupoints can be located on the surface of the face?**
+
+```
+'Meridian Acupoint' and (locatedOnTheSurfaceOf some face)
+```
+
+![1734073357404](image/readme/1734073357404.png)
+
+**Q. What meridian acupoints can be located on the surface of the chest?**
+
+```
+Acupoint and (locatedOnTheSurfaceOf some ('part of' some chest))
+```
+
+![1734073730688](image/readme/1734073730688.png)
+
+Also try with different parts of the body surface like the following:
+
+**Q. What acupoints are located on the surface of the legs?**
+
+```
+Acupoint and locatedInRelationTo some ('part of' some leg)
+```
+
+**Q: What acoupoints and located on the surface of the forearm?**
+
+```
+Acupoint and (locatedInRelationTo some 'forelimb zeugopod’)
+```
+
+## SPARQL Query Examples
+
+**Q. What surface regions are associated with a particular acupoint (e.g., LU 9)?**
+
+```SPARQL
+# What surface regions are associated with a particular acupoint (e.g., LU 9)?
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#>
+
+SELECT ?acupoint ?related_region ?related_region_iri ?surface_region ?surface_region_iri
+WHERE 
+{
+    FILTER (?acupoint = 'LU 9'). 
+    ?acupoint_iri TARA:hasRelatedLocation ?related_region_iri.
+    ?acupoint_iri TARA:hasSurfaceLocation ?surface_region_iri.
+
+    ?acupoint_iri rdfs:label ?acupoint.
+    ?surface_region_iri rdfs:label ?surface_region.
+    ?related_region_iri rdfs:label ?related_region.
+
+}
+ORDER BY ?acupoint
+limit 10
+```
+
+### Query Result
+
+| acupoint | related_region                  | related_region_iri | surface_region | surface_region_iri |
+| -------- | ------------------------------- | ------------------ | -------------- | ------------------ |
+| LU 9     | abductor pollicis longus tendon | ILX:0795335        | carpal region  | UBERON:0004452     |
+| LU 9     | carpal region                   | UBERON:0004452     | carpal region  | UBERON:0004452     |
+| LU 9     | palmar wrist crease             | ILX:0795334        | carpal region  | UBERON:0004452     |
+| LU 9     | radiale                         | UBERON:0001427     | carpal region  | UBERON:0004452     |
+| LU 9     | styloid process of radius       | UBERON:7500078     | carpal region  | UBERON:0004452     |
+| LU 9     | radial artery                   | UBERON:0001404     | carpal region  | UBERON:0004452     |
+
+**Q. What surface regions are connected by a given meridian (e.g., lung meridian)?**
+
+```SPARQL
+# What surface regions are connected by a given meridian (e.g., lung meridian)?
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#>
+
+SELECT DISTINCT 
+    ?meridian ?acupoint
+    ?surface_region  ?surface_region_iri
+    ?related_region  ?related_region_iri 
+
+WHERE 
+{
+    FILTER (?meridian = 'Lung Meridian'). 
+    # FILTER (?meridian = 'Liver Meridian').
+  
+    ?acupoint_iri TARA:hasMeridian ?meridian_iri.
+    ?acupoint_iri TARA:hasRelatedLocation ?related_region_iri.
+    ?acupoint_iri TARA:hasSurfaceLocation ?surface_region_iri.
+
+    ?acupoint_iri rdfs:label ?acupoint.
+    ?meridian_iri rdfs:label ?meridian.
+    ?surface_region_iri rdfs:label ?surface_region.
+    ?related_region_iri rdfs:label ?related_region.
+  
+    Filter (?related_region != ?surface_region)
+
+}
+ORDER BY ?meridian ?acupoint ?surface_region ?related_region
+limit 30
+```
+
+### Query Result
+
+| meridian      | acupoint | surface_region       | surface_region_iri | related_region                  | related_region_iri |
+| ------------- | -------- | -------------------- | ------------------ | ------------------------------- | ------------------ |
+| Lung Meridian | LU 1     | anterior chest       | UBERON:0016416     | anterior median line            | ILX:0795285        |
+| Lung Meridian | LU 1     | anterior chest       | UBERON:0016416     | first intercostal space         | ILX:0795283        |
+| Lung Meridian | LU 1     | anterior chest       | UBERON:0016416     | infraclavicular fossa           | ILX:0795284        |
+| Lung Meridian | LU 10    | palmar part of manus | UBERON:0008878     | metacarpal bone of digit 1      | UBERON:0003645     |
+| Lung Meridian | LU 11    | manual digit 1       | UBERON:0001463     | distal phalanx                  | UBERON:0004300     |
+| Lung Meridian | LU 11    | manual digit 1       | UBERON:0001463     | nail of manual digit 1          | UBERON:0011273     |
+| Lung Meridian | LU 2     | anterior chest       | UBERON:0016416     | anterior median line            | ILX:0795285        |
+| Lung Meridian | LU 2     | anterior chest       | UBERON:0016416     | clavipectoral triangle          | ILX:0795286        |
+| Lung Meridian | LU 2     | anterior chest       | UBERON:0016416     | coracoid process of scapula     | UBERON:0006633     |
+| Lung Meridian | LU 2     | anterior chest       | UBERON:0016416     | infraclavicular fossa           | ILX:0795284        |
+| Lung Meridian | LU 3     | arm                  | UBERON:0001460     | anterior axillary fold          | ILX:0795287        |
+| Lung Meridian | LU 3     | arm                  | UBERON:0001460     | biceps brachii                  | UBERON:0001507     |
+| Lung Meridian | LU 4     | arm                  | UBERON:0001460     | anterior axillary fold          | ILX:0795287        |
+| Lung Meridian | LU 4     | arm                  | UBERON:0001460     | biceps brachii                  | UBERON:0001507     |
+| Lung Meridian | LU 5     | elbow                | UBERON:0001461     | cubital crease                  | ILX:0795332        |
+| Lung Meridian | LU 5     | elbow                | UBERON:0001461     | tendon of biceps brachii        | UBERON:0008188     |
+| Lung Meridian | LU 6     | forelimb zeugopod    | UBERON:0002386     | carpal region                   | UBERON:0004452     |
+| Lung Meridian | LU 6     | forelimb zeugopod    | UBERON:0002386     | palmar wrist crease             | ILX:0795334        |
+| Lung Meridian | LU 7     | forelimb zeugopod    | UBERON:0002386     | abductor pollicis longus tendon | ILX:0795335        |
+| Lung Meridian | LU 7     | forelimb zeugopod    | UBERON:0002386     | extensor pollicis brevis tendon | ILX:0795336        |
+| Lung Meridian | LU 7     | forelimb zeugopod    | UBERON:0002386     | palmar wrist crease             | ILX:0795334        |
+| Lung Meridian | LU 8     | forelimb zeugopod    | UBERON:0002386     | palmar wrist crease             | ILX:0795334        |
+| Lung Meridian | LU 8     | forelimb zeugopod    | UBERON:0002386     | radial artery                   | UBERON:0001404     |
+| Lung Meridian | LU 8     | forelimb zeugopod    | UBERON:0002386     | styloid process of radius       | UBERON:7500078     |
+| Lung Meridian | LU 9     | carpal region        | UBERON:0004452     | abductor pollicis longus tendon | ILX:0795335        |
+| Lung Meridian | LU 9     | carpal region        | UBERON:0004452     | palmar wrist crease             | ILX:0795334        |
+| Lung Meridian | LU 9     | carpal region        | UBERON:0004452     | radial artery                   | UBERON:0001404     |
+| Lung Meridian | LU 9     | carpal region        | UBERON:0004452     | radiale                         | UBERON:0001427     |
+| Lung Meridian | LU 9     | carpal region        | UBERON:0004452     | styloid process of radius       | UBERON:7500078     |
+
+
+**Additional example queries will be added based on the use cases of the TARA ontology as part of this section.**
