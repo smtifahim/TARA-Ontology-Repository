@@ -2,6 +2,7 @@
 
 1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
 2. [Ontology Versions Summary](#ontology-versions-summary)
+   + [Version 0.6 (December 12, 2024)](#version-06-december-12-2024)
    + [Version 0.5.1 (July 12, 2024)](#version-051-july-12-2024)
    + [Version 0.5.1 (July 11, 2024)](#version-051-july-11-2024)
    + [Version 0.5 (June 4, 2024)](#version-05-june-4-2024)
