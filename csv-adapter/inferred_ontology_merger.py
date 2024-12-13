@@ -31,7 +31,7 @@ def merge_ontologies(ontology1_path, ontology2_path, merged_ontology_path):
 # merged_ontology_path = '../ontology-files/tara-acupoints-merged.ttl'
 
 ontology1_path = '../ontology-files/generated/tara-acupoints-merged.ttl'
-ontology2_path = '../ontology-files/generated/acupoints-inferred.ttl'
+ontology2_path = '../ontology-files/acupoints-inferred.ttl'
 merged_ontology_path = '../ontology-files/generated/tara-acupoints-inferred.ttl'
 
 # testing the function

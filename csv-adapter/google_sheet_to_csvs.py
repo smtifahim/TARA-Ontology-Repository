@@ -15,6 +15,7 @@ GIDS = {
         'acupoints'                 : '792538788',
         'extra-acupoints'           : '1018943262',
         'special-points'            : '1777093137',
+        'acupoints-locations'       : '1094677629', 
         'special-points-association': '984678930'
        }
 

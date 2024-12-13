@@ -4,7 +4,7 @@ extract the csv contents, and transform the contents into generated TARA Acupoin
 The AcupointsOntologyAdapter is the class with member functions to parse and extract different 
 csv files, and transform each of them into corresponding rdf graph, and subsequently merge the graphs 
 into TARA Acupoints Ontology file in turtle format. 
-- Fahim Imam
+- Fahim Imam (Version: December 12, 2024)
 """
 
 import csv, os
@@ -27,6 +27,8 @@ namespaces = {
                 "swrl"      :     "http://www.w3.org/2003/11/swrl#",
                 "dcterms"   :     "http://purl.org/dc/terms/",
                 "dc"        :     "http://purl.org/dc/elements/1.1/",
+                "ILX"       :     "http://uri.interlex.org/base/ilx_",
+                "FMA"       :     "http://purl.org/sig/ont/fma/fma",    
                 "protege"   :     "http://protege.stanford.edu/plugins/owl/protege#"
              }
 
@@ -34,6 +36,7 @@ namespaces = {
 ontology_files = {
                    "tara-acupoints-upper.ttl"   : "../ontology-files/tara-acupoints-upper.ttl",
                    "tara-acupoints-core.ttl"    : "../ontology-files/tara-acupoints-core.ttl",
+                   "tara-imported-terms.ttl"    : "../ontology-files/tara-imported-anatomical-terms.ttl",
                    "tara-acupoints.ttl"         : "../ontology-files/generated/tara-acupoints.ttl",
                    "tara-acupoints-merged.ttl"  : "../ontology-files/generated/tara-acupoints-merged.ttl"
                  }
@@ -45,12 +48,14 @@ csv_files =  {
                 "acupoints.csv"                 : "../csv-files/acupoints.csv",
                 "extra-acupoints.csv"           : "../csv-files/extra-acupoints.csv",
                 "special-points.csv"            : "../csv-files/special-points.csv",
+                "acupoints-locations.csv"       : "../csv-files/acupoints-locations.csv",
                 "special-points-association.csv": "../csv-files/special-points-association.csv"
              }
 
 # Defined frequently used namespaces
 TARA = Namespace(namespaces["TARA"])
 UBERON = Namespace(namespaces["UBERON"])
+ILX = Namespace(namespaces["ILX"])
 DC = Namespace(namespaces["dc"])
 
 # Utility functions
@@ -423,6 +428,44 @@ class AcupointsOntologyAdapter:
         
         self.addGraph(g)
         print ("  Special Points Association Added Successfully.")
+
+ # Add surface location associated with each acupoint from the corresponding CSV file
+    def addSurfaceLocations(self, file_path):
+        g = Graph()
+        print("\n> Adding Surface Locations for the Acupoints From: " + file_path)
+       
+        with open(file_path, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if not any(row.values()):
+                    continue
+                acupoint = row['Acupoint']
+                acupoint_location = row['Identified Locations URI']
+                locational_relation = row ['Relation']                
+                # Create the URI for the acupoint
+                acupoint_uri = URIRef(create_uri(acupoint))
+             
+                if acupoint_location:
+                    # Only use the locations from ILX or UBERON. 
+                    # Exclude FMA for now as they will have corresponding ILX URI in the future.
+                    if  'fma' not in acupoint_location:
+                        acupoint_location_uri = URIRef(acupoint_location)
+                        g.add((acupoint_location_uri, RDF.type, OWL.Class))
+                                        
+                        if locational_relation == "TARA:locatedOnTheSurfaceOf":
+                            g.add ((acupoint_uri, TARA.hasSurfaceLocation, acupoint_location_uri)) # Add annotation
+                            g.add ((acupoint_uri, TARA.hasRelatedLocation, acupoint_location_uri)) # Add annotation
+
+                        if locational_relation == "TARA:locatedInRelationTo":
+                            g.add ((acupoint_uri, TARA.hasRelatedLocation, acupoint_location_uri)) # Add annotation
+                        
+                        self.addSimpleOWLRestriction(g, acupoint_uri, URIRef(curie_to_iri(locational_relation)), acupoint_location_uri)
+                        if locational_relation == "TARA:locatedOnTheSurfaceOf":
+                            self.addSimpleOWLRestriction(g, acupoint_uri, TARA.locatedInRelationTo, acupoint_location_uri)
+    
+        self.addGraph(g)
+        print ("  Surface Locations for the Acupoints Added Successfully.")    
+    
     
     # To add a restriction like :class_x isEquivalentTo (:y and :hasProperty some :z) to the graph
     # To add a restriction like :class_x isSubClassOf (:y and :hasProperty some :z) to the graph
@@ -499,6 +542,10 @@ def main():
         #  a.saveUpdatedOntology(ontology_files.get("tara-acupoints-merged.ttl"))
         
         a.addSpecialPointsAssociation (csv_files.get("special-points-association.csv"))
+        #  a.saveUpdatedOntology(ontology_files.get("tara-acupoints-merged.ttl"))
+        
+        a.addSurfaceLocations (csv_files.get("acupoints-locations.csv"))
+        #  a.saveUpdatedOntology(ontology_files.get("tara-acupoints-merged.ttl"))
         
         a.saveUpdatedOntology(ontology_files.get("tara-acupoints.ttl"))
         
@@ -511,6 +558,10 @@ def main():
         
         print ("\n> Merging Generated Ontology With Upper Ontology From: " + ontology_files.get("tara-acupoints-upper.ttl"))
         merge_ontologies (output_ttl_file, ontology_files.get("tara-acupoints-upper.ttl"),
+                          ontology_files.get("tara-acupoints-merged.ttl"))
+        
+        print ("\n> Merging Generated Ontology With Imported Anatomical Terms From: " + ontology_files.get("tara-imported-terms.ttl"))
+        merge_ontologies (ontology_files.get("tara-acupoints-merged.ttl"), ontology_files.get("tara-imported-terms.ttl"),
                           ontology_files.get("tara-acupoints-merged.ttl"))
         
         print ("\n> End of Program Execution. All Steps Executed Succussfully.\n")
