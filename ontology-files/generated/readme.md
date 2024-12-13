@@ -30,13 +30,15 @@ This section will be updated periodically based on the release of the newer vers
 
 ### Version 0.6 (December 12, 2024)
 
-* Updated ontology to include the axioms associating the surface locations with the acupoints
-  * Added two sepcial properties `TARA:locatedOnTheSurfaceOf` and `TARA:locatedInRelationTo` to specify the surface anatomy for each acupoint.
-  * `TARA:locatedOnTheSurfaceOf`: A relation between an acupoint and its general regional location on the body surface.
-  * `TARA:locatedInRelationTo`: A relation between an acupoint and its proximal location on the body surface.
-* This version includes all surface locations for the acupoints of the Lung (LU) and Liver (LI) meridians (total 31 acupoints)
-  * Anatomical terms associated with surface regions are drawn from UBERON (200+ terms) and InterLex (ILX). The ILX terms are drawn from FMA. A total of 55 ILX terms related to surface anatomy were created and imported into the ontology.
-  * For the rest of the meridian acupoints, this version only includes the surface regions associated with UEBRON and ILX terms. We have excluded the regions associated with FMA (which will be replaced by ILX terms) pending future release.
+* **Updated Ontology** :
+  * Included axioms associating the surface locations of acupoints.
+  * Added two special properties: `TARA:locatedOnTheSurfaceOf` and `TARA:locatedInRelationTo`, to specify the surface anatomy for each acupoint.
+    * `TARA:locatedOnTheSurfaceOf`: Defines the relationship between an acupoint and its general regional location on the body surface.
+    * `TARA:locatedInRelationTo`: Defines the relationship between an acupoint and its proximal location on the body surface.
+* **Content Summary** :
+  * This version includes all surface locations for the acupoints of the Lung (LU) and Liver (LI) meridians, totaling 31 acupoints.
+    * Anatomical terms associated with surface regions are drawn from UBERON (200+ terms) and InterLex (ILX). ILX terms are derived from the Foundational Model of Anatomy (FMA). A total of 55 ILX terms related to surface anatomy were created and imported into the ontology.
+    * For the remaining meridian acupoints, this version includes only surface regions associated with UBERON and ILX terms. Regions associated with FMA have been excluded (to be replaced with ILX terms) pending a future release.
 
 ### Version 0.5.1 (July 12, 2024)
 
@@ -338,6 +340,5 @@ limit 30
 | Lung Meridian | LU 9     | carpal region        | UBERON:0004452     | radial artery                   | UBERON:0001404     |
 | Lung Meridian | LU 9     | carpal region        | UBERON:0004452     | radiale                         | UBERON:0001427     |
 | Lung Meridian | LU 9     | carpal region        | UBERON:0004452     | styloid process of radius       | UBERON:7500078     |
-
 
 **Additional example queries will be added based on the use cases of the TARA ontology as part of this section.**
