@@ -35,6 +35,9 @@ The python script `acupoints_ontology_adapter.py` automates the CSV to OWL trans
 > Adding Special Points Association From: ../csv-files/special-points-association.csv
   Special Points Association Added Successfully.
 
+> Adding Surface Locations for the Acupoints From: ../csv-files/acupoints-locations.csv
+  Surface Locations for the Acupoints Added Successfully.
+
 > Saving Updated Ontology At: ../ontology-files/generated/tara-acupoints.ttl
   Gerenerated Turtle File Location: ../ontology-files/generated/tara-acupoints.ttl
 
@@ -42,6 +45,9 @@ The python script `acupoints_ontology_adapter.py` automates the CSV to OWL trans
   Generated Turtle File With Converted IRI Suffixes: ../ontology-files/generated/tara-acupoints.ttl
 
 > Merging Generated Ontology With Upper Ontology From: ../ontology-files/tara-acupoints-upper.ttl
+  Merged Ontology Saved At: ../ontology-files/generated/tara-acupoints-merged.ttl
+
+> Merging Generated Ontology With Imported Anatomical Terms From: ../ontology-files/tara-imported-anatomical-terms.ttl
   Merged Ontology Saved At: ../ontology-files/generated/tara-acupoints-merged.ttl
 
 > End of Program Execution. All Steps Executed Succussfully.
