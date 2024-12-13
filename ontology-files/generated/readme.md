@@ -79,7 +79,7 @@ The most recent version of the TARA Acupoints Ontology is [linked here](https://
 
 ### Loading the Ontology in Protégé Desktop
 
-* Make sure to download the Protégé Desktop Version 5.5.X or higher. If you are not familiar with the Protégé interface there is a "Getting Started" document [linked here](https://protegeproject.github.io/protege/getting-started/).
+* Make sure to download the Protégé Desktop Version 5.5.X or higher. If you are not familiar with the Protégé interface there is a "Getting Started" document [linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/tara-acupoints-merged.ttl).
 * Click `File > Open From URL..` in Protégé and copy/paste the [**TARA Acupoints Ontology Link**](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints.ttl) under the `URI` field. Clicking the `OK` button will load the ontology in Protege.
 
 ![1718383103389](image/readme/1718383103389.png)
