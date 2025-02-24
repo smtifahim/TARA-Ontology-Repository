@@ -236,6 +236,8 @@ Acupoint and (locatedInRelationTo some 'forelimb zeugopod’)
 **Q. List all the acupoints along with their meridians, special point role, and surface regions.**
 
 ```SPARQL
+# List all the acupoints along with their meridians, special point role, and surface regions.
+
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -255,13 +257,6 @@ WHERE
         ?acupoint_iri TARA:hasDesignatedSpecialPointRole/rdfs:label ?special_point_role.
     }
 
-    OPTIONAL
-    {
-        ?acupoint_iri TARA:hasRelatedLocation ?related_region_iri.
-        ?related_region_iri rdfs:label ?related_region.
-
-    }
-
     OPTIONAL 
     {   
         ?acupoint_iri TARA:hasSurfaceLocation ?surface_region_iri.
@@ -269,15 +264,11 @@ WHERE
     }
 
     # Exclude generic superclass like 'Acupoint of the X Meridian.
-
     FILTER (!regex(str(?acupoint), 'Acupoint of the'))
-  
     ?acupoint_iri rdfs:label ?acupoint.
-
 }
 ORDER BY ?meridian ?acupoint
 limit 1000
-
 ```
 
 **Q. What surface regions are associated with a particular acupoint (e.g., LU 9)?**
