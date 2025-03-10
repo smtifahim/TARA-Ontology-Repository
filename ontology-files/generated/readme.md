@@ -233,6 +233,10 @@ Acupoint and (locatedInRelationTo some 'forelimb zeugopod’)
 
 ## SPARQL Query Examples
 
+### SPARQL Examples in Jupyter Notebook
+
+A set of [example queries are available in a Jupyter Notebook](https://github.com/smtifahim/TARA-Ontology-Repository/blob/master/ontology-files/TARA%20SPARQL%20Query%20Examples.ipynb) to explore the TARA Acupoints Ontology.
+
 **Q. List all the acupoints along with their meridians, special point role, and surface regions.**
 
 ```SPARQL
