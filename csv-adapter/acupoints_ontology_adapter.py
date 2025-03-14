@@ -409,7 +409,7 @@ class AcupointsOntologyAdapter:
                     special_point_1_role = special_point_1 + " Role"
                     special_point_1_role_uri = URIRef(create_uri(special_point_1_role))
                     g.add((special_point_1_role_uri, RDF.type, OWL.Class))
-                    g.add((acupoint_uri, TARA.hasDesignatedSpecialPointRole, special_point_1_role_uri)) # Add annotation
+                    g.add((acupoint_uri, TARA.hasDesignatedSpecialPointRole, URIRef(create_uri(special_point_1)))) # Add annotation
                     
                     # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
                     #                              TARA.hasSpecialPointDesignation, special_point_1_role_uri)
@@ -420,7 +420,7 @@ class AcupointsOntologyAdapter:
                     special_point_2_role = special_point_2 + " Role"
                     special_point_2_role_uri = URIRef(create_uri(special_point_2_role))
                     g.add((special_point_2_role_uri, RDF.type, OWL.Class))
-                    g.add((acupoint_uri, TARA.hasDesignatedSpecialPointRole, special_point_2_role_uri)) # Add annotation
+                    g.add((acupoint_uri, TARA.hasDesignatedSpecialPointRole, URIRef(create_uri(special_point_2)))) # Add annotation
                     
                     # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
                     #                              TARA.hasSpecialPointDesignation, special_point_2_role_uri)
@@ -431,7 +431,7 @@ class AcupointsOntologyAdapter:
                     special_point_3_role = special_point_3 + " Role"
                     special_point_3_role_uri = URIRef(create_uri(special_point_3_role))
                     g.add((special_point_3_role_uri, RDF.type, OWL.Class))
-                    g.add((acupoint_uri, TARA.hasDesignatedSpecialPointRole, special_point_3_role_uri)) # Add annotation
+                    g.add((acupoint_uri, TARA.hasDesignatedSpecialPointRole, URIRef(create_uri(special_point_3)))) # Add annotation
                     
                     # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
                     #                              TARA.hasSpecialPointDesignation, special_point_3_role_uri)
@@ -478,7 +478,7 @@ class AcupointsOntologyAdapter:
         self.addGraph(g)
         print ("  Surface Locations for the Acupoints Added Successfully.")    
     
-     # Add articles metadata from the corresponding CSV file
+    # Add articles metadata from the corresponding CSV file
     def addArticlesMetadata(self, file_path):
         g = Graph()
         print("\n> Adding Aritcles Metadata From: " + file_path)
@@ -534,7 +534,6 @@ class AcupointsOntologyAdapter:
                         if prefix == "TARA":
                             tara_uri = f"http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#{term}"
                             g.add((URIRef(tara_uri), TARA.isStudiedInArticle, doi_uri))
-                            print("TESTING", tara_uri)
                         else:
                             raise ValueError("Invalid prefix. Expected 'TARA'.")
                 
@@ -648,7 +647,7 @@ def main():
         merge_ontologies (output_ttl_file, ontology_files.get("tara-acupoints-upper.ttl"),
                           ontology_files.get("tara-acupoints-merged.ttl"))
         
-        print ("\n> Merging Generated Ontology With Imported Anatomical Terms From: " + ontology_files.get("tara-imported-terms.ttl"))
+        print ("\n> Merging Generated Ontology With Imported Terms From: " + ontology_files.get("tara-imported-terms.ttl"))
         merge_ontologies (ontology_files.get("tara-acupoints-merged.ttl"), ontology_files.get("tara-imported-terms.ttl"),
                           ontology_files.get("tara-acupoints-merged.ttl"))
         
