@@ -1409,11 +1409,11 @@ ns1:hasIlxPreferredId a owl:AnnotationProperty .
 ns3:synonym a owl:AnnotationProperty .
 
 <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl> a owl:Ontology ;
-    dc:date "December 12, 2024" ;
+    dc:date "March 12, 2025" ;
     dc:description "The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH)."@en ;
     dc:title "TARA Acupoints Ontology"@en ;
-    owl:versionIRI <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl/0.6> ;
-    owl:versionInfo 0.6 .
+    owl:versionIRI <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl/0.7> ;
+    owl:versionInfo 0.7 .
 
 TARA:TARA_0022762 a owl:Class ;
     rdfs:label "CV 3" ;
