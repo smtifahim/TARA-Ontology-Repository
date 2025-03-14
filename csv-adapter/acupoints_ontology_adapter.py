@@ -28,7 +28,9 @@ namespaces = {
                 "dcterms"   :     "http://purl.org/dc/terms/",
                 "dc"        :     "http://purl.org/dc/elements/1.1/",
                 "ILX"       :     "http://uri.interlex.org/base/ilx_",
-                "FMA"       :     "http://purl.org/sig/ont/fma/fma",    
+                "FMA"       :     "http://purl.org/sig/ont/fma/fma",
+                "HP"        :     "http://purl.obolibrary.org/obo/HP_",
+                "MONDO"     :     "http://purl.obolibrary.org/obo/MONDO_",    
                 "protege"   :     "http://protege.stanford.edu/plugins/owl/protege#"
              }
 
@@ -36,8 +38,9 @@ namespaces = {
 ontology_files = {
                    "tara-acupoints-upper.ttl"   : "../ontology-files/tara-acupoints-upper.ttl",
                    "tara-acupoints-core.ttl"    : "../ontology-files/tara-acupoints-core.ttl",
-                   "tara-imported-terms.ttl"    : "../ontology-files/tara-imported-anatomical-terms.ttl",
+                   "tara-imported-terms.ttl"    : "../ontology-files/tara-imported-terms.ttl",
                    "tara-acupoints.ttl"         : "../ontology-files/generated/tara-acupoints.ttl",
+                   "tara-articles.ttl"         : "../ontology-files/generated/tara-articles.ttl",                   
                    "tara-acupoints-merged.ttl"  : "../ontology-files/generated/tara-acupoints-merged.ttl"
                  }
 
@@ -49,12 +52,15 @@ csv_files =  {
                 "extra-acupoints.csv"           : "../csv-files/extra-acupoints.csv",
                 "special-points.csv"            : "../csv-files/special-points.csv",
                 "acupoints-locations.csv"       : "../csv-files/acupoints-locations.csv",
-                "special-points-association.csv": "../csv-files/special-points-association.csv"
+                "special-points-association.csv": "../csv-files/special-points-association.csv",
+                "pain-related-articles.csv"     : "../csv-files/pain-related-articles.csv"
+
              }
 
 # Defined frequently used namespaces
 TARA = Namespace(namespaces["TARA"])
 UBERON = Namespace(namespaces["UBERON"])
+IAO = Namespace(namespaces["IAO"])
 ILX = Namespace(namespaces["ILX"])
 DC = Namespace(namespaces["dc"])
 
@@ -204,7 +210,7 @@ class AcupointsOntologyAdapter:
                 if not any(row.values()):
                     continue
                 
-                acupoint, label, meridian = row['Acupoint'], row['Label'], row['Meridian']
+                acupoint, label, meridian, superclass = row['Acupoint'], row['Label'], row['Meridian'], row['Superclass']
                 synonyms, chinese_names = row['Synonym'], row['Chinese Name']
                 location_info, reference, indications = row['WHO Location'], row['Reference'], row ['Indications']
                 method, vasculature, innervation = row['Acupuncture Method'], row['Vasculature'], row['Innervation']
@@ -220,6 +226,11 @@ class AcupointsOntologyAdapter:
                 g.add((acupoint_uri, RDFS.label, Literal(label)))
                 # g.add ((acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint))
 
+                # Add superclass of the acupoint if any.
+                if superclass:
+                    superclass_uri = URIRef(create_uri(superclass))
+                    g.add ((acupoint_uri, RDFS.subClassOf, superclass_uri))
+                
                 # Add each synonym and abbreviation as an annotation property
                 if synonyms:
                     for synonym in synonyms.split(','):
@@ -251,8 +262,9 @@ class AcupointsOntologyAdapter:
                     # First add meridian entity as an annotation property
                     g.add((acupoint_uri, TARA.hasMeridian, meridian_uri))     
                     
-                    g.add ((acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint))
-                    self.addSimpleOWLRestriction (g, acupoint_uri, TARA.isMemberAcupointOf, meridian_uri)
+                    if not superclass:
+                        g.add ((acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint))
+                        self.addSimpleOWLRestriction (g, acupoint_uri, TARA.isMemberAcupointOf, meridian_uri)
                     
                     # Then add OWL restriction to associate the acupoint with corresponding meridan
                     # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint, 
@@ -466,6 +478,82 @@ class AcupointsOntologyAdapter:
         self.addGraph(g)
         print ("  Surface Locations for the Acupoints Added Successfully.")    
     
+     # Add articles metadata from the corresponding CSV file
+    def addArticlesMetadata(self, file_path):
+        g = Graph()
+        print("\n> Adding Aritcles Metadata From: " + file_path)
+        
+        with open(file_path, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if not any(row.values()):
+                    continue
+                
+                # ID#	Title	Authors_Info	Venue	Citation Count	DOI	DOI Link	Year	
+                # Trial Type	Acupuncture Modality	Stimulation Type Info	Needling Info	
+                # Sample Size Info	Controls Info	Country Info	Acupoint Names Extracted	
+                # Acupoints Used	Acupoints TARA ID	Condition Treated Note	Condition Treated	
+                # Condition ID	Condition Context				
+                
+                doi_link, title, authors, venue, year = row['DOI Link'], row['Title'], row['Authors_Info'], row['Venue'], row['Year']
+                trial_type, modality, stimulation_type, needling = row['Trial Type'], row['Acupuncture Modality'], row['Stimulation Type Info'], row['Needling Info']
+                sample_size, controls_info, country = row['Sample Size Info'], row['Controls Info'], row['Country Info']
+                listed_acupoints, acupoint_used, condition_treated = row['Acupoints Used'], row['Acupoints TARA ID'], row['Condition ID']
+                condition_note, condition_context = row['Condition Treated Note'], row['Condition Context']
+                
+                # Define the DOI as a Named Individual
+                doi_uri = URIRef(doi_link)
+                g.add((doi_uri, RDF.type, URIRef(IAO["0000013"])))
+                g.add((doi_uri, RDF.type, OWL.NamedIndividual))
+
+                
+                # Add title of the article
+                g.add((doi_uri, DC.title, Literal(title)))
+                g.add((doi_uri, TARA.hasDOI, Literal("DOI: " + doi_link)))
+                g.add((doi_uri, TARA.hasAuthor, Literal(authors)))
+                g.add((doi_uri, TARA.hasPublicationVenue, Literal(venue)))
+                g.add((doi_uri, TARA.hasPublicationDate, Literal(year)))
+                
+                g.add((doi_uri, TARA.hasTrialType, Literal(trial_type)))
+                g.add((doi_uri, TARA.hasAcupunctureModality, Literal(modality)))
+                g.add((doi_uri, TARA.hasStimulationType, Literal(stimulation_type)))
+                g.add((doi_uri, TARA.hasNeedlingInformation, Literal(needling)))
+                
+                g.add((doi_uri, TARA.hasSampleSizeInformation, Literal(sample_size)))
+                g.add((doi_uri, TARA.hasControlsInformation, Literal(controls_info)))
+                g.add((doi_uri, TARA.hasCountryInformation, Literal(country)))
+
+                g.add((doi_uri, TARA.hasListedAcupointsUsed, Literal(listed_acupoints)))
+                
+                # Add each Acupoint ID
+                if acupoint_used:
+                    for each_acupoint in acupoint_used.split(','):
+                        identifier = each_acupoint.strip()
+                        prefix, term = identifier.split(":")
+                        
+                        if prefix == "TARA":
+                            tara_uri = f"http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#{term}"
+                            g.add((URIRef(tara_uri), TARA.isStudiedInArticle, doi_uri))
+                            print("TESTING", tara_uri)
+                        else:
+                            raise ValueError("Invalid prefix. Expected 'TARA'.")
+                
+                # Add each condition ID as an annotation property
+                if condition_treated:
+                    for condition in condition_treated.split(','):
+                        g.add((doi_uri, TARA.hasStudiedCondition, URIRef(condition.strip())))
+                
+                if condition_note:
+                    g.add((doi_uri, TARA.hasStudiedConditionNote, Literal(condition_note)))
+                
+                if condition_context:
+                    for each_condition in condition_context.split(','):
+                        g.add((doi_uri, TARA.hasStudiedConditionContext, URIRef(each_condition)))
+
+        
+        self.addGraph(g)
+        print ("  Articles Metadata Added Successfully.")
+
     
     # To add a restriction like :class_x isEquivalentTo (:y and :hasProperty some :z) to the graph
     # To add a restriction like :class_x isSubClassOf (:y and :hasProperty some :z) to the graph
@@ -562,6 +650,15 @@ def main():
         
         print ("\n> Merging Generated Ontology With Imported Anatomical Terms From: " + ontology_files.get("tara-imported-terms.ttl"))
         merge_ontologies (ontology_files.get("tara-acupoints-merged.ttl"), ontology_files.get("tara-imported-terms.ttl"),
+                          ontology_files.get("tara-acupoints-merged.ttl"))
+        
+        # Add articles metadata.
+        b = AcupointsOntologyAdapter()
+        b.addArticlesMetadata (csv_files.get("pain-related-articles.csv"))
+        b.saveUpdatedOntology (ontology_files.get("tara-articles.ttl"))
+        
+        print ("\n> Merging Generated Ontology With Articles Metadata From: " + ontology_files.get("tara-articles.ttl"))
+        merge_ontologies (ontology_files.get("tara-acupoints-merged.ttl"), ontology_files.get("tara-articles.ttl"),
                           ontology_files.get("tara-acupoints-merged.ttl"))
         
         print ("\n> End of Program Execution. All Steps Executed Succussfully.\n")

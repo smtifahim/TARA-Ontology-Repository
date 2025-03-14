@@ -17,7 +17,6 @@
 
 <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl> rdf:type owl:Ontology ;
                                                                   owl:versionIRI <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl/0.6> ;
-                                                                  owl:imports <https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/tara-acupoints-upper.ttl> ;
                                                                   dc:date "December 12, 2024" ;
                                                                   dc:description "The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH)."@en ;
                                                                   dc:title "TARA Acupoints Ontology"@en ;
@@ -31,8 +30,24 @@
 <http://purl.obolibrary.org/obo/IAO_0000118> rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/elements/1.1/description
 dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/relation
+dc:relation rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/elements/1.1/source
@@ -74,10 +89,40 @@ TARA:hasAcupointLocation rdf:type owl:AnnotationProperty ;
                          rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty .
 
 
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasAcupunctureModality
+TARA:hasAcupunctureModality rdf:type owl:AnnotationProperty ;
+                            rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasAcupunctureSpecificMetadata
+TARA:hasAcupunctureSpecificMetadata rdf:type owl:AnnotationProperty .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasAuthor
+TARA:hasAuthor rdf:type owl:AnnotationProperty ;
+               rdfs:label "Author" ;
+               rdfs:subPropertyOf dc:creator .
+
+
 ###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasChineseName
 TARA:hasChineseName rdf:type owl:AnnotationProperty ;
                     rdfs:label "Chinese Name" ;
                     rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasControlsInformation
+TARA:hasControlsInformation rdf:type owl:AnnotationProperty ;
+                            rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasCountryInformation
+TARA:hasCountryInformation rdf:type owl:AnnotationProperty ;
+                           rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasDOI
+TARA:hasDOI rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf dc:identifier .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasDesignatedOrgan
@@ -113,6 +158,11 @@ TARA:hasInnervationDescription rdf:type owl:AnnotationProperty ;
                                rdfs:subPropertyOf TARA:hasAcupointDescription .
 
 
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasListedAcupointsUsed
+TARA:hasListedAcupointsUsed rdf:type owl:AnnotationProperty ;
+                            rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
 ###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasLocationalDescription
 TARA:hasLocationalDescription rdf:type owl:AnnotationProperty ;
                               rdfs:label "Acupoint Location" ;
@@ -132,6 +182,21 @@ TARA:hasMethodDescription rdf:type owl:AnnotationProperty ;
                           rdfs:subPropertyOf TARA:hasAcupointDescription .
 
 
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasNeedlingInformation
+TARA:hasNeedlingInformation rdf:type owl:AnnotationProperty ;
+                            rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasPublicationDate
+TARA:hasPublicationDate rdf:type owl:AnnotationProperty ;
+                        rdfs:subPropertyOf dc:date .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasPublicationVenue
+TARA:hasPublicationVenue rdf:type owl:AnnotationProperty ;
+                         rdfs:subPropertyOf dc:relation .
+
+
 ###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasReference
 TARA:hasReference rdf:type owl:AnnotationProperty ;
                   rdfs:label "Reference" ;
@@ -142,6 +207,31 @@ TARA:hasReference rdf:type owl:AnnotationProperty ;
 TARA:hasRelatedLocation rdf:type owl:AnnotationProperty ;
                         rdfs:comment "An annotation property to relate an acupoint to its related region on the body surface." ;
                         rdfs:subPropertyOf TARA:hasAcupointLocation .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasSampleSizeInformation
+TARA:hasSampleSizeInformation rdf:type owl:AnnotationProperty ;
+                              rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasStimulationType
+TARA:hasStimulationType rdf:type owl:AnnotationProperty ;
+                        rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasStudiedCondition
+TARA:hasStudiedCondition rdf:type owl:AnnotationProperty ;
+                         rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasStudiedConditionContext
+TARA:hasStudiedConditionContext rdf:type owl:AnnotationProperty ;
+                                rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasStudiedConditionNote
+TARA:hasStudiedConditionNote rdf:type owl:AnnotationProperty ;
+                             rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasSurfaceLocation
@@ -156,10 +246,26 @@ TARA:hasSynonym rdf:type owl:AnnotationProperty ;
                 rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
 
 
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasTrialType
+TARA:hasTrialType rdf:type owl:AnnotationProperty ;
+                  rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasUsedAcupoint
+TARA:hasUsedAcupoint rdf:type owl:AnnotationProperty ;
+                     rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata .
+
+
 ###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#hasVasculatureDescription
 TARA:hasVasculatureDescription rdf:type owl:AnnotationProperty ;
                                rdfs:label "Vasculature" ;
                                rdfs:subPropertyOf TARA:hasAcupointDescription .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#isStudiedInArticle
+TARA:isStudiedInArticle rdf:type owl:AnnotationProperty ;
+                        rdfs:subPropertyOf TARA:hasAcupunctureSpecificMetadata ;
+                        rdfs:domain TARA:Acupoint .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#creation_date
@@ -184,6 +290,10 @@ OboInOwl:creation_date rdf:type owl:AnnotationProperty .
 
 ###  http://purl.obolibrary.org/obo/RO_0000087
 <http://purl.obolibrary.org/obo/RO_0000087> rdf:type owl:ObjectProperty .
+
+
+###  http://purl.obolibrary.org/obo/RO_0001025
+<http://purl.obolibrary.org/obo/RO_0001025> rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.obolibrary.org/obo/RO_0002350

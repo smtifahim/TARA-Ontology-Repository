@@ -2,6 +2,8 @@
 @prefix FMA: <http://purl.org/sig/ont/fma/fma> .
 @prefix ILX: <http://uri.interlex.org/base/ilx_> .
 @prefix NLX: <http://uri.neuinfo.org/nif/nifstd/nlx_> .
+@prefix ns1: <http://uri.interlex.org/base/readable/type/> .
+@prefix ns2: <http://uri.interlex.org/base/ilx_0112785> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -13,1199 +15,1238 @@
 @prefix NIFRID: <http://uri.neuinfo.org/nif/nifstd/readable/> .
 @prefix UBERON: <http://purl.obolibrary.org/obo/UBERON_> .
 @prefix BIRNLEX: <http://uri.neuinfo.org/nif/nifstd/birnlex_> .
-@prefix ns1: <http://uri.interlex.org/base/readable/type/> .
 @prefix definition: <http://purl.obolibrary.org/obo/IAO_0000115> .
-@prefix ns2: <http://uri.interlex.org/base/ilx_0112785> .
-
-<http://uri.interlex.org/base/ontologies/ilx_0795339> a owl:Ontology ;
-	owl:versionIRI <http://uri.interlex.org/base/ontologies/ilx_0795339/version/1733953855/ilx_0795339> ;
-	rdfs:comment "This file contains the InterLex (ILX) anatomical terms for the TARA Acupoints Ontology. It includes the basic hierarchy and the partnomy of the anatomical terms."@en ;
-	rdfs:label "InterLex anatomical terms for the TARA Acupoints Ontology."@en ;
-	owl:versionInfo "2024-12-11T21:50:55,115807Z" .
-# 
-# 
-# #################################################################
-# #
-# #    Annotation properties
-# #
-# #################################################################
-# 
-# 
-# http://purl.obolibrary.org/obo/IAO_0000115
-
-obo:IAO_0000115 a owl:AnnotationProperty .
-# 
-# http://uri.interlex.org/base/ilx_0112785
-
-<http://uri.interlex.org/base/ilx_0112785> a owl:AnnotationProperty .
-# 
-# http://uri.interlex.org/base/ilx_0383241
-
-<http://uri.interlex.org/base/ilx_0383241> a owl:AnnotationProperty ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0383241> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0383241> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0383241> ;
-	rdfs:label "deprecated" .
-# 
-# http://uri.interlex.org/base/readable/type
-
-ilxr:type a owl:AnnotationProperty .
-# 
-# http://uri.interlex.org/tgbugs/uris/readable/hasExistingId
-
-ilxtr:hasExistingId a owl:AnnotationProperty .
-# 
-# http://uri.interlex.org/tgbugs/uris/readable/hasExternalId
-
-ilxtr:hasExternalId a owl:AnnotationProperty .
-# 
-# http://uri.interlex.org/tgbugs/uris/readable/hasIlxId
-
-ilxtr:hasIlxId a owl:AnnotationProperty .
-# 
-# http://uri.interlex.org/tgbugs/uris/readable/hasIlxPreferredId
-
-ilxtr:hasIlxPreferredId a owl:AnnotationProperty .
-# 
-# http://uri.neuinfo.org/nif/nifstd/readable/synonym
-
-NIFRID:synonym a owl:AnnotationProperty .
-# 
-# 
-# 
-# #################################################################
-# #
-# #    Object Properties
-# #
-# #################################################################
-# 
-# 
-# http://purl.obolibrary.org/obo/BFO_0000050
-
-obo:BFO_0000050 a owl:ObjectProperty .
-# 
-# 
-# 
-# #################################################################
-# #
-# #    Classes
-# #
-# #################################################################
-# 
-# 
-# http://purl.obolibrary.org/obo/UBERON_0000033
-
-obo:UBERON_0000033 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0000033 , <http://purl.org/sig/ont/fma/fma7154> , <http://uri.interlex.org/base/ilx_0104909> , <http://uri.neuinfo.org/nif/nifstd/birnlex_1230> ;
-	ilxtr:hasExternalId obo:UBERON_0000033 , <http://purl.org/sig/ont/fma/fma7154> , <http://uri.neuinfo.org/nif/nifstd/birnlex_1230> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0104909> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0000033 ;
-	rdfs:label "head" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0000043
-
-obo:UBERON_0000043 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0000043 , <http://purl.org/sig/ont/fma/fma9721> , <http://uri.interlex.org/base/ilx_0733534> ;
-	ilxtr:hasExternalId obo:UBERON_0000043 , <http://purl.org/sig/ont/fma/fma9721> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0733534> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0000043 ;
-	rdfs:label "tendon" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0000093
-
-obo:UBERON_0000093 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0000093 , <http://uri.interlex.org/base/ilx_0111245> , <http://uri.neuinfo.org/nif/nifstd/nlx_144078> ;
-	ilxtr:hasExternalId obo:UBERON_0000093 , <http://uri.neuinfo.org/nif/nifstd/nlx_144078> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0111245> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0000093 ;
-	rdfs:label "sulcus" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0000916
-
-obo:UBERON_0000916 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0000916 , <http://purl.org/sig/ont/fma/fma9577> , <http://uri.interlex.org/base/ilx_0725977> ;
-	ilxtr:hasExternalId obo:UBERON_0000916 , <http://purl.org/sig/ont/fma/fma9577> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0725977> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0000916 ;
-	rdfs:label "abdomen" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0000974
-
-obo:UBERON_0000974 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0000974 , <http://purl.org/sig/ont/fma/fma7155> , <http://uri.interlex.org/base/ilx_0733967> ;
-	ilxtr:hasExternalId obo:UBERON_0000974 , <http://purl.org/sig/ont/fma/fma7155> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0733967> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0000974 ;
-	rdfs:label "neck" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0000978
-
-obo:UBERON_0000978 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0000978 , <http://uri.interlex.org/base/ilx_0729404> ;
-	ilxtr:hasExternalId obo:UBERON_0000978 ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0729404> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0000978 ;
-	rdfs:label "leg" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0001062
-
-obo:UBERON_0001062 a owl:Class ;
-	ilxtr:hasExistingId obo:UBERON_0001062 , <http://purl.org/sig/ont/fma/fma62955> , <http://uri.interlex.org/base/ilx_0100612> , <http://uri.neuinfo.org/nif/nifstd/birnlex_6> ;
-	ilxtr:hasExternalId obo:UBERON_0001062 , <http://purl.org/sig/ont/fma/fma62955> , <http://uri.neuinfo.org/nif/nifstd/birnlex_6> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0100612> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0001062 ;
-	rdfs:label "anatomical entity" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0001442
-
-obo:UBERON_0001442 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0001442 , <http://purl.org/sig/ont/fma/fma24159> , <http://uri.interlex.org/base/ilx_0736542> ;
-	ilxtr:hasExternalId obo:UBERON_0001442 , <http://purl.org/sig/ont/fma/fma24159> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0736542> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0001442 ;
-	rdfs:label "skeleton of manus" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0001443
-
-obo:UBERON_0001443 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0001443 , <http://purl.org/sig/ont/fma/fma9576> , <http://uri.interlex.org/base/ilx_0730352> ;
-	ilxtr:hasExternalId obo:UBERON_0001443 , <http://purl.org/sig/ont/fma/fma9576> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0730352> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0001443 ;
-	rdfs:label "chest" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0001456
-
-obo:UBERON_0001456 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0001456 , <http://purl.org/sig/ont/fma/fma24728> , <http://uri.interlex.org/base/ilx_0729443> ;
-	ilxtr:hasExternalId obo:UBERON_0001456 , <http://purl.org/sig/ont/fma/fma24728> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0729443> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0001456 ;
-	rdfs:label "face" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0001460
-
-obo:UBERON_0001460 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0001460 , <http://uri.interlex.org/base/ilx_0732657> ;
-	ilxtr:hasExternalId obo:UBERON_0001460 ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0732657> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0001460 ;
-	rdfs:label "arm" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0001461
-
-obo:UBERON_0001461 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0001461 , <http://purl.org/sig/ont/fma/fma24901> , <http://uri.interlex.org/base/ilx_0734732> ;
-	ilxtr:hasExternalId obo:UBERON_0001461 , <http://purl.org/sig/ont/fma/fma24901> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0734732> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0001461 ;
-	rdfs:label "elbow" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0001474
-
-obo:UBERON_0001474 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0001474 , <http://purl.org/sig/ont/fma/fma30317> , <http://purl.org/sig/ont/fma/fma5018> , <http://uri.interlex.org/base/ilx_0725261> ;
-	ilxtr:hasExternalId obo:UBERON_0001474 , <http://purl.org/sig/ont/fma/fma30317> , <http://purl.org/sig/ont/fma/fma5018> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0725261> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0001474 ;
-	rdfs:label "bone element" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0001630
-
-obo:UBERON_0001630 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0001630 , <http://purl.org/sig/ont/fma/fma5022> , <http://uri.interlex.org/base/ilx_0107218> ;
-	ilxtr:hasExternalId obo:UBERON_0001630 , <http://purl.org/sig/ont/fma/fma5022> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0107218> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0001630 ;
-	rdfs:label "muscle organ" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0002398
-
-obo:UBERON_0002398 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	rdfs:label "manus" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0003129
-
-obo:UBERON_0003129 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0003129 , <http://purl.org/sig/ont/fma/fma46565> , <http://uri.interlex.org/base/ilx_0110663> , <http://uri.neuinfo.org/nif/nifstd/nlx_70957> ;
-	ilxtr:hasExternalId obo:UBERON_0003129 , <http://purl.org/sig/ont/fma/fma46565> , <http://uri.neuinfo.org/nif/nifstd/nlx_70957> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0110663> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0003129 ;
-	rdfs:label "Skull" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0004704
-
-obo:UBERON_0004704 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0004704 , <http://purl.org/sig/ont/fma/fma45791> , <http://uri.interlex.org/base/ilx_0725658> ;
-	ilxtr:hasExternalId obo:UBERON_0004704 , <http://purl.org/sig/ont/fma/fma45791> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0725658> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0004704 ;
-	rdfs:label "bone fossa" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0005473
-
-obo:UBERON_0005473 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0005473 , <http://purl.org/sig/ont/fma/fma24228> , <http://uri.interlex.org/base/ilx_0729815> ;
-	ilxtr:hasExternalId obo:UBERON_0005473 , <http://purl.org/sig/ont/fma/fma24228> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0729815> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0005473 ;
-	rdfs:label "sacral region" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0006800
-
-obo:UBERON_0006800 a owl:Class ;
-	ilxtr:hasExistingId obo:UBERON_0006800 , <http://purl.org/sig/ont/fma/fma9657> , <http://uri.interlex.org/base/ilx_0734448> ;
-	ilxtr:hasExternalId obo:UBERON_0006800 , <http://purl.org/sig/ont/fma/fma9657> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0734448> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0006800 ;
-	rdfs:label "anatomical line" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0008784
-
-obo:UBERON_0008784 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0008784 , <http://purl.org/sig/ont/fma/fma24877> , <http://uri.interlex.org/base/ilx_0730641> ;
-	ilxtr:hasExternalId obo:UBERON_0008784 , <http://purl.org/sig/ont/fma/fma24877> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0730641> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0008784 ;
-	rdfs:label "lower limb segment" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0008785
-
-obo:UBERON_0008785 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	ilxtr:hasExistingId obo:UBERON_0008785 , <http://purl.org/sig/ont/fma/fma24876> , <http://uri.interlex.org/base/ilx_0725375> ;
-	ilxtr:hasExternalId obo:UBERON_0008785 , <http://purl.org/sig/ont/fma/fma24876> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0725375> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0008785 ;
-	rdfs:label "upper limb segment" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0012198
-
-obo:UBERON_0012198 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid1 .
-
-_:genid1 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001443 .
-
-obo:UBERON_0012198 ilxtr:hasExistingId obo:UBERON_0012198 , <http://purl.org/sig/ont/fma/fma12243> , <http://uri.interlex.org/base/ilx_0733269> ;
-	ilxtr:hasExternalId obo:UBERON_0012198 , <http://purl.org/sig/ont/fma/fma12243> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0733269> ;
-	ilxtr:hasIlxPreferredId obo:UBERON_0012198 ;
-	rdfs:label "intercostal space" .
-# 
-# http://purl.obolibrary.org/obo/UBERON_0019243
-
-obo:UBERON_0019243 a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	rdfs:label "skin crease" .
-# 
-# http://uri.interlex.org/base/ilx_0741680
-
-<http://uri.interlex.org/base/ilx_0741680> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid2 .
-
-_:genid2 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0005473 .
-
-<http://uri.interlex.org/base/ilx_0741680> <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
-	<http://uri.interlex.org/base/ilx_0383241> "True" ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0741680> , <https://taviewer.openanatomy.org/?id=A02.2.05.014> ;
-	ilxtr:hasExternalId <https://taviewer.openanatomy.org/?id=A02.2.05.014> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0741680> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0741680> ;
-	rdfs:label "median sacral crest" .
-# 
-# http://uri.interlex.org/base/ilx_0741717
-
-<http://uri.interlex.org/base/ilx_0741717> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid3 .
-
-_:genid3 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0005473 .
-
-<http://uri.interlex.org/base/ilx_0741717> <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
-	<http://uri.interlex.org/base/ilx_0383241> "True" ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0741717> , <https://taviewer.openanatomy.org/?id=A02.2.05.020> ;
-	ilxtr:hasExternalId <https://taviewer.openanatomy.org/?id=A02.2.05.020> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0741717> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0741717> ;
-	rdfs:label "sacral hiatus" .
-# 
-# http://uri.interlex.org/base/ilx_0741726
-
-<http://uri.interlex.org/base/ilx_0741726> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid4 .
-
-_:genid4 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000033 .
-
-<http://uri.interlex.org/base/ilx_0741726> <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000033 ;
-	<http://uri.interlex.org/base/ilx_0383241> "True" ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0741726> , <https://taviewer.openanatomy.org/?id=A02.1.03.010> ;
-	ilxtr:hasExternalId <https://taviewer.openanatomy.org/?id=A02.1.03.010> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0741726> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0741726> ;
-	NIFRID:synonym "foramen frontale" , "frontal foramen" , "frontal notch/foramen" , "incisura frontalis/foramen frontale" ;
-	rdfs:label "frontal notch" .
-# 
-# http://uri.interlex.org/base/ilx_0794954
-
-<http://uri.interlex.org/base/ilx_0794954> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0002398 ;
-	obo:IAO_0000115 "The dorsum of hand (dorsal area) is the corresponding area on the posterior part of the hand. This refers to the back of the hand, which is opposite of the palm side of the hand." ;
-	rdfs:label "dorsum of the hand" .
-# 
-# http://uri.interlex.org/base/ilx_0795283
-
-<http://uri.interlex.org/base/ilx_0795283> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0012198 ;
-	obo:IAO_0000115 "The anatomical space between the first and second ribs, containing intercostal muscles, vessels, and nerves." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795283> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795283> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795283> ;
-	rdfs:label "first intercostal space" .
-# 
-# http://uri.interlex.org/base/ilx_0795284
-
-<http://uri.interlex.org/base/ilx_0795284> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0004704 , _:genid5 .
-
-_:genid5 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001443 .
-
-<http://uri.interlex.org/base/ilx_0795284> obo:IAO_0000115 "A small triangular depression located inferior to the clavicle, bounded by the clavicle, deltoid, and pectoralis major muscles." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795284> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795284> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795284> ;
-	rdfs:label "infraclavicular fossa" .
-# 
-# http://uri.interlex.org/base/ilx_0795285
-
-<http://uri.interlex.org/base/ilx_0795285> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0006800 , _:genid6 .
-
-_:genid6 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000916 .
-
-<http://uri.interlex.org/base/ilx_0795285> obo:IAO_0000115 "A vertical line running along the midline of the anterior body surface, aligned with the sternum. On the anterior abdominal and chest walls, the anterior median line can be seen extending from the jugular notch, crossing over the sternum and linea alba in their midline, and reaching out to the midline pubic symphysis." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795285> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795285> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795285> ;
-	rdfs:label "anterior median line" .
-# 
-# http://uri.interlex.org/base/ilx_0795286
-
-<http://uri.interlex.org/base/ilx_0795286> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid7 .
-
-_:genid7 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0008785 .
-
-<http://uri.interlex.org/base/ilx_0795286> obo:IAO_0000115 "A triangular region bounded by the clavicle superiorly, the pectoralis major medially, and the deltoid laterally." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008785 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795286> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795286> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795286> ;
-	rdfs:label "clavipectoral triangle" .
-# 
-# http://uri.interlex.org/base/ilx_0795287
-
-<http://uri.interlex.org/base/ilx_0795287> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid8 .
-
-_:genid8 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001443 .
-
-<http://uri.interlex.org/base/ilx_0795287> obo:IAO_0000115 "The anterior boundary of the axilla, formed by the lower border of the pectoralis major muscle." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795287> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795287> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795287> ;
-	rdfs:label "anterior axillary fold" .
-# 
-# http://uri.interlex.org/base/ilx_0795288
-
-<http://uri.interlex.org/base/ilx_0795288> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid9 .
-
-_:genid9 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0008785 .
-
-<http://uri.interlex.org/base/ilx_0795288> obo:IAO_0000115 "The posterior aspect of the wrist, containing the extensor tendons and underlying carpal bones." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008785 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795288> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795288> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795288> ;
-	rdfs:label "dorsal wrist" .
-# 
-# http://uri.interlex.org/base/ilx_0795289
-
-<http://uri.interlex.org/base/ilx_0795289> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0004704 , _:genid10 .
-
-_:genid10 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001461 .
-
-<http://uri.interlex.org/base/ilx_0795289> obo:IAO_0000115 "The radial fossa, also called the anatomical snuffbox, is a triangular depression on the lateral wrist. It is bordered by the tendons of the extensor pollicis longus, extensor pollicis brevis, and abductor pollicis longus, with the scaphoid and trapezium forming its floor. It houses the radial artery and is clinically relevant for assessing scaphoid fractures or arterial pulse." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001461 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795289> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795289> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795289> ;
-	NIFRID:synonym "anatomical snuffbox" ;
-	rdfs:label "radial fossa" .
-# 
-# http://uri.interlex.org/base/ilx_0795290
-
-<http://uri.interlex.org/base/ilx_0795290> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0000093 , _:genid11 .
-
-_:genid11 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001456 .
-
-<http://uri.interlex.org/base/ilx_0795290> obo:IAO_0000115 "A shallow groove extending from the lateral aspect of the nostril to the corner of the mouth." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001456 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795290> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795290> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795290> ;
-	rdfs:label "nasolabial sulcus" .
-# 
-# http://uri.interlex.org/base/ilx_0795291
-
-<http://uri.interlex.org/base/ilx_0795291> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid12 .
-
-_:genid12 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0003129 .
-
-<http://uri.interlex.org/base/ilx_0795291> obo:IAO_0000115 "The mandibular notch, also known as the sigmoid notch, is a groove in the ramus of the mandible. A curved depression between the coronoid and condylar processes of the mandible." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0003129 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795291> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795291> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795291> ;
-	NIFRID:synonym "sigmoid notch" ;
-	rdfs:label "mandibular notch" .
-# 
-# http://uri.interlex.org/base/ilx_0795292
-
-<http://uri.interlex.org/base/ilx_0795292> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0006800 , _:genid13 .
-
-_:genid13 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000033 .
-
-<http://uri.interlex.org/base/ilx_0795292> obo:IAO_0000115 "The demarcation at the anterior margin of the scalp where hair growth begins." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000033 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795292> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795292> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795292> ;
-	rdfs:label "anterior hairline" .
-# 
-# http://uri.interlex.org/base/ilx_0795293
-
-<http://uri.interlex.org/base/ilx_0795293> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0004704 , _:genid14 .
-
-_:genid14 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000974 .
-
-<http://uri.interlex.org/base/ilx_0795293> obo:IAO_0000115 "A small depression located superior to the clavicle and medial to the clavicular head of the sternocleidomastoid muscle." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000974 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795293> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795293> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795293> ;
-	rdfs:label "lesser supraclavicular fossa" .
-# 
-# http://uri.interlex.org/base/ilx_0795294
-
-<http://uri.interlex.org/base/ilx_0795294> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0004704 , _:genid15 .
-
-_:genid15 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000974 .
-
-<http://uri.interlex.org/base/ilx_0795294> obo:IAO_0000115 "The greater supraclavicular fossa refers to the larger, lateral depression above the clavicle, located lateral to the sternocleidomastoid muscle." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000974 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795294> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795294> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795294> ;
-	rdfs:label "greater supraclavicular fossa" .
-# 
-# http://uri.interlex.org/base/ilx_0795295
-
-<http://uri.interlex.org/base/ilx_0795295> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0012198 ;
-	obo:IAO_0000115 "The anatomical space between the second and third ribs, containing intercostal muscles, vessels, and nerves." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795295> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795295> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795295> ;
-	rdfs:label "second intercostal space" .
-# 
-# http://uri.interlex.org/base/ilx_0795296
-
-<http://uri.interlex.org/base/ilx_0795296> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid16 .
-
-_:genid16 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001443 .
-
-<http://uri.interlex.org/base/ilx_0795296> obo:IAO_0000115 "The sternal angle (angle of Louis, Ludwig, or Ludovicus) is the inclined junction between the anterior surfaces of the manubrium and body of the sternum." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795296> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795296> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795296> ;
-	rdfs:label "sternal angle" .
-# 
-# http://uri.interlex.org/base/ilx_0795297
-
-<http://uri.interlex.org/base/ilx_0795297> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0012198 ;
-	obo:IAO_0000115 "The space between the third and fourth ribs, containing intercostal muscles, vessels, and nerves." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795297> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795297> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795297> ;
-	rdfs:label "third intercostal space" .
-# 
-# http://uri.interlex.org/base/ilx_0795298
-
-<http://uri.interlex.org/base/ilx_0795298> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0012198 ;
-	obo:IAO_0000115 "The space between the fourth and fifth ribs, containing intercostal muscles, vessels, and nerves." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795298> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795298> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795298> ;
-	rdfs:label "fourth intercostal space" .
-# 
-# http://uri.interlex.org/base/ilx_0795299
-
-<http://uri.interlex.org/base/ilx_0795299> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0012198 ;
-	obo:IAO_0000115 "The space between the fifth and sixth ribs, containing intercostal muscles, vessels, and nerves." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795299> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795299> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795299> ;
-	rdfs:label "fifth intercostal space" .
-# 
-# http://uri.interlex.org/base/ilx_0795300
-
-<http://uri.interlex.org/base/ilx_0795300> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0006800 , _:genid17 .
-
-_:genid17 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001443 .
-
-<http://uri.interlex.org/base/ilx_0795300> obo:IAO_0000115 "The nipple line is an imaginary horizontal reference line running around the body at the level of the nipples." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795300> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795300> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795300> ;
-	rdfs:label "nipple line" .
-# 
-# http://uri.interlex.org/base/ilx_0795301
-
-<http://uri.interlex.org/base/ilx_0795301> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid18 .
-
-_:genid18 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000916 .
-
-<http://uri.interlex.org/base/ilx_0795301> obo:IAO_0000115 "The superior portion of the abdomen, located above the umbilicus and below the ribcage." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795301> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795301> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795301> ;
-	rdfs:label "upper abdomen" .
-# 
-# http://uri.interlex.org/base/ilx_0795302
-
-<http://uri.interlex.org/base/ilx_0795302> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0000916 , obo:UBERON_0001062 ;
-	obo:IAO_0000115 "The infrasternal angle (subcostal angle) is formed in front of thoracic cage by the cartilages of the tenth, ninth, eighth, and seventh ribs, which ascend on either side, where the apex of which the xiphoid process projects." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795302> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795302> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795302> ;
-	NIFRID:synonym "Mammillary line" ;
-	rdfs:label "infrasternal angle" .
-# 
-# http://uri.interlex.org/base/ilx_0795303
-
-<http://uri.interlex.org/base/ilx_0795303> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid19 .
-
-_:genid19 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000916 .
-
-<http://uri.interlex.org/base/ilx_0795303> obo:IAO_0000115 "The inferior portion of the abdomen, located below the umbilicus and above the pelvic region." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795303> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795303> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795303> ;
-	rdfs:label "lower abdomen" .
-# 
-# http://uri.interlex.org/base/ilx_0795304
-
-<http://uri.interlex.org/base/ilx_0795304> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001630 , _:genid20 .
-
-_:genid20 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0008784 .
-
-<http://uri.interlex.org/base/ilx_0795304> obo:IAO_0000115 "The rectus femoris is a muscle in the anterior compartment of the thigh. It forms part of the quadriceps femoris muscle complex, and is the only muscle in this group to cross both the hip joint and the knee joints." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008784 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795304> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795304> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795304> ;
-	rdfs:label "rectus femoris muscle" .
-# 
-# http://uri.interlex.org/base/ilx_0795305
-
-<http://uri.interlex.org/base/ilx_0795305> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid21 .
-
-_:genid21 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0008784 .
-
-<http://uri.interlex.org/base/ilx_0795305> obo:IAO_0000115 "A prominent bony projection on the medial aspect of the distal tibia, forming part of the ankle joint." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008784 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795305> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795305> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795305> ;
-	rdfs:label "medial malleolus" .
-# 
-# http://uri.interlex.org/base/ilx_0795306
-
-<http://uri.interlex.org/base/ilx_0795306> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid22 .
-
-_:genid22 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001443 .
-
-<http://uri.interlex.org/base/ilx_0795306> obo:IAO_0000115 "The area of the thorax on the lateral body wall, containing portions of the serratus anterior and intercostal muscles." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795306> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795306> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795306> ;
-	rdfs:label "lateral thoracic region" .
-# 
-# http://uri.interlex.org/base/ilx_0795307
-
-<http://uri.interlex.org/base/ilx_0795307> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0012198 ;
-	obo:IAO_0000115 "The space between the sixth and seventh ribs, containing intercostal muscles, vessels, and nerves." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795307> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795307> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795307> ;
-	rdfs:label "sixth intercostal space" .
-# 
-# http://uri.interlex.org/base/ilx_0795308
-
-<http://uri.interlex.org/base/ilx_0795308> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0006800 , _:genid23 .
-
-_:genid23 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001443 .
-
-<http://uri.interlex.org/base/ilx_0795308> obo:IAO_0000115 "A vertical line running down the lateral thorax from the apex of the axilla to the hip." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795308> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795308> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795308> ;
-	rdfs:label "midaxillary line" .
-# 
-# http://uri.interlex.org/base/ilx_0795309
-
-<http://uri.interlex.org/base/ilx_0795309> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0004704 , _:genid24 .
-
-_:genid24 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0008785 .
-
-<http://uri.interlex.org/base/ilx_0795309> obo:IAO_0000115 "A pyramidal depression located at the junction of the upper limb and thorax, commonly referred to as the armpit." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008785 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795309> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795309> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795309> ;
-	rdfs:label "axillary fossa" .
-# 
-# http://uri.interlex.org/base/ilx_0795310
-
-<http://uri.interlex.org/base/ilx_0795310> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0004704 , _:genid25 .
-
-_:genid25 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001460 .
-
-<http://uri.interlex.org/base/ilx_0795310> obo:IAO_0000115 "A triangular depression on the anterior aspect of the elbow, containing important neurovascular structures." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001460 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795310> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795310> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795310> ;
-	rdfs:label "cubital fossa" .
-# 
-# http://uri.interlex.org/base/ilx_0795311
-
-<http://uri.interlex.org/base/ilx_0795311> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid26 .
-
-_:genid26 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0008785 .
-
-<http://uri.interlex.org/base/ilx_0795311> obo:IAO_0000115 "The posterior axillary fold, also known as the posterior armpit fold, refers to the inferior border of the posterior wall of axilla." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008785 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795311> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795311> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795311> ;
-	NIFRID:synonym "posterior armpit fold" ;
-	rdfs:label "posterior axillary fold" .
-# 
-# http://uri.interlex.org/base/ilx_0795312
-
-<http://uri.interlex.org/base/ilx_0795312> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0006800 ;
-	obo:IAO_0000115 "A vertical line running along the posterior midline of the back, aligned with the spinous processes of the vertebrae." ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795312> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795312> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795312> ;
-	rdfs:label "posterior median line" .
-# 
-# http://uri.interlex.org/base/ilx_0795313
-
-<http://uri.interlex.org/base/ilx_0795313> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid27 .
-
-_:genid27 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0005473 .
-
-<http://uri.interlex.org/base/ilx_0795313> obo:IAO_0000115 "The first opening in the posterior sacrum, allowing passage of sacral nerves." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795313> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795313> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795313> ;
-	rdfs:label "first posterior sacral foramen" .
-# 
-# http://uri.interlex.org/base/ilx_0795314
-
-<http://uri.interlex.org/base/ilx_0795314> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid28 .
-
-_:genid28 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0005473 .
-
-<http://uri.interlex.org/base/ilx_0795314> obo:IAO_0000115 "The second opening in the posterior sacrum for sacral nerve passage." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795314> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795314> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795314> ;
-	rdfs:label "second posterior sacral foramen" .
-# 
-# http://uri.interlex.org/base/ilx_0795315
-
-<http://uri.interlex.org/base/ilx_0795315> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid29 .
-
-_:genid29 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0005473 .
-
-<http://uri.interlex.org/base/ilx_0795315> obo:IAO_0000115 "The third opening in the posterior sacrum for sacral nerve passage." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795315> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795315> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795315> ;
-	rdfs:label "third posterior sacral foramen" .
-# 
-# http://uri.interlex.org/base/ilx_0795316
-
-<http://uri.interlex.org/base/ilx_0795316> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid30 .
-
-_:genid30 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0005473 .
-
-<http://uri.interlex.org/base/ilx_0795316> obo:IAO_0000115 "The fourth opening in the posterior sacrum for sacral nerve passage." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795316> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795316> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795316> ;
-	rdfs:label "fourth posterior sacral foramen" .
-# 
-# http://uri.interlex.org/base/ilx_0795317
-
-<http://uri.interlex.org/base/ilx_0795317> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0000043 , _:genid31 .
-
-_:genid31 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0008784 .
-
-<http://uri.interlex.org/base/ilx_0795317> obo:IAO_0000115 "The biceps femoris tendon is the rounded tendon that attaches the muscle bellies of the long and short heads of the biceps femoris muscle to the head of the fibula." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008784 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795317> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795317> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795317> ;
-	rdfs:label "biceps femoris tendon" .
-# 
-# http://uri.interlex.org/base/ilx_0795318
-
-<http://uri.interlex.org/base/ilx_0795318> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001474 , _:genid32 .
-
-_:genid32 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001442 .
-
-<http://uri.interlex.org/base/ilx_0795318> obo:IAO_0000115 "The long bone in the hand that connects the fourth finger to the carpal bones of the wrist. The fourth metacarpal bone is shorter and smaller than the third. The base is small and quadrilateral." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001442 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795318> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795318> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795318> ;
-	rdfs:label "fourth metacarpal bone" .
-# 
-# http://uri.interlex.org/base/ilx_0795321
-
-<http://uri.interlex.org/base/ilx_0795321> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0012198 ;
-	obo:IAO_0000115 "The anatomical space between the seventh and eighth ribs, containing intercostal muscles, vessels, and nerves." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795321> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795321> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795321> ;
-	rdfs:label "seventh intercostal space" .
-# 
-# http://uri.interlex.org/base/ilx_0795322
-
-<http://uri.interlex.org/base/ilx_0795322> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0006800 , _:genid33 .
-
-_:genid33 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001443 .
-
-<http://uri.interlex.org/base/ilx_0795322> obo:IAO_0000115 "Midclavicular line is an important vertical reference line on the anterior chest wall. It connects the midclavicular point (superiorly) with the middle of the inguinal ligament (inferiorly)." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795322> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795322> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795322> ;
-	rdfs:label "midclavicular line" .
-# 
-# http://uri.interlex.org/base/ilx_0795323
-
-<http://uri.interlex.org/base/ilx_0795323> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0006800 , _:genid34 .
-
-_:genid34 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001443 .
-
-<http://uri.interlex.org/base/ilx_0795323> obo:IAO_0000115 "Posterior axillary line is an imaginary reference line which can be drawn on the posterior torso. It extends vertically downwards from the posterior axillary fold. The posterior axillary line runs in parallel to the midaxillary and anterior axillary lines." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795323> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795323> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795323> ;
-	rdfs:label "posterior axillary line" .
-# 
-# http://uri.interlex.org/base/ilx_0795324
-
-<http://uri.interlex.org/base/ilx_0795324> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid35 .
-
-_:genid35 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0008784 .
-
-<http://uri.interlex.org/base/ilx_0795324> obo:IAO_0000115 "Your iliotibial band is a strong, thick band of tissue that runs down the outside of your thigh. It extends all the way from the hip bone to the top of the shinbone." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008784 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795324> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795324> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795324> ;
-	rdfs:label "iliotibial band" .
-# 
-# http://uri.interlex.org/base/ilx_0795325
-
-<http://uri.interlex.org/base/ilx_0795325> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0000043 , _:genid36 .
-
-_:genid36 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000978 .
-
-<http://uri.interlex.org/base/ilx_0795325> obo:IAO_0000115 "The tibialis anterior tendon is the tendon of the tibialis anterior muscle, located on the front of the lower leg. It passes along the ankle and inserts on the medial cuneiform and the first metatarsal. This tendon enables dorsiflexion and inversion of the foot. The tibialis anterior tendon (TAT) begins at the distal one-third of the tibia. It is the most medial tendon of the ankle and foot." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000978 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795325> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795325> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795325> ;
-	rdfs:label "tibialis anterior tendon" .
-# 
-# http://uri.interlex.org/base/ilx_0795326
-
-<http://uri.interlex.org/base/ilx_0795326> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0006800 , _:genid37 .
-
-_:genid37 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000033 .
-
-<http://uri.interlex.org/base/ilx_0795326> obo:IAO_0000115 "The demarcation at the posterior margin of the scalp where hair growth begins, near the nape of the neck." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000033 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795326> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795326> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795326> ;
-	rdfs:label "posterior hairline" .
-# 
-# http://uri.interlex.org/base/ilx_0795327
-
-<http://uri.interlex.org/base/ilx_0795327> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0000093 , _:genid38 .
-
-_:genid38 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0001456 .
-
-<http://uri.interlex.org/base/ilx_0795327> obo:IAO_0000115 "The mentolabial sulcus is the vertical groove or fold that forms between the lower lip and the chin, marking the transition between the lower lip and the mental region of the face." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001456 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795327> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795327> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795327> ;
-	rdfs:label "mentolabial sulcus" .
-# 
-# http://uri.interlex.org/base/ilx_0795328
-
-<http://uri.interlex.org/base/ilx_0795328> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid39 .
-
-_:genid39 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000974 .
-
-<http://uri.interlex.org/base/ilx_0795328> obo:IAO_0000115 "A small prominence on the posterior end of the greater horn of hyoid bone, serving as an attachment point for muscles and ligaments. Each tubercle of hyoid bone provides an attachment site for a lateral thyrohyoid ligament." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000974 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795328> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795328> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795328> ;
-	rdfs:label "hyoid tubercle" .
-# 
-# http://uri.interlex.org/base/ilx_0795329
-
-<http://uri.interlex.org/base/ilx_0795329> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid40 .
-
-_:genid40 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000916 .
-
-<http://uri.interlex.org/base/ilx_0795329> obo:IAO_0000115 "The inguinal crease refers to the skin fold or line that forms where the lower abdomen meets the thigh, often most noticeable when the hip is flexed. It marks the boundary between the abdominal and thigh regions." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795329> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795329> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795329> ;
-	rdfs:label "inguinal crease" .
-# 
-# http://uri.interlex.org/base/ilx_0795330
-
-<http://uri.interlex.org/base/ilx_0795330> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 , _:genid41 .
-
-_:genid41 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000978 .
-
-<http://uri.interlex.org/base/ilx_0795330> obo:IAO_0000115 "This is the visible skin fold or line at the back of the knee, formed when the knee is flexed. It is a superficial feature and serves as a landmark for the location of the popliteal fossa beneath." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000978 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795330> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795330> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795330> ;
-	rdfs:label "popliteal crease" .
-# 
-# http://uri.interlex.org/base/ilx_0795331
-
-<http://uri.interlex.org/base/ilx_0795331> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0004704 , _:genid42 .
-
-_:genid42 a owl:Restriction ;
-	owl:onProperty obo:BFO_0000050 ;
-	owl:someValuesFrom obo:UBERON_0000974 .
-
-<http://uri.interlex.org/base/ilx_0795331> obo:IAO_0000115 "This is the depression on the skin surface of the neck between the sternal heads of the sternocleidomastoid muscles. This area is situated just above the manubrium of the sternum and is a visible landmark in the neck." ;
-	<http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000974 ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795331> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795331> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795331> ;
-	NIFRID:synonym "Fossa jugularis" , "Interclavicular fossa" , "Jugular notch" ;
-	rdfs:label "suprasternal fossa" .
-# 
-# http://uri.interlex.org/base/ilx_0795332
-
-<http://uri.interlex.org/base/ilx_0795332> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0019243 ;
-	obo:IAO_0000115 "The anterior skin fold of the elbow, marking the transition between the upper arm and forearm, overlying the cubital fossa." ;
-	rdfs:label "cubital crease" .
-# 
-# http://uri.interlex.org/base/ilx_0795333
-
-<http://uri.interlex.org/base/ilx_0795333> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0019243 ;
-	obo:IAO_0000115 "The dorsal wrist crease is the skin fold that forms on the back (dorsal) side of the wrist, often visible when the hand is extended. It marks the junction between the forearm and the hand and is located near the proximal ends of the metacarpal bones." ;
-	rdfs:label "dorsal wrist crease" .
-# 
-# http://uri.interlex.org/base/ilx_0795334
-
-<http://uri.interlex.org/base/ilx_0795334> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0019243 ;
-	obo:IAO_0000115 "The palmar wrist crease is the transverse skin fold that appears on the palm side of the wrist when the hand is flexed. It marks the boundary between the forearm and the palm and is located approximately at the level of the distal radius and ulna." ;
-	rdfs:label "palmar wrist crease" .
-# 
-# http://uri.interlex.org/base/ilx_0795335
-
-<http://uri.interlex.org/base/ilx_0795335> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0000043 ;
-	obo:IAO_0000115 "The tendon of the muscle that abducts and extends the thumb, located in the posterior compartment of the forearm." ;
-	rdfs:label "abductor pollicis longus tendon" .
-# 
-# http://uri.interlex.org/base/ilx_0795336
-
-<http://uri.interlex.org/base/ilx_0795336> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0000043 ;
-	obo:IAO_0000115 "The tendon of the muscle extending the proximal phalanx of the thumb, positioned laterally in the forearm." ;
-	rdfs:label "extensor pollicis brevis tendon" .
-# 
-# http://uri.interlex.org/base/ilx_0795337
-
-<http://uri.interlex.org/base/ilx_0795337> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0000043 ;
-	<http://uri.interlex.org/base/ilx_0112785> "The tendon of the muscle responsible for extending the thumb at the interphalangeal joint." ;
-	rdfs:label "extensor pollicis longus tendon" .
-# 
-# http://uri.interlex.org/base/ilx_0795338
-
-<http://uri.interlex.org/base/ilx_0795338> a owl:Class ;
-	rdfs:subClassOf obo:UBERON_0001062 ;
-	obo:IAO_0000115 "The lateral supracondylar ridge (lateral supraepicondylar ridge or lateral supracondylar crest) is the sharp, prominent margin located along the lateral aspect of the distal end of the body of the humerus. It is the less curved of the two supracondylar ridges of the humerus, the other being the medial supracondylar ridge." ;
-	ilxr:type ns1:term ;
-	ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795338> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795338> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795338> ;
-	rdfs:label "lateral supraepicondylar ridge" .
-# 
-# 
-# 
-# #################################################################
-# #
-# #    Annotations
-# #
-# #################################################################
-# 
-# 
+@base <http://uri.interlex.org/base/ontologies/ilx_0795339> .
+
+<http://uri.interlex.org/base/ontologies/ilx_0795339> rdf:type owl:Ontology ;
+                                                       owl:versionIRI <http://uri.interlex.org/base/ontologies/ilx_0795339/version/1733953855/ilx_0795339> ;
+                                                       rdfs:comment "This file contains the InterLex (ILX) anatomical terms for the TARA Acupoints Ontology. It includes the basic hierarchy and the partnomy of the anatomical terms."@en ;
+                                                       rdfs:label "InterLex anatomical terms for the TARA Acupoints Ontology."@en ;
+                                                       owl:versionInfo "2024-12-11T21:50:55,115807Z" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/IAO_0000115
+obo:IAO_0000115 rdf:type owl:AnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0112785
+<http://uri.interlex.org/base/ilx_0112785> rdf:type owl:AnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0383241
+<http://uri.interlex.org/base/ilx_0383241> rdf:type owl:AnnotationProperty ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0383241> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0383241> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0383241> ;
+                                           rdfs:label "deprecated" .
+
+
+###  http://uri.interlex.org/base/readable/type
+ilxr:type rdf:type owl:AnnotationProperty .
+
+
+###  http://uri.interlex.org/tgbugs/uris/readable/hasExistingId
+ilxtr:hasExistingId rdf:type owl:AnnotationProperty .
+
+
+###  http://uri.interlex.org/tgbugs/uris/readable/hasExternalId
+ilxtr:hasExternalId rdf:type owl:AnnotationProperty .
+
+
+###  http://uri.interlex.org/tgbugs/uris/readable/hasIlxId
+ilxtr:hasIlxId rdf:type owl:AnnotationProperty .
+
+
+###  http://uri.interlex.org/tgbugs/uris/readable/hasIlxPreferredId
+ilxtr:hasIlxPreferredId rdf:type owl:AnnotationProperty .
+
+
+###  http://uri.neuinfo.org/nif/nifstd/readable/synonym
+NIFRID:synonym rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/BFO_0000050
+obo:BFO_0000050 rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.obolibrary.org/obo/UBERON_0000033
+obo:UBERON_0000033 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0000033 ,
+                                       <http://purl.org/sig/ont/fma/fma7154> ,
+                                       <http://uri.interlex.org/base/ilx_0104909> ,
+                                       <http://uri.neuinfo.org/nif/nifstd/birnlex_1230> ;
+                   ilxtr:hasExternalId obo:UBERON_0000033 ,
+                                       <http://purl.org/sig/ont/fma/fma7154> ,
+                                       <http://uri.neuinfo.org/nif/nifstd/birnlex_1230> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0104909> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0000033 ;
+                   rdfs:label "head" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000043
+obo:UBERON_0000043 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0000043 ,
+                                       <http://purl.org/sig/ont/fma/fma9721> ,
+                                       <http://uri.interlex.org/base/ilx_0733534> ;
+                   ilxtr:hasExternalId obo:UBERON_0000043 ,
+                                       <http://purl.org/sig/ont/fma/fma9721> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0733534> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0000043 ;
+                   rdfs:label "tendon" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000093
+obo:UBERON_0000093 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0000093 ,
+                                       <http://uri.interlex.org/base/ilx_0111245> ,
+                                       <http://uri.neuinfo.org/nif/nifstd/nlx_144078> ;
+                   ilxtr:hasExternalId obo:UBERON_0000093 ,
+                                       <http://uri.neuinfo.org/nif/nifstd/nlx_144078> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0111245> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0000093 ;
+                   rdfs:label "sulcus" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000916
+obo:UBERON_0000916 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0000916 ,
+                                       <http://purl.org/sig/ont/fma/fma9577> ,
+                                       <http://uri.interlex.org/base/ilx_0725977> ;
+                   ilxtr:hasExternalId obo:UBERON_0000916 ,
+                                       <http://purl.org/sig/ont/fma/fma9577> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0725977> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0000916 ;
+                   rdfs:label "abdomen" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000974
+obo:UBERON_0000974 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0000974 ,
+                                       <http://purl.org/sig/ont/fma/fma7155> ,
+                                       <http://uri.interlex.org/base/ilx_0733967> ;
+                   ilxtr:hasExternalId obo:UBERON_0000974 ,
+                                       <http://purl.org/sig/ont/fma/fma7155> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0733967> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0000974 ;
+                   rdfs:label "neck" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000978
+obo:UBERON_0000978 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0000978 ,
+                                       <http://uri.interlex.org/base/ilx_0729404> ;
+                   ilxtr:hasExternalId obo:UBERON_0000978 ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0729404> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0000978 ;
+                   rdfs:label "leg" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001062
+obo:UBERON_0001062 rdf:type owl:Class ;
+                   ilxtr:hasExistingId obo:UBERON_0001062 ,
+                                       <http://purl.org/sig/ont/fma/fma62955> ,
+                                       <http://uri.interlex.org/base/ilx_0100612> ,
+                                       <http://uri.neuinfo.org/nif/nifstd/birnlex_6> ;
+                   ilxtr:hasExternalId obo:UBERON_0001062 ,
+                                       <http://purl.org/sig/ont/fma/fma62955> ,
+                                       <http://uri.neuinfo.org/nif/nifstd/birnlex_6> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0100612> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0001062 ;
+                   rdfs:label "anatomical entity" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001442
+obo:UBERON_0001442 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0001442 ,
+                                       <http://purl.org/sig/ont/fma/fma24159> ,
+                                       <http://uri.interlex.org/base/ilx_0736542> ;
+                   ilxtr:hasExternalId obo:UBERON_0001442 ,
+                                       <http://purl.org/sig/ont/fma/fma24159> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0736542> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0001442 ;
+                   rdfs:label "skeleton of manus" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001443
+obo:UBERON_0001443 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0001443 ,
+                                       <http://purl.org/sig/ont/fma/fma9576> ,
+                                       <http://uri.interlex.org/base/ilx_0730352> ;
+                   ilxtr:hasExternalId obo:UBERON_0001443 ,
+                                       <http://purl.org/sig/ont/fma/fma9576> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0730352> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0001443 ;
+                   rdfs:label "chest" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001456
+obo:UBERON_0001456 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0001456 ,
+                                       <http://purl.org/sig/ont/fma/fma24728> ,
+                                       <http://uri.interlex.org/base/ilx_0729443> ;
+                   ilxtr:hasExternalId obo:UBERON_0001456 ,
+                                       <http://purl.org/sig/ont/fma/fma24728> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0729443> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0001456 ;
+                   rdfs:label "face" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001460
+obo:UBERON_0001460 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0001460 ,
+                                       <http://uri.interlex.org/base/ilx_0732657> ;
+                   ilxtr:hasExternalId obo:UBERON_0001460 ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0732657> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0001460 ;
+                   rdfs:label "arm" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001461
+obo:UBERON_0001461 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0001461 ,
+                                       <http://purl.org/sig/ont/fma/fma24901> ,
+                                       <http://uri.interlex.org/base/ilx_0734732> ;
+                   ilxtr:hasExternalId obo:UBERON_0001461 ,
+                                       <http://purl.org/sig/ont/fma/fma24901> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0734732> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0001461 ;
+                   rdfs:label "elbow" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001474
+obo:UBERON_0001474 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0001474 ,
+                                       <http://purl.org/sig/ont/fma/fma30317> ,
+                                       <http://purl.org/sig/ont/fma/fma5018> ,
+                                       <http://uri.interlex.org/base/ilx_0725261> ;
+                   ilxtr:hasExternalId obo:UBERON_0001474 ,
+                                       <http://purl.org/sig/ont/fma/fma30317> ,
+                                       <http://purl.org/sig/ont/fma/fma5018> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0725261> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0001474 ;
+                   rdfs:label "bone element" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001630
+obo:UBERON_0001630 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0001630 ,
+                                       <http://purl.org/sig/ont/fma/fma5022> ,
+                                       <http://uri.interlex.org/base/ilx_0107218> ;
+                   ilxtr:hasExternalId obo:UBERON_0001630 ,
+                                       <http://purl.org/sig/ont/fma/fma5022> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0107218> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0001630 ;
+                   rdfs:label "muscle organ" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0002398
+obo:UBERON_0002398 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   rdfs:label "manus" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0003129
+obo:UBERON_0003129 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0003129 ,
+                                       <http://purl.org/sig/ont/fma/fma46565> ,
+                                       <http://uri.interlex.org/base/ilx_0110663> ,
+                                       <http://uri.neuinfo.org/nif/nifstd/nlx_70957> ;
+                   ilxtr:hasExternalId obo:UBERON_0003129 ,
+                                       <http://purl.org/sig/ont/fma/fma46565> ,
+                                       <http://uri.neuinfo.org/nif/nifstd/nlx_70957> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0110663> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0003129 ;
+                   rdfs:label "Skull" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0004704
+obo:UBERON_0004704 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0004704 ,
+                                       <http://purl.org/sig/ont/fma/fma45791> ,
+                                       <http://uri.interlex.org/base/ilx_0725658> ;
+                   ilxtr:hasExternalId obo:UBERON_0004704 ,
+                                       <http://purl.org/sig/ont/fma/fma45791> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0725658> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0004704 ;
+                   rdfs:label "bone fossa" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0005473
+obo:UBERON_0005473 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0005473 ,
+                                       <http://purl.org/sig/ont/fma/fma24228> ,
+                                       <http://uri.interlex.org/base/ilx_0729815> ;
+                   ilxtr:hasExternalId obo:UBERON_0005473 ,
+                                       <http://purl.org/sig/ont/fma/fma24228> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0729815> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0005473 ;
+                   rdfs:label "sacral region" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0006800
+obo:UBERON_0006800 rdf:type owl:Class ;
+                   ilxtr:hasExistingId obo:UBERON_0006800 ,
+                                       <http://purl.org/sig/ont/fma/fma9657> ,
+                                       <http://uri.interlex.org/base/ilx_0734448> ;
+                   ilxtr:hasExternalId obo:UBERON_0006800 ,
+                                       <http://purl.org/sig/ont/fma/fma9657> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0734448> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0006800 ;
+                   rdfs:label "anatomical line" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0008784
+obo:UBERON_0008784 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0008784 ,
+                                       <http://purl.org/sig/ont/fma/fma24877> ,
+                                       <http://uri.interlex.org/base/ilx_0730641> ;
+                   ilxtr:hasExternalId obo:UBERON_0008784 ,
+                                       <http://purl.org/sig/ont/fma/fma24877> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0730641> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0008784 ;
+                   rdfs:label "lower limb segment" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0008785
+obo:UBERON_0008785 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   ilxtr:hasExistingId obo:UBERON_0008785 ,
+                                       <http://purl.org/sig/ont/fma/fma24876> ,
+                                       <http://uri.interlex.org/base/ilx_0725375> ;
+                   ilxtr:hasExternalId obo:UBERON_0008785 ,
+                                       <http://purl.org/sig/ont/fma/fma24876> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0725375> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0008785 ;
+                   rdfs:label "upper limb segment" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0012198
+obo:UBERON_0012198 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty obo:BFO_0000050 ;
+                                     owl:someValuesFrom obo:UBERON_0001443
+                                   ] ;
+                   ilxtr:hasExistingId obo:UBERON_0012198 ,
+                                       <http://purl.org/sig/ont/fma/fma12243> ,
+                                       <http://uri.interlex.org/base/ilx_0733269> ;
+                   ilxtr:hasExternalId obo:UBERON_0012198 ,
+                                       <http://purl.org/sig/ont/fma/fma12243> ;
+                   ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0733269> ;
+                   ilxtr:hasIlxPreferredId obo:UBERON_0012198 ;
+                   rdfs:label "intercostal space" .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0019243
+obo:UBERON_0019243 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:UBERON_0001062 ;
+                   rdfs:label "skin crease" .
+
+
+###  http://uri.interlex.org/base/ilx_0741680
+<http://uri.interlex.org/base/ilx_0741680> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0005473
+                                                           ] ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
+                                           <http://uri.interlex.org/base/ilx_0383241> "True" ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0741680> ,
+                                                               <https://taviewer.openanatomy.org/?id=A02.2.05.014> ;
+                                           ilxtr:hasExternalId <https://taviewer.openanatomy.org/?id=A02.2.05.014> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0741680> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0741680> ;
+                                           rdfs:label "median sacral crest" .
+
+
+###  http://uri.interlex.org/base/ilx_0741717
+<http://uri.interlex.org/base/ilx_0741717> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0005473
+                                                           ] ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
+                                           <http://uri.interlex.org/base/ilx_0383241> "True" ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0741717> ,
+                                                               <https://taviewer.openanatomy.org/?id=A02.2.05.020> ;
+                                           ilxtr:hasExternalId <https://taviewer.openanatomy.org/?id=A02.2.05.020> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0741717> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0741717> ;
+                                           rdfs:label "sacral hiatus" .
+
+
+###  http://uri.interlex.org/base/ilx_0741726
+<http://uri.interlex.org/base/ilx_0741726> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000033
+                                                           ] ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000033 ;
+                                           <http://uri.interlex.org/base/ilx_0383241> "True" ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0741726> ,
+                                                               <https://taviewer.openanatomy.org/?id=A02.1.03.010> ;
+                                           ilxtr:hasExternalId <https://taviewer.openanatomy.org/?id=A02.1.03.010> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0741726> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0741726> ;
+                                           NIFRID:synonym "foramen frontale" ,
+                                                          "frontal foramen" ,
+                                                          "frontal notch/foramen" ,
+                                                          "incisura frontalis/foramen frontale" ;
+                                           rdfs:label "frontal notch" .
+
+
+###  http://uri.interlex.org/base/ilx_0794954
+<http://uri.interlex.org/base/ilx_0794954> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0002398 ;
+                                           obo:IAO_0000115 "The dorsum of hand (dorsal area) is the corresponding area on the posterior part of the hand. This refers to the back of the hand, which is opposite of the palm side of the hand." ;
+                                           rdfs:label "dorsum of the hand" .
+
+
+###  http://uri.interlex.org/base/ilx_0795283
+<http://uri.interlex.org/base/ilx_0795283> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0012198 ;
+                                           obo:IAO_0000115 "The anatomical space between the first and second ribs, containing intercostal muscles, vessels, and nerves." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795283> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795283> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795283> ;
+                                           rdfs:label "first intercostal space" .
+
+
+###  http://uri.interlex.org/base/ilx_0795284
+<http://uri.interlex.org/base/ilx_0795284> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0004704 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001443
+                                                           ] ;
+                                           obo:IAO_0000115 "A small triangular depression located inferior to the clavicle, bounded by the clavicle, deltoid, and pectoralis major muscles." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795284> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795284> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795284> ;
+                                           rdfs:label "infraclavicular fossa" .
+
+
+###  http://uri.interlex.org/base/ilx_0795285
+<http://uri.interlex.org/base/ilx_0795285> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0006800 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000916
+                                                           ] ;
+                                           obo:IAO_0000115 "A vertical line running along the midline of the anterior body surface, aligned with the sternum. On the anterior abdominal and chest walls, the anterior median line can be seen extending from the jugular notch, crossing over the sternum and linea alba in their midline, and reaching out to the midline pubic symphysis." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795285> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795285> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795285> ;
+                                           rdfs:label "anterior median line" .
+
+
+###  http://uri.interlex.org/base/ilx_0795286
+<http://uri.interlex.org/base/ilx_0795286> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0008785
+                                                           ] ;
+                                           obo:IAO_0000115 "A triangular region bounded by the clavicle superiorly, the pectoralis major medially, and the deltoid laterally." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008785 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795286> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795286> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795286> ;
+                                           rdfs:label "clavipectoral triangle" .
+
+
+###  http://uri.interlex.org/base/ilx_0795287
+<http://uri.interlex.org/base/ilx_0795287> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001443
+                                                           ] ;
+                                           obo:IAO_0000115 "The anterior boundary of the axilla, formed by the lower border of the pectoralis major muscle." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795287> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795287> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795287> ;
+                                           rdfs:label "anterior axillary fold" .
+
+
+###  http://uri.interlex.org/base/ilx_0795288
+<http://uri.interlex.org/base/ilx_0795288> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0008785
+                                                           ] ;
+                                           obo:IAO_0000115 "The posterior aspect of the wrist, containing the extensor tendons and underlying carpal bones." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008785 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795288> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795288> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795288> ;
+                                           rdfs:label "dorsal wrist" .
+
+
+###  http://uri.interlex.org/base/ilx_0795289
+<http://uri.interlex.org/base/ilx_0795289> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0004704 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001461
+                                                           ] ;
+                                           obo:IAO_0000115 "The radial fossa, also called the anatomical snuffbox, is a triangular depression on the lateral wrist. It is bordered by the tendons of the extensor pollicis longus, extensor pollicis brevis, and abductor pollicis longus, with the scaphoid and trapezium forming its floor. It houses the radial artery and is clinically relevant for assessing scaphoid fractures or arterial pulse." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001461 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795289> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795289> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795289> ;
+                                           NIFRID:synonym "anatomical snuffbox" ;
+                                           rdfs:label "radial fossa" .
+
+
+###  http://uri.interlex.org/base/ilx_0795290
+<http://uri.interlex.org/base/ilx_0795290> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0000093 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001456
+                                                           ] ;
+                                           obo:IAO_0000115 "A shallow groove extending from the lateral aspect of the nostril to the corner of the mouth." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001456 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795290> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795290> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795290> ;
+                                           rdfs:label "nasolabial sulcus" .
+
+
+###  http://uri.interlex.org/base/ilx_0795291
+<http://uri.interlex.org/base/ilx_0795291> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0003129
+                                                           ] ;
+                                           obo:IAO_0000115 "The mandibular notch, also known as the sigmoid notch, is a groove in the ramus of the mandible. A curved depression between the coronoid and condylar processes of the mandible." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0003129 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795291> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795291> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795291> ;
+                                           NIFRID:synonym "sigmoid notch" ;
+                                           rdfs:label "mandibular notch" .
+
+
+###  http://uri.interlex.org/base/ilx_0795292
+<http://uri.interlex.org/base/ilx_0795292> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0006800 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000033
+                                                           ] ;
+                                           obo:IAO_0000115 "The demarcation at the anterior margin of the scalp where hair growth begins." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000033 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795292> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795292> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795292> ;
+                                           rdfs:label "anterior hairline" .
+
+
+###  http://uri.interlex.org/base/ilx_0795293
+<http://uri.interlex.org/base/ilx_0795293> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0004704 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000974
+                                                           ] ;
+                                           obo:IAO_0000115 "A small depression located superior to the clavicle and medial to the clavicular head of the sternocleidomastoid muscle." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000974 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795293> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795293> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795293> ;
+                                           rdfs:label "lesser supraclavicular fossa" .
+
+
+###  http://uri.interlex.org/base/ilx_0795294
+<http://uri.interlex.org/base/ilx_0795294> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0004704 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000974
+                                                           ] ;
+                                           obo:IAO_0000115 "The greater supraclavicular fossa refers to the larger, lateral depression above the clavicle, located lateral to the sternocleidomastoid muscle." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000974 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795294> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795294> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795294> ;
+                                           rdfs:label "greater supraclavicular fossa" .
+
+
+###  http://uri.interlex.org/base/ilx_0795295
+<http://uri.interlex.org/base/ilx_0795295> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0012198 ;
+                                           obo:IAO_0000115 "The anatomical space between the second and third ribs, containing intercostal muscles, vessels, and nerves." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795295> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795295> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795295> ;
+                                           rdfs:label "second intercostal space" .
+
+
+###  http://uri.interlex.org/base/ilx_0795296
+<http://uri.interlex.org/base/ilx_0795296> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001443
+                                                           ] ;
+                                           obo:IAO_0000115 "The sternal angle (angle of Louis, Ludwig, or Ludovicus) is the inclined junction between the anterior surfaces of the manubrium and body of the sternum." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795296> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795296> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795296> ;
+                                           rdfs:label "sternal angle" .
+
+
+###  http://uri.interlex.org/base/ilx_0795297
+<http://uri.interlex.org/base/ilx_0795297> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0012198 ;
+                                           obo:IAO_0000115 "The space between the third and fourth ribs, containing intercostal muscles, vessels, and nerves." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795297> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795297> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795297> ;
+                                           rdfs:label "third intercostal space" .
+
+
+###  http://uri.interlex.org/base/ilx_0795298
+<http://uri.interlex.org/base/ilx_0795298> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0012198 ;
+                                           obo:IAO_0000115 "The space between the fourth and fifth ribs, containing intercostal muscles, vessels, and nerves." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795298> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795298> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795298> ;
+                                           rdfs:label "fourth intercostal space" .
+
+
+###  http://uri.interlex.org/base/ilx_0795299
+<http://uri.interlex.org/base/ilx_0795299> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0012198 ;
+                                           obo:IAO_0000115 "The space between the fifth and sixth ribs, containing intercostal muscles, vessels, and nerves." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795299> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795299> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795299> ;
+                                           rdfs:label "fifth intercostal space" .
+
+
+###  http://uri.interlex.org/base/ilx_0795300
+<http://uri.interlex.org/base/ilx_0795300> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0006800 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001443
+                                                           ] ;
+                                           obo:IAO_0000115 "The nipple line is an imaginary horizontal reference line running around the body at the level of the nipples." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795300> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795300> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795300> ;
+                                           rdfs:label "nipple line" .
+
+
+###  http://uri.interlex.org/base/ilx_0795301
+<http://uri.interlex.org/base/ilx_0795301> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000916
+                                                           ] ;
+                                           obo:IAO_0000115 "The superior portion of the abdomen, located above the umbilicus and below the ribcage." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795301> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795301> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795301> ;
+                                           rdfs:label "upper abdomen" .
+
+
+###  http://uri.interlex.org/base/ilx_0795302
+<http://uri.interlex.org/base/ilx_0795302> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000916
+                                                           ] ;
+                                           obo:IAO_0000115 "The infrasternal angle (subcostal angle) is formed in front of thoracic cage by the cartilages of the tenth, ninth, eighth, and seventh ribs, which ascend on either side, where the apex of which the xiphoid process projects." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795302> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795302> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795302> ;
+                                           NIFRID:synonym "Mammillary line" ;
+                                           rdfs:label "infrasternal angle" .
+
+
+###  http://uri.interlex.org/base/ilx_0795303
+<http://uri.interlex.org/base/ilx_0795303> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000916
+                                                           ] ;
+                                           obo:IAO_0000115 "The inferior portion of the abdomen, located below the umbilicus and above the pelvic region." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795303> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795303> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795303> ;
+                                           rdfs:label "lower abdomen" .
+
+
+###  http://uri.interlex.org/base/ilx_0795304
+<http://uri.interlex.org/base/ilx_0795304> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001630 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0008784
+                                                           ] ;
+                                           obo:IAO_0000115 "The rectus femoris is a muscle in the anterior compartment of the thigh. It forms part of the quadriceps femoris muscle complex, and is the only muscle in this group to cross both the hip joint and the knee joints." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008784 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795304> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795304> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795304> ;
+                                           rdfs:label "rectus femoris muscle" .
+
+
+###  http://uri.interlex.org/base/ilx_0795305
+<http://uri.interlex.org/base/ilx_0795305> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0008784
+                                                           ] ;
+                                           obo:IAO_0000115 "A prominent bony projection on the medial aspect of the distal tibia, forming part of the ankle joint." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008784 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795305> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795305> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795305> ;
+                                           rdfs:label "medial malleolus" .
+
+
+###  http://uri.interlex.org/base/ilx_0795306
+<http://uri.interlex.org/base/ilx_0795306> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001443
+                                                           ] ;
+                                           obo:IAO_0000115 "The area of the thorax on the lateral body wall, containing portions of the serratus anterior and intercostal muscles." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795306> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795306> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795306> ;
+                                           rdfs:label "lateral thoracic region" .
+
+
+###  http://uri.interlex.org/base/ilx_0795307
+<http://uri.interlex.org/base/ilx_0795307> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0012198 ;
+                                           obo:IAO_0000115 "The space between the sixth and seventh ribs, containing intercostal muscles, vessels, and nerves." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795307> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795307> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795307> ;
+                                           rdfs:label "sixth intercostal space" .
+
+
+###  http://uri.interlex.org/base/ilx_0795308
+<http://uri.interlex.org/base/ilx_0795308> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0006800 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001443
+                                                           ] ;
+                                           obo:IAO_0000115 "A vertical line running down the lateral thorax from the apex of the axilla to the hip." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795308> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795308> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795308> ;
+                                           rdfs:label "midaxillary line" .
+
+
+###  http://uri.interlex.org/base/ilx_0795309
+<http://uri.interlex.org/base/ilx_0795309> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0004704 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0008785
+                                                           ] ;
+                                           obo:IAO_0000115 "A pyramidal depression located at the junction of the upper limb and thorax, commonly referred to as the armpit." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008785 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795309> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795309> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795309> ;
+                                           rdfs:label "axillary fossa" .
+
+
+###  http://uri.interlex.org/base/ilx_0795310
+<http://uri.interlex.org/base/ilx_0795310> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0004704 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001460
+                                                           ] ;
+                                           obo:IAO_0000115 "A triangular depression on the anterior aspect of the elbow, containing important neurovascular structures." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001460 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795310> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795310> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795310> ;
+                                           rdfs:label "cubital fossa" .
+
+
+###  http://uri.interlex.org/base/ilx_0795311
+<http://uri.interlex.org/base/ilx_0795311> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0008785
+                                                           ] ;
+                                           obo:IAO_0000115 "The posterior axillary fold, also known as the posterior armpit fold, refers to the inferior border of the posterior wall of axilla." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008785 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795311> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795311> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795311> ;
+                                           NIFRID:synonym "posterior armpit fold" ;
+                                           rdfs:label "posterior axillary fold" .
+
+
+###  http://uri.interlex.org/base/ilx_0795312
+<http://uri.interlex.org/base/ilx_0795312> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0006800 ;
+                                           obo:IAO_0000115 "A vertical line running along the posterior midline of the back, aligned with the spinous processes of the vertebrae." ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795312> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795312> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795312> ;
+                                           rdfs:label "posterior median line" .
+
+
+###  http://uri.interlex.org/base/ilx_0795313
+<http://uri.interlex.org/base/ilx_0795313> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0005473
+                                                           ] ;
+                                           obo:IAO_0000115 "The first opening in the posterior sacrum, allowing passage of sacral nerves." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795313> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795313> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795313> ;
+                                           rdfs:label "first posterior sacral foramen" .
+
+
+###  http://uri.interlex.org/base/ilx_0795314
+<http://uri.interlex.org/base/ilx_0795314> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0005473
+                                                           ] ;
+                                           obo:IAO_0000115 "The second opening in the posterior sacrum for sacral nerve passage." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795314> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795314> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795314> ;
+                                           rdfs:label "second posterior sacral foramen" .
+
+
+###  http://uri.interlex.org/base/ilx_0795315
+<http://uri.interlex.org/base/ilx_0795315> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0005473
+                                                           ] ;
+                                           obo:IAO_0000115 "The third opening in the posterior sacrum for sacral nerve passage." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795315> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795315> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795315> ;
+                                           rdfs:label "third posterior sacral foramen" .
+
+
+###  http://uri.interlex.org/base/ilx_0795316
+<http://uri.interlex.org/base/ilx_0795316> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0005473
+                                                           ] ;
+                                           obo:IAO_0000115 "The fourth opening in the posterior sacrum for sacral nerve passage." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0005473 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795316> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795316> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795316> ;
+                                           rdfs:label "fourth posterior sacral foramen" .
+
+
+###  http://uri.interlex.org/base/ilx_0795317
+<http://uri.interlex.org/base/ilx_0795317> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0000043 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0008784
+                                                           ] ;
+                                           obo:IAO_0000115 "The biceps femoris tendon is the rounded tendon that attaches the muscle bellies of the long and short heads of the biceps femoris muscle to the head of the fibula." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008784 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795317> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795317> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795317> ;
+                                           rdfs:label "biceps femoris tendon" .
+
+
+###  http://uri.interlex.org/base/ilx_0795318
+<http://uri.interlex.org/base/ilx_0795318> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001474 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001442
+                                                           ] ;
+                                           obo:IAO_0000115 "The long bone in the hand that connects the fourth finger to the carpal bones of the wrist. The fourth metacarpal bone is shorter and smaller than the third. The base is small and quadrilateral." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001442 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795318> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795318> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795318> ;
+                                           rdfs:label "fourth metacarpal bone" .
+
+
+###  http://uri.interlex.org/base/ilx_0795319
+<http://uri.interlex.org/base/ilx_0795319> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0008785
+                                                           ] ;
+                                           obo:IAO_0000115 "The scapular region refers to the area on the posterior thoracic wall corresponding to the location of the scapula (shoulder blade). It encompasses the structures overlying and surrounding the scapula, including associated muscles such as the trapezius, deltoid, and rotator cuff muscles." ;
+                                           rdfs:label "scapular region" .
+
+
+###  http://uri.interlex.org/base/ilx_0795320
+<http://uri.interlex.org/base/ilx_0795320> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000033
+                                                           ] ;
+                                           obo:IAO_0000115 "The supratragic tubercle is a small prominence on the auricle of the ear, located just above the tragus. It serves as an anatomical landmark and can vary in size and shape between individuals." ;
+                                           rdfs:label "supratragic tubercle" .
+
+
+###  http://uri.interlex.org/base/ilx_0795321
+<http://uri.interlex.org/base/ilx_0795321> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0012198 ;
+                                           obo:IAO_0000115 "The anatomical space between the seventh and eighth ribs, containing intercostal muscles, vessels, and nerves." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795321> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795321> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795321> ;
+                                           rdfs:label "seventh intercostal space" .
+
+
+###  http://uri.interlex.org/base/ilx_0795322
+<http://uri.interlex.org/base/ilx_0795322> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0006800 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001443
+                                                           ] ;
+                                           obo:IAO_0000115 "Midclavicular line is an important vertical reference line on the anterior chest wall. It connects the midclavicular point (superiorly) with the middle of the inguinal ligament (inferiorly)." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795322> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795322> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795322> ;
+                                           rdfs:label "midclavicular line" .
+
+
+###  http://uri.interlex.org/base/ilx_0795323
+<http://uri.interlex.org/base/ilx_0795323> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0006800 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001443
+                                                           ] ;
+                                           obo:IAO_0000115 "Posterior axillary line is an imaginary reference line which can be drawn on the posterior torso. It extends vertically downwards from the posterior axillary fold. The posterior axillary line runs in parallel to the midaxillary and anterior axillary lines." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001443 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795323> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795323> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795323> ;
+                                           rdfs:label "posterior axillary line" .
+
+
+###  http://uri.interlex.org/base/ilx_0795324
+<http://uri.interlex.org/base/ilx_0795324> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0008784
+                                                           ] ;
+                                           obo:IAO_0000115 "Your iliotibial band is a strong, thick band of tissue that runs down the outside of your thigh. It extends all the way from the hip bone to the top of the shinbone." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0008784 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795324> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795324> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795324> ;
+                                           rdfs:label "iliotibial band" .
+
+
+###  http://uri.interlex.org/base/ilx_0795325
+<http://uri.interlex.org/base/ilx_0795325> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0000043 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000978
+                                                           ] ;
+                                           obo:IAO_0000115 "The tibialis anterior tendon is the tendon of the tibialis anterior muscle, located on the front of the lower leg. It passes along the ankle and inserts on the medial cuneiform and the first metatarsal. This tendon enables dorsiflexion and inversion of the foot. The tibialis anterior tendon (TAT) begins at the distal one-third of the tibia. It is the most medial tendon of the ankle and foot." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000978 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795325> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795325> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795325> ;
+                                           rdfs:label "tibialis anterior tendon" .
+
+
+###  http://uri.interlex.org/base/ilx_0795326
+<http://uri.interlex.org/base/ilx_0795326> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0006800 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000033
+                                                           ] ;
+                                           obo:IAO_0000115 "The demarcation at the posterior margin of the scalp where hair growth begins, near the nape of the neck." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000033 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795326> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795326> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795326> ;
+                                           rdfs:label "posterior hairline" .
+
+
+###  http://uri.interlex.org/base/ilx_0795327
+<http://uri.interlex.org/base/ilx_0795327> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0000093 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0001456
+                                                           ] ;
+                                           obo:IAO_0000115 "The mentolabial sulcus is the vertical groove or fold that forms between the lower lip and the chin, marking the transition between the lower lip and the mental region of the face." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0001456 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795327> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795327> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795327> ;
+                                           rdfs:label "mentolabial sulcus" .
+
+
+###  http://uri.interlex.org/base/ilx_0795328
+<http://uri.interlex.org/base/ilx_0795328> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000974
+                                                           ] ;
+                                           obo:IAO_0000115 "A small prominence on the posterior end of the greater horn of hyoid bone, serving as an attachment point for muscles and ligaments. Each tubercle of hyoid bone provides an attachment site for a lateral thyrohyoid ligament." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000974 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795328> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795328> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795328> ;
+                                           rdfs:label "hyoid tubercle" .
+
+
+###  http://uri.interlex.org/base/ilx_0795329
+<http://uri.interlex.org/base/ilx_0795329> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000916
+                                                           ] ;
+                                           obo:IAO_0000115 "The inguinal crease refers to the skin fold or line that forms where the lower abdomen meets the thigh, often most noticeable when the hip is flexed. It marks the boundary between the abdominal and thigh regions." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000916 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795329> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795329> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795329> ;
+                                           rdfs:label "inguinal crease" .
+
+
+###  http://uri.interlex.org/base/ilx_0795330
+<http://uri.interlex.org/base/ilx_0795330> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000978
+                                                           ] ;
+                                           obo:IAO_0000115 "This is the visible skin fold or line at the back of the knee, formed when the knee is flexed. It is a superficial feature and serves as a landmark for the location of the popliteal fossa beneath." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000978 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795330> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795330> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795330> ;
+                                           rdfs:label "popliteal crease" .
+
+
+###  http://uri.interlex.org/base/ilx_0795331
+<http://uri.interlex.org/base/ilx_0795331> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0004704 ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:BFO_0000050 ;
+                                                             owl:someValuesFrom obo:UBERON_0000974
+                                                           ] ;
+                                           obo:IAO_0000115 "This is the depression on the skin surface of the neck between the sternal heads of the sternocleidomastoid muscles. This area is situated just above the manubrium of the sternum and is a visible landmark in the neck." ;
+                                           <http://uri.interlex.org/base/ilx_0112785> obo:UBERON_0000974 ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795331> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795331> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795331> ;
+                                           NIFRID:synonym "Fossa jugularis" ,
+                                                          "Interclavicular fossa" ,
+                                                          "Jugular notch" ;
+                                           rdfs:label "suprasternal fossa" .
+
+
+###  http://uri.interlex.org/base/ilx_0795332
+<http://uri.interlex.org/base/ilx_0795332> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0019243 ;
+                                           obo:IAO_0000115 "The anterior skin fold of the elbow, marking the transition between the upper arm and forearm, overlying the cubital fossa." ;
+                                           rdfs:label "cubital crease" .
+
+
+###  http://uri.interlex.org/base/ilx_0795333
+<http://uri.interlex.org/base/ilx_0795333> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0019243 ;
+                                           obo:IAO_0000115 "The dorsal wrist crease is the skin fold that forms on the back (dorsal) side of the wrist, often visible when the hand is extended. It marks the junction between the forearm and the hand and is located near the proximal ends of the metacarpal bones." ;
+                                           rdfs:label "dorsal wrist crease" .
+
+
+###  http://uri.interlex.org/base/ilx_0795334
+<http://uri.interlex.org/base/ilx_0795334> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0019243 ;
+                                           obo:IAO_0000115 "The palmar wrist crease is the transverse skin fold that appears on the palm side of the wrist when the hand is flexed. It marks the boundary between the forearm and the palm and is located approximately at the level of the distal radius and ulna." ;
+                                           rdfs:label "palmar wrist crease" .
+
+
+###  http://uri.interlex.org/base/ilx_0795335
+<http://uri.interlex.org/base/ilx_0795335> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0000043 ;
+                                           obo:IAO_0000115 "The tendon of the muscle that abducts and extends the thumb, located in the posterior compartment of the forearm." ;
+                                           rdfs:label "abductor pollicis longus tendon" .
+
+
+###  http://uri.interlex.org/base/ilx_0795336
+<http://uri.interlex.org/base/ilx_0795336> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0000043 ;
+                                           obo:IAO_0000115 "The tendon of the muscle extending the proximal phalanx of the thumb, positioned laterally in the forearm." ;
+                                           rdfs:label "extensor pollicis brevis tendon" .
+
+
+###  http://uri.interlex.org/base/ilx_0795337
+<http://uri.interlex.org/base/ilx_0795337> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0000043 ;
+                                           <http://uri.interlex.org/base/ilx_0112785> "The tendon of the muscle responsible for extending the thumb at the interphalangeal joint." ;
+                                           rdfs:label "extensor pollicis longus tendon" .
+
+
+###  http://uri.interlex.org/base/ilx_0795338
+<http://uri.interlex.org/base/ilx_0795338> rdf:type owl:Class ;
+                                           rdfs:subClassOf obo:UBERON_0001062 ;
+                                           obo:IAO_0000115 "The lateral supracondylar ridge (lateral supraepicondylar ridge or lateral supracondylar crest) is the sharp, prominent margin located along the lateral aspect of the distal end of the body of the humerus. It is the less curved of the two supracondylar ridges of the humerus, the other being the medial supracondylar ridge." ;
+                                           ilxr:type ns1:term ;
+                                           ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795338> ;
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795338> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795338> ;
+                                           rdfs:label "lateral supraepicondylar ridge" .
+
+
+#################################################################
+#    Annotations
+#################################################################
 
 <http://uri.interlex.org/base/ilx_0795339> ilxtr:hasExistingId <http://uri.interlex.org/base/ilx_0795339> ;
-	ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795339> ;
-	ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795339> ;
-	ilxr:type ns1:TermSet ;
-	obo:IAO_0000115 "Terms used by TARA Acupoints ontology" ;
-	rdfs:label "TARA Acupoint Ontology Termset" .
-# 
-# Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+                                           ilxtr:hasIlxId <http://uri.interlex.org/base/ilx_0795339> ;
+                                           ilxtr:hasIlxPreferredId <http://uri.interlex.org/base/ilx_0795339> ;
+                                           ilxr:type ns1:TermSet ;
+                                           obo:IAO_0000115 "Terms used by TARA Acupoints ontology" ;
+                                           rdfs:label "TARA Acupoint Ontology Termset" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
