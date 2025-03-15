@@ -2,6 +2,7 @@
 
 1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
 2. [Ontology Versions Summary](#ontology-versions-summary)
+   + [Version 0.7 (March 15, 2025)] (#version-07-march-15-2025)
    + [Version 0.6 (December 12, 2024)](#version-06-december-12-2024)
    + [Version 0.5.1 (July 12, 2024)](#version-051-july-12-2024)
    + [Version 0.5.1 (July 11, 2024)](#version-051-july-11-2024)
@@ -27,6 +28,31 @@ Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/
 ## Ontology Versions Summary
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
+
+### Version 0.7 (March 15, 2025)
+
+* **Expanded Locational Axioms for Acupoints** :
+  * Added 1,172 axioms associating acupoints with their surface locations, covering 262 unique locations.
+  * Only 18 related surface locations remain to complete the locational axioms for all meridian acupoints. These locations have been identified in FMA and are pending expert review for inclusion in InterLeX.
+* **Enhanced Terminology Coverage** :
+  * Added additional synonyms for acupoints and meridians to improve semantic alignment and searchability.
+* **Incorporated Acupuncture Research Metadata** :
+  * Added metadata for 87 unique articles on acupuncture for pain-related conditions, including detailed provenance and study methodologies.
+  * Standardized and mapped a major subset of acupoints extracted from the articles to TARA ontology's standard acupoints (113 unique acupoints across different meridians).
+  * Mapped a major subset of extracted pain-related conditions studied in the articles to MONDO, HP, and ILX terms, integrating 28 unique conditions into the TARA ontology.
+* **Added Annotation Properties for Acupoint-Specific Research Metadata** :
+  * Added new properties to incorporate metadata from journal articles on acupuncture treatments for various conditions.
+    * Added these properties to capture key details of acupuncture studies:
+  * Annotation Properties by Domain and Range :
+    * **Domain: Journal Article (DOI); Range: Free Text**
+      * `TARA:hasTrialType`, `TARA:hasAcupunctureModality`, `TARA:hasStimulationType`
+      * `TARA:hasNeedlingInformation`, `TARA:hasSampleSizeInformation`, `TARA:hasControlsInformation`
+      * `TARA:hasListedAcupointsUsed`, `TARA:hasStudiedConditionNote`, `TARA:hasStudiedConditionContext`
+      * `TARA:hasCountryInformation`
+    * **Domain: Journal Article (DOI); Range: Controlled Term (MONDO/HPO)**
+      * `TARA:hasStudiedCondition` – Links studied conditions to standardized MONDO and HPO terms.
+    * **Domain: Controlled Term (TARA Acupoint); Range: Journal Article (DOI)**
+      * `TARA:isStudiedInArticle` – Captures references to journal articles studying specific acupoints.
 
 ### Version 0.6 (December 12, 2024)
 
