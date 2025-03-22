@@ -2,6 +2,7 @@
 
 1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
 2. [Ontology Versions Summary](#ontology-versions-summary)
+   + [Version 0.7.1 (March 20, 2025)](#version-071-march-20-2025)
    + [Version 0.7 (March 15, 2025)](#version-07-march-15-2025)
    + [Version 0.6 (December 12, 2024)](#version-06-december-12-2024)
    + [Version 0.5.1 (July 12, 2024)](#version-051-july-12-2024)
@@ -29,6 +30,20 @@ Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
 
+### Version 0.7.1 (March 20, 2025)
+* **Refactored Ontology IRIs** :
+  * The namespace for ontology terms has been updated from `http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#` to `http://www.acupunctureresearch.org/tara/ontology/`. This change simplifies namespace handling, improves compatibility with Linked Data standards, and enhances interoperability with other ontologies. All TARA-specific class and property IRIs now follow the updated structure.
+    * For example, the IRI for the acupoint labeled as `BL 10` is now referenced as
+      `http://www.acupunctureresearch.org/tara/ontology/TARA_0242146` instead of 
+      `http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#TARA_0242146`
+* **Updated Locational Axioms for Acupoints** :
+  * The ontology now includes axioms associating acupoints with their surface locations for all meridian acupoints. 
+  * Additionally, locational axioms have been added for five extra acupoints related to pain conditions found in the literature: Dingchuan, Huatuojiaji, Taiyang, Heding, and Xiyan. 
+  * The ontology currently includes 1,197 locational axioms, covering 266 unique locations on the body surface.
+* **Updated Article Metadata** :
+  * The article metadata for pain-related research has been updated with additional acupoints and mapped to TARA standard acupoints.  
+  * Also includes a cleaner version of the article metadata, particularly correcting cases where needling information was swapped with stimulation types.
+
 ### Version 0.7 (March 15, 2025)
 
 * **Expanded Locational Axioms for Acupoints** :
@@ -38,7 +53,7 @@ This section will be updated periodically based on the release of the newer vers
   * Added additional synonyms for acupoints and meridians to improve semantic alignment and searchability.
 * **Incorporated Acupuncture Research Metadata** :
   * Added metadata for 87 unique articles on acupuncture for pain-related conditions, including detailed provenance and study methodologies.
-  * Standardized and mapped a major subset of acupoints extracted from the articles to TARA ontology's standard acupoints (113 unique acupoints across different meridians).
+  * Normalized and mapped a major subset of acupoints extracted from the articles to TARA ontology's standard acupoints (113 unique acupoints across different meridians).
   * Mapped a major subset of extracted pain-related conditions studied in the articles to MONDO, HP, and ILX terms, integrating 28 unique conditions into the TARA ontology.
 * **Added Annotation Properties for Acupoint-Specific Research Metadata** :
   * Added new properties to incorporate metadata from journal articles on acupuncture treatments for various conditions.
