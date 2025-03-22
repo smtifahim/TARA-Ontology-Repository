@@ -18,8 +18,7 @@
 
 <http://www.acupunctureresearch.org/tara/ontology/tara-acupoints-upper.owl> rdf:type owl:Ontology ;
                                                                              protege:defaultLanguage "en"^^xsd:string ;
-                                                                             dc:description "Upper ontology for TARA Acupoints Ontology. It uses some of the upper level classes from UBERON extending the Basic Formal Ontology (BFO). Additioanly it imports the basic hierarchy of the organ terms from UBERON associated with the main meridians of the acupoints. It also includes the minimal subset of properties from relation ontology (RO Core). For annotation properties, it imports a subset of the Information Artifact Ontology (IAO). -Fahim Imam"@en ;
-                                                                             dc:title "TARA Acupoints Ontology - Upper Level" ;
+                                                                             rdfs:comment "This file contains the upper ontology terms for the core TARA Acupoints Ontology. It uses some of the upper level classes from UBERON, extending the Basic Formal Ontology (BFO). Additioanly, it imports the basic hierarchy of the organ terms from UBERON associated with the main meridians of the acupoints. It also includes the minimal subset of properties from relation ontology (RO Core). For annotation properties, it imports a subset of the Information Artifact Ontology (IAO). - Fahim Imam"@en ;
                                                                              rdfs:seeAlso <https://github.com/information-artifact-ontology/IAO> ,
                                                                                           "https://github.com/oborel/obo-relations/wiki/ROCore"^^xsd:anyURI ,
                                                                                           "https://obofoundry.org/ontology/bfo.html"^^xsd:anyURI ,

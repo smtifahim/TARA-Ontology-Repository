@@ -21,7 +21,7 @@ namespaces = {
                 "IAO"       :     "http://purl.obolibrary.org/obo/IAO_",
                 "RO"        :     "http://purl.obolibrary.org/obo/RO_",
                 "BFO"       :     "http://purl.obolibrary.org/obo/BFO_",
-                "TARA"      :     "http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#",
+                "TARA"      :     "http://www.acupunctureresearch.org/tara/ontology/",
                 "UBERON"    :     "http://purl.obolibrary.org/obo/UBERON_",
                 "OboInOwl"  :     "http://www.geneontology.org/formats/oboInOwl#",
                 "swrl"      :     "http://www.w3.org/2003/11/swrl#",
@@ -296,7 +296,11 @@ class AcupointsOntologyAdapter:
                 g.add((acupoint_uri, RDFS.label, Literal(label)))
                 
                 if superclass:
-                    g.add ((acupoint_uri, RDFS.subClassOf, TARA.Extra_Acupoint))
+                    if superclass == "TARA:Extra_Acupoint":
+                        g.add ((acupoint_uri, RDFS.subClassOf, TARA.Extra_Acupoint))
+                    else:
+                        g.add ((acupoint_uri, RDFS.subClassOf, URIRef(create_uri(superclass))))
+
 
                 # Add each synonym as an annotation property
                 if synonyms:
@@ -532,7 +536,7 @@ class AcupointsOntologyAdapter:
                         prefix, term = identifier.split(":")
                         
                         if prefix == "TARA":
-                            tara_uri = f"http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#{term}"
+                            tara_uri = f"http://www.acupunctureresearch.org/tara/ontology/{term}"
                             g.add((URIRef(tara_uri), TARA.isStudiedInArticle, doi_uri))
                         else:
                             raise ValueError("Invalid prefix. Expected 'TARA'.")

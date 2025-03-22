@@ -9,7 +9,7 @@ import hashlib
 import re
 
 # Base namespace for new IRIs
-base_namespace = "http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#"
+base_namespace = "http://www.acupunctureresearch.org/tara/ontology/"
 
 # Dictionary to keep track of generated IDs and ensure uniqueness
 generated_ids = {}
@@ -28,9 +28,9 @@ def convert_iri(old_iri):
     if old_iri in iri_mapping:
         return iri_mapping[old_iri]
 
-    # Match the pattern e.g., http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#Meridian_Acupoint
+    # Match the pattern e.g., http://www.acupunctureresearch.org/tara/ontology/Meridian_Acupoint
     # (TARA:Meridan_Acupoint) 
-    pattern = re.compile(r"http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#(.*)")
+    pattern = re.compile(r"http://www.acupunctureresearch.org/tara/ontology/(.*)")
     match = pattern.match(old_iri)
     if match:
         class_name = match.group(1)
@@ -56,6 +56,20 @@ def is_property(graph, iri):
             return True
     return False
 
+# Check if the given IRI refers to an owl:Ontology and has an owl:versionIRI.
+def is_ontology(graph, iri):
+    for s, p, o in graph.triples((iri, rdflib.RDF.type, rdflib.OWL.Ontology)):
+        return True
+    return False
+
+# # Check if the given IRI is owl:versionIRI.
+# def is_version_iri (graph, iri):
+#     for s, p, o in graph.triples((None, rdflib.OWL.versionIRI, iri)):
+#         print ("\nTESTING VERSION IRI********" + iri)
+#         return True
+#     return False
+
+
 # Path to the Turtle files
 # input_ttl_file = "../ontology-files/generated/tara-acupoints.ttl"
 # output_ttl_file = "../ontology-files/generated/test-ontology.ttl"
@@ -76,12 +90,12 @@ def convert_iri_suffixes_to_numeric(input_ttl_file, output_ttl_file):
 
     # Iterate over all triples in the graph
     for subj, pred, obj in graph:
-        if isinstance(subj, rdflib.URIRef) and not is_property(graph, subj):
+        if isinstance(subj, rdflib.URIRef) and not is_property(graph, subj) and not is_ontology(graph, subj):
             new_subj = rdflib.URIRef(convert_iri(str(subj)))
         else:
             new_subj = subj
         
-        if isinstance(obj, rdflib.URIRef) and not is_property(graph, obj):
+        if isinstance(obj, rdflib.URIRef) and not is_property(graph, obj) and not is_ontology(graph, obj):
             new_obj = rdflib.URIRef(convert_iri(str(obj)))
         else:
             new_obj = obj

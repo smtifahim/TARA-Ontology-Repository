@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://uri.interlex.org/base/ontologies/ilx_0795339/version/1733953855/ilx_0795339" uri="imported-terms/tara-interlex-anatomical-terms.ttl"/>
+    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/tara/external/uberon-import.owl" uri="imported-terms/tara-uberon-anatomical-terms.ttl"/>
+    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/tara/external/terms" uri="file:/Users/fahimimam/Desktop/terms.owl"/>
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/tara/external/tara_mondo_hp_import.owl" uri="tara_mondo_hp_import.ttl"/>
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/tara/external/tara-iao.owl" uri="file:/Users/fahimimam/Desktop/tara-iao.ttl"/>
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/tara/external/uberon-import.owl" uri="tara-uberon-anatomical-terms.ttl"/>

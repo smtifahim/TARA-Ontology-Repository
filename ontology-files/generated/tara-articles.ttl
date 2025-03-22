@@ -2,7 +2,7 @@
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix ILX: <http://uri.interlex.org/base/ilx_> .
 @prefix MONDO: <http://purl.obolibrary.org/obo/MONDO_> .
-@prefix TARA: <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#> .
+@prefix TARA: <http://www.acupunctureresearch.org/tara/ontology/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 
@@ -10,6 +10,7 @@ TARA:TARA_0220496 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
         <https://doi.org/10.1097/00002508-199809000-00012>,
         <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
         <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1136/aim.22.2.60>,
         <https://doi.org/10.1136/bmj.322.7302.1574> .
 
 TARA:TARA_0242146 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
@@ -18,7 +19,8 @@ TARA:TARA_0242146 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
         <https://doi.org/10.1097/00002508-199809000-00012>,
         <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
         <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
-        <https://doi.org/10.1136/bmj.322.7302.1574> .
+        <https://doi.org/10.1136/bmj.322.7302.1574>,
+        <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_0337120 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012>,
         <https://doi.org/10.1111/j.1526-4610.2006.00598.x> .
@@ -26,7 +28,8 @@ TARA:TARA_0337120 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-1998
 TARA:TARA_0427594 TARA:isStudiedInArticle <https://doi.org/10.1136/aim.19.1.19> .
 
 TARA:TARA_0434959 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
-        <https://doi.org/10.1046/j.1526-4610.2002.02203.x> .
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
 
 TARA:TARA_0488267 TARA:isStudiedInArticle <https://doi.org/10.1054/ctim.2001.0442> .
 
@@ -36,6 +39,7 @@ TARA:TARA_0859695 TARA:isStudiedInArticle <https://doi.org/10.1001/archotol.125.
         <https://doi.org/10.1007/s100720300062>,
         <https://doi.org/10.1016/j.apmr.2004.11.044>,
         <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1016/s0966-6532(98)00049-3>,
         <https://doi.org/10.1046/j.1365-2044.1999.01030.x>,
         <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
         <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
@@ -50,6 +54,7 @@ TARA:TARA_0859695 TARA:isStudiedInArticle <https://doi.org/10.1001/archotol.125.
         <https://doi.org/10.1111/j.1526-4610.2004.04077.x>,
         <https://doi.org/10.1111/j.1533-2500.2007.00140.x>,
         <https://doi.org/10.1136/aim.19.1.19>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
         <https://doi.org/10.1159/000048847>,
         <https://doi.org/10.1177/0163278704273081>,
         <https://doi.org/10.1186/1472-6882-7-35>,
@@ -69,7 +74,8 @@ TARA:TARA_0992296 TARA:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(02
         <https://doi.org/10.1089/107555303322284767>,
         <https://doi.org/10.1097/00002508-200311000-00004>,
         <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
-        <https://doi.org/10.1371/journal.pone.0000919> .
+        <https://doi.org/10.1371/journal.pone.0000919>,
+        <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_1031890 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
 
@@ -87,7 +93,8 @@ TARA:TARA_1628341 TARA:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05
 
 TARA:TARA_1698911 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
 
-TARA:TARA_1985889 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
+TARA:TARA_1985889 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_2187225 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
 
@@ -105,10 +112,6 @@ TARA:TARA_2324295 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
         <https://doi.org/10.1186/1471-2474-7-99> .
 
 TARA:TARA_2442762 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
-        <https://doi.org/10.1089/acm.2005.11.663>,
-        <https://doi.org/10.1093/ecam/neh097>,
-        <https://doi.org/10.1093/humrep/del110>,
-        <https://doi.org/10.1213/01.ane.0000253233.51490.dd>,
         <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_2454652 TARA:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
@@ -139,12 +142,14 @@ TARA:TARA_3386254 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
         <https://doi.org/10.1111/j.1526-4610.2006.00598.x> .
 
 TARA:TARA_3515622 TARA:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00)00315-8>,
-        <https://doi.org/10.1046/j.1468-2982.2001.00198.x> .
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
 
 TARA:TARA_3553465 TARA:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
         <https://doi.org/10.1046/j.1365-2044.1999.01030.x>,
         <https://doi.org/10.1080/165019702760279233>,
-        <https://doi.org/10.1089/acm.1999.5.521> .
+        <https://doi.org/10.1089/acm.1999.5.521>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
 
 TARA:TARA_3668538 TARA:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00)00315-8>,
         <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
@@ -152,13 +157,16 @@ TARA:TARA_3668538 TARA:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00
         <https://doi.org/10.1111/j.1526-4610.2006.00598.x>,
         <https://doi.org/10.1136/aim.22.2.60> .
 
-TARA:TARA_3734471 TARA:isStudiedInArticle <https://doi.org/10.1186/1471-2474-7-99> .
+TARA:TARA_3734471 TARA:isStudiedInArticle <https://doi.org/10.1136/aim.22.2.60>,
+        <https://doi.org/10.1186/1471-2474-7-99> .
 
 TARA:TARA_3748376 TARA:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
 
-TARA:TARA_3770332 TARA:isStudiedInArticle <https://doi.org/10.1186/1472-6882-7-35> .
+TARA:TARA_3770332 TARA:isStudiedInArticle <https://doi.org/10.1136/bmj.38512.405440.8f>,
+        <https://doi.org/10.1186/1472-6882-7-35> .
 
-TARA:TARA_3963382 TARA:isStudiedInArticle <https://doi.org/10.1111/j.0001-6349.2004.0215.x> .
+TARA:TARA_3963382 TARA:isStudiedInArticle <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_4311153 TARA:isStudiedInArticle <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
         <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
@@ -166,7 +174,8 @@ TARA:TARA_4311153 TARA:isStudiedInArticle <https://doi.org/10.1046/j.1526-4610.2
         <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_4362146 TARA:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
-        <https://doi.org/10.1097/00002508-200311000-00004> .
+        <https://doi.org/10.1097/00002508-200311000-00004>,
+        <https://doi.org/10.1136/aim.22.2.60> .
 
 TARA:TARA_4384020 TARA:isStudiedInArticle <https://doi.org/10.1034/j.1600-0412.2000.079005331.x>,
         <https://doi.org/10.1111/j.0001-6349.2004.0215.x> .
@@ -178,9 +187,12 @@ TARA:TARA_4385250 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
         <https://doi.org/10.1089/acm.2005.11.663>,
         <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
         <https://doi.org/10.1111/j.1468-2982.2006.01209.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
         <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_4589241 TARA:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
+
+TARA:TARA_4839095 TARA:isStudiedInArticle <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_5047947 TARA:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
         <https://doi.org/10.1016/s0304-3959(00)00315-8>,
@@ -239,6 +251,7 @@ TARA:TARA_6463344 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
         <https://doi.org/10.1089/acm.2005.11.663>,
         <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
         <https://doi.org/10.1111/j.1526-4610.2004.04077.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
         <https://doi.org/10.1177/0269215507077362>,
         <https://doi.org/10.1186/1472-6882-7-35>,
         <https://doi.org/10.4065/81.6.749> .
@@ -262,15 +275,19 @@ TARA:TARA_6615149 TARA:isStudiedInArticle <https://doi.org/10.1001/archotol.125.
 
 TARA:TARA_6714942 TARA:isStudiedInArticle <https://doi.org/10.1177/0269215507077362> .
 
+TARA:TARA_6794934 TARA:isStudiedInArticle <https://doi.org/10.4065/81.6.749> .
+
 TARA:TARA_6862058 TARA:isStudiedInArticle <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_6929444 TARA:isStudiedInArticle <https://doi.org/10.1034/j.1600-0412.2000.079005331.x> .
 
-TARA:TARA_7357260 TARA:isStudiedInArticle <https://doi.org/10.1111/j.0001-6349.2004.0215.x> .
+TARA:TARA_7357260 TARA:isStudiedInArticle <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.4065/81.6.749> .
 
 TARA:TARA_7407065 TARA:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
 
-TARA:TARA_7510801 TARA:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
+TARA:TARA_7510801 TARA:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
 
 TARA:TARA_7690229 TARA:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
 
@@ -303,6 +320,7 @@ TARA:TARA_8393005 TARA:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00
         <https://doi.org/10.1111/j.1526-4610.2006.00598.x>,
         <https://doi.org/10.1136/aim.22.2.60>,
         <https://doi.org/10.1136/bmj.322.7302.1574>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
         <https://doi.org/10.1186/1472-6882-7-35> .
 
 TARA:TARA_8433932 TARA:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
@@ -315,7 +333,8 @@ TARA:TARA_8440155 TARA:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00
         <https://doi.org/10.1111/j.1468-2982.2006.01209.x>,
         <https://doi.org/10.1136/aim.19.1.19> .
 
-TARA:TARA_8452754 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
+TARA:TARA_8452754 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
 
 TARA:TARA_8557069 TARA:isStudiedInArticle <https://doi.org/10.1097/00002508-200311000-00004>,
         <https://doi.org/10.1371/journal.pone.0000919> .
@@ -331,6 +350,7 @@ TARA:TARA_8758950 TARA:isStudiedInArticle <https://doi.org/10.1016/j.pain.2004.0
         <https://doi.org/10.1111/j.1468-2982.2006.01209.x>,
         <https://doi.org/10.1136/aim.19.1.19>,
         <https://doi.org/10.1136/bmj.322.7302.1574>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
         <https://doi.org/10.1177/0269215507077362>,
         <https://doi.org/10.1186/1472-6882-7-35> .
 
@@ -355,6 +375,8 @@ TARA:TARA_9020892 TARA:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2
 
 TARA:TARA_9128934 TARA:isStudiedInArticle <https://doi.org/10.1034/j.1600-0412.2000.079005331.x> .
 
+TARA:TARA_9191188 TARA:isStudiedInArticle <https://doi.org/10.1136/bmj.38512.405440.8f> .
+
 TARA:TARA_9254368 TARA:isStudiedInArticle <https://doi.org/10.1111/j.1526-4610.2006.00598.x> .
 
 TARA:TARA_9378285 TARA:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(02)00269-5>,
@@ -363,7 +385,8 @@ TARA:TARA_9378285 TARA:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(02
         <https://doi.org/10.1136/aim.19.1.19>,
         <https://doi.org/10.1136/aim.22.2.60> .
 
-TARA:TARA_9531666 TARA:isStudiedInArticle <https://doi.org/10.1054/ctim.2001.0442> .
+TARA:TARA_9531666 TARA:isStudiedInArticle <https://doi.org/10.1054/ctim.2001.0442>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
 
 TARA:TARA_9534465 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
         <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
@@ -390,11 +413,11 @@ TARA:TARA_9987270 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
     TARA:hasCountryInformation "United States" ;
     TARA:hasDOI "DOI: https://doi.org/10.1001/archinte.161.8.1081" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Manual manipulation to achieve \"de qi\" sensation; Electrical stimulation used in 51% of patients (specific frequency not mentioned)" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
     TARA:hasPublicationDate "2001" ;
     TARA:hasPublicationVenue "Archives of Internal Medicine" ;
     TARA:hasSampleSizeInformation "Total: 262, Acupuncture: 94, Massage: 78, Self-care education: 90" ;
-    TARA:hasStimulationType "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    TARA:hasStimulationType "Manual manipulation to achieve \"de qi\" sensation; Electrical stimulation used in 51% of patients (specific frequency not mentioned)" ;
     TARA:hasStudiedCondition HP:0003419 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "chronic low back pain" ;
@@ -429,11 +452,11 @@ TARA:TARA_9987270 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
     TARA:hasCountryInformation "Germany" ;
     TARA:hasDOI "DOI: https://doi.org/10.1007/s10194-007-0416-5" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Manual stimulation to achieve De Qi; no specific frequency mentioned" ;
+    TARA:hasNeedlingInformation "Verum acupuncture: 2-30 mm; Sham acupuncture: 1-3 mm" ;
     TARA:hasPublicationDate "2007" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 409 participants; Verum group: 209 participants; Sham group: 200 participants" ;
-    TARA:hasStimulationType "Verum acupuncture: 2-30 mm; Sham acupuncture: 1-3 mm" ;
+    TARA:hasStimulationType "Manual stimulation to achieve De Qi; no specific frequency mentioned" ;
     TARA:hasStudiedCondition HP:0012228 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "tension-type headache (TTH)" ;
@@ -448,11 +471,11 @@ TARA:TARA_9987270 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
     TARA:hasCountryInformation "Sweden" ;
     TARA:hasDOI "DOI: https://doi.org/10.1016/0304-3959(90)92269-v" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Manual acupuncture: twirling every 10 minutes; Low-TENS: 1.7 Hz" ;
+    TARA:hasNeedlingInformation "5 to 10 mm" ;
     TARA:hasPublicationDate "1998" ;
     TARA:hasPublicationVenue "Journal of Orofacial Pain" ;
     TARA:hasSampleSizeInformation "21 participants in total" ;
-    TARA:hasStimulationType "5 to 10 mm" ;
+    TARA:hasStimulationType "Manual acupuncture: twirling every 10 minutes; Low-TENS: 1.7 Hz" ;
     TARA:hasStudiedCondition HP:0040312 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "Temporomandibular disorders (TMD) with chronic orofacial muscular pain" ;
@@ -488,12 +511,12 @@ TARA:TARA_9987270 TARA:isStudiedInArticle <https://doi.org/10.1007/s100720300062
     TARA:hasCountryInformation "Germany" ;
     TARA:hasDOI "DOI: https://doi.org/10.1016/j.pain.2006.05.013" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "manual stimulation (specific frequency or technique not mentioned)" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify needle depth or angle for acupuncture)" ;
     TARA:hasPublicationDate "2006" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation """Total: 14,161, Randomized Acupuncture Group: 1,880, Randomized Control Group: 1,886, Non-randomized Acupuncture Group: 10,395
 Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, Non-randomized Acupuncture Group: 10,395""" ;
-    TARA:hasStimulationType "Not mentioned (the paper does not specify needle depth or angle for acupuncture)" ;
+    TARA:hasStimulationType "manual stimulation (specific frequency or technique not mentioned)" ;
     TARA:hasStudiedCondition HP:0030833 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "chronic neck pain" ;
@@ -501,7 +524,7 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
 
 <https://doi.org/10.1016/s0161-4754(99)70082-5> a IAO:0000013,
         owl:NamedIndividual ;
-    dc:title "randomized, independently assessed preintervention and postintervention (treatment period 4 weeks) clinical pilot trial at the Townsville General Hospital outpa-a" ;
+    dc:title "Chronic spinal pain syndromes: A clinical pilot trial comparing acupuncture, a nonsteroidal anti-inflammatory drug, and spinal manipulation" ;
     TARA:hasAcupunctureModality "Acupuncture was performed using sterile HWATO Chinese disposable acupuncture guide tube needles (50 mm long, 0.25 mm gauge) with an average of 8 to 10 needles placed in local tender and distant points using the \"near and far\" technique. Low-voltage electrical stimulation was applied to the needles once tolerated by the patient. Six treatments were administered over a 3-to 4-week period." ;
     TARA:hasAuthor "Lynton G F Giles, Reinhold Müller" ;
     TARA:hasControlsInformation "Not mentioned (the study compares three active interventions without a traditional control group)" ;
@@ -510,7 +533,7 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
     TARA:hasListedAcupointsUsed "" ;
     TARA:hasNeedlingInformation "Not mentioned (the paper specifies needle length and gauge but not depth or angle of insertion)" ;
     TARA:hasPublicationDate "1999" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 77 participants, Spinal manipulation: 36, Acupuncture: 20, Medication: 21" ;
     TARA:hasStimulationType "Electrical stimulation applied at the patient's comfortable tolerance level; specific frequency not mentioned" ;
     TARA:hasStudiedCondition MONDO:0024317 ;
@@ -529,7 +552,7 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
     TARA:hasListedAcupointsUsed "" ;
     TARA:hasNeedlingInformation "Needle depth: 10-30 mm; Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2002" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 131 participants; Control group: 46; Acupuncture group: 40; Sham-acupuncture group: 45" ;
     TARA:hasStimulationType "Manual stimulation until 'de qi' sensation, lasting 5-20 seconds" ;
     TARA:hasStudiedCondition HP:0003419 ;
@@ -546,11 +569,11 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
     TARA:hasCountryInformation "Germany" ;
     TARA:hasDOI "DOI: https://doi.org/10.1016/s0304-3959(02)00062-3" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Manual stimulation to provoke a local twitch response; no specific frequency mentioned" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper does not provide specific details on needle depth or angle)" ;
     TARA:hasPublicationDate "2002" ;
     TARA:hasPublicationVenue "Pain" ;
     TARA:hasSampleSizeInformation "Total initial sample size: 36 patients; Completed the trial: 34 patients" ;
-    TARA:hasStimulationType "Not mentioned (the paper does not provide specific details on needle depth or angle)" ;
+    TARA:hasStimulationType "Manual stimulation to provoke a local twitch response; no specific frequency mentioned" ;
     TARA:hasStudiedCondition HP:0030833 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "chronic neck pain" ;
@@ -565,11 +588,11 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
     TARA:hasCountryInformation "United Kingdom" ;
     TARA:hasDOI "DOI: https://doi.org/10.1016/s0304-3959(99)00027-5" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Manual acupuncture; specific frequency of needle manipulation not mentioned" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper provides needle size but does not specify needle depth or angle of insertion)" ;
     TARA:hasPublicationDate "1999" ;
     TARA:hasPublicationVenue "Pain" ;
     TARA:hasSampleSizeInformation "Total: 60 participants; Acupuncture group: 32; TENS group: 28" ;
-    TARA:hasStimulationType "Not mentioned (the paper provides needle size but does not specify needle depth or angle of insertion)" ;
+    TARA:hasStimulationType "Manual acupuncture; specific frequency of needle manipulation not mentioned" ;
     TARA:hasStudiedCondition HP:0003419 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "chronic back pain" ;
@@ -596,18 +619,18 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
 
 <https://doi.org/10.1016/s1474-4422(06)70382-9> a IAO:0000013,
         owl:NamedIndividual ;
-    dc:title "Effi cacy of acupuncture for the prophylaxis of migraine: a multicentre randomised controlled clinical trial" ;
+    dc:title "Efficacy of acupuncture for the prophylaxis of migraine: a multicentre randomised controlled clinical trial" ;
     TARA:hasAcupunctureModality "Body needle acupuncture without electrical stimulation or moxibustion, using sterile, single-use needles (0.25-0.30 mm thick, 25-40 mm long), with manual stimulation to achieve \"De Qi\". Sessions were 30 minutes each, over six weeks." ;
     TARA:hasAuthor "Hans-Christoph C Diener, Kai Kronfeld, Gabriele Boewing, Margitta Lungenhausen, Christoph Maier, Albrecht Molsberger, Martin Tegenthoff, Hans-Joachim Trampisch, Michael Zenz, Rolf Meinert, Gerac Migraine, Study Group" ;
     TARA:hasControlsInformation "Sham acupuncture and standard therapy (beta blockers, flunarizine, or valproic acid) were used as controls in the study." ;
     TARA:hasCountryInformation "Germany" ;
     TARA:hasDOI "DOI: https://doi.org/10.1016/s1474-4422(06)70382-9" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Manual stimulation to achieve \"De Qi\" for verum acupuncture; no stimulation for sham acupuncture." ;
+    TARA:hasNeedlingInformation "Verum acupuncture: 2-20 mm; Sham acupuncture: maximum 3 mm" ;
     TARA:hasPublicationDate "2005" ;
     TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total randomized: 960, Verum acupuncture: 313, Sham acupuncture: 339, Standard therapy: 308" ;
-    TARA:hasStimulationType "Verum acupuncture: 2-20 mm; Sham acupuncture: maximum 3 mm" ;
+    TARA:hasStimulationType "Manual stimulation to achieve \"De Qi\" for verum acupuncture; no stimulation for sham acupuncture." ;
     TARA:hasStudiedCondition MONDO:0005277 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "migraine" ;
@@ -643,7 +666,7 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
     TARA:hasListedAcupointsUsed "" ;
     TARA:hasNeedlingInformation "The depth of needle insertion for real acupuncture depended on the location of the acupoint and the thickness of the subcutaneous fat. For false acupuncture (minimal acupuncture), very shallow needling was used. The angle of insertion is not mentioned." ;
     TARA:hasPublicationDate "2002" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 210 participants; Real acupuncture group: 106; False acupuncture group: 104" ;
     TARA:hasStimulationType "Manual stimulation by rotating the needles, dependent on the degree of needle sensation." ;
     TARA:hasStudiedCondition ILX:0795498 ;
@@ -660,15 +683,34 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
     TARA:hasCountryInformation "Germany" ;
     TARA:hasDOI "DOI: https://doi.org/10.1093/aje/kwj224" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "manual stimulation (specific frequency or technique not mentioned)" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper does not provide specific details on needle depth or angle used for acupuncture)" ;
     TARA:hasPublicationDate "2006" ;
     TARA:hasPublicationVenue "American Journal of Epidemiology" ;
     TARA:hasSampleSizeInformation "Total: 11,378, Randomized Acupuncture Group: 1,451, Randomized Control Group: 1,390, Nonrandomized Acupuncture Group: 8,537" ;
-    TARA:hasStimulationType "Not mentioned (the paper does not provide specific details on needle depth or angle used for acupuncture)" ;
+    TARA:hasStimulationType "manual stimulation (specific frequency or technique not mentioned)" ;
     TARA:hasStudiedCondition HP:0003419 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "chronic low back pain" ;
     TARA:hasTrialType "pragmatic trial" .
+
+<https://doi.org/10.1093/ecam/neh097> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Auricular Acupuncture for Pain Relief after Ambulatory Knee Arthroscopy-A Pilot Study" ;
+    TARA:hasAcupunctureModality "Auricular acupuncture using disposable permanent press steel needles at specific points (Lung, Shenmen, and Knee) on the ear, retained in situ until the following morning with patient-instructed stimulation through massage." ;
+    TARA:hasAuthor "Taras I Usichenko, Maria Hermsen, Torsten Witstruck, Andre Hofer, Dragan Pavlovic, Christian Lehmann, Frank Feyerherd" ;
+    TARA:hasControlsInformation "The control in the study was a sham procedure involving needling at three non-acupuncture points on the auricular helix." ;
+    TARA:hasCountryInformation "Not mentioned (the paper does not provide information on the country of publication)" ;
+    TARA:hasDOI "DOI: https://doi.org/10.1093/ecam/neh097" ;
+    TARA:hasListedAcupointsUsed "" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper provides needle length but does not specify insertion depth or angle)" ;
+    TARA:hasPublicationDate "2005" ;
+    TARA:hasPublicationVenue "" ;
+    TARA:hasSampleSizeInformation "Total: 18; AA group: 10; Control group: 8" ;
+    TARA:hasStimulationType "Manual stimulation by massaging the needles for 5 minutes at specific times during surgery and post-operatively when pain exceeded 40 mm on VAS-100." ;
+    TARA:hasStudiedCondition ILX:0795497 ;
+    TARA:hasStudiedConditionContext HP:0012531 ;
+    TARA:hasStudiedConditionNote "Post-operative pain after ambulatory knee arthroscopy" ;
+    TARA:hasTrialType "Pilot study" .
 
 <https://doi.org/10.1093/humrep/14.10.2480> a IAO:0000013,
         owl:NamedIndividual ;
@@ -699,12 +741,30 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
     TARA:hasListedAcupointsUsed "" ;
     TARA:hasNeedlingInformation "Needle depth: 15-25 mm intramuscularly" ;
     TARA:hasPublicationDate "2004" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 200 participants; EA group: 100 participants; CMA group: 100 participants" ;
     TARA:hasStimulationType "Electrical stimulation at a frequency of 20 Hz" ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "Pain during oocyte retrieval" ;
     TARA:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1093/humrep/del110> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Auricular electro-acupuncture as an additional perioperative analgesic method during oocyte aspiration in IVF treatment" ;
+    TARA:hasAcupunctureModality "Auricular electro-acupuncture (EA) with continuous low-frequency electrical stimulation using a battery-powered miniaturized stimulator (P-Stim) and titanium disposable needles" ;
+    TARA:hasAuthor "Sabine M Sator-Katzenschlager, Monika M Wölfler, Sibylle A Kozek-Langenecker, Kathrin Sator, Paul-G Sator, Borwen Li, Georg Heinze, Michael O Sator" ;
+    TARA:hasControlsInformation "The control group (CO) used adhesive tapes instead of needles and no electrical stimulation at the auricular acupuncture points." ;
+    TARA:hasCountryInformation "Austria" ;
+    TARA:hasDOI "DOI: https://doi.org/10.1093/humrep/del110" ;
+    TARA:hasListedAcupointsUsed "" ;
+    TARA:hasNeedlingInformation "Needle depth: 3 mm; Needle angle: Not mentioned" ;
+    TARA:hasPublicationDate "2006" ;
+    TARA:hasPublicationVenue "Human Reproduction" ;
+    TARA:hasSampleSizeInformation "Total: 93 participants; EA group: 32, A group: 32, CO group: 29" ;
+    TARA:hasStimulationType "Electrical stimulation at 1 Hz, biphasic, 2 mA" ;
+    TARA:hasStudiedConditionContext HP:0012531 ;
+    TARA:hasStudiedConditionNote "Pain during oocyte aspiration in IVF treatment" ;
+    TARA:hasTrialType "RCT (Randomized Controlled Trial)" .
 
 <https://doi.org/10.1093/rheumatology/38.4.346> a IAO:0000013,
         owl:NamedIndividual ;
@@ -734,11 +794,11 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
     TARA:hasCountryInformation "United Kingdom" ;
     TARA:hasDOI "DOI: https://doi.org/10.1093/rheumatology/kem119" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the method or frequency of needle stimulation beyond insertion and achieving de chi)" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
     TARA:hasPublicationDate "2007" ;
     TARA:hasPublicationVenue "Rheumatology" ;
     TARA:hasSampleSizeInformation "Total: 181 participants, Acupuncture group: 60, Physiotherapy group: 60, Standard management group: 61" ;
-    TARA:hasStimulationType "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    TARA:hasStimulationType "Not mentioned (the paper does not specify the method or frequency of needle stimulation beyond insertion and achieving de chi)" ;
     TARA:hasStudiedCondition MONDO:0005416 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "severe knee osteoarthritis" ;
@@ -753,12 +813,12 @@ Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, No
     TARA:hasCountryInformation "Sweden" ;
     TARA:hasDOI "DOI: https://doi.org/10.1097/00002508-200112000-00003" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation """Manual acupuncture: Needles are stimulated three times during a 20-minute session to evoke 'de-qi' sensation.
-Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every 2.5 seconds, interrupted by a 15-Hz train for 2.5 seconds.""" ;
+    TARA:hasNeedlingInformation "Needle depth: 2 to 3 cm" ;
     TARA:hasPublicationDate "2001" ;
     TARA:hasPublicationVenue "The Clinical Journal of Pain" ;
     TARA:hasSampleSizeInformation "Total: 50 participants, Manual acupuncture group: 18 participants, Electroacupuncture group: 16 participants, Placebo group: 16 participants" ;
-    TARA:hasStimulationType "Needle depth: 2 to 3 cm" ;
+    TARA:hasStimulationType """Manual acupuncture: Needles are stimulated three times during a 20-minute session to evoke 'de-qi' sensation.
+Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every 2.5 seconds, interrupted by a 15-Hz train for 2.5 seconds.""" ;
     TARA:hasStudiedCondition HP:0003419 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "chronic low back pain" ;
@@ -775,7 +835,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "" ;
     TARA:hasNeedlingInformation "Needle depth: 20 to 50 mm in maximum pain area, up to 5 mm in distal points; Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2003" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 115 participants, Medication group: 43, Acupuncture group: 36, Spinal manipulation group: 36" ;
     TARA:hasStimulationType "Manual needle agitation by turning or flicking every 5 minutes during a 20-minute session" ;
     TARA:hasStudiedCondition MONDO:0024317 ;
@@ -794,7 +854,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "" ;
     TARA:hasNeedlingInformation "Needle angle: 45 degrees or 90 degrees; Needle depth: Not mentioned" ;
     TARA:hasPublicationDate "2002" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 90 participants; Acupuncture group: 46 participants; Control group: 44 participants" ;
     TARA:hasStimulationType "Manual stimulation until de qui is achieved" ;
     TARA:hasStudiedCondition ILX:0795498 ;
@@ -832,7 +892,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "" ;
     TARA:hasNeedlingInformation "Needles were inserted until they just touched bone; no specific angle mentioned." ;
     TARA:hasPublicationDate "2007" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 88 participants; PST group: 44, Control PST group: 44" ;
     TARA:hasStimulationType "Electrical stimulation at 100 Hz for 30 minutes for the main needles, and 100 Hz for 1 minute for additional needles." ;
     TARA:hasStudiedCondition MONDO:0005416 ;
@@ -849,11 +909,11 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasCountryInformation "Norway" ;
     TARA:hasDOI "DOI: https://doi.org/10.1136/aim.23.2.52" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Electrical stimulation at 5Hz" ;
+    TARA:hasNeedlingInformation "Needle depth: 10-30mm; Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2005" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 24 participants; Test group: 12 participants; Control group: 12 participants" ;
-    TARA:hasStimulationType "Needle depth: 10-30mm; Needle angle: Not mentioned" ;
+    TARA:hasStimulationType "Electrical stimulation at 5Hz" ;
     TARA:hasStudiedCondition HP:0030833,
         HP:0030834 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
@@ -869,11 +929,11 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasCountryInformation "Japan" ;
     TARA:hasDOI "DOI: https://doi.org/10.1136/aim.24.1.5" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Manual stimulation using the \"sparrow pecking\" technique to elicit a local muscle twitch response, followed by needle retention for 10 minutes." ;
+    TARA:hasNeedlingInformation "Needle depth: 10-40mm; Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2006" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total initial sample size: 26 participants (Group A: 13, Group B: 13); Completed study: 19 participants" ;
-    TARA:hasStimulationType "Needle depth: 10-40mm; Needle angle: Not mentioned" ;
+    TARA:hasStimulationType "Manual stimulation using the \"sparrow pecking\" technique to elicit a local muscle twitch response, followed by needle retention for 10 minutes." ;
     TARA:hasStudiedCondition HP:0003419 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "chronic low back pain" ;
@@ -888,11 +948,11 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasCountryInformation "Japan" ;
     TARA:hasDOI "DOI: https://doi.org/10.1136/aim.24.3.103" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Manual stimulation using the sparrow pecking method (lifting and thrusting) for 20 seconds." ;
+    TARA:hasNeedlingInformation "Needle depth: 20mm" ;
     TARA:hasPublicationDate "2006" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 31 participants; Acupuncture group: 15; Sham acupuncture group: 16" ;
-    TARA:hasStimulationType "Needle depth: 20mm" ;
+    TARA:hasStimulationType "Manual stimulation using the sparrow pecking method (lifting and thrusting) for 20 seconds." ;
     TARA:hasStudiedCondition HP:0003419,
         MONDO:0005095 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
@@ -937,25 +997,6 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasStudiedConditionNote "pelvic girdle pain during pregnancy" ;
     TARA:hasTrialType "Randomised Controlled Trial (RCT)" .
 
-<https://doi.org/10.1136/bmj.38512.405440.8f> a IAO:0000013,
-        owl:NamedIndividual ;
-    dc:title "Acupuncture in patients with tension-type headache: randomised controlled trial" ;
-    TARA:hasAcupunctureModality "Acupuncture was administered as a semistandardised treatment involving needling at basic points bilaterally, with additional points chosen individually. The goal was to achieve \"de qi\" with manual needle stimulation, using sterile, disposable needles. The treatment consisted of 12 sessions over eight weeks, each lasting 30 minutes." ;
-    TARA:hasAuthor "Dieter Melchart, Andrea Streng, Andrea Hoppe, Benno Brinkhaus, Claudia Witt, Stefan Wagenpfeil, Volker Pfaffenrath, Michael Hammes, Josef Hummelsberger, Dominik Irnich, Wolfgang Weidenhammer, Stefan N Willich, Klaus Linde, Private Practice, Munich Volker, Pfaffenrath Neurologist" ;
-    TARA:hasControlsInformation "minimal acupuncture (superficial needling at non-acupuncture points) and waiting list control (no prophylactic treatment)" ;
-    TARA:hasCountryInformation "Germany" ;
-    TARA:hasDOI "DOI: https://doi.org/10.1136/bmj.38512.405440.8f" ;
-    TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "The acupuncture group aimed to achieve \"de qi,\" suggesting a deeper insertion, while the minimal acupuncture group used superficial needling. Specific needle depths or angles are not mentioned." ;
-    TARA:hasPublicationDate "2005" ;
-    TARA:hasPublicationVenue "British medical journal" ;
-    TARA:hasSampleSizeInformation "Total: 270 participants, Acupuncture group: 132, Minimal acupuncture group: 63, Waiting list group: 75" ;
-    TARA:hasStimulationType "Manual stimulation, at least once during each session" ;
-    TARA:hasStudiedCondition HP:0012228 ;
-    TARA:hasStudiedConditionContext HP:0012531 ;
-    TARA:hasStudiedConditionNote "tension-type headache" ;
-    TARA:hasTrialType "Randomised Controlled Trial (RCT)" .
-
 <https://doi.org/10.1136/bmj.38878.907361.7c> a IAO:0000013,
         owl:NamedIndividual ;
     dc:title "Randomised controlled trial of a short course of traditional acupuncture compared with usual care for persistent non-specific low back pain" ;
@@ -965,11 +1006,11 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasCountryInformation "United Kingdom" ;
     TARA:hasDOI "DOI: https://doi.org/10.1136/bmj.38878.907361.7c" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the type or frequency of needle stimulation used in the acupuncture treatments)" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper refers to another source for details on acupuncture treatments, including needle depth and angle)" ;
     TARA:hasPublicationDate "2006" ;
     TARA:hasPublicationVenue "British medical journal" ;
     TARA:hasSampleSizeInformation "Total: 241 participants; Acupuncture group: 160; Usual care group: 81" ;
-    TARA:hasStimulationType "Not mentioned (the paper refers to another source for details on acupuncture treatments, including needle depth and angle)" ;
+    TARA:hasStimulationType "Not mentioned (the paper does not specify the type or frequency of needle stimulation used in the acupuncture treatments)" ;
     TARA:hasStudiedCondition HP:0003419 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "non-specific low back pain" ;
@@ -1003,14 +1044,33 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasCountryInformation "France" ;
     TARA:hasDOI "DOI: https://doi.org/10.1200/jco.2003.09.011" ;
     TARA:hasListedAcupointsUsed "" ;
-    TARA:hasNeedlingInformation "Electrical stimulation with a 9-volt detection current; no specific frequency for manual or thermal stimulation mentioned" ;
+    TARA:hasNeedlingInformation "Needle length: 3.4 mm; Maximum diameter: 0.7 mm; No specific depth or angle mentioned" ;
     TARA:hasPublicationDate "2003" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 90 participants, Auricular acupuncture group: 29, Placebo auricular acupuncture group: 30, Placebo auricular seed group: 31" ;
-    TARA:hasStimulationType "Needle length: 3.4 mm; Maximum diameter: 0.7 mm; No specific depth or angle mentioned" ;
+    TARA:hasStimulationType "Electrical stimulation with a 9-volt detection current; no specific frequency for manual or thermal stimulation mentioned" ;
     TARA:hasStudiedCondition HP:6000040 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "neuropathic pain in cancer patients" ;
+    TARA:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1213/01.ane.0000253233.51490.dd> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Perioperative Auricular Electroacupuncture Has No Effect on Pain and Analgesic Consumption After Third Molar Tooth Extraction" ;
+    TARA:hasAcupunctureModality "Auricular electroacupuncture (AE) with electrical stimulation at an alternating frequency of 2/100 Hz using a P-Stim device, and auricular acupuncture (AA) without electrical stimulation." ;
+    TARA:hasAuthor "Peter S A Glass, Andrea Michalek-Sauberer, Harald Heinzl, Sabine M Sator-Katzenschlager, Gabriel Monov, Erich Knolle, Hans Georg Kress" ;
+    TARA:hasControlsInformation "The control used in the study was the sham auricular electroacupuncture group (NN), which involved using metal plates instead of needles and no electrical stimulation. This served as a placebo control." ;
+    TARA:hasCountryInformation "Austria" ;
+    TARA:hasDOI "DOI: https://doi.org/10.1213/01.ane.0000253233.51490.dd" ;
+    TARA:hasListedAcupointsUsed "" ;
+    TARA:hasNeedlingInformation "Needle depth: 3 mm; Needle angle: Not mentioned" ;
+    TARA:hasPublicationDate "2007" ;
+    TARA:hasPublicationVenue "Anesthesia and Analgesia" ;
+    TARA:hasSampleSizeInformation "Total: 149; AE group: 76; AA group: 37; NN group: 36" ;
+    TARA:hasStimulationType "Electrical stimulation at an alternating frequency of 2/100 Hz, with constant current pulses every 3 seconds for 3 hours followed by a 3-hour pause." ;
+    TARA:hasStudiedCondition ILX:0795499 ;
+    TARA:hasStudiedConditionContext HP:0012531 ;
+    TARA:hasStudiedConditionNote "Pain after mandibular third molar tooth extraction" ;
     TARA:hasTrialType "Randomized Controlled Trial (RCT)" .
 
 <https://doi.org/10.3748/wjg.v11.i26.4040> a IAO:0000013,
@@ -1079,11 +1139,11 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasCountryInformation "United Kingdom" ;
     TARA:hasDOI "DOI: https://doi.org/10.1016/j.jdent.2006.09.004" ;
     TARA:hasListedAcupointsUsed "ST 7" ;
-    TARA:hasNeedlingInformation "Manual stimulation: tapping the needle every 5 minutes for 10 seconds" ;
+    TARA:hasNeedlingInformation "Needle depth for real acupuncture: 6-12 mm; Sham acupuncture: no penetration (blunt needle touched skin)" ;
     TARA:hasPublicationDate "2007" ;
-    TARA:hasPublicationVenue "E -journal of dentistry" ;
+    TARA:hasPublicationVenue "Journal of Dentistry" ;
     TARA:hasSampleSizeInformation "Total: 27 participants; Group 1 (real acupuncture): 13 or 14; Group 2 (sham acupuncture): 13 or 14" ;
-    TARA:hasStimulationType "Needle depth for real acupuncture: 6-12 mm; Sham acupuncture: no penetration (blunt needle touched skin)" ;
+    TARA:hasStimulationType "Manual stimulation: tapping the needle every 5 minutes for 10 seconds." ;
     TARA:hasStudiedCondition MONDO:0005473 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "temporomandibular joint myofascial pain" ;
@@ -1091,18 +1151,18 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
 
 <https://doi.org/10.1016/j.pain.2006.07.002> a IAO:0000013,
         owl:NamedIndividual ;
-    dc:title "Efficacy and safety of acupuncture for chronic uncomplicated neck pain: A randomised controlled study q" ;
+    dc:title "Efficacy and safety of acupuncture for chronic uncomplicated neck pain: A randomised controlled study" ;
     TARA:hasAcupunctureModality "Traditional Chinese acupuncture with bilateral needle puncture, manual stimulation, and auricular acupressure using Vaccaria seeds." ;
-    TARA:hasAuthor "Jorge Vas, Emilio Perea-Milla, Camila Me ´ndez, Cayetana Sa, ´nchez Navarro, Jose ´marı ´a, Leo ´n Rubio, Mauricio Brioso, Inmaculada Garcı ´a Obrero, J Vas Analysis, C Mendez, J M Leo, Rubio Drafting, The Article, C Sanchez, I Garcia Obrero" ;
+    TARA:hasAuthor "Vas, Jorge, Emilio Perea-Milla, Camila Méndez, Cayetana Sánchez Navarro, José María León Rubio, Mauricio Brioso, and Inmaculada García Obrero" ;
     TARA:hasControlsInformation "TENS-placebo" ;
     TARA:hasCountryInformation "Spain" ;
     TARA:hasDOI "DOI: https://doi.org/10.1016/j.pain.2006.07.002" ;
     TARA:hasListedAcupointsUsed "GB 21" ;
-    TARA:hasNeedlingInformation "manual stimulation every 10 minutes" ;
+    TARA:hasNeedlingInformation "Needle length: 25 mm or 40 mm; Diameter: 0.25 mm; Depth sufficient to elicit Deqi sensation; Angle not specified" ;
     TARA:hasPublicationDate "2006" ;
     TARA:hasPublicationVenue "Pain" ;
     TARA:hasSampleSizeInformation "Total: 123 participants; Experimental group (acupuncture): 61 participants; Control group (TENS-placebo): 62 participants" ;
-    TARA:hasStimulationType "Needle length: 25 mm or 40 mm; Diameter: 0.25 mm; Depth sufficient to elicit Deqi sensation; Angle not specified" ;
+    TARA:hasStimulationType "Manual stimulation every 10 minutes." ;
     TARA:hasStudiedCondition HP:0030833 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "chronic uncomplicated neck pain" ;
@@ -1125,62 +1185,6 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasStudiedCondition HP:0012531 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "postoperative pain" ;
-    TARA:hasTrialType "RCT (Randomized Controlled Trial)" .
-
-<https://doi.org/10.1016/s0966-6532(98)00049-3> a IAO:0000013,
-        owl:NamedIndividual ;
-    dc:title "The effect of acupuncture on pain and swelling after day case molar teeth extraction under general anaesthesia" ;
-    TARA:hasAcupunctureModality "Electroacupuncture at Colon 4 and Stomach 6 points, with electrical stimulation at 2.5 Hz for 20 minutes before and during general anaesthesia" ;
-    TARA:hasAuthor "Trevor Roy Coe" ;
-    TARA:hasControlsInformation "The control group received general anaesthesia alone without acupuncture treatment." ;
-    TARA:hasCountryInformation "Not mentioned (the paper does not provide information on the country of publication)" ;
-    TARA:hasDOI "DOI: https://doi.org/10.1016/s0966-6532(98)00049-3" ;
-    TARA:hasListedAcupointsUsed "ST 6" ;
-    TARA:hasNeedlingInformation "Electrical stimulation at 2.5 Hz" ;
-    TARA:hasPublicationDate "1999" ;
-    TARA:hasPublicationVenue "" ;
-    TARA:hasSampleSizeInformation "Total: 40 participants; Acupuncture group: 20 participants; Control group: 20 participants" ;
-    TARA:hasStimulationType "Not mentioned (the paper does not specify the needle depth or angle, only that insertion continued until a dull ache was felt by the patient)" ;
-    TARA:hasStudiedCondition ILX:0795497 ;
-    TARA:hasStudiedConditionContext HP:0012531 ;
-    TARA:hasStudiedConditionNote "Post-operative pain and swelling following third molar teeth extraction" ;
-    TARA:hasTrialType "RCT" .
-
-<https://doi.org/10.1093/ecam/neh097> a IAO:0000013,
-        owl:NamedIndividual ;
-    dc:title "Auricular Acupuncture for Pain Relief after Ambulatory Knee Arthroscopy-A Pilot Study" ;
-    TARA:hasAcupunctureModality "Auricular acupuncture using disposable permanent press steel needles at specific points (Lung, Shenmen, and Knee) on the ear, retained in situ until the following morning with patient-instructed stimulation through massage." ;
-    TARA:hasAuthor "Taras I Usichenko, Maria Hermsen, Torsten Witstruck, Andre Hofer, Dragan Pavlovic, Christian Lehmann, Frank Feyerherd" ;
-    TARA:hasControlsInformation "The control in the study was a sham procedure involving needling at three non-acupuncture points on the auricular helix." ;
-    TARA:hasCountryInformation "Not mentioned (the paper does not provide information on the country of publication)" ;
-    TARA:hasDOI "DOI: https://doi.org/10.1093/ecam/neh097" ;
-    TARA:hasListedAcupointsUsed "shenmen" ;
-    TARA:hasNeedlingInformation "Manual stimulation by massaging the needles for 5 minutes at specific times during surgery and post-operatively when pain exceeded 40 mm on VAS-100." ;
-    TARA:hasPublicationDate "2005" ;
-    TARA:hasPublicationVenue "-" ;
-    TARA:hasSampleSizeInformation "Total: 18; AA group: 10; Control group: 8" ;
-    TARA:hasStimulationType "Not mentioned (the paper provides needle length but does not specify insertion depth or angle)" ;
-    TARA:hasStudiedCondition ILX:0795497 ;
-    TARA:hasStudiedConditionContext HP:0012531 ;
-    TARA:hasStudiedConditionNote "Post-operative pain after ambulatory knee arthroscopy" ;
-    TARA:hasTrialType "Pilot study" .
-
-<https://doi.org/10.1093/humrep/del110> a IAO:0000013,
-        owl:NamedIndividual ;
-    dc:title "Auricular electro-acupuncture as an additional perioperative analgesic method during oocyte aspiration in IVF treatment" ;
-    TARA:hasAcupunctureModality "Auricular electro-acupuncture (EA) with continuous low-frequency electrical stimulation using a battery-powered miniaturized stimulator (P-Stim) and titanium disposable needles" ;
-    TARA:hasAuthor "Sabine M Sator-Katzenschlager, Monika M Wölfler, Sibylle A Kozek-Langenecker, Kathrin Sator, Paul-G Sator, Borwen Li, Georg Heinze, Michael O Sator" ;
-    TARA:hasControlsInformation "The control group (CO) used adhesive tapes instead of needles and no electrical stimulation at the auricular acupuncture points." ;
-    TARA:hasCountryInformation "Austria" ;
-    TARA:hasDOI "DOI: https://doi.org/10.1093/humrep/del110" ;
-    TARA:hasListedAcupointsUsed "shenmen" ;
-    TARA:hasNeedlingInformation "Needle depth: 3 mm; Needle angle: Not mentioned" ;
-    TARA:hasPublicationDate "2006" ;
-    TARA:hasPublicationVenue "Human Reproduction" ;
-    TARA:hasSampleSizeInformation "Total: 93 participants; EA group: 32, A group: 32, CO group: 29" ;
-    TARA:hasStimulationType "Electrical stimulation at 1 Hz, biphasic, 2 mA" ;
-    TARA:hasStudiedConditionContext HP:0012531 ;
-    TARA:hasStudiedConditionNote "Pain during oocyte aspiration in IVF treatment" ;
     TARA:hasTrialType "RCT (Randomized Controlled Trial)" .
 
 <https://doi.org/10.1093/rheumatology/38.9.864> a IAO:0000013,
@@ -1213,7 +1217,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "LI 4" ;
     TARA:hasNeedlingInformation "Needles were inserted at 45 degrees or perpendicularly, with a depth depending on the thickness of the subcutaneous fat." ;
     TARA:hasPublicationDate "2007" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 144 participants; Real acupuncture group: 70; Minimal acupuncture group: 74" ;
     TARA:hasStimulationType "Manual stimulation until de chi sensation is achieved; control group: manual stimulation for about 20 minutes without de chi sensation." ;
     TARA:hasStudiedCondition ILX:0795498 ;
@@ -1232,32 +1236,13 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "LI 4" ;
     TARA:hasNeedlingInformation "Needle depth: 10 to 20 mm; Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2007" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 15 participants; Real acupuncture group: 9 participants; Sham acupuncture group: 6 participants" ;
     TARA:hasStimulationType "Manual stimulation: twirling the needle for 5 seconds after 5 minutes into treatment." ;
     TARA:hasStudiedCondition MONDO:0006862 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "Myofascial pain" ;
     TARA:hasTrialType "RCT (Randomized Controlled Trial)" .
-
-<https://doi.org/10.1213/01.ane.0000253233.51490.dd> a IAO:0000013,
-        owl:NamedIndividual ;
-    dc:title "Perioperative Auricular Electroacupuncture Has No Effect on Pain and Analgesic Consumption After Third Molar Tooth Extraction" ;
-    TARA:hasAcupunctureModality "Auricular electroacupuncture (AE) with electrical stimulation at an alternating frequency of 2/100 Hz using a P-Stim device, and auricular acupuncture (AA) without electrical stimulation." ;
-    TARA:hasAuthor "Peter S A Glass, Andrea Michalek-Sauberer, Harald Heinzl, Sabine M Sator-Katzenschlager, Gabriel Monov, Erich Knolle, Hans Georg Kress" ;
-    TARA:hasControlsInformation "The control used in the study was the sham auricular electroacupuncture group (NN), which involved using metal plates instead of needles and no electrical stimulation. This served as a placebo control." ;
-    TARA:hasCountryInformation "Austria" ;
-    TARA:hasDOI "DOI: https://doi.org/10.1213/01.ane.0000253233.51490.dd" ;
-    TARA:hasListedAcupointsUsed "shenmen" ;
-    TARA:hasNeedlingInformation "Electrical stimulation at an alternating frequency of 2/100 Hz, with constant current pulses every 3 seconds for 3 hours followed by a 3-hour pause." ;
-    TARA:hasPublicationDate "2007" ;
-    TARA:hasPublicationVenue "Anesthesia and Analgesia" ;
-    TARA:hasSampleSizeInformation "Total: 149; AE group: 76; AA group: 37; NN group: 36" ;
-    TARA:hasStimulationType "Needle depth: 3 mm; Needle angle: Not mentioned" ;
-    TARA:hasStudiedCondition ILX:0795499 ;
-    TARA:hasStudiedConditionContext HP:0012531 ;
-    TARA:hasStudiedConditionNote "Pain after mandibular third molar tooth extraction" ;
-    TARA:hasTrialType "Randomized Controlled Trial (RCT)" .
 
 <https://doi.org/10.7326/0003-4819-141-12-200412210-00006> a IAO:0000013,
         owl:NamedIndividual ;
@@ -1287,18 +1272,37 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasCountryInformation "United States" ;
     TARA:hasDOI "DOI: https://doi.org/10.1016/j.apmr.2004.11.044" ;
     TARA:hasListedAcupointsUsed "LI 4, LR 3" ;
-    TARA:hasNeedlingInformation "Manual stimulation: rotation back and forth 10 times" ;
+    TARA:hasNeedlingInformation "Needle depth: about 1 cm; Note: some needles were incorrectly placed only 1 mm deep due to inexperience." ;
     TARA:hasPublicationDate "2005" ;
     TARA:hasPublicationVenue "Archives of Physical Medicine and Rehabilitation" ;
     TARA:hasSampleSizeInformation "Total: 51 participants; Treatment group: 26 participants; Sham group: 25 participants" ;
-    TARA:hasStimulationType "Needle depth: about 1 cm; Note: some needles were incorrectly placed only 1 mm deep due to inexperience." ;
+    TARA:hasStimulationType "Manual stimulation: rotation back and forth 10 times" ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "Pain associated with electromyography" ;
     TARA:hasTrialType "RCT" .
 
+<https://doi.org/10.1016/s0966-6532(98)00049-3> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "The effect of acupuncture on pain and swelling after day case molar teeth extraction under general anaesthesia" ;
+    TARA:hasAcupunctureModality "Electroacupuncture at Colon 4 and Stomach 6 points, with electrical stimulation at 2.5 Hz for 20 minutes before and during general anaesthesia" ;
+    TARA:hasAuthor "Trevor Roy Coe" ;
+    TARA:hasControlsInformation "The control group received general anaesthesia alone without acupuncture treatment." ;
+    TARA:hasCountryInformation "Not mentioned (the paper does not provide information on the country of publication)" ;
+    TARA:hasDOI "DOI: https://doi.org/10.1016/s0966-6532(98)00049-3" ;
+    TARA:hasListedAcupointsUsed "ST 6, LI 4" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle, only that insertion continued until a dull ache was felt by the patient)" ;
+    TARA:hasPublicationDate "1999" ;
+    TARA:hasPublicationVenue "" ;
+    TARA:hasSampleSizeInformation "Total: 40 participants; Acupuncture group: 20 participants; Control group: 20 participants" ;
+    TARA:hasStimulationType "Electrical stimulation at 2.5 Hz" ;
+    TARA:hasStudiedCondition ILX:0795497 ;
+    TARA:hasStudiedConditionContext HP:0012531 ;
+    TARA:hasStudiedConditionNote "Post-operative pain and swelling following third molar teeth extraction" ;
+    TARA:hasTrialType "RCT" .
+
 <https://doi.org/10.1093/rheumatology/37.10.1118> a IAO:0000013,
         owl:NamedIndividual ;
-    dc:title "CHRONIC NECK PAIN: A COMPARISON OF ACUPUNCTURE TREATMENT AND PHYSIOTHERAPY" ;
+    dc:title "Chronic neck pain: a comparison of acupuncture treatment and physiotherapy" ;
     TARA:hasAcupunctureModality "The acupuncture modality involved the use of sterile, disposable, 0.25 × 2.5 Acumedic needles for local needling of trigger points, regional needling at GB21 (supraspinatus tendon area), and distal needling at L14 (web space between thumb and first finger). The needles were left in situ for 15 minutes and manually manipulated once at 7 minutes. Electro-acupuncture and moxibustion were not used." ;
     TARA:hasAuthor "J David, S Modi, A A Aluko, C Robertshaw, J Farebrother" ;
     TARA:hasControlsInformation "Not applicable (the study did not include a control group)" ;
@@ -1345,7 +1349,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "ST 36, LI 4" ;
     TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle for acupuncture)" ;
     TARA:hasPublicationDate "2004" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total sample size: 40 participants; Group A: approximately 20 participants, Group B: approximately 20 participants; 37 completed the trial" ;
     TARA:hasStimulationType "Real Electroacupuncture: 2 Hz and 100 Hz (alternated); Sham Electroacupuncture: 0.2 Hz" ;
     TARA:hasStudiedCondition HP:0012228 ;
@@ -1381,11 +1385,11 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasCountryInformation "Thailand" ;
     TARA:hasDOI "DOI: https://doi.org/10.1186/1472-6882-2-3" ;
     TARA:hasListedAcupointsUsed "ST 35, LR 8" ;
-    TARA:hasNeedlingInformation "Electrical stimulation at a frequency of 2 Hz for 20 minutes per session" ;
+    TARA:hasNeedlingInformation "Needle depth: not more than 0.5 inch; Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2002" ;
     TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total sample size: 193 participants; Group sizes not specified in the provided text." ;
-    TARA:hasStimulationType "Needle depth: not more than 0.5 inch; Needle angle: Not mentioned" ;
+    TARA:hasStimulationType "Electrical stimulation at a frequency of 2 Hz for 20 minutes per session" ;
     TARA:hasStudiedCondition MONDO:0005416 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "osteoarthritis of the knee" ;
@@ -1402,7 +1406,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "LI 4, ST 6" ;
     TARA:hasNeedlingInformation "Acupuncture group: 10 to 30 mm; Sham acupuncture group: 2 to 4 mm" ;
     TARA:hasPublicationDate "2002" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total sample size: 18 participants; Standard acupuncture group: 10 participants; Sham treatment group: 8 participants" ;
     TARA:hasStimulationType "Manual stimulation: Needles twirled once for 5 seconds at the halfway point of a 30-minute period." ;
     TARA:hasStudiedCondition MONDO:0006862 ;
@@ -1421,7 +1425,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "LI 15, TE 14, GB 34" ;
     TARA:hasNeedlingInformation "1 cun depth for all locations" ;
     TARA:hasPublicationDate "2004" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 130 participants; Acupuncture group: 65 participants; Placebo group: 65 participants" ;
     TARA:hasStimulationType "Electrical stimulation at 5-10 Hz to elicit light muscular twitching" ;
     TARA:hasStudiedCondition HP:0030834 ;
@@ -1440,7 +1444,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "BL 23, BL 25, GB 30" ;
     TARA:hasNeedlingInformation "Verum acupuncture: 1 to 10 cm; Sham acupuncture: less than 1 cm" ;
     TARA:hasPublicationDate "2002" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 186 participants, Verum 1 COT: 65, Sham 1 COT: 61, Nil 1 COT: 60" ;
     TARA:hasStimulationType "Manual needle manipulation with mild to strong intensity, three times per week for 30 minutes per session." ;
     TARA:hasStudiedCondition HP:0003419 ;
@@ -1457,11 +1461,11 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasCountryInformation "United Kingdom" ;
     TARA:hasDOI "DOI: https://doi.org/10.1186/1471-2474-7-99" ;
     TARA:hasListedAcupointsUsed "GB 21, GB 20, Huatuojiaji" ;
-    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the type or frequency of needle stimulation used in the acupuncture treatments)" ;
+    TARA:hasNeedlingInformation "Needle depth: 0.2 to 2.5 cm; Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2006" ;
     TARA:hasPublicationVenue "BMC Musculoskeletal Disorders" ;
     TARA:hasSampleSizeInformation "Total participants: 24; Acupuncture group: 10; Usual GP care group: 14" ;
-    TARA:hasStimulationType "Needle depth: 0.2 to 2.5 cm; Needle angle: Not mentioned" ;
+    TARA:hasStimulationType "Not mentioned (the paper does not specify the type or frequency of needle stimulation used in the acupuncture treatments)" ;
     TARA:hasStudiedCondition HP:0030833 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "chronic neck pain" ;
@@ -1507,7 +1511,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
 
 <https://doi.org/10.1177/0163278704273081> a IAO:0000013,
         owl:NamedIndividual ;
-    dc:title "ACUPUNCTURE AN ALGESIA AN EXPECT ANCY EFFECT?" ;
+    dc:title "Is Acupuncture Analgesia an Expectancy Effect?: Preliminary Evidence Based on Participants’ Perceived Assignments in Two Placebo-Controlled Trials" ;
     TARA:hasAcupunctureModality "The acupuncture modality involved the insertion of 2.5 cm, 32 gauge needles to a depth of 0.8 to 1.3 cm into four traditional Chinese medicine points (three on the face and one on the hand), with manual twisting to elicit the \"De Qi\" sensation. A sham noninsertion was also used at a knee point for blinding purposes. No electrical stimulation was applied." ;
     TARA:hasAuthor "R Barker Bausell, Stewart Bergman, Wen-Lin Lee, Brian M Berman" ;
     TARA:hasControlsInformation "- Placebo 1: Sham noninsertion adjacent to acupuncture points; distal sham shallow insertion at nonpoint., Placebo 2: Sham shallow insertion adjacent to acupuncture points; distal sham noninsertion." ;
@@ -1516,7 +1520,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "ST 6, ST 7, Yifeng, LI 4" ;
     TARA:hasNeedlingInformation "Needle depth: 0.8 to 1.3 cm; Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2005" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Experiment 1: 120 participants; Experiment 2: 180 participants; Total: 300 participants" ;
     TARA:hasStimulationType "Manual twisting of needles three times during the session: during initial insertion, at the midpoint, and at the end of the 20-minute treatment." ;
     TARA:hasStudiedCondition ILX:0795499 ;
@@ -1535,7 +1539,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "SP 9, SP 10, ST 34, ST 36, LI 4" ;
     TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle of insertion for acupuncture)" ;
     TARA:hasPublicationDate "1999" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 42 participants; Acupuncture group: 21 participants; Control group: 21 participants" ;
     TARA:hasStimulationType "Manual stimulation: needle rotation through 180 degrees every 5 minutes and just before removal" ;
     TARA:hasStudiedCondition ILX:0795497 ;
@@ -1581,26 +1585,6 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasStudiedConditionNote "chronic lateral epicondylitis (tennis elbow)" ;
     TARA:hasTrialType "RCT (Randomized Controlled Trial)" .
 
-<https://doi.org/10.1136/aim.22.2.60> a IAO:0000013,
-        owl:NamedIndividual ;
-    dc:title "Acupuncture for low back pain in pregnancy -a prospective, quasi-randomised, controlled study" ;
-    TARA:hasAcupunctureModality "Traditional needle-based acupuncture using classical points without electro-stimulation or ear acupuncture, involving the insertion of approximately 12 needles for about 25 minutes per session." ;
-    TARA:hasAuthor "João Bosco, Guerreiro Da Silva, Mary Uchiyama Nakamura, José Antonio Cordeiro, Luiz Kulay, Mary Uchiyama" ;
-    TARA:hasControlsInformation "The control group received conventional treatment only, which included paracetamol and hyoscine." ;
-    TARA:hasCountryInformation "Brazil" ;
-    TARA:hasDOI "DOI: https://doi.org/10.1136/aim.22.2.60" ;
-    TARA:hasListedAcupointsUsed "BL 62, BL 40, TE 5, GB 30, GB 41" ;
-    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the exact needle depth or angle of insertion)" ;
-    TARA:hasPublicationDate "2004" ;
-    TARA:hasPublicationVenue "-" ;
-    TARA:hasSampleSizeInformation "Total: 61 participants; Study group (acupuncture): 27; Control group: 34" ;
-    TARA:hasStimulationType "Manual stimulation to elicit de qi; no specific frequency mentioned" ;
-    TARA:hasStudiedCondition HP:0003419,
-        HP:0034267 ;
-    TARA:hasStudiedConditionContext HP:0012531 ;
-    TARA:hasStudiedConditionNote "low back and pelvic pain during pregnancy" ;
-    TARA:hasTrialType "quasi-randomised, pragmatic controlled study" .
-
 <https://doi.org/10.1371/journal.pone.0000919> a IAO:0000013,
         owl:NamedIndividual ;
     dc:title "Naturopathic Care for Chronic Low Back Pain: A Randomized Trial" ;
@@ -1631,7 +1615,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "BL 26, BL 27, BL 28, BL 29, BL 30, BL 60" ;
     TARA:hasNeedlingInformation "Needle depth: 1-10 centimeters; Angle: Not mentioned" ;
     TARA:hasPublicationDate "2000" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 60 participants, Acupuncture group: 30 (28 analyzed), Physiotherapy group: 30 (18 completed)" ;
     TARA:hasStimulationType "Manual stimulation: needles were gently tapped or rotated about 15 minutes after insertion to elicit the deqi-sensation." ;
     TARA:hasStudiedCondition HP:0003419,
@@ -1661,7 +1645,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
 
 <https://doi.org/10.1080/165019702760279233> a IAO:0000013,
         owl:NamedIndividual ;
-    dc:title "SENSORY STIMULATION (ACUPUNCTURE) FOR THE TREATMENT OF IDIOPATHIC ANTERIOR KNEE PAIN" ;
+    dc:title "Sensory Stimulation (Acupuncture) for the Treatment of Idiopathic Anterior Knee Pain" ;
     TARA:hasAcupunctureModality "Deep acupuncture (electro-acupuncture) and minimal superficial acupuncture" ;
     TARA:hasAuthor "Jan Na ¨slund, Ulla-Britt Na ¨slund, Sten Odenbring, Thomas Lundeberg, Jan Na ¨slund" ;
     TARA:hasControlsInformation "Minimal superficial acupuncture was used as the control treatment in the study. It involved inserting needles subcutaneously in the knee region without electrical stimulation or evoking the sensation of de Qi." ;
@@ -1708,7 +1692,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "GB 29, GB 30, GB 34, GB 43, ST 44, LI 4" ;
     TARA:hasNeedlingInformation "Needle depth: 25mm for most points, 40mm for GB30; Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2001" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 32 participants; Group A: 16 participants; Group B: 16 participants" ;
     TARA:hasStimulationType "Manual stimulation: each needle was manually stimulated for approximately ten seconds every five minutes." ;
     TARA:hasStudiedCondition MONDO:0006629 ;
@@ -1720,14 +1704,14 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
         owl:NamedIndividual ;
     dc:title "Effects of acupuncture and sham acupuncture in addition to physiotherapy in patients undergoing bilateral total knee arthroplasty -a randomized controlled trial" ;
     TARA:hasAcupunctureModality "Manual acupuncture using sterile, single-use needles inserted at specific acupoints (ST32, ST33, GB31, GB35, GB34, ST36) to a depth of 13-25 mm, with manipulation to elicit sensations of numbness, tingling, or heaviness, and no electrostimulation applied." ;
-    TARA:hasAuthor "" ;
+    TARA:hasAuthor "Tsang, Raymond Chi-Chung, Pui-Ling Tsang, Chung-Yee Ko, Ben Chi-Hung Kong, Wing-Yee Lee, and Ho-Ting Yip" ;
     TARA:hasControlsInformation "Sham acupuncture group: superficial needling at non-acupuncture points without manipulation or eliciting sensations, used as a control to compare against true acupuncture." ;
     TARA:hasCountryInformation "Hong Kong" ;
     TARA:hasDOI "DOI: https://doi.org/10.1177/0269215507077362" ;
     TARA:hasListedAcupointsUsed "ST 32, ST 33, GB 31, GB 35, GB 34, ST 36" ;
     TARA:hasNeedlingInformation "Acupuncture group: 13-25 mm depth; Sham acupuncture group: less than 5 mm depth" ;
     TARA:hasPublicationDate "2007" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 36 initially recruited; Final analysis: 30 (Acupuncture group: 15, Sham acupuncture group: 15)" ;
     TARA:hasStimulationType "Manual stimulation: manipulation every 5 minutes to achieve numbness, tingling, or heaviness; no electrical or thermal stimulation used." ;
     TARA:hasStudiedCondition MONDO:0005416 ;
@@ -1748,26 +1732,28 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasPublicationDate "2007" ;
     TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 36 participants; EA group: 12 participants; TCA group: 12 participants; Sham group: 12 participants" ;
-    TARA:hasStimulationType "- Electroacupuncture (EA): Electrical stimulation with dense wave at 4 Hz and disperse wave at 20 Hz, intermittent non-specific manual twirling., Traditional Chinese Acupuncture (TCA): Intermittent specific manual twirling., Sham acupuncture: Intermittent non-specific manual twirling (no electrical stimulation)." ;
+    TARA:hasStimulationType "Electroacupuncture (EA): Electrical stimulation with dense wave at 4 Hz and disperse wave at 20 Hz, intermittent non-specific manual twirling., Traditional Chinese Acupuncture (TCA): Intermittent specific manual twirling., Sham acupuncture: Intermittent non-specific manual twirling (no electrical stimulation)." ;
     TARA:hasStudiedCondition MONDO:0008383 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "Rheumatoid arthritis" ;
     TARA:hasTrialType "Randomized Controlled Trial (RCT), Pilot Study" .
 
-<https://doi.org/10.4065/81.6.749> a IAO:0000013,
+<https://doi.org/10.1089/acm.2005.11.663> a IAO:0000013,
         owl:NamedIndividual ;
-    dc:title "ACUPUNCTURE IMPROVES FIBROMYALGIA SYMPTOMS" ;
-    TARA:hasAcupunctureModality "Standardized acupuncture with electrical stimulation at specific points: bilateral points at large intestine 4, stomach 36, liver 2, spleen 6, pericardium 6, heart 7, and axial paramedian points along the bladder meridian, with electrical stimulation applied at 2 Hz and 10 Hz." ;
-    TARA:hasAuthor "David P Martin, Christopher D Sletten, Brent A Williams, Ines H Berger" ;
-    TARA:hasControlsInformation "The control used in the study was simulated acupuncture, where patients received treatment that mimicked real acupuncture without actual needle penetration or electrical stimulation." ;
+    dc:title "Treatment of Fibromyalgia with Formula Acupuncture: Investigation of Needle Placement, Needle Stimulation, and Treatment Frequency" ;
+    TARA:hasAcupunctureModality "Manual needle stimulation and non-stimulation at both traditional and nontraditional sites" ;
+    TARA:hasAuthor "Richard E Harris, Xiaoming Tian, David A Williams, Thomas X Tian, Thomas R Cupps, Frank Petzke, Kimberly H Groner, Pinaki Biswas, Richard H Gracely, Daniel J Clauw" ;
+    TARA:hasControlsInformation """The controls used in the study were: 1) T/0: Traditional needle location without stimulation.
+2) N/S: Nontraditional needle location with stimulation.
+3) N/0: Nontraditional needle location without stimulation.""" ;
     TARA:hasCountryInformation "United States" ;
-    TARA:hasDOI "DOI: https://doi.org/10.4065/81.6.749" ;
-    TARA:hasListedAcupointsUsed "LI 4, ST 36, LR 2, SP 6, PC 6, HT 7" ;
-    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
-    TARA:hasPublicationDate "2006" ;
-    TARA:hasPublicationVenue "Mayo Clinic women's healthsource" ;
-    TARA:hasSampleSizeInformation "Total: 50 participants; Acupuncture group: 25; Control group: 25" ;
-    TARA:hasStimulationType "Electrical stimulation at 2 Hz between large intestine 4 and stomach 36, and at 10 Hz over the axial circuits." ;
+    TARA:hasDOI "DOI: https://doi.org/10.1089/acm.2005.11.663" ;
+    TARA:hasListedAcupointsUsed "Du 20, LI 11, LI 4, GB 34, ST 36, SP 6, LR 3" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper does not provide specific details on needle depth or angle)" ;
+    TARA:hasPublicationDate "2005" ;
+    TARA:hasPublicationVenue "Journal of Alternative and Complementary Medicine" ;
+    TARA:hasSampleSizeInformation "Total sample size: 114 participants, Group 1 (T/S): 29 participants, Group 2 (T/0): 30 participants, Group 3 (N/S): 28 participants, Group 4 (N/0): 27 participants" ;
+    TARA:hasStimulationType "Manual stimulation: lifting and thrusting with rotation approximately 12 times at 180 degrees clockwise and counterclockwise." ;
     TARA:hasStudiedCondition MONDO:0005546 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "fibromyalgia" ;
@@ -1792,27 +1778,6 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasStudiedConditionNote "chronic neck pain" ;
     TARA:hasTrialType "RCT (Randomized Controlled Trial)" .
 
-<https://doi.org/10.1089/acm.2005.11.663> a IAO:0000013,
-        owl:NamedIndividual ;
-    dc:title "Treatment of Fibromyalgia with Formula Acupuncture: Investigation of Needle Placement, Needle Stimulation, and Treatment Frequency" ;
-    TARA:hasAcupunctureModality "Manual needle stimulation and non-stimulation at both traditional and nontraditional sites" ;
-    TARA:hasAuthor "Richard E Harris, Xiaoming Tian, David A Williams, Thomas X Tian, Thomas R Cupps, Frank Petzke, Kimberly H Groner, Pinaki Biswas, Richard H Gracely, Daniel J Clauw" ;
-    TARA:hasControlsInformation """The controls used in the study were: 1) T/0: Traditional needle location without stimulation.
-2) N/S: Nontraditional needle location with stimulation.
-3) N/0: Nontraditional needle location without stimulation.""" ;
-    TARA:hasCountryInformation "United States" ;
-    TARA:hasDOI "DOI: https://doi.org/10.1089/acm.2005.11.663" ;
-    TARA:hasListedAcupointsUsed "Du 20, LI 11, LI 4, GB 34, ST 36, SP 6, LR 3, Shenmen" ;
-    TARA:hasNeedlingInformation "Not mentioned (the paper does not provide specific details on needle depth or angle)" ;
-    TARA:hasPublicationDate "2005" ;
-    TARA:hasPublicationVenue "Journal of Alternative and Complementary Medicine" ;
-    TARA:hasSampleSizeInformation "Total sample size: 114 participants, Group 1 (T/S): 29 participants, Group 2 (T/0): 30 participants, Group 3 (N/S): 28 participants, Group 4 (N/0): 27 participants" ;
-    TARA:hasStimulationType "Manual stimulation: lifting and thrusting with rotation approximately 12 times at 180 degrees clockwise and counterclockwise." ;
-    TARA:hasStudiedCondition MONDO:0005546 ;
-    TARA:hasStudiedConditionContext HP:0012531 ;
-    TARA:hasStudiedConditionNote "fibromyalgia" ;
-    TARA:hasTrialType "Randomized Controlled Trial (RCT)" .
-
 <https://doi.org/10.1111/j.1468-2982.2004.00803.x> a IAO:0000013,
         owl:NamedIndividual ;
     dc:title "Role of the needling per se in acupuncture as prophylaxis for menstrually related migraine: a randomized placebo-controlled study" ;
@@ -1821,16 +1786,36 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasControlsInformation "The control used in the study was blunt, telescopic placebo needles that touch but do not penetrate the skin." ;
     TARA:hasCountryInformation "Sweden" ;
     TARA:hasDOI "DOI: https://doi.org/10.1111/j.1468-2982.2004.00803.x" ;
-    TARA:hasListedAcupointsUsed "GB 8, GB 20, LI 4, LR 3, SP 6, GB 14, Taiyang, BL10" ;
-    TARA:hasNeedlingInformation "Manual rotation every 10 minutes to achieve 'de qi' sensation" ;
+    TARA:hasListedAcupointsUsed "GB 8, GB 20, LI 4, LR 3, SP 6, GB 14, Taiyang, BL 10" ;
+    TARA:hasNeedlingInformation "The needle depth varied between 10 and 30 mm depending on location. The angle of insertion is not mentioned." ;
     TARA:hasPublicationDate "2005" ;
     TARA:hasPublicationVenue "Cephalalgia" ;
     TARA:hasSampleSizeInformation "Total enrolled: 46; Randomized: 31; Completed: 28; Groups: Verum and Placebo (exact numbers in each group not specified)" ;
-    TARA:hasStimulationType "The needle depth varied between 10 and 30 mm depending on location. The angle of insertion is not mentioned." ;
+    TARA:hasStimulationType "Manual rotation every 10 minutes to achieve 'de qi' sensation" ;
     TARA:hasStudiedCondition MONDO:0005277 ;
     TARA:hasStudiedConditionContext HP:0012531 ;
     TARA:hasStudiedConditionNote "menstrually related migraine (MRM)" ;
     TARA:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1136/aim.22.2.60> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture for low back pain in pregnancy -a prospective, quasi-randomised, controlled study" ;
+    TARA:hasAcupunctureModality "Traditional needle-based acupuncture using classical points without electro-stimulation or ear acupuncture, involving the insertion of approximately 12 needles for about 25 minutes per session." ;
+    TARA:hasAuthor "João Bosco, Guerreiro Da Silva, Mary Uchiyama Nakamura, José Antonio Cordeiro, Luiz Kulay, Mary Uchiyama" ;
+    TARA:hasControlsInformation "The control group received conventional treatment only, which included paracetamol and hyoscine." ;
+    TARA:hasCountryInformation "Brazil" ;
+    TARA:hasDOI "DOI: https://doi.org/10.1136/aim.22.2.60" ;
+    TARA:hasListedAcupointsUsed "KI 3, SI 3, BL 62, BL 40, TE 5, GB 30, GB 41, Huatuojiaji" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the exact needle depth or angle of insertion)" ;
+    TARA:hasPublicationDate "2004" ;
+    TARA:hasPublicationVenue "" ;
+    TARA:hasSampleSizeInformation "Total: 61 participants; Study group (acupuncture): 27; Control group: 34" ;
+    TARA:hasStimulationType "Manual stimulation to elicit de qi; no specific frequency mentioned" ;
+    TARA:hasStudiedCondition HP:0003419,
+        HP:0034267 ;
+    TARA:hasStudiedConditionContext HP:0012531 ;
+    TARA:hasStudiedConditionNote "low back and pelvic pain during pregnancy" ;
+    TARA:hasTrialType "quasi-randomised, pragmatic controlled study" .
 
 <https://doi.org/10.1111/j.0001-6349.2004.0215.x> a IAO:0000013,
         owl:NamedIndividual ;
@@ -1843,7 +1828,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "LR 3, GV 20, BL 60, SI 3, BL 22, BL 23, BL 24, BL 25, BL 26" ;
     TARA:hasNeedlingInformation "Needle depth: 2.5-inch needles for lumbar and sacral bladder points, minimal gluteal muscle tendon, sacroiliac tendons; 1.0-inch needles for symphysis. Needle angle: tangentially for lumbar and sacral bladder points and minimal gluteal muscle tendon, obliquely for sacroiliac tendons, perpendicularly for symphysis." ;
     TARA:hasPublicationDate "2004" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 72 participants; Acupuncture group: 37 participants; Control group: 35 participants" ;
     TARA:hasStimulationType "Manual stimulation with periostal stimulation when possible; needles manipulated to achieve Dechi, repeated after 30-60 seconds; frequency: twice a week for the first two weeks, then no more than once a week." ;
     TARA:hasStudiedCondition HP:0003419,
@@ -1909,11 +1894,49 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasStudiedConditionNote "migraine without aura" ;
     TARA:hasTrialType "RCT" .
 
+<https://doi.org/10.1136/bmj.38512.405440.8f> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in patients with tension-type headache: randomised controlled trial" ;
+    TARA:hasAcupunctureModality "Acupuncture was administered as a semistandardised treatment involving needling at basic points bilaterally, with additional points chosen individually. The goal was to achieve \"de qi\" with manual needle stimulation, using sterile, disposable needles. The treatment consisted of 12 sessions over eight weeks, each lasting 30 minutes." ;
+    TARA:hasAuthor "Dieter Melchart, Andrea Streng, Andrea Hoppe, Benno Brinkhaus, Claudia Witt, Stefan Wagenpfeil, Volker Pfaffenrath, Michael Hammes, Josef Hummelsberger, Dominik Irnich, Wolfgang Weidenhammer, Stefan N Willich, Klaus Linde, Private Practice, Munich Volker, Pfaffenrath Neurologist" ;
+    TARA:hasControlsInformation "minimal acupuncture (superficial needling at non-acupuncture points) and waiting list control (no prophylactic treatment)" ;
+    TARA:hasCountryInformation "Germany" ;
+    TARA:hasDOI "DOI: https://doi.org/10.1136/bmj.38512.405440.8f" ;
+    TARA:hasListedAcupointsUsed "SP 6, SP 9, ST 36, ST 40, RN 12, LI 4, Du 14, GB 3, TE 6, GB 39, GB 34, LU 7, TE 5, Du 14" ;
+    TARA:hasNeedlingInformation "The acupuncture group aimed to achieve \"de qi,\" suggesting a deeper insertion, while the minimal acupuncture group used superficial needling. Specific needle depths or angles are not mentioned." ;
+    TARA:hasPublicationDate "2005" ;
+    TARA:hasPublicationVenue "British medical journal" ;
+    TARA:hasSampleSizeInformation "Total: 270 participants, Acupuncture group: 132, Minimal acupuncture group: 63, Waiting list group: 75" ;
+    TARA:hasStimulationType "Manual stimulation, at least once during each session" ;
+    TARA:hasStudiedCondition HP:0012228 ;
+    TARA:hasStudiedConditionContext HP:0012531 ;
+    TARA:hasStudiedConditionNote "tension-type headache" ;
+    TARA:hasTrialType "Randomised Controlled Trial (RCT)" .
+
+<https://doi.org/10.4065/81.6.749> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Improvement in Fibromyalgia Symptoms With Acupuncture: Results of a Randomized Controlled Trial" ;
+    TARA:hasAcupunctureModality "Standardized acupuncture with electrical stimulation at specific points: bilateral points at large intestine 4, stomach 36, liver 2, spleen 6, pericardium 6, heart 7, and axial paramedian points along the bladder meridian, with electrical stimulation applied at 2 Hz and 10 Hz." ;
+    TARA:hasAuthor "David P Martin, Christopher D Sletten, Brent A Williams, Ines H Berger" ;
+    TARA:hasControlsInformation "The control used in the study was simulated acupuncture, where patients received treatment that mimicked real acupuncture without actual needle penetration or electrical stimulation." ;
+    TARA:hasCountryInformation "United States" ;
+    TARA:hasDOI "DOI: https://doi.org/10.4065/81.6.749" ;
+    TARA:hasListedAcupointsUsed "LI 4, ST 36, LR 2, SP 6, PC 6, HT 7, BL 9, BL 10, BL 11, BL 21, BL 22, BL 23, BL 24" ;
+    TARA:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    TARA:hasPublicationDate "2006" ;
+    TARA:hasPublicationVenue "Mayo Clinic women's healthsource" ;
+    TARA:hasSampleSizeInformation "Total: 50 participants; Acupuncture group: 25; Control group: 25" ;
+    TARA:hasStimulationType "Electrical stimulation at 2 Hz between large intestine 4 and stomach 36, and at 10 Hz over the axial circuits." ;
+    TARA:hasStudiedCondition MONDO:0005546 ;
+    TARA:hasStudiedConditionContext HP:0012531 ;
+    TARA:hasStudiedConditionNote "fibromyalgia" ;
+    TARA:hasTrialType "Randomized Controlled Trial (RCT)" .
+
 <https://doi.org/10.1007/s100720300062> a IAO:0000013,
         owl:NamedIndividual ;
     dc:title "Non-pharmacological approaches to chronic headaches: transcutaneous electrical nerve stimulation, lasertherapy and acupuncture in transformed migraine treatment" ;
     TARA:hasAcupunctureModality "Acupuncture was administered using a standardized treatment scheme with specific acupoints (LR3, SP6, LI4, GB20, GV20, Ex-HN5) and additional points as needed. Needles were 0.3-mm diameter sterile disposable steel needles inserted to a depth of 10-30 mm, manipulated to achieve De Qi sensation, and left in place for 20 minutes without further stimulation. Sessions were twice a week for the first two weeks and weekly for the next six weeks." ;
-    TARA:hasAuthor "G Allais, C De Lorenzo, P E Quirico, G Lupi, G Airola, O Mana, C Benedetto, T H E R A P Y O F C H R O N I C H E A D A C H E, S G Allais, Centro Studi, Terapie Naturali, Fisiche Turin" ;
+    TARA:hasAuthor "G Allais, C De Lorenzo, P E Quirico, G Lupi, G Airola, O Mana, C Benedetto, S G Allais, Centro Studi, Terapie Naturali, Fisiche Turin" ;
     TARA:hasControlsInformation "Not mentioned (the study does not include a separate control group; it compares three active treatments against each other)" ;
     TARA:hasCountryInformation "Italy" ;
     TARA:hasDOI "DOI: https://doi.org/10.1007/s100720300062" ;
@@ -1939,7 +1962,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "GB 20, LI 4, LR 3, GB 8, GB 14, GB 21, GB 41, BL 2, BL 10, BL 60, LU 7, TE 5, ST 8, ST 36, ST 44, Du 20" ;
     TARA:hasNeedlingInformation "The needle depth is superficial, simulating puncturing of the skin without deep insertion. The angle is not mentioned." ;
     TARA:hasPublicationDate "2000" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total: 39 participants; Group details not specified (verum and placebo groups mentioned but exact numbers not provided)" ;
     TARA:hasStimulationType "Manual acupuncture with needles inserted and left in place for 30 minutes; no specific lifting or thrusting frequency mentioned." ;
     TARA:hasStudiedCondition HP:0012228 ;
@@ -1977,7 +2000,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "SI 3, BL 62, GB 41, TE 5, GB 20, GB 21, GB 12, BL 10, BL 11, GV 14, LI 5, GB 42, TE 8, ST 41, BL 16, SI 9, LI 15" ;
     TARA:hasNeedlingInformation "Needle depth: 2-3 mm for hands and feet; 2-10 mm for neck, shoulder, and upper back in type 1 acupuncture. Needle depth: 2-3 mm for all points in type 2 acupuncture. No specific angle mentioned." ;
     TARA:hasPublicationDate "1998" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total sample size: 46 participants. Group distribution: Relevant acupuncture group: approximately 15 participants, Irrelevant acupuncture group: approximately 15 participants, Control group: approximately 16 participants. (Exact numbers for each group at the start are not specified, but dropouts were evenly distributed.)" ;
     TARA:hasStimulationType "Manual: shallow needling (2-3 mm depth); Thermal: infrared lamp (heat adjusted to comfort); Electrical: IP cords with silicone diode (specific frequency not mentioned)" ;
     TARA:hasStudiedCondition MONDO:0006862 ;
@@ -1996,7 +2019,7 @@ Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every
     TARA:hasListedAcupointsUsed "Dingchuan, TE 17, TE 20, SP 7, ST 37, LU 5, GB 20, GB 21, BL 10, BL 2, ST 36, Du 23, LI 4, TE 6, GB 34, GB 8, SI 3, Du 20, LR 3, PC 6" ;
     TARA:hasNeedlingInformation "Needle depth: very shallow (for sham acupuncture); Needle angle: Not mentioned" ;
     TARA:hasPublicationDate "2006" ;
-    TARA:hasPublicationVenue "-" ;
+    TARA:hasPublicationVenue "" ;
     TARA:hasSampleSizeInformation "Total enrolled: 31; Completed and analyzed: 28 (Real acupuncture: 16, Sham acupuncture: 12)" ;
     TARA:hasStimulationType "Manual stimulation by rotation methods to produce De Qi sensation; no specific frequency mentioned" ;
     TARA:hasStudiedCondition MONDO:0005277 ;
