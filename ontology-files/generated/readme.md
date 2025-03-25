@@ -31,17 +31,18 @@ Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/
 This section will be updated periodically based on the release of the newer versions of the ontology.
 
 ### Version 0.7.1 (March 20, 2025)
+
 * **Refactored Ontology IRIs** :
   * The namespace for ontology terms has been updated from `http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#` to `http://www.acupunctureresearch.org/tara/ontology/`. This change simplifies namespace handling, improves compatibility with Linked Data standards, and enhances interoperability with other ontologies. All TARA-specific class and property IRIs now follow the updated structure.
     * For example, the IRI for the acupoint labeled as `BL 10` is now referenced as
-      `http://www.acupunctureresearch.org/tara/ontology/TARA_0242146` instead of 
+      `http://www.acupunctureresearch.org/tara/ontology/TARA_0242146` instead of
       `http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#TARA_0242146`
 * **Updated Locational Axioms for Acupoints** :
-  * The ontology now includes axioms associating acupoints with their surface locations for all meridian acupoints. 
-  * Additionally, locational axioms have been added for five extra acupoints related to pain conditions found in the literature: Dingchuan, Huatuojiaji, Taiyang, Heding, and Xiyan. 
+  * The ontology now includes axioms associating acupoints with their surface locations for all meridian acupoints.
+  * Additionally, locational axioms have been added for five extra acupoints related to pain conditions found in the literature: Dingchuan, Huatuojiaji, Taiyang, Heding, and Xiyan.
   * The ontology currently includes 1,197 locational axioms, covering 266 unique locations on the body surface.
 * **Updated Article Metadata** :
-  * The article metadata for pain-related research has been updated with additional acupoints and mapped to TARA standard acupoints.  
+  * The article metadata for pain-related research has been updated with additional acupoints and mapped to TARA standard acupoints.
   * Also includes a cleaner version of the article metadata, particularly correcting cases where needling information was swapped with stimulation types.
 
 ### Version 0.7 (March 15, 2025)
@@ -132,7 +133,7 @@ The screenshot above is from TARA Acupoints Ontology - Version 0.5.
 The inferred version of the TARA Acupoints Ontology is available explore via the **WebProtégé**. WebProtégé is an open source, lightweight, web-based ontology viewer and editor. The ontology is available in WebProtégé *only for viewing and commenting*. The idea is to gather feedback from acupoint experts.
 
 * If you don't have an account in WebProtégé, [create an account using this link](https://webprotege.stanford.edu/).
-* Simply navigate to the following link: [TARA Acupoints Ontology in WebProtege](https://webprotege.stanford.edu/#projects/7c97eaa5-7c13-4a73-ab3c-5cb6eeec4fb4/edit/Classes?selection=Class(%3Chttp://www.acupunctureresearch.org/tara/ontology/acupoints.owl%23TARA_5151019%3E))
+* Simply navigate to the following link: [TARA Acupoints Ontology in WebProtege](https://webprotege.stanford.edu/#projects/3be98cb1-fa54-4ddd-a5e8-a9803783b90d/edit/Classes?selection=Class(%3Chttp://www.acupunctureresearch.org/tara/ontology/TARA_1132428%3E))
 * If you are new to WebProtégé, please visit the [WebProtégé User Guide](https://protegewiki.stanford.edu/wiki/WebProtegeUsersGuide).
 
 ![1720703169244](image/readme/1720703169244.png)
