@@ -2,6 +2,7 @@
 
 1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
 2. [Ontology Versions Summary](#ontology-versions-summary)
+   + [Version 1.0.0 (June 30, 2025)](#version-100-june-30-2025)
    + [Version 0.7.1 (March 20, 2025)](#version-071-march-20-2025)
    + [Version 0.7 (March 15, 2025)](#version-07-march-15-2025)
    + [Version 0.6 (December 12, 2024)](#version-06-december-12-2024)
@@ -29,6 +30,12 @@ Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/
 ## Ontology Versions Summary
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
+
+### Version 1.0.0 (June 30, 2025)
+
+* Additional provinance for acupoint metadata annotations including indications, acupuncture method, innervation, and vasculature. Added inline provinance for each annotation "Chinese acupuncture and moxibustion, 1999"
+* Enhanced acupoints metadata with additional synonyms.
+* The ontology  (Version 1.0.0) is now available via bioportal: https://bioportal.bioontology.org/ontologies/TARA
 
 ### Version 0.7.1 (March 20, 2025)
 
@@ -118,6 +125,7 @@ This section will be updated periodically based on the release of the newer vers
 The most recent version of the TARA Acupoints Ontology is [linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/tara-acupoints-merged.ttl). The easiest way to explore the ontology is to load it in **Protégé**. Protégé is a free, open-source ontology editor which you can download from [this link](https://protege.stanford.edu/software.php#desktop-protege).
 
 * The [inferred version of the ontology is linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints-inferred.ttl). This inferred ontology merges the asserted and inferred axioms of the acupoints ontology plus the upper ontology into a **single turtle file**.
+* The [inferred version of the ontology PLUS the articles knowledge base is linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/tara-acupoints-kb-inferred.ttl). This inferred ontology merges the asserted and inferred axioms of the acupoints ontology, the upper ontology, plus the articles annotated articles metadata into a **single turtle file**.
 
 ### Loading the Ontology in Protégé Desktop
 
@@ -345,6 +353,7 @@ limit 10
 
 ### Query Result
 
+
 | acupoint | related_region                  | related_region_iri | surface_region | surface_region_iri |
 | -------- | ------------------------------- | ------------------ | -------------- | ------------------ |
 | LU 9     | abductor pollicis longus tendon | ILX:0795335        | carpal region  | UBERON:0004452     |
@@ -392,6 +401,7 @@ limit 30
 ```
 
 ### Query Result
+
 
 | meridian      | acupoint | surface_region       | surface_region_iri | related_region                  | related_region_iri |
 | ------------- | -------- | -------------------- | ------------------ | ------------------------------- | ------------------ |
