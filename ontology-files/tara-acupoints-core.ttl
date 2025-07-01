@@ -21,12 +21,12 @@
                                                                                  "Maryann E. Martone, PhD - https://orcid.org/0000-0002-8406-3871" ,
                                                                                  "Richard Harris, PhD - https://orcid.org/0000-0002-2067-8447" ;
                                                                   dc:creator "Fahim T. Imam, PhD - https://orcid.org/0000-0003-4752-543X" ;
-                                                                  dc:date "March 20, 2025" ;
+                                                                  dc:date "June 30, 2025" ;
                                                                   dc:description "The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH). Project link: https://www.acupunctureresearch.org/tara"@en ;
                                                                   dc:source "Cheng, Xinnong, and Liangyue Deng. \"Chinese acupuncture and moxibustion.\" (1999)." ,
                                                                             "World Health Organization. Regional Office for the Western Pacific. WHO standard acupuncture point locations in the Western Pacific Region. World Health Organization, 2008." ;
                                                                   dc:title "TARA Acupoints Ontology"@en ;
-                                                                  owl:versionInfo "0.7.1"^^rdfs:Literal .
+                                                                  owl:versionInfo "1.0.0"^^rdfs:Literal .
 
 #################################################################
 #    Annotation properties
