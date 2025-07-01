@@ -40,8 +40,9 @@ ontology_files = {
                    "tara-acupoints-core.ttl"    : "../ontology-files/tara-acupoints-core.ttl",
                    "tara-imported-terms.ttl"    : "../ontology-files/tara-imported-terms.ttl",
                    "tara-acupoints.ttl"         : "../ontology-files/generated/tara-acupoints.ttl",
-                   "tara-articles.ttl"         : "../ontology-files/generated/tara-articles.ttl",                   
-                   "tara-acupoints-merged.ttl"  : "../ontology-files/generated/tara-acupoints-merged.ttl"
+                   "tara-articles.ttl"          : "../ontology-files/generated/tara-articles.ttl",                   
+                   "tara-acupoints-merged.ttl"  : "../ontology-files/generated/tara-acupoints-merged.ttl",
+                   "tara-acupoints-articles-kb-merged.ttl" : "../ontology-files/generated/tara-acupoints-articles-kb-merged.ttl"
                  }
 
 # CSV input files and their relative paths
@@ -662,7 +663,7 @@ def main():
         
         print ("\n> Merging Generated Ontology With Articles Metadata From: " + ontology_files.get("tara-articles.ttl"))
         merge_ontologies (ontology_files.get("tara-acupoints-merged.ttl"), ontology_files.get("tara-articles.ttl"),
-                          ontology_files.get("tara-acupoints-merged.ttl"))
+                          ontology_files.get("tara-acupoints-articles-kb-merged.ttl"))
         
         print ("\n> End of Program Execution. All Steps Executed Succussfully.\n")
 

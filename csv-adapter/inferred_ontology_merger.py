@@ -34,6 +34,14 @@ ontology1_path = '../ontology-files/generated/tara-acupoints-merged.ttl'
 ontology2_path = '../ontology-files/acupoints-inferred.ttl'
 merged_ontology_path = '../ontology-files/generated/tara-acupoints-inferred.ttl'
 
+ontology1_kb_path = '../ontology-files/generated/tara-acupoints-articles-kb-merged.ttl'
+ontology2_kb_path = '../ontology-files/acupoints-kb-inferred.ttl'
+merged_ontology_kb_path = '../ontology-files/generated/tara-acupoints-kb-inferred.ttl'
+
+
+
 # testing the function
 merge_ontologies(ontology1_path, ontology2_path, merged_ontology_path)
+merge_ontologies(ontology1_kb_path, ontology2_kb_path, merged_ontology_kb_path)
+
 
