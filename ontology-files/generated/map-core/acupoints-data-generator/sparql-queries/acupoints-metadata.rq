@@ -17,6 +17,7 @@ SELECT DISTINCT
   ?Acupoint_IRI
   ?Acupoint_Curie
   ?Acupoint
+  ?Acupoint_Category
   (GROUP_CONCAT(DISTINCT ?acupoint_synonym; separator=", ") AS ?Synonym)
   (GROUP_CONCAT(DISTINCT ?acupoint_chinese_name; separator=", ") AS ?Chinese_Name)
   ?Meridian
@@ -31,8 +32,14 @@ SELECT DISTINCT
 
 WHERE
 {
-  ?Acupoint_IRI rdfs:subClassOf+/rdfs:label "Acupoint" ;
-                rdfs:label ?Acupoint .
+
+  # CHheck for meridan acupoints and extra acupoints.
+  VALUES ?Acupoint_Type {TARA:TARA_3535998 TARA:TARA_5151019}.
+  # VALUES ?Acupoint_Type {"Extra Acupoint" "Meridian Acupoint"}.  
+  ?Acupoint_IRI rdfs:subClassOf+ ?Acupoint_Type;
+                rdfs:label ?Acupoint.
+  
+  OPTIONAL {?Acupoint_Type rdfs:label ?Acupoint_Category.}
 
   OPTIONAL { ?Acupoint_IRI TARA:hasSynonym ?acupoint_synonym }
   OPTIONAL { ?Acupoint_IRI TARA:hasChineseName ?acupoint_chinese_name }
@@ -91,7 +98,7 @@ WHERE
   FILTER (!regex(STR(?Acupoint),
     'Acupoint of|Meridian Acupoint|Point of|Point|Extra Acupoint'))
 
-  FILTER (BOUND(?Meridian)) # To skip the extra acupoints (42) outside the main meridian 
+  #FILTER (BOUND(?Meridian)) # To skip the extra acupoints (42) outside the main meridian 
 
   BIND (
         REPLACE (STR(?Acupoint_IRI),
@@ -100,7 +107,7 @@ WHERE
        )
 }
 GROUP BY
-  ?Acupoint_IRI ?Acupoint_Curie ?Acupoint ?Meridian ?Location
+  ?Acupoint_IRI ?Acupoint_Curie ?Acupoint ?Acupoint_Category ?Meridian ?Location
   ?Locational_Anatomy ?Acupuncture_Method ?Indications 
   ?Vasculature ?Innervation ?Reference
 ORDER BY ?Meridian ?Acupoint
