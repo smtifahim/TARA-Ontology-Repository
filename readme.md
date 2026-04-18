@@ -45,11 +45,11 @@ A parallel knowledge base variant (`tara-acupoints-articles-kb-merged.ttl`, `tar
 ## Repository Structure
 
 
-| Directory                             | Description                                                                                                                                                                                                                                                          |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`csv-adapter/`](./csv-adapter)       | Python scripts for generating the ontology from CSV files.<br />See the [adapter readme](./csv-adapter/readme.md) for the full pipeline description, prerequisites, and sample output.                                                                              |
-| [`csv-files/`](./csv-files)           | Curated CSV files that serve as the input data for the adapter. Sourced from the TARA Ontology Curation Google Sheet. See the[CSV files readme](./csv-files/readme.md).                                                                                              |
-| [`ontology-files/`](./ontology-files) | Base ontology files (under[`base/`](./ontology-files/base/)), generated output files (under [`generated/ttl/`](./ontology-files/generated/ttl/)), archived prior versions, and imported external terms. See the [ontology files readme](./ontology-files/readme.md). |
+| Directory                             | Description                                                                                                                                                                                                                                                                |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`csv-adapter/`](./csv-adapter)       | Python scripts for generating the ontology from CSV files.<br />See the [adapter readme](./csv-adapter/readme.md) for the<br />full pipeline description, prerequisites, and sample output.                                                                               |
+| [`csv-files/`](./csv-files)           | Curated CSV files that serve as the input data for the adapter. Sourced from the TARA Ontology<br /> <br />Curation Google Sheet. <br />See the [CSV files readme](./csv-files/readme.md).                                                                               |
+| [`ontology-files/`](./ontology-files) | Base ontology files (under[`base/`](./ontology-files/base/)), generated output files (under [`generated/ttl/`](./ontology-files/generated/ttl/)), archived prior versions, and imported external terms. <br />See the [ontology files readme](./ontology-files/readme.md). |
 
 ## Quick Start
 
