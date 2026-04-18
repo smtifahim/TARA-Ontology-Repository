@@ -4,7 +4,10 @@ using the HermiT reasoner (via owlready2).
 
 For each class, asserted named-class superclasses are replaced with inferred
 direct superclasses, matching Protege's inferred-hierarchy-tab behaviour.
-Logical axioms (restrictions, intersections stored as BNodes) are preserved.
+For TARA acupoint classes, intersection BNodes (genus + restriction combined
+via owl:intersectionOf) are removed from rdfs:subClassOf since the inferred
+named superclass supersedes them. Pure restriction BNodes (locational and
+other property axioms) are always preserved.
 
 Usage:
     python hermit_reasoner.py                        # uses default paths
@@ -78,6 +81,25 @@ def get_direct_inferred_named_superclasses(cls):
     return direct
 
 
+def is_intersection_bnode(g, node):
+    """
+    Return True if the BNode is an anonymous owl:Class built with
+    owl:intersectionOf (a genus + restriction combination).
+    """
+    return any(True for _ in g.triples((node, OWL.intersectionOf, None)))
+
+
+def remove_bnode_subtree(g, bnode):
+    """
+    Remove all triples where bnode is the subject, recursively removing
+    any BNode objects first so no orphaned blank nodes are left behind.
+    """
+    for p, o in list(g.predicate_objects(bnode)):
+        if isinstance(o, BNode):
+            remove_bnode_subtree(g, o)
+        g.remove((bnode, p, o))
+
+
 def main():
     # Accept optional CLI arguments; fall back to defaults
     INPUT_FILE  = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_INPUT_FILE
@@ -136,15 +158,31 @@ def main():
     g = Graph()
     g.parse(abs_input, format="turtle")
 
+    # Intersection BNodes are removed only for TARA-namespace classes: the
+    # inferred named superclass (e.g. Acupoint_of_Lung_Meridian) supersedes
+    # the anonymous genus+restriction combination. Imported-term classes
+    # (MONDO, HP, UBERON …) may legitimately carry intersection axioms that
+    # should not be touched.
+    TARA_CLASS_PREFIX = "http://www.acupunctureresearch.org/tara/ontology/TARA_"
+
     for cls_iri_str, direct_super_iris in inferred_superclasses.items():
         cls_ref = URIRef(cls_iri_str)
+        is_tara_class = cls_iri_str.startswith(TARA_CLASS_PREFIX)
 
-        # Remove all asserted rdfs:subClassOf to named classes (URIRefs).
-        # BNode objects (anonymous restrictions / intersections) are kept
-        # because they carry the logical axioms.
+        # Remove asserted rdfs:subClassOf triples:
+        #   URIRef objects  → always removed; replaced by the inferred ones below.
+        #   Intersection BNodes for TARA classes → removed; the inferred named
+        #     superclass already captures the genus, so keeping the anonymous
+        #     owl:intersectionOf expression would cause a spurious extra parent
+        #     in the class browser (the double-hierarchy problem).
+        #   Pure restriction BNodes → always kept; they carry locational and
+        #     other property axioms that have no named-class equivalent.
         for o in list(g.objects(cls_ref, RDFS.subClassOf)):
             if isinstance(o, URIRef):
                 g.remove((cls_ref, RDFS.subClassOf, o))
+            elif isinstance(o, BNode) and is_tara_class and is_intersection_bnode(g, o):
+                g.remove((cls_ref, RDFS.subClassOf, o))
+                remove_bnode_subtree(g, o)
 
         # Add the inferred direct named superclasses
         for sc_iri in direct_super_iris:
