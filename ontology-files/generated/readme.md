@@ -3,6 +3,7 @@
 1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
 2. [Generated Files](#generated-files)
 3. [Ontology Versions Summary](#ontology-versions-summary)
+   + [Version 1.2.0 (April 18, 2026)](#version-120-april-18-2026)
    + [Version 1.0.0 (June 30, 2025)](#version-100-june-30-2025)
    + [Version 0.7.1 (March 20, 2025)](#version-071-march-20-2025)
    + [Version 0.7 (March 15, 2025)](#version-07-march-15-2025)
@@ -32,20 +33,81 @@ Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/
 
 All generated Turtle files are located in the [`ttl/`](./ttl/) subdirectory. The table below summarizes each file together with a direct link for use in Protégé or other RDF tools.
 
-| File | Description |
-|------|-------------|
-| [`tara-acupoints.ttl`](./ttl/tara-acupoints.ttl) | Main ontology generated directly from the curated CSV files with numeric TARA IDs |
-| [`tara-articles.ttl`](./ttl/tara-articles.ttl) | Articles metadata ontology generated from the pain-related articles CSV |
-| [`tara-acupoints-merged.ttl`](./ttl/tara-acupoints-merged.ttl) | `tara-acupoints.ttl` merged with the upper ontology and imported terms |
+
+| File                                                                                   | Description                                                                          |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [`tara-acupoints.ttl`](./ttl/tara-acupoints.ttl)                                       | Main ontology generated directly from the curated CSV files with numeric TARA IDs    |
+| [`tara-articles.ttl`](./ttl/tara-articles.ttl)                                         | Articles metadata ontology generated from the pain-related articles CSV              |
+| [`tara-acupoints-merged.ttl`](./ttl/tara-acupoints-merged.ttl)                         | `tara-acupoints.ttl` merged with the upper ontology and imported terms               |
 | [`tara-acupoints-articles-kb-merged.ttl`](./ttl/tara-acupoints-articles-kb-merged.ttl) | `tara-acupoints-merged.ttl` merged with `tara-articles.ttl` (knowledge base variant) |
-| [`tara-acupoints-inferred.ttl`](./ttl/tara-acupoints-inferred.ttl) | `tara-acupoints-merged.ttl` with inferred class hierarchy computed by HermiT |
-| [`tara-acupoints-kb-inferred.ttl`](./ttl/tara-acupoints-kb-inferred.ttl) | `tara-acupoints-articles-kb-merged.ttl` with inferred class hierarchy from HermiT |
+| [`tara-acupoints-inferred.ttl`](./ttl/tara-acupoints-inferred.ttl)                     | `tara-acupoints-merged.ttl` with inferred class hierarchy computed by HermiT         |
+| [`tara-acupoints-kb-inferred.ttl`](./ttl/tara-acupoints-kb-inferred.ttl)               | `tara-acupoints-articles-kb-merged.ttl` with inferred class hierarchy from HermiT    |
 
 To regenerate these files, see the [csv-adapter pipeline](../../csv-adapter/readme.md).
 
 ## Ontology Versions Summary
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
+
+### Version 1.2.0 (April 18, 2026)
+
+**Refactored Locational Axioms (Acupoints and Extra Acupoints)**
+
+* Updated all 380 `locatedOnTheSurfaceOf` OWL restrictions and all 1,197 `locatedInRelationTo` OWL restrictions from the simple form `(property some anatomical_region)` to the nested form `(property some (partOf some anatomical_region))`. This aligns the locational semantics with the BFO/RO mereological model, where an acupoint is located on the surface of a region that is a part of the body surface.
+* The annotation properties `hasSurfaceLocation` and `hasRelatedLocation` (used for direct annotation queries) are unchanged at 380 and 1,196 values respectively.
+
+**Refactored Meridian Acupoint Classification Axioms**
+
+* Replaced the two separate `rdfs:subClassOf` triples (bare genus class + standalone restriction) used to classify each meridian acupoint with a single proper OWL intersection axiom of the form:
+  ```
+  acupoint rdfs:subClassOf
+      ( Meridian_Acupoint AND (isMemberAcupointOf some meridian) )
+  ```
+
+  This brings the asserted hierarchy in line with OWL-DL best practices (genus-differentia definition).
+
+**Chinese Character Labels and Pinyin Labels**
+
+* In version 1.0.0, `TARA:hasChineseName` (372 uses) stored Pinyin romanizations, not Chinese characters. This version corrects that: the property has been replaced by two distinct properties:
+  * `TARA:hasChineseLabel` (375 values) — now stores actual Chinese character strings (汉字) for all meridians and meridian acupoint classes.
+  * `TARA:hasPinyinLabel` (365 values) — new property storing the Pinyin romanization (previously conflated with `hasChineseName`). During migration, the Pinyin values themselves were also reviewed and corrected:
+
+
+    | Acupoint | Old value (`hasChineseName`) | New value (`hasPinyinLabel`) | Change type                     |
+    | -------- | ---------------------------- | ---------------------------- | ------------------------------- |
+    | SP 9     | `Yinlingqnan`                | `Yinlingquan`                | Typo fix                        |
+    | ST 1     | `Cheng Qi`                   | `Chengqi`                    | Spacing standardization         |
+    | ST 2     | `Si Bai`                     | `Sibai`                      | Spacing standardization         |
+    | ST 31    | `Diguan`                     | `Biguan`                     | Factual correction (wrong name) |
+    | GV 4     | *(absent)*                   | `Mingmen`                    | Newly added                     |
+
+    Eight sex-specific class variants (the `(Male)` / `(Female)` point pairs for ST 17, ST 18, CV 1, and GB 24) had their Pinyin labels removed — Pinyin values are now carried exclusively by the canonical sex-neutral class.
+* Additionally, 15 meridian and vessel classes newly received Chinese character labels that were absent in version 1.0.0, including all 14 meridians (e.g., `Governor Vessel: '督脈(脉)'`, `Stomach Meridian: '足陽(阳)明胃經(经,経)'`).
+
+**Provenance Refactoring and Enrichment**
+
+* Removed the non-standard `TARA:hasReference` property (439 uses in version 1.0.0). All provenance is now recorded using the standard `dcterms:bibliographicCitation` property.
+* The TARA classes representing all 14 meridians, 361 meridian acupoints, 40 extra acupoints, and all special points now contains detailed provinance using `dcterms:bibliographicCitation`.
+* Citations are now **structured by knowledge domain** within each acupoint record, explicitly attributing each category of information to its source. A representative citation for a meridian acupoint reads:
+  ```
+  Source for the Acupoint Location: WHO Standard Acupuncture Point Locations in
+  the Western Pacific Region. World Health Organization. Regional Office for the
+  Western Pacific, 2008. Page 130. ISBN 978-92-9061-248-7.
+
+  Source for Acupuncture Method, Vasculature, Innervation, and Indications:
+  D. Liangyue, G. Yijun, H. Shuhui, et al. Chinese Acupuncture and Moxibustion.
+  Revised ed. Beijing: Foreign Languages Press; 1999.
+  Chapter 8, Acupuncture Points of the Shaoyin and Taiyang Meridian.
+  ISBN 978-7-119-01758-7.
+  ```
+* Of the 497 cited classes: 371 carry dual-source citations (WHO location + Chinese Acupuncture and Moxibustion for clinical metadata), 28 carry a WHO-only citation (acupoints for which clinical metadata was not separately sourced).
+* ISBN numbers are now included in all WHO and Chinese Acupuncture and Moxibustion citations, and chapter-level attribution is provided for each chapter of *Chinese Acupuncture and Moxibustion*, enabling readers to verify the exact primary source for every piece of metadata.
+
+**Synonym Updates**
+
+* Net addition of 193 synonym values across 373 TARA classes (454 added, 261 removed/consolidated).
+  * Added standard meridian abbreviation synonyms to category classes (e.g., `LU`, `ST`, `BL`, `GB`, `GV`, `CV`).
+  * Added alternate extra-acupoint code synonyms (e.g., `EX-HN`, `M-HN` codes for Taiyang, Anmian, etc.).
 
 ### Version 1.0.0 (June 30, 2025)
 
