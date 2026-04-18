@@ -87,8 +87,9 @@ This section will be updated periodically based on the release of the newer vers
 **Provenance Refactoring and Enrichment**
 
 * Removed the non-standard `TARA:hasReference` property (439 uses in version 1.0.0). All provenance is now recorded using the standard `dcterms:bibliographicCitation` property.
-* The TARA classes representing all 14 meridians, 361 meridian acupoints, 40 extra acupoints, and all special points now contains detailed provinance using `dcterms:bibliographicCitation`.
+* Added provinance for all 14 meridians and all special points which were missing in the previous version.
 * Citations are now **structured by knowledge domain** within each acupoint record, explicitly attributing each category of information to its source. A representative citation for a meridian acupoint reads:
+
   ```
   Source for the Acupoint Location: WHO Standard Acupuncture Point Locations in
   the Western Pacific Region. World Health Organization. Regional Office for the
@@ -96,11 +97,10 @@ This section will be updated periodically based on the release of the newer vers
 
   Source for Acupuncture Method, Vasculature, Innervation, and Indications:
   D. Liangyue, G. Yijun, H. Shuhui, et al. Chinese Acupuncture and Moxibustion.
-  Revised ed. Beijing: Foreign Languages Press; 1999.
-  Chapter 8, Acupuncture Points of the Shaoyin and Taiyang Meridian.
-  ISBN 978-7-119-01758-7.
+  Revised ed. Beijing: Foreign Languages Press; 1999. Chapter 8, Acupuncture Points
+  of the Shaoyin and Taiyang Meridian. ISBN 978-7-119-01758-7.
   ```
-* Of the 497 cited classes: 371 carry dual-source citations (WHO location + Chinese Acupuncture and Moxibustion for clinical metadata), 28 carry a WHO-only citation (acupoints for which clinical metadata was not separately sourced).
+* Of the 497 cited classes: 371 carry dual-source citations (WHO location + Chinese Acupuncture and Moxibustion for clinical metadata), 28 carry a WHO-only citation.
 * ISBN numbers are now included in all WHO and Chinese Acupuncture and Moxibustion citations, and chapter-level attribution is provided for each chapter of *Chinese Acupuncture and Moxibustion*, enabling readers to verify the exact primary source for every piece of metadata.
 
 **Synonym Updates**
