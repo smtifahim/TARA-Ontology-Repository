@@ -1,7 +1,8 @@
 # TARA Acupoints Ontology
 
 1. [About TARA Acupoints Ontology](#about-tara-acupoints-ontology)
-2. [Ontology Versions Summary](#ontology-versions-summary)
+2. [Generated Files](#generated-files)
+3. [Ontology Versions Summary](#ontology-versions-summary)
    + [Version 1.0.0 (June 30, 2025)](#version-100-june-30-2025)
    + [Version 0.7.1 (March 20, 2025)](#version-071-march-20-2025)
    + [Version 0.7 (March 15, 2025)](#version-07-march-15-2025)
@@ -9,17 +10,17 @@
    + [Version 0.5.1 (July 12, 2024)](#version-051-july-12-2024)
    + [Version 0.5.1 (July 11, 2024)](#version-051-july-11-2024)
    + [Version 0.5 (June 4, 2024)](#version-05-june-4-2024)
-3. [Accessing and Exploring the Ontology](#accessing-and-exploring-the-ontology)
+4. [Accessing and Exploring the Ontology](#accessing-and-exploring-the-ontology)
    + [Loading the Ontology in Protégé Desktop](#loading-the-ontology-in-protégé-desktop)
    + [Exploring the Ontology in WebProtégé](#exploring-the-ontology-in-webprotégé)
-4. [Examples of the Basic Hierarchies](#examples-of-the-basic-hierarchies)
+5. [Examples of the Basic Hierarchies](#examples-of-the-basic-hierarchies)
    + [Hierarchy of the Meridians](#hierarchy-of-the-meridians)
    + [Hierarchy of the Meridian Acupoints](#hierarchy-of-the-meridian-acupoints)
    + [Classification of the Special Acupoints](#classification-of-the-special-acupoints)
    + [Inferred Subclasses of a Special Point](#inferred-subclasses-of-a-special-point)
-5. [Basic Model of Relationships](#basic-model-of-relationships)
-6. [DL Query Examples](#dl-query-examples)
-7. [SPARQL Query Examples](#sparql-query-examples)
+6. [Basic Model of Relationships](#basic-model-of-relationships)
+7. [DL Query Examples](#dl-query-examples)
+8. [SPARQL Query Examples](#sparql-query-examples)
 
 ## About TARA Acupoints Ontology
 
@@ -27,13 +28,28 @@ The TARA Acupoints Ontology is an ontology being developed as part of the [Topol
 
 Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/principles/fp-000-summary.html) (OBO Foundry) principles, the TARA Acupoints Ontology is being developed to support the best practices recommeded by the FAIR principles. These practices include utilizing existing community ontologies where possible, e.g., the Foundational Model of Anatomy (FMA) or UBERON for common anatomical structures, and the use of upper level ontologies like [Basic Formal Ontology (BFO)](https://basic-formal-ontology.org/) and [Relation Ontology (RO)](https://obofoundry.org/ontology/ro.html) ensuring maximum interoperability with other ontologies in biomedical domain. [Navigate to this page](../) to know more about the upper level layers of the TARA Acupoints Ontology. The ontology incorporates anatomical terms imported from [UBERON](https://www.ebi.ac.uk/ols4/ontologies/uberon) and [InterLex](https://scicrunch.org/scicrunch/interlex/dashboard) to specify the anatomical locations of acupoints on the body surface. It also incorporates terms from  Mondo Disease Ontology ([MONDO](https://www.ebi.ac.uk/ols4/ontologies/mondo)) and Human Phenotype Ontology ([HP](https://www.ebi.ac.uk/ols4/ontologies/hp)) to specify the diseases or conditions studied in relation to acupoint use, based on acupoint research literature. These imported terms enable the annotation of studied conditions using standardized vocabulary and support higher-level semantic search through the hierarchical structures of the source ontologies.
 
+## Generated Files
+
+All generated Turtle files are located in the [`ttl/`](./ttl/) subdirectory. The table below summarizes each file together with a direct link for use in Protégé or other RDF tools.
+
+| File | Description |
+|------|-------------|
+| [`tara-acupoints.ttl`](./ttl/tara-acupoints.ttl) | Main ontology generated directly from the curated CSV files with numeric TARA IDs |
+| [`tara-articles.ttl`](./ttl/tara-articles.ttl) | Articles metadata ontology generated from the pain-related articles CSV |
+| [`tara-acupoints-merged.ttl`](./ttl/tara-acupoints-merged.ttl) | `tara-acupoints.ttl` merged with the upper ontology and imported terms |
+| [`tara-acupoints-articles-kb-merged.ttl`](./ttl/tara-acupoints-articles-kb-merged.ttl) | `tara-acupoints-merged.ttl` merged with `tara-articles.ttl` (knowledge base variant) |
+| [`tara-acupoints-inferred.ttl`](./ttl/tara-acupoints-inferred.ttl) | `tara-acupoints-merged.ttl` with inferred class hierarchy computed by HermiT |
+| [`tara-acupoints-kb-inferred.ttl`](./ttl/tara-acupoints-kb-inferred.ttl) | `tara-acupoints-articles-kb-merged.ttl` with inferred class hierarchy from HermiT |
+
+To regenerate these files, see the [csv-adapter pipeline](../../csv-adapter/readme.md).
+
 ## Ontology Versions Summary
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
 
 ### Version 1.0.0 (June 30, 2025)
 
-* Additional provinance for acupoint metadata annotations including indications, acupuncture method, innervation, and vasculature. Added inline provinance for each annotation "Chinese acupuncture and moxibustion, 1999"
+* Additional provenance for acupoint metadata annotations including indications, acupuncture method, innervation, and vasculature. Added inline provenance for each annotation "Chinese acupuncture and moxibustion, 1999"
 * Enhanced acupoints metadata with additional synonyms.
 * The ontology  (Version 1.0.0) is now available via bioportal: https://bioportal.bioontology.org/ontologies/TARA
 
@@ -92,7 +108,7 @@ This section will be updated periodically based on the release of the newer vers
 ### Version 0.5.1 (July 12, 2024)
 
 * Updated the labels for the acupoints of the Governor Vessel and the Conception Vessel
-  * Du 1...Du N are udated to GV 1...GV N; Du X are kept as synonyms
+  * Du 1...Du N are updated to GV 1...GV N; Du X are kept as synonyms
   * RN 1...RN N are updated to CV 1...CV N; RN X are kept as synonyms
 
 ### Version 0.5.1 (July 11, 2024)
@@ -122,15 +138,15 @@ This section will be updated periodically based on the release of the newer vers
 
 ## Accessing and Exploring the Ontology
 
-The most recent version of the TARA Acupoints Ontology is [linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/tara-acupoints-merged.ttl). The easiest way to explore the ontology is to load it in **Protégé**. Protégé is a free, open-source ontology editor which you can download from [this link](https://protege.stanford.edu/software.php#desktop-protege).
+The most recent version of the TARA Acupoints Ontology is [linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/ttl/tara-acupoints-merged.ttl). The easiest way to explore the ontology is to load it in **Protégé**. Protégé is a free, open-source ontology editor which you can download from [this link](https://protege.stanford.edu/software.php#desktop-protege).
 
-* The [inferred version of the ontology is linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/tara-acupoints-inferred.ttl). This inferred ontology merges the asserted and inferred axioms of the acupoints ontology plus the upper ontology into a **single turtle file**.
-* The [inferred version of the ontology PLUS the articles knowledge base is linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/tara-acupoints-kb-inferred.ttl). This inferred ontology merges the asserted and inferred axioms of the acupoints ontology, the upper ontology, plus the articles annotated articles metadata into a **single turtle file**.
+* The [inferred version of the ontology is linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/ttl/tara-acupoints-inferred.ttl). This inferred ontology merges the asserted and inferred axioms of the acupoints ontology plus the upper ontology into a **single turtle file**.
+* The [inferred version of the ontology PLUS the articles knowledge base is linked here](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/ttl/tara-acupoints-kb-inferred.ttl). This inferred ontology merges the asserted and inferred axioms of the acupoints ontology, the upper ontology, plus the articles annotated articles metadata into a **single turtle file**.
 
 ### Loading the Ontology in Protégé Desktop
 
 * Make sure to download the Protégé Desktop Version 5.5.X or higher. If you are not familiar with the Protégé interface there is a "Getting Started" document [linked here](https://protegeproject.github.io/protege/getting-started/).
-* Click `File > Open From URL..` in Protégé and copy/paste the [**TARA Acupoints Ontology Link**](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/tara-acupoints-merged.ttl) under the `URI` field. Clicking the `OK` button will load the ontology in Protege.
+* Click `File > Open From URL..` in Protégé and copy/paste the [**TARA Acupoints Ontology Link**](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/ttl/tara-acupoints-merged.ttl) under the `URI` field. Clicking the `OK` button will load the ontology in Protege.
 
 ![1718383103389](image/readme/1718383103389.png)
 
@@ -172,7 +188,7 @@ The example shows the inferred subclasses of a special acupuncture point called 
 
 ![1718304880191](image/readme/1718304880191.png)
 
-The diagram above provides a high-level depiction of possible relationships for Acupoints in TARA Acupoints Ontology (Version 0.5). It should be noted that not all acupoints require the relationships with meridians as there are many acupoints that do not belong to the standard meridian system. Also, not all acupoints have the special point designations. Only the acupoints of the 12 main meridans and 2 extra meridians, namely the Du Channel and the Ren Channel, have some special point roles.
+The diagram above provides a high-level depiction of possible relationships for Acupoints in TARA Acupoints Ontology (Version 0.5). It should be noted that not all acupoints require the relationships with meridians as there are many acupoints that do not belong to the standard meridian system. Also, not all acupoints have the special point designations. Only the acupoints of the 12 main meridians and 2 extra meridians, namely the Du Channel and the Ren Channel, have some special point roles.
 
 ## DL Query Examples
 
@@ -202,7 +218,7 @@ Since we have a defined a named class called `'Acupoint of the Heart Meridian'` 
 'Meridian Acupoint' that hasSpecialPointDesignation some 'Xi-Cleft Point Role'
 ```
 
-Again, since we have defined a named class called 'Xi-Cleft Point' in the ontology as equivalent to the class expression above, we can achive the same result by typing `'Meridian Acupoint' and 'Xi-Cleft Point'`.
+Again, since we have defined a named class called 'Xi-Cleft Point' in the ontology as equivalent to the class expression above, we can achieve the same result by typing `'Meridian Acupoint' and 'Xi-Cleft Point'`.
 
 ![1718432154575](image/readme/1718432154575.png)
 
@@ -254,10 +270,8 @@ Again, without using the defined class called 'Luo-Connecting Point' one would n
 **Q. What meridian acupoints can be located on the surface of the face?**
 
 ```
-'Meridian Acupoint' and (locatedOnTheSurfaceOf some face)
+'Meridian Acupoint' and (locatedOnTheSurfaceOf some ('part of' some face))
 ```
-
-![1734073357404](image/readme/1734073357404.png)
 
 **Q. What meridian acupoints can be located on the surface of the chest?**
 
@@ -278,7 +292,7 @@ Acupoint and locatedInRelationTo some ('part of' some leg)
 **Q: What acoupoints and located on the surface of the forearm?**
 
 ```
-Acupoint and (locatedInRelationTo some 'forelimb zeugopod’)
+Acupoint and (locatedInRelationTo some ('part of' some 'forelimb zeugopod’))
 ```
 
 ## SPARQL Query Examples
@@ -296,7 +310,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#>
+PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/>
 
 SELECT DISTINCT ?acupoint_iri ?acupoint ?meridian ?special_point_role ?surface_region
 WHERE 
@@ -333,7 +347,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#>
+PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/>
 
 SELECT ?acupoint ?related_region ?related_region_iri ?surface_region ?surface_region_iri
 WHERE 
@@ -372,7 +386,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/acupoints.owl#>
+PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/>
 
 SELECT DISTINCT 
     ?meridian ?acupoint
