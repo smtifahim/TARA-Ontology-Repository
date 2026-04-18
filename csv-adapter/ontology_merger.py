@@ -2,9 +2,10 @@
 Python script to merge two input ontologies and save the merged ontology into a file.
 -Fahim Imam
 '''
-from rdflib import Graph
+import re
+from rdflib import Graph, Namespace
 
-def merge_ontologies(ontology1_path, ontology2_path, merged_ontology_path):
+def merge_ontologies(ontology1_path, ontology2_path, merged_ontology_path, bind_namespaces=None):
     # Load the first ontology
     g1 = Graph()
     g1.parse(ontology1_path, format="turtle")
@@ -13,13 +14,25 @@ def merge_ontologies(ontology1_path, ontology2_path, merged_ontology_path):
     g2 = Graph()
     g2.parse(ontology2_path, format="turtle")
 
-    # Merge namespaces from g2 into g1
+    # Merge namespaces from g2 into g1, skipping auto-generated rdflib prefixes
+    # (e.g. ns1, ns2, ...) that rdflib assigns when a parsed file has no declared
+    # prefix for a namespace. Copying those would override properly named prefixes
+    # already bound in g1, causing the serialized output to use nsX names.
     for prefix, namespace in g2.namespaces():
-        g1.bind(prefix, namespace)
+        if not re.match(r'^ns\d+$', str(prefix)):
+            g1.bind(prefix, namespace)
 
     # Add triples from g2 to g1
     for triple in g2:
         g1.add(triple)
+
+    # Explicitly re-bind caller-supplied namespaces with override so that proper
+    # prefix names take precedence over any auto-generated nsX names that may have
+    # been introduced by either input file (e.g. tara-imported-terms.ttl uses full
+    # URIs without declared prefixes, so rdflib auto-generates nsX for them).
+    if bind_namespaces:
+        for prefix, uri in bind_namespaces.items():
+            g1.bind(prefix, Namespace(uri), override=True, replace=True)
 
     # Serialize the merged graph to a new TTL file
     g1.serialize(destination=merged_ontology_path, format="turtle")

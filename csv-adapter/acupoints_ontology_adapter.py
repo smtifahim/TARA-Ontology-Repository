@@ -4,7 +4,7 @@ extract the csv contents, and transform the contents into generated TARA Acupoin
 The AcupointsOntologyAdapter is the class with member functions to parse and extract different 
 csv files, and transform each of them into corresponding rdf graph, and subsequently merge the graphs 
 into TARA Acupoints Ontology file in turtle format. 
-- Fahim Imam (Version: December 12, 2024)
+- Fahim Imam (Version: April 17, 2026)
 """
 
 import csv, os
@@ -21,6 +21,8 @@ namespaces = {
                 "IAO"       :     "http://purl.obolibrary.org/obo/IAO_",
                 "RO"        :     "http://purl.obolibrary.org/obo/RO_",
                 "BFO"       :     "http://purl.obolibrary.org/obo/BFO_",
+                "partOf"    :     "http://purl.obolibrary.org/obo/BFO_0000050",
+                "obo"       :     "http://purl.obolibrary.org/obo/",
                 "TARA"      :     "http://www.acupunctureresearch.org/tara/ontology/",
                 "UBERON"    :     "http://purl.obolibrary.org/obo/UBERON_",
                 "OboInOwl"  :     "http://www.geneontology.org/formats/oboInOwl#",
@@ -28,21 +30,25 @@ namespaces = {
                 "dcterms"   :     "http://purl.org/dc/terms/",
                 "dc"        :     "http://purl.org/dc/elements/1.1/",
                 "ILX"       :     "http://uri.interlex.org/base/ilx_",
+                "ilxtr"     :     "http://uri.interlex.org/tgbugs/uris/readable/",
+                "ilxr"      :     "http://uri.interlex.org/base/readable/",
+                "NIFRID"    :     "http://uri.neuinfo.org/nif/nifstd/readable/",
                 "FMA"       :     "http://purl.org/sig/ont/fma/fma",
                 "HP"        :     "http://purl.obolibrary.org/obo/HP_",
                 "MONDO"     :     "http://purl.obolibrary.org/obo/MONDO_",    
+                "mondons"   :     "http://purl.obolibrary.org/obo/mondo#",
                 "protege"   :     "http://protege.stanford.edu/plugins/owl/protege#"
              }
 
 # Ontology files and their relative paths
 ontology_files = {
-                   "tara-acupoints-upper.ttl"   : "../ontology-files/tara-acupoints-upper.ttl",
-                   "tara-acupoints-core.ttl"    : "../ontology-files/tara-acupoints-core.ttl",
-                   "tara-imported-terms.ttl"    : "../ontology-files/tara-imported-terms.ttl",
-                   "tara-acupoints.ttl"         : "../ontology-files/generated/tara-acupoints.ttl",
-                   "tara-articles.ttl"          : "../ontology-files/generated/tara-articles.ttl",                   
-                   "tara-acupoints-merged.ttl"  : "../ontology-files/generated/tara-acupoints-merged.ttl",
-                   "tara-acupoints-articles-kb-merged.ttl" : "../ontology-files/generated/tara-acupoints-articles-kb-merged.ttl"
+                   "tara-acupoints-upper.ttl"   : "../ontology-files/base/tara-acupoints-upper.ttl",
+                   "tara-acupoints-core.ttl"    : "../ontology-files/base/tara-acupoints-core.ttl",
+                   "tara-imported-terms.ttl"    : "../ontology-files/base/tara-imported-terms.ttl",
+                   "tara-acupoints.ttl"         : "../ontology-files/generated/ttl/tara-acupoints.ttl",
+                   "tara-articles.ttl"          : "../ontology-files/generated/ttl/tara-articles.ttl",                   
+                   "tara-acupoints-merged.ttl"  : "../ontology-files/generated/ttl/tara-acupoints-merged.ttl",
+                   "tara-acupoints-articles-kb-merged.ttl" : "../ontology-files/generated/ttl/tara-acupoints-articles-kb-merged.ttl"
                  }
 
 # CSV input files and their relative paths
@@ -64,6 +70,8 @@ UBERON = Namespace(namespaces["UBERON"])
 IAO = Namespace(namespaces["IAO"])
 ILX = Namespace(namespaces["ILX"])
 DC = Namespace(namespaces["dc"])
+DCMI = Namespace(namespaces["dcterms"])
+partOf = URIRef(namespaces["partOf"])
 
 # Utility functions
 
@@ -91,8 +99,11 @@ class AcupointsOntologyAdapter:
     
     # Load the base ontology from file
     def addBaseOntology(self, file_path):
-        print("\n> Adding Base Ontology From: " + file_path)
+        print("\n> Adding Base Ontology from: " + file_path)
         self.onology_graph.parse(file_path, format='ttl')
+        # Remove owl:versionIRI — it belongs in the merged/released files only,
+        # not in the intermediate generated tara-acupoints.ttl.
+        self.onology_graph.remove((None, OWL.versionIRI, None))
         print ("  Base Ontology Added Successfully.")
     
     def addGraph(self, g):
@@ -105,7 +116,7 @@ class AcupointsOntologyAdapter:
             self.onology_graph.bind(prefix, Namespace(uri))
     
     def saveUpdatedOntology(self, file_path):
-        print("\n> Saving Updated Ontology At: " + file_path)
+        print("\n> Saving Updated Ontology at: " + file_path)
         
         # Serialize the updated graph to a file in turtle format
         self.setNamespacePrefixes (namespaces) #important to respecify the namespaces
@@ -115,7 +126,7 @@ class AcupointsOntologyAdapter:
     # Add meridians from the corresponding CSV file
     def addMeridians(self, file_path):
         g = Graph()
-        print("\n> Adding Meridians From: " + file_path)
+        print("\n> Adding Meridians from: " + file_path)
         with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -123,8 +134,8 @@ class AcupointsOntologyAdapter:
                     continue
                 
                 meridian, organ, superclass = row['Meridian'], row['Associated Organ'], row['Superclass']
-                label, synonyms, abbreviations = row['Label'], row['Synonym'], row['Abbreviation']
-                
+                label, synonyms, abbreviations, reference = row['Label'], row['Synonym'], row['Abbreviation'], row['Reference']
+                chinese_label = row['Chinese Label']
                 # Create the URI for the meridian
                 meridian_uri = create_uri(meridian)
 
@@ -140,7 +151,13 @@ class AcupointsOntologyAdapter:
                 if abbreviations:
                     for abbrev in abbreviations.split(','):
                         g.add((meridian_uri, TARA.hasAbbreviation, Literal(abbrev.strip())))
-
+                        
+                if reference:
+                    g.add((meridian_uri, DCMI.bibliographicCitation, Literal(reference)))
+                    
+                if chinese_label:
+                    g.add((meridian_uri, TARA.hasChineseLabel, Literal(chinese_label)))
+                
                 # Add the superclass relationship. No need as it will be added as part of the OWL axiom.
                 # if superclass:
                 #     g.add((meridian_uri, RDFS.subClassOf, URIRef(curie_to_iri(superclass))))    
@@ -156,6 +173,7 @@ class AcupointsOntologyAdapter:
                 # If no organ association found eg., for Du Channel and Rn Channel, simply add the superclass
                 if not organ:
                     g.add((meridian_uri, RDFS.subClassOf, URIRef(curie_to_iri(superclass))))
+                    
         
         self.addGraph(g)
         print ("  Meridians Added Successfully.")
@@ -163,17 +181,16 @@ class AcupointsOntologyAdapter:
     # Add acupoints category from the corresponding CSV file
     def addAcupointsCategory(self, file_path):
         g = Graph()
-        print("\n> Adding Acupoint Categories From: " + file_path)
+        print("\n> Adding Acupoint Categories from: " + file_path)
         
         with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if not any(row.values()):
                     continue
-                acupoint = row['Acupoints']
-                label = row['Label']
+                acupoint, label, synonyms = row['Acupoints'], row['Label'], row['Synonym']
                 meridian = row['Meridian']
-                synonyms = row['Synonym']
+                description, reference = row['Description'], row['Reference']
 
                 # Create the URI for the acupoint category
                 acupoint_uri = URIRef(create_uri(acupoint))
@@ -196,13 +213,18 @@ class AcupointsOntologyAdapter:
                     # Then, add OWL restriction for acupoint category and associated meridian.
                     g = g + self.getOWLAxiom(acupoint_uri, OWL.equivalentClass, TARA.Meridian_Acupoint, 
                                              TARA.isMemberAcupointOf, meridian_uri)
+        
+                if description:
+                    g.add((acupoint_uri, DC.description, Literal(description)))
+                if reference:
+                    g.add((acupoint_uri, DCMI.bibliographicCitation, Literal(reference)))
         self.addGraph(g)
         print ("  Acupoints Categories Added Successfully.")
         
     # Add acupoints from the corresponding CSV file
     def addAcupoints(self, file_path):
         g = Graph()
-        print("\n> Adding Acupoints From: " + file_path)
+        print("\n> Adding Acupoints from: " + file_path)
         
         # Read the CSV file
         with open(file_path, newline='', encoding='utf-8') as csvfile:
@@ -212,10 +234,10 @@ class AcupointsOntologyAdapter:
                     continue
                 
                 acupoint, label, meridian, superclass = row['Acupoint'], row['Label'], row['Meridian'], row['Superclass']
-                synonyms, chinese_names = row['Synonym'], row['Chinese Name']
+                synonyms, chinese_names = row['Synonym'], row['Pinyin Label']
                 location_info, reference, indications = row['WHO Location'], row['Reference'], row ['Indications']
                 method, vasculature, innervation = row['Acupuncture Method'], row['Vasculature'], row['Innervation']
-               
+                chinese_label = row['Chinese Label']
                 # Create the URI for the acupoint
                 acupoint_uri = URIRef(create_uri(acupoint))
                 
@@ -239,13 +261,13 @@ class AcupointsOntologyAdapter:
                 
                 if chinese_names:
                     for chinese_name in chinese_names.split(','):
-                        g.add((acupoint_uri, TARA.hasChineseName, Literal(chinese_name.strip())))
+                        g.add((acupoint_uri, TARA.hasPinyinLabel, Literal(chinese_name.strip())))
                 
                 if location_info:
                     g.add((acupoint_uri, TARA.hasLocationalDescription, Literal(location_info)))
                 
                 if reference:
-                    g.add((acupoint_uri, TARA.hasReference, Literal(reference)))
+                    g.add((acupoint_uri, DCMI.bibliographicCitation, Literal(reference)))
                 
                 if method:
                     g.add((acupoint_uri, TARA.hasMethodDescription, Literal(method)))
@@ -259,13 +281,16 @@ class AcupointsOntologyAdapter:
                 if innervation:
                     g.add((acupoint_uri, TARA.hasInnervationDescription, Literal(innervation)))
                 
+                if chinese_label:
+                    g.add((acupoint_uri, TARA.hasChineseLabel, Literal(chinese_label)))
+                
                 if meridian:
                     # First add meridian entity as an annotation property
                     g.add((acupoint_uri, TARA.hasMeridian, meridian_uri))     
                     
                     if not superclass:
-                        g.add ((acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint))
-                        self.addSimpleOWLRestriction (g, acupoint_uri, TARA.isMemberAcupointOf, meridian_uri)
+                        g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint,
+                                                  TARA.isMemberAcupointOf, meridian_uri)
                     
                     # Then add OWL restriction to associate the acupoint with corresponding meridan
                     # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint, 
@@ -277,7 +302,7 @@ class AcupointsOntologyAdapter:
     # Add extra acupoints from the corresponding CSV file
     def addExtraAcupoints(self, file_path):
         g = Graph()
-        print("\n> Adding Extra Acupoints From: " + file_path)
+        print("\n> Adding Extra Acupoints from: " + file_path)
         
         with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -288,6 +313,7 @@ class AcupointsOntologyAdapter:
                 acupoint, superclass, label , synonyms = row['Acupoint'], row['Superclass'], row['Label'], row['Synonym']
                 location, indications, method = row['Location'], row['Indications'], row['Acupuncture Method']
                 reference = row ['Reference']
+                synonyms = row['Synonym']
               
                 # Create the URI for the acupoint category
                 acupoint_uri = URIRef(create_uri(acupoint))
@@ -318,7 +344,7 @@ class AcupointsOntologyAdapter:
                     g.add ((acupoint_uri, TARA.hasMethodDescription, Literal(method)))
                 
                 if reference:
-                    g.add((acupoint_uri, TARA.hasReference, Literal(reference)))
+                    g.add((acupoint_uri, DCMI.bibliographicCitation, Literal(reference)))
                     
                    
         self.addGraph(g)
@@ -328,7 +354,7 @@ class AcupointsOntologyAdapter:
     # Add special points from the corresponding CSV file
     def addSpecialPoints(self, file_path):
         g = Graph()
-        print("\n> Adding Special Points From: " + file_path)
+        print("\n> Adding Special Points from: " + file_path)
         
         # g = g + self.getOWLAxiom (TARA.Special_Point, OWL.equivalentClass, TARA.Acupoint, 
         #                           TARA.hasSpecialPointDesignation, TARA.Special_Point_Role)
@@ -363,7 +389,7 @@ class AcupointsOntologyAdapter:
                     g.add ((special_point_uri, DC.description, Literal(description)))
                 
                 if reference:
-                    g.add ((special_point_uri, TARA.hasReference, Literal(reference)))
+                    g.add ((special_point_uri, DCMI.bibliographicCitation, Literal(reference)))
                 
                 if superclass:
                     # If the TARA class is specified with namespace TARA:Special_Point
@@ -391,7 +417,7 @@ class AcupointsOntologyAdapter:
     # Add special points association from the corresponding CSV file
     def addSpecialPointsAssociation(self, file_path):
         g = Graph()
-        print("\n> Adding Special Points Association From: " + file_path)
+        print("\n> Adding Special Points Association from: " + file_path)
        
         with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -449,7 +475,7 @@ class AcupointsOntologyAdapter:
  # Add surface location associated with each acupoint from the corresponding CSV file
     def addSurfaceLocations(self, file_path):
         g = Graph()
-        print("\n> Adding Surface Locations for the Acupoints From: " + file_path)
+        print("\n> Adding Surface Locations for the Acupoints from: " + file_path)
        
         with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -476,9 +502,28 @@ class AcupointsOntologyAdapter:
                         if locational_relation == "TARA:locatedInRelationTo":
                             g.add ((acupoint_uri, TARA.hasRelatedLocation, acupoint_location_uri)) # Add annotation
                         
-                        self.addSimpleOWLRestriction(g, acupoint_uri, URIRef(curie_to_iri(locational_relation)), acupoint_location_uri)
                         if locational_relation == "TARA:locatedOnTheSurfaceOf":
-                            self.addSimpleOWLRestriction(g, acupoint_uri, TARA.locatedInRelationTo, acupoint_location_uri)
+                            # locatedOnTheSurfaceOf some (partOf some acupoint_location_uri)
+                            inner_restriction = BNode()
+                            g.add((inner_restriction, RDF.type, OWL.Restriction))
+                            g.add((inner_restriction, OWL.onProperty, partOf))
+                            g.add((inner_restriction, OWL.someValuesFrom, acupoint_location_uri))
+                            self.addSimpleOWLRestriction(g, acupoint_uri, TARA.locatedOnTheSurfaceOf, inner_restriction)
+                            # locatedInRelationTo some (partOf some acupoint_location_uri)
+                            inner_restriction2 = BNode()
+                            g.add((inner_restriction2, RDF.type, OWL.Restriction))
+                            g.add((inner_restriction2, OWL.onProperty, partOf))
+                            g.add((inner_restriction2, OWL.someValuesFrom, acupoint_location_uri))
+                            self.addSimpleOWLRestriction(g, acupoint_uri, TARA.locatedInRelationTo, inner_restriction2)
+                        elif locational_relation == "TARA:locatedInRelationTo":
+                            # locatedInRelationTo some (partOf some acupoint_location_uri)
+                            inner_restriction = BNode()
+                            g.add((inner_restriction, RDF.type, OWL.Restriction))
+                            g.add((inner_restriction, OWL.onProperty, partOf))
+                            g.add((inner_restriction, OWL.someValuesFrom, acupoint_location_uri))
+                            self.addSimpleOWLRestriction(g, acupoint_uri, TARA.locatedInRelationTo, inner_restriction)
+                        else:
+                            self.addSimpleOWLRestriction(g, acupoint_uri, URIRef(curie_to_iri(locational_relation)), acupoint_location_uri)
     
         self.addGraph(g)
         print ("  Surface Locations for the Acupoints Added Successfully.")    
@@ -486,7 +531,7 @@ class AcupointsOntologyAdapter:
     # Add articles metadata from the corresponding CSV file
     def addArticlesMetadata(self, file_path):
         g = Graph()
-        print("\n> Adding Aritcles Metadata From: " + file_path)
+        print("\n> Adding Articles Metadata from: " + file_path)
         
         with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -645,25 +690,25 @@ def main():
         input_ttl_file = ontology_files.get("tara-acupoints.ttl")
         output_ttl_file = ontology_files.get("tara-acupoints.ttl") # saving the output in the same input ttl
         
-        print ("> Converting Textual IRI Suffixes Into Numeric Values For: " +  input_ttl_file)  
+        print ("> Converting Textual IRI Suffixes into Numeric Values for: " +  input_ttl_file)  
         convert_iri_suffixes_to_numeric(input_ttl_file, output_ttl_file)
         
-        print ("\n> Merging Generated Ontology With Upper Ontology From: " + ontology_files.get("tara-acupoints-upper.ttl"))
+        print ("\n> Merging Generated Ontology with Upper Ontology from: " + ontology_files.get("tara-acupoints-upper.ttl"))
         merge_ontologies (output_ttl_file, ontology_files.get("tara-acupoints-upper.ttl"),
-                          ontology_files.get("tara-acupoints-merged.ttl"))
+                          ontology_files.get("tara-acupoints-merged.ttl"), namespaces)
         
-        print ("\n> Merging Generated Ontology With Imported Terms From: " + ontology_files.get("tara-imported-terms.ttl"))
+        print ("\n> Merging Generated Ontology with Imported Terms from: " + ontology_files.get("tara-imported-terms.ttl"))
         merge_ontologies (ontology_files.get("tara-acupoints-merged.ttl"), ontology_files.get("tara-imported-terms.ttl"),
-                          ontology_files.get("tara-acupoints-merged.ttl"))
+                          ontology_files.get("tara-acupoints-merged.ttl"), namespaces)
         
         # Add articles metadata.
         b = AcupointsOntologyAdapter()
         b.addArticlesMetadata (csv_files.get("pain-related-articles.csv"))
         b.saveUpdatedOntology (ontology_files.get("tara-articles.ttl"))
         
-        print ("\n> Merging Generated Ontology With Articles Metadata From: " + ontology_files.get("tara-articles.ttl"))
+        print ("\n> Merging Generated Ontology with Articles Metadata from: " + ontology_files.get("tara-articles.ttl"))
         merge_ontologies (ontology_files.get("tara-acupoints-merged.ttl"), ontology_files.get("tara-articles.ttl"),
-                          ontology_files.get("tara-acupoints-articles-kb-merged.ttl"))
+                          ontology_files.get("tara-acupoints-articles-kb-merged.ttl"), namespaces)
         
         print ("\n> End of Program Execution. All Steps Executed Succussfully.\n")
 
