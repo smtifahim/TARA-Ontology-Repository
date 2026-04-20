@@ -2,8 +2,6 @@
 
 This repository contains the source files, curated data, and generation pipeline for the TARA Acupoints Ontology. The ontology project is part of the [Topological Atlas and Repository for Acupoint Research (TARA)](https://www.acupunctureresearch.org/tara) project funded by the National Institute of Health (NIH). The goal of the project is to establish a new comprehensive, computable resource for the acupuncture research and clinician community.
 
-For the ontology directory structure, base file descriptions, and generated file listings, see the **[TARA Acupoints Ontology readme](./ontology-files/readme.md)**.
-
 ## Contents
 
 1. [TARA Ontology Project Repository Structure](#tara-ontology-project-repository-structure)
