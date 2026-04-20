@@ -1,0 +1,114 @@
+# This query retrieves meridian-associated acupoints from the TARA ontology with labels,
+# synonyms, meridians, locational descriptions, acupuncture methods, and references.
+# A human-readable Locational_Anatomy field is constructed in a format like:
+#   "Skin surface location (list of related regions within the surface)""; 
+#   e.g., "lower back (lumbar vertebra 4, posterior median line)".    
+#   If related region(s) with the skin surface is unknown, only kept the surface location.
+# Uses a subquery to aggregate locational anatomy without exposing intermediate fields.
+# Author: Fahim Imam (December 18, 2025)
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/>
+
+SELECT DISTINCT 
+  ?Acupoint_IRI
+  ?Acupoint_Curie
+  ?Acupoint
+  ?Acupoint_Category
+  (GROUP_CONCAT(DISTINCT ?acupoint_synonym; separator=", ") AS ?Synonym)
+  (GROUP_CONCAT(DISTINCT ?acupoint_chinese_name; separator=", ") AS ?Chinese_Name)
+  ?Meridian
+  (GROUP_CONCAT(DISTINCT ?Acupoint_Special_Point_Role; separator=", ") AS ?Special_Point_Role)
+  ?Location
+  ?Locational_Anatomy
+  ?Acupuncture_Method
+  ?Indications
+  ?Vasculature 
+  ?Innervation
+  ?Reference
+
+WHERE
+{
+
+  # CHheck for meridan acupoints and extra acupoints.
+  VALUES ?Acupoint_Type {TARA:TARA_3535998 TARA:TARA_5151019}.
+  # VALUES ?Acupoint_Type {"Extra Acupoint" "Meridian Acupoint"}.  
+  ?Acupoint_IRI rdfs:subClassOf+ ?Acupoint_Type;
+                rdfs:label ?Acupoint.
+  
+  OPTIONAL {?Acupoint_Type rdfs:label ?Acupoint_Category.}
+
+  OPTIONAL { ?Acupoint_IRI TARA:hasSynonym ?acupoint_synonym }
+  OPTIONAL { ?Acupoint_IRI TARA:hasChineseName ?acupoint_chinese_name }
+  OPTIONAL { ?Acupoint_IRI TARA:hasMeridian/rdfs:label ?Meridian }
+  OPTIONAL { ?Acupoint_IRI TARA:hasLocationalDescription ?Location }
+
+  OPTIONAL { ?Acupoint_IRI TARA:hasMethodDescription ?Acupuncture_Method }
+  OPTIONAL { ?Acupoint_IRI TARA:hasIndicationsDescription ?Indications }
+  OPTIONAL { ?Acupoint_IRI TARA:hasVasculatureDescription ?Vasculature }
+  OPTIONAL { ?Acupoint_IRI TARA:hasInnervationDescription ?Innervation }
+
+  OPTIONAL 
+  {
+    ?Acupoint_IRI TARA:hasDesignatedSpecialPointRole ?Special_Point_Role_IRI .
+    ?Special_Point_Role_IRI rdfs:label ?Acupoint_Special_Point_Role .
+  }
+
+  OPTIONAL { ?Acupoint_IRI TARA:hasReference ?Reference }
+
+  # Subquery: aggregation of anatomical terms in a format like: 
+  # "skin surface location (related regions within the surface)"; 
+  # e.g., "lower back (lumbar vertebra 4, posterior median line)"
+  OPTIONAL
+  {
+    {
+      SELECT
+        ?Acupoint_IRI
+        (GROUP_CONCAT(DISTINCT ?Surface_Location; separator=", ") AS ?_surface)
+        (GROUP_CONCAT(DISTINCT ?Specific_Location; separator=", ") AS ?_region)
+      WHERE
+      {
+        OPTIONAL
+        {
+          ?Acupoint_IRI TARA:hasSurfaceLocation/rdfs:label ?Surface_Location.
+          OPTIONAL {?Acupoint_IRI TARA:hasRelatedLocation/rdfs:label ?Specific_Location .
+          FILTER (?Specific_Location != ?Surface_Location)}
+        }
+      }
+      GROUP BY ?Acupoint_IRI
+    }
+
+    BIND(COALESCE(?_surface, "") AS ?surface)
+    BIND(COALESCE(?_region, "")  AS ?region)
+
+    BIND # Show suface only when region within the surface is not found. 
+    (
+        IF( STRLEN(?surface) > 0 && STRLEN(?region) > 0,
+            CONCAT(?surface, " (", ?region, ")"),
+            IF(STRLEN(?surface) > 0, ?surface, ?region)
+          ) AS ?Locational_Anatomy
+    )
+  }
+
+
+  # Exclude generic categorization classes like 'Acupoint of the X Meridian'. Meridian Acupoint, 'Special Points', etc.
+  FILTER (!regex(STR(?Acupoint),
+    'Acupoint of|Meridian Acupoint|Point of|Point|Extra Acupoint'))
+
+  #FILTER (BOUND(?Meridian)) # To skip the extra acupoints (42) outside the main meridian 
+
+  BIND (
+        REPLACE (STR(?Acupoint_IRI),
+          "http://www.acupunctureresearch.org/tara/ontology/TARA_", 
+          "TARA:") AS ?Acupoint_Curie
+       )
+}
+GROUP BY
+  ?Acupoint_IRI ?Acupoint_Curie ?Acupoint ?Acupoint_Category ?Meridian ?Location
+  ?Locational_Anatomy ?Acupuncture_Method ?Indications 
+  ?Vasculature ?Innervation ?Reference
+ORDER BY ?Meridian ?Acupoint
+LIMIT 999

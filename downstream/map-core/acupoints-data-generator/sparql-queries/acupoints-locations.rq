@@ -1,0 +1,53 @@
+# What acupoints are located on a given skin surface region?
+# e.g. what acupoints are located on the face and where in the face they are located?
+# Author: Fahim Imam (December 18, 2025)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/>
+
+SELECT DISTINCT 
+     
+    ?Acupoint_IRI
+    ?Acupoint_Curie
+    ?Acupoint
+    ?Meridian
+    ?Acupoint_Surface_Location_IRI ?Acupoint_Surface_Location
+    ?Region_Within_Surface_IRI ?Acupoint_Region_Within_Surface 
+
+WHERE 
+{
+   # FILTER (?Meridian = 'Lung Meridian'). 
+    # FILTER (?Meridian = 'Liver Meridian').
+    
+    ?Acupoint_IRI TARA:hasMeridian ?Meridian_IRI.
+    ?Acupoint_IRI rdfs:label ?Acupoint.
+    ?Meridian_IRI rdfs:label ?Meridian.
+        
+    OPTIONAL 
+    {
+        ?Acupoint_IRI TARA:hasSurfaceLocation ?Acupoint_Surface_Location_IRI.
+        ?Acupoint_Surface_Location_IRI rdfs:label ?Acupoint_Surface_Location.
+        OPTIONAL 
+        {
+            ?Acupoint_IRI TARA:hasRelatedLocation ?Region_Within_Surface_IRI.        
+            ?Region_Within_Surface_IRI rdfs:label ?Acupoint_Region_Within_Surface.
+            Filter (?Acupoint_Region_Within_Surface != ?Acupoint_Surface_Location)
+        }
+    }
+
+    # Exclude generic categorization classes like 'Acupoint of the X Meridian'. Meridian Acupoint, 'Special Points', etc.
+    FILTER (!regex(STR(?Acupoint), 'Acupoint of|Meridian Acupoint|Point of|Point|Extra Acupoint'))
+
+    BIND (
+          REPLACE(STR(?Acupoint_IRI), 
+          "http://www.acupunctureresearch.org/tara/ontology/TARA_", 
+          "TARA:") AS ?Acupoint_Curie
+          )
+
+    FILTER (BOUND(?Meridian))  # To skip the extra acupoints outside the main meridian
+}
+ORDER BY ?Meridian ?Acupoint ?Acupoint_Surface_Location ?Acupoint_Region_Within_Surface
+limit 9999
