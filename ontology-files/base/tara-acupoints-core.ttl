@@ -27,9 +27,10 @@
                                                                   dc:source "D. Liangyue, G. Yijun, H. Shuhui, et al. Chinese Acupuncture and Moxibustion. Revised ed. Beijing: Foreign Languages Press; 1999. ISBN 978-7-119-01758-7." ,
                                                                             "WHO Standard Acupuncture Point Locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. ISBN 978-92-9061-248-7." ;
                                                                   dc:title "TARA Acupoints Ontology"@en ;
-                                                                  rdfs:seeAlso "About TARA Ontology: https://purl.org/tara/ontology"@en ,
-                                                                               "About TARA Project: https://www.acupunctureresearch.org/tara"@en ,
-                                                                               "TARA Ontology GitHub Repo: https://purl.org/tara/ontology/repo"@en ;
+                                                                  rdfs:seeAlso """- About TARA Project: https://www.acupunctureresearch.org/tara
+- TARA Ontology GitHub Repo: https://purl.org/tara/ontology/repo
+- TARA Ontology Updates: https://purl.org/tara/ontology/updates
+- TARA Ontology Files: https://purl.org/tara/ontology"""@en ;
                                                                   owl:priorVersion "1.0.0"^^rdfs:Literal ;
                                                                   owl:versionInfo "1.2.0"^^rdfs:Literal .
 
@@ -346,59 +347,59 @@ TARA:hasAssociatedOrgan rdf:type owl:ObjectProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasMemberAcupoint
 TARA:hasMemberAcupoint rdf:type owl:ObjectProperty ;
-                       dc:description "An object property that relates a meridian to an acupoint belonging to it (e.g., the Lung Meridian has member acupoints LU 1 through LU 11). It is the inverse of isMemberAcupointOf and is a sub-property of the RO relation 'has member' (RO:0002351)." ;
                        rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0002351> ;
                        owl:inverseOf TARA:isMemberAcupointOf ;
                        rdfs:domain TARA:Meridian ;
-                       rdfs:range TARA:Acupoint .
+                       rdfs:range TARA:Acupoint ;
+                       dc:description "An object property that relates a meridian to an acupoint belonging to it (e.g., the Lung Meridian has member acupoints LU 1 through LU 11). It is the inverse of isMemberAcupointOf and is a sub-property of the RO relation 'has member' (RO:0002351)." .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasSpecialPointDesignation
 TARA:hasSpecialPointDesignation rdf:type owl:ObjectProperty ;
-                                dc:description "An object property that relates an acupoint to its designated special acupoint role class (e.g., LU 1 hasSpecialPointDesignation Front-Mu Point of the Lung Role). It is the inverse of isSpecialPointDesignationOf and is a sub-property of the RO relation 'bearer of' (RO:0000053). Used in OWL axioms to classify acupoints as special points." ;
                                 rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000053> ;
-                                owl:inverseOf TARA:isSpecialPointDesignationOf .
+                                owl:inverseOf TARA:isSpecialPointDesignationOf ;
+                                dc:description "An object property that relates an acupoint to its designated special acupoint role class (e.g., LU 1 hasSpecialPointDesignation Front-Mu Point of the Lung Role). It is the inverse of isSpecialPointDesignationOf and is a sub-property of the RO relation 'bearer of' (RO:0000053). Used in OWL axioms to classify acupoints as special points." .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasSpecialPointRole
 TARA:hasSpecialPointRole rdf:type owl:ObjectProperty ;
-                         dc:description "An object property that relates an acupoint to the special role it bears (e.g., LU 1 hasSpecialPointRole Front-Mu Point of the Lung Role). It is the inverse of isSpecialPointRoleOf and a sub-property of the RO relation 'has role' (RO:0000087). This property is inferred via a SWRL rule from hasSpecialPointDesignation." ;
                          rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000087> ;
-                         owl:inverseOf TARA:isSpecialPointRoleOf .
+                         owl:inverseOf TARA:isSpecialPointRoleOf ;
+                         dc:description "An object property that relates an acupoint to the special role it bears (e.g., LU 1 hasSpecialPointRole Front-Mu Point of the Lung Role). It is the inverse of isSpecialPointRoleOf and a sub-property of the RO relation 'has role' (RO:0000087). This property is inferred via a SWRL rule from hasSpecialPointDesignation." .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/isMemberAcupointOf
 TARA:isMemberAcupointOf rdf:type owl:ObjectProperty ;
-                        dc:description "An object property that relates an acupoint to the meridian it belongs to (e.g., LU 1 isMemberAcupointOf Lung Meridian). It is the inverse of hasMemberAcupoint and a sub-property of the RO relation 'member of collection' (RO:0002350)." ;
-                        rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0002350> .
+                        rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0002350> ;
+                        dc:description "An object property that relates an acupoint to the meridian it belongs to (e.g., LU 1 isMemberAcupointOf Lung Meridian). It is the inverse of hasMemberAcupoint and a sub-property of the RO relation 'member of collection' (RO:0002350)." .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/isSpecialPointDesignationOf
 TARA:isSpecialPointDesignationOf rdf:type owl:ObjectProperty ;
-                                 dc:description "An object property that relates a special acupoint role to the acupoint that holds it (e.g., Front-Mu Point of the Lung Role isSpecialPointDesignationOf LU 1). It is the inverse of hasSpecialPointDesignation and a sub-property of the RO relation 'inheres in' (RO:0000052)." ;
                                  rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000052> ;
                                  rdfs:domain TARA:Special_Acupoint_Role ;
                                  rdfs:range TARA:Acupoint ;
+                                 dc:description "An object property that relates a special acupoint role to the acupoint that holds it (e.g., Front-Mu Point of the Lung Role isSpecialPointDesignationOf LU 1). It is the inverse of hasSpecialPointDesignation and a sub-property of the RO relation 'inheres in' (RO:0000052)." ;
                                  rdfs:label "isSpecialPointDesignationOf" .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/isSpecialPointRoleOf
 TARA:isSpecialPointRoleOf rdf:type owl:ObjectProperty ;
-                          dc:description "An object property that relates a special acupoint role to the acupoint that bears it. It is the inverse of hasSpecialPointRole and a sub-property of the RO relation 'role of' (RO:0000081). This property is inferred via a SWRL rule from isSpecialPointDesignationOf." ;
-                          rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000081> .
+                          rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000081> ;
+                          dc:description "An object property that relates a special acupoint role to the acupoint that bears it. It is the inverse of hasSpecialPointRole and a sub-property of the RO relation 'role of' (RO:0000081). This property is inferred via a SWRL rule from isSpecialPointDesignationOf." .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/locatedInRelationTo
 TARA:locatedInRelationTo rdf:type owl:ObjectProperty ;
-                         dc:description "An object property that relates an acupoint to one or more specific anatomical structures in whose vicinity it is located on the body surface (e.g., LU 1 locatedInRelationTo First Intercostal Space, Infraclavicular Fossa, and Anterior Median Line, all within the Anterior Thoracic Region). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property hasRelatedLocation." ;
                          rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0001025> ;
+                         dc:description "An object property that relates an acupoint to one or more specific anatomical structures in whose vicinity it is located on the body surface (e.g., LU 1 locatedInRelationTo First Intercostal Space, Infraclavicular Fossa, and Anterior Median Line, all within the Anterior Thoracic Region). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property hasRelatedLocation." ;
                          rdfs:label "locatedInRelationTo" .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/locatedOnTheSurfaceOf
 TARA:locatedOnTheSurfaceOf rdf:type owl:ObjectProperty ;
-                           dc:description "An object property that relates an acupoint to the general body region on whose surface it is located (e.g., LU 1 locatedOnTheSurfaceOf Anterior Thoracic Region). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property hasSurfaceLocation." ;
                            rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0001025> ;
+                           dc:description "An object property that relates an acupoint to the general body region on whose surface it is located (e.g., LU 1 locatedOnTheSurfaceOf Anterior Thoracic Region). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property hasSurfaceLocation." ;
                            rdfs:label "locatedOnTheSurfaceOf" .
 
 
