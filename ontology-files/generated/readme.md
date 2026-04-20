@@ -87,12 +87,11 @@ This section will be updated periodically based on the release of the newer vers
 **Documentation Enrichment: Object Property Descriptions**
 
 * Added `dc:description` to all 9 TARA-specific object properties in `tara-acupoints-core.ttl`. Each description identifies the domain/range, provides a concrete example, notes the inverse where applicable, and cites the parent RO relation. See the [TARA Object Properties](#tara-object-properties) reference table.
-* Replaced `rdfs:comment` on `locatedOnTheSurfaceOf` and `locatedInRelationTo` (including a typo fix: "acoupoint" → "acupoint") with `dc:description`.
 
 Refactored Locational Axioms (Acupoints and Extra Acupoints)**
 
-* Updated all 380 `locatedOnTheSurfaceOf` OWL restrictions and all 1,197 `locatedInRelationTo` OWL restrictions from the simple form `(property some anatomical_region)` to the nested form `(property some (partOf some anatomical_region))`. This aligns the locational semantics with the BFO/RO mereological model, where an acupoint is located on the surface of a region that is a part of the body surface.
-* The annotation properties `hasSurfaceLocation` and `hasRelatedLocation` (used for direct annotation queries) are unchanged at 380 and 1,196 values respectively.
+* Updated all `locatedOnTheSurfaceOf` OWL restrictions and all locatedInRelationTo`OWL restrictions from the simple form`(property some anatomical_region)`to the nested form`(property some (partOf some anatomical_region))`. This aligns the locational semantics with the BFO/RO mereological model, where an acupoint is located on the surface of a region that is a part of the body surface.
+* The annotation properties `hasSurfaceLocation` and `hasRelatedLocation` (used for direct annotation queries) are unchanged.
 
 **Refactored Meridian Acupoint Classification Axioms**
 
