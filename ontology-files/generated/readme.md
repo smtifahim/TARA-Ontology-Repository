@@ -80,13 +80,12 @@ This section will be updated periodically based on the release of the newer vers
 
 **Documentation Enrichment: Annotation Property Descriptions**
 
-* Added `dc:description` to all 12 sub-properties of `hasAcupointAnnotaionProperty` in `tara-acupoints-core.ttl`, grounded in concrete examples (LU 1 is used as the running example throughout). See the [Acupoint Annotation Properties](https://github.com/SciCrunch/TARA-Ontology-Repository/tree/master#tara-acupoints-object-properties) reference table.
-* Updated `rdfs:label` values for two location sub-properties to better reflect their semantic scope: `hasSurfaceLocation` → **"General Body Region"**; `hasRelatedLocation` → **"Specific Body Region"**.
-* Replaced `rdfs:comment` on `hasSurfaceLocation` and `hasRelatedLocation` with `dc:description`, consistent with all other annotated properties in the file.
+* Added `dc:description` to all 12 sub-properties of `hasAcupointAnnotaionProperty` and TARA-specific object properties in `tara-acupoints-core.ttl`.
+* Updated `rdfs:label` values for two locational sub-properties to better reflect their semantic scope: `hasSurfaceLocation` → **"General Body Region"**; `hasRelatedLocation` → **"Specific Body Region"**.
 
 **Documentation Enrichment: Object Property Descriptions**
 
-* Added `dc:description` to all 9 TARA-specific object properties in `tara-acupoints-core.ttl`. Each description identifies the domain/range, provides a concrete example, notes the inverse where applicable, and cites the parent RO relation. See the [TARA Object Properties](#tara-object-properties) reference table.
+* Added `dc:description` to all 9 TARA-specific object properties in `tara-acupoints-core.ttl`. Each description identifies the domain/range, provides a concrete example, notes the inverse where applicable, and cites the parent RO relation. See the [TARA Object Properties]([#tara-object-properties](https://github.com/SciCrunch/TARA-Ontology-Repository/tree/master#tara-acupoints-object-properties)#tara-object-properties) reference table.
 
 Refactored Locational Axioms (Acupoints and Extra Acupoints)**
 
