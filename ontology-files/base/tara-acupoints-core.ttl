@@ -23,14 +23,13 @@
                                                                                  "Richard Harris, PhD - https://orcid.org/0000-0002-2067-8447" ;
                                                                   dc:creator "Fahim T. Imam, PhD - https://orcid.org/0000-0003-4752-543X" ;
                                                                   dc:date "April 17, 2026" ;
-                                                                  dc:description """The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH). The goal of TARA is to establish a new comprehensive resource for the acupuncture research and clinician community. The ontology will be used to support semantic search and annotations for anatomical maps, atlases, and data sets relevant to the TARA project.
-- About TARA: https://www.acupunctureresearch.org/tara
-- GitHub Repo: https://github.com/SciCrunch/TARA-Ontology-Repository
-- More About TARA Ontology: https://github.com/SciCrunch/TARA-Ontology-Repository/tree/master/ontology-files/generated#readme"""@en ;
+                                                                  dc:description "The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH). The goal of TARA is to establish a new comprehensive resource for the acupuncture research and clinician community. The ontology will be used to support semantic search and annotations for anatomical maps, atlases, and data sets relevant to the TARA project."@en ;
                                                                   dc:source "D. Liangyue, G. Yijun, H. Shuhui, et al. Chinese Acupuncture and Moxibustion. Revised ed. Beijing: Foreign Languages Press; 1999. ISBN 978-7-119-01758-7." ,
                                                                             "WHO Standard Acupuncture Point Locations in the Western Pacific Region. World Health Organization. Regional Office for the Western Pacific, 2008. ISBN 978-92-9061-248-7." ;
                                                                   dc:title "TARA Acupoints Ontology"@en ;
-                                                                  rdfs:seeAlso "https://github.com/SciCrunch/TARA-Ontology-Repository/tree/master/ontology-files/generated#readme"@en ;
+                                                                  rdfs:seeAlso "About TARA Ontology: https://purl.org/tara/ontology"@en ,
+                                                                               "About TARA Project: https://www.acupunctureresearch.org/tara"@en ,
+                                                                               "TARA Ontology GitHub Repo: https://purl.org/tara/ontology/repo"@en ;
                                                                   owl:priorVersion "1.0.0"^^rdfs:Literal ;
                                                                   owl:versionInfo "1.2.0"^^rdfs:Literal .
 
@@ -96,12 +95,14 @@ TARA:hasAcupointAnnotaionProperty rdf:type owl:AnnotationProperty .
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasAcupointDescription
 TARA:hasAcupointDescription rdf:type owl:AnnotationProperty ;
+                            dc:description "An annotation property grouping all textual descriptive attributes of an acupoint, including its anatomical location, needling method, indications, vasculature, and innervation. Subproperties further specialize the type of description." ;
                             rdfs:label "Acupoint Description" ;
                             rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasAcupointLocation
 TARA:hasAcupointLocation rdf:type owl:AnnotationProperty ;
+                         dc:description "An annotation property grouping all location-related attributes of an acupoint. Subproperties provide the general body region (hasSurfaceLocation) and the specific anatomical structures within that region (hasRelatedLocation)." ;
                          rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty .
 
 
@@ -143,11 +144,13 @@ TARA:hasDOI rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasDesignatedOrgan
 TARA:hasDesignatedOrgan rdf:type owl:AnnotationProperty ;
+                        dc:description "An annotation property that relates an acupoint to the organ it is designated to affect according to traditional Chinese medicine theory (e.g., LU 1 is designated to the Lung). This designation reflects the organ affiliation defined by the meridian to which the acupoint belongs." ;
                         rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasDesignatedSpecialPointRole
 TARA:hasDesignatedSpecialPointRole rdf:type owl:AnnotationProperty ;
+                                   dc:description "An annotation property that records the named special point role(s) designated to an acupoint as a textual annotation (e.g., LU 1 has the role Front-Mu Point of the Lung; LU 5 has the role He-Sea Point). For the structured object-property representation of this designation, see hasSpecialPointDesignation." ;
                                    rdfs:label "Special Point Role" ;
                                    rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty .
 
@@ -165,12 +168,14 @@ TARA:hasFigureSource rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasIndicationsDescription
 TARA:hasIndicationsDescription rdf:type owl:AnnotationProperty ;
+                               dc:description "An annotation property that lists the clinical conditions and symptoms for which an acupoint is indicated according to traditional Chinese medicine (e.g., LU 1: 'Cough, asthma, pain in the chest, shoulder and back; fullness of the chest.')." ;
                                rdfs:label "Indications" ;
                                rdfs:subPropertyOf TARA:hasAcupointDescription .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasInnervationDescription
 TARA:hasInnervationDescription rdf:type owl:AnnotationProperty ;
+                               dc:description "An annotation property that describes the nerve supply in the vicinity of an acupoint relevant to safe needling (e.g., LU 1: 'The intermediate supraclavicular nerve, the branches of the anterior thoracic nerve, and the lateral cutaneous branch of the first intercostal nerve.')." ;
                                rdfs:label "Innervation" ;
                                rdfs:subPropertyOf TARA:hasAcupointDescription .
 
@@ -182,12 +187,14 @@ TARA:hasListedAcupointsUsed rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasLocationalDescription
 TARA:hasLocationalDescription rdf:type owl:AnnotationProperty ;
+                              dc:description "An annotation property that provides the canonical textual description of an acupoint's anatomical location on the body surface (e.g., LU 1: 'On the anterior thoracic region, at the same level as the first intercostal space, lateral to the infraclavicular fossa, 6 B-cun lateral to the anterior median line.'). Values follow the WHO Standard Acupuncture Point Locations where available." ;
                               rdfs:label "Acupuncture Location" ;
                               rdfs:subPropertyOf TARA:hasAcupointDescription .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasMeridian
 TARA:hasMeridian rdf:type owl:AnnotationProperty ;
+                 dc:description "An annotation property that relates an acupoint to the meridian it belongs to (e.g., LU 1 and LU 2 belong to the Lung Meridian). Each meridian acupoint is assigned to exactly one meridian." ;
                  rdfs:label "Meridian Membership" ;
                  rdfs:subPropertyOf TARA:hasAcupointAnnotaionProperty ;
                  rdfs:range TARA:Meridian ;
@@ -196,6 +203,7 @@ TARA:hasMeridian rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasMethodDescription
 TARA:hasMethodDescription rdf:type owl:AnnotationProperty ;
+                          dc:description "An annotation property that describes the recommended needling method for an acupoint, including needle angle, depth, and applicability of moxibustion (e.g., LU 1: 'Puncture obliquely 0.5-0.8 cun towards the lateral aspect of the chest. To avoid injuring the lung, never puncture deeply towards the medial aspect. Moxibustion is applicable.')." ;
                           rdfs:label "Acupuncture Method" ;
                           rdfs:subPropertyOf TARA:hasAcupointDescription .
 
@@ -229,8 +237,8 @@ TARA:hasReference rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasRelatedLocation
 TARA:hasRelatedLocation rdf:type owl:AnnotationProperty ;
-                        rdfs:comment "An annotation property to relate an acupoint to its related region on the body surface." ;
-                        rdfs:label "Related Region" ;
+                        dc:description "An annotation property that relates an acupoint to one or more specific anatomical structures within the general body region identified by hasSurfaceLocation. It provides a finer-grained localization of the acupoint (e.g., LU 1 is related to the First Intercostal Space, Infraclavicular Fossa, and Anterior Median Line, all within the Anterior Thoracic Region identified by hasSurfaceLocation)." ;
+                        rdfs:label "Specific Body Region" ;
                         rdfs:subPropertyOf TARA:hasAcupointLocation .
 
 
@@ -261,8 +269,8 @@ TARA:hasStudiedConditionNote rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasSurfaceLocation
 TARA:hasSurfaceLocation rdf:type owl:AnnotationProperty ;
-                        rdfs:comment "An annotation property to relate an acupoint to its regional location on the body surface." ;
-                        rdfs:label "Surface Location" ;
+                        dc:description "An annotation property that relates an acupoint to the general body region on whose surface it is located. It provides a coarse-grained anatomical grouping for the acupoint (e.g., LU 1 is located on the Anterior Thoracic Region). This property is used together with hasRelatedLocation, which further specifies the particular anatomical structures within this general region." ;
+                        rdfs:label "General Body Region" ;
                         rdfs:subPropertyOf TARA:hasAcupointLocation .
 
 
@@ -284,6 +292,7 @@ TARA:hasUsedAcupoint rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasVasculatureDescription
 TARA:hasVasculatureDescription rdf:type owl:AnnotationProperty ;
+                               dc:description "An annotation property that describes the blood vessels in the vicinity of an acupoint relevant to safe needling (e.g., LU 1: 'Superolaterally, the axillary artery and vein, the thoracoacromial artery and vein.')." ;
                                rdfs:label "Vasculature" ;
                                rdfs:subPropertyOf TARA:hasAcupointDescription .
 
@@ -331,11 +340,13 @@ OboInOwl:creation_date rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasAssociatedOrgan
-TARA:hasAssociatedOrgan rdf:type owl:ObjectProperty .
+TARA:hasAssociatedOrgan rdf:type owl:ObjectProperty ;
+                        dc:description "An object property that relates a meridian to the organ it is associated with according to traditional Chinese medicine theory (e.g., the Lung Meridian is associated with the Lung). Used to express the organ affiliation of a meridian as an OWL axiom." .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasMemberAcupoint
 TARA:hasMemberAcupoint rdf:type owl:ObjectProperty ;
+                       dc:description "An object property that relates a meridian to an acupoint belonging to it (e.g., the Lung Meridian has member acupoints LU 1 through LU 11). It is the inverse of isMemberAcupointOf and is a sub-property of the RO relation 'has member' (RO:0002351)." ;
                        rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0002351> ;
                        owl:inverseOf TARA:isMemberAcupointOf ;
                        rdfs:domain TARA:Meridian ;
@@ -344,23 +355,27 @@ TARA:hasMemberAcupoint rdf:type owl:ObjectProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasSpecialPointDesignation
 TARA:hasSpecialPointDesignation rdf:type owl:ObjectProperty ;
+                                dc:description "An object property that relates an acupoint to its designated special acupoint role class (e.g., LU 1 hasSpecialPointDesignation Front-Mu Point of the Lung Role). It is the inverse of isSpecialPointDesignationOf and is a sub-property of the RO relation 'bearer of' (RO:0000053). Used in OWL axioms to classify acupoints as special points." ;
                                 rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000053> ;
                                 owl:inverseOf TARA:isSpecialPointDesignationOf .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/hasSpecialPointRole
 TARA:hasSpecialPointRole rdf:type owl:ObjectProperty ;
+                         dc:description "An object property that relates an acupoint to the special role it bears (e.g., LU 1 hasSpecialPointRole Front-Mu Point of the Lung Role). It is the inverse of isSpecialPointRoleOf and a sub-property of the RO relation 'has role' (RO:0000087). This property is inferred via a SWRL rule from hasSpecialPointDesignation." ;
                          rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000087> ;
                          owl:inverseOf TARA:isSpecialPointRoleOf .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/isMemberAcupointOf
 TARA:isMemberAcupointOf rdf:type owl:ObjectProperty ;
+                        dc:description "An object property that relates an acupoint to the meridian it belongs to (e.g., LU 1 isMemberAcupointOf Lung Meridian). It is the inverse of hasMemberAcupoint and a sub-property of the RO relation 'member of collection' (RO:0002350)." ;
                         rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0002350> .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/isSpecialPointDesignationOf
 TARA:isSpecialPointDesignationOf rdf:type owl:ObjectProperty ;
+                                 dc:description "An object property that relates a special acupoint role to the acupoint that holds it (e.g., Front-Mu Point of the Lung Role isSpecialPointDesignationOf LU 1). It is the inverse of hasSpecialPointDesignation and a sub-property of the RO relation 'inheres in' (RO:0000052)." ;
                                  rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000052> ;
                                  rdfs:domain TARA:Special_Acupoint_Role ;
                                  rdfs:range TARA:Acupoint ;
@@ -369,20 +384,21 @@ TARA:isSpecialPointDesignationOf rdf:type owl:ObjectProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/isSpecialPointRoleOf
 TARA:isSpecialPointRoleOf rdf:type owl:ObjectProperty ;
+                          dc:description "An object property that relates a special acupoint role to the acupoint that bears it. It is the inverse of hasSpecialPointRole and a sub-property of the RO relation 'role of' (RO:0000081). This property is inferred via a SWRL rule from isSpecialPointDesignationOf." ;
                           rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000081> .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/locatedInRelationTo
 TARA:locatedInRelationTo rdf:type owl:ObjectProperty ;
+                         dc:description "An object property that relates an acupoint to one or more specific anatomical structures in whose vicinity it is located on the body surface (e.g., LU 1 locatedInRelationTo First Intercostal Space, Infraclavicular Fossa, and Anterior Median Line, all within the Anterior Thoracic Region). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property hasRelatedLocation." ;
                          rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0001025> ;
-                         rdfs:comment "A relation between an acoupoint and its related location on the body surface." ;
                          rdfs:label "locatedInRelationTo" .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/locatedOnTheSurfaceOf
 TARA:locatedOnTheSurfaceOf rdf:type owl:ObjectProperty ;
+                           dc:description "An object property that relates an acupoint to the general body region on whose surface it is located (e.g., LU 1 locatedOnTheSurfaceOf Anterior Thoracic Region). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property hasSurfaceLocation." ;
                            rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0001025> ;
-                           rdfs:comment "A relation between an acupoint and its regional location on the body surface." ;
                            rdfs:label "locatedOnTheSurfaceOf" .
 
 
