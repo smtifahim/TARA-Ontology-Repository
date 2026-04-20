@@ -183,23 +183,23 @@ This section provides a set of example DL queries to test the basic classificati
 
 **Q: What are the acupuncture points in the Heart Meridian?**
 
-\`\`\`
+```
 'Meridian Acupoint' that isMemberAcupointOf some 'Heart Meridian'
-\`\`\`
+```
 
 Since we have defined a named class called `'Acupoint of the Heart Meridian'` in the ontology that is equivalent to the class expression above, we can achieve the same result by simply typing the named class as the DL Query.
 
-\`\`\`
+```
 'Acupoint of the Heart Meridian' 
-\`\`\`
+```
 
 ![1718430667694](generated/image/readme/1718430667694.png)
 
 **Q. What are the Xi-Cleft Points in the main meridians?**
 
-\`\`\`
+```
 'Meridian Acupoint' that hasSpecialPointDesignation some 'Xi-Cleft Point Role'
-\`\`\`
+```
 
 Again, since we have defined a named class called 'Xi-Cleft Point' in the ontology as equivalent to the class expression above, we can achieve the same result by typing `'Meridian Acupoint' and 'Xi-Cleft Point'`.
 
@@ -207,44 +207,44 @@ Again, since we have defined a named class called 'Xi-Cleft Point' in the ontolo
 
 **Q: What are the Xi-Cleft Points on the Kidney Meridian?**
 
-\`\`\`
+```
 'Xi-Cleft Point' and isMemberAcupointOf some (Meridian 
                  and hasAssociatedOrgan some kidney)
-\`\`\`
+```
 
 We are essentially looking for the Xi-Cleft points in the Kidney Meridian. Since we have a defined class called the 'Acupoint of the Kidney Meridian' as equivalent to `'Meridian Acupoint' and (isMemberAcupointOf some 'Kidney Meridian')` and 'Kidney Meridian' is a subclass of `'Main Meridian' and (hasAssociatedOrgan some kidney)`, we can simply type:
 
-\`\`\`
+```
 'Xi-Cleft Point' and 'Acupoint of the Kidney Meridian'
-\`\`\`
+```
 
 ![1719335980722](generated/image/readme/1719335980722.png)
 
 **Q. What are the 8 Confluent Points of the main meridians?**
 
-\`\`\`
+```
 'Confluent Point' and isMemberAcupointOf some 'Main Meridian'
-\`\`\`
+```
 
 Without using the defined class called 'Confluent Point', we would need to use:
 
-\`\`\`
+```
 'Meridian Acupoint' and (hasSpecialPointDesignation some 'Confluent Point Role')
-\`\`\`
+```
 
 ![1718434002421](generated/image/readme/1718434002421.png)
 
 **Q. What are the 15 Luo-Connecting Points of the meridians?**
 
-\`\`\`
+```
 'Meridian Acupoint' and 'Luo-Connecting Point'
-\`\`\`
+```
 
 Without using the defined class:
 
-\`\`\`
+```
 'Meridian Acupoint' and hasSpecialPointDesignation some 'Luo-Connecting Point Role'
-\`\`\`
+```
 
 ![1718435147757](generated/image/readme/1718435147757.png)
 
@@ -252,29 +252,29 @@ Without using the defined class:
 
 **Q. What meridian acupoints can be located on the surface of the face?**
 
-\`\`\`
+```
 'Meridian Acupoint' and (locatedOnTheSurfaceOf some ('part of' some face))
-\`\`\`
+```
 
 **Q. What meridian acupoints can be located on the surface of the chest?**
 
-\`\`\`
+```
 Acupoint and (locatedOnTheSurfaceOf some ('part of' some chest))
-\`\`\`
+```
 
 ![1734073730688](generated/image/readme/1734073730688.png)
 
 **Q. What acupoints are located on the surface of the legs?**
 
-\`\`\`
+```
 Acupoint and locatedInRelationTo some ('part of' some leg)
-\`\`\`
+```
 
 **Q: What acupoints are located on the surface of the forearm?**
 
-\`\`\`
+```
 Acupoint and (locatedInRelationTo some ('part of' some 'forelimb zeugopod'))
-\`\`\`
+```
 
 ## Directory Structure
 
@@ -362,7 +362,7 @@ A set of [example queries are available in a Jupyter Notebook](https://github.co
 
 **Q. List all the acupoints along with their meridians, special point role, and surface regions.**
 
-\`\`\`SPARQL
+```SPARQL
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -385,11 +385,11 @@ WHERE
 }
 ORDER BY ?meridian ?acupoint
 LIMIT 1000
-\`\`\`
+```
 
 **Q. What surface regions are associated with a particular acupoint (e.g., LU 9)?**
 
-\`\`\`SPARQL
+```SPARQL
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -408,7 +408,7 @@ WHERE
 }
 ORDER BY ?acupoint
 LIMIT 10
-\`\`\`
+```
 
 **Query Result:**
 
@@ -423,7 +423,7 @@ LIMIT 10
 
 **Q. What surface regions are connected by a given meridian (e.g., Lung Meridian)?**
 
-\`\`\`SPARQL
+```SPARQL
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -448,6 +448,6 @@ WHERE
 }
 ORDER BY ?meridian ?acupoint ?surface_region ?related_region
 LIMIT 30
-\`\`\`
+```
 
 **Additional example queries will be added based on the use cases of the TARA ontology as part of this section.**
