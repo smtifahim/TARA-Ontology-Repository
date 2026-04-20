@@ -1,0 +1,2049 @@
+@prefix HP: <http://purl.obolibrary.org/obo/HP_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix ILX: <http://uri.interlex.org/base/ilx_> .
+@prefix MONDO: <http://purl.obolibrary.org/obo/MONDO_> .
+@prefix TARA: <http://www.acupunctureresearch.org/tara/ontology/TARA_> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix tara: <http://www.acupunctureresearch.org/tara/ontology/> .
+
+TARA:0220496 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1136/aim.22.2.60>,
+        <https://doi.org/10.1136/bmj.322.7302.1574> .
+
+TARA:0242146 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1136/bmj.322.7302.1574>,
+        <https://doi.org/10.4065/81.6.749> .
+
+TARA:0337120 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1111/j.1526-4610.2006.00598.x> .
+
+TARA:0427594 tara:isStudiedInArticle <https://doi.org/10.1136/aim.19.1.19> .
+
+TARA:0434959 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
+
+TARA:0488267 tara:isStudiedInArticle <https://doi.org/10.1054/ctim.2001.0442> .
+
+TARA:0742938 tara:isStudiedInArticle <https://doi.org/10.1093/rheumatology/41.2.205> .
+
+TARA:0859695 tara:isStudiedInArticle <https://doi.org/10.1001/archotol.125.5.567>,
+        <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/j.apmr.2004.11.044>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1016/s0966-6532(98)00049-3>,
+        <https://doi.org/10.1046/j.1365-2044.1999.01030.x>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1089/acm.2005.11.663>,
+        <https://doi.org/10.1093/rheumatology/37.10.1118>,
+        <https://doi.org/10.1093/rheumatology/41.2.205>,
+        <https://doi.org/10.1111/j.1468-2982.2000.00097.x>,
+        <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01209.x>,
+        <https://doi.org/10.1111/j.1479-828x.2006.00674.x>,
+        <https://doi.org/10.1111/j.1526-4610.2004.04077.x>,
+        <https://doi.org/10.1111/j.1533-2500.2007.00140.x>,
+        <https://doi.org/10.1136/aim.19.1.19>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
+        <https://doi.org/10.1159/000048847>,
+        <https://doi.org/10.1177/0163278704273081>,
+        <https://doi.org/10.1186/1472-6882-7-35>,
+        <https://doi.org/10.4065/81.6.749>,
+        <https://doi.org/10.47749/t/unicamp.2014.927896> .
+
+TARA:0906448 tara:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(02)00269-5>,
+        <https://doi.org/10.1089/107555303322284767>,
+        <https://doi.org/10.1097/00002508-200311000-00004>,
+        <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.1371/journal.pone.0000919> .
+
+TARA:0926802 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.7326/0003-4819-141-12-200412210-00006> .
+
+TARA:0992296 tara:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(02)00269-5>,
+        <https://doi.org/10.1089/107555303322284767>,
+        <https://doi.org/10.1097/00002508-200311000-00004>,
+        <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.1371/journal.pone.0000919>,
+        <https://doi.org/10.4065/81.6.749> .
+
+TARA:1031890 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
+
+TARA:1074531 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1186/1472-6882-2-3> .
+
+TARA:1104010 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
+
+TARA:1357729 tara:isStudiedInArticle <https://doi.org/10.1093/rheumatology/41.2.205>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
+
+TARA:1628341 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1136/aim.22.2.60> .
+
+TARA:1698911 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
+
+TARA:1985889 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.4065/81.6.749> .
+
+TARA:2187225 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
+
+TARA:2324295 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1111/j.1468-2982.2000.00097.x>,
+        <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01209.x>,
+        <https://doi.org/10.1111/j.1526-4610.2006.00598.x>,
+        <https://doi.org/10.1136/bmj.322.7302.1574>,
+        <https://doi.org/10.1186/1471-2474-7-99> .
+
+TARA:2442762 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.4065/81.6.749> .
+
+TARA:2454652 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1089/acm.1999.5.521>,
+        <https://doi.org/10.1186/1472-6882-2-3> .
+
+TARA:2678584 tara:isStudiedInArticle <https://doi.org/10.1054/ctim.2001.0442> .
+
+TARA:2990862 tara:isStudiedInArticle <https://doi.org/10.1001/archotol.125.5.567>,
+        <https://doi.org/10.1016/j.jdent.2006.09.004>,
+        <https://doi.org/10.1177/0163278704273081> .
+
+TARA:3079460 tara:isStudiedInArticle <https://doi.org/10.1034/j.1600-0412.2000.079005331.x> .
+
+TARA:3182190 tara:isStudiedInArticle <https://doi.org/10.1080/165019702760279233> .
+
+TARA:3201959 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
+
+TARA:3283628 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
+
+TARA:3386254 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1089/acm.2005.11.663>,
+        <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1111/j.1526-4610.2006.00598.x> .
+
+TARA:3515622 tara:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
+
+TARA:3553465 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1046/j.1365-2044.1999.01030.x>,
+        <https://doi.org/10.1080/165019702760279233>,
+        <https://doi.org/10.1089/acm.1999.5.521>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
+
+TARA:3668538 tara:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1111/j.1526-4610.2006.00598.x>,
+        <https://doi.org/10.1136/aim.22.2.60> .
+
+TARA:3734471 tara:isStudiedInArticle <https://doi.org/10.1136/aim.22.2.60>,
+        <https://doi.org/10.1186/1471-2474-7-99> .
+
+TARA:3748376 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
+
+TARA:3770332 tara:isStudiedInArticle <https://doi.org/10.1136/bmj.38512.405440.8f>,
+        <https://doi.org/10.1186/1472-6882-7-35> .
+
+TARA:3963382 tara:isStudiedInArticle <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.4065/81.6.749> .
+
+TARA:4311153 tara:isStudiedInArticle <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01209.x>,
+        <https://doi.org/10.4065/81.6.749> .
+
+TARA:4362146 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1097/00002508-200311000-00004>,
+        <https://doi.org/10.1136/aim.22.2.60> .
+
+TARA:4384020 tara:isStudiedInArticle <https://doi.org/10.1034/j.1600-0412.2000.079005331.x>,
+        <https://doi.org/10.1111/j.0001-6349.2004.0215.x> .
+
+TARA:4385250 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1089/107555303322284767>,
+        <https://doi.org/10.1089/acm.2005.11.663>,
+        <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01209.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
+        <https://doi.org/10.4065/81.6.749> .
+
+TARA:4589241 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
+
+TARA:4839095 tara:isStudiedInArticle <https://doi.org/10.4065/81.6.749> .
+
+TARA:5047947 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1034/j.1600-0412.2000.079005331.x>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.1136/bmj.322.7302.1574>,
+        <https://doi.org/10.1159/000048847> .
+
+TARA:5264783 tara:isStudiedInArticle <https://doi.org/10.1054/ctim.2001.0442>,
+        <https://doi.org/10.1177/0269215507077362> .
+
+TARA:5290080 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1089/107555303322284767>,
+        <https://doi.org/10.1097/00002508-200311000-00004>,
+        <https://doi.org/10.1136/aim.22.2.60>,
+        <https://doi.org/10.1371/journal.pone.0000919> .
+
+TARA:5318530 tara:isStudiedInArticle <https://doi.org/10.1034/j.1600-0412.2000.079005331.x> .
+
+TARA:5356503 tara:isStudiedInArticle <https://doi.org/10.1111/j.1526-4610.2006.00598.x> .
+
+TARA:5362994 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
+
+TARA:5363236 tara:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
+
+TARA:5389461 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/j.pain.2006.07.002>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1093/rheumatology/37.10.1118>,
+        <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1186/1471-2474-7-99> .
+
+TARA:5677319 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
+
+TARA:5894876 tara:isStudiedInArticle <https://doi.org/10.1016/j.pain.2004.08.030> .
+
+TARA:5918799 tara:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
+
+TARA:6019290 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012> .
+
+TARA:6463344 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1016/s0304-3959(02)00261-0>,
+        <https://doi.org/10.1046/j.1365-2044.1999.01030.x>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1080/165019702760279233>,
+        <https://doi.org/10.1089/acm.1999.5.521>,
+        <https://doi.org/10.1089/acm.2005.11.663>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1111/j.1526-4610.2004.04077.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
+        <https://doi.org/10.1177/0269215507077362>,
+        <https://doi.org/10.1186/1472-6882-7-35>,
+        <https://doi.org/10.4065/81.6.749> .
+
+TARA:6499349 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/j.apmr.2004.11.044>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1089/acm.2005.11.663>,
+        <https://doi.org/10.1093/rheumatology/38.9.864>,
+        <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1111/j.1526-4610.2006.00598.x>,
+        <https://doi.org/10.1136/bmj.322.7302.1574> .
+
+TARA:6615149 tara:isStudiedInArticle <https://doi.org/10.1001/archotol.125.5.567>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1177/0163278704273081> .
+
+TARA:6714942 tara:isStudiedInArticle <https://doi.org/10.1177/0269215507077362> .
+
+TARA:6794934 tara:isStudiedInArticle <https://doi.org/10.4065/81.6.749> .
+
+TARA:6862058 tara:isStudiedInArticle <https://doi.org/10.4065/81.6.749> .
+
+TARA:6929444 tara:isStudiedInArticle <https://doi.org/10.1034/j.1600-0412.2000.079005331.x> .
+
+TARA:7357260 tara:isStudiedInArticle <https://doi.org/10.1111/j.0001-6349.2004.0215.x>,
+        <https://doi.org/10.4065/81.6.749> .
+
+TARA:7407065 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
+
+TARA:7510801 tara:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
+
+TARA:7690229 tara:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
+
+TARA:7756426 tara:isStudiedInArticle <https://doi.org/10.1177/0269215507077362> .
+
+TARA:7829474 tara:isStudiedInArticle <https://doi.org/10.1016/j.pain.2004.08.030>,
+        <https://doi.org/10.1097/00002508-199809000-00012> .
+
+TARA:7831710 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
+
+TARA:7834226 tara:isStudiedInArticle <https://doi.org/10.1001/archotol.125.5.567>,
+        <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1016/s0966-6532(98)00049-3>,
+        <https://doi.org/10.1177/0163278704273081>,
+        <https://doi.org/10.47749/t/unicamp.2014.927896> .
+
+TARA:8009041 tara:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
+
+TARA:8036487 tara:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
+
+TARA:8104948 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
+
+TARA:8393005 tara:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1093/rheumatology/41.2.205>,
+        <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1111/j.1526-4610.2006.00598.x>,
+        <https://doi.org/10.1136/aim.22.2.60>,
+        <https://doi.org/10.1136/bmj.322.7302.1574>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
+        <https://doi.org/10.1186/1472-6882-7-35> .
+
+TARA:8433932 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1046/j.1365-2044.1999.01030.x>,
+        <https://doi.org/10.1080/165019702760279233>,
+        <https://doi.org/10.1089/acm.1999.5.521> .
+
+TARA:8440155 tara:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01209.x>,
+        <https://doi.org/10.1136/aim.19.1.19> .
+
+TARA:8452754 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-199809000-00012>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
+
+TARA:8557069 tara:isStudiedInArticle <https://doi.org/10.1097/00002508-200311000-00004>,
+        <https://doi.org/10.1371/journal.pone.0000919> .
+
+TARA:8716769 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7> .
+
+TARA:8758950 tara:isStudiedInArticle <https://doi.org/10.1016/j.pain.2004.08.030>,
+        <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1054/ctim.2001.0442>,
+        <https://doi.org/10.1080/165019702760279233>,
+        <https://doi.org/10.1089/acm.2005.11.663>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01062.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01209.x>,
+        <https://doi.org/10.1136/aim.19.1.19>,
+        <https://doi.org/10.1136/bmj.322.7302.1574>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f>,
+        <https://doi.org/10.1177/0269215507077362>,
+        <https://doi.org/10.1186/1472-6882-7-35> .
+
+TARA:8773594 tara:isStudiedInArticle <https://doi.org/10.1016/s0140-6736(05)66871-7>,
+        <https://doi.org/10.1046/j.1365-2044.1999.01030.x>,
+        <https://doi.org/10.1080/165019702760279233>,
+        <https://doi.org/10.1089/acm.1999.5.521> .
+
+TARA:8807122 tara:isStudiedInArticle <https://doi.org/10.1371/journal.pone.0000919> .
+
+TARA:8826565 tara:isStudiedInArticle <https://doi.org/10.1177/0269215507077362> .
+
+TARA:8854888 tara:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01062.x> .
+
+TARA:8885103 tara:isStudiedInArticle <https://doi.org/10.1136/aim.19.1.19> .
+
+TARA:8923096 tara:isStudiedInArticle <https://doi.org/10.1089/acm.2005.11.663>,
+        <https://doi.org/10.1093/rheumatology/41.2.205>,
+        <https://doi.org/10.1186/1472-6882-7-35> .
+
+TARA:9020892 tara:isStudiedInArticle <https://doi.org/10.1111/j.1468-2982.2006.01209.x> .
+
+TARA:9128934 tara:isStudiedInArticle <https://doi.org/10.1034/j.1600-0412.2000.079005331.x> .
+
+TARA:9191188 tara:isStudiedInArticle <https://doi.org/10.1136/bmj.38512.405440.8f> .
+
+TARA:9254368 tara:isStudiedInArticle <https://doi.org/10.1111/j.1526-4610.2006.00598.x> .
+
+TARA:9378285 tara:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(02)00269-5>,
+        <https://doi.org/10.1054/ctim.2001.0442>,
+        <https://doi.org/10.1097/00002508-200311000-00004>,
+        <https://doi.org/10.1136/aim.19.1.19>,
+        <https://doi.org/10.1136/aim.22.2.60> .
+
+TARA:9531666 tara:isStudiedInArticle <https://doi.org/10.1054/ctim.2001.0442>,
+        <https://doi.org/10.1136/bmj.38512.405440.8f> .
+
+TARA:9534465 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
+        <https://doi.org/10.1111/j.1526-4610.2006.00598.x> .
+
+TARA:9946635 tara:isStudiedInArticle <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01209.x> .
+
+TARA:9987270 tara:isStudiedInArticle <https://doi.org/10.1007/s100720300062>,
+        <https://doi.org/10.1016/s0304-3959(00)00315-8>,
+        <https://doi.org/10.1046/j.1468-2982.2001.00198.x>,
+        <https://doi.org/10.1046/j.1526-4610.2002.02203.x>,
+        <https://doi.org/10.1111/j.1468-2982.2004.00803.x>,
+        <https://doi.org/10.1111/j.1468-2982.2006.01209.x> .
+
+<https://doi.org/10.1001/archinte.161.8.1081> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Randomized Trial Comparing Traditional Chinese Medical Acupuncture, Therapeutic Massage, and Self-care Education for Chronic Low Back Pain" ;
+    tara:hasAcupunctureModality "Traditional Chinese Medical (TCM) acupuncture, including needling techniques, electrical stimulation, manual manipulation of needles, moxibustion, infrared heat, and cupping" ;
+    tara:hasAuthor "Daniel C Cherkin, David Eisenberg, Karen J Sherman, William Barlow, Ted J Kaptchuk, Janet Street, Richard A Deyo" ;
+    tara:hasControlsInformation "Self-care educational materials group" ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1001/archinte.161.8.1081" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "2001" ;
+    tara:hasPublicationVenue "Archives of Internal Medicine" ;
+    tara:hasSampleSizeInformation "Total: 262, Acupuncture: 94, Massage: 78, Self-care education: 90" ;
+    tara:hasStimulationType "Manual manipulation to achieve \"de qi\" sensation; Electrical stimulation used in 51% of patients (specific frequency not mentioned)" ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic low back pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1002/art.22154> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in Patients With Osteoarthritis of the Knee or Hip A Randomized, Controlled Trial With an Additional Nonrandomized Arm" ;
+    tara:hasAcupunctureModality "needle acupuncture with manual needle stimulation" ;
+    tara:hasAuthor "Claudia M Witt, Susanne Jena, Benno Brinkhaus, Bodo Liecker, Karl Wegscheider, Stefan N Willich" ;
+    tara:hasControlsInformation "The control group did not receive any acupuncture during the first 3 months and began receiving acupuncture treatment after this period (delayed acupuncture)." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1002/art.22154" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth and/or angle used for acupuncture)" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "Arthritis & Rheumatism" ;
+    tara:hasSampleSizeInformation "Total: 3,553, Randomized Acupuncture Group: 322, Control Group: 310, Nonrandomized Acupuncture Group: 2,921" ;
+    tara:hasStimulationType "manual needle stimulation; no specific frequency or technique details provided" ;
+    tara:hasStudiedCondition MONDO:0005416,
+        MONDO:0006629 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Osteoarthritis (OA) of the knee or hip" ;
+    tara:hasTrialType "pragmatic trial" .
+
+<https://doi.org/10.1007/s10194-007-0416-5> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture for tension-type headache: a multicentre, sham-controlled, patientand observer-blinded, randomised trial R A P I D C O M M U N I C AT I O N" ;
+    tara:hasAcupunctureModality "Verum acupuncture according to traditional Chinese medicine with needle insertion 2-30 mm deep and manual stimulation to achieve De Qi; Sham acupuncture with superficial needling at non-acupuncture points, avoiding stimulation and De Qi." ;
+    tara:hasAuthor "Heinz G Endres, Gabriele Böwing, Hans-Christoph Diener, Stefan Lange, Christoph Maier, Albrecht Molsberger, Michael Zenz, Andrew J Vickers, Martin Tegenthoff, H.-C Diener" ;
+    tara:hasControlsInformation "Sham acupuncture consisting of superficial needling at non-acupuncture points, avoiding all known verum points or meridians, with no stimulation to achieve De Qi." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1007/s10194-007-0416-5" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Verum acupuncture: 2-30 mm; Sham acupuncture: 1-3 mm" ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 409 participants; Verum group: 209 participants; Sham group: 200 participants" ;
+    tara:hasStimulationType "Manual stimulation to achieve De Qi; no specific frequency mentioned" ;
+    tara:hasStudiedCondition HP:0012228 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "tension-type headache (TTH)" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1016/0304-3959(90)92269-v> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Pain Threshold Responses to Two Different Modes of Sensory Stimulation in Patients With Orofacial Muscular Pain: Psychologic Considerations" ;
+    tara:hasAcupunctureModality "Manual acupuncture with 8 to 12 needles inserted to a depth of 5 to 10 mm, twirled every 10 minutes for 30 minutes." ;
+    tara:hasAuthor "Eva Widerstrom-Noga, Lars-Erik Fionda, Dyrehag, Lene Börglum-Jensen, Perg Âslund, Bengtwenneberg, Sven A Andersson" ;
+    tara:hasControlsInformation "The study used randomization of intervention order and time to reach threshold as controls to prevent order effects and time-related bias. There was no separate control group without intervention." ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/0304-3959(90)92269-v" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "5 to 10 mm" ;
+    tara:hasPublicationDate "1998" ;
+    tara:hasPublicationVenue "Journal of Orofacial Pain" ;
+    tara:hasSampleSizeInformation "21 participants in total" ;
+    tara:hasStimulationType "Manual acupuncture: twirling every 10 minutes; Low-TENS: 1.7 Hz" ;
+    tara:hasStudiedCondition HP:0040312 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Temporomandibular disorders (TMD) with chronic orofacial muscular pain" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1016/j.pain.2004.01.018> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Effect of acupuncture treatment on chronic neck and shoulder pain in sedentary female workers: a 6-month and 3-year follow-up study" ;
+    tara:hasAcupunctureModality "body acupuncture, body electroacupuncture, and ear acupressure" ;
+    tara:hasAuthor "Dong He, Kaj Bo Veiersted, Arne T Høstmark, Jon Ingulf Medbø" ;
+    tara:hasControlsInformation "The control group (CG) received placebo treatment, which included sham electroacupuncture without voltage and acupuncture at non-acupoint locations." ;
+    tara:hasCountryInformation "Norway" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/j.pain.2004.01.018" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 10-30 mm" ;
+    tara:hasPublicationDate "2004" ;
+    tara:hasPublicationVenue "Pain" ;
+    tara:hasSampleSizeInformation "Total: 24 participants; Test Group (TG): 12 participants; Control Group (CG): 12 participants" ;
+    tara:hasStimulationType "5 Hz (electrical stimulation)" ;
+    tara:hasStudiedCondition HP:0030833,
+        HP:0030834,
+        MONDO:0021146 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic neck and shoulder pain and related headache" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1016/j.pain.2006.05.013> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture for patients with chronic neck pain" ;
+    tara:hasAcupunctureModality "needle acupuncture with manual stimulation" ;
+    tara:hasAuthor "Claudia M Witt, Susanne Jena, Benno Brinkhaus, Bodo Liecker, Karl Wegscheider, Stefan N Willich" ;
+    tara:hasControlsInformation "The control group received routine care without any acupuncture treatment. They were not allowed to use any form of acupuncture during the first three months." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/j.pain.2006.05.013" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify needle depth or angle for acupuncture)" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation """Total: 14,161, Randomized Acupuncture Group: 1,880, Randomized Control Group: 1,886, Non-randomized Acupuncture Group: 10,395
+Intention-to-treat analysis:, Acupuncture Group: 1,753, Control Group: 1,698, Non-randomized Acupuncture Group: 10,395""" ;
+    tara:hasStimulationType "manual stimulation (specific frequency or technique not mentioned)" ;
+    tara:hasStudiedCondition HP:0030833 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic neck pain" ;
+    tara:hasTrialType "Pragmatic Randomized Controlled Trial (RCT) plus Non-Randomized Cohort" .
+
+<https://doi.org/10.1016/s0161-4754(99)70082-5> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Chronic spinal pain syndromes: A clinical pilot trial comparing acupuncture, a nonsteroidal anti-inflammatory drug, and spinal manipulation" ;
+    tara:hasAcupunctureModality "Acupuncture was performed using sterile HWATO Chinese disposable acupuncture guide tube needles (50 mm long, 0.25 mm gauge) with an average of 8 to 10 needles placed in local tender and distant points using the \"near and far\" technique. Low-voltage electrical stimulation was applied to the needles once tolerated by the patient. Six treatments were administered over a 3-to 4-week period." ;
+    tara:hasAuthor "Lynton G F Giles, Reinhold Müller" ;
+    tara:hasControlsInformation "Not mentioned (the study compares three active interventions without a traditional control group)" ;
+    tara:hasCountryInformation "Australia" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0161-4754(99)70082-5" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper specifies needle length and gauge but not depth or angle of insertion)" ;
+    tara:hasPublicationDate "1999" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 77 participants, Spinal manipulation: 36, Acupuncture: 20, Medication: 21" ;
+    tara:hasStimulationType "Electrical stimulation applied at the patient's comfortable tolerance level; specific frequency not mentioned" ;
+    tara:hasStudiedCondition MONDO:0024317 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic spinal pain syndromes" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT), Pilot Study" .
+
+<https://doi.org/10.1016/s0304-3959(01)00444-4> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture treatment of chronic low-back pain -a randomized, blinded, placebo-controlled trial with 9-month follow-up" ;
+    tara:hasAcupunctureModality "Traditional and standardized acupuncture involving both body and ear acupuncture, with manual stimulation to elicit the 'de qi' sensation, using stainless steel needles at specific acupoints. Body needles were left in place for 30 minutes, and ear needles for one week." ;
+    tara:hasAuthor "Eric Leibing, Urs Leonhardt, Georg Ko ¨ster, Anke Goerlitz, Joerg-Andre ´rosenfeldt, Reinhard Hilgers, Giuliano Ramadori" ;
+    tara:hasControlsInformation "The controls used in the study were: 1) a control group receiving active physiotherapy only (routine care), and 2) a sham-acupuncture group receiving minimal acupuncture as a placebo control." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0304-3959(01)00444-4" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 10-30 mm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 131 participants; Control group: 46; Acupuncture group: 40; Sham-acupuncture group: 45" ;
+    tara:hasStimulationType "Manual stimulation until 'de qi' sensation, lasting 5-20 seconds" ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic low-back pain" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1016/s0304-3959(02)00062-3> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Immediate effects of dry needling and acupuncture at distant points in chronic neck pain: results of a randomized, double-blind, sham-controlled crossover trial" ;
+    tara:hasAcupunctureModality "Needle acupuncture at distant points" ;
+    tara:hasAuthor "Dominik Irnich, Nicolas Behrens, Jochen M Gleditsch, Wolfram Sto ¨ra, Martin A Schreiber, Peter Scho ¨ps, Andrew J Vickers, Antje Beyer" ;
+    tara:hasControlsInformation "Sham laser acupuncture was used as the control in the study." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0304-3959(02)00062-3" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not provide specific details on needle depth or angle)" ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "Pain" ;
+    tara:hasSampleSizeInformation "Total initial sample size: 36 patients; Completed the trial: 34 patients" ;
+    tara:hasStimulationType "Manual stimulation to provoke a local twitch response; no specific frequency mentioned" ;
+    tara:hasStudiedCondition HP:0030833 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic neck pain" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT) with a crossover design" .
+
+<https://doi.org/10.1016/s0304-3959(99)00027-5> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "A randomized comparative trial of acupuncture versus transcutaneous electrical nerve stimulation for chronic back pain in the elderly" ;
+    tara:hasAcupunctureModality "Manual acupuncture using 32 gauge, 1.5 inch needles, applied to points on the back, with sessions lasting 20 minutes each, twice weekly for four weeks." ;
+    tara:hasAuthor "David Jonathan Grant, Jane Bishop-Miller, David Magnus Winchester, Margaret Anderson, Steven Faulkner" ;
+    tara:hasControlsInformation "The control used in the study was transcutaneous electrical nerve stimulation (TENS)." ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0304-3959(99)00027-5" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper provides needle size but does not specify needle depth or angle of insertion)" ;
+    tara:hasPublicationDate "1999" ;
+    tara:hasPublicationVenue "Pain" ;
+    tara:hasSampleSizeInformation "Total: 60 participants; Acupuncture group: 32; TENS group: 28" ;
+    tara:hasStimulationType "Manual acupuncture; specific frequency of needle manipulation not mentioned" ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic back pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1016/s0304-3959(99)00107-4> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Randomised clinical trial comparing the effects of acupuncture and a newly designed placebo needle in rotator cuff tendinitis" ;
+    tara:hasAcupunctureModality "Acupuncture with needle penetration into deeper tissue layers at acupuncture points" ;
+    tara:hasAuthor "Julia Kleinhenz, Konrad Streitberger, Ju Èrgen Windeler, Albert Gu Èûbacher, Georg Mavridis, Eike Martin" ;
+    tara:hasControlsInformation "The control used in the study was a specially designed placebo needle that did not penetrate the skin but simulated the sensation of acupuncture. This placebo needle was used to create a similar therapeutic setting without actual needling." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0304-3959(99)00107-4" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the exact needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "1999" ;
+    tara:hasPublicationVenue "Pain" ;
+    tara:hasSampleSizeInformation "Total: 52 participants; Acupuncture group: 25 participants; Control group: 27 participants" ;
+    tara:hasStimulationType "No additional stimulation (needles retained for 20 minutes without further electrical or manual stimulation)" ;
+    tara:hasStudiedCondition MONDO:0007028 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "rotator cuff tendinitis" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1016/s1474-4422(06)70382-9> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Efficacy of acupuncture for the prophylaxis of migraine: a multicentre randomised controlled clinical trial" ;
+    tara:hasAcupunctureModality "Body needle acupuncture without electrical stimulation or moxibustion, using sterile, single-use needles (0.25-0.30 mm thick, 25-40 mm long), with manual stimulation to achieve \"De Qi\". Sessions were 30 minutes each, over six weeks." ;
+    tara:hasAuthor "Hans-Christoph C Diener, Kai Kronfeld, Gabriele Boewing, Margitta Lungenhausen, Christoph Maier, Albrecht Molsberger, Martin Tegenthoff, Hans-Joachim Trampisch, Michael Zenz, Rolf Meinert, Gerac Migraine, Study Group" ;
+    tara:hasControlsInformation "Sham acupuncture and standard therapy (beta blockers, flunarizine, or valproic acid) were used as controls in the study." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s1474-4422(06)70382-9" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Verum acupuncture: 2-20 mm; Sham acupuncture: maximum 3 mm" ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total randomized: 960, Verum acupuncture: 313, Sham acupuncture: 339, Standard therapy: 308" ;
+    tara:hasStimulationType "Manual stimulation to achieve \"De Qi\" for verum acupuncture; no stimulation for sham acupuncture." ;
+    tara:hasStudiedCondition MONDO:0005277 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "migraine" ;
+    tara:hasTrialType "Randomised Controlled Trial (RCT)" .
+
+<https://doi.org/10.1053/apmr.2001.24888> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture and Trager Psychophysical Integration in the Treatment of Wheelchair User's Shoulder Pain in Individuals With Spinal Cord Injury" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved treatments by licensed acupuncturists using sterile needles (.20 × 40mm) inserted into local, distal, and ashi points to a depth of 1 to 3 cm, with manual stimulation to achieve De Qi, lasting 20 to 30 minutes per session." ;
+    tara:hasAuthor "Trevor A Dyson-Hudson, Samuel C Shiflett, Steven C Kirshblum, Jay E Bowen, Erica L Druin" ;
+    tara:hasControlsInformation "Subjects served as their own controls with a 5-week pretreatment baseline period and a 5-week posttreatment follow-up period where no treatment was given." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1053/apmr.2001.24888" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 1 to 3 cm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2001" ;
+    tara:hasPublicationVenue "Archives of Physical Medicine and Rehabilitation" ;
+    tara:hasSampleSizeInformation "Total participants: 18 (Acupuncture group: not specified, Trager group: not specified)" ;
+    tara:hasStimulationType "Manual stimulation to acquire De Qi, repeated once during a 20-minute session" ;
+    tara:hasStudiedCondition HP:0030834 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic shoulder pain in individuals with spinal cord injury (SCI)" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1080/j.1600-0412.2002.811008.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in the management of pain in labor" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved inserting single-use, sterile, thin, solid, stainless steel needles into specific acupoints in the muscles until de chi was achieved. Needle depth varied based on acupoint location and subcutaneous fat thickness. Stimulation was done by rotating the needles, and most needles were taped in place until delivery or conversion to conventional analgesia. The number of needles used varied from two to twelve, with an average of seven." ;
+    tara:hasAuthor "Else Skilnand, Ditlev Fossen, Eli Heiberg" ;
+    tara:hasControlsInformation "The control used in the study was \"false acupuncture,\" also known as \"minimal acupuncture,\" where needles were inserted at points not on classical meridians, mainly in areas used for vaccination and other injections." ;
+    tara:hasCountryInformation "Norway" ;
+    tara:hasDOI "DOI: https://doi.org/10.1080/j.1600-0412.2002.811008.x" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "The depth of needle insertion for real acupuncture depended on the location of the acupoint and the thickness of the subcutaneous fat. For false acupuncture (minimal acupuncture), very shallow needling was used. The angle of insertion is not mentioned." ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 210 participants; Real acupuncture group: 106; False acupuncture group: 104" ;
+    tara:hasStimulationType "Manual stimulation by rotating the needles, dependent on the degree of needle sensation." ;
+    tara:hasStudiedCondition ILX:0795498 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "pain in labor" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1093/aje/kwj224> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Pragmatic Randomized Trial Evaluating the Clinical and Economic Effectiveness of Acupuncture for Chronic Low Back Pain" ;
+    tara:hasAcupunctureModality "needle acupuncture with disposable one-time needles and manual stimulation" ;
+    tara:hasAuthor "Claudia M Witt, Susanne Jena, Dagmar Selim, Benno Brinkhaus, Thomas Reinhold, Katja Wruck, Bodo Liecker, Klaus Linde, Karl Wegscheider, Stefan N Willich" ;
+    tara:hasControlsInformation "The control group consisted of patients who received delayed acupuncture treatment 3 months later." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/aje/kwj224" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not provide specific details on needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "American Journal of Epidemiology" ;
+    tara:hasSampleSizeInformation "Total: 11,378, Randomized Acupuncture Group: 1,451, Randomized Control Group: 1,390, Nonrandomized Acupuncture Group: 8,537" ;
+    tara:hasStimulationType "manual stimulation (specific frequency or technique not mentioned)" ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic low back pain" ;
+    tara:hasTrialType "pragmatic trial" .
+
+<https://doi.org/10.1093/ecam/neh097> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Auricular Acupuncture for Pain Relief after Ambulatory Knee Arthroscopy-A Pilot Study" ;
+    tara:hasAcupunctureModality "Auricular acupuncture using disposable permanent press steel needles at specific points (Lung, Shenmen, and Knee) on the ear, retained in situ until the following morning with patient-instructed stimulation through massage." ;
+    tara:hasAuthor "Taras I Usichenko, Maria Hermsen, Torsten Witstruck, Andre Hofer, Dragan Pavlovic, Christian Lehmann, Frank Feyerherd" ;
+    tara:hasControlsInformation "The control in the study was a sham procedure involving needling at three non-acupuncture points on the auricular helix." ;
+    tara:hasCountryInformation "Not mentioned (the paper does not provide information on the country of publication)" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/ecam/neh097" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper provides needle length but does not specify insertion depth or angle)" ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 18; AA group: 10; Control group: 8" ;
+    tara:hasStimulationType "Manual stimulation by massaging the needles for 5 minutes at specific times during surgery and post-operatively when pain exceeded 40 mm on VAS-100." ;
+    tara:hasStudiedCondition ILX:0795497 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Post-operative pain after ambulatory knee arthroscopy" ;
+    tara:hasTrialType "Pilot study" .
+
+<https://doi.org/10.1093/humrep/14.10.2480> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "A prospective randomized study of electro-acupuncture versus alfentanil as anaesthesia during oocyte aspiration in in-vitro fertilization" ;
+    tara:hasAcupunctureModality "Electro-acupuncture (EA) with electrical stimulation at high frequency (100 Hz) for abdominal muscles and low burst frequency (2 Hz) for hand muscles, combined with manual stimulation every ten minutes." ;
+    tara:hasAuthor "Elisabet Stener-Victorin, Urban Waldenstro, Lars Nilsson, Matts Wikland, Per Olof Janson" ;
+    tara:hasControlsInformation "The control group in the study is the group receiving alfentanil plus paracervical block (PCB)." ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/humrep/14.10.2480" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 15-35 mm" ;
+    tara:hasPublicationDate "1999" ;
+    tara:hasPublicationVenue "Human Reproduction" ;
+    tara:hasSampleSizeInformation "Total: 149 participants; EA group: 75 participants; Alfentanil group: 74 participants" ;
+    tara:hasStimulationType "Electrical stimulation: 100 Hz for abdominal muscles, 2 Hz for hands; Manual stimulation: every tenth minute." ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Pain management during oocyte aspiration in in-vitro fertilization (IVF)" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1093/humrep/deh229> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Pain relief during oocyte retrieval with a new short duration electro-acupuncture techniqueÐan alternative to conventional analgesic methods" ;
+    tara:hasAcupunctureModality "Electro-acupuncture (EA) with electrical stimulation at 20 Hz" ;
+    tara:hasAuthor "Peter Humaidan, Elisabet Stener-Victorin" ;
+    tara:hasControlsInformation "The control group in the study was the group receiving conventional medical analgesia (CMA) in combination with a paracervical block (PCB), which included pre-medication with benzodiazepine and intravenous alfentanil during OPU." ;
+    tara:hasCountryInformation "Denmark" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/humrep/deh229" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 15-25 mm intramuscularly" ;
+    tara:hasPublicationDate "2004" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 200 participants; EA group: 100 participants; CMA group: 100 participants" ;
+    tara:hasStimulationType "Electrical stimulation at a frequency of 20 Hz" ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Pain during oocyte retrieval" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1093/humrep/del110> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Auricular electro-acupuncture as an additional perioperative analgesic method during oocyte aspiration in IVF treatment" ;
+    tara:hasAcupunctureModality "Auricular electro-acupuncture (EA) with continuous low-frequency electrical stimulation using a battery-powered miniaturized stimulator (P-Stim) and titanium disposable needles" ;
+    tara:hasAuthor "Sabine M Sator-Katzenschlager, Monika M Wölfler, Sibylle A Kozek-Langenecker, Kathrin Sator, Paul-G Sator, Borwen Li, Georg Heinze, Michael O Sator" ;
+    tara:hasControlsInformation "The control group (CO) used adhesive tapes instead of needles and no electrical stimulation at the auricular acupuncture points." ;
+    tara:hasCountryInformation "Austria" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/humrep/del110" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 3 mm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "Human Reproduction" ;
+    tara:hasSampleSizeInformation "Total: 93 participants; EA group: 32, A group: 32, CO group: 29" ;
+    tara:hasStimulationType "Electrical stimulation at 1 Hz, biphasic, 2 mA" ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Pain during oocyte aspiration in IVF treatment" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1093/rheumatology/38.4.346> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "A randomized trial of acupuncture as an adjunctive therapy in osteoarthritis of the knee" ;
+    tara:hasAcupunctureModality "Electroacupuncture, biweekly for 8 weeks, using local and distal points based on TCM theory for Bi syndrome" ;
+    tara:hasAuthor "B M Berman, B B Singh, L Lao, P Langenberg1, H Li2, V Hadhazy, J Bareta, M Hochberg3" ;
+    tara:hasControlsInformation "The control group received standard care, which involved maintaining their current level of oral therapy without acupuncture for the first 12 weeks. After 12 weeks, they were offered acupuncture." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/rheumatology/38.4.346" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not provide details on needle depth or angle)" ;
+    tara:hasPublicationDate "1999" ;
+    tara:hasPublicationVenue "Rheumatology" ;
+    tara:hasSampleSizeInformation "Total: 73 participants; Acupuncture group: 36; Standard care group: 37" ;
+    tara:hasStimulationType "Not mentioned (the paper does not specify the type or frequency of stimulation used in the acupuncture treatment)" ;
+    tara:hasStudiedCondition MONDO:0005416 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "osteoarthritis of the knee" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1093/rheumatology/kem119> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Severe knee osteoarthritis: a randomized controlled trial of acupuncture, physiotherapy (supervised exercise) and standard management for patients awaiting knee replacement" ;
+    tara:hasAcupunctureModality "Standardized western acupuncture administered in a group setting with 1 inch, 0.25 gauge needles inserted for 20 minutes, once a week for 6 weeks." ;
+    tara:hasAuthor "L Williamson, M R Wyatt, K Yein, J T K Melton" ;
+    tara:hasControlsInformation "The control group received an exercise and advice leaflet and were referred to as the 'home exercise group', performing exercises at home based on the leaflet provided." ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/rheumatology/kem119" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "Rheumatology" ;
+    tara:hasSampleSizeInformation "Total: 181 participants, Acupuncture group: 60, Physiotherapy group: 60, Standard management group: 61" ;
+    tara:hasStimulationType "Not mentioned (the paper does not specify the method or frequency of needle stimulation beyond insertion and achieving de chi)" ;
+    tara:hasStudiedCondition MONDO:0005416 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "severe knee osteoarthritis" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1097/00002508-200112000-00003> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture for Chronic Low Back Pain: A Randomized Placebo-Controlled Study With Long-Term Follow-Up" ;
+    tara:hasAcupunctureModality "Manual acupuncture and electroacupuncture" ;
+    tara:hasAuthor "Christer P O Carlsson, Bengt H Sjölund" ;
+    tara:hasControlsInformation "The control used in the study was an active placebo treatment involving mock transcutaneous electrical nerve stimulation (TENS) with a disconnected stimulator and flashing lamps to simulate treatment." ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1097/00002508-200112000-00003" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 2 to 3 cm" ;
+    tara:hasPublicationDate "2001" ;
+    tara:hasPublicationVenue "The Clinical Journal of Pain" ;
+    tara:hasSampleSizeInformation "Total: 50 participants, Manual acupuncture group: 18 participants, Electroacupuncture group: 16 participants, Placebo group: 16 participants" ;
+    tara:hasStimulationType """Manual acupuncture: Needles are stimulated three times during a 20-minute session to evoke 'de-qi' sensation.
+Electroacupuncture: Electrical stimulation frequency is approximately 2 Hz every 2.5 seconds, interrupted by a 15-Hz train for 2.5 seconds.""" ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic low back pain" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1097/01.brs.0000077932.80560.02> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Chronic Spinal Pain A Randomized Clinical Trial Comparing Medication, Acupuncture, and Spinal Manipulation" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved using sterile HWATO Chinese disposable acupuncture guide tube needles (length, 50 mm; gauge, 0.25 mm) with 8 to 10 needles placed in local paraspinal intramuscular maximum pain areas and approximately 5 needles in distal acupuncture point meridians using the \"near and far\" technique. Needle agitation was performed by turning or flicking the needles at intervals during the session. Needles were inserted to a depth of 20 to 50 mm in pain areas and up to 5 mm in distal points." ;
+    tara:hasAuthor "Lynton G F Giles, Reinhold Muller" ;
+    tara:hasControlsInformation "Each treatment group (medication, needle acupuncture, and spinal manipulation) acted as a control for the others." ;
+    tara:hasCountryInformation "Australia" ;
+    tara:hasDOI "DOI: https://doi.org/10.1097/01.brs.0000077932.80560.02" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 20 to 50 mm in maximum pain area, up to 5 mm in distal points; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2003" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 115 participants, Medication group: 43, Acupuncture group: 36, Spinal manipulation group: 36" ;
+    tara:hasStimulationType "Manual needle agitation by turning or flicking every 5 minutes during a 20-minute session" ;
+    tara:hasStudiedCondition MONDO:0024317 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic spinal pain syndrome" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1111/j.1471-0528.2002.01212.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture treatment during labour-a randomised controlled trial" ;
+    tara:hasAcupunctureModality "Manual acupuncture with disposable surgical steel needles, inserted bilaterally at 45 or 90 degrees, with manual stimulation until de qui was achieved. Needles were left in place for one to three hours and taped to allow mobility." ;
+    tara:hasAuthor "Agneta Ramnero, Ulf Hanson, Mona Kihlgren, Ms A Ramnero" ;
+    tara:hasControlsInformation "The control group consisted of parturients who received conventional analgesia methods without acupuncture. They had access to all available analgesia methods at the delivery ward, except for acupuncture, which was only available to the experimental group." ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1471-0528.2002.01212.x" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle angle: 45 degrees or 90 degrees; Needle depth: Not mentioned" ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 90 participants; Acupuncture group: 46 participants; Control group: 44 participants" ;
+    tara:hasStimulationType "Manual stimulation until de qui is achieved" ;
+    tara:hasStudiedCondition ILX:0795498 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Labour pain and relaxation during childbirth" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1111/j.1526-4610.2005.00235.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "A Randomized, Controlled Trial of Acupuncture for Chronic Daily Headache" ;
+    tara:hasAcupunctureModality "Traditional Chinese Medicine (TCM) acupuncture with needle insertion based on TCM pattern diagnoses and targeting tender points, using up to 30 needles per session left in place for approximately 30 minutes." ;
+    tara:hasAuthor "Remy R Coeytaux, Jay S Kaufman, Ted J Kaptchuk, Wunian Chen, William C Miller, Leigh F Callahan, J Douglas Mann, Drs Coey- Taux, Miller Callahan" ;
+    tara:hasControlsInformation "Medical management without acupuncture" ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1526-4610.2005.00235.x" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (no information on needle depth or angle is included in the paper)" ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "Headache" ;
+    tara:hasSampleSizeInformation "Total: 74 participants; Intervention group (medical management plus acupuncture): 35; Control group (medical management only): 39" ;
+    tara:hasStimulationType "Manual acupuncture with needles left in place for approximately 30 minutes; no specific frequency of manual stimulation (lifting, thrusting, or twirling) mentioned." ;
+    tara:hasStudiedCondition MONDO:0021146 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic daily headache (CDH)" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1111/j.1532-5415.2007.01314.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Efficacy of Periosteal Stimulation Therapy for the Treatment of Osteoarthritis-Associated Chronic Knee Pain: An Initial Controlled Clinical Trial" ;
+    tara:hasAcupunctureModality "Periosteal stimulation therapy (PST, osteopuncture) with direct electrical stimulation at 100 Hz for 30 minutes using acupuncture needles over bony prominences." ;
+    tara:hasAuthor "Debra K Weiner, Thomas E Rudy, Natalia Morone, Ronald Glick, C Kent Kwoh" ;
+    tara:hasControlsInformation "The control used in the study was a version of Periosteal Stimulation Therapy (PST) where needles were inserted but not electrically stimulated for 30 minutes, unlike in the PST group. Both groups had two additional needles stimulated for 1 minute to maintain treatment credibility." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1532-5415.2007.01314.x" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needles were inserted until they just touched bone; no specific angle mentioned." ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 88 participants; PST group: 44, Control PST group: 44" ;
+    tara:hasStimulationType "Electrical stimulation at 100 Hz for 30 minutes for the main needles, and 100 Hz for 1 minute for additional needles." ;
+    tara:hasStudiedCondition MONDO:0005416 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "advanced knee osteoarthritis" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1136/aim.23.2.52> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Effect of intensive acupuncture on pain-related social and psychological variables for women with chronic neck and shoulder pain -an RCT with six month and three year follow up" ;
+    tara:hasAcupunctureModality "Combination of body acupuncture, body electrostimulation, and ear acupressure" ;
+    tara:hasAuthor "Dong He, Arne T Høstmark, Kaj Bo Veiersted, Jon Ingulf" ;
+    tara:hasControlsInformation "The control group (CG) received sham acupuncture treatment, where electrostimulation pads were attached without applying voltage, and acupuncture and acupressure were applied at non-acupuncture points." ;
+    tara:hasCountryInformation "Norway" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/aim.23.2.52" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 10-30mm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 24 participants; Test group: 12 participants; Control group: 12 participants" ;
+    tara:hasStimulationType "Electrical stimulation at 5Hz" ;
+    tara:hasStudiedCondition HP:0030833,
+        HP:0030834 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic neck and shoulder pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1136/aim.24.1.5> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Effects of trigger point acupuncture on chronic low back pain in elderly patients -a sham-controlled randomised trial" ;
+    tara:hasAcupunctureModality "Trigger point acupuncture using the 'sparrow pecking' technique with needle insertion to a depth of 10-40mm at myofascial trigger points." ;
+    tara:hasAuthor "Kazunori Itoh, Licensed Acupuncturist, Yasukazu Katsumi, Satoko Hirota, Hiroshi Kitakoji" ;
+    tara:hasControlsInformation "Sham acupuncture (using needles with tips cut off to prevent skin penetration)" ;
+    tara:hasCountryInformation "Japan" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/aim.24.1.5" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 10-40mm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total initial sample size: 26 participants (Group A: 13, Group B: 13); Completed study: 19 participants" ;
+    tara:hasStimulationType "Manual stimulation using the \"sparrow pecking\" technique to elicit a local muscle twitch response, followed by needle retention for 10 minutes." ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic low back pain" ;
+    tara:hasTrialType "RCT (randomized controlled trial)" .
+
+<https://doi.org/10.1136/aim.24.3.103> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Relief of low back pain immediately after acupuncture treatmenta randomised, placebo controlled trial" ;
+    tara:hasAcupunctureModality "Stainless steel needle insertion to a depth of 20mm at the most painful point, using the sparrow pecking method for 20 seconds." ;
+    tara:hasAuthor "Motohiro Inoue, Hiroshi Kitakoji, Munenori Tawa, Licensed Acupuncturists, Naoto Ishizaki, Licensed Acupuncturist, Tadashi Yano, Yasukazu Katsumi, Orthopaedic Surgeon, Kenji Kawakita" ;
+    tara:hasControlsInformation "The control used in the study was a sham acupuncture procedure, where a guide tube without a needle was tapped on the skin at the most painful point to simulate acupuncture without actual needle insertion." ;
+    tara:hasCountryInformation "Japan" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/aim.24.3.103" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 20mm" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 31 participants; Acupuncture group: 15; Sham acupuncture group: 16" ;
+    tara:hasStimulationType "Manual stimulation using the sparrow pecking method (lifting and thrusting) for 20 seconds." ;
+    tara:hasStudiedCondition HP:0003419,
+        MONDO:0005095 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "low back pain associated with lumbar vertebral arthritis" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1136/bjsm.2003.009431> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Effect of dry needling of gluteal muscles on straight leg raise: a randomised, placebo controlled, double blind trial" ;
+    tara:hasAcupunctureModality "Therapeutic needling with 0.30 mm diameter, 25 mm long sterile acupuncture needles that pierced the skin and were advanced into the trigger point." ;
+    tara:hasAuthor "L Huguenin, Professor Brukner" ;
+    tara:hasControlsInformation "Placebo needle treatment, where a blunted needle was applied to the skin without piercing it, simulating the sensation of needling." ;
+    tara:hasCountryInformation "Australia" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/bjsm.2003.009431" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth is not explicitly mentioned; needles were advanced into trigger points with a dynamic technique, but no specific depth or angle is provided." ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "British Journal of Sports Medicine" ;
+    tara:hasSampleSizeInformation "59 participants in total" ;
+    tara:hasStimulationType "Manual stimulation: repeated advancement of the needle into the muscle until pain resolves and no further twitches are seen, typically lasting about one minute per point." ;
+    tara:hasStudiedCondition HP:0012514 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Posterior thigh pain referred from gluteal trigger points" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1136/bmj.38397.507014.e0> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Effects of acupuncture and stabilising exercises as adjunct to standard treatment in pregnant women with pelvic girdle pain: randomised single blind controlled trial" ;
+    tara:hasAcupunctureModality "Acupuncture was administered using stainless steel needles inserted intramuscularly at 10 segmental and 7 extrasegmental points, with manual stimulation every 10 minutes during 30-minute sessions, twice a week for six weeks." ;
+    tara:hasAuthor "Helen Elden, Lars Ladfors, Monika Fagevik Olsen, Hans-Christian Ostgaard, Henrik Hagberg, Monika Fagevik, Olsen Physiotherapist" ;
+    tara:hasControlsInformation "The control in the study is the group receiving standard treatment, which includes general information about the condition, advice on daily activities, a pelvic belt, and a home exercise program designed to increase strength in the abdominal and gluteal muscles." ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/bmj.38397.507014.e0" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 15-70 mm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "British medical journal" ;
+    tara:hasSampleSizeInformation "Total: 386 participants, Standard treatment group: 130, Standard treatment plus acupuncture group: 125, Standard treatment plus stabilising exercises group: 131" ;
+    tara:hasStimulationType "Manual stimulation every 10 minutes to evoke De Qi sensation" ;
+    tara:hasStudiedCondition HP:0034267 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "pelvic girdle pain during pregnancy" ;
+    tara:hasTrialType "Randomised Controlled Trial (RCT)" .
+
+<https://doi.org/10.1136/bmj.38878.907361.7c> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Randomised controlled trial of a short course of traditional acupuncture compared with usual care for persistent non-specific low back pain" ;
+    tara:hasAcupunctureModality "Individualised traditional acupuncture using disposable needles, administered by qualified acupuncturists over up to 10 sessions in three months" ;
+    tara:hasAuthor "K J Thomas, H Macpherson, L Thorpe, J Brazier, M Fitter, M J Campbell, M Roman, J Walters, J Nicholl" ;
+    tara:hasControlsInformation "Usual care group receiving NHS treatment according to general practitioner's assessment, including physiotherapy, manipulation, drugs, and recommended back exercises." ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/bmj.38878.907361.7c" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper refers to another source for details on acupuncture treatments, including needle depth and angle)" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "British medical journal" ;
+    tara:hasSampleSizeInformation "Total: 241 participants; Acupuncture group: 160; Usual care group: 81" ;
+    tara:hasStimulationType "Not mentioned (the paper does not specify the type or frequency of needle stimulation used in the acupuncture treatments)" ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "non-specific low back pain" ;
+    tara:hasTrialType "Pragmatic, open, randomised controlled trial" .
+
+<https://doi.org/10.1136/bmj.39280.509803.be> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture as an adjunct to exercise based physiotherapy for osteoarthritis of the knee: randomised controlled trial" ;
+    tara:hasAcupunctureModality "True acupuncture and non-penetrating acupuncture (blunt tip needles creating an illusion of insertion)" ;
+    tara:hasAuthor "Nadine E Foster, Elaine Thomas, Panos Barlas, Fellow, Jonathan C Hill, Physiotherapy, Julie Young, Elizabeth Mason, Elaine M Hay, Community Rheumatology" ;
+    tara:hasControlsInformation "Advice and exercise group" ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/bmj.39280.509803.be" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 5 mm to 25 mm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "British medical journal" ;
+    tara:hasSampleSizeInformation "Total: 352, Advice and exercise: 116, Advice and exercise plus true acupuncture: 117, Advice and exercise plus non-penetrating acupuncture: 119" ;
+    tara:hasStimulationType "Manual stimulation using rotation and thrust and withdraw techniques to achieve the de qi sensation. Frequency or specific timing of manipulations is not detailed." ;
+    tara:hasStudiedCondition MONDO:0005416 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "osteoarthritis of the knee" ;
+    tara:hasTrialType "randomised controlled trial (RCT)" .
+
+<https://doi.org/10.1200/jco.2003.09.011> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Analgesic Effect of Auricular Acupuncture for Cancer Pain: A Randomized, Blinded, Controlled Trial" ;
+    tara:hasAcupunctureModality "Auricular acupuncture using needle insertion at electrodermal signal-detected points on the ear" ;
+    tara:hasAuthor "David Alimi, Carole Rubino, Evelyne Pichard-Le ´andri, Sabine Fermand-Brule, Marie-Laure Dubreuil-Lemaire, Catherine Hill" ;
+    tara:hasControlsInformation "Two control groups were used: 1) Auricular acupuncture at placebo points (no electrodermal signal), and 2) Auricular seeds fixed at placebo points (no electrodermal signal)." ;
+    tara:hasCountryInformation "France" ;
+    tara:hasDOI "DOI: https://doi.org/10.1200/jco.2003.09.011" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle length: 3.4 mm; Maximum diameter: 0.7 mm; No specific depth or angle mentioned" ;
+    tara:hasPublicationDate "2003" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 90 participants, Auricular acupuncture group: 29, Placebo auricular acupuncture group: 30, Placebo auricular seed group: 31" ;
+    tara:hasStimulationType "Electrical stimulation with a 9-volt detection current; no specific frequency for manual or thermal stimulation mentioned" ;
+    tara:hasStudiedCondition HP:6000040 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "neuropathic pain in cancer patients" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1213/01.ane.0000253233.51490.dd> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Perioperative Auricular Electroacupuncture Has No Effect on Pain and Analgesic Consumption After Third Molar Tooth Extraction" ;
+    tara:hasAcupunctureModality "Auricular electroacupuncture (AE) with electrical stimulation at an alternating frequency of 2/100 Hz using a P-Stim device, and auricular acupuncture (AA) without electrical stimulation." ;
+    tara:hasAuthor "Peter S A Glass, Andrea Michalek-Sauberer, Harald Heinzl, Sabine M Sator-Katzenschlager, Gabriel Monov, Erich Knolle, Hans Georg Kress" ;
+    tara:hasControlsInformation "The control used in the study was the sham auricular electroacupuncture group (NN), which involved using metal plates instead of needles and no electrical stimulation. This served as a placebo control." ;
+    tara:hasCountryInformation "Austria" ;
+    tara:hasDOI "DOI: https://doi.org/10.1213/01.ane.0000253233.51490.dd" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth: 3 mm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "Anesthesia and Analgesia" ;
+    tara:hasSampleSizeInformation "Total: 149; AE group: 76; AA group: 37; NN group: 36" ;
+    tara:hasStimulationType "Electrical stimulation at an alternating frequency of 2/100 Hz, with constant current pulses every 3 seconds for 3 hours followed by a 3-hour pause." ;
+    tara:hasStudiedCondition ILX:0795499 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Pain after mandibular third molar tooth extraction" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.3748/wjg.v11.i26.4040> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture for irritable bowel syndrome: A blinded placebo-controlled trial" ;
+    tara:hasAcupunctureModality "Traditional Chinese acupuncture with needling techniques, without moxibustion" ;
+    tara:hasAuthor "Alastair Forbes, Sue Jackson, Clare Walter, Shafi Quraishi, Meron Jacyna, Max Pitcher, Elsevier" ;
+    tara:hasControlsInformation "Sham acupuncture" ;
+    tara:hasCountryInformation "Not mentioned (the paper does not specify the country of publication)" ;
+    tara:hasDOI "DOI: https://doi.org/10.3748/wjg.v11.i26.4040" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Needle depth is not explicitly mentioned, but needle lengths used were 25 mm and 40 mm. Needle angle is not mentioned." ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "World Journal of Gastroenterology" ;
+    tara:hasSampleSizeInformation "Total sample size: 59 participants. Group allocation: 28 patients with acupuncturist A as DA and 31 with acupuncturist B as DA." ;
+    tara:hasStimulationType "Manual stimulation; specific frequency or method not mentioned" ;
+    tara:hasStudiedCondition MONDO:0005052 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Irritable Bowel Syndrome (IBS)" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.7205/milmed.171.10.1010> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Auricular Acupuncture in the Treatment of Acute Pain Syndromes: A Pilot Study" ;
+    tara:hasAcupunctureModality "Auricular acupuncture using sterile Aiguille Semi-Permanent (ASP) needles at the cingulate gyrus and thalamic nuclei points on the ear." ;
+    tara:hasAuthor "Christine M H Goertz, Richard Niemtzow, Stephen M Burns, Matthew J Fritts, Cindy C Crawford, Wayne B Jonas" ;
+    tara:hasControlsInformation "The control group received standard emergency medical care with an adhesive bandage placed on the ear lobes to mimic the acupuncture procedure without actually receiving it." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.7205/milmed.171.10.1010" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not provide specific details on needle depth or angle for acupuncture)" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "Military Medicine" ;
+    tara:hasSampleSizeInformation "Total: 100 participants initially, with 50 in each group; 87 completed the study." ;
+    tara:hasStimulationType "Manual insertion with no active stimulation frequency mentioned; needles remain in place for 4 to 6 days." ;
+    tara:hasStudiedCondition HP:0012531 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "acute pain syndromes" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT), Pilot Study" .
+
+<https://doi.org/10.7326/0003-4819-143-1-200507050-00005> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "A Randomized Clinical Trial of Acupuncture Compared with Sham Acupuncture in Fibromyalgia" ;
+    tara:hasAcupunctureModality "Traditional Chinese Medicine-based acupuncture with needle insertion retained at standard depths for 30 minutes using disposable needles of 34 to 40 gauge" ;
+    tara:hasAuthor "Nassim P Assefi, Karen J Sherman, Clemma Jacobsen, Jack Goldberg, Wayne R Smith, Dedra Buchwald" ;
+    tara:hasControlsInformation "The study used three sham acupuncture treatments as controls: 1) acupuncture for an unrelated condition, 2) needle insertion at nonacupoint locations, and 3) noninsertive simulated acupuncture." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.7326/0003-4819-143-1-200507050-00005" ;
+    tara:hasListedAcupointsUsed "" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the exact needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "Annals of Internal Medicine" ;
+    tara:hasSampleSizeInformation "Total: 100 participants; Directed acupuncture: 25, Sham acupuncture groups: 25 each (3 groups)" ;
+    tara:hasStimulationType "Not mentioned (the paper does not specify any manual, electrical, or thermal stimulation techniques or frequencies used in the acupuncture treatments)" ;
+    tara:hasStudiedCondition MONDO:0005546 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Fibromyalgia" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1016/j.jdent.2006.09.004> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "The efficacy of acupuncture in the treatment of temporomandibular joint myofascial pain: A randomised controlled trial" ;
+    tara:hasAcupunctureModality "Real acupuncture with true penetrative needles inserted 6-12 mm into the skin at ST 7, retained for 20 minutes with manual stimulation every 5 minutes." ;
+    tara:hasAuthor "Philip Smith, Daniella Mosscrop, Stephen Davies, Philip Sloan, Ziad Al-Ani" ;
+    tara:hasControlsInformation "The control used in the study was a sham acupuncture intervention, utilizing a blunt needle that does not penetrate the skin, applied through the Park Sham Device (PSD) to mimic real acupuncture." ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/j.jdent.2006.09.004" ;
+    tara:hasListedAcupointsUsed "ST 7" ;
+    tara:hasNeedlingInformation "Needle depth for real acupuncture: 6-12 mm; Sham acupuncture: no penetration (blunt needle touched skin)" ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "Journal of Dentistry" ;
+    tara:hasSampleSizeInformation "Total: 27 participants; Group 1 (real acupuncture): 13 or 14; Group 2 (sham acupuncture): 13 or 14" ;
+    tara:hasStimulationType "Manual stimulation: tapping the needle every 5 minutes for 10 seconds." ;
+    tara:hasStudiedCondition MONDO:0005473 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "temporomandibular joint myofascial pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1016/j.pain.2006.07.002> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Efficacy and safety of acupuncture for chronic uncomplicated neck pain: A randomised controlled study" ;
+    tara:hasAcupunctureModality "Traditional Chinese acupuncture with bilateral needle puncture, manual stimulation, and auricular acupressure using Vaccaria seeds." ;
+    tara:hasAuthor "Vas, Jorge, Emilio Perea-Milla, Camila Méndez, Cayetana Sánchez Navarro, José María León Rubio, Mauricio Brioso, and Inmaculada García Obrero" ;
+    tara:hasControlsInformation "TENS-placebo" ;
+    tara:hasCountryInformation "Spain" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/j.pain.2006.07.002" ;
+    tara:hasListedAcupointsUsed "GB 21" ;
+    tara:hasNeedlingInformation "Needle length: 25 mm or 40 mm; Diameter: 0.25 mm; Depth sufficient to elicit Deqi sensation; Angle not specified" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "Pain" ;
+    tara:hasSampleSizeInformation "Total: 123 participants; Experimental group (acupuncture): 61 participants; Control group (TENS-placebo): 62 participants" ;
+    tara:hasStimulationType "Manual stimulation every 10 minutes." ;
+    tara:hasStudiedCondition HP:0030833 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic uncomplicated neck pain" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1016/s0304-3959(02)00261-0> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "The effect of high and low frequency electroacupuncture in pain after lower abdominal surgery" ;
+    tara:hasAcupunctureModality "Electroacupuncture (EA) with electrical stimulation at Zusanli points (ST-36) using frequencies of 2 Hz and 100 Hz" ;
+    tara:hasAuthor "Jaung-Geng Lin, Ming-Wu Lo, Yeong-Ray Wen, Ching-Liang Hsieh, Shen-Kou Tsai, Wei-Zen Sun" ;
+    tara:hasControlsInformation "Group I: no needle insertion or electrical stimulation (control); Group II: needle insertion without electrical stimulation (sham-EA)" ;
+    tara:hasCountryInformation "Not mentioned (the paper does not specify the country of publication)" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0304-3959(02)00261-0" ;
+    tara:hasListedAcupointsUsed "ST 36" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle for acupuncture)" ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "Pain" ;
+    tara:hasSampleSizeInformation "Total: 100 participants; Group I (control): 25, Group II (sham-EA): 25, Group III (low-EA): 25, Group IV (high-EA): 25" ;
+    tara:hasStimulationType "Electrical stimulation at 2 Hz for low-frequency EA and 100 Hz for high-frequency EA" ;
+    tara:hasStudiedCondition HP:0012531 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "postoperative pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1093/rheumatology/38.9.864> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "The effect of acupuncture on patients with rheumatoid arthritis: a randomized, placebo-controlled cross-over study" ;
+    tara:hasAcupunctureModality "Single-point manual needle acupuncture at Liver 3 (Li3) with manual manipulation, no electro-acupuncture or moxibustion used." ;
+    tara:hasAuthor "J David, S Townsend, R Sathanathan, S Kriss, C J Dore" ;
+    tara:hasControlsInformation "The control used in the study was a placebo treatment where the needle introducer was held without pressure on the Liver 3 point, and no skin puncture was made." ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/rheumatology/38.9.864" ;
+    tara:hasListedAcupointsUsed "LR 3" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "1998" ;
+    tara:hasPublicationVenue "Rheumatology" ;
+    tara:hasSampleSizeInformation "Total randomized: 64; Analyzed: 56" ;
+    tara:hasStimulationType "Manual manipulation at 2 minutes for 5 seconds; no electrical or thermal stimulation used." ;
+    tara:hasStudiedCondition MONDO:0008383 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "rheumatoid arthritis" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT) with a cross-over design" .
+
+<https://doi.org/10.1111/j.1479-828x.2006.00674.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture reduces pain and active phase duration The effects of acupuncture during labour on nulliparous women: A randomised controlled trial" ;
+    tara:hasAcupunctureModality "Traditional acupuncture with manual needle stimulation at recognized acupoints, using C-type needles, tailored to patient symptoms and aimed at provoking the de chi sensation." ;
+    tara:hasAuthor "Sedigheh Hantoushzadeh, Navid Alhusseini, Amir Hussein Lebaschi" ;
+    tara:hasControlsInformation "Minimal acupuncture (insertion of needles in non-acupuncture points such as buttocks, thighs, and arms)" ;
+    tara:hasCountryInformation "Iran" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1479-828x.2006.00674.x" ;
+    tara:hasListedAcupointsUsed "LI 4" ;
+    tara:hasNeedlingInformation "Needles were inserted at 45 degrees or perpendicularly, with a depth depending on the thickness of the subcutaneous fat." ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 144 participants; Real acupuncture group: 70; Minimal acupuncture group: 74" ;
+    tara:hasStimulationType "Manual stimulation until de chi sensation is achieved; control group: manual stimulation for about 20 minutes without de chi sensation." ;
+    tara:hasStudiedCondition ILX:0795498 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "labor pain" ;
+    tara:hasTrialType "RCT (Randomised Controlled Trial)" .
+
+<https://doi.org/10.1111/j.1533-2500.2007.00140.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "The Short-Term Effects of Acupuncture on Myofascial Pain Patients After Clenching" ;
+    tara:hasAcupunctureModality "Single needle insertion at Hegu Large Intestine 4 (LI4) acupoint, with needle twirling for 5 seconds after 5 minutes, lasting for 15 minutes." ;
+    tara:hasAuthor "Yoshi F Shen, Greg Goddard" ;
+    tara:hasControlsInformation "Sham acupuncture, using a blunted needle that did not penetrate the skin and was positioned 1 cm distal to the LI4 acupoint, served as the control. The procedure was designed to mimic real acupuncture without actual needle penetration." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1533-2500.2007.00140.x" ;
+    tara:hasListedAcupointsUsed "LI 4" ;
+    tara:hasNeedlingInformation "Needle depth: 10 to 20 mm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 15 participants; Real acupuncture group: 9 participants; Sham acupuncture group: 6 participants" ;
+    tara:hasStimulationType "Manual stimulation: twirling the needle for 5 seconds after 5 minutes into treatment." ;
+    tara:hasStudiedCondition MONDO:0006862 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Myofascial pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.7326/0003-4819-141-12-200412210-00006> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Effectiveness of Acupuncture as Adjunctive Therapy in Osteoarthritis of the Knee A Randomized, Controlled Trial" ;
+    tara:hasAcupunctureModality "Traditional Chinese Medicine-based acupuncture with needle insertion and electroacupuncture at knee points Xiyan" ;
+    tara:hasAuthor "Brian M Berman, Lixing Lao, Patricia Langenberg, Wen Lin Lee, Adele M K Gilpin, Marc C Hochberg" ;
+    tara:hasControlsInformation "The study used two control groups: 1) Sham acupuncture, which involved the same schedule as true acupuncture but without actual needle insertion, and 2) Education, which consisted of 6 two-hour sessions based on the Arthritis Self-Management Program." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.7326/0003-4819-141-12-200412210-00006" ;
+    tara:hasListedAcupointsUsed "Xiyan" ;
+    tara:hasNeedlingInformation "Needle depth: approximately 0.3 to 1.0 inch, depending on point location; Needle length: 1.5-inch for local points and 1-inch for distal points" ;
+    tara:hasPublicationDate "2004" ;
+    tara:hasPublicationVenue "Annals of Internal Medicine" ;
+    tara:hasSampleSizeInformation "Total: 570 participants, True acupuncture group: 186, Sham acupuncture group: 183, Education group: 174" ;
+    tara:hasStimulationType "Electrical stimulation at 8 Hz with square biphasic pulses (0.5-ms pulse width) for 20 minutes at knee points Xiyan." ;
+    tara:hasStudiedCondition MONDO:0005416 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "osteoarthritis of the knee" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1016/j.apmr.2004.11.044> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Manual Acupuncture for Analgesia During Electromyography: A Pilot Study" ;
+    tara:hasAcupunctureModality "Manual acupuncture with needle insertion at LI-4 and LR-3 points, using a 2-piece insertion tube and plastic holder, with needle rotation" ;
+    tara:hasAuthor "Henry C Tong" ;
+    tara:hasControlsInformation "Telescopic sham needles were used as the control in the study." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/j.apmr.2004.11.044" ;
+    tara:hasListedAcupointsUsed "LI 4, LR 3" ;
+    tara:hasNeedlingInformation "Needle depth: about 1 cm; Note: some needles were incorrectly placed only 1 mm deep due to inexperience." ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "Archives of Physical Medicine and Rehabilitation" ;
+    tara:hasSampleSizeInformation "Total: 51 participants; Treatment group: 26 participants; Sham group: 25 participants" ;
+    tara:hasStimulationType "Manual stimulation: rotation back and forth 10 times" ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Pain associated with electromyography" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1016/s0966-6532(98)00049-3> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "The effect of acupuncture on pain and swelling after day case molar teeth extraction under general anaesthesia" ;
+    tara:hasAcupunctureModality "Electroacupuncture at Colon 4 and Stomach 6 points, with electrical stimulation at 2.5 Hz for 20 minutes before and during general anaesthesia" ;
+    tara:hasAuthor "Trevor Roy Coe" ;
+    tara:hasControlsInformation "The control group received general anaesthesia alone without acupuncture treatment." ;
+    tara:hasCountryInformation "Not mentioned (the paper does not provide information on the country of publication)" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0966-6532(98)00049-3" ;
+    tara:hasListedAcupointsUsed "ST 6, LI 4" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle, only that insertion continued until a dull ache was felt by the patient)" ;
+    tara:hasPublicationDate "1999" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 40 participants; Acupuncture group: 20 participants; Control group: 20 participants" ;
+    tara:hasStimulationType "Electrical stimulation at 2.5 Hz" ;
+    tara:hasStudiedCondition ILX:0795497 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Post-operative pain and swelling following third molar teeth extraction" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1093/rheumatology/37.10.1118> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Chronic neck pain: a comparison of acupuncture treatment and physiotherapy" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved the use of sterile, disposable, 0.25 × 2.5 Acumedic needles for local needling of trigger points, regional needling at GB21 (supraspinatus tendon area), and distal needling at L14 (web space between thumb and first finger). The needles were left in situ for 15 minutes and manually manipulated once at 7 minutes. Electro-acupuncture and moxibustion were not used." ;
+    tara:hasAuthor "J David, S Modi, A A Aluko, C Robertshaw, J Farebrother" ;
+    tara:hasControlsInformation "Not applicable (the study did not include a control group)" ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/rheumatology/37.10.1118" ;
+    tara:hasListedAcupointsUsed "GB 21, LI 4" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper specifies needle size and application sites but does not provide details on needle depth or angle)" ;
+    tara:hasPublicationDate "1998" ;
+    tara:hasPublicationVenue "British Journal of Rheumatology" ;
+    tara:hasSampleSizeInformation "Total: 70 participants; Acupuncture group: 35 participants; Physiotherapy group: 35 participants" ;
+    tara:hasStimulationType "manual manipulation once at 7 minutes into the treatment" ;
+    tara:hasStudiedCondition HP:0030833 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic neck pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1111/j.1468-2982.2000.00097.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture for episodic tension-type headache: a multicentre randomized controlled trial" ;
+    tara:hasAcupunctureModality "Brief acupuncture using a 3030.30 mm needle at specific points with manipulation for 15 seconds without needle retention" ;
+    tara:hasAuthor "A R White, K-L Resch, Jck Chan, C D Norris, S K Modi, J N Patel, E Ernst" ;
+    tara:hasControlsInformation "The control used in the study was a sham procedure involving tapping a blunted cocktail-stick against bony prominences, avoiding known acupuncture points and tender areas." ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1468-2982.2000.00097.x" ;
+    tara:hasListedAcupointsUsed "GB 20, LI 4" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "2000" ;
+    tara:hasPublicationVenue "Cephalalgia" ;
+    tara:hasSampleSizeInformation "Total: 50 participants; Acupuncture group: 25; Sham group: 25" ;
+    tara:hasStimulationType "Manual stimulation: needle manipulated for 15 seconds or until deQi was felt" ;
+    tara:hasStudiedCondition HP:0012228 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "episodic tension-type headache" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1111/j.1526-4610.2004.04077.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Electroacupuncture for Tension-type Headache on Distal Acupoints Only: A Randomized, Controlled, Crossover Trial" ;
+    tara:hasAcupunctureModality "Electroacupuncture" ;
+    tara:hasAuthor "C C L Xue, L Dong, B Polus, R A English, Z Zheng, C Da Costa, C G Li, D F Story, Drs Xue, Ms Dong, Charlie Changli Xue" ;
+    tara:hasControlsInformation "Sham electroacupuncture (SEA) was used as the control, involving needle insertion at incorrect locations with low-frequency and low-intensity electrical stimulation." ;
+    tara:hasCountryInformation "Australia" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1526-4610.2004.04077.x" ;
+    tara:hasListedAcupointsUsed "ST 36, LI 4" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle for acupuncture)" ;
+    tara:hasPublicationDate "2004" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total sample size: 40 participants; Group A: approximately 20 participants, Group B: approximately 20 participants; 37 completed the trial" ;
+    tara:hasStimulationType "Real Electroacupuncture: 2 Hz and 100 Hz (alternated); Sham Electroacupuncture: 0.2 Hz" ;
+    tara:hasStudiedCondition HP:0012228 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "tension-type headache" ;
+    tara:hasTrialType "randomized, single-blinded, sham-controlled, crossover clinical trial" .
+
+<https://doi.org/10.1159/000048847> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture Treatment for Irritable Bowel Syndrome A Double-Blind Controlled Study" ;
+    tara:hasAcupunctureModality "Manual needle insertion at LI-4 (colonic meridian) for true acupuncture and BL-60 (urinary vesicle meridian) for sham acupuncture, needle only" ;
+    tara:hasAuthor "Zvi Fireman, Arieh Segal, Yael Kopelman, Amos Sternberg, Rafael Carasso" ;
+    tara:hasControlsInformation "Sham acupuncture at BL-60 (urinary vesicle meridian) was used as the control. Patients were randomly assigned to receive either true acupuncture or sham acupuncture first, with a washout period in between." ;
+    tara:hasCountryInformation "Not mentioned (the paper does not specify the country of publication)" ;
+    tara:hasDOI "DOI: https://doi.org/10.1159/000048847" ;
+    tara:hasListedAcupointsUsed "LI 4, BL 60" ;
+    tara:hasNeedlingInformation "Not mentioned (no information on needle depth or angle is included in the paper)" ;
+    tara:hasPublicationDate "2001" ;
+    tara:hasPublicationVenue "Digestion" ;
+    tara:hasSampleSizeInformation "Total: 25 participants; Group 1: intended 20, Group 2: intended 20 (final distribution not explicitly clarified beyond total of 25)" ;
+    tara:hasStimulationType "Manual acupuncture with needle only; no specific frequency or additional stimulation method mentioned." ;
+    tara:hasStudiedCondition MONDO:0005052 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Irritable Bowel Syndrome (IBS)" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1186/1472-6882-2-3> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Electroacupuncture versus Diclofenac in symptomatic treatment of Osteoarthritis of the knee: a randomized controlled trial" ;
+    tara:hasAcupunctureModality "Electroacupuncture (EA) with electrical stimulation using biphasic pulses at 2 Hz, administered 3 times a week for 4 weeks" ;
+    tara:hasAuthor "Chaichan Sangdee, Supanimit Teekachunhatean, Kanit Sananpanich, Nantawit Sugandhavesa, Siripong Chiewchantanakit, Suwalee Pojchamarnwiputh, Subhachai Jayasvasti" ;
+    tara:hasControlsInformation "The controls used in the study were a placebo tablet and placebo electroacupuncture (EA), where the placebo EA involved attaching patch electrodes without actual electrical stimulation." ;
+    tara:hasCountryInformation "Thailand" ;
+    tara:hasDOI "DOI: https://doi.org/10.1186/1472-6882-2-3" ;
+    tara:hasListedAcupointsUsed "ST 35, LR 8" ;
+    tara:hasNeedlingInformation "Needle depth: not more than 0.5 inch; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total sample size: 193 participants; Group sizes not specified in the provided text." ;
+    tara:hasStimulationType "Electrical stimulation at a frequency of 2 Hz for 20 minutes per session" ;
+    tara:hasStudiedCondition MONDO:0005416 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "osteoarthritis of the knee" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.47749/t/unicamp.2014.927896> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture and sham acupuncture reduce muscle pain in myofascial pain patients" ;
+    tara:hasAcupunctureModality "Standard acupuncture involved inserting needles at Hoku and Stomach 6 points to a depth of 10 to 30 mm, achieving a \"chi\" reaction, and leaving them for 30 minutes with minimal manipulation. Sham acupuncture involved inserting needles at non-acupuncture points to a depth of 2 to 4 mm, following a similar procedure." ;
+    tara:hasAuthor "Greg Goddard, Hiroyuki Karibe, Charles Mcneill, Ernesto Villafuerte" ;
+    tara:hasControlsInformation "The control used in the study was a sham acupuncture group, where needles were inserted at non-acupuncture points to mimic the experience of real acupuncture without targeting specific acupuncture points." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.47749/t/unicamp.2014.927896" ;
+    tara:hasListedAcupointsUsed "LI 4, ST 6" ;
+    tara:hasNeedlingInformation "Acupuncture group: 10 to 30 mm; Sham acupuncture group: 2 to 4 mm" ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total sample size: 18 participants; Standard acupuncture group: 10 participants; Sham treatment group: 8 participants" ;
+    tara:hasStimulationType "Manual stimulation: Needles twirled once for 5 seconds at the halfway point of a 30-minute period." ;
+    tara:hasStudiedCondition MONDO:0006862 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "myofascial pain of the jaw muscles" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1016/j.pain.2004.08.030> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Randomised trial of long term effect of acupuncture for shoulder pain *" ;
+    tara:hasAcupunctureModality "Electro-acupuncture with sharp tip needles connected to an electro-acupuncture device set to 5-10 Hz to elicit light muscular twitching" ;
+    tara:hasAuthor "Juan Antonio Guerra De Hoyos, Maria Del Carmen, Andre ´s Martı ´nb, Elena Bassas, Baena De Leon, Miguel Viga ´ra Lopez, Teresa Molina, Lo ´pez, Francisco Antonio, Verdugo Morilla, Maria Jose ´gonza, ´lez Moreno, C Pastor, Landero" ;
+    tara:hasControlsInformation "The control in the study was a placebo-acupuncture group, which received skin non-penetrating blunt needles and dummy electrical stimulation, along with the option to take diclofenac for intense pain." ;
+    tara:hasCountryInformation "Spain" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/j.pain.2004.08.030" ;
+    tara:hasListedAcupointsUsed "LI 15, TE 14, GB 34" ;
+    tara:hasNeedlingInformation "1 cun depth for all locations" ;
+    tara:hasPublicationDate "2004" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 130 participants; Acupuncture group: 65 participants; Placebo group: 65 participants" ;
+    tara:hasStimulationType "Electrical stimulation at 5-10 Hz to elicit light muscular twitching" ;
+    tara:hasStudiedCondition HP:0030834 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "shoulder pain from soft tissue lesions, including Cuff Tendonitis, capsulitis, bicipital tendonitis, and bursitis" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1016/s0304-3959(02)00269-5> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Does acupuncture improve the orthopedic management of chronic low back pain -a randomized, blinded, controlled trial with 3 months follow up" ;
+    tara:hasAcupunctureModality "Verum acupuncture involving needling specific acupuncture points, with sessions lasting 30 minutes each, administered three times a week for a total of 12 sessions. The treatment was performed by a trained medical doctor using standard points in the lumbar region and lower extremity, with needle insertion depth ranging from 1 to 10 cm to achieve Deqi sensation." ;
+    tara:hasAuthor "Albrecht F Molsberger, Jochen Mau, Danuta B Pawelec, Ja ´nos Winkler" ;
+    tara:hasControlsInformation "Sham 1 COT (non-specific needling and COT) and nil 1 COT (COT alone)" ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0304-3959(02)00269-5" ;
+    tara:hasListedAcupointsUsed "BL 23, BL 25, GB 30" ;
+    tara:hasNeedlingInformation "Verum acupuncture: 1 to 10 cm; Sham acupuncture: less than 1 cm" ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 186 participants, Verum 1 COT: 65, Sham 1 COT: 61, Nil 1 COT: 60" ;
+    tara:hasStimulationType "Manual needle manipulation with mild to strong intensity, three times per week for 30 minutes per session." ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic low back pain" ;
+    tara:hasTrialType "RCT (Randomised Controlled Trial)" .
+
+<https://doi.org/10.1186/1471-2474-7-99> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture for chronic neck pain: a pilot for a randomised controlled trial" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved up to 10 sessions using a standardised framework based on traditional Chinese medicine, including the Five Element approach. It involved the use of 5 to 24 needles per session, with needle lengths of 13-50 mm, gauges of 0.18 to 0.36 mm, and insertion depths of 0.2 to 2.5 cm. Commonly used points included GB-21, Ah Shi points, GB-20, Huatuojiaji at C6 and C7, and S-I3. Auxiliary techniques such as acupressure massage and lifestyle support were also part of the modality." ;
+    tara:hasAuthor "Gemma C Salter, Mark Roman, Martin J Bland, Hugh Macpherson" ;
+    tara:hasControlsInformation "Usual GP care only" ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1186/1471-2474-7-99" ;
+    tara:hasListedAcupointsUsed "GB 21, GB 20, Huatuojiaji" ;
+    tara:hasNeedlingInformation "Needle depth: 0.2 to 2.5 cm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "BMC Musculoskeletal Disorders" ;
+    tara:hasSampleSizeInformation "Total participants: 24; Acupuncture group: 10; Usual GP care group: 14" ;
+    tara:hasStimulationType "Not mentioned (the paper does not specify the type or frequency of needle stimulation used in the acupuncture treatments)" ;
+    tara:hasStudiedCondition HP:0030833 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic neck pain" ;
+    tara:hasTrialType "Pilot Randomised Controlled Trial (RCT)" .
+
+<https://doi.org/10.1001/archotol.125.5.567> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Evaluation of Acupuncture for Pain Control After Oral Surgery A Placebo-Controlled Trial" ;
+    tara:hasAcupunctureModality "Manual needle insertion at acupuncture points Hegu (LI 4), Jiache (St 6), Xiaguan (St 7), and Yifeng (SJ 17) with manual manipulation to achieve 'de qi' sensation, no electrical stimulation used." ;
+    tara:hasAuthor "Lixing Lao, Stewart Bergman, Gayle R Hamilton, Patricia Langenberg, Brian Berman" ;
+    tara:hasControlsInformation "The control used in the study was a nonneedle insertion placebo procedure, which involved tapping an empty plastic needle tube on the skin, using adhesive tape to simulate needle presence, and performing manipulations with a blunt dental instrument. A mock electrical stimulator was also used." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1001/archotol.125.5.567" ;
+    tara:hasListedAcupointsUsed "LI 4, ST 6, ST 7, Yifeng" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "1999" ;
+    tara:hasPublicationVenue "Archives of Otolaryngology - Head and Neck Surgery" ;
+    tara:hasSampleSizeInformation "Total: 39 participants; Treatment group: 19 participants; Control group: 20 participants" ;
+    tara:hasStimulationType "Manual manipulation for 20 to 30 seconds, three times during the session (immediately after insertion, at midpoint, and at end of treatment)" ;
+    tara:hasStudiedCondition ILX:0795497 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "postoperative dental pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1089/107555303322284767> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "The Use of Electro-Acupuncture in Conjunction with Exercise for the Treatment of Chronic Low-Back Pain" ;
+    tara:hasAcupunctureModality "Electro-acupuncture (EA) with electrical stimulation at 2 Hz using a biphasic waveform applied to specific acupoints along the Bladder and Spleen meridians" ;
+    tara:hasAuthor "Cecilia K N Yeung, Mason C P Leung, Daniel H K Chow" ;
+    tara:hasControlsInformation "The control used in the study was a standardized back exercise program without electro-acupuncture. This included warm-up, stretching, back extension exercises, abdominal exercises, cool-down stretching, advice on spinal anatomy and body mechanics, back care, postural correction, lifting and ergonomic advice, behavioral modification, and a series of home exercises." ;
+    tara:hasCountryInformation "Hong Kong" ;
+    tara:hasDOI "DOI: https://doi.org/10.1089/107555303322284767" ;
+    tara:hasListedAcupointsUsed "BL 23, BL 25, BL 40, SP 6" ;
+    tara:hasNeedlingInformation "Needle length: 40 mm; Needle depth adjusted based on patient sensation; Needle angle not mentioned" ;
+    tara:hasPublicationDate "2003" ;
+    tara:hasPublicationVenue "Journal of Alternative and Complementary Medicine" ;
+    tara:hasSampleSizeInformation "Total: 52 participants; Exercise group: 26; Exercise plus EA group: 26" ;
+    tara:hasStimulationType "2 Hz electrical stimulation with biphasic waveform (positive wave in square form and negative wave in triangle form with 0.5-ms pulse width)" ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Chronic Low-Back Pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1177/0163278704273081> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Is Acupuncture Analgesia an Expectancy Effect?: Preliminary Evidence Based on Participants’ Perceived Assignments in Two Placebo-Controlled Trials" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved the insertion of 2.5 cm, 32 gauge needles to a depth of 0.8 to 1.3 cm into four traditional Chinese medicine points (three on the face and one on the hand), with manual twisting to elicit the \"De Qi\" sensation. A sham noninsertion was also used at a knee point for blinding purposes. No electrical stimulation was applied." ;
+    tara:hasAuthor "R Barker Bausell, Stewart Bergman, Wen-Lin Lee, Brian M Berman" ;
+    tara:hasControlsInformation "- Placebo 1: Sham noninsertion adjacent to acupuncture points; distal sham shallow insertion at nonpoint., Placebo 2: Sham shallow insertion adjacent to acupuncture points; distal sham noninsertion." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1177/0163278704273081" ;
+    tara:hasListedAcupointsUsed "ST 6, ST 7, Yifeng, LI 4" ;
+    tara:hasNeedlingInformation "Needle depth: 0.8 to 1.3 cm; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Experiment 1: 120 participants; Experiment 2: 180 participants; Total: 300 participants" ;
+    tara:hasStimulationType "Manual twisting of needles three times during the session: during initial insertion, at the midpoint, and at the end of the 20-minute treatment." ;
+    tara:hasStudiedCondition ILX:0795499 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Pain following dental surgery" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1046/j.1365-2044.1999.01030.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "The effect of pre-emptive acupuncture treatment on analgesic requirements after day-case knee arthroscopy" ;
+    tara:hasAcupunctureModality "Acupuncture was administered using standard sterile disposable needles inserted at four local points around the knee and one distal point on the hand, with manual stimulation every 5 minutes for 15 minutes." ;
+    tara:hasAuthor "S Gupta, J D Francis, A B Tillu, A I Sattirajah, J Sizer, E A J Morris" ;
+    tara:hasControlsInformation "The control group consisted of patients who received standard anaesthetic without acupuncture (n=21)." ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1046/j.1365-2044.1999.01030.x" ;
+    tara:hasListedAcupointsUsed "SP 9, SP 10, ST 34, ST 36, LI 4" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle of insertion for acupuncture)" ;
+    tara:hasPublicationDate "1999" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 42 participants; Acupuncture group: 21 participants; Control group: 21 participants" ;
+    tara:hasStimulationType "Manual stimulation: needle rotation through 180 degrees every 5 minutes and just before removal" ;
+    tara:hasStudiedCondition ILX:0795497 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Postoperative pain following knee arthroscopy" ;
+    tara:hasTrialType "RCT (Randomised Controlled Trial)" .
+
+<https://doi.org/10.1089/acm.1999.5.521> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture Treatment of Patellofemoral Pain Syndrome" ;
+    tara:hasAcupunctureModality "The acupuncture modality used was classic Chinese acupuncture, involving individualized point selection (including ST-34, SP-10, Extra point Lower Extremity-5, ST-35, SP-9, and ST-36), needle manipulation to achieve de-qi, with sessions lasting 20 to 25 minutes, administered twice weekly for 4 weeks." ;
+    tara:hasAuthor "Roar P T Jensen, 0ystein Gothesen, Knut Liseth, Anders Baerheim" ;
+    tara:hasControlsInformation "The control group in the study was an untreated group, meaning they did not receive any form of acupuncture or placebo treatment." ;
+    tara:hasCountryInformation "Norway" ;
+    tara:hasDOI "DOI: https://doi.org/10.1089/acm.1999.5.521" ;
+    tara:hasListedAcupointsUsed "ST 34, SP 10, ST 35, SP 9, ST 36" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify needle depth or angle)" ;
+    tara:hasPublicationDate "1999" ;
+    tara:hasPublicationVenue "Journal of Alternative and Complementary Medicine" ;
+    tara:hasSampleSizeInformation "Total: 70 participants; Acupuncture group: 36; Control group: 34" ;
+    tara:hasStimulationType "Manual stimulation; needles manipulated until de-qi was obtained, session duration 20 to 25 minutes" ;
+    tara:hasStudiedCondition MONDO:0006894 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Patellofemoral Pain Syndrome" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1093/rheumatology/41.2.205> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in chronic epicondylitis: a randomized controlled trial" ;
+    tara:hasAcupunctureModality "Real acupuncture involved using specific points (Ash point, LI 10, LI 11, Lu 5, LI 4, SJ 5) with six needles inserted to induce De Qi sensation for 25 minutes. Sham acupuncture used non-specific sites at least 5 cm away from classical points. Both modalities used six needles per session." ;
+    tara:hasAuthor "M Fink, E Wolkenstein, M Karst, A Gehrke" ;
+    tara:hasControlsInformation "Sham acupuncture, involving needling at non-traditional points at least 5 cm away from classical acupuncture points and clear of painful pressure points." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1093/rheumatology/41.2.205" ;
+    tara:hasListedAcupointsUsed "LI 10, LI 11, LU 5, LI 4, TE 5" ;
+    tara:hasNeedlingInformation "Needles were inserted down to the musculature; no specific angle mentioned." ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "Rheumatology" ;
+    tara:hasSampleSizeInformation "Total: 45 participants; Real acupuncture group: 23 participants; Sham acupuncture group: 22 participants" ;
+    tara:hasStimulationType "Manual stimulation: twisting to induce De Qi sensation; frequency not specified beyond initial induction" ;
+    tara:hasStudiedCondition MONDO:0001875 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic lateral epicondylitis (tennis elbow)" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1371/journal.pone.0000919> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Naturopathic Care for Chronic Low Back Pain: A Randomized Trial" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved twice-weekly sessions for 12 weeks, using Seirin disposable needles number 5 (0.25630 mm) inserted at specific points (GV 3,4, BL 23, 25, 40 bilaterally) to a depth of 0.5 cun, with stimulation to achieve de qi and left in place for 20 minutes per session." ;
+    tara:hasAuthor "Orest Szczurko, Kieran Cooley, Jason W Busse, Dugald Seely, Bob Bernhardt, Gordon H Guyatt, Qi Zhou, Edward J Mills" ;
+    tara:hasControlsInformation "The control group received standardized physiotherapy advice, which included an educational booklet designed by the British Physiotherapy Association. This booklet provided information on back pain management, including causes, prognosis, appropriate use of imaging studies and specialists, and exercises for promoting recovery and preventing recurrences. Participants were also instructed on specific back stretching and strengthening exercises and relaxation techniques." ;
+    tara:hasCountryInformation "Canada" ;
+    tara:hasDOI "DOI: https://doi.org/10.1371/journal.pone.0000919" ;
+    tara:hasListedAcupointsUsed "GV 3, GV 4, BL 23, BL 25, BL 40" ;
+    tara:hasNeedlingInformation "Needle depth: 0.5 cun; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "PLoS ONE" ;
+    tara:hasSampleSizeInformation "Total: 75 participants; Naturopathic care group: 39 participants; Control group: 36 participants" ;
+    tara:hasStimulationType "Manual stimulation to achieve de qi sensation; needles left in place for 20 minutes" ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic low back pain" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1034/j.1600-0412.2000.079005331.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "A prospective randomized study comparing acupuncture with physiotherapy for low-back and pelvic pain in pregnancy" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved treatments three times a week for the first two weeks, then twice a week, totaling 10 sessions over a month. It used sterilized steel needles (1-10 cm long, 0.25-0.38 mm thick), with 2 to 10 needles per session. Treatments started with ear-acupuncture at the fossa triangularis, supplemented by body-acupuncture at points Bl 26-30, Bl 60, Cw 2, and local points. The deqi-sensation was elicited, and needles were tapped or rotated for stimulation." ;
+    tara:hasAuthor "Kaj Wedenberg, Berit Moen, Åsa Norling" ;
+    tara:hasControlsInformation "The control in the study was the physiotherapy group, which was used to compare against the acupuncture group." ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1034/j.1600-0412.2000.079005331.x" ;
+    tara:hasListedAcupointsUsed "BL 26, BL 27, BL 28, BL 29, BL 30, BL 60" ;
+    tara:hasNeedlingInformation "Needle depth: 1-10 centimeters; Angle: Not mentioned" ;
+    tara:hasPublicationDate "2000" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 60 participants, Acupuncture group: 30 (28 analyzed), Physiotherapy group: 30 (18 completed)" ;
+    tara:hasStimulationType "Manual stimulation: needles were gently tapped or rotated about 15 minutes after insertion to elicit the deqi-sensation." ;
+    tara:hasStudiedCondition HP:0003419,
+        HP:0034267 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "low-back and pelvic pain during pregnancy" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1054/ctim.2001.0442> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Non-specific effects of traditional Chinese acupuncture in osteoarthritis of the hip" ;
+    tara:hasAcupunctureModality "Traditional acupuncture with needle placement at classical points and manipulation for the treatment group; non-specific needle placement without manipulation for the control group." ;
+    tara:hasAuthor "Matthias G Fink, H Kunsebeck, B Wipperman, A Gehrke" ;
+    tara:hasControlsInformation "The control group had needles placed at least 5 cm away from classical acupuncture points and not manipulated, ensuring they were not on painful pressure points. The depth of insertion, number of needles, and time frame were the same as in the treatment group." ;
+    tara:hasCountryInformation "Not mentioned (the paper does not specify the country of publication)" ;
+    tara:hasDOI "DOI: https://doi.org/10.1054/ctim.2001.0442" ;
+    tara:hasListedAcupointsUsed "GB 30, GB 31, BL 37, ST 40, BL 54, GB 34" ;
+    tara:hasNeedlingInformation "Needle depth was the same for both groups, but exact depth not specified; needles used were 0.3 × 60 mm." ;
+    tara:hasPublicationDate "2001" ;
+    tara:hasPublicationVenue "Complementary Therapies in Medicine" ;
+    tara:hasSampleSizeInformation "Total: 67 participants; Group 1 (treatment) and Group 2 (control) - exact numbers not specified, but likely approximately half each." ;
+    tara:hasStimulationType "Manual stimulation through twisting of the needles, performed two to three times during a 20-minute treatment session." ;
+    tara:hasStudiedCondition MONDO:0006629 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "osteoarthritis of the hip" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1080/165019702760279233> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Sensory Stimulation (Acupuncture) for the Treatment of Idiopathic Anterior Knee Pain" ;
+    tara:hasAcupunctureModality "Deep acupuncture (electro-acupuncture) and minimal superficial acupuncture" ;
+    tara:hasAuthor "Jan Na ¨slund, Ulla-Britt Na ¨slund, Sten Odenbring, Thomas Lundeberg, Jan Na ¨slund" ;
+    tara:hasControlsInformation "Minimal superficial acupuncture was used as the control treatment in the study. It involved inserting needles subcutaneously in the knee region without electrical stimulation or evoking the sensation of de Qi." ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1080/165019702760279233" ;
+    tara:hasListedAcupointsUsed "ST 34, ST 36, ST 38, SP 9, SP 10, GB 34" ;
+    tara:hasNeedlingInformation "Group A: deeper insertion to evoke de Qi sensation; Group B: superficial subcutaneous insertion. Needle lengths: Group A - 30 mm, Group B - 15 mm. Exact depth and angle not specified." ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "Journal of Rehabilitation Medicine" ;
+    tara:hasSampleSizeInformation "Total: 58 participants; Group A (deep acupuncture): 30 participants; Group B (minimal superficial acupuncture): 28 participants (27 completed)" ;
+    tara:hasStimulationType "Electro-acupuncture: 2 Hz, constant biphasic square pulses; Manual: twirling to evoke de Qi sensation (Group A only)" ;
+    tara:hasStudiedCondition HP:6001144 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "idiopathic anterior knee pain (patellofemoral pain syndrome)" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1097/00002508-200311000-00004> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in the Management of Chronic Low Back Pain: A Blinded Randomized Controlled Trial" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved using Seirin acupuncture needles No. 8 (0.30 × 50 mm) inserted at specific points (Bladder 23, 25, Gall Bladder 30, Bladder 40, Kidney 3, and Governor Vessel 4) until the sensation of \"ch'i\" was produced. The needles were manually rotated during 30-minute sessions conducted weekly over a 6-week period." ;
+    tara:hasAuthor "Daniel P Kerr, Deirdre M Walsh, David Baxter" ;
+    tara:hasControlsInformation "Placebo transcutaneous electrical nerve stimulation (TENS) using a nonfunctioning TENS machine" ;
+    tara:hasCountryInformation "Northern Ireland" ;
+    tara:hasDOI "DOI: https://doi.org/10.1097/00002508-200311000-00004" ;
+    tara:hasListedAcupointsUsed "BL 23, BL 25, GB 30, BL 40, KI 3, GV 4" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the exact needle depth or angle, only that needles were inserted until the sensation of \"ch'i\" was produced)" ;
+    tara:hasPublicationDate "2003" ;
+    tara:hasPublicationVenue "The Clinical Journal of Pain" ;
+    tara:hasSampleSizeInformation "Total: 60 participants; Acupuncture group: 30 initially (26 completed); Placebo-TENS group: 30 initially (20 completed)" ;
+    tara:hasStimulationType "Manual rotation of needles at initial insertion and at 10-minute and 20-minute intervals during a 30-minute session" ;
+    tara:hasStudiedCondition HP:0003419 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic low back pain" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1136/aim.19.1.19> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "A Comparison of Acupuncture with Advice and Exercises on the Symptomatic Treatment of Osteoarthritis of the Hip -A Randomised Controlled Trial" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved six sessions of acupuncture with patients positioned side-lying. Specific points targeted included GB29, GB30, GB34, GB43, ST44, LI4 bilaterally, and 'ah shi' points around the greater trochanter. 'Viva' sterile disposable needles were used, with manual stimulation applied during sessions." ;
+    tara:hasAuthor "Roisin Haslam, Princess Margaret, Hospital Swindon" ;
+    tara:hasControlsInformation "The control group in the study was given advice and exercises for their hip over a six-week period, with three sessions that included an advice sheet on osteoarthritis and self-help, and a set of five exercises." ;
+    tara:hasCountryInformation "United Kingdom" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/aim.19.1.19" ;
+    tara:hasListedAcupointsUsed "GB 29, GB 30, GB 34, GB 43, ST 44, LI 4" ;
+    tara:hasNeedlingInformation "Needle depth: 25mm for most points, 40mm for GB30; Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2001" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 32 participants; Group A: 16 participants; Group B: 16 participants" ;
+    tara:hasStimulationType "Manual stimulation: each needle was manually stimulated for approximately ten seconds every five minutes." ;
+    tara:hasStudiedCondition MONDO:0006629 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Osteoarthritis of the Hip" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1177/0269215507077362> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Effects of acupuncture and sham acupuncture in addition to physiotherapy in patients undergoing bilateral total knee arthroplasty -a randomized controlled trial" ;
+    tara:hasAcupunctureModality "Manual acupuncture using sterile, single-use needles inserted at specific acupoints (ST32, ST33, GB31, GB35, GB34, ST36) to a depth of 13-25 mm, with manipulation to elicit sensations of numbness, tingling, or heaviness, and no electrostimulation applied." ;
+    tara:hasAuthor "Tsang, Raymond Chi-Chung, Pui-Ling Tsang, Chung-Yee Ko, Ben Chi-Hung Kong, Wing-Yee Lee, and Ho-Ting Yip" ;
+    tara:hasControlsInformation "Sham acupuncture group: superficial needling at non-acupuncture points without manipulation or eliciting sensations, used as a control to compare against true acupuncture." ;
+    tara:hasCountryInformation "Hong Kong" ;
+    tara:hasDOI "DOI: https://doi.org/10.1177/0269215507077362" ;
+    tara:hasListedAcupointsUsed "ST 32, ST 33, GB 31, GB 35, GB 34, ST 36" ;
+    tara:hasNeedlingInformation "Acupuncture group: 13-25 mm depth; Sham acupuncture group: less than 5 mm depth" ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 36 initially recruited; Final analysis: 30 (Acupuncture group: 15, Sham acupuncture group: 15)" ;
+    tara:hasStimulationType "Manual stimulation: manipulation every 5 minutes to achieve numbness, tingling, or heaviness; no electrical or thermal stimulation used." ;
+    tara:hasStudiedCondition MONDO:0005416 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "knee osteoarthritis" ;
+    tara:hasTrialType "randomized controlled trial (RCT)" .
+
+<https://doi.org/10.1186/1472-6882-7-35> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in the treatment of rheumatoid arthritis: a double-blind controlled pilot study" ;
+    tara:hasAcupunctureModality "Electroacupuncture (EA), Traditional Chinese Acupuncture (TCA), and Sham Acupuncture" ;
+    tara:hasAuthor "Lai-Shan Tam, Ping-Chung Leung, Tena K Li, Lang Zhang, Edmund K Li" ;
+    tara:hasControlsInformation "Sham acupuncture was used as the control in this study." ;
+    tara:hasCountryInformation "China" ;
+    tara:hasDOI "DOI: https://doi.org/10.1186/1472-6882-7-35" ;
+    tara:hasListedAcupointsUsed "LI 11, TE 5, LI 4, ST 36, GB 34, GB 39" ;
+    tara:hasNeedlingInformation "Needle depth: 20 mm for LI11, TE5, ST36, GB36, GB39; 10 mm for LI4. Needle angle: Not mentioned." ;
+    tara:hasPublicationDate "2007" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 36 participants; EA group: 12 participants; TCA group: 12 participants; Sham group: 12 participants" ;
+    tara:hasStimulationType "Electroacupuncture (EA): Electrical stimulation with dense wave at 4 Hz and disperse wave at 20 Hz, intermittent non-specific manual twirling., Traditional Chinese Acupuncture (TCA): Intermittent specific manual twirling., Sham acupuncture: Intermittent non-specific manual twirling (no electrical stimulation)." ;
+    tara:hasStudiedCondition MONDO:0008383 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Rheumatoid arthritis" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT), Pilot Study" .
+
+<https://doi.org/10.1089/acm.2005.11.663> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Treatment of Fibromyalgia with Formula Acupuncture: Investigation of Needle Placement, Needle Stimulation, and Treatment Frequency" ;
+    tara:hasAcupunctureModality "Manual needle stimulation and non-stimulation at both traditional and nontraditional sites" ;
+    tara:hasAuthor "Richard E Harris, Xiaoming Tian, David A Williams, Thomas X Tian, Thomas R Cupps, Frank Petzke, Kimberly H Groner, Pinaki Biswas, Richard H Gracely, Daniel J Clauw" ;
+    tara:hasControlsInformation """The controls used in the study were: 1) T/0: Traditional needle location without stimulation.
+2) N/S: Nontraditional needle location with stimulation.
+3) N/0: Nontraditional needle location without stimulation.""" ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.1089/acm.2005.11.663" ;
+    tara:hasListedAcupointsUsed "Du 20, LI 11, LI 4, GB 34, ST 36, SP 6, LR 3" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not provide specific details on needle depth or angle)" ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "Journal of Alternative and Complementary Medicine" ;
+    tara:hasSampleSizeInformation "Total sample size: 114 participants, Group 1 (T/S): 29 participants, Group 2 (T/0): 30 participants, Group 3 (N/S): 28 participants, Group 4 (N/0): 27 participants" ;
+    tara:hasStimulationType "Manual stimulation: lifting and thrusting with rotation approximately 12 times at 180 degrees clockwise and counterclockwise." ;
+    tara:hasStudiedCondition MONDO:0005546 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "fibromyalgia" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1136/bmj.322.7302.1574> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Randomised trial of acupuncture compared with conventional massage and \"sham\" laser acupuncture for treatment of chronic neck pain" ;
+    tara:hasAcupunctureModality "Acupuncture was administered according to traditional Chinese medicine principles, including diagnostic palpation, selection of remote and local acupuncture points on affected meridians, inclusion of ear acupuncture points, and treatment of local myofascial trigger points using dry needling." ;
+    tara:hasAuthor "Dominik Irnich, Nicolas Behrens, Holger Molzen, Achim König, Jochen Gleditsch, Martin Krauss, Malte Natalis, Edward Senn, Antje Beyer, Peter Schöps, Pain Therapy, Orthopaedic Surgeon" ;
+    tara:hasControlsInformation "The controls used in the study were conventional massage and sham laser acupuncture. Sham laser acupuncture was used as a placebo control, while massage served as an active control." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/bmj.322.7302.1574" ;
+    tara:hasListedAcupointsUsed "SI 3, BL 10, BL 60, LR 3, GB 20, GB 34, TE 5" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "2001" ;
+    tara:hasPublicationVenue "British medical journal" ;
+    tara:hasSampleSizeInformation "Total: 177, Acupuncture: 56, Massage: 60, Sham laser acupuncture: 61" ;
+    tara:hasStimulationType "Manual stimulation through dry needling to elicit a local twitch response; specific frequency or method not mentioned." ;
+    tara:hasStudiedCondition HP:0030833 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic neck pain" ;
+    tara:hasTrialType "RCT (Randomized Controlled Trial)" .
+
+<https://doi.org/10.1111/j.1468-2982.2004.00803.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Role of the needling per se in acupuncture as prophylaxis for menstrually related migraine: a randomized placebo-controlled study" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved the use of sterile Chinese disposable filiform needles inserted at specific acupuncture points (GB8, GB20, LI4, Liv3, SP6, and others depending on headache location) with a depth of 10 to 30 mm. Needles were left in place for 30 minutes and manually rotated every 10 minutes." ;
+    tara:hasAuthor "Mattias Linde, A Fjell, J Carlsson, C Dahlöf" ;
+    tara:hasControlsInformation "The control used in the study was blunt, telescopic placebo needles that touch but do not penetrate the skin." ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1468-2982.2004.00803.x" ;
+    tara:hasListedAcupointsUsed "GB 8, GB 20, LI 4, LR 3, SP 6, GB 14, Taiyang, BL 10" ;
+    tara:hasNeedlingInformation "The needle depth varied between 10 and 30 mm depending on location. The angle of insertion is not mentioned." ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "Cephalalgia" ;
+    tara:hasSampleSizeInformation "Total enrolled: 46; Randomized: 31; Completed: 28; Groups: Verum and Placebo (exact numbers in each group not specified)" ;
+    tara:hasStimulationType "Manual rotation every 10 minutes to achieve 'de qi' sensation" ;
+    tara:hasStudiedCondition MONDO:0005277 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "menstrually related migraine (MRM)" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1136/aim.22.2.60> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture for low back pain in pregnancy -a prospective, quasi-randomised, controlled study" ;
+    tara:hasAcupunctureModality "Traditional needle-based acupuncture using classical points without electro-stimulation or ear acupuncture, involving the insertion of approximately 12 needles for about 25 minutes per session." ;
+    tara:hasAuthor "João Bosco, Guerreiro Da Silva, Mary Uchiyama Nakamura, José Antonio Cordeiro, Luiz Kulay, Mary Uchiyama" ;
+    tara:hasControlsInformation "The control group received conventional treatment only, which included paracetamol and hyoscine." ;
+    tara:hasCountryInformation "Brazil" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/aim.22.2.60" ;
+    tara:hasListedAcupointsUsed "KI 3, SI 3, BL 62, BL 40, TE 5, GB 30, GB 41, Huatuojiaji" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the exact needle depth or angle of insertion)" ;
+    tara:hasPublicationDate "2004" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 61 participants; Study group (acupuncture): 27; Control group: 34" ;
+    tara:hasStimulationType "Manual stimulation to elicit de qi; no specific frequency mentioned" ;
+    tara:hasStudiedCondition HP:0003419,
+        HP:0034267 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "low back and pelvic pain during pregnancy" ;
+    tara:hasTrialType "quasi-randomised, pragmatic controlled study" .
+
+<https://doi.org/10.1111/j.0001-6349.2004.0215.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture relieves pelvic and low-back pain in late pregnancy" ;
+    tara:hasAcupunctureModality "Traditional acupuncture points and local tender points were used, with periostal stimulation when possible. Specific points included LR3, GV20, BL60, SI3, and others, with needle insertion techniques varying (tangentially, obliquely, perpendicularly) and achieving Dechi was a goal. Treatment frequency was initially twice a week, then once a week." ;
+    tara:hasAuthor "Nina Kvorning, Catharina Holmberg, Lars Grennert, Anders A ˚berg, Jonas A ˚keson" ;
+    tara:hasControlsInformation "The controls in the study were untreated; they did not receive any sham stimulation or placebo treatment." ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.0001-6349.2004.0215.x" ;
+    tara:hasListedAcupointsUsed "LR 3, GV 20, BL 60, SI 3, BL 22, BL 23, BL 24, BL 25, BL 26" ;
+    tara:hasNeedlingInformation "Needle depth: 2.5-inch needles for lumbar and sacral bladder points, minimal gluteal muscle tendon, sacroiliac tendons; 1.0-inch needles for symphysis. Needle angle: tangentially for lumbar and sacral bladder points and minimal gluteal muscle tendon, obliquely for sacroiliac tendons, perpendicularly for symphysis." ;
+    tara:hasPublicationDate "2004" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 72 participants; Acupuncture group: 37 participants; Control group: 35 participants" ;
+    tara:hasStimulationType "Manual stimulation with periostal stimulation when possible; needles manipulated to achieve Dechi, repeated after 30-60 seconds; frequency: twice a week for the first two weeks, then no more than once a week." ;
+    tara:hasStudiedCondition HP:0003419,
+        HP:0034267 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "pelvic and low-back pain during pregnancy" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1111/j.1468-2982.2006.01209.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Chronic tension-type headache treated with acupuncture, physical training and relaxation training. Between-group differences" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved the use of disposable needles inserted to a depth of 2-5 mm or 10-30 mm depending on location, with manual twilling to achieve the 'de qi' sensation. Specific acupuncture points were targeted, including GB 20, GB 14, LI 4, and ST 44 as mandatory points, with additional optional points. The treatment consisted of 10-12 sessions over 10-12 weeks." ;
+    tara:hasAuthor "Elisabeth Söderberg, J Carlsson, E Stener-Victorin" ;
+    tara:hasControlsInformation "Not applicable (the study did not include a control group)" ;
+    tara:hasCountryInformation "Sweden" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1468-2982.2006.01209.x" ;
+    tara:hasListedAcupointsUsed "GB 20, GB 14, LI 4, ST 44, PC 6, PC 7, SP 6, GB 34, ST 8" ;
+    tara:hasNeedlingInformation "The needle depth used for acupuncture was 2-5 mm or 10-30 mm, depending on the location." ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "Cephalalgia" ;
+    tara:hasSampleSizeInformation "Total: 90 participants; Acupuncture group: 30; Physical training group: 30; Relaxation training group: 30" ;
+    tara:hasStimulationType "Manual stimulation: twilling by hand to achieve 'de qi' sensation, three times during each 30-min treatment" ;
+    tara:hasStudiedCondition HP:0012228 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic tension-type headache (CTTH)" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1111/j.1526-4610.2006.00598.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Effectiveness and Tolerability of Acupuncture Compared With Metoprolol in Migraine Prophylaxis" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved 8 to 15 sessions over 12 weeks, using at least 6 needles per session with manual stimulation to achieve 'de qi,' targeting specific and additional points based on diagnosis, with flexibility for ear and trigger points, using sterile disposable needles." ;
+    tara:hasAuthor "Andrea Streng, Klaus Linde, Andrea Hoppe, Volker Pfaffenrath, Michael Hammes, Stefan Wagenpfeil, Wolfgang Weidenhammer, Dieter Melchart" ;
+    tara:hasControlsInformation "Metoprolol was used as the control treatment in the study, serving as a comparator to acupuncture." ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1526-4610.2006.00598.x" ;
+    tara:hasListedAcupointsUsed "Gallbladder 20, Gallbladder 40, Gallbladder 41, Gallbladder 42, GV 20, Liver 3, TE 3, TE 5, Taiyang" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify needle depth or angle for acupuncture)" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "Headache" ;
+    tara:hasSampleSizeInformation "Total: 113 participants; Acupuncture group: 59; Metoprolol group: 54" ;
+    tara:hasStimulationType "Manual stimulation at least once during each session, aiming to achieve \"de qi\"" ;
+    tara:hasStudiedCondition MONDO:0005277 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "migraine" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1046/j.1526-4610.2002.02203.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in the Prophylactic Treatment of Migraine Without Aura: A Comparison with Flunarizine" ;
+    tara:hasAcupunctureModality "Acupuncture was administered using 0.3-mm-diameter sterile disposable steel needles inserted to a depth of 10 to 30 mm at specific acupoints, with needle manipulation techniques (\"raising and thrusting\" and \"twirling or rotating\") to achieve the De Qi sensation. Sessions were weekly for the first 2 months and then monthly for the next 4 months, with needles left in situ for 20 minutes per session." ;
+    tara:hasAuthor "Gianni Allais, Cristina De Lorenzo, Piero E Quirico, Gisella Airola, Giampiero Tolardo, Ornella Mana, Chiara Benedetto, Drs Allais, De Lorenzo, Tolardo Airola, Mana Benedetto" ;
+    tara:hasControlsInformation "The control in the study is the group receiving flunarizine (group F)." ;
+    tara:hasCountryInformation "Italy" ;
+    tara:hasDOI "DOI: https://doi.org/10.1046/j.1526-4610.2002.02203.x" ;
+    tara:hasListedAcupointsUsed "LR 3, SP 6, ST 36, CV 12, LI 4, PC 6, GB 20, GB 14, Taiyang, GV 20" ;
+    tara:hasNeedlingInformation "Needle depth: 10 to 30 mm; Angle: Perpendicular for most points, horizontal for GB14, Ex-HN5, and GV20." ;
+    tara:hasPublicationDate "2002" ;
+    tara:hasPublicationVenue "Headache" ;
+    tara:hasSampleSizeInformation "Total: 160 participants; Group A (Acupuncture): 80 participants; Group F (Flunarizine): 80 participants" ;
+    tara:hasStimulationType "Manual stimulation using raising and thrusting, and twirling or rotating methods until De Qi is achieved; needles left in situ for 20 minutes." ;
+    tara:hasStudiedCondition MONDO:0100431 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "migraine without aura" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1136/bmj.38512.405440.8f> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in patients with tension-type headache: randomised controlled trial" ;
+    tara:hasAcupunctureModality "Acupuncture was administered as a semistandardised treatment involving needling at basic points bilaterally, with additional points chosen individually. The goal was to achieve \"de qi\" with manual needle stimulation, using sterile, disposable needles. The treatment consisted of 12 sessions over eight weeks, each lasting 30 minutes." ;
+    tara:hasAuthor "Dieter Melchart, Andrea Streng, Andrea Hoppe, Benno Brinkhaus, Claudia Witt, Stefan Wagenpfeil, Volker Pfaffenrath, Michael Hammes, Josef Hummelsberger, Dominik Irnich, Wolfgang Weidenhammer, Stefan N Willich, Klaus Linde, Private Practice, Munich Volker, Pfaffenrath Neurologist" ;
+    tara:hasControlsInformation "minimal acupuncture (superficial needling at non-acupuncture points) and waiting list control (no prophylactic treatment)" ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1136/bmj.38512.405440.8f" ;
+    tara:hasListedAcupointsUsed "SP 6, SP 9, ST 36, ST 40, RN 12, LI 4, Du 14, GB 3, TE 6, GB 39, GB 34, LU 7, TE 5, Du 14" ;
+    tara:hasNeedlingInformation "The acupuncture group aimed to achieve \"de qi,\" suggesting a deeper insertion, while the minimal acupuncture group used superficial needling. Specific needle depths or angles are not mentioned." ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "British medical journal" ;
+    tara:hasSampleSizeInformation "Total: 270 participants, Acupuncture group: 132, Minimal acupuncture group: 63, Waiting list group: 75" ;
+    tara:hasStimulationType "Manual stimulation, at least once during each session" ;
+    tara:hasStudiedCondition HP:0012228 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "tension-type headache" ;
+    tara:hasTrialType "Randomised Controlled Trial (RCT)" .
+
+<https://doi.org/10.4065/81.6.749> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Improvement in Fibromyalgia Symptoms With Acupuncture: Results of a Randomized Controlled Trial" ;
+    tara:hasAcupunctureModality "Standardized acupuncture with electrical stimulation at specific points: bilateral points at large intestine 4, stomach 36, liver 2, spleen 6, pericardium 6, heart 7, and axial paramedian points along the bladder meridian, with electrical stimulation applied at 2 Hz and 10 Hz." ;
+    tara:hasAuthor "David P Martin, Christopher D Sletten, Brent A Williams, Ines H Berger" ;
+    tara:hasControlsInformation "The control used in the study was simulated acupuncture, where patients received treatment that mimicked real acupuncture without actual needle penetration or electrical stimulation." ;
+    tara:hasCountryInformation "United States" ;
+    tara:hasDOI "DOI: https://doi.org/10.4065/81.6.749" ;
+    tara:hasListedAcupointsUsed "LI 4, ST 36, LR 2, SP 6, PC 6, HT 7, BL 9, BL 10, BL 11, BL 21, BL 22, BL 23, BL 24" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "Mayo Clinic women's healthsource" ;
+    tara:hasSampleSizeInformation "Total: 50 participants; Acupuncture group: 25; Control group: 25" ;
+    tara:hasStimulationType "Electrical stimulation at 2 Hz between large intestine 4 and stomach 36, and at 10 Hz over the axial circuits." ;
+    tara:hasStudiedCondition MONDO:0005546 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "fibromyalgia" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1007/s100720300062> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Non-pharmacological approaches to chronic headaches: transcutaneous electrical nerve stimulation, lasertherapy and acupuncture in transformed migraine treatment" ;
+    tara:hasAcupunctureModality "Acupuncture was administered using a standardized treatment scheme with specific acupoints (LR3, SP6, LI4, GB20, GV20, Ex-HN5) and additional points as needed. Needles were 0.3-mm diameter sterile disposable steel needles inserted to a depth of 10-30 mm, manipulated to achieve De Qi sensation, and left in place for 20 minutes without further stimulation. Sessions were twice a week for the first two weeks and weekly for the next six weeks." ;
+    tara:hasAuthor "G Allais, C De Lorenzo, P E Quirico, G Lupi, G Airola, O Mana, C Benedetto, S G Allais, Centro Studi, Terapie Naturali, Fisiche Turin" ;
+    tara:hasControlsInformation "Not mentioned (the study does not include a separate control group; it compares three active treatments against each other)" ;
+    tara:hasCountryInformation "Italy" ;
+    tara:hasDOI "DOI: https://doi.org/10.1007/s100720300062" ;
+    tara:hasListedAcupointsUsed "LR 3, SP 6, LI 4, GB 20, GV 20, Taiyang, BL 2, GB 21, SI 3, GB 14, BL 10, ST 36, CV 12, HT 7" ;
+    tara:hasNeedlingInformation "Needle depth: 10-30 mm; Needle angle: Perpendicular insertion for most points, horizontal insertion for GB14, Ex-HN5, and GV20." ;
+    tara:hasPublicationDate "2003" ;
+    tara:hasPublicationVenue "Neurological Sciences" ;
+    tara:hasSampleSizeInformation "Total sample size: 60 participants, Group T (TENS): 20 participants, Group L (Infrared lasertherapy): 20 participants, Group A (Acupuncture): 20 participants" ;
+    tara:hasStimulationType "Manual acupuncture: Needles are manipulated until De Qi is achieved, then left in place for 20 minutes without further stimulation. TENS: Pulse rates of 80 Hz, 120 Hz, and 4 Hz with corresponding pulse widths." ;
+    tara:hasStudiedCondition MONDO:0005277 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "transformed migraine" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1016/s0304-3959(00)00315-8> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Pressure pain threshold and needle acupuncture in chronic tension-type headache ± a double-blind placebo-controlled study" ;
+    tara:hasAcupunctureModality "Needle acupuncture targeting specific acupoints, with needles left in place for 30 minutes per session." ;
+    tara:hasAuthor "Matthias Karst, Jens D Rollnik, Matthias Fink, Michaela Reinhard, Siegfried Piepenbrock" ;
+    tara:hasControlsInformation "Placebo group (mock needling)" ;
+    tara:hasCountryInformation "Not mentioned (no information on the country of publication is included in the paper)" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0304-3959(00)00315-8" ;
+    tara:hasListedAcupointsUsed "GB 20, LI 4, LR 3, GB 8, GB 14, GB 21, GB 41, BL 2, BL 10, BL 60, LU 7, TE 5, ST 8, ST 36, ST 44, Du 20" ;
+    tara:hasNeedlingInformation "The needle depth is superficial, simulating puncturing of the skin without deep insertion. The angle is not mentioned." ;
+    tara:hasPublicationDate "2000" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total: 39 participants; Group details not specified (verum and placebo groups mentioned but exact numbers not provided)" ;
+    tara:hasStimulationType "Manual acupuncture with needles inserted and left in place for 30 minutes; no specific lifting or thrusting frequency mentioned." ;
+    tara:hasStudiedCondition HP:0012228 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "chronic tension-type headache" ;
+    tara:hasTrialType "RCT" .
+
+<https://doi.org/10.1046/j.1468-2982.2001.00198.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Needle acupuncture in tension-type headache: a randomized, placebo-controlled study" ;
+    tara:hasAcupunctureModality "Needle acupuncture using Seirin B-type needles at specific acupoints, with treatments twice a week for a total of 10 sessions, leaving needles in place for 30 minutes per session." ;
+    tara:hasAuthor "Matthias Karst, M Reinhard, P Thum, B Wiese, J Rollnik, M Fink" ;
+    tara:hasControlsInformation "The control used in the study was a placebo acupuncture method involving needles with blunt tips that did not puncture the skin, inserted through an elastic foam to obscure the insertion point, maintaining patient blinding." ;
+    tara:hasCountryInformation "Not mentioned (no information on the country of publication is included in the paper)" ;
+    tara:hasDOI "DOI: https://doi.org/10.1046/j.1468-2982.2001.00198.x" ;
+    tara:hasListedAcupointsUsed "GB 20, LI 4, LR 3, GB 8, GB 14, GB 21, GB 41, BL 2, BL 10, BL 60, LU 7, TE 5, ST 8, ST 36, ST 44, Du 20" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle used for acupuncture)" ;
+    tara:hasPublicationDate "2001" ;
+    tara:hasPublicationVenue "Cephalalgia" ;
+    tara:hasSampleSizeInformation "Total: 69 participants; Verum group: approximately 34-35; Placebo group: approximately 34-35" ;
+    tara:hasStimulationType "Manual stimulation: needles inserted and left in place for 30 minutes per session, two sessions per week, no specific lifting/thrusting frequency mentioned." ;
+    tara:hasStudiedCondition HP:0012228 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "tension-type headache" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1097/00002508-199809000-00012> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Controlled Trial of Japanese Acupuncture for Chronic Myofascial Neck Pain: Assessment of Specific and Nonspecific Effects of Treatment" ;
+    tara:hasAcupunctureModality "Japanese acupuncture techniques with shallow needling using presterilized gauge 2 (0.18 mm) Seirin needles" ;
+    tara:hasAuthor "Stephen Birch, Robert N Jamison, Ph" ;
+    tara:hasControlsInformation "The control used in the study was a no-acupuncture group that received nonsteroidal anti-inflammatory medication (Trilisate)." ;
+    tara:hasCountryInformation "Not mentioned (the paper does not provide information on the country of publication)" ;
+    tara:hasDOI "DOI: https://doi.org/10.1097/00002508-199809000-00012" ;
+    tara:hasListedAcupointsUsed "SI 3, BL 62, GB 41, TE 5, GB 20, GB 21, GB 12, BL 10, BL 11, GV 14, LI 5, GB 42, TE 8, ST 41, BL 16, SI 9, LI 15" ;
+    tara:hasNeedlingInformation "Needle depth: 2-3 mm for hands and feet; 2-10 mm for neck, shoulder, and upper back in type 1 acupuncture. Needle depth: 2-3 mm for all points in type 2 acupuncture. No specific angle mentioned." ;
+    tara:hasPublicationDate "1998" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total sample size: 46 participants. Group distribution: Relevant acupuncture group: approximately 15 participants, Irrelevant acupuncture group: approximately 15 participants, Control group: approximately 16 participants. (Exact numbers for each group at the start are not specified, but dropouts were evenly distributed.)" ;
+    tara:hasStimulationType "Manual: shallow needling (2-3 mm depth); Thermal: infrared lamp (heat adjusted to comfort); Electrical: IP cords with silicone diode (specific frequency not mentioned)" ;
+    tara:hasStudiedCondition MONDO:0006862 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "Chronic Myofascial Neck Pain" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1111/j.1468-2982.2006.01062.x> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in migraine prophylaxis: a randomized sham-controlled trial" ;
+    tara:hasAcupunctureModality "Semi-standardized acupuncture and sham (minimal) acupuncture using sterile disposable steel needles, with semi-standardized involving needle manipulation for De Qi sensation and sham involving minimal insertion without manipulation. Both were applied bilaterally on the body." ;
+    tara:hasAuthor "J Alecrim-Andrade, J A Maciel-Júnior, X C Cladellas, H R Correa-Filho, H C Machado, Jerusa Andrade" ;
+    tara:hasControlsInformation "Sham acupuncture was used as the control in the study. It involved minimal needle insertion at points believed to have minimal or no influence on headaches." ;
+    tara:hasCountryInformation "Brazil" ;
+    tara:hasDOI "DOI: https://doi.org/10.1111/j.1468-2982.2006.01062.x" ;
+    tara:hasListedAcupointsUsed "Dingchuan, TE 17, TE 20, SP 7, ST 37, LU 5, GB 20, GB 21, BL 10, BL 2, ST 36, Du 23, LI 4, TE 6, GB 34, GB 8, SI 3, Du 20, LR 3, PC 6" ;
+    tara:hasNeedlingInformation "Needle depth: very shallow (for sham acupuncture); Needle angle: Not mentioned" ;
+    tara:hasPublicationDate "2006" ;
+    tara:hasPublicationVenue "" ;
+    tara:hasSampleSizeInformation "Total enrolled: 31; Completed and analyzed: 28 (Real acupuncture: 16, Sham acupuncture: 12)" ;
+    tara:hasStimulationType "Manual stimulation by rotation methods to produce De Qi sensation; no specific frequency mentioned" ;
+    tara:hasStudiedCondition MONDO:0005277 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "migraine" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
+<https://doi.org/10.1016/s0140-6736(05)66871-7> a IAO:0000013,
+        owl:NamedIndividual ;
+    dc:title "Acupuncture in patients with osteoarthritis of the knee: a randomised trial" ;
+    tara:hasAcupunctureModality "The acupuncture modality involved semi-standardised treatment using a selection of local and distant points based on traditional Chinese medicine principles. Sterile disposable needles were used, with manual stimulation to achieve de qi. Local points included stomach, spleen, bladder, kidney, gall bladder, liver, and extraordinary points, while distant points included spleen, stomach, bladder, and kidney points." ;
+    tara:hasAuthor "K Linde, A Streng, D Melchart, Claudia Witt, B Brinkhaus, S Jena, S Wagenpfeil, J Hummelsberger, H U Walther, S N Willich" ;
+    tara:hasControlsInformation "Minimal acupuncture (sham intervention) and waiting list control (no treatment)" ;
+    tara:hasCountryInformation "Germany" ;
+    tara:hasDOI "DOI: https://doi.org/10.1016/s0140-6736(05)66871-7" ;
+    tara:hasListedAcupointsUsed "Stomach 34, Stomach 35, Stomach 36, Spleen 9, Spleen 10, Bladder 40, Kidney 10, Gallbladder 33, Gallbladder 34, Liver 8, Heding, Xiyan, Spleen 4, Spleen 5, Spleen 6, Stomach 6, Bladder 20, Bladder 57, Bladder 58, Bladder 60, Bladder 62, Kidney 3" ;
+    tara:hasNeedlingInformation "Not mentioned (the paper does not specify the needle depth or angle for acupuncture)" ;
+    tara:hasPublicationDate "2005" ;
+    tara:hasPublicationVenue "The Lancet" ;
+    tara:hasSampleSizeInformation "Total: 294, Acupuncture: 150, Minimal Acupuncture: 76, Waiting List Control: 74" ;
+    tara:hasStimulationType "Manual stimulation: needles were stimulated manually at least once during each session. No specific frequency of lifting and thrusting is mentioned." ;
+    tara:hasStudiedCondition MONDO:0005416 ;
+    tara:hasStudiedConditionContext HP:0012531 ;
+    tara:hasStudiedConditionNote "osteoarthritis of the knee" ;
+    tara:hasTrialType "Randomized Controlled Trial (RCT)" .
+
