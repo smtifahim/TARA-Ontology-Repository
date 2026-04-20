@@ -50,35 +50,62 @@ This repository contains the source files, curated data, and generation pipeline
 
 The TARA Acupoints Ontology is an OWL-DL ontology developed as part of the [Topological Atlas and Repository for Acupoint Research (TARA)](https://www.acupunctureresearch.org/tara) project, funded by the National Institute of Health (NIH). The goal is to establish a comprehensive, computable resource for the acupuncture research and clinician community. It provides a formal, structured representation of acupuncture point knowledge covering:
 
-- **Acupoints** — classical meridian acupoints and extra acupoints, each assigned a unique numeric TARA identifier (e.g., `TARA:0913913` for LU 1) and annotated with:
 
-  - `rdfs:label` — standard WHO two-part alphanumeric name (e.g., `"LU 1"`)
-  - `tara:hasPinyinLabel` — Pinyin transliteration of the Chinese name (e.g., `"Zhongfu"` for LU 1)
-  - `tara:hasChineseLabel` — Chinese character name (e.g., `"中府"` for LU 1)
-  - `tara:hasSynonym` — alternate names and aliases (e.g., `"Lung 1"`, `"L 1"`, `"Front-Mu Point of the Lung"` for LU 1)
-  - `dcterms:bibliographicCitation` — source reference for the acupoint data (WHO Standard Acupuncture Point Locations, Chinese Acupuncture and Moxibustion, etc.)
-  - Extra acupoints (e.g., Taiyang / EX-HN 5, Yintang / EX-HN 3) extend the `Extra_Acupoint` class and carry the same annotation properties but are not part of any meridian
-- **Meridians** — the 14 meridian channels, each formally defined as an OWL class with a label, Chinese name, abbreviation, and textual description. The 12 primary meridians (LU, LI, ST, SP, HT, SI, BL, KI, PC, TE, GB, LR) plus the two extra meridians (Governor Vessel / Du, Conception Vessel / Ren) are each associated with an organ via `tara:hasAssociatedOrgan` (e.g., Lung Meridian → UBERON:0002048 lung). Acupoints are linked to their meridian by:
+| Knowledge Domain                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Acupoints**                            | Total 371 meridian acupoints and 43 extra acupoints. The ontology includes 361 classical ones plus 5 sex-specific acupoints making the total 371. These specific acupoints are ST 17, ST 18, GB 24, LR 14, CV 1, each having male and female specific subclasses. Each acupoint is assigned a unique numeric TARA identifier (e.g.,`TARA:0913913` for LU 1). Extra acupoints (e.g., Taiyang / EX-HN 5, Yintang / EX-HN 3) extend the `Extra_Acupoint` class and carry the same annotation properties but are not part of any meridian. See *Acupoint Annotation Properties* below.                                                                                        |
+| **Meridians**                            | The 14 meridian channels, each formally defined as an OWL class with a label, Chinese name, abbreviation, and textual description. The 12 primary meridians (LU, LI, ST, SP, HT, SI, BL, KI, PC, TE, GB, LR) plus the two extra meridians (Governor Vessel / Du, Conception Vessel / Ren) are each associated with an organ via`tara:hasAssociatedOrgan` (e.g., Lung Meridian → UBERON:0002048 lung). See *Meridian Linking Properties* below.      |
+| **Anatomical Locations**                 | Each meridian acupoint is localized at two levels of granularity, linked to controlled vocabulary terms from[UBERON](https://obofoundry.org/ontology/uberon.html) and [InterLex (ILX)](https://interlex.org/). See *Anatomical Location Properties* below.                                                                                                                                                                                           |
+| **Clinical & Physiological Annotations** | Each acupoint carries a set of annotation properties describing its clinical profile (indications, needling method, vasculature, innervation, and designated organ). See*Clinical and Physiological Annotation Properties* below.                                                                                                                                                                                                                    |
+| **Special Point Categories**             | Acupoints may hold one or more special point designations from a structured hierarchy including Five-Shu points (Jing-Well, Ying-Spring, Shu-Stream, Jing-River, He-Sea), Yuan-Primary, Luo-Connecting (incl. Major Luo-Connecting), Xi-Cleft, Back-Shu, Front-Mu, Confluent, Crossing, Influential (of vessels, pulse, bone, blood, marrow, tendon, Zang/Fu organs, Qi), and Lower He-Sea points. See*Special Point Association Properties* below.  |
+| **Pain-Related Articles**                | Metadata for pain research articles annotated with acupoints and conditions treated, using Dublin Core properties (`dc:title`, `dc:creator`, `dc:date`, `dcterms:bibliographicCitation`, etc.) and linked to [MONDO](https://obofoundry.org/ontology/mondo.html) and [HP](https://obofoundry.org/ontology/hp.html) terms (e.g., MONDO:0100431 migraine without aura, MONDO:0005416 osteoarthritis of the knee). Stored in `kb/tara-articles-kb.ttl`. |
 
-  - `tara:hasMeridian` *(annotation)* — textual meridian affiliation (e.g., LU 1 → `"Lung Meridian"`)
-  - `tara:isMemberAcupointOf` *(object property)* — structured OWL relation (e.g., LU 1 `isMemberAcupointOf` Lung Meridian)
-- **Anatomical locations** — each meridian acupoint is localized at two levels of granularity, linked to controlled vocabulary terms from [UBERON](https://obofoundry.org/ontology/uberon.html) and [InterLex (ILX)](https://interlex.org/):
+**Acupoint Annotation Properties**
 
-  - `tara:hasSurfaceLocation` *(annotation)* / `tara:locatedOnTheSurfaceOf` *(object property)* — the general body region on whose surface the acupoint lies (e.g., LU 1 → UBERON:0016416 anterior thoracic region)
-  - `tara:hasRelatedLocation` *(annotation)* / `tara:locatedInRelationTo` *(object property)* — one or more specific anatomical structures within that region (e.g., LU 1 → ILX:0795283 first intercostal space, ILX:0795284 infraclavicular fossa, ILX:0795285 anterior median line)
-  - `tara:hasLocationalDescription` — canonical WHO textual location description (e.g., `"On the anterior thoracic region, at the same level as the first intercostal space, lateral to the infraclavicular fossa, 6 B-cun lateral to the anterior median line."`)
-- **Clinical and physiological annotations** — each acupoint carries a set of annotation properties describing its clinical profile:
 
-  - `tara:hasIndicationsDescription` — TCM clinical indications (e.g., LU 1: `"Cough, asthma, pain in the chest, shoulder and back; fullness of the chest."`)
-  - `tara:hasMethodDescription` — needling method, angle, depth, and moxibustion applicability (e.g., LU 1: `"Puncture obliquely 0.5–0.8 cun towards the lateral aspect of the chest … Moxibustion is applicable."`)
-  - `tara:hasVasculatureDescription` — blood vessels in the vicinity relevant to safe needling (e.g., LU 1: `"Superolaterally, the axillary artery and vein, the thoracoacromial artery and vein."`)
-  - `tara:hasInnervationDescription` — nerve supply in the vicinity (e.g., LU 1: `"The intermediate supraclavicular nerve, the branches of the anterior thoracic nerve, and the lateral cutaneous branch of the first intercostal nerve."`)
-  - `tara:hasDesignatedOrgan` — organ designated to be affected per TCM theory (e.g., LU 1 → Lung)
-- **Special point categories** — acupoints may hold one or more special point designations drawn from a structured hierarchy of special point roles. Categories include the Five-Shu points (Jing-Well, Ying-Spring, Shu-Stream, Jing-River, He-Sea), Yuan-Primary points, Luo-Connecting points (including Major Luo-Connecting), Xi-Cleft points, Back-Shu points, Front-Mu points, Confluent points, Crossing points, Influential points (of vessels, pulse, bone, blood, marrow, tendon, Zang/Fu organs, Qi), and Lower He-Sea points. Associations are recorded via:
+| Property                        | Description                                | Example (LU 1)                                                                      |
+| ------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------- |
+| `rdfs:label`                    | Standard WHO two-part alphanumeric name    | `"LU 1"`                                                                            |
+| `tara:hasPinyinLabel`           | Pinyin transliteration of the Chinese name | `"Zhongfu"`                                                                         |
+| `tara:hasChineseLabel`          | Chinese character name                     | `"中府"`                                                                            |
+| `tara:hasSynonym`               | Alternate names and aliases                | `"Lung 1"`, `"L 1"`, `"Front-Mu Point of the Lung"`                                 |
+| `dcterms:bibliographicCitation` | Source reference for the acupoint data     | WHO Standard Acupuncture Point Locations, Chinese Acupuncture and Moxibustion, etc. |
 
-  - `tara:hasDesignatedSpecialPointRole` *(annotation)* — named role as a text annotation (e.g., LU 1 → `"Front-Mu Point of the Lung"`)
-  - `tara:hasSpecialPointDesignation` *(object property)* — structured OWL relation linking the acupoint to the corresponding special role class (e.g., LU 1 `hasSpecialPointDesignation` Front-Mu Point of the Lung Role)
-- **Pain-related articles** — metadata for pain research articles sourced from the clinical literature, each annotated with the acupoints used and the condition treated. Article metadata is recorded using Dublin Core properties (`dc:title`, `dc:creator`, `dc:date`, `dcterms:bibliographicCitation`, etc.) and linked to standardized disease terms from [MONDO](https://obofoundry.org/ontology/mondo.html) and phenotype terms from [HP](https://obofoundry.org/ontology/hp.html) (e.g., MONDO:0100431 migraine without aura, MONDO:0005416 osteoarthritis of the knee). This data is stored in the separate knowledge base variant (`kb/tara-articles-kb.ttl`).
+**Meridian Linking Properties**
+
+
+| Property                  | Type            | Description                  | Example                                |
+| ------------------------- | --------------- | ---------------------------- | -------------------------------------- |
+| `tara:hasMeridian`        | annotation      | Textual meridian affiliation | LU 1 →`"Lung Meridian"`               |
+| `tara:isMemberAcupointOf` | object property | Structured OWL relation      | LU 1`isMemberAcupointOf` Lung Meridian |
+
+**Anatomical Location Properties**
+
+
+| Property                                                 | Type                         | Description                                                   | Example (LU 1)                                                                                                                                                            |
+| -------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tara:hasSurfaceLocation` / `tara:locatedOnTheSurfaceOf` | annotation / object property | General body region on whose surface the acupoint lies        | UBERON:0016416 anterior thoracic region                                                                                                                                   |
+| `tara:hasRelatedLocation` / `tara:locatedInRelationTo`   | annotation / object property | One or more specific anatomical structures within that region | ILX:0795283 first intercostal space, ILX:0795284 infraclavicular fossa, ILX:0795285 anterior median line                                                                  |
+| `tara:hasLocationalDescription`                          | annotation                   | Canonical WHO textual location description                    | `"On the anterior thoracic region, at the same level as the first intercostal space, lateral to the infraclavicular fossa, 6 B-cun lateral to the anterior median line."` |
+
+**Clinical and Physiological Annotation Properties**
+
+
+| Property                         | Description                                                  | Example (LU 1)                                                                                                                                            |
+| -------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tara:hasIndicationsDescription` | TCM clinical indications                                     | `"Cough, asthma, pain in the chest, shoulder and back; fullness of the chest."`                                                                           |
+| `tara:hasMethodDescription`      | Needling method, angle, depth, and moxibustion applicability | `"Puncture obliquely 0.5–0.8 cun towards the lateral aspect of the chest … Moxibustion is applicable."`                                                 |
+| `tara:hasVasculatureDescription` | Blood vessels in the vicinity relevant to safe needling      | `"Superolaterally, the axillary artery and vein, the thoracoacromial artery and vein."`                                                                   |
+| `tara:hasInnervationDescription` | Nerve supply in the vicinity relevant to safe needling       | `"The intermediate supraclavicular nerve, the branches of the anterior thoracic nerve, and the lateral cutaneous branch of the first intercostal nerve."` |
+| `tara:hasDesignatedOrgan`        | Organ designated to be affected per TCM theory               | Lung                                                                                                                                                      |
+
+**Special Point Association Properties**
+
+
+| Property                             | Type            | Description                                                                          | Example (LU 1)                                                   |
+| ------------------------------------ | --------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| `tara:hasDesignatedSpecialPointRole` | annotation      | Named role as a text annotation                                                      | `"Front-Mu Point of the Lung"`                                   |
+| `tara:hasSpecialPointDesignation`    | object property | Structured OWL relation linking the acupoint to the corresponding special role class | LU 1`hasSpecialPointDesignation` Front-Mu Point of the Lung Role |
 
 Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/principles/fp-000-summary.html) (OBO Foundry) principles, the TARA Acupoints Ontology is developed to support FAIR principles. These practices include utilizing existing community ontologies where possible and employing upper-level ontologies like [Basic Formal Ontology (BFO)](https://basic-formal-ontology.org/) and [Relation Ontology (RO)](https://obofoundry.org/ontology/ro.html) to ensure maximum interoperability with other biomedical ontologies. The ontology is built on the following upper-level and mid-level ontologies:
 
