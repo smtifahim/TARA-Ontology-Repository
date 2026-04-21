@@ -38,9 +38,9 @@ This section will be updated periodically based on the release of the newer vers
 
 **Chinese Character Labels and Pinyin Labels**
 
-* In version 1.0.0, `TARA:hasChineseName` (372 uses) stored Pinyin romanizations, not Chinese characters. This version corrects that: the property has been replaced by two distinct properties:
-  * `TARA:hasChineseLabel` (375 values) — now stores actual Chinese character strings (汉字) for all meridians and meridian acupoint classes.
-  * `TARA:hasPinyinLabel` (365 values) — new property storing the Pinyin romanization (previously conflated with `hasChineseName`). During migration, the Pinyin values themselves were also reviewed and corrected:
+* In version 1.0.0, `tara:hasChineseName` (372 uses) stored Pinyin romanizations, not Chinese characters. This version corrects that: the property has been replaced by two distinct properties:
+  * `tara:hasChineseLabel` (375 values) — now stores actual Chinese character strings (汉字) for all meridians and meridian acupoint classes.
+  * `tara:hasPinyinLabel` (365 values) — new property storing the Pinyin romanization (previously conflated with `hasChineseName`). During migration, the Pinyin values themselves were also reviewed and corrected:
 
 
     | Acupoint | Old value (`hasChineseName`) | New value (`hasPinyinLabel`) | Change type                     |
@@ -56,7 +56,7 @@ This section will be updated periodically based on the release of the newer vers
 
 **Provenance Refactoring and Enrichment**
 
-* Removed the non-standard `TARA:hasReference` property (439 uses in version 1.0.0). All provenance is now recorded using the standard `dcterms:bibliographicCitation` property.
+* Removed the non-standard `tara:hasReference` property (439 uses in version 1.0.0). All provenance is now recorded using the standard `dcterms:bibliographicCitation` property.
 * Added provinance for all 14 meridians and all special points which were missing in the previous version.
 * Citations are now **structured by knowledge domain** within each acupoint record, explicitly attributing each category of information to its source. A representative citation for a meridian acupoint reads:
 
@@ -105,7 +105,7 @@ This section will be updated periodically based on the release of the newer vers
 
 **Bug Fix: Location Property Assignment in Ontology Generator**
 
-* Fixed a bug in `addSurfaceLocations()` in `generate_ontology.py` where rows with relation `TARA:locatedOnTheSurfaceOf` were incorrectly also adding `TARA:hasRelatedLocation` as an annotation (it should only add `TARA:hasSurfaceLocation`).
+* Fixed a bug in `addSurfaceLocations()` in `generate_ontology.py` where rows with relation `tara:locatedOnTheSurfaceOf` were incorrectly also adding `tara:hasRelatedLocation` as an annotation (it should only add `tara:hasSurfaceLocation`).
 * Fixed the same method where the `locatedOnTheSurfaceOf` branch was also generating a redundant `locatedInRelationTo` OWL restriction. Each relation type now produces only its own OWL restriction.
 
 ### Version 1.0.0 (June 30, 2025)
@@ -145,22 +145,22 @@ This section will be updated periodically based on the release of the newer vers
     * Added these properties to capture key details of acupuncture studies:
   * Annotation Properties by Domain and Range :
     * **Domain: Journal Article (DOI); Range: Free Text**
-      * `TARA:hasTrialType`, `TARA:hasAcupunctureModality`, `TARA:hasStimulationType`
-      * `TARA:hasNeedlingInformation`, `TARA:hasSampleSizeInformation`, `TARA:hasControlsInformation`
-      * `TARA:hasListedAcupointsUsed`, `TARA:hasStudiedConditionNote`, `TARA:hasStudiedConditionContext`
-      * `TARA:hasCountryInformation`
+      * `tara:hasTrialType`, `tara:hasAcupunctureModality`, `tara:hasStimulationType`
+      * `tara:hasNeedlingInformation`, `tara:hasSampleSizeInformation`, `tara:hasControlsInformation`
+      * `tara:hasListedAcupointsUsed`, `tara:hasStudiedConditionNote`, `tara:hasStudiedConditionContext`
+      * `tara:hasCountryInformation`
     * **Domain: Journal Article (DOI); Range: Controlled Term (MONDO/HPO)**
-      * `TARA:hasStudiedCondition` – Links studied conditions to standardized MONDO and HPO terms.
+      * `tara:hasStudiedCondition` – Links studied conditions to standardized MONDO and HPO terms.
     * **Domain: Controlled Term (TARA Acupoint); Range: Journal Article (DOI)**
-      * `TARA:isStudiedInArticle` – Captures references to journal articles studying specific acupoints.
+      * `tara:isStudiedInArticle` – Captures references to journal articles studying specific acupoints.
 
 ### Version 0.6 (December 12, 2024)
 
 * **Updated Ontology** :
   * Included axioms associating the surface locations of acupoints.
-  * Added two special properties: `TARA:locatedOnTheSurfaceOf` and `TARA:locatedInRelationTo`, to specify the surface anatomy for each acupoint.
-    * `TARA:locatedOnTheSurfaceOf`: Defines the relationship between an acupoint and its general regional location on the body surface.
-    * `TARA:locatedInRelationTo`: Defines the relationship between an acupoint and its related proximal location on the body surface.
+  * Added two special properties: `tara:locatedOnTheSurfaceOf` and `tara:locatedInRelationTo`, to specify the surface anatomy for each acupoint.
+    * `tara:locatedOnTheSurfaceOf`: Defines the relationship between an acupoint and its general regional location on the body surface.
+    * `tara:locatedInRelationTo`: Defines the relationship between an acupoint and its related proximal location on the body surface.
 * **Content Summary** :
   * This version includes all surface locations for the acupoints of the Lung (LU) and Large Intestine (LI) meridians, totaling 31 acupoints.
     * Anatomical terms associated with surface regions are drawn from UBERON (200+ terms) and InterLex (ILX). ILX terms are derived from the Foundational Model of Anatomy (FMA). A total of 55 ILX terms related to surface anatomy were created and imported into the ontology.
