@@ -34,7 +34,7 @@ To regenerate these files, see the [ontology generator pipeline](../../ontology-
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
 
-### Version 1.2.0 (April 19, 2026)
+### Version 1.2.0 (April 20, 2026)
 
 **Chinese Character Labels and Pinyin Labels**
 
