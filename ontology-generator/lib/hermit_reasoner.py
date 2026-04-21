@@ -28,12 +28,16 @@ DEFAULT_INPUT_FILE  = "../ontology-files/generated/ttl/tara-acupoints.ttl"
 DEFAULT_OUTPUT_FILE = "../ontology-files/generated/ttl/tara-acupoints-inferred.ttl"
 
 # --- Namespace prefixes ---
+# TARA classes use TARA: <…/TARA_> and TARA properties use tara: <…/ontology/>
+# This mirrors the serialisation_namespaces split in generate_ontology.py so
+# that the inferred output uses the same prefix conventions as tara-acupoints.ttl.
 NAMESPACES = {
     "IAO"      : "http://purl.obolibrary.org/obo/IAO_",
     "RO"       : "http://purl.obolibrary.org/obo/RO_",
     "BFO"      : "http://purl.obolibrary.org/obo/BFO_",
     "obo"      : "http://purl.obolibrary.org/obo/",
-    "TARA"     : "http://www.acupunctureresearch.org/tara/ontology/",
+    "TARA"     : "http://www.acupunctureresearch.org/tara/ontology/TARA_",
+    "tara"     : "http://www.acupunctureresearch.org/tara/ontology/",
     "UBERON"   : "http://purl.obolibrary.org/obo/UBERON_",
     "OboInOwl" : "http://www.geneontology.org/formats/oboInOwl#",
     "swrl"     : "http://www.w3.org/2003/11/swrl#",
