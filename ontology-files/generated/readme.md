@@ -2,7 +2,7 @@
 
 1. [Generated Files](#generated-files)
 2. [Ontology Versions Summary](#ontology-versions-summary)
-   + [Version 1.2.0 (April 19, 2026)](#version-120-april-19-2026)
+   + [Version 1.2.0 (April 20, 2026)](#version-120-april-20-2026)
    + [Version 1.0.0 (June 30, 2025)](#version-100-june-30-2025)
    + [Version 0.7.1 (March 20, 2025)](#version-071-march-20-2025)
    + [Version 0.7 (March 15, 2025)](#version-07-march-15-2025)
@@ -81,7 +81,7 @@ This section will be updated periodically based on the release of the newer vers
 **Documentation Enrichment: Annotation Property Descriptions**
 
 * Added `dc:description` to all 12 sub-properties of `hasAcupointAnnotaionProperty` and TARA-specific object properties in `tara-acupoints-core.ttl`.
-* Updated `rdfs:label` values for two locational sub-properties to better reflect their semantic scope: `hasSurfaceLocation` → **"General Body Region"**; `hasRelatedLocation` → **"Specific Body Region"**.
+* Updated `rdfs:label` values for two locational sub-properties to better reflect their semantic scope: `tara:hasSurfaceLocation` → **"General Body Region"**; `tara:hasRelatedLocation` → **"Specific Body Region"**.
 
 **Documentation Enrichment: Object Property Descriptions**
 
