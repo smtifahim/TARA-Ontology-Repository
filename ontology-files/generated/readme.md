@@ -85,7 +85,7 @@ This section will be updated periodically based on the release of the newer vers
 
 **Documentation Enrichment: Object Property Descriptions**
 
-* Added `dc:description` to all 9 TARA-specific object properties in `tara-acupoints-core.ttl`. Each description identifies the domain/range, provides a concrete example, notes the inverse where applicable, and cites the parent RO relation. See the [TARA Object Properties]([#tara-object-properties](https://github.com/SciCrunch/TARA-Ontology-Repository/tree/master#tara-acupoints-object-properties) reference table.
+* Added `dc:description` to all 9 TARA-specific object properties in `tara-acupoints-core.ttl`. Each description identifies the domain/range, provides a concrete example, notes the inverse where applicable, and cites the parent RO relation. See the [TARA Object Properties](https://github.com/SciCrunch/TARA-Ontology-Repository/tree/master#tara-acupoints-object-properties) reference table.
 
 Refactored Locational Axioms (Acupoints and Extra Acupoints)**
 
