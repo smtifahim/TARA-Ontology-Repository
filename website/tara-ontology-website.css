@@ -410,6 +410,10 @@ section { padding: 80px 40px; }
   gap: 24px;
 }
 
+.content-panel--full {
+  grid-column: 1 / -1;
+}
+
 .content-panel {
   background: var(--white);
   border: 1px solid var(--border);
@@ -468,6 +472,31 @@ section { padding: 80px 40px; }
 }
 
 .source-item:last-child { border-bottom: none; }
+
+.source-intro {
+  font-size: 13.5px;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin: 0 0 10px 0;
+  font-style: italic;
+}
+
+.source-item p {
+  margin: 0;
+}
+
+.source-item ul {
+  margin: 6px 0 0 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+
+.source-item ul li {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin-bottom: 3px;
+}
 
 /* ── CONTENTS LINKS ─────────────────────── */
 .contents-links {
