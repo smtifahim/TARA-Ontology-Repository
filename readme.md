@@ -43,7 +43,7 @@ This repository contains the source files, curated data, and generation pipeline
 | Directory                                  | Description                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [ontology-generator](./ontology-generator) | Python scripts for generating the ontology from curated data files. See the[generator readme](./ontology-generator/readme.md) for the full pipeline description, prerequisites, and sample output.                                                                                                                |
-| [curated-data](./curated-data)             | Curated CSV files that serve as the input data for the generator. Sourced from the TARA Ontology Curation Google Sheet. See the[curated data readme](./curated-data/readme.md).                                                                                                                                   |
+| [curated-data](./curated-data)             | Curated CSV files that serve as the input data for the generator. Sourced from the TARA Ontology Curation Google Sheet. See the [curated data readme](./curated-data/readme.md).                                                                                                                                 |
 | [ontology-files](./ontology-files)         | Base ontology files (under[`base/`](./ontology-files/base/)), generated output files (under [`generated/ttl/`](./ontology-files/generated/ttl/)), and archived prior versions (under [`generated/archived/`](./ontology-files/generated/archived/)). See the [ontology files readme](./ontology-files/readme.md). |
 | [sparql](./sparql)                         | SPARQL query notebook ([`tara-sparql-queries.ipynb`](./sparql/tara-sparql-queries.ipynb)) and sample query result files.                                                                                                                                                                                          |
 | [downstream](./downstream)                 | Data extraction pipelines for external groups and projects that consume the TARA Acupoints Ontology. Each subdirectory contains scripts and generated data for a specific downstream consumer. See the[downstream readme](./downstream/readme.md).                                                                |
@@ -59,7 +59,7 @@ The TARA Acupoints Ontology is an OWL-DL ontology developed as part of the [Topo
 | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Acupoints**                            | Total 371 meridian acupoints and 43 extra acupoints. The ontology includes 361 classical ones plus 5 sex-specific acupoints making the total 371. These specific acupoints are ST 17, ST 18, GB 24, LR 14, CV 1, each having male and female specific subclasses. Each acupoint is assigned a unique numeric TARA identifier (e.g.,`TARA:0913913` for LU 1). Extra acupoints (e.g., Taiyang / EX-HN 5, Yintang / EX-HN 3) extend the `Extra_Acupoint` class and carry the same annotation properties but are not part of any meridian. See *Acupoint Annotation Properties* below. |
 | **Meridians**                            | The 14 meridian channels, each formally defined as an OWL class with a label, Chinese name, abbreviation, and textual description. The 12 primary meridians (LU, LI, ST, SP, HT, SI, BL, KI, PC, TE, GB, LR) plus the two extra meridians (Governor Vessel / Du, Conception Vessel / Ren) are each associated with an organ via`tara:hasAssociatedOrgan` (e.g., Lung Meridian → UBERON:0002048 lung). See *Meridian Linking Properties* below.                                                                                                                                    |
-| **Anatomical Locations**                 | Each meridian acupoint is localized at two levels of granularity, linked to controlled vocabulary terms from[UBERON](https://obofoundry.org/ontology/uberon.html) and [InterLex (ILX)](https://interlex.org/). See *Anatomical Location Properties* below.                                                                                                                                                                                                                                                                                                                         |
+| **Anatomical Locations**                 | Each meridian acupoint is localized at two levels of granularity, linked to controlled vocabulary terms from [UBERON](https://obofoundry.org/ontology/uberon.html) and [InterLex (ILX)](https://interlex.org/). See *Anatomical Location Properties* below.                                                                                                                                                                                                                                                                                                                       |
 | **Clinical & Physiological Annotations** | Each acupoint carries a set of annotation properties describing its clinical profile (indications, needling method, vasculature, innervation, and designated organ). See*Clinical and Physiological Annotation Properties* below.                                                                                                                                                                                                                                                                                                                                                  |
 | **Special Point Categories**             | Acupoints may hold one or more special point designations from a structured hierarchy including Five-Shu points (Jing-Well, Ying-Spring, Shu-Stream, Jing-River, He-Sea), Yuan-Primary, Luo-Connecting (incl. Major Luo-Connecting), Xi-Cleft, Back-Shu, Front-Mu, Confluent, Crossing, Influential (of vessels, pulse, bone, blood, marrow, tendon, Zang/Fu organs, Qi), and Lower He-Sea points. See*Special Point Association Properties* below.                                                                                                                                |
 | **Pain-Related Articles**                | Metadata for pain research articles annotated with acupoints and conditions treated, using Dublin Core properties (`dc:title`, `dc:creator`, `dc:date`, `dcterms:bibliographicCitation`, etc.) and linked to [MONDO](https://obofoundry.org/ontology/mondo.html) and [HP](https://obofoundry.org/ontology/hp.html) terms (e.g., MONDO:0100431 migraine without aura, MONDO:0005416 osteoarthritis of the knee). Stored in `kb/tara-articles-kb.ttl`.                                                                                                                               |
@@ -78,10 +78,10 @@ The TARA Acupoints Ontology is an OWL-DL ontology developed as part of the [Topo
 **Meridian Linking Properties**
 
 
-| Property                  | Type            | Description                  | Example                                |
-| ------------------------- | --------------- | ---------------------------- | -------------------------------------- |
-| `tara:hasMeridian`        | annotation      | Textual meridian affiliation | LU 1 →`"Lung Meridian"`               |
-| `tara:isMemberAcupointOf` | object property | Structured OWL relation      | LU 1`isMemberAcupointOf` Lung Meridian |
+| Property                  | Type            | Description                  | Example                                         |
+| ------------------------- | --------------- | ---------------------------- | ----------------------------------------------- |
+| `tara:hasMeridian`        | annotation      | Textual meridian affiliation | LU 1 →`"Lung Meridian"`                        |
+| `tara:isMemberAcupointOf` | object property | Structured OWL relation      | LU 1`→`isMemberAcupointOf`some`'Lung Meridian' |
 
 **Anatomical Location Properties**
 
@@ -129,10 +129,24 @@ The ontology takes into account both Eastern and Western nomenclature for acupun
 
 ### TARA Ontology - Knowledge Curation Sources
 
-The knowledge curated for the TARA Acupoints Ontology is drawn primarily from two authoritative reference works:
+The knowledge curated for the TARA Acupoints Ontology is drawn primarily from the following authoritative reference sources:
 
-- World Health Organization. *WHO Standard Acupuncture Point Locations in the Western Pacific Region*. WHO Regional Office for the Western Pacific, 2008. ISBN 978-92-9061-248-7. [Available online](https://iris.who.int/handle/10665/353407).
-- D. Liangyue, G. Yijun, H. Shuhui, et al. *Chinese Acupuncture and Moxibustion*. Revised ed. Foreign Languages Press, Beijing, 1999. ISBN 978-7-119-01758-7.
+- *WHO Standard Acupuncture Point Locations in the Western Pacific Region*. World Health Organization (WHO). WHO Regional Office for the Western Pacific, 2008. ISBN 978-92-9061-248-7. [Available online](https://iris.who.int/handle/10665/353407).
+
+  - Source for standardized alphanumeric codes, phonetic Pinyin spellings, and traditional Chinese character names for acupoints, along with their surface-anatomy location descriptions on the human body.
+- *Chinese Acupuncture and Moxibustion*. Edited by C. Xinnong. Revised ed. Foreign Languages Press, Beijing, China, 1999. ISBN 978-7-119-01758-7.
+
+  * Source for Extra Acupoints, including their standardized Pinyin spellings, synonymous alphanumeric codes, and surface-anatomy location descriptions on the human body.
+  * Source for the standard nomenclature and classification of Special Points, as well as the classification schema for standard acupoints based on their Special Point roles.
+- *Acupuncture: A Comprehensive Text*. Shanghai College of Traditional Medicine. Chapter 8: Other New and Miscellaneous Acupuncture. Translated and edited by J. O'Connor and D. Bensky. Chicago: Eastland Press, 1981.
+
+  - Source for alternative, commonly used alphanumeric codes for Extra Acupoints included in the  TARA Ontology.
+- [Uberon Multi-Species Anatomy Ontology](https://obofoundry.org/ontology/uberon.html). An integrated cross-species anatomy ontology covering animals and bridging multiple species-specific ontologies.
+
+  - Source for standard mappings of anatomical entities used in the TARA Ontology, including body-surface regions (e.g., specific regions on the head, chest, and torso) and subsurface anatomical structures (e.g., nerves, veins, and arteries) associated with acupoints based on their descriptions in standards sources.
+- Mondo Disease Ontology ([MONDO](https://www.ebi.ac.uk/ols4/ontologies/mondo)) and Human Phenotype Ontology ([HP](https://www.ebi.ac.uk/ols4/ontologies/hp)).
+
+  - Source for standardized mappings of diseases and conditions identified in the scientific literature related to acupoints. These mappings are currently being applied to article metadata curated as part of the TARA Articles Knowledgebase project.
 
 ### TARA Ontology - Upper Level
 

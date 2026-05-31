@@ -243,6 +243,7 @@ class AcupointsOntologyAdapter:
         print ("  Acupoints Categories Added Successfully.")
         
     # Add acupoints from the corresponding CSV file
+    # TODO: try to see if the annotations can be rendered in the exact sequence they added. e.g. lable, pinyin label, chinese label, meridian, location, indications, method, vasculature, innervation, synonyms, refernces. 
     def addAcupoints(self, file_path):
         g = Graph()
         print("\n> Adding Acupoints from: " + file_path)

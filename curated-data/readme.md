@@ -9,10 +9,24 @@ This directory contains all the curated CSV files used by the [ontology generato
 
 ## Data Sources
 
-The acupoint knowledge curated in these files is drawn primarily from the following two authoritative reference works:
+The knowledge curated for the TARA Acupoints Ontology is drawn primarily from the following authoritative reference sources:
 
-- World Health Organization. *WHO Standard Acupuncture Point Locations in the Western Pacific Region*. WHO Regional Office for the Western Pacific, 2008. ISBN 978-92-9061-248-7. [Available online](https://iris.who.int/handle/10665/353407).
-- D. Liangyue, G. Yijun, H. Shuhui, et al. *Chinese Acupuncture and Moxibustion*. Revised ed. Foreign Languages Press, Beijing, 1999. ISBN 978-7-119-01758-7.
+- *WHO Standard Acupuncture Point Locations in the Western Pacific Region*. World Health Organization (WHO). WHO Regional Office for the Western Pacific, 2008. ISBN 978-92-9061-248-7. [Available online](https://iris.who.int/handle/10665/353407).
+
+  - Source for standardized alphanumeric codes, phonetic Pinyin spellings, and names using traditional Chinese characters for standard acupoints, along with their surface-anatomy location descriptions on the human body.
+- *Chinese Acupuncture and Moxibustion*. Edited by C. Xinnong. Revised ed. Foreign Languages Press, Beijing, China, 1999. ISBN 978-7-119-01758-7.
+
+  * Source for Extra Acupoints, including their standardized Pinyin spellings, synonymous alphanumeric codes, and surface-anatomy location descriptions on the human body.
+  * Source for the standard nomenclature and classification of Special Points, as well as the classification schema for standard acupoints based on their Special Point roles.
+- *Acupuncture: A Comprehensive Text*. Shanghai College of Traditional Medicine. Chapter 8: Other New and Miscellaneous Acupuncture. Translated and edited by J. O'Connor and D. Bensky. Chicago: Eastland Press, 1981.
+
+  - Source for alternative, commonly used alphanumeric codes for Extra Acupoints included in the  TARA Ontology.
+- [Uberon Multi-Species Anatomy Ontology](https://obofoundry.org/ontology/uberon.html). An integrated cross-species anatomy ontology covering animals and bridging multiple species-specific ontologies.
+
+  - Source for standard mappings of anatomical entities used in the TARA Ontology, including body-surface regions (e.g., specific regions on the head, chest, and torso) and subsurface anatomical structures (e.g., nerves, veins, and arteries) associated with acupoints based on their descriptions in standards sources.
+- Mondo Disease Ontology ([MONDO](https://www.ebi.ac.uk/ols4/ontologies/mondo)) and Human Phenotype Ontology ([HP](https://www.ebi.ac.uk/ols4/ontologies/hp)).
+
+  - Source for standardized mappings of diseases and conditions identified in the scientific literature related to acupoints. These mappings are currently being applied to article metadata curated as part of the TARA Articles Knowledgebase project.
 
 ## Curated Data Files
 
