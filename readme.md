@@ -4,6 +4,7 @@ This repository contains the source files, curated data, and generation pipeline
 
 * [Accessing and Exploring TARA Ontology](#accessing-and-exploring-tara-ontology)
 * [TARA Acupoints Ontology : An Overview](#tara-acupoints-ontology--an-overview)
+* [TARA Ontology - Knowledge Curation Sources](#tara-ontology---knowledge-curation-sources)
 * [TARA Acupoints Ontology: Versions Summary](#tara-ontology-versions-summary)
 
 ## Contents
