@@ -133,7 +133,7 @@ The knowledge curated for the TARA Acupoints Ontology is drawn primarily from th
 
 - *WHO Standard Acupuncture Point Locations in the Western Pacific Region*. World Health Organization (WHO). WHO Regional Office for the Western Pacific, 2008. ISBN 978-92-9061-248-7. [Available online](https://iris.who.int/handle/10665/353407).
 
-  - Source for standardized alphanumeric codes, phonetic Pinyin spellings, and traditional Chinese character names for acupoints, along with their surface-anatomy location descriptions on the human body.
+  - Source for standardized alphanumeric codes, phonetic Pinyin spellings, names using traditional Chinese characters for standard acupoints, along with their surface-anatomy location descriptions on the human body.
 - *Chinese Acupuncture and Moxibustion*. Edited by C. Xinnong. Revised ed. Foreign Languages Press, Beijing, China, 1999. ISBN 978-7-119-01758-7.
 
   * Source for Extra Acupoints, including their standardized Pinyin spellings, synonymous alphanumeric codes, and surface-anatomy location descriptions on the human body.
