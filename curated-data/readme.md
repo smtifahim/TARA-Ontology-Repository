@@ -16,6 +16,7 @@ The knowledge curated for the TARA Acupoints Ontology is drawn primarily from th
   - Source for standardized alphanumeric codes, phonetic Pinyin spellings, and names using traditional Chinese characters for standard acupoints, along with their surface-anatomy location descriptions on the human body.
 - *Chinese Acupuncture and Moxibustion*. Edited by C. Xinnong. Revised ed. Foreign Languages Press, Beijing, China, 1999. ISBN 978-7-119-01758-7.
 
+  * Source for Acupuncture Method, Vasculature, Innervation, and Indications.
   * Source for Extra Acupoints, including their standardized Pinyin spellings, synonymous alphanumeric codes, and surface-anatomy location descriptions on the human body.
   * Source for the standard nomenclature and classification of Special Points, as well as the classification schema for standard acupoints based on their Special Point roles.
 - *Acupuncture: A Comprehensive Text*. Shanghai College of Traditional Medicine. Chapter 8: Other New and Miscellaneous Acupuncture. Translated and edited by J. O'Connor and D. Bensky. Chicago: Eastland Press, 1981.
