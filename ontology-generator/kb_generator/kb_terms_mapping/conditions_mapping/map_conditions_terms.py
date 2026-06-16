@@ -41,9 +41,14 @@ Strict matching pipeline:
      NOTE: parenthetical content is NEVER added as a candidate here.
 
   4. bioportal_search_exact(phrase) + client-side verification
-     Queries BioPortal /search?exact_match=true for MONDO and HP.
-     Verifies client-side that at least one returned result's prefLabel or
-     synonym intersects the query's comparison forms.
+     Queries BioPortal /search (without exact_match) for MONDO and HP separately
+     (one API call per ontology) to ensure up to 50 results from each.
+     Querying both together risks MONDO synonym matches being pushed off the
+     page by HP preferred-label matches, violating the priority order.
+     NOTE: BioPortal's exact_match=true only matches prefLabels, not synonyms,
+     so a broader search is used and all filtering is enforced client-side:
+     _verify_and_classify checks that a returned result's prefLabel or synonym
+     intersects the query's comparison forms (via get_comparison_forms).
      BioPortal's own ranking/score is NOT used as the acceptance criterion.
 
   5. is_in_stoplist(label)
@@ -170,7 +175,7 @@ BIOPORTAL_API_KEY    = os.getenv('BIOPORTAL_API_KEY')
 BIOPORTAL_API_BASE   = 'https://data.bioontology.org'
 BIOPORTAL_SEARCH_URL = f"{BIOPORTAL_API_BASE}/search"
 
-MAX_WORKERS  = 5     # parallel condition-mapping workers
+MAX_WORKERS   = 5    # parallel condition-mapping workers
 SEARCH_DELAY = 0.05  # polite delay (seconds) after each search API call
 
 
@@ -217,8 +222,8 @@ MODIFIER_WORDS: frozenset = frozenset({
     'resistant', 'refractory', 'uncontrolled', 'controlled', 'functional',
     'simple', 'complex', 'complicated', 'uncomplicated',
     # Condition-type adjectives: stripped to expose the core condition name
-    'diabetic', 'distal', 'depressive', 'dental', 'major', 'post',
-    'lower', 'bronchial', 'sensory',
+    'diabetic', 'distal', 'depressive', 'dental', 'post',
+    'lower', 'sensory',
 })
 
 # Compound-modifier pattern: first token of the form "{word}-related",
@@ -271,12 +276,14 @@ def normalize_for_comparison(text: str) -> str:
     """
     Normalise *text* for exact string comparison:
       - Lowercase
+      - Strip possessive apostrophes (e.g. "Parkinson's" → "parkinson",
+        "Bell's" → "bell") and any remaining apostrophe characters
       - Remove parenthetical groups  "(…)"
       - Replace all punctuation except hyphens with a space
       - Collapse repeated whitespace
 
     Hyphens are deliberately preserved here.  Call get_comparison_forms() to
-    obtain all hyphen-normalisation variants (hyphen-as-space, hyphen-removed).
+    obtain all hyphen-normalisation variants (hyphen-as-space).
     """
     text = text.lower().strip()
     # Strip possessive apostrophes before punctuation normalisation so that
@@ -294,11 +301,14 @@ def get_comparison_forms(text: str) -> frozenset:
     Return all normalised comparison forms of *text*, covering every
     hyphen-normalisation variant so that, for example:
 
-        "Low-back pain"  ≡  "low back pain"  ≡  "lowback pain"
+        "Low-back pain"  ≡  "low back pain"
 
     The two forms produced (after normalize_for_comparison):
       1. Original (hyphens kept)
       2. Hyphens replaced with a single space
+
+    Note: the hyphen-concatenated form (e.g. "lowbackpain") is NOT generated;
+    only the space-separated variant is added alongside the original.
 
     This is applied symmetrically to both query phrases and ontology
     labels/synonyms — never as a hard-coded special case for any one term.
@@ -440,7 +450,8 @@ _search_cache_lock = threading.Lock()
 
 def _bioportal_search_exact(phrase: str) -> list:
     """
-    Call BioPortal ``/search?exact_match=true`` for *phrase* on MONDO and HP.
+    Call BioPortal ``/search`` for *phrase* on MONDO and HP and return
+    candidate result dicts for client-side exact-match verification.
 
     Returns a list of result dicts::
 
@@ -450,71 +461,84 @@ def _bioportal_search_exact(phrase: str) -> list:
     An empty list is returned if the API call fails after retries or if
     *phrase* is blank.
 
-    BioPortal's ``exact_match=true`` restricts results to terms whose
-    prefLabel or a synonym matches the query (case-insensitive).  We still
-    verify client-side in ``_verify_and_classify`` to guard against any
-    differences in BioPortal's own normalisation vs. ours.
+    MONDO and HP are queried in **separate** API calls (MONDO first, then HP)
+    to guarantee that up to ``pagesize`` results are returned from *each*
+    ontology independently.  Querying both together risks MONDO synonym
+    matches being displaced by HP preferred-label matches within a single
+    page, which would cause the priority ordering in ``_verify_and_classify``
+    to be applied over an incomplete result set.
+
+    ``exact_match=true`` is intentionally NOT used: BioPortal's exact_match
+    only searches prefLabels and silently omits terms that match only via a
+    synonym.  All exact-match filtering is therefore done client-side in
+    ``_verify_and_classify``, which checks both prefLabels and synonyms using
+    ``get_comparison_forms`` for hyphen-normalised comparison.
     """
     if not phrase.strip():
         return []
 
-    params = {
-        'q'           : phrase,
-        'ontologies'  : 'MONDO,HP',
-        'exact_match' : 'true',
-        'include'     : 'prefLabel,synonym',
-        'pagesize'    : 50,
-        'apikey'      : BIOPORTAL_API_KEY,
-    }
-
     MAX_RETRIES   = 5
     RETRY_BACKOFF = 2.0
 
-    for attempt in range(MAX_RETRIES):
-        try:
-            resp = requests.get(BIOPORTAL_SEARCH_URL, params=params, timeout=30)
-            if resp.status_code == 429:
+    all_results: list = []
+
+    # Query MONDO and HP separately so each ontology gets its own full page
+    # of results.  This ensures ``_verify_and_classify`` always has complete
+    # information from both ontologies when enforcing MONDO > HP priority.
+    for ontology_filter in ('MONDO', 'HP'):
+        params = {
+            'q'          : phrase,
+            'ontologies' : ontology_filter,
+            'include'    : 'prefLabel,synonym',
+            'pagesize'   : 50,
+            'apikey'     : BIOPORTAL_API_KEY,
+        }
+
+        for attempt in range(MAX_RETRIES):
+            try:
+                resp = requests.get(BIOPORTAL_SEARCH_URL, params=params, timeout=30)
+                if resp.status_code == 429:
+                    wait = RETRY_BACKOFF * (2 ** attempt)
+                    print(f"    [429] Rate limited — waiting {wait:.0f}s "
+                          f"(attempt {attempt + 1}/{MAX_RETRIES})...")
+                    time.sleep(wait)
+                    continue
+                resp.raise_for_status()
+                data = resp.json()
+                break
+            except requests.RequestException as exc:
                 wait = RETRY_BACKOFF * (2 ** attempt)
-                print(f"    [429] Rate limited — waiting {wait:.0f}s "
-                      f"(attempt {attempt + 1}/{MAX_RETRIES})...")
+                print(f"    [WARNING] Search API error "
+                      f"(attempt {attempt + 1}/{MAX_RETRIES}): {exc} "
+                      f"— retrying in {wait:.0f}s...")
                 time.sleep(wait)
-                continue
-            resp.raise_for_status()
-            data = resp.json()
-            break
-        except requests.RequestException as exc:
-            wait = RETRY_BACKOFF * (2 ** attempt)
-            print(f"    [WARNING] Search API error "
-                  f"(attempt {attempt + 1}/{MAX_RETRIES}): {exc} "
-                  f"— retrying in {wait:.0f}s...")
-            time.sleep(wait)
-    else:
-        return []   # exhausted retries
-
-    items = data.get('collection', []) or []
-    results = []
-    for item in items:
-        uri        = item.get('@id', '') or ''
-        pref_label = item.get('prefLabel', '') or ''
-        synonyms   = item.get('synonym', []) or []
-        if isinstance(synonyms, str):
-            synonyms = [synonyms]
-
-        # Classify ontology from URI
-        if 'MONDO_' in uri or uri.startswith('http://purl.obolibrary.org/obo/MONDO'):
-            ontology = 'MONDO'
-        elif '/HP_' in uri or uri.startswith('http://purl.obolibrary.org/obo/HP'):
-            ontology = 'HP'
         else:
-            continue   # skip unrecognised ontology URIs
+            continue   # skip this ontology if retries exhausted
 
-        results.append({
-            'uri'      : uri,
-            'prefLabel': pref_label,
-            'synonyms' : [s for s in synonyms if s],
-            'ontology' : ontology,
-        })
-    return results
+        items = data.get('collection', []) or []
+        for item in items:
+            uri        = item.get('@id', '') or ''
+            pref_label = item.get('prefLabel', '') or ''
+            synonyms   = item.get('synonym', []) or []
+            if isinstance(synonyms, str):
+                synonyms = [synonyms]
+
+            # Classify ontology from URI
+            if 'MONDO_' in uri or uri.startswith('http://purl.obolibrary.org/obo/MONDO'):
+                ontology = 'MONDO'
+            elif '/HP_' in uri or uri.startswith('http://purl.obolibrary.org/obo/HP'):
+                ontology = 'HP'
+            else:
+                continue   # skip unrecognised ontology URIs
+
+            all_results.append({
+                'uri'      : uri,
+                'prefLabel': pref_label,
+                'synonyms' : [s for s in synonyms if s],
+                'ontology' : ontology,
+            })
+
+    return all_results
 
 
 def _verify_and_classify(candidate: str, items: list):
@@ -603,11 +627,16 @@ def _lookup_single_phrase(phrase: str):
             return _search_cache[cache_key]
 
     # Build query set:
-    # 1. Normalized (apostrophe-stripped) forms from get_comparison_forms — e.g. "parkinson disease"
+    # 1. Normalized (apostrophe-stripped) form — hyphens from the input are
+    #    preserved as-is (e.g. "low-back pain" stays "low-back pain").
+    #    The hyphen-space variant is deliberately NOT added here; hyphens in the
+    #    input under Normalized-Condition-Western are intentional and must not be
+    #    silently collapsed.  get_comparison_forms() is applied symmetrically on
+    #    both sides inside _verify_and_classify, so hyphen-normalised matching
+    #    still works during client-side verification without extra BioPortal calls.
     # 2. Apostrophe-normalized (kept, lowercased) form — e.g. "parkinson's disease"
-    #    BioPortal stores possessive terms with the apostrophe; sending without
-    #    it may miss them under exact_match=true.
-    phrase_forms = set(get_comparison_forms(phrase))
+    #    BioPortal stores possessive terms with the apostrophe.
+    phrase_forms = {normalize_for_comparison(phrase)}
 
     # Normalize all Unicode apostrophe variants → ASCII ' then add lowercased form
     apos_norm = re.sub(
@@ -881,12 +910,16 @@ def map_conditions_sheet(tab_name: str) -> None:
     # Step 3: Deduplicate condition texts
     # The raw cell values are used as-is; generate_candidates() handles all
     # normalisation and parenthetical stripping internally.
+    # Cells that start with "Not specified" (case-insensitive) are excluded
+    # entirely — they carry no mappable condition name and must not be sent
+    # to BioPortal.
     print(f"\n[2] Deduplicating condition texts...")
     raw_conditions = df[CONDITION_COLUMN].tolist()
     unique_terms = sorted(set(
         str(v).strip()
         for v in raw_conditions
         if isinstance(v, str) and str(v).strip()
+        and not str(v).strip().lower().startswith('not specified')
     ))
     print(f"    {len(raw_conditions)} rows → {len(unique_terms)} unique conditions")
 
@@ -898,10 +931,10 @@ def map_conditions_sheet(tab_name: str) -> None:
     for i, row in df.iterrows():
         raw_text = row[CONDITION_COLUMN]
         key = str(raw_text).strip() if isinstance(raw_text, str) and str(raw_text).strip() else ''
-        if key:
+        if key and not key.lower().startswith('not specified'):
             label, uri, match_type = annotation_cache.get(key, ('NOT FOUND', '', ''))
         else:
-            label, uri, match_type = 'NOT FOUND', '', ''
+            label, uri, match_type = '', '', ''
         df.at[i, TERM_LABEL_COLUMN] = label
         df.at[i, TERM_URI_COLUMN]   = uri
         df.at[i, MATCH_TYPE_COLUMN] = match_type

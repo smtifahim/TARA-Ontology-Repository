@@ -274,7 +274,7 @@ def _bioportal_search_exact(phrase: str) -> list:
     params = {
         'q'          : phrase,
         'ontologies' : 'MONDO,HP',
-        'exact_match': 'true',
+        'exact_match': 'false',
         'include'    : 'prefLabel,synonym',
         'pagesize'   : 50,
         'apikey'     : BIOPORTAL_API_KEY,
