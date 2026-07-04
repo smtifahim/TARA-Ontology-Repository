@@ -852,7 +852,20 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 <http://purl.obolibrary.org/obo/IAO_0000013> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000088> ,
                                                              <http://purl.obolibrary.org/obo/IAO_0000311> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "Examples are articles published in the journals, Nature and Science. The content can often be cited by reference to a paper based encoding, e.g. Authors, Title of article, Journal name, date or year of publication, volume and page number."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "A report that is published in a journal."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "group:OBI; OBI_0000159"@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/iao.owl"@en ;
                                              rdfs:label "journal article"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000027
+<http://purl.obolibrary.org/obo/IAO_0000027> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "Data items include counts of things, analyte concentrations, and statistical summaries."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "An information content entity that is intended to be one or more truthful statement(s) about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/iao.owl" ;
+                                             rdfs:label "data entity"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000030
@@ -862,24 +875,48 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                                                owl:onProperty <http://purl.obolibrary.org/obo/IAO_0000136> ;
                                                                owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000001>
                                                              ] ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "Examples of information content entites include journal articles, data, graphical layouts, and graphs."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "A generically dependent continuant that is about some thing."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000116> "2014-03-10: The use of \"thing\" is intended to be general enough to include universals and configurations (see https://groups.google.com/d/msg/information-ontology/GBxvYZCk1oc/-L6B5fSBBTQJ)."@en ,
+                                                                                          "information_content_entity 'is_encoded_in' some digital_entity in obi before split (040907). information_content_entity 'is_encoded_in' some physical_document in obi before split (040907). Previous. An information content entity is a non-realizable information entity that 'is encoded in' some digital or physical entity."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "OBI_0000142"@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/iao.owl" ;
                                              rdfs:label "information content entity"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000088
 <http://purl.obolibrary.org/obo/IAO_0000088> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000310> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "Examples of reports are gene lists and investigation reports. These are not published (journal) articles but may be included in a journal article."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "A document assembled by an author for the purpose of providing information for the audience. A report is the output of a documenting process and has the objective to be consumed by a specific audience. Topic of the report is on something that has completed. A report is not a single figure. Examples of reports are journal article, patent application, grant progress report, case report (not patient record)."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP: OBI; OBI_0000099"@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/iao.owl"@en ;
                                              rdfs:label "report"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000102
+<http://purl.obolibrary.org/obo/IAO_0000102> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000027> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "Data about an ontology part is a data item about a part of an ontology, for example a term."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/iao.owl" ;
+                                             rdfs:label "data about an ontology part"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000310
 <http://purl.obolibrary.org/obo/IAO_0000310> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "A journal article, patent application, laboratory notebook, or a book."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "A collection of information content entities intended to be understood together as a whole."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/iao.owl"@en ;
                                              rdfs:label "document"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000311
 <http://purl.obolibrary.org/obo/IAO_0000311> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000310> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "journal article, newspaper story, book, etc."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "A document that is the output of a publishing process."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/iao.owl"@en ;
                                              rdfs:comment "Revisit the term in Octorber 2020. Improve the defintion."@en ;
                                              rdfs:label "publication"@en .
 
@@ -887,6 +924,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 ###  http://purl.obolibrary.org/obo/IAO_0000312
 <http://purl.obolibrary.org/obo/IAO_0000312> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000311> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/iao.owl"@en ;
                                              rdfs:label "publication about an investigation"@en .
 
 
