@@ -1,0 +1,2491 @@
+@prefix : <file:///ERROR/EMPTY/PREFIX/BANNED/> .
+@prefix BIRNLEX: <http://uri.neuinfo.org/nif/nifstd/birnlex_> .
+@prefix definition: <http://purl.obolibrary.org/obo/IAO_0000115> .
+@prefix fma: <http://purl.org/sig/ont/fma/> .
+@prefix FMA: <http://purl.org/sig/ont/fma/fma> .
+@prefix ILX: <http://uri.interlex.org/base/ilx_> .
+@prefix ilx.anno.hasExactSynonym: <http://uri.interlex.org/base/ilx_0737161> .
+@prefix ilx.anno.hasRelatedSynonym: <http://uri.interlex.org/base/ilx_0737162> .
+@prefix ilx.hasDbXref: <http://uri.interlex.org/base/ilx_0381360> .
+@prefix ilx.includeForSPARC: <http://uri.interlex.org/base/ilx_0738400> .
+@prefix ilx.partOf: <http://uri.interlex.org/base/ilx_0112785> .
+@prefix ilx.type: <http://uri.interlex.org/base/readable/type/> .
+@prefix ilxr: <http://uri.interlex.org/base/readable/> .
+@prefix ilxtr: <http://uri.interlex.org/tgbugs/uris/readable/> .
+@prefix NIFRID: <http://uri.neuinfo.org/nif/nifstd/readable/> .
+@prefix NLX: <http://uri.neuinfo.org/nif/nifstd/nlx_> .
+@prefix oboInOwl: <obo:> .
+@prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix UBERON: <http://purl.obolibrary.org/obo/UBERON_> .
+
+<http://uri.interlex.org/base/ontologies/ilx_0795339> a owl:Ontology ;
+    owl:versionIRI <http://uri.interlex.org/base/ontologies/ilx_0795339/version/1783162985/ilx_0795339> ;
+    owl:versionInfo "2026-07-04T11:03:05,902241Z" .
+
+### Annotation Properties
+
+ILX:0383241 a owl:AnnotationProperty ;
+    rdfs:label "deprecated" ;
+    ilxtr:hasExistingId ILX:0383241 ;
+    ilxtr:hasIlxId ILX:0383241 ;
+    ilxtr:hasIlxPreferredId ILX:0383241 .
+
+ILX:0777130 a owl:AnnotationProperty ;
+    rdfs:label "hasDefinitionSource (annotation)" ;
+    ilxtr:hasExistingId ILX:0777130 ;
+    ilxtr:hasIlxId ILX:0777130 ;
+    ilxtr:hasIlxPreferredId ILX:0777130 .
+
+### Classes
+
+ILX:0797522 a owl:Class ;
+    rdfs:label "Superior cardiac nerve" ;
+    definition: "A sympathetic cardiac nerve arising from the superior cervical ganglion that contributes to the cardiac plexus and autonomic innervation of the heart." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001989 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:6578,
+        ILX:0797522 ;
+    oboInOwl:hasExactSynonym "Superior cardiac branch of sympathetic trunk",
+        "Superior cervical cardiac nerve" .
+
+ILX:0797478 a owl:Class ;
+    rdfs:label "Lesser occipital nerve" ;
+    definition: "A branch of the cervical plexus (primarily C2) that supplies sensation to the scalp posterior and superior to the ear." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0003725 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:6871,
+        ILX:0797478 ;
+    oboInOwl:hasExactSynonym "Small occipital nerve" .
+
+ILX:0797480 a owl:Class ;
+    rdfs:label "Transverse cervical nerve" ;
+    definition: "A superficial branch of the cervical plexus (C2-C3) providing sensory innervation to the skin of the anterior neck." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0003725 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:6873,
+        ILX:0797480 ;
+    oboInOwl:hasExactSynonym "Cervical cutaneous nerve",
+        "Transverse cutaneous nerve of neck" .
+
+ILX:0787984 a owl:Class ;
+    rdfs:label "Posterior ramus of first thoracic nerve" ;
+    rdfs:subClassOf UBERON:0001021 ;
+    fma:synonym "Dorsal ramus of first thoracic spinal nerve",
+        "First thoracic posterior ramus",
+        "Posterior first thoracic ramus",
+        "Posterior ramus of first thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:7075,
+        ILX:0787984 ;
+    ilxtr:hasIlxPreferredId FMA:7075 .
+
+ILX:0787131 a owl:Class ;
+    rdfs:label "Posterior ramus of second thoracic nerve" ;
+    rdfs:subClassOf UBERON:0001021 ;
+    fma:synonym "Dorsal ramus of second thoracic spinal nerve",
+        "Posterior ramus of second thoracic spinal nerve",
+        "Second thoracic posterior ramus" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:7076,
+        ILX:0787131 ;
+    ilxtr:hasIlxPreferredId FMA:7076 .
+
+ILX:0795296 a owl:Class ;
+    rdfs:label "sternal angle" ;
+    definition: "The sternal angle (angle of Louis, Ludwig, or Ludovicus) is the inclined junction between the anterior surfaces of the manubrium and body of the sternum." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://www.elsevier.com/resources/anatomy/skeletal-system/axial-skeleton/sternal-angle/18493> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:7547,
+        ILX:0795296 ;
+    ilxtr:hasIlxPreferredId FMA:7547 .
+
+ILX:0795302 a owl:Class ;
+    rdfs:label "infrasternal angle" ;
+    NIFRID:synonym "Mammillary line" ;
+    definition: "The infrasternal angle (subcostal angle) is formed in front of thoracic cage by the cartilages of the tenth, ninth, eighth, and seventh ribs, which ascend on either side, where the apex of which the xiphoid process projects." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0000916 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/infrasternal-angle-1537019816> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:7573,
+        ILX:0795302 ;
+    ilxtr:hasIlxPreferredId FMA:7573 .
+
+ILX:0792193 a owl:Class ;
+    rdfs:label "First intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of first thoracic nerve",
+        "Anterior ramus of first thoracic spinal nerve",
+        "Anterior ramus of T1",
+        "First thoracic anterior ramus",
+        "Ventral ramus of first thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:7645,
+        ILX:0792193 ;
+    ilxtr:hasIlxPreferredId FMA:7645 .
+
+ILX:0789482 a owl:Class ;
+    rdfs:label "Second intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of second thoracic nerve",
+        "Anterior ramus of T2",
+        "Second thoracic anterior ramus",
+        "Ventral ramus of second thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:8602,
+        ILX:0789482 ;
+    ilxtr:hasIlxPreferredId FMA:8602 .
+
+ILX:0785435 a owl:Class ;
+    rdfs:label "Third intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of T3",
+        "Anterior ramus of third thoracic nerve",
+        "Third thoracic anterior ramus",
+        "Ventral ramus of third thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:8603,
+        ILX:0785435 ;
+    ilxtr:hasIlxPreferredId FMA:8603 .
+
+ILX:0784694 a owl:Class ;
+    rdfs:label "Fourth intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of fourth thoracic nerve",
+        "Anterior ramus of T4",
+        "Fourth thoracic anterior ramus",
+        "Ventral ramus of fourth thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:8604,
+        ILX:0784694 ;
+    ilxtr:hasIlxPreferredId FMA:8604 .
+
+ILX:0787443 a owl:Class ;
+    rdfs:label "Fifth intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of fifth thoracic nerve",
+        "Anterior ramus of T5",
+        "Fifth thoracic anterior ramus",
+        "Ventral ramus of fifth thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:8605,
+        ILX:0787443 ;
+    ilxtr:hasIlxPreferredId FMA:8605 .
+
+ILX:0791808 a owl:Class ;
+    rdfs:label "Seventh intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of seventh thoracic nerve",
+        "Anterior ramus of T7",
+        "Seventh thoracic anterior ramus",
+        "Ventral ramus of seventh thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:8607,
+        ILX:0791808 ;
+    ilxtr:hasIlxPreferredId FMA:8607 .
+
+ILX:0787969 a owl:Class ;
+    rdfs:label "Eighth intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of eighth thoracic nerve",
+        "Anterior ramus of T8",
+        "Eighth thoracic anterior ramus",
+        "Ventral ramus of eighth thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:8608,
+        ILX:0787969 ;
+    ilxtr:hasIlxPreferredId FMA:8608 .
+
+ILX:0792543 a owl:Class ;
+    rdfs:label "Ninth intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of ninth thoracic nerve",
+        "Anterior ramus of T9",
+        "Ninth thoracic anterior ramus",
+        "Ventral ramus of ninth thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:8609,
+        ILX:0792543 ;
+    ilxtr:hasIlxPreferredId FMA:8609 .
+
+ILX:0785076 a owl:Class ;
+    rdfs:label "Tenth intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of T10",
+        "Anterior ramus of tenth thoracic nerve",
+        "Tenth thoracic anterior ramus",
+        "Ventral ramus of tenth thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:8610,
+        ILX:0785076 ;
+    ilxtr:hasIlxPreferredId FMA:8610 .
+
+ILX:0792132 a owl:Class ;
+    rdfs:label "Eleventh intercostal nerve" ;
+    rdfs:subClassOf UBERON:0003727 ;
+    fma:synonym "Anterior ramus of eleventh thoracic nerve",
+        "Anterior ramus of T11",
+        "Eleventh thoracic anterior ramus",
+        "Ventral ramus of eleventh thoracic spinal nerve" ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:8611,
+        ILX:0792132 ;
+    ilxtr:hasIlxPreferredId FMA:8611 .
+
+ILX:0792339 a owl:Class ;
+    rdfs:label "Third posterior intercostal artery" ;
+    rdfs:subClassOf UBERON:0039835 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:12286,
+        ILX:0792339 ;
+    ilxtr:hasIlxPreferredId FMA:12286 .
+
+ILX:0789814 a owl:Class ;
+    rdfs:label "Fourth posterior intercostal artery" ;
+    rdfs:subClassOf UBERON:0039835 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:12287,
+        ILX:0789814 ;
+    ilxtr:hasIlxPreferredId FMA:12287 .
+
+ILX:0792908 a owl:Class ;
+    rdfs:label "Seventh posterior intercostal artery" ;
+    rdfs:subClassOf UBERON:0039835 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:12290,
+        ILX:0792908 ;
+    ilxtr:hasIlxPreferredId FMA:12290 .
+
+ILX:0792821 a owl:Class ;
+    rdfs:label "Eighth posterior intercostal artery" ;
+    rdfs:subClassOf UBERON:0039835 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:12291,
+        ILX:0792821 ;
+    ilxtr:hasIlxPreferredId FMA:12291 .
+
+ILX:0791352 a owl:Class ;
+    rdfs:label "Ninth posterior intercostal artery" ;
+    rdfs:subClassOf UBERON:0039835 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:12292,
+        ILX:0791352 ;
+    ilxtr:hasIlxPreferredId FMA:12292 .
+
+ILX:0791495 a owl:Class ;
+    rdfs:label "Tenth posterior intercostal artery" ;
+    rdfs:subClassOf UBERON:0039835 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:12293,
+        ILX:0791495 ;
+    ilxtr:hasIlxPreferredId FMA:12293 .
+
+ILX:0791079 a owl:Class ;
+    rdfs:label "Eleventh posterior intercostal artery" ;
+    rdfs:subClassOf UBERON:0039835 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:12294,
+        ILX:0791079 ;
+    ilxtr:hasIlxPreferredId FMA:12294 .
+
+ILX:0797505 a owl:Class ;
+    rdfs:label "Thoracoepigastric vein" ;
+    definition: "A superficial vein of the trunk connecting the lateral thoracic and superficial epigastric veins, providing collateral venous drainage between the axillary and femoral systems." ;
+    rdfs:subClassOf UBERON:0001638 ;
+    ilx.partOf: UBERON:0000985 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:13416,
+        ILX:0797505 ;
+    oboInOwl:hasExactSynonym "Vena thoracoepigastrica" .
+
+ILX:0795308 a owl:Class ;
+    rdfs:label "midaxillary line" ;
+    definition: "A vertical line running down the lateral thorax from the apex of the axilla to the hip." ;
+    rdfs:subClassOf UBERON:0006800 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/midaxillary-line-1536888352> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:14368,
+        ILX:0795308 ;
+    ilxtr:hasIlxPreferredId FMA:14368 .
+
+ILX:0795322 a owl:Class ;
+    rdfs:label "midclavicular line" ;
+    definition: "Midclavicular line is an important vertical reference line on the anterior chest wall. It connects the midclavicular point (superiorly) with the middle of the inguinal ligament (inferiorly)." ;
+    rdfs:subClassOf UBERON:0006800 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/midclavicular-line-15368877400> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:20251,
+        ILX:0795322 ;
+    ilxtr:hasIlxPreferredId FMA:20251 .
+
+ILX:0795323 a owl:Class ;
+    rdfs:label "posterior axillary line" ;
+    definition: "Posterior axillary line is an imaginary reference line which can be drawn on the posterior torso. It extends vertically downwards from the posterior axillary fold. The posterior axillary line runs in parallel to the midaxillary and anterior axillary lines." ;
+    rdfs:subClassOf UBERON:0006800 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/posterior-axillary-line-1536888360> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:20260,
+        ILX:0795323 ;
+    ilxtr:hasIlxPreferredId FMA:20260 .
+
+ILX:0795300 a owl:Class ;
+    rdfs:label "nipple line" ;
+    definition: "The nipple line is an imaginary horizontal reference line running around the body at the level of the nipples." ;
+    rdfs:subClassOf UBERON:0006800 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/mammillary-line-1536888320> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:20304,
+        ILX:0795300 ;
+    ilxtr:hasIlxPreferredId FMA:20304 .
+
+ILX:0795285 a owl:Class ;
+    rdfs:label "anterior median line" ;
+    definition: "A vertical line running along the midline of the anterior body surface, aligned with the sternum. On the anterior abdominal and chest walls, the anterior median line can be seen extending from the jugular notch, crossing over the sternum and linea alba in their midline, and reaching out to the midline pubic symphysis." ;
+    rdfs:subClassOf UBERON:0006800 ;
+    ilx.partOf: UBERON:0000916 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/anterior-median-line-1536887700> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:20310,
+        ILX:0795285 ;
+    ilxtr:hasIlxPreferredId FMA:20310 .
+
+ILX:0795312 a owl:Class ;
+    rdfs:label "posterior median line" ;
+    definition: "A vertical line running along the posterior midline of the back, aligned with the spinous processes of the vertebrae." ;
+    rdfs:subClassOf UBERON:0006800 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/posterior-median-line-1536888480> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:20311,
+        ILX:0795312 ;
+    ilxtr:hasIlxPreferredId FMA:20311 .
+
+ILX:0795301 a owl:Class ;
+    rdfs:label "upper abdomen" ;
+    definition: "The superior portion of the abdomen, located above the umbilicus and below the ribcage." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0000916 ;
+    ILX:0777130 <https://www.britannica.com/science/abdominal-cavity> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:20364,
+        ILX:0795301 ;
+    ilxtr:hasIlxPreferredId FMA:20364 .
+
+ILX:0795303 a owl:Class ;
+    rdfs:label "lower abdomen" ;
+    definition: "The inferior portion of the abdomen, located below the umbilicus and above the pelvic region." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0000916 ;
+    ILX:0777130 <https://www.britannica.com/science/abdominal-cavity> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:20365,
+        ILX:0795303 ;
+    ilxtr:hasIlxPreferredId FMA:20365 .
+
+ILX:0797501 a owl:Class ;
+    rdfs:label "Lateral circumflex femoral artery" ;
+    definition: "A branch of the profunda femoris artery supplying the lateral thigh, hip region, and adjacent muscles." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.partOf: UBERON:0001355 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:20798,
+        ILX:0797501 ;
+    oboInOwl:hasExactSynonym "Arteria circumflexa femoris lateralis" .
+
+ILX:0797504 a owl:Class ;
+    rdfs:label "Descending genicular artery" ;
+    definition: "The final branch of the femoral artery that descends medially toward the knee and contributes to the genicular anastomosis." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.partOf: UBERON:0002060 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22506,
+        ILX:0797504 ;
+    oboInOwl:hasExactSynonym "Arteria genus descendens" .
+
+ILX:0797496 a owl:Class ;
+    rdfs:label "Posterior circumflex humeral artery" ;
+    definition: "A branch of the axillary artery that passes through the quadrangular space to supply the deltoid region and shoulder joint." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.partOf: UBERON:0001394 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22684,
+        ILX:0797496 ;
+    oboInOwl:hasExactSynonym "Arteria circumflexa humeri posterior" .
+
+ILX:0797506 a owl:Class ;
+    rdfs:label "Superior ulnar collateral artery" ;
+    definition: "A branch of the brachial artery that accompanies the ulnar nerve posterior to the medial epicondyle and contributes to the arterial anastomosis around the elbow." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.partOf: UBERON:0001398 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22706,
+        ILX:0797506 ;
+    oboInOwl:hasExactSynonym "Arteria collateralis ulnaris superior" .
+
+ILX:0797509 a owl:Class ;
+    rdfs:label "Inferior ulnar collateral artery" ;
+    definition: "A branch of the brachial artery arising above the elbow that contributes to the arterial anastomosis around the medial aspect of the elbow joint." ;
+    rdfs:subClassOf UBERON:0004260 ;
+    ilx.partOf: UBERON:0001398 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22710,
+        ILX:0797509 ;
+    oboInOwl:hasExactSynonym "Arteria collateralis ulnaris inferior" .
+
+ILX:0797494 a owl:Class ;
+    rdfs:label "Radial recurrent artery" ;
+    definition: "A branch of the radial artery that ascends toward the elbow and participates in the periarticular arterial anastomosis." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.partOf: UBERON:0001404 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22748,
+        ILX:0797494 ;
+    oboInOwl:hasExactSynonym "Arteria recurrens radialis" .
+
+ILX:0797527 a owl:Class ;
+    rdfs:label "First dorsal metacarpal artery" ;
+    definition: "The first branch of the dorsal metacarpal arterial system, supplying the thumb, index finger, and adjacent dorsal hand. It commonly arises from the radial artery near the anatomical snuffbox." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.partOf: UBERON:0001404 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22761,
+        ILX:0797527 ;
+    oboInOwl:hasExactSynonym "Arteria metacarpalis dorsalis prima",
+        "First dorsal metacarpal branch" .
+
+ILX:0797510 a owl:Class ;
+    rdfs:label "Posterior interosseous artery" ;
+    definition: "A branch of the common interosseous artery that supplies the posterior compartment of the forearm and participates in wrist anastomoses." ;
+    rdfs:subClassOf UBERON:0004259 ;
+    ilx.partOf: UBERON:0001406 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22811,
+        ILX:0797510 ;
+    oboInOwl:hasExactSynonym "Arteria interossea posterior" .
+
+ILX:0797498 a owl:Class ;
+    rdfs:label "Deep brachial vein" ;
+    definition: "A deep vein accompanying the profunda brachii artery and draining the posterior compartment of the arm." ;
+    rdfs:subClassOf UBERON:0004260 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22938,
+        ILX:0797498 ;
+    oboInOwl:hasExactSynonym "Profunda brachii vein" .
+
+ILX:0797511 a owl:Class ;
+    rdfs:label "Posterior interosseous vein" ;
+    definition: "A vein accompanying the posterior interosseous artery that drains the extensor compartment of the forearm." ;
+    rdfs:subClassOf UBERON:0004259 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22980,
+        ILX:0797511 ;
+    oboInOwl:hasExactSynonym "Vena interossea posterior" .
+
+ILX:0797497 a owl:Class ;
+    rdfs:label "Radial collateral artery" ;
+    definition: "A terminal branch of the profunda brachii artery contributing to the arterial network around the elbow." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.partOf: UBERON:0001399 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:23120,
+        ILX:0797497 ;
+    oboInOwl:hasExactSynonym "Anterior descending branch of profunda brachii artery" .
+
+ILX:0797514 a owl:Class ;
+    rdfs:label "Circumflex scapular artery" ;
+    definition: "A branch of the subscapular artery that passes through the triangular space to supply muscles and structures on the posterior surface of the scapula." ;
+    rdfs:subClassOf UBERON:0003515 ;
+    ilx.partOf: UBERON:0001397 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:23179,
+        ILX:0797514 ;
+    oboInOwl:hasExactSynonym "Arteria circumflexa scapulae" .
+
+ILX:0795289 a owl:Class ;
+    rdfs:label "radial fossa" ;
+    NIFRID:synonym "anatomical snuffbox" ;
+    definition: "The radial fossa, also called the anatomical snuffbox, is a triangular depression on the lateral wrist. It is bordered by the tendons of the extensor pollicis longus, extensor pollicis brevis, and abductor pollicis longus, with the scaphoid and trapezium forming its floor. It houses the radial artery and is clinically relevant for assessing scaphoid fractures or arterial pulse." ;
+    rdfs:subClassOf UBERON:0004704 ;
+    ilx.partOf: UBERON:0001461 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/radial-fossa-1537018612> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:23452,
+        ILX:0795289 ;
+    ilxtr:hasIlxPreferredId FMA:23452 .
+
+ILX:0795288 a owl:Class ;
+    rdfs:label "dorsal wrist" ;
+    definition: "The posterior aspect of the wrist, containing the extensor tendons and underlying carpal bones." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0008785 ;
+    ILX:0777130 <https://www.uptodate.com/contents/anatomy-and-basic-biomechanics-of-the-wrist> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:24924,
+        ILX:0795288 ;
+    ilxtr:hasIlxPreferredId FMA:24924 .
+
+ILX:0741717 a owl:Class ;
+    rdfs:label "sacral hiatus" ;
+    ilx.partOf: UBERON:0005473 ;
+    ILX:0383241 "True" ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/sacral-hiatus-1537019424> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:31732,
+        ILX:0741717 ;
+    ilxtr:hasIlxPreferredId FMA:31732 .
+
+ILX:0795313 a owl:Class ;
+    rdfs:label "first posterior sacral foramen" ;
+    definition: "The first opening in the posterior sacrum, allowing passage of sacral nerves." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0005473 ;
+    ILX:0777130 <https://www.elsevier.com/resources/anatomy/nervous-system/peripheral-nervous-system/posterior-root-of-first-sacral-nerve/17108> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:31769,
+        ILX:0795313 ;
+    ilxtr:hasIlxPreferredId FMA:31769 .
+
+ILX:0795314 a owl:Class ;
+    rdfs:label "second posterior sacral foramen" ;
+    definition: "The second opening in the posterior sacrum for sacral nerve passage." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0005473 ;
+    ILX:0777130 <https://www.elsevier.com/resources/anatomy/nervous-system/peripheral-nervous-system/posterior-root-of-first-sacral-nerve/17108> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:31770,
+        ILX:0795314 ;
+    ilxtr:hasIlxPreferredId FMA:31770 .
+
+ILX:0795315 a owl:Class ;
+    rdfs:label "third posterior sacral foramen" ;
+    definition: "The third opening in the posterior sacrum for sacral nerve passage." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0005473 ;
+    ILX:0777130 <https://www.elsevier.com/resources/anatomy/nervous-system/peripheral-nervous-system/posterior-root-of-first-sacral-nerve/17108> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:31771,
+        ILX:0795315 ;
+    ilxtr:hasIlxPreferredId FMA:31771 .
+
+ILX:0795316 a owl:Class ;
+    rdfs:label "fourth posterior sacral foramen" ;
+    definition: "The fourth opening in the posterior sacrum for sacral nerve passage." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0005473 ;
+    ILX:0777130 <https://www.elsevier.com/resources/anatomy/nervous-system/peripheral-nervous-system/posterior-root-of-first-sacral-nerve/17108> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:31772,
+        ILX:0795316 ;
+    ilxtr:hasIlxPreferredId FMA:31772 .
+
+ILX:0795305 a owl:Class ;
+    rdfs:label "medial malleolus" ;
+    definition: "A prominent bony projection on the medial aspect of the distal tibia, forming part of the ankle joint." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0008784 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/medial-malleolus-1537020872> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:35451,
+        ILX:0795305 ;
+    ilxtr:hasIlxPreferredId FMA:35451 .
+
+ILX:0795500 a owl:Class ;
+    rdfs:label "tendon of flexor carpi radialis" ;
+    definition: "The tendon of the muscle that flexes and abducts the wrist, located in the anterior forearm." ;
+    rdfs:subClassOf UBERON:0000043 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:38582,
+        ILX:0795500 ;
+    ilxtr:hasIlxPreferredId FMA:38582 .
+
+ILX:0795501 a owl:Class ;
+    rdfs:label "Tendon of flexor carpi ulnaris" ;
+    definition: "The tendon of the muscle that flexes and adducts the hand at the wrist." ;
+    rdfs:subClassOf UBERON:0000043 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:38606,
+        ILX:0795501 ;
+    ilxtr:hasIlxPreferredId FMA:38606 .
+
+ILX:0797477 a owl:Class ;
+    rdfs:label "Posterior antebrachial cutaneous nerve" ;
+    definition: "A sensory branch of the radial nerve that innervates the skin of the posterior forearm." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0001492 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:39145,
+        ILX:0797477 ;
+    oboInOwl:hasExactSynonym "Posterior cutaneous nerve of forearm" .
+
+ILX:0795310 a owl:Class ;
+    rdfs:label "cubital fossa" ;
+    definition: "A triangular depression on the anterior aspect of the elbow, containing important neurovascular structures." ;
+    rdfs:subClassOf UBERON:0004704 ;
+    ilx.partOf: UBERON:0001460 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Cubital_fossa> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:39848,
+        ILX:0795310 ;
+    ilxtr:hasIlxPreferredId FMA:39848 .
+
+ILX:0795502 a owl:Class ;
+    rdfs:label "tendon of extensor digitorum" ;
+    definition: "The tendon of the muscle that extends the fingers and assists in wrist extension, located on the posterior forearm." ;
+    rdfs:subClassOf UBERON:0000043 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:40734,
+        ILX:0795502 ;
+    ilxtr:hasIlxPreferredId FMA:40734 .
+
+ILX:0797502 a owl:Class ;
+    rdfs:label "Lateral circumflex femoral vein" ;
+    definition: "A vein accompanying the lateral circumflex femoral artery that drains the lateral thigh into the profunda femoris vein." ;
+    rdfs:subClassOf UBERON:0001638 ;
+    ilx.partOf: UBERON:0001361 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:44326,
+        ILX:0797502 ;
+    oboInOwl:hasExactSynonym "Vena circumflexa femoris lateralis" .
+
+ILX:0797503 a owl:Class ;
+    rdfs:label "Dorsal digital vein of foot" ;
+    definition: "A superficial vein draining the dorsal aspect of a toe and contributing to the dorsal venous network of the foot." ;
+    rdfs:subClassOf UBERON:0004562 ;
+    ilx.partOf: UBERON:0012356 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:44392,
+        ILX:0797503 ;
+    oboInOwl:hasExactSynonym "Dorsal digital vein of pes" .
+
+ILX:0797521 a owl:Class ;
+    rdfs:label "Lateral sural cutaneous nerve" ;
+    definition: "A sensory branch of the common fibular nerve that supplies the skin of the lateral aspect of the leg proximal to the ankle." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0001324 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:44697,
+        ILX:0797521 ;
+    oboInOwl:hasExactSynonym "Lateral cutaneous nerve of calf",
+        "Nervus cutaneus surae lateralis" .
+
+ILX:0797484 a owl:Class ;
+    rdfs:label "Proper plantar digital nerve" ;
+    definition: "A terminal branch of a plantar digital nerve supplying sensation to the sides of individual toes and adjacent plantar skin." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0035109 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:44741,
+        ILX:0797484 ;
+    oboInOwl:hasExactSynonym "Proper digital nerve of foot" .
+
+ILX:0797488 a owl:Class ;
+    rdfs:label "Fourth common palmar digital nerve" ;
+    definition: "The most medial common palmar digital nerve, arising from the superficial branch of the ulnar nerve and dividing into proper digital nerves for adjacent fingers." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0001494 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:44844,
+        ILX:0797488 ;
+    oboInOwl:hasExactSynonym "Common palmar digital nerve IV" .
+
+ILX:0797481 a owl:Class ;
+    rdfs:label "Anterior cutaneous branch of femoral nerve" ;
+    definition: "A cutaneous branch of the femoral nerve supplying sensation to the anterior and medial thigh." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0001267 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:45250,
+        ILX:0797481 ;
+    oboInOwl:hasExactSynonym "Anterior femoral cutaneous nerve" .
+
+ILX:0797485 a owl:Class ;
+    rdfs:label "Medial crural cutaneous nerve" ;
+    definition: "A sensory branch of the saphenous nerve supplying the skin along the medial aspect of the leg." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0002475 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:45328,
+        ILX:0797485 ;
+    oboInOwl:hasExactSynonym "Medial cutaneous nerve of leg" .
+
+ILX:0795317 a owl:Class ;
+    rdfs:label "biceps femoris tendon" ;
+    definition: "The biceps femoris tendon is the rounded tendon that attaches the muscle bellies of the long and short heads of the biceps femoris muscle to the head of the fibula." ;
+    rdfs:subClassOf UBERON:0000043 ;
+    ilx.partOf: UBERON:0008784 ;
+    ILX:0777130 <https://www.elsevier.com/resources/anatomy/muscular-system/muscles-of-lower-limb/biceps-femoris-tendon/22415> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:45930,
+        ILX:0795317 ;
+    ilxtr:hasIlxPreferredId FMA:45930 .
+
+ILX:0795325 a owl:Class ;
+    rdfs:label "tibialis anterior tendon" ;
+    definition: "The tibialis anterior tendon is the tendon of the tibialis anterior muscle, located on the front of the lower leg. It passes along the ankle and inserts on the medial cuneiform and the first metatarsal. This tendon enables dorsiflexion and inversion of the foot. The tibialis anterior tendon (TAT) begins at the distal one-third of the tibia. It is the most medial tendon of the ankle and foot." ;
+    rdfs:subClassOf UBERON:0000043 ;
+    ilx.partOf: UBERON:0000978 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Tibialis_anterior_muscle> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:47050,
+        ILX:0795325 ;
+    ilxtr:hasIlxPreferredId FMA:47050 .
+
+ILX:0795503 a owl:Class ;
+    rdfs:label "tendon of extensor hallucis longus" ;
+    definition: "The tendon of the muscle extending the big toe and assisting in dorsiflexion of the foot." ;
+    rdfs:subClassOf UBERON:0000043 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:47065,
+        ILX:0795503 ;
+    ilxtr:hasIlxPreferredId FMA:47065 .
+
+ILX:0795324 a owl:Class ;
+    rdfs:label "iliotibial band" ;
+    definition: "Your iliotibial band is a strong, thick band of tissue that runs down the outside of your thigh. It extends all the way from the hip bone to the top of the shinbone." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0008784 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Iliotibial_tract> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:51048,
+        ILX:0795324 ;
+    ilxtr:hasIlxPreferredId FMA:51048 .
+
+ILX:0793723 a owl:Class ;
+    rdfs:label "Auriculotemporal nerve" ;
+    definition: "The auriculotemporal nerve is a branch of the mandibular nerve (CN V3) that runs with the superficial temporal artery and vein, and provides sensory innervation to various regions on the side of the head, including parasympathetic innervation of the parotid gland (Adapted from Wikipedia)" ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:53000,
+        ILX:0793723 ;
+    ilxtr:hasIlxPreferredId FMA:53000 .
+
+ILX:0795291 a owl:Class ;
+    rdfs:label "mandibular notch" ;
+    NIFRID:synonym "sigmoid notch" ;
+    definition: "The mandibular notch, also known as the sigmoid notch, is a groove in the ramus of the mandible. A curved depression between the coronoid and condylar processes of the mandible." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0003129 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Mandibular_notch> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:59481,
+        ILX:0795291 ;
+    ilxtr:hasIlxPreferredId FMA:59481 .
+
+ILX:0795309 a owl:Class ;
+    rdfs:label "axillary fossa" ;
+    definition: "A pyramidal depression located at the junction of the upper limb and thorax, commonly referred to as the armpit." ;
+    rdfs:subClassOf UBERON:0004704 ;
+    ilx.partOf: UBERON:0008785 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/axillary-fossa-1536889648> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:61464,
+        ILX:0795309 ;
+    ilxtr:hasIlxPreferredId FMA:61464 .
+
+ILX:0795306 a owl:Class ;
+    rdfs:label "lateral thoracic region" ;
+    definition: "The area of the thorax on the lateral body wall, containing portions of the serratus anterior and intercostal muscles." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/lateral-region-of-thorax-1536888820> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:61533,
+        ILX:0795306 ;
+    ilxtr:hasIlxPreferredId FMA:61533 .
+
+ILX:0795284 a owl:Class ;
+    rdfs:label "infraclavicular fossa" ;
+    definition: "A small triangular depression located inferior to the clavicle, bounded by the clavicle, deltoid, and pectoralis major muscles." ;
+    rdfs:subClassOf UBERON:0004704 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/infraclavicular-fossa-1536888660> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:61541,
+        ILX:0795284 ;
+    ilxtr:hasIlxPreferredId FMA:61541 .
+
+ILX:0797487 a owl:Class ;
+    rdfs:label "Long thoracic nerve" ;
+    definition: "A nerve arising from C5-C7 roots that innervates the serratus anterior muscle and contributes to scapular stabilization." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001814 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:65275,
+        ILX:0797487 ;
+    oboInOwl:hasExactSynonym "External respiratory nerve of Bell" .
+
+ILX:0797474 a owl:Class ;
+    rdfs:label "Supraclavicular nerve" ;
+    definition: "The supraclavicular nerve is a cutaneous (sensory) nerve of the cervical plexus that arises from the third and fourth cervical (spinal) nerves. It emerges from beneath the posterior border of the sternocleidomastoid muscle, then split into multiple branches. Together, these innervate the skin over the shoulder." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0003725 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:65414,
+        ILX:0797474 ;
+    oboInOwl:hasExactSynonym "cutaneous branches of the cervical plexus" .
+
+ILX:0797526 a owl:Class ;
+    rdfs:label "Dorsal venous network of hand" ;
+    definition: "A superficial venous network on the dorsum of the hand that receives blood from the dorsal digital and metacarpal veins and contributes to the cephalic and basilic veins." ;
+    rdfs:subClassOf UBERON:0001638 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:67977,
+        ILX:0797526 ;
+    oboInOwl:hasExactSynonym "Dorsal venous arch of hand",
+        "Dorsal venous rete of hand" .
+
+ILX:0797525 a owl:Class ;
+    rdfs:label "Dorsal digital veins" ;
+    definition: "Small superficial veins that drain the dorsal surfaces of the fingers or toes and empty into the dorsal venous networks of the hand or foot." ;
+    rdfs:subClassOf UBERON:0004563 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:70917,
+        ILX:0797525 ;
+    oboInOwl:hasExactSynonym "Digital dorsal veins",
+        "Dorsal veins of digits" .
+
+ILX:0795290 a owl:Class ;
+    rdfs:label "nasolabial sulcus" ;
+    definition: "A shallow groove extending from the lateral aspect of the nostril to the corner of the mouth." ;
+    rdfs:subClassOf UBERON:0000093 ;
+    ilx.partOf: UBERON:0001456 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/nasolabial-sulcus-1536888784> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:75018,
+        ILX:0795290 ;
+    ilxtr:hasIlxPreferredId FMA:75018 .
+
+ILX:0795327 a owl:Class ;
+    rdfs:label "mentolabial sulcus" ;
+    definition: "The mentolabial sulcus is the vertical groove or fold that forms between the lower lip and the chin, marking the transition between the lower lip and the mental region of the face." ;
+    rdfs:subClassOf UBERON:0000093 ;
+    ilx.partOf: UBERON:0001456 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/mentolabial-sulcus-1536888420> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:75019,
+        ILX:0795327 ;
+    ilxtr:hasIlxPreferredId FMA:75019 .
+
+ILX:0795338 a owl:Class ;
+    rdfs:label "lateral supraepicondylar ridge" ;
+    definition: "The lateral supracondylar ridge (lateral supraepicondylar ridge or lateral supracondylar crest) is the sharp, prominent margin located along the lateral aspect of the distal end of the body of the humerus. It is the less curved of the two supracondylar ridges of the humerus, the other being the medial supracondylar ridge." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ILX:0777130 <https://www.elsevier.com/resources/anatomy/skeletal-system/appendicular-skeleton/lateral-supracondylar-ridge/18104> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:75078,
+        ILX:0795338 ;
+    ilxtr:hasIlxPreferredId FMA:75078 .
+
+ILX:0797507 a owl:Class ;
+    rdfs:label "Ulnar recurrent artery" ;
+    definition: "An artery arising from the proximal ulnar artery that ascends toward the elbow and participates in the periarticular arterial network." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.partOf: UBERON:0001406 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:77140,
+        ILX:0797507 ;
+    oboInOwl:hasExactSynonym "Anterior ulnar recurrent artery",
+        "Posterior ulnar recurrent artery" .
+
+ILX:0797515 a owl:Class ;
+    rdfs:label "Circumflex scapular vein" ;
+    definition: "A vein accompanying the circumflex scapular artery that drains the scapular region into the subscapular vein." ;
+    rdfs:subClassOf UBERON:0003515 ;
+    ilx.partOf: UBERON:0000985 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:77498,
+        ILX:0797515 ;
+    oboInOwl:hasExactSynonym "Vena circumflexa scapulae" .
+
+ILX:0797476 a owl:Class ;
+    rdfs:label "Intermediate supraclavicular nerve" ;
+    definition: "A cutaneous branch of the cervical plexus that descends across the clavicle to supply the skin over the upper pectoral and deltoid regions." ;
+    rdfs:subClassOf ILX:0797474 ;
+    ilx.partOf: UBERON:0003725 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:78651,
+        ILX:0797476 ;
+    oboInOwl:hasExactSynonym "Middle supraclavicular nerve" .
+
+ILX:0797475 a owl:Class ;
+    rdfs:label "Lateral supraclavicular nerve" ;
+    definition: "A terminal cutaneous branch of the supraclavicular nerves (C3-C4) that supplies sensation to the skin over the acromion, upper deltoid region, and posterior shoulder." ;
+    rdfs:subClassOf ILX:0797474 ;
+    ilx.partOf: UBERON:0003725 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:78654,
+        ILX:0797475 ;
+    oboInOwl:hasExactSynonym "Posterior supraclavicular nerve",
+        "Supra-acromial nerve" .
+
+ILX:0797524 a owl:Class ;
+    rdfs:label "Branch of ansa cervicalis" ;
+    definition: "A motor branch arising from the ansa cervicalis that innervates one or more infrahyoid muscles of the anterior neck." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:82555,
+        ILX:0797524 ;
+    oboInOwl:hasExactSynonym "Muscular branch of ansa cervicalis" .
+
+ILX:0795294 a owl:Class ;
+    rdfs:label "greater supraclavicular fossa" ;
+    definition: "The greater supraclavicular fossa refers to the larger, lateral depression above the clavicle, located lateral to the sternocleidomastoid muscle." ;
+    rdfs:subClassOf UBERON:0004704 ;
+    ilx.partOf: UBERON:0000974 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/greater-supraclavicular-fossa-1536888404> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:84958,
+        ILX:0795294 ;
+    ilxtr:hasIlxPreferredId FMA:84958 .
+
+ILX:0795293 a owl:Class ;
+    rdfs:label "lesser supraclavicular fossa" ;
+    definition: "A small depression located superior to the clavicle and medial to the clavicular head of the sternocleidomastoid muscle." ;
+    rdfs:subClassOf UBERON:0004704 ;
+    ilx.partOf: UBERON:0000974 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/lesser-supraclavicular-fossa-1536888804> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:84981,
+        ILX:0795293 ;
+    ilxtr:hasIlxPreferredId FMA:84981 .
+
+ILX:0795292 a owl:Class ;
+    rdfs:label "anterior hairline" ;
+    definition: "The demarcation at the anterior margin of the scalp where hair growth begins." ;
+    rdfs:subClassOf UBERON:0006800 ;
+    ilx.partOf: UBERON:0000033 ;
+    ILX:0777130 <https://www.semanticscholar.org/topic/Anterior-hairline/3368103> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:285414,
+        ILX:0795292 ;
+    ilxtr:hasIlxPreferredId FMA:285414 .
+
+ILX:0795326 a owl:Class ;
+    rdfs:label "posterior hairline" ;
+    definition: "The demarcation at the posterior margin of the scalp where hair growth begins, near the nape of the neck." ;
+    rdfs:subClassOf UBERON:0006800 ;
+    ilx.partOf: UBERON:0000033 ;
+    ILX:0777130 <https://www.ncbi.nlm.nih.gov/medgen/868215> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:285422,
+        ILX:0795326 ;
+    ilxtr:hasIlxPreferredId FMA:285422 .
+
+ILX:0795283 a owl:Class ;
+    rdfs:label "first intercostal space" ;
+    definition: "The anatomical space between the first and second ribs, containing intercostal muscles, vessels, and nerves." ;
+    rdfs:subClassOf UBERON:0012198 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Intercostal_space> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:321185,
+        ILX:0795283 ;
+    ilxtr:hasIlxPreferredId FMA:321185 .
+
+ILX:0795295 a owl:Class ;
+    rdfs:label "second intercostal space" ;
+    definition: "The anatomical space between the second and third ribs, containing intercostal muscles, vessels, and nerves." ;
+    rdfs:subClassOf UBERON:0012198 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Intercostal_space> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:321188,
+        ILX:0795295 ;
+    ilxtr:hasIlxPreferredId FMA:321188 .
+
+ILX:0795297 a owl:Class ;
+    rdfs:label "third intercostal space" ;
+    definition: "The space between the third and fourth ribs, containing intercostal muscles, vessels, and nerves." ;
+    rdfs:subClassOf UBERON:0012198 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Intercostal_space> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:321191,
+        ILX:0795297 ;
+    ilxtr:hasIlxPreferredId FMA:321191 .
+
+ILX:0795298 a owl:Class ;
+    rdfs:label "fourth intercostal space" ;
+    definition: "The space between the fourth and fifth ribs, containing intercostal muscles, vessels, and nerves." ;
+    rdfs:subClassOf UBERON:0012198 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Intercostal_space> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:321195,
+        ILX:0795298 ;
+    ilxtr:hasIlxPreferredId FMA:321195 .
+
+ILX:0795299 a owl:Class ;
+    rdfs:label "fifth intercostal space" ;
+    definition: "The space between the fifth and sixth ribs, containing intercostal muscles, vessels, and nerves." ;
+    rdfs:subClassOf UBERON:0012198 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Intercostal_space> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:321198,
+        ILX:0795299 ;
+    ilxtr:hasIlxPreferredId FMA:321198 .
+
+ILX:0795307 a owl:Class ;
+    rdfs:label "sixth intercostal space" ;
+    definition: "The space between the sixth and seventh ribs, containing intercostal muscles, vessels, and nerves." ;
+    rdfs:subClassOf UBERON:0012198 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Intercostal_space> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:321201,
+        ILX:0795307 ;
+    ilxtr:hasIlxPreferredId FMA:321201 .
+
+ILX:0795321 a owl:Class ;
+    rdfs:label "seventh intercostal space" ;
+    definition: "The anatomical space between the seventh and eighth ribs, containing intercostal muscles, vessels, and nerves." ;
+    rdfs:subClassOf UBERON:0012198 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Intercostal_space> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:321204,
+        ILX:0795321 ;
+    ilxtr:hasIlxPreferredId FMA:321204 .
+
+ILX:0795287 a owl:Class ;
+    rdfs:label "anterior axillary fold" ;
+    definition: "The anterior boundary of the axilla, formed by the lower border of the pectoralis major muscle." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0001443 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/anterior-axillary-fold-1536887752> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:322184,
+        ILX:0795287 ;
+    ilxtr:hasIlxPreferredId FMA:322184 .
+
+ILX:0795311 a owl:Class ;
+    rdfs:label "posterior axillary fold" ;
+    NIFRID:synonym "posterior armpit fold" ;
+    definition: "The posterior axillary fold, also known as the posterior armpit fold, refers to the inferior border of the posterior wall of axilla." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0008785 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/posterior-axillary-fold-1536887776> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:322185,
+        ILX:0795311 ;
+    ilxtr:hasIlxPreferredId FMA:322185 .
+
+ILX:0797523 a owl:Class ;
+    rdfs:label "Medial supraclavicular nerve" ;
+    definition: "A cutaneous branch of the cervical plexus that supplies sensation to the skin over the sternoclavicular region and upper chest near the midline." ;
+    rdfs:subClassOf ILX:0797474 ;
+    ilx.partOf: UBERON:0003725 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:0329233,
+        ILX:0797523 ;
+    oboInOwl:hasExactSynonym "Anterior supraclavicular nerve",
+        "Medial branch of supraclavicular nerve" .
+
+ILX:0741680 a owl:Class ;
+    rdfs:label "median sacral crest" ;
+    ilx.partOf: UBERON:0005473 ;
+    ILX:0383241 "True" ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/median-sacral-crest-1537018772> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId <https://taviewer.openanatomy.org/?id=A02.2.05.014>,
+        ILX:0741680 ;
+    ilxtr:hasExternalId <https://taviewer.openanatomy.org/?id=A02.2.05.014> ;
+    ilxtr:hasIlxId ILX:0741680 ;
+    ilxtr:hasIlxPreferredId ILX:0741680 .
+
+ILX:0741726 a owl:Class ;
+    rdfs:label "frontal notch" ;
+    NIFRID:synonym "foramen frontale",
+        "frontal foramen",
+        "frontal notch/foramen",
+        "incisura frontalis/foramen frontale" ;
+    ilx.partOf: UBERON:0000033 ;
+    ILX:0383241 "True" ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/frontal-notch-1536895512> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId <https://taviewer.openanatomy.org/?id=A02.1.03.010>,
+        ILX:0741726 ;
+    ilxtr:hasExternalId <https://taviewer.openanatomy.org/?id=A02.1.03.010> ;
+    ilxtr:hasIlxId ILX:0741726 ;
+    ilxtr:hasIlxPreferredId ILX:0741726 .
+
+ILX:0794900 a owl:Class ;
+    rdfs:label "supraclavicular nerve" ;
+    definition: "Cutaneous nerve of the neck originating from nerve point of the neck and providing sensory innervation to skin over the clavicle, shoulder and chest. REVA annotation term." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.includeForSPARC: ILX:0794901,
+        ILX:0794902 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794900 ;
+    ilxtr:hasIlxId ILX:0794900 ;
+    ilxtr:hasIlxPreferredId ILX:0794900 .
+
+ILX:0794901 a owl:Class ;
+    rdfs:label "right supraclavicular nerve" ;
+    ilxtr:hasExistingId ILX:0794901 ;
+    ilxtr:hasIlxId ILX:0794901 ;
+    ilxtr:hasIlxPreferredId ILX:0794901 .
+
+ILX:0794902 a owl:Class ;
+    rdfs:label "left supraclavicular nerve" ;
+    ilxtr:hasExistingId ILX:0794902 ;
+    ilxtr:hasIlxId ILX:0794902 ;
+    ilxtr:hasIlxPreferredId ILX:0794902 .
+
+ILX:0794951 a owl:Class ;
+    rdfs:label "lateral cutaneous nerve of the forearm" ;
+    NIFRID:synonym "lateral antebrachial cutaneous nerve" ;
+    definition: "The lateral cutaneous nerve of forearm (or lateral antebrachial cutaneous nerve) is a sensory nerve representing the continuation of the musculocutaneous nerve beyond the lateral edge of the tendon of the biceps brachii muscle. The lateral antebrachial cutaneous nerve provides sensory innervation to the skin of the lateral forearm. It pierces the deep fascia of forearm to enter the subcutaneous compartment before splitting into a volar branch and a dorsal branch. It is derived from C5, C6 ventral rami." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0002386 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794951 ;
+    ilxtr:hasIlxId ILX:0794951 ;
+    ilxtr:hasIlxPreferredId ILX:0794951 .
+
+ILX:0794952 a owl:Class ;
+    rdfs:label "medial cutaneous nerve of the arm" ;
+    NIFRID:synonym "lesser internal cutaneous nerve",
+        "medial brachial cutaneous nerve" ;
+    definition: "The medial cutaneous nerve of the arm (also known as the medial brachial cutaneous nerve and the lesser internal cutaneous nerve) is a sensory branch of the medial cord of the brachial plexus derived from spinal nerves C8-T1. It provides sensory innervation to the lower portion of the medial arm. It descends accompanied by the basilic vein." ;
+    rdfs:subClassOf UBERON:0003433 ;
+    ilx.partOf: UBERON:0001814 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794952 ;
+    ilxtr:hasIlxId ILX:0794952 ;
+    ilxtr:hasIlxPreferredId ILX:0794952 .
+
+ILX:0794953 a owl:Class ;
+    rdfs:label "medial cutaneous nerve of the forearm" ;
+    NIFRID:synonym "medial antebrachial cutaneous nerve" ;
+    definition: "The medial cutaneous nerve of the forearm (also known as the medial antebrachial cutaneous nerve) is a sensory branch of the medial cord of the brachial plexus derived from the ventral rami of spinal nerves C8-T1. It provides sensory innervation to the skin of the medial forearm." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0001814,
+        UBERON:0003433 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794953 ;
+    ilxtr:hasIlxId ILX:0794953 ;
+    ilxtr:hasIlxPreferredId ILX:0794953 .
+
+ILX:0794966 a owl:Class ;
+    rdfs:label "suprascapular nerve" ;
+    definition: "A branch of the upper trunk of the brachial plexus (C5-C6) supplying the supraspinatus and infraspinatus muscles and contributing articular branches to the shoulder." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001814 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794966 ;
+    ilxtr:hasIlxId ILX:0794966 ;
+    ilxtr:hasIlxPreferredId ILX:0794966 ;
+    oboInOwl:hasExactSynonym "Nervus suprascapularis" .
+
+ILX:0794967 a owl:Class ;
+    rdfs:label "posterior interosseous nerve" ;
+    definition: "The continuation of the deep branch of the radial nerve after traversing the supinator muscle, supplying most extensor muscles of the forearm." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: ILX:0794977 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794967 ;
+    ilxtr:hasIlxId ILX:0794967 ;
+    ilxtr:hasIlxPreferredId ILX:0794967 ;
+    oboInOwl:hasExactSynonym "Posterior antebrachial interosseous nerve" .
+
+ILX:0794975 a owl:Class ;
+    rdfs:label "medial pectoral nerve" ;
+    NIFRID:synonym "anterior thoracic nerve",
+        "medial anterior thoracic nerve" ;
+    definition: "The medial pectoral nerve (also known as the medial anterior thoracic nerve) is (typically) a branch of the medial cord of the brachial plexus and is derived from ventral rami  C8-T1. It provides motor innervation to the pectoralis minor muscle, and part of the pectoralis major muscle." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001814 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794975 ;
+    ilxtr:hasIlxId ILX:0794975 ;
+    ilxtr:hasIlxPreferredId ILX:0794975 .
+
+ILX:0794977 a owl:Class ;
+    rdfs:label "deep branch of radial nerve" ;
+    NIFRID:synonym "Posterior interosseous nerve" ;
+    definition: "The radial nerve divides into a superficial (sensory) and deep (motor) branch at the cubital fossa. The deep branch of the radial nerve winds to the back of the forearm around the lateral side of the radius between the two planes of fibers of the supinator, and is prolonged downward between the superficial and deep layers of muscles, to the middle of the forearm. The deep branch and its continuation, called the posterior interosseous nerve, provides motor function to the muscles in the posterior compartment of the forearm, which are mostly the extensor muscles of the wrist and hand." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001492 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794977 ;
+    ilxtr:hasIlxId ILX:0794977 ;
+    ilxtr:hasIlxPreferredId ILX:0794977 .
+
+ILX:0794979 a owl:Class ;
+    rdfs:label "dorsal scapular nerve" ;
+    definition: "The dorsal scapular nerve is a branch of the brachial plexus, usually derived from the ventral ramus of cervical nerve C5. It provides motor innervation to the rhomboid major muscle, rhomboid minor muscle, and sometimes the levator scapulae muscle." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001814 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794979 ;
+    ilxtr:hasIlxId ILX:0794979 ;
+    ilxtr:hasIlxPreferredId ILX:0794979 .
+
+ILX:0794996 a owl:Class ;
+    rdfs:label "Ilioinguinal nerve" ;
+    NIFRID:synonym """Ilio-inguinal nerve\r
+Nervus ilio-inguinalis""" ;
+    definition: "The ilioinguinal nerve is a branch of the first lumbar nerve (L1). The ilioinguinal nerve then perforates the transversus abdominis near the anterior part of the iliac crest, and communicates with the iliohypogastric nerve between the transversus and the internal oblique muscle." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0034987 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794996 ;
+    ilxtr:hasIlxId ILX:0794996 ;
+    ilxtr:hasIlxPreferredId ILX:0794996 .
+
+ILX:0794999 a owl:Class ;
+    rdfs:label "Lateral cutaneous nerve of thigh" ;
+    NIFRID:synonym "Lateral femoral cutaneous nerve" ;
+    definition: "The lateral cutaneous nerve of the thigh (also called the lateral femoral cutaneous nerve) is a cutaneous nerve of the thigh. It originates from the second and third lumbar nerves which are derived from the lumbar plexus. It passes under the inguinal ligament to reach the thigh. It supplies sensation to the skin on the lateral part of the thigh by an anterior branch and a posterior branch. It is derived from the ventral rami of L2 and L3." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0034987 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0794999 ;
+    ilxtr:hasIlxId ILX:0794999 ;
+    ilxtr:hasIlxPreferredId ILX:0794999 .
+
+ILX:0795002 a owl:Class ;
+    rdfs:label "iliohypogastric nerve" ;
+    NIFRID:synonym "Iliopubic nerve" ;
+    definition: "The iliohypogastric nerve is a nerve that originates from the lumbar plexus that supplies sensation to skin over the lateral gluteal and hypogastric regions and motor to the internal oblique muscles and transverse abdominal muscles. It is derived from the ventral ramus of L1. It is a branch of the lumbar plexus that provides sensory innervation to the skin of the gluteal region and lower abdomen, as well as motor control to key muscles of the lower abdominal wall" ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0034987 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795002 ;
+    ilxtr:hasIlxId ILX:0795002 ;
+    ilxtr:hasIlxPreferredId ILX:0795002 .
+
+ILX:0795005 a owl:Class ;
+    rdfs:label "Posterior cutaneous nerve of arm" ;
+    NIFRID:synonym "Posterior brachial cutaneous nerve" ;
+    definition: "The posterior cutaneous nerve of arm (also known as posterior brachial cutaneous nerve) is a branch of the radial nerve that provides sensory innervation for much of the skin on the back of the arm. It is derived from the ventral rami of C5, C6, C7, and C8." ;
+    rdfs:subClassOf UBERON:0003433 ;
+    ilx.partOf: UBERON:0001492 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795005 ;
+    ilxtr:hasIlxId ILX:0795005 ;
+    ilxtr:hasIlxPreferredId ILX:0795005 .
+
+ILX:0795007 a owl:Class ;
+    rdfs:label "superior lateral cutaneous nerve of arm" ;
+    NIFRID:synonym "Superior lateral brachial cutaneous nerve",
+        "Upper lateral cutaneous nerve of arm" ;
+    definition: "The superior lateral cutaneous nerve of arm (or superior lateral brachial cutaneous nerve) is the continuation of the posterior branch of the axillary nerve, after it pierces the deep fascia. It is derived from the ventral rami of C5 and C6." ;
+    rdfs:subClassOf ILX:0797544 ;
+    ilx.partOf: UBERON:0001493 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795007 ;
+    ilxtr:hasIlxId ILX:0795007 ;
+    ilxtr:hasIlxPreferredId ILX:0795007 .
+
+ILX:0795018 a owl:Class ;
+    rdfs:label "proper palmar digital branches of median nerve" ;
+    NIFRID:synonym "Proper Palmar Digital Branches of Median Nerve",
+        "proper palmar digital nerve of median nerve" ;
+    definition: "Proper palmar digital nerves arise from the common digital branches of the median nerve and innervate the lateral 3 digits and the lateral side of the ring (4th) digit." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0001148 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795018 ;
+    ilxtr:hasIlxId ILX:0795018 ;
+    ilxtr:hasIlxPreferredId ILX:0795018 .
+
+ILX:0795021 a owl:Class ;
+    rdfs:label "Inferior lateral cutaneous nerve of arm" ;
+    NIFRID:synonym "Inferior lateral brachial cutaneous nerve",
+        "Lower lateral cutaneous nerve of arm" ;
+    definition: "The inferior lateral cutaneous nerve of arm is a nerve found in humans and other animals. It is also called the inferior lateral brachial cutaneous nerve. It is a branch of the radial nerve that provides sensory and vasomotor innervation to the lower, lateral aspect of the arm.  It is derived from the ventral rami of C5 and C6." ;
+    rdfs:subClassOf ILX:0797544 ;
+    ilx.partOf: UBERON:0001492 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795021 ;
+    ilxtr:hasIlxId ILX:0795021 ;
+    ilxtr:hasIlxPreferredId ILX:0795021 .
+
+ILX:0795286 a owl:Class ;
+    rdfs:label "clavipectoral triangle" ;
+    definition: "A triangular region bounded by the clavicle superiorly, the pectoralis major medially, and the deltoid laterally." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0008785 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Clavipectoral_triangle> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795286 ;
+    ilxtr:hasIlxId ILX:0795286 ;
+    ilxtr:hasIlxPreferredId ILX:0795286 .
+
+ILX:0795304 a owl:Class ;
+    rdfs:label "rectus femoris muscle" ;
+    definition: "The rectus femoris is a muscle in the anterior compartment of the thigh. It forms part of the quadriceps femoris muscle complex, and is the only muscle in this group to cross both the hip joint and the knee joints." ;
+    rdfs:subClassOf UBERON:0001630 ;
+    ilx.partOf: UBERON:0008784 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Rectus_femoris_muscle> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795304 ;
+    ilxtr:hasIlxId ILX:0795304 ;
+    ilxtr:hasIlxPreferredId ILX:0795304 .
+
+ILX:0795318 a owl:Class ;
+    rdfs:label "fourth metacarpal bone" ;
+    definition: "The long bone in the hand that connects the fourth finger to the carpal bones of the wrist. The fourth metacarpal bone is shorter and smaller than the third. The base is small and quadrilateral." ;
+    rdfs:subClassOf UBERON:0001474 ;
+    ilx.partOf: UBERON:0001442 ;
+    ILX:0777130 <https://www.imaios.com/en/e-anatomy/anatomical-structure/metacarpal-iv-121123560> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795318 ;
+    ilxtr:hasIlxId ILX:0795318 ;
+    ilxtr:hasIlxPreferredId ILX:0795318 .
+
+ILX:0795328 a owl:Class ;
+    rdfs:label "hyoid tubercle" ;
+    definition: "A small prominence on the posterior end of the greater horn of hyoid bone, serving as an attachment point for muscles and ligaments. Each tubercle of hyoid bone provides an attachment site for a lateral thyrohyoid ligament." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0000974 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Hyoid_bone> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795328 ;
+    ilxtr:hasIlxId ILX:0795328 ;
+    ilxtr:hasIlxPreferredId ILX:0795328 .
+
+ILX:0795329 a owl:Class ;
+    rdfs:label "inguinal crease" ;
+    definition: "The inguinal crease refers to the skin fold or line that forms where the lower abdomen meets the thigh, often most noticeable when the hip is flexed. It marks the boundary between the abdominal and thigh regions." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0000916 ;
+    ILX:0777130 <https://www.sciencedirect.com/topics/medicine-and-dentistry/inguinal-region> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795329 ;
+    ilxtr:hasIlxId ILX:0795329 ;
+    ilxtr:hasIlxPreferredId ILX:0795329 .
+
+ILX:0795330 a owl:Class ;
+    rdfs:label "popliteal crease" ;
+    definition: "This is the visible skin fold or line at the back of the knee, formed when the knee is flexed. It is a superficial feature and serves as a landmark for the location of the popliteal fossa beneath." ;
+    rdfs:subClassOf UBERON:0001062 ;
+    ilx.partOf: UBERON:0000978 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Popliteal_fossa> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795330 ;
+    ilxtr:hasIlxId ILX:0795330 ;
+    ilxtr:hasIlxPreferredId ILX:0795330 .
+
+ILX:0795331 a owl:Class ;
+    rdfs:label "suprasternal fossa" ;
+    NIFRID:synonym "Fossa jugularis",
+        "Interclavicular fossa",
+        "Jugular notch" ;
+    definition: "This is the depression on the skin surface of the neck between the sternal heads of the sternocleidomastoid muscles. This area is situated just above the manubrium of the sternum and is a visible landmark in the neck." ;
+    rdfs:subClassOf UBERON:0004704 ;
+    ilx.partOf: UBERON:0000974 ;
+    ILX:0777130 <https://en.wikipedia.org/wiki/Suprasternal_notch> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795331 ;
+    ilxtr:hasIlxId ILX:0795331 ;
+    ilxtr:hasIlxPreferredId ILX:0795331 .
+
+ILX:0795332 a owl:Class ;
+    rdfs:label "cubital crease" ;
+    definition: "The anterior skin fold of the elbow, marking the transition between the upper arm and forearm, overlying the cubital fossa." ;
+    rdfs:subClassOf UBERON:0019243 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795332 ;
+    ilxtr:hasIlxId ILX:0795332 ;
+    ilxtr:hasIlxPreferredId ILX:0795332 .
+
+ILX:0795333 a owl:Class ;
+    rdfs:label "dorsal wrist crease" ;
+    definition: "The dorsal wrist crease is the skin fold that forms on the back (dorsal) side of the wrist, often visible when the hand is extended. It marks the junction between the forearm and the hand and is located near the proximal ends of the metacarpal bones." ;
+    rdfs:subClassOf UBERON:0019243 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795333 ;
+    ilxtr:hasIlxId ILX:0795333 ;
+    ilxtr:hasIlxPreferredId ILX:0795333 .
+
+ILX:0795334 a owl:Class ;
+    rdfs:label "palmar wrist crease" ;
+    definition: "The palmar wrist crease is the transverse skin fold that appears on the palm side of the wrist when the hand is flexed. It marks the boundary between the forearm and the palm and is located approximately at the level of the distal radius and ulna." ;
+    rdfs:subClassOf UBERON:0019243 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795334 ;
+    ilxtr:hasIlxId ILX:0795334 ;
+    ilxtr:hasIlxPreferredId ILX:0795334 .
+
+ILX:0795335 a owl:Class ;
+    rdfs:label "abductor pollicis longus tendon" ;
+    definition: "The tendon of the muscle that abducts and extends the thumb, located in the posterior compartment of the forearm." ;
+    rdfs:subClassOf UBERON:0000043 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795335 ;
+    ilxtr:hasIlxId ILX:0795335 ;
+    ilxtr:hasIlxPreferredId ILX:0795335 .
+
+ILX:0795336 a owl:Class ;
+    rdfs:label "extensor pollicis brevis tendon" ;
+    definition: "The tendon of the muscle extending the proximal phalanx of the thumb, positioned laterally in the forearm." ;
+    rdfs:subClassOf UBERON:0000043 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795336 ;
+    ilxtr:hasIlxId ILX:0795336 ;
+    ilxtr:hasIlxPreferredId ILX:0795336 .
+
+ILX:0795337 a owl:Class ;
+    rdfs:label "extensor pollicis longus tendon" ;
+    definition: "The tendon of the muscle responsible for extending the thumb at the interphalangeal joint." ;
+    rdfs:subClassOf UBERON:0000043 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0795337 ;
+    ilxtr:hasIlxId ILX:0795337 ;
+    ilxtr:hasIlxPreferredId ILX:0795337 .
+
+ILX:0797391 a owl:Class ;
+    rdfs:label "superficial branch of radial nerve" ;
+    definition: "The superficial branch of the radial nerve passes along the front of the radial side of the forearm to the commencement of its lower third. It is a sensory nerve." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001492 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797391 ;
+    ilxtr:hasIlxId ILX:0797391 ;
+    ilxtr:hasIlxPreferredId ILX:0797391 .
+
+ILX:0797451 a owl:Class ;
+    rdfs:label "subcostal nerve" ;
+    definition: "The anterior division (rami anteriores; ventral divisions) of the twelfth thoracic spinal nerve. It emerges below the twelfth" ;
+    rdfs:subClassOf UBERON:0003726 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797451 ;
+    ilxtr:hasIlxId ILX:0797451 ;
+    ilxtr:hasIlxPreferredId ILX:0797451 .
+
+ILX:0797461 a owl:Class ;
+    rdfs:label "dorsal digital nerve of radial nerve" ;
+    definition: "A sensory branch of the superficial radial nerve supplying the dorsal aspect of the lateral digits of the hand." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0001492 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797461 ;
+    ilxtr:hasIlxId ILX:0797461 ;
+    ilxtr:hasIlxPreferredId ILX:0797461 ;
+    oboInOwl:hasExactSynonym "Dorsal digital branch of radial nerve" .
+
+ILX:0797479 a owl:Class ;
+    rdfs:label "Zygomatic branch of the facial nerve" ;
+    definition: "A branch of the facial nerve that innervates muscles of facial expression in the zygomatic and orbital regions." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001647 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797479 ;
+    ilxtr:hasIlxId ILX:0797479 ;
+    ilxtr:hasIlxPreferredId ILX:0797479 ;
+    oboInOwl:hasExactSynonym "Malar branch of facial nerve" .
+
+ILX:0797482 a owl:Class ;
+    rdfs:label "Medial dorsal cutaneous nerve of foot" ;
+    definition: "A terminal branch of the superficial fibular nerve supplying the medial dorsum of the foot and adjacent toes." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0035526 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797482 ;
+    ilxtr:hasIlxId ILX:0797482 ;
+    ilxtr:hasIlxPreferredId ILX:0797482 ;
+    oboInOwl:hasExactSynonym "Medial dorsal cutaneous nerve" .
+
+ILX:0797483 a owl:Class ;
+    rdfs:label "Dorsal digital nerve of foot" ;
+    definition: "A digital sensory nerve supplying the dorsal surface of one or more toes. These nerves arise primarily from the superficial fibular, deep fibular, or sural nerves." ;
+    rdfs:subClassOf UBERON:0003435 ;
+    ilx.partOf: UBERON:0001466 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797483 ;
+    ilxtr:hasIlxId ILX:0797483 ;
+    ilxtr:hasIlxPreferredId ILX:0797483 ;
+    oboInOwl:hasExactSynonym "Dorsal digital nerve of pes" .
+
+ILX:0797486 a owl:Class ;
+    rdfs:label "Muscular branch of the femoral nerve" ;
+    definition: "A motor branch of the femoral nerve supplying muscles of the anterior compartment of the thigh, including the quadriceps femoris." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001267 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797486 ;
+    ilxtr:hasIlxId ILX:0797486 ;
+    ilxtr:hasIlxPreferredId ILX:0797486 ;
+    oboInOwl:hasExactSynonym "Motor branch of femoral nerve" .
+
+ILX:0797489 a owl:Class ;
+    rdfs:label "Proper palmar digital nerve" ;
+    definition: "A terminal digital nerve supplying sensation to the sides of the fingers and adjacent palmar skin." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0003447 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797489 ;
+    ilxtr:hasIlxId ILX:0797489 ;
+    ilxtr:hasIlxPreferredId ILX:0797489 ;
+    oboInOwl:hasExactSynonym "Proper digital nerve of hand" .
+
+ILX:0797490 a owl:Class ;
+    rdfs:label "Dorsal digital nerve of ulnar nerve" ;
+    definition: "A sensory branch derived from the dorsal cutaneous branch of the ulnar nerve supplying the dorsal medial digits." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0001494 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797490 ;
+    ilxtr:hasIlxId ILX:0797490 ;
+    ilxtr:hasIlxPreferredId ILX:0797490 ;
+    oboInOwl:hasExactSynonym "Dorsal digital branch of ulnar nerve" .
+
+ILX:0797491 a owl:Class ;
+    rdfs:label "Dorsal cutaneous branch of the ulnar nerve" ;
+    definition: "A sensory branch of the ulnar nerve supplying the skin of the medial dorsum of the hand and giving rise to dorsal digital nerves." ;
+    rdfs:subClassOf UBERON:0001027 ;
+    ilx.partOf: UBERON:0001494 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797491 ;
+    ilxtr:hasIlxId ILX:0797491 ;
+    ilxtr:hasIlxPreferredId ILX:0797491 ;
+    oboInOwl:hasExactSynonym "Dorsal branch of ulnar nerve" .
+
+ILX:0797492 a owl:Class ;
+    rdfs:label "Motor branches of the suprascapular nerve" ;
+    definition: "Terminal motor branches of the suprascapular nerve supplying the supraspinatus and infraspinatus muscles." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: ILX:0794966 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797492 ;
+    ilxtr:hasIlxId ILX:0797492 ;
+    ilxtr:hasIlxPreferredId ILX:0797492 ;
+    oboInOwl:hasExactSynonym "Muscular branches of suprascapular nerve" .
+
+ILX:0797493 a owl:Class ;
+    rdfs:label "Cervical branch of the facial nerve" ;
+    definition: "The lowest branch of the facial nerve that innervates the platysma muscle in the neck." ;
+    rdfs:subClassOf UBERON:0001021 ;
+    ilx.partOf: UBERON:0001647 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797493 ;
+    ilxtr:hasIlxId ILX:0797493 ;
+    ilxtr:hasIlxPreferredId ILX:0797493 ;
+    oboInOwl:hasExactSynonym "Cervical ramus of facial nerve" .
+
+ILX:0797495 a owl:Class ;
+    rdfs:label "Radial recurrent vein" ;
+    definition: "A vein accompanying the radial recurrent artery that drains the lateral elbow region into the radial venous system." ;
+    rdfs:subClassOf UBERON:0001638 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797495 ;
+    ilxtr:hasIlxId ILX:0797495 ;
+    ilxtr:hasIlxPreferredId ILX:0797495 ;
+    oboInOwl:hasExactSynonym "Vena recurrens radialis" .
+
+ILX:0797499 a owl:Class ;
+    rdfs:label "Ascending cervical vein" ;
+    definition: "A vein accompanying the ascending cervical artery that drains deep cervical structures into the vertebral or inferior thyroid venous systems." ;
+    rdfs:subClassOf UBERON:0003502 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797499 ;
+    ilxtr:hasIlxId ILX:0797499 ;
+    ilxtr:hasIlxPreferredId ILX:0797499 ;
+    oboInOwl:hasExactSynonym "Vena cervicalis ascendens" .
+
+ILX:0797500 a owl:Class ;
+    rdfs:label "Infraorbital vein" ;
+    definition: "A vein draining the lower eyelid, upper lip, and adjacent facial structures into the pterygoid venous plexus or facial vein." ;
+    rdfs:subClassOf UBERON:0003496 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797500 ;
+    ilxtr:hasIlxId ILX:0797500 ;
+    ilxtr:hasIlxPreferredId ILX:0797500 ;
+    oboInOwl:hasExactSynonym "Vena infraorbitalis" .
+
+ILX:0797508 a owl:Class ;
+    rdfs:label "Ulnar recurrent vein" ;
+    definition: "A vein accompanying the ulnar recurrent arteries that drains blood from the elbow region into the ulnar venous system." ;
+    rdfs:subClassOf UBERON:0004259 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797508 ;
+    ilxtr:hasIlxId ILX:0797508 ;
+    ilxtr:hasIlxPreferredId ILX:0797508 ;
+    oboInOwl:hasExactSynonym "Vena recurrens ulnaris" .
+
+ILX:0797512 a owl:Class ;
+    rdfs:label "Superior ulnar collateral vein" ;
+    definition: "A vein accompanying the superior ulnar collateral artery that drains into the brachial venous system." ;
+    rdfs:subClassOf UBERON:0004260 ;
+    ilx.partOf: UBERON:0001413 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797512 ;
+    ilxtr:hasIlxId ILX:0797512 ;
+    ilxtr:hasIlxPreferredId ILX:0797512 ;
+    oboInOwl:hasExactSynonym "Vena collateralis ulnaris superior" .
+
+ILX:0797513 a owl:Class ;
+    rdfs:label "Inferior ulnar collateral vein" ;
+    definition: "A vein accompanying the inferior ulnar collateral artery that drains the medial elbow region." ;
+    rdfs:subClassOf UBERON:0004260 ;
+    ilx.partOf: UBERON:0001413 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797513 ;
+    ilxtr:hasIlxId ILX:0797513 ;
+    ilxtr:hasIlxPreferredId ILX:0797513 ;
+    oboInOwl:hasExactSynonym "Vena collateralis ulnaris inferior" .
+
+ILX:0797528 a owl:Class ;
+    rdfs:label "Radial collateral vein" ;
+    definition: "A vein accompanying the radial collateral artery that drains the lateral arm and elbow region into the deep venous system of the arm." ;
+    rdfs:subClassOf UBERON:0001638 ;
+    ilx.partOf: UBERON:0001399 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797528 ;
+    ilxtr:hasIlxId ILX:0797528 ;
+    ilxtr:hasIlxPreferredId ILX:0797528 ;
+    oboInOwl:hasExactSynonym "Vena collateralis radialis" .
+
+ILX:0797529 a owl:Class ;
+    rdfs:label "Subclavian vein" ;
+    definition: "A large paired vein that continues from the axillary vein and joins the internal jugular vein to form the brachiocephalic vein, returning blood from the upper limb to the heart." ;
+    rdfs:subClassOf UBERON:0001638 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797529 ;
+    ilxtr:hasIlxId ILX:0797529 ;
+    ilxtr:hasIlxPreferredId ILX:0797529 ;
+    oboInOwl:hasExactSynonym "Vena subclavia" .
+
+ILX:0797544 a owl:Class ;
+    rdfs:label "Lateral brachial cutaneous nerve" ;
+    NIFRID:synonym "Lateral cutaneous nerve of the arm",
+        "Nervus cutaneous brachii externus",
+        "Nervus cutaneous brachii lateralis" ;
+    definition: "The lateral brachial cutaneous nerve is a collective anatomical term for two distinct sensory nerves—the superior and inferior lateral brachial cutaneous nerves—that provide somatic sensation to the skin on the lateral (outer) aspect of the upper arm." ;
+    rdfs:subClassOf UBERON:0004217 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797544 ;
+    ilxtr:hasIlxId ILX:0797544 ;
+    ilxtr:hasIlxPreferredId ILX:0797544 .
+
+UBERON:0000033 a owl:Class ;
+    rdfs:label "Head" ;
+    ilxtr:hasExistingId BIRNLEX:1230,
+        FMA:7154,
+        ILX:0104909,
+        UBERON:0000033 ;
+    ilxtr:hasExternalId BIRNLEX:1230,
+        FMA:7154,
+        UBERON:0000033 ;
+    ilxtr:hasIlxId ILX:0104909 ;
+    ilxtr:hasIlxPreferredId UBERON:0000033 .
+
+UBERON:0000043 a owl:Class ;
+    rdfs:label "tendon" ;
+    ilxtr:hasExistingId FMA:9721,
+        ILX:0733534,
+        UBERON:0000043 ;
+    ilxtr:hasExternalId FMA:9721,
+        UBERON:0000043 ;
+    ilxtr:hasIlxId ILX:0733534 ;
+    ilxtr:hasIlxPreferredId UBERON:0000043 .
+
+UBERON:0000093 a owl:Class ;
+    rdfs:label "Sulcus" ;
+    ilxtr:hasExistingId ILX:0111245,
+        NLX:144078,
+        UBERON:0000093 ;
+    ilxtr:hasExternalId NLX:144078,
+        UBERON:0000093 ;
+    ilxtr:hasIlxId ILX:0111245 ;
+    ilxtr:hasIlxPreferredId UBERON:0000093 .
+
+UBERON:0000916 a owl:Class ;
+    rdfs:label "abdomen" ;
+    ilxtr:hasExistingId FMA:9577,
+        ILX:0725977,
+        UBERON:0000916 ;
+    ilxtr:hasExternalId FMA:9577,
+        UBERON:0000916 ;
+    ilxtr:hasIlxId ILX:0725977 ;
+    ilxtr:hasIlxPreferredId UBERON:0000916 .
+
+UBERON:0000974 a owl:Class ;
+    rdfs:label "neck" ;
+    ilxtr:hasExistingId FMA:7155,
+        ILX:0733967,
+        UBERON:0000974 ;
+    ilxtr:hasExternalId FMA:7155,
+        UBERON:0000974 ;
+    ilxtr:hasIlxId ILX:0733967 ;
+    ilxtr:hasIlxPreferredId UBERON:0000974 .
+
+UBERON:0000978 a owl:Class ;
+    rdfs:label "leg" ;
+    ilxtr:hasExistingId ILX:0729404,
+        UBERON:0000978 ;
+    ilxtr:hasExternalId UBERON:0000978 ;
+    ilxtr:hasIlxId ILX:0729404 ;
+    ilxtr:hasIlxPreferredId UBERON:0000978 .
+
+UBERON:0000985 a owl:Class ;
+    rdfs:label "axillary vein" ;
+    ilxtr:hasExistingId FMA:13329,
+        ILX:0730465,
+        UBERON:0000985 ;
+    ilxtr:hasExternalId FMA:13329,
+        UBERON:0000985 ;
+    ilxtr:hasIlxId ILX:0730465 ;
+    ilxtr:hasIlxPreferredId UBERON:0000985 .
+
+UBERON:0001021 a owl:Class ;
+    rdfs:label "nerve" ;
+    ilxtr:hasExistingId FMA:65132,
+        FMA:65239,
+        ILX:0730082,
+        UBERON:0001021 ;
+    ilxtr:hasExternalId FMA:65132,
+        FMA:65239,
+        UBERON:0001021 ;
+    ilxtr:hasIlxId ILX:0730082 ;
+    ilxtr:hasIlxPreferredId UBERON:0001021 .
+
+UBERON:0001027 a owl:Class ;
+    rdfs:label "sensory nerve" ;
+    ilxtr:hasExistingId FMA:5868,
+        ILX:0734542,
+        UBERON:0001027 ;
+    ilxtr:hasExternalId FMA:5868,
+        UBERON:0001027 ;
+    ilxtr:hasIlxId ILX:0734542 ;
+    ilxtr:hasIlxPreferredId UBERON:0001027 .
+
+UBERON:0001062 a owl:Class ;
+    rdfs:label "anatomical entity" ;
+    ilxtr:hasExistingId BIRNLEX:6,
+        FMA:62955,
+        ILX:0100612,
+        UBERON:0001062 ;
+    ilxtr:hasExternalId BIRNLEX:6,
+        FMA:62955,
+        UBERON:0001062 ;
+    ilxtr:hasIlxId ILX:0100612 ;
+    ilxtr:hasIlxPreferredId UBERON:0001062 .
+
+UBERON:0001148 a owl:Class ;
+    rdfs:label "median nerve" ;
+    ilxtr:hasExistingId FMA:14385,
+        ILX:0729472,
+        UBERON:0001148 ;
+    ilxtr:hasExternalId FMA:14385,
+        UBERON:0001148 ;
+    ilxtr:hasIlxId ILX:0729472 ;
+    ilxtr:hasIlxPreferredId UBERON:0001148 .
+
+UBERON:0001267 a owl:Class ;
+    rdfs:label "femoral nerve" ;
+    ilxtr:hasExistingId FMA:16486,
+        ILX:0730806,
+        UBERON:0001267 ;
+    ilxtr:hasExternalId FMA:16486,
+        UBERON:0001267 ;
+    ilxtr:hasIlxId ILX:0730806 ;
+    ilxtr:hasIlxPreferredId UBERON:0001267 .
+
+UBERON:0001324 a owl:Class ;
+    rdfs:label "common fibular nerve" ;
+    ilxtr:hasExistingId FMA:19039,
+        ILX:0733935,
+        UBERON:0001324 ;
+    ilxtr:hasExternalId FMA:19039,
+        UBERON:0001324 ;
+    ilxtr:hasIlxId ILX:0733935 ;
+    ilxtr:hasIlxPreferredId UBERON:0001324 .
+
+UBERON:0001355 a owl:Class ;
+    rdfs:label "deep femoral artery" ;
+    ilxtr:hasExistingId FMA:20741,
+        ILX:0734862,
+        UBERON:0001355 ;
+    ilxtr:hasExternalId FMA:20741,
+        UBERON:0001355 ;
+    ilxtr:hasIlxId ILX:0734862 ;
+    ilxtr:hasIlxPreferredId UBERON:0001355 .
+
+UBERON:0001361 a owl:Class ;
+    rdfs:label "femoral vein" ;
+    ilxtr:hasExistingId FMA:21185,
+        ILX:0735948,
+        UBERON:0001361 ;
+    ilxtr:hasExternalId FMA:21185,
+        UBERON:0001361 ;
+    ilxtr:hasIlxId ILX:0735948 ;
+    ilxtr:hasIlxPreferredId UBERON:0001361 .
+
+UBERON:0001394 a owl:Class ;
+    rdfs:label "axillary artery" ;
+    ilxtr:hasExistingId FMA:22654,
+        ILX:0730316,
+        UBERON:0001394 ;
+    ilxtr:hasExternalId FMA:22654,
+        UBERON:0001394 ;
+    ilxtr:hasIlxId ILX:0730316 ;
+    ilxtr:hasIlxPreferredId UBERON:0001394 .
+
+UBERON:0001395 a owl:Class ;
+    rdfs:label "thoraco-acromial artery" ;
+    definition: "The thoracoacromial artery (acromiothoracic artery; thoracic axis) is a short trunk, which arises from the forepart of the axillary artery, its origin being generally overlapped by the upper edge of the Pectoralis minor. [WP,unvetted]." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.anno.hasExactSynonym: "acromiothoracic artery",
+        "thoracoacromial artery" ;
+    ilx.hasDbXref: "EMAPA:37128",
+        "FMA:22671",
+        "MA:0002064",
+        "NCIT:C32046",
+        "UMLS:C0226420",
+        <http://en.wikipedia.org/wiki/Thoraco-acromial_artery>,
+        <http://linkedlifedata.com/resource/umls/id/C0226420>,
+        <http://www.snomedbrowser.com/Codes/Details/244315002> ;
+    ilx.partOf: UBERON:0001467 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22671,
+        ILX:0734131,
+        UBERON:0001395 ;
+    ilxtr:hasExternalId FMA:22671,
+        UBERON:0001395 ;
+    ilxtr:hasIlxId ILX:0734131 ;
+    ilxtr:hasIlxPreferredId UBERON:0001395 ;
+    oboInOwl:hasExactSynonym "acromiothoracic artery",
+        "thoracoacromial artery" .
+
+UBERON:0001397 a owl:Class ;
+    rdfs:label "subscapular artery" ;
+    ilxtr:hasExistingId FMA:22677,
+        ILX:0727623,
+        UBERON:0001397 ;
+    ilxtr:hasExternalId FMA:22677,
+        UBERON:0001397 ;
+    ilxtr:hasIlxId ILX:0727623 ;
+    ilxtr:hasIlxPreferredId UBERON:0001397 .
+
+UBERON:0001398 a owl:Class ;
+    rdfs:label "brachial artery" ;
+    ilxtr:hasExistingId FMA:22689,
+        ILX:0729196,
+        UBERON:0001398 ;
+    ilxtr:hasExternalId FMA:22689,
+        UBERON:0001398 ;
+    ilxtr:hasIlxId ILX:0729196 ;
+    ilxtr:hasIlxPreferredId UBERON:0001398 .
+
+UBERON:0001399 a owl:Class ;
+    rdfs:label "deep brachial artery" ;
+    ilxtr:hasExistingId FMA:22695,
+        ILX:0734311,
+        UBERON:0001399 ;
+    ilxtr:hasExternalId FMA:22695,
+        UBERON:0001399 ;
+    ilxtr:hasIlxId ILX:0734311 ;
+    ilxtr:hasIlxPreferredId UBERON:0001399 .
+
+UBERON:0001404 a owl:Class ;
+    rdfs:label "radial artery" ;
+    definition: "branch of the brachial artery beginning below the elbow and extending down the forearm around the wrist and into the palm." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.anno.hasRelatedSynonym: "arteria radialis" ;
+    ilx.hasDbXref: "EMAPA:37112",
+        "FMA:22730",
+        "GAID:506",
+        "galen:RadialArtery",
+        "MA:0002034",
+        "MESH:D017534",
+        "NCIT:C12838",
+        "OpenCyc:Mx4rvxzeR5wpEbGdrcN5Y29ycA",
+        "UMLS:C0162857",
+        <http://en.wikipedia.org/wiki/Radial_artery>,
+        <http://linkedlifedata.com/resource/umls/id/C0162857>,
+        <http://www.snomedbrowser.com/Codes/Details/181332001> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:22730,
+        ILX:0733661,
+        UBERON:0001404 ;
+    ilxtr:hasExternalId FMA:22730,
+        UBERON:0001404 ;
+    ilxtr:hasIlxId ILX:0733661 ;
+    ilxtr:hasIlxPreferredId UBERON:0001404 ;
+    oboInOwl:hasRelatedSynonym "arteria radialis" .
+
+UBERON:0001406 a owl:Class ;
+    rdfs:label "ulnar artery" ;
+    ilxtr:hasExistingId FMA:22796,
+        ILX:0726607,
+        UBERON:0001406 ;
+    ilxtr:hasExternalId FMA:22796,
+        UBERON:0001406 ;
+    ilxtr:hasIlxId ILX:0726607 ;
+    ilxtr:hasIlxPreferredId UBERON:0001406 .
+
+UBERON:0001413 a owl:Class ;
+    rdfs:label "brachial vein" ;
+    ilxtr:hasExistingId FMA:22934,
+        ILX:0728787,
+        UBERON:0001413 ;
+    ilxtr:hasExternalId FMA:22934,
+        UBERON:0001413 ;
+    ilxtr:hasIlxId ILX:0728787 ;
+    ilxtr:hasIlxPreferredId UBERON:0001413 .
+
+UBERON:0001442 a owl:Class ;
+    rdfs:label "skeleton of manus" ;
+    ilxtr:hasExistingId FMA:24159,
+        ILX:0736542,
+        UBERON:0001442 ;
+    ilxtr:hasExternalId FMA:24159,
+        UBERON:0001442 ;
+    ilxtr:hasIlxId ILX:0736542 ;
+    ilxtr:hasIlxPreferredId UBERON:0001442 .
+
+UBERON:0001443 a owl:Class ;
+    rdfs:label "chest" ;
+    ilxtr:hasExistingId FMA:9576,
+        ILX:0730352,
+        UBERON:0001443 ;
+    ilxtr:hasExternalId FMA:9576,
+        UBERON:0001443 ;
+    ilxtr:hasIlxId ILX:0730352 ;
+    ilxtr:hasIlxPreferredId UBERON:0001443 .
+
+UBERON:0001456 a owl:Class ;
+    rdfs:label "face" ;
+    ilxtr:hasExistingId FMA:24728,
+        ILX:0729443,
+        UBERON:0001456 ;
+    ilxtr:hasExternalId FMA:24728,
+        UBERON:0001456 ;
+    ilxtr:hasIlxId ILX:0729443 ;
+    ilxtr:hasIlxPreferredId UBERON:0001456 .
+
+UBERON:0001460 a owl:Class ;
+    rdfs:label "arm" ;
+    ilxtr:hasExistingId ILX:0732657,
+        UBERON:0001460 ;
+    ilxtr:hasExternalId UBERON:0001460 ;
+    ilxtr:hasIlxId ILX:0732657 ;
+    ilxtr:hasIlxPreferredId UBERON:0001460 .
+
+UBERON:0001461 a owl:Class ;
+    rdfs:label "elbow" ;
+    ilxtr:hasExistingId FMA:24901,
+        ILX:0734732,
+        UBERON:0001461 ;
+    ilxtr:hasExternalId FMA:24901,
+        UBERON:0001461 ;
+    ilxtr:hasIlxId ILX:0734732 ;
+    ilxtr:hasIlxPreferredId UBERON:0001461 .
+
+UBERON:0001466 a owl:Class ;
+    rdfs:label "pedal digit" ;
+    ilxtr:hasExistingId FMA:25046,
+        ILX:0733891,
+        UBERON:0001466 ;
+    ilxtr:hasExternalId FMA:25046,
+        UBERON:0001466 ;
+    ilxtr:hasIlxId ILX:0733891 ;
+    ilxtr:hasIlxPreferredId UBERON:0001466 .
+
+UBERON:0001467 a owl:Class ;
+    rdfs:label "shoulder" ;
+    ilxtr:hasExistingId FMA:25202,
+        ILX:0731007,
+        UBERON:0001467 ;
+    ilxtr:hasExternalId FMA:25202,
+        UBERON:0001467 ;
+    ilxtr:hasIlxId ILX:0731007 ;
+    ilxtr:hasIlxPreferredId UBERON:0001467 .
+
+UBERON:0001474 a owl:Class ;
+    rdfs:label "bone element" ;
+    ilxtr:hasExistingId FMA:5018,
+        FMA:30317,
+        ILX:0725261,
+        UBERON:0001474 ;
+    ilxtr:hasExternalId FMA:5018,
+        FMA:30317,
+        UBERON:0001474 ;
+    ilxtr:hasIlxId ILX:0725261 ;
+    ilxtr:hasIlxPreferredId UBERON:0001474 .
+
+UBERON:0001492 a owl:Class ;
+    rdfs:label "radial nerve" ;
+    ilxtr:hasExistingId FMA:37069,
+        ILX:0733992,
+        UBERON:0001492 ;
+    ilxtr:hasExternalId FMA:37069,
+        UBERON:0001492 ;
+    ilxtr:hasIlxId ILX:0733992 ;
+    ilxtr:hasIlxPreferredId UBERON:0001492 .
+
+UBERON:0001493 a owl:Class ;
+    rdfs:label "axillary nerve" ;
+    ilxtr:hasExistingId FMA:37072,
+        ILX:0735440,
+        UBERON:0001493 ;
+    ilxtr:hasExternalId FMA:37072,
+        UBERON:0001493 ;
+    ilxtr:hasIlxId ILX:0735440 ;
+    ilxtr:hasIlxPreferredId UBERON:0001493 .
+
+UBERON:0001494 a owl:Class ;
+    rdfs:label "ulnar nerve" ;
+    ilxtr:hasExistingId FMA:37319,
+        ILX:0735719,
+        UBERON:0001494 ;
+    ilxtr:hasExternalId FMA:37319,
+        UBERON:0001494 ;
+    ilxtr:hasIlxId ILX:0735719 ;
+    ilxtr:hasIlxPreferredId UBERON:0001494 .
+
+UBERON:0001587 a owl:Class ;
+    rdfs:label "subclavian vein" ;
+    NIFRID:synonym "subclavicular vein" ;
+    definition: "The subclavian vein is a paired large vein, one on either side of the body. Their diameter is approximately that of the smallest finger." ;
+    rdfs:subClassOf UBERON:0001638 ;
+    ilx.anno.hasExactSynonym: "subclavian venous tree",
+        "vena subclavia" ;
+    ilx.hasDbXref: "AAO:0010510",
+        "EHDAA2:0001934",
+        "EHDAA:4455",
+        "EMAPA:17621",
+        "FMA:4725",
+        "GAID:546",
+        "galen:SubclavianVein",
+        "MA:0002221",
+        "MESH:D013350",
+        "NCIT:C12794",
+        "OpenCyc:Mx4rvvvtMZwpEbGdrcN5Y29ycA",
+        "UMLS:C0038532",
+        <http://en.wikipedia.org/wiki/Subclavian_vein>,
+        <http://linkedlifedata.com/resource/umls/id/C0038532>,
+        <http://www.snomedbrowser.com/Codes/Details/181388005> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:4725,
+        ILX:0725533,
+        UBERON:0001587 ;
+    ilxtr:hasExternalId FMA:4725,
+        UBERON:0001587 ;
+    ilxtr:hasIlxId ILX:0725533 ;
+    ilxtr:hasIlxPreferredId UBERON:0001587 ;
+    oboInOwl:hasExactSynonym "subclavian venous tree",
+        "vena subclavia" .
+
+UBERON:0001630 a owl:Class ;
+    rdfs:label "Muscle organ" ;
+    ilxtr:hasExistingId FMA:5022,
+        ILX:0107218,
+        UBERON:0001630 ;
+    ilxtr:hasExternalId FMA:5022,
+        UBERON:0001630 ;
+    ilxtr:hasIlxId ILX:0107218 ;
+    ilxtr:hasIlxPreferredId UBERON:0001630 .
+
+UBERON:0001637 a owl:Class ;
+    rdfs:label "artery" ;
+    ilxtr:hasExistingId FMA:50720,
+        ILX:0734459,
+        UBERON:0001637 ;
+    ilxtr:hasExternalId FMA:50720,
+        UBERON:0001637 ;
+    ilxtr:hasIlxId ILX:0734459 ;
+    ilxtr:hasIlxPreferredId UBERON:0001637 .
+
+UBERON:0001638 a owl:Class ;
+    rdfs:label "vein" ;
+    ilxtr:hasExistingId FMA:50723,
+        ILX:0730046,
+        UBERON:0001638 ;
+    ilxtr:hasExternalId FMA:50723,
+        UBERON:0001638 ;
+    ilxtr:hasIlxId ILX:0730046 ;
+    ilxtr:hasIlxPreferredId UBERON:0001638 .
+
+UBERON:0001647 a owl:Class ;
+    rdfs:label "facial nerve" ;
+    ilxtr:hasExistingId FMA:50868,
+        ILX:0725803,
+        UBERON:0001647 ;
+    ilxtr:hasExternalId FMA:50868,
+        UBERON:0001647 ;
+    ilxtr:hasIlxId ILX:0725803 ;
+    ilxtr:hasIlxPreferredId UBERON:0001647 .
+
+UBERON:0001814 a owl:Class ;
+    rdfs:label "brachial nerve plexus" ;
+    ilxtr:hasExistingId FMA:5906,
+        ILX:0733932,
+        UBERON:0001814 ;
+    ilxtr:hasExternalId FMA:5906,
+        UBERON:0001814 ;
+    ilxtr:hasIlxId ILX:0733932 ;
+    ilxtr:hasIlxPreferredId UBERON:0001814 .
+
+UBERON:0001989 a owl:Class ;
+    rdfs:label "superior cervical ganglion" ;
+    ilxtr:hasExistingId FMA:6467,
+        ILX:0725956,
+        UBERON:0001989 ;
+    ilxtr:hasExternalId FMA:6467,
+        UBERON:0001989 ;
+    ilxtr:hasIlxId ILX:0725956 ;
+    ilxtr:hasIlxPreferredId UBERON:0001989 .
+
+UBERON:0002060 a owl:Class ;
+    rdfs:label "femoral artery" ;
+    ilxtr:hasExistingId FMA:70248,
+        ILX:0731909,
+        UBERON:0002060 ;
+    ilxtr:hasExternalId FMA:70248,
+        UBERON:0002060 ;
+    ilxtr:hasIlxId ILX:0731909 ;
+    ilxtr:hasIlxPreferredId UBERON:0002060 .
+
+UBERON:0002250 a owl:Class ;
+    rdfs:label "popliteal artery" ;
+    definition: "The continuation of the femoral artery coursing through the popliteal fossa; it divides into the anterior and posterior tibial arteries." ;
+    rdfs:subClassOf UBERON:0001637 ;
+    ilx.anno.hasRelatedSynonym: "arteria poplitea" ;
+    ilx.hasDbXref: "EMAPA:37109",
+        "FMA:77155",
+        "GAID:504",
+        "MA:0002021",
+        "MESH:D011150",
+        "NCIT:C33337",
+        "OpenCyc:Mx4rvduV6pwpEbGdrcN5Y29ycA",
+        "UMLS:C0032649",
+        <http://en.wikipedia.org/wiki/Popliteal_artery>,
+        <http://linkedlifedata.com/resource/umls/id/C0032649>,
+        <http://www.snomedbrowser.com/Codes/Details/181350008> ;
+    ilx.partOf: UBERON:0002060 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:77155,
+        ILX:0730857,
+        UBERON:0002250 ;
+    ilxtr:hasExternalId FMA:77155,
+        UBERON:0002250 ;
+    ilxtr:hasIlxId ILX:0730857 ;
+    ilxtr:hasIlxPreferredId UBERON:0002250 ;
+    oboInOwl:hasRelatedSynonym "arteria poplitea" .
+
+UBERON:0002386 a owl:Class ;
+    rdfs:label "forelimb zeugopod" ;
+    ilxtr:hasExistingId FMA:9663,
+        ILX:0731819,
+        UBERON:0002386 ;
+    ilxtr:hasExternalId FMA:9663,
+        UBERON:0002386 ;
+    ilxtr:hasIlxId ILX:0731819 ;
+    ilxtr:hasIlxPreferredId UBERON:0002386 .
+
+UBERON:0002475 a owl:Class ;
+    rdfs:label "saphenous nerve" ;
+    ilxtr:hasExistingId FMA:45262,
+        ILX:0733527,
+        UBERON:0002475 ;
+    ilxtr:hasExternalId FMA:45262,
+        UBERON:0002475 ;
+    ilxtr:hasIlxId ILX:0733527 ;
+    ilxtr:hasIlxPreferredId UBERON:0002475 .
+
+UBERON:0003129 a owl:Class ;
+    rdfs:label "Skull" ;
+    ilxtr:hasExistingId FMA:46565,
+        ILX:0110663,
+        NLX:70957,
+        UBERON:0003129 ;
+    ilxtr:hasExternalId FMA:46565,
+        NLX:70957,
+        UBERON:0003129 ;
+    ilxtr:hasIlxId ILX:0110663 ;
+    ilxtr:hasIlxPreferredId UBERON:0003129 .
+
+UBERON:0003433 a owl:Class ;
+    rdfs:label "arm nerve" ;
+    ilxtr:hasExistingId ILX:0731594,
+        UBERON:0003433 ;
+    ilxtr:hasExternalId UBERON:0003433 ;
+    ilxtr:hasIlxId ILX:0731594 ;
+    ilxtr:hasIlxPreferredId UBERON:0003433 .
+
+UBERON:0003435 a owl:Class ;
+    rdfs:label "pedal digit nerve" ;
+    ilxtr:hasExistingId ILX:0728558,
+        UBERON:0003435 ;
+    ilxtr:hasExternalId UBERON:0003435 ;
+    ilxtr:hasIlxId ILX:0728558 ;
+    ilxtr:hasIlxPreferredId UBERON:0003435 .
+
+UBERON:0003447 a owl:Class ;
+    rdfs:label "digit nerve of manus" ;
+    ilxtr:hasExistingId ILX:0736677,
+        UBERON:0003447 ;
+    ilxtr:hasExternalId UBERON:0003447 ;
+    ilxtr:hasIlxId ILX:0736677 ;
+    ilxtr:hasIlxPreferredId UBERON:0003447 .
+
+UBERON:0003496 a owl:Class ;
+    rdfs:label "head blood vessel" ;
+    ilxtr:hasExistingId ILX:0736846,
+        UBERON:0003496 ;
+    ilxtr:hasExternalId UBERON:0003496 ;
+    ilxtr:hasIlxId ILX:0736846 ;
+    ilxtr:hasIlxPreferredId UBERON:0003496 .
+
+UBERON:0003502 a owl:Class ;
+    rdfs:label "neck blood vessel" ;
+    ilxtr:hasExistingId ILX:0727707,
+        UBERON:0003502 ;
+    ilxtr:hasExternalId UBERON:0003502 ;
+    ilxtr:hasIlxId ILX:0727707 ;
+    ilxtr:hasIlxPreferredId UBERON:0003502 .
+
+UBERON:0003515 a owl:Class ;
+    rdfs:label "forelimb blood vessel" ;
+    ilxtr:hasExistingId ILX:0733666,
+        UBERON:0003515 ;
+    ilxtr:hasExternalId UBERON:0003515 ;
+    ilxtr:hasIlxId ILX:0733666 ;
+    ilxtr:hasIlxPreferredId UBERON:0003515 .
+
+UBERON:0003725 a owl:Class ;
+    rdfs:label "cervical nerve plexus" ;
+    ilxtr:hasExistingId FMA:5904,
+        ILX:0726414,
+        UBERON:0003725 ;
+    ilxtr:hasExternalId FMA:5904,
+        UBERON:0003725 ;
+    ilxtr:hasIlxId ILX:0726414 ;
+    ilxtr:hasIlxPreferredId UBERON:0003725 .
+
+UBERON:0003726 a owl:Class ;
+    rdfs:label "thoracic nerve" ;
+    ilxtr:hasExistingId FMA:5860,
+        ILX:0735852,
+        UBERON:0003726 ;
+    ilxtr:hasExternalId FMA:5860,
+        UBERON:0003726 ;
+    ilxtr:hasIlxId ILX:0735852 ;
+    ilxtr:hasIlxPreferredId UBERON:0003726 .
+
+UBERON:0003727 a owl:Class ;
+    rdfs:label "intercostal nerve" ;
+    definition: "The intercostal nerves are the anterior divisions (rami anteriores; ventral divisions) of the thoracic spinal nerves from T1 to T11. Each nerve is connected with the adjoining ganglion of the sympathetic trunk by a gray and a white ramus communicans. The intercostal nerves are distributed chiefly to the thoracic pleura and abdominal peritoneum and differ from the anterior divisions of the other spinal nerves in that each pursues an independent course without plexus formation. The first two nerves supply fibers to the upper limb in addition to their thoracic branches; the next four are limited in their distribution to the parietes of the thorax; the lower five supply the parietes of the thorax and abdomen. The 7th intercostal nerve terminates at the xyphoid process, at the lower end of the sternum. The 10th intercostal nerve terminates at the umbilicus. The twelfth thoracic is distributed to the abdominal wall and groin. [WP,unvetted]." ;
+    ilx.anno.hasExactSynonym: "anterior ramus of thoracic nerve",
+        "anterior ramus of thoracic spinal nerve",
+        "ramus anterior, nervus thoracicus",
+        "thoracic anterior ramus",
+        "ventral ramus of thoracic spinal nerve" ;
+    ilx.anno.hasRelatedSynonym: "nervi intercostales" ;
+    ilx.hasDbXref: "EMAPA:18227",
+        "FMA:6028",
+        "GAID:858",
+        "MESH:D007367",
+        "NCIT:C32825",
+        "UMLS:C1285089",
+        <http://en.wikipedia.org/wiki/Intercostal_nerves>,
+        <http://linkedlifedata.com/resource/umls/id/C1285089>,
+        <http://www.snomedbrowser.com/Codes/Details/279568001> ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId FMA:6028,
+        ILX:0733731,
+        UBERON:0003727 ;
+    ilxtr:hasExternalId FMA:6028,
+        UBERON:0003727 ;
+    ilxtr:hasIlxId ILX:0733731 ;
+    ilxtr:hasIlxPreferredId UBERON:0003727 ;
+    oboInOwl:hasExactSynonym "anterior ramus of thoracic nerve",
+        "anterior ramus of thoracic spinal nerve",
+        "ramus anterior, nervus thoracicus",
+        "thoracic anterior ramus",
+        "ventral ramus of thoracic spinal nerve" ;
+    oboInOwl:hasRelatedSynonym "nervi intercostales" .
+
+UBERON:0004217 a owl:Class ;
+    rdfs:label "upper arm nerve" ;
+    ilxtr:hasExistingId ILX:0724882,
+        UBERON:0004217 ;
+    ilxtr:hasExternalId UBERON:0004217 ;
+    ilxtr:hasIlxId ILX:0724882 ;
+    ilxtr:hasIlxPreferredId UBERON:0004217 .
+
+UBERON:0004259 a owl:Class ;
+    rdfs:label "lower arm blood vessel" ;
+    ilxtr:hasExistingId ILX:0735015,
+        UBERON:0004259 ;
+    ilxtr:hasExternalId UBERON:0004259 ;
+    ilxtr:hasIlxId ILX:0735015 ;
+    ilxtr:hasIlxPreferredId UBERON:0004259 .
+
+UBERON:0004260 a owl:Class ;
+    rdfs:label "upper arm blood vessel" ;
+    ilxtr:hasExistingId ILX:0735726,
+        UBERON:0004260 ;
+    ilxtr:hasExternalId UBERON:0004260 ;
+    ilxtr:hasIlxId ILX:0735726 ;
+    ilxtr:hasIlxPreferredId UBERON:0004260 .
+
+UBERON:0004562 a owl:Class ;
+    rdfs:label "digital vein" ;
+    ilxtr:hasExistingId ILX:0724942,
+        UBERON:0004562 ;
+    ilxtr:hasExternalId UBERON:0004562 ;
+    ilxtr:hasIlxId ILX:0724942 ;
+    ilxtr:hasIlxPreferredId UBERON:0004562 .
+
+UBERON:0004563 a owl:Class ;
+    rdfs:label "forelimb digital vein" ;
+    ilxtr:hasExistingId ILX:0730173,
+        UBERON:0004563 ;
+    ilxtr:hasExternalId UBERON:0004563 ;
+    ilxtr:hasIlxId ILX:0730173 ;
+    ilxtr:hasIlxPreferredId UBERON:0004563 .
+
+UBERON:0004704 a owl:Class ;
+    rdfs:label "bone fossa" ;
+    ilxtr:hasExistingId FMA:45791,
+        ILX:0725658,
+        UBERON:0004704 ;
+    ilxtr:hasExternalId FMA:45791,
+        UBERON:0004704 ;
+    ilxtr:hasIlxId ILX:0725658 ;
+    ilxtr:hasIlxPreferredId UBERON:0004704 .
+
+UBERON:0005473 a owl:Class ;
+    rdfs:label "sacral region" ;
+    ilxtr:hasExistingId FMA:24228,
+        ILX:0729815,
+        UBERON:0005473 ;
+    ilxtr:hasExternalId FMA:24228,
+        UBERON:0005473 ;
+    ilxtr:hasIlxId ILX:0729815 ;
+    ilxtr:hasIlxPreferredId UBERON:0005473 .
+
+UBERON:0005612 a owl:Class ;
+    rdfs:label "intercostal artery" ;
+    ilxtr:hasExistingId ILX:0732984,
+        UBERON:0005612 ;
+    ilxtr:hasExternalId UBERON:0005612 ;
+    ilxtr:hasIlxId ILX:0732984 ;
+    ilxtr:hasIlxPreferredId UBERON:0005612 .
+
+UBERON:0006800 a owl:Class ;
+    rdfs:label "anatomical line" ;
+    ilxtr:hasExistingId FMA:9657,
+        ILX:0734448,
+        UBERON:0006800 ;
+    ilxtr:hasExternalId FMA:9657,
+        UBERON:0006800 ;
+    ilxtr:hasIlxId ILX:0734448 ;
+    ilxtr:hasIlxPreferredId UBERON:0006800 .
+
+UBERON:0008784 a owl:Class ;
+    rdfs:label "lower limb segment" ;
+    ilxtr:hasExistingId FMA:24877,
+        ILX:0730641,
+        UBERON:0008784 ;
+    ilxtr:hasExternalId FMA:24877,
+        UBERON:0008784 ;
+    ilxtr:hasIlxId ILX:0730641 ;
+    ilxtr:hasIlxPreferredId UBERON:0008784 .
+
+UBERON:0008785 a owl:Class ;
+    rdfs:label "upper limb segment" ;
+    ilxtr:hasExistingId FMA:24876,
+        ILX:0725375,
+        UBERON:0008785 ;
+    ilxtr:hasExternalId FMA:24876,
+        UBERON:0008785 ;
+    ilxtr:hasIlxId ILX:0725375 ;
+    ilxtr:hasIlxPreferredId UBERON:0008785 .
+
+UBERON:0012198 a owl:Class ;
+    rdfs:label "intercostal space" ;
+    ilxtr:hasExistingId FMA:12243,
+        ILX:0733269,
+        UBERON:0012198 ;
+    ilxtr:hasExternalId FMA:12243,
+        UBERON:0012198 ;
+    ilxtr:hasIlxId ILX:0733269 ;
+    ilxtr:hasIlxPreferredId UBERON:0012198 .
+
+UBERON:0012356 a owl:Class ;
+    rdfs:label "pedal acropodium region" ;
+    ilxtr:hasExistingId FMA:70664,
+        ILX:0727278,
+        UBERON:0012356 ;
+    ilxtr:hasExternalId FMA:70664,
+        UBERON:0012356 ;
+    ilxtr:hasIlxId ILX:0727278 ;
+    ilxtr:hasIlxPreferredId UBERON:0012356 .
+
+UBERON:0019243 a owl:Class ;
+    rdfs:label "skin crease" ;
+    ilxtr:hasExistingId ILX:0736980,
+        UBERON:0019243 ;
+    ilxtr:hasExternalId UBERON:0019243 ;
+    ilxtr:hasIlxId ILX:0736980 ;
+    ilxtr:hasIlxPreferredId UBERON:0019243 .
+
+UBERON:0034987 a owl:Class ;
+    rdfs:label "lumbar nerve plexus" ;
+    ilxtr:hasExistingId FMA:5908,
+        ILX:0729227,
+        UBERON:0034987 ;
+    ilxtr:hasExternalId FMA:5908,
+        UBERON:0034987 ;
+    ilxtr:hasIlxId ILX:0729227 ;
+    ilxtr:hasIlxPreferredId UBERON:0034987 .
+
+UBERON:0035109 a owl:Class ;
+    rdfs:label "plantar nerve" ;
+    ilxtr:hasExistingId ILX:0736953,
+        UBERON:0035109 ;
+    ilxtr:hasExternalId UBERON:0035109 ;
+    ilxtr:hasIlxId ILX:0736953 ;
+    ilxtr:hasIlxPreferredId UBERON:0035109 .
+
+UBERON:0035526 a owl:Class ;
+    rdfs:label "superficial fibular nerve" ;
+    ilxtr:hasExistingId FMA:44699,
+        ILX:0734483,
+        UBERON:0035526 ;
+    ilxtr:hasExternalId FMA:44699,
+        UBERON:0035526 ;
+    ilxtr:hasIlxId ILX:0734483 ;
+    ilxtr:hasIlxPreferredId UBERON:0035526 .
+
+UBERON:0039835 a owl:Class ;
+    rdfs:label "posterior intercostal artery" ;
+    definition: "The posterior intercostal arteries are a group of 11 paired segmental blood vessels that provide the primary arterial blood supply to the thoracic wall, intercostal muscles, overlying skin, parietal pleura, and structures surrounding the spinal cord. Source: Radiopaedia; https://radiopaedia.org/articles/posterior-intercostal-arteries" ;
+    rdfs:subClassOf UBERON:0005612 ;
+    ilxr:type ilx.type:term ;
+    ilxtr:hasExistingId ILX:0797545,
+        UBERON:0039835 ;
+    ilxtr:hasExternalId UBERON:0039835 ;
+    ilxtr:hasIlxId ILX:0797545 ;
+    ilxtr:hasIlxPreferredId UBERON:0039835 .
+
+### Annotations
+
+ILX:0795339 a ilxr:TermSet ;
+    rdfs:label "TARA Acupoint Ontology Termset" ;
+    definition: "Terms used by TARA Acupoints ontology" ;
+    ilx.partOf: ILX:0794975 ;
+    ilxr:type ilx.type:TermSet ;
+    ilxtr:hasExistingId ILX:0795339 ;
+    ilxtr:hasIlxId ILX:0795339 ;
+    ilxtr:hasIlxPreferredId ILX:0795339 .
+
+### Serialized using the ttlser deterministic serializer v1.2.1
