@@ -122,6 +122,8 @@ graph LR
 - **Same category-mismatch problem as 6.1/6.2**: `UBERON:0006983` is immaterial by its own asserted parent class. This reproduces exactly the failure mode already identified for the BFO zero-dimensional fiat point and for Site: an immaterial entity has no material parts, so it cannot `overlap` (`RO:0002131`) the material Nerve, Artery, and Vein instances required by the subsurface branch, and it cannot support the "shares a physical piece of substance" requirement.
 - **Scope mismatch, independent of the material/immaterial issue**: existing instances of `UBERON:0006983` in the ontology — e.g., `asterion of skull` — are real, physically-grounded fiat landmarks defined relative to a single, specific real anatomical structure (a named bone or organ), and are recognized in general cross-species comparative anatomy independent of any particular medical theory. An acupoint is not this kind of thing: it is a construct of TCM doctrine, not a landmark recognized in mainstream anatomy. Reusing `UBERON:0006983` would misrepresent the acupoint as an ordinary anatomical landmark rather than a theory-internal, fiat-demarcated locus — the same "does not exist naturally on the body" problem the whole modeling exercise started from.
 
+### Modeling Meridians
+
 ### 6.4 Meridian as an Object Aggregate (`BFO:0000027`)
 
 **Considered** because `isMemberAcupointOf` was originally modeled as a subproperty of `RO:0002350` (`member_of`), which is the correct relation *for* aggregates.
@@ -131,7 +133,7 @@ graph LR
 
 ### 6.5 Meridian as UBERON's `anatomical line` (`UBERON:0006800`)
 
-**Considered** for the same reason as 6.4: reuse UBERON's `anatomical line` (`UBERON:0006800`), asserted as a subclass of `non-material anatomical boundary` (`UBERON:0000015`), since it is described as immaterial and line-like — on the surface, a good match for a "channel."
+**Considered** for the same reason as 6.3: reuse UBERON's `anatomical line` (`UBERON:0006800`), asserted as a subclass of `non-material anatomical boundary` (`UBERON:0000015`), since it is described as immaterial and line-like — on the surface, a good match for a "channel."
 
 - **Scope mismatch**: existing instances of `UBERON:0006800` — e.g., `intertrochanteric crest`, `spheno-petrosal fissure`, `anatomical line between inner canthi` — are all real, physically-grounded landmarks tied to a single specific anatomical structure (a femur, a skull, the face), recognized in general/cross-species anatomy independent of any particular medical theory. A TCM meridian is a doctrinal construct that runs across multiple organs and regions and is defined entirely within TCM theory, not a landmark on one physical structure recognized by mainstream anatomy. Reusing this class would inherit UBERON's scope — built for real, physically groundable cross-species structures — for an entity that is explicitly *not* that kind of thing.
 - **Internal dimensionality ambiguity**: `UBERON:0000015` (`non-material anatomical boundary`, equivalent to CARO:0000010) is textually defined as a *two-dimensional* non-material entity, yet `anatomical line` is asserted beneath it as a seemingly one-dimensional subtype — an unresolved imprecision in UBERON's own dimensional commitments for this branch. Committing Meridian to `UBERON:0006800` would inherit that ambiguity. `BFO:0000009` (One-Dimensional Continuant Fiat Boundary), by contrast, is unambiguously and explicitly one-dimensional, which better matches the "channel/line" description in the working TCM definition.
