@@ -36,7 +36,7 @@ from pathlib import Path
 
 import requests
 from dotenv import load_dotenv
-from rdflib import Graph, Literal, Namespace, RDF, RDFS, OWL, URIRef
+from rdflib import BNode, Graph, Literal, Namespace, RDF, RDFS, OWL, URIRef
 
 # Load environment variables from .env in the same directory as this script
 load_dotenv(dotenv_path=Path(__file__).parent / ".env")
@@ -374,14 +374,40 @@ def main():
     g.add((ontology_uri, RDF.type, OWL.Ontology))
     g.add((ontology_uri, RDFS.comment, Literal(ontology_comment)))
 
-    # 6. Serialize to TTL
+    # 6. Post-processing: for every isPartOf annotation triple, add the
+    #    corresponding OWL SubClassOf / BFO:0000050 restriction so that
+    #    reasoners can use the partonomic information logically.
+    #
+    #    Source pattern  (annotation):
+    #        <cls>  isPartOf:  <UBERON_URI>
+    #    Added axiom  (OWL restriction):
+    #        <cls>  rdfs:subClassOf  [ a owl:Restriction ;
+    #                                  owl:onProperty  BFO:0000050 ;
+    #                                  owl:someValuesFrom  <UBERON_URI> ]
+
+    IS_PART_OF_PRED = URIRef("http://uri.interlex.org/base/ilx_0112785")
+    BFO_PART_OF     = URIRef("http://purl.obolibrary.org/obo/BFO_0000050")
+
+    is_part_of_triples = list(g.subject_objects(IS_PART_OF_PRED))
+    for cls_uri, uberon_uri in is_part_of_triples:
+        if not isinstance(cls_uri, URIRef) or not isinstance(uberon_uri, URIRef):
+            continue
+        restriction = BNode()
+        g.add((restriction, RDF.type,             OWL.Restriction))
+        g.add((restriction, OWL.onProperty,       BFO_PART_OF))
+        g.add((restriction, OWL.someValuesFrom,   uberon_uri))
+        g.add((cls_uri,     RDFS.subClassOf,      restriction))
+
+    print(f"  Added OWL part-of restrictions for {len(is_part_of_triples)} isPartOf annotations.")
+
+    # 7. Serialize to TTL
     import os
     output_dir = os.path.join(os.path.dirname(__file__), "..", "..", "imported-ttl-files")
     os.makedirs(output_dir, exist_ok=True)
     output_filename = os.path.join(output_dir, "imported-tara-ilx-terms.ttl")
     ttl_text = g.serialize(format="turtle")
 
-    # 7. Text-level post-processing: fix rdflib-generated namespace prefixes
+    # 8. Text-level post-processing: fix rdflib-generated namespace prefixes
     # Replace any spurious nsN: aliases that rdflib may generate for oboInOwl
     ttl_text = re.sub(r'\bns\d+:', 'oboInOwl:', ttl_text)
     ttl_text = re.sub(r'@prefix ns\d+:.*?\n', '', ttl_text)
@@ -391,7 +417,7 @@ def main():
         '@prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .'
     )
 
-    # 8. Ensure the isPartOf prefix is present
+    # 9. Ensure the isPartOf prefix is present
     IS_PART_OF_PREFIX = '@prefix isPartOf: <http://uri.interlex.org/base/ilx_0112785> .\n'
     BFO_PREFIX        = '@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .\n'
     # Insert after the last @prefix line
