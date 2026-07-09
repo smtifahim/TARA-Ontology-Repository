@@ -1,0 +1,318 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix RO: <http://purl.obolibrary.org/obo/RO_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix UBERON: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix TARA: <http://www.acupunctureresearch.org/tara/ontology/> .
+@base <http://www.acupunctureresearch.org/tara/ontology/imports/uberon-organs.owl> .
+
+<http://www.acupunctureresearch.org/tara/ontology/imports/uberon-organs.owl> rdf:type owl:Ontology ;
+    dc:title "TARA Meridian-Associated Organs (UBERON Import Module)"@en ;
+    dc:description "A minimal import module containing the twelve UBERON organ/structure terms used as the range of tara-op:hasAssociatedOrgan (Meridian -> Organ), together with their minimal is_a hierarchy and partonomy up to BFO:0000001 (Entity), and their relations to the broader anatomical system classes they are part of. All UBERON-derived classes are marked with IAO_0000412 (imported from) pointing to http://purl.obolibrary.org/obo/uberon.owl; the three upper BFO classes are native to BFO and are not so marked."@en ;
+    rdfs:comment "Simplifications made for minimality: (1) each organ is related to a single, most-relevant broader system via BFO:0000050 (part_of), even where the full UBERON graph asserts multiple parents or a different relation (e.g., UBERON models heart's relation to the cardiovascular system via the RO relation 'contributes_to_morphology_of' rather than plain part_of; this module simplifies that to part_of for consistency). (2) The is_a chain from each organ up to 'anatomical structure' follows a single representative path (organ -> multicellular anatomical structure -> anatomical structure -> material anatomical entity -> anatomical entity -> BFO:0000004 Independent Continuant -> BFO:0000002 Continuant -> BFO:0000001 Entity) rather than reproducing every intermediate class in UBERON's full multi-parent graph. (3) UBERON:0018707 (bladder organ) is a generic grouping class whose subclasses include both UBERON:0002110 (gallbladder) and UBERON:0001255 (urinary bladder); both are now included in this module, so the Bladder-meridian organ can be modeled with the more precise UBERON:0001255 (urinary bladder) rather than the shared parent class UBERON:0018707, if desired." .
+
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/IAO_0000115
+IAO:0000115 rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000412
+IAO:0000412 rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/BFO_0000050  (part_of)
+BFO:0000050 rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes -- BFO upper level (native to BFO; not IAO_0000412-tagged)
+#################################################################
+
+###  http://purl.obolibrary.org/obo/BFO_0000001  (entity)
+BFO:0000001 rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000002  (continuant)
+BFO:0000002 rdf:type owl:Class ;
+            rdfs:subClassOf BFO:0000001 .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000004  (independent continuant)
+BFO:0000004 rdf:type owl:Class ;
+            rdfs:subClassOf BFO:0000002 .
+
+
+#################################################################
+#    Classes -- UBERON upper/generic anatomy (imported from uberon.owl)
+#################################################################
+
+###  http://purl.obolibrary.org/obo/UBERON_0001062  (anatomical entity)
+UBERON:0001062 rdf:type owl:Class ;
+               rdfs:subClassOf BFO:0000004 ;
+               rdfs:label "anatomical entity" ;
+               IAO:0000115 "Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000465  (material anatomical entity)
+UBERON:0000465 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0001062 ;
+               rdfs:label "material anatomical entity" ;
+               IAO:0000115 "Anatomical entity that has mass, e.g. cells, organs, organisms; excludes immaterial entities such as cavities, lines, and surfaces." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000061  (anatomical structure)
+UBERON:0000061 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000465 ;
+               rdfs:label "anatomical structure" ;
+               IAO:0000115 "Material anatomical entity that is a single connected structure with inherent 3D shape generated by coordinated expression of the organism's own genome." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0010000  (multicellular anatomical structure)
+UBERON:0010000 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000061 ;
+               rdfs:label "multicellular anatomical structure" ;
+               IAO:0000115 "An anatomical structure that has more than one cell as a part." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000062  (organ)
+UBERON:0000062 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0010000 ;
+               rdfs:label "organ" ;
+               IAO:0000115 "Anatomical structure that performs a specific function or functions, is composed of multiple tissues, and is delimited by histologically distinct boundaries; the smallest unit at which a distinct, recognizable physiological function can typically be localized." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000481  (multi-tissue structure)
+UBERON:0000481 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000061 ;
+               rdfs:label "multi-tissue structure" ;
+               IAO:0000115 "An anatomical structure that consists of two or more tissue types and is not an organ, e.g. pericardium, mesentery, tunica media." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000467  (anatomical system)
+UBERON:0000467 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000465 ;
+               rdfs:label "anatomical system" ;
+               IAO:0000115 "A material anatomical entity that consists of a set of anatomical structures, typically organs, that perform a common, coordinated physiological function (e.g. the digestive system, the respiratory system)." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+#################################################################
+#    Classes -- Broader anatomical systems (imported from uberon.owl)
+#################################################################
+
+###  http://purl.obolibrary.org/obo/UBERON_0001004  (respiratory system)
+UBERON:0001004 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000467 ;
+               rdfs:label "respiratory system" ;
+               IAO:0000115 "Anatomical system, present in air-breathing animals, whose primary function is gas exchange between the organism and the environment; includes the lungs, airways, and associated structures." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001007  (digestive system)
+UBERON:0001007 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000467 ;
+               rdfs:label "digestive system" ;
+               IAO:0000115 "Anatomical system, whose primary function is to break down ingested food into nutrients and to expel unabsorbed waste; includes the alimentary canal and its accessory glands (e.g. liver, gallbladder)." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001008  (renal system)
+UBERON:0001008 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000467 ;
+               rdfs:label "renal system" ;
+               IAO:0000115 "Anatomical system, also known as the urinary system, whose primary function is the filtration of blood and the production, storage, and excretion of urine; includes the kidneys, ureters, urinary bladder, and urethra." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0002405  (immune system)
+UBERON:0002405 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000467 ;
+               rdfs:label "immune system" ;
+               IAO:0000115 "Anatomical system, whose primary function is defense against pathogens and foreign substances; includes lymphoid organs such as the spleen and lymph nodes, together with the cells and tissues of the hemolymphoid system." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0004535  (cardiovascular system)
+UBERON:0004535 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000467 ;
+               rdfs:label "cardiovascular system" ;
+               IAO:0000115 "Anatomical system, whose primary function is the circulation of blood; includes the heart, blood vessels, and the blood." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+#################################################################
+#    Classes -- Requested organs and structures (imported from uberon.owl)
+#################################################################
+
+###  http://purl.obolibrary.org/obo/UBERON_0002048  (lung)
+UBERON:0002048 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000062 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0001004
+                               ] ;
+               rdfs:label "lung" ;
+               IAO:0000115 "Respiration organ that develops as an outpocketing of the esophagus; in air-breathing vertebrates, a paired organ that allows gas exchange, absorbing oxygen from inhaled air and releasing carbon dioxide with exhaled air." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000059  (large intestine)
+UBERON:0000059 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000062 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0001007
+                               ] ;
+               rdfs:label "large intestine" ;
+               IAO:0000115 "The terminal portion of the alimentary canal, extending from the cecum to the anal canal, responsible for absorbing water and electrolytes from, and forming and storing, digestive waste." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000945  (stomach)
+UBERON:0000945 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000062 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0001007
+                               ] ;
+               rdfs:label "stomach" ;
+               IAO:0000115 "An expanded region of the vertebrate alimentary tract that serves as a food storage compartment and digestive organ. A stomach is lined, in whole or in part, by a glandular epithelium." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0002106  (spleen)
+UBERON:0002106 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000062 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0002405
+                               ] ;
+               rdfs:label "spleen" ;
+               IAO:0000115 "The organ that functions to filter blood and to store red corpuscles and platelets." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0000948  (heart)
+UBERON:0000948 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000062 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0004535
+                               ] ;
+               rdfs:label "heart" ;
+               IAO:0000115 "A myogenic muscular circulatory organ found in the vertebrate cardiovascular system, composed of chambers of cardiac muscle. It is the primary circulatory organ." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0002108  (small intestine)
+UBERON:0002108 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000062 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0001007
+                               ] ;
+               rdfs:label "small intestine" ;
+               IAO:0000115 "The portion of the alimentary canal extending from the pyloric sphincter of the stomach to the cecum, in which most enzymatic digestion and nutrient absorption occurs." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0002113  (kidney)
+UBERON:0002113 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000062 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0001008
+                               ] ;
+               rdfs:label "kidney" ;
+               IAO:0000115 "A paired organ of the vertebrate renal system responsible for the filtration of blood and the production, concentration, and initial collection of urine." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0018707  (bladder organ)
+UBERON:0018707 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000062 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0001008
+                               ] ;
+               rdfs:label "bladder organ" ;
+               IAO:0000115 "A hollow, distensible organ that functions as a reservoir for a bodily fluid (e.g. urine or bile) prior to its excretion or discharge. Its known subclasses include the urinary bladder (UBERON:0001255) and the gallbladder (UBERON:0002110)." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0001255  (urinary bladder)
+UBERON:0001255 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0018707 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0001008
+                               ] ;
+               rdfs:label "urinary bladder" ;
+               IAO:0000115 "A distensible musculomembranous organ, a subclass of bladder organ, situated in the anterior part of the pelvic cavity, in which urine collects before excretion." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0002407  (pericardium)
+UBERON:0002407 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000481 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0004535
+                               ] ;
+               rdfs:label "pericardium" ;
+               IAO:0000115 "The combination of the pericardial sac (a double-walled sac containing the heart and the roots of the great vessels) plus the fibrous pericardium." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0002110  (gallbladder)
+UBERON:0002110 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0018707 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0001007
+                               ] ;
+               rdfs:label "gallbladder" ;
+               IAO:0000115 "A hollow, pear-shaped organ, a subclass of bladder organ, that stores and concentrates bile produced by the liver prior to its release into the small intestine." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  http://purl.obolibrary.org/obo/UBERON_0002107  (liver)
+UBERON:0002107 rdf:type owl:Class ;
+               rdfs:subClassOf UBERON:0000062 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty BFO:0000050 ;
+                                 owl:someValuesFrom UBERON:0001007
+                               ] ;
+               rdfs:label "liver" ;
+               IAO:0000115 "An exocrine gland which secretes bile and functions in the metabolism of protein, carbohydrate, and fat; synthesizes substances involved in the clotting of blood; synthesizes vitamin A; detoxifies poisonous substances; stores glycogen; and breaks down worn-out erythrocytes." ;
+               IAO:0000412 <http://purl.obolibrary.org/obo/uberon.owl> .
+
+
+###  Manually curated minimal import module for TARA Acupoints Ontology (v1.0.0) -- not generated by the OWL API
