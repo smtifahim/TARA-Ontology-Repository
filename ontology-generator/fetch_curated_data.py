@@ -15,7 +15,7 @@ Run this script before generate_ontology.py to ensure the local CSV files are up
 It can also be invoked automatically as Step 1 of run_all.sh.
 
 Author: Fahim Imam
-Last updated: April 19, 2026
+Last updated: July 8, 2026
 """
 
 import requests
@@ -31,6 +31,8 @@ GIDS = {
         'special-points'            : '1777093137',
         'acupoints-locations'       : '1094677629',
         'special-points-association': '984678930',
+        'acupoints-nerves'          : '542969034',
+        'acupoints-veins-arteries'  : '88026915',
         'pain-related-articles'     : '732140612'
        }
 
@@ -49,6 +51,8 @@ TAB_OUTPUT_DIRS = {
         'special-points'            : ACUPOINTS_DIR,
         'acupoints-locations'       : ACUPOINTS_DIR,
         'special-points-association': ACUPOINTS_DIR,
+        'acupoints-nerves'          : ACUPOINTS_DIR,
+        'acupoints-veins-arteries'  : ACUPOINTS_DIR,
         'pain-related-articles'     : KB_DIR,
        }
 
