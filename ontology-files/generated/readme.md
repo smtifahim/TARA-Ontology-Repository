@@ -2,6 +2,7 @@
 
 1. [Generated Files](#generated-files)
 2. [Ontology Versions Summary](#ontology-versions-summary)
+   + [Version 1.5.0 (July 9, 2026)](#version-150-july-9-2026)
    + [Version 1.2.0 (April 20, 2026)](#version-120-april-20-2026)
    + [Version 1.0.0 (June 30, 2025)](#version-100-june-30-2025)
    + [Version 0.7.1 (March 20, 2025)](#version-071-march-20-2025)
@@ -33,6 +34,41 @@ To regenerate these files, see the [ontology generator pipeline](../../ontology-
 ## Ontology Versions Summary
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
+
+### Version 1.5.0 (July 9, 2026)
+
+Addition of subsurface anatomy of nerves and vasculature for the Acupoints
+
+* This version includes the subsurface nerves and vasulature (arteries and veins) for the acupoints of the following meridinas
+  * Acupoints of the LU (11 acupoints), LI (20 acupoints), ST (45 acupoints), SP (21 acupoints), HT (9 acupoints), and SI (19 acupoints ).
+  * The subsurface nerved are stored using both annotation properties and OWL object property axioms.
+    * Annotation properties used: `tara:hasRelatedNerve`, `tara:hasRelatedArtery`, and `tara:hasRelatedVein`
+    * Object properties used: `tara-op:hasRelatedNerve`, `tara-op:hasRelatedArtery`, and `tara-op:hasRelatedVein`. See the  example for  `LU 1` below:
+
+      ```
+       'LU 1' rdfs:subClassOf
+        ( 'Meridian_Acupoint' AND (tara-op:isLocatedOnMeridian some 'Lung Meridian') )
+            (  tara-op:hasRelatedNerve some 'First intercostal nerve' )
+            (  tara-op:hasRelatedNerve some 'Intermediate supraclavicular nerve' )
+            (  tara-op:hasRelatedNerve some 'medial pectoral nerve' )
+            (  tara-op:hasRelatedArtery some 'axillary artery' )
+            (  tara-op:hasRelatedArtey some 'thoraco-acromial artery' )
+            (  tara-op:hasRelatedVein some 'axillary vein' )
+            (  tara-op:hasRelatedVein some 'thoracoacromial vein' )
+      ```
+* The source for the subsurface anatomy is the following:
+  * Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. Ch. 7, Acupuncture Points of the Taiyin and Yangming Meridians. ISBN 978-7-119-01758-7.
+
+Inclusion of additional synonyms
+
+* This version includes additional synonyms for meridian acupoints extracted from different literarute sources to support more automated mapping of acupoints for articles knowldgebase.
+* This version also includes additional synonyms for the Extra Acupoints used in TARA based on the following source:
+  * [Additional Synonyms] Acupuncture: A Comprehensive Text. Shanghai College of Traditional Medicine. Translated and edited by J. O'Connor and D. Bensky. Chicago: Eastland Press, 1981. Section II, Ch. 8: Other New and Miscellaneous Points.
+
+Enhanced descriptions and added provinance for Special Points
+
+* This version includes enhanced descriptions and added provinance for Special Points and their classifications based on the following source:
+  * Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. Ch. 6, An Introduction to Acupunture Points, Sec. III, Specific Points. ISBN 978-7-119-01758-7.
 
 ### Version 1.2.0 (April 20, 2026)
 
