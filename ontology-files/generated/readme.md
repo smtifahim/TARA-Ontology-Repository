@@ -40,7 +40,7 @@ This section will be updated periodically based on the release of the newer vers
 **Addition of subsurface anatomy of nerves and vasculature for the Acupoints**
 
 * This version includes the subsurface nerves and vasulature (arteries and veins) for the acupoints of the following meridinas
-  * Acupoints of the LU (11 acupoints), LI (20 acupoints), ST (45 acupoints), SP (21 acupoints), HT (9 acupoints), and SI (19 acupoints ).
+  * Acupoints of LU (11 acupoints), LI (20 acupoints), ST (45 acupoints), SP (21 acupoints), HT (9 acupoints), and SI (19 acupoints ).
   * The subsurface nerved are stored using both annotation properties and OWL object property axioms.
     * Annotation properties used: `tara:hasRelatedNerve`, `tara:hasRelatedArtery`, and `tara:hasRelatedVein`
     * Object properties used: `tara-op:hasRelatedNerve`, `tara-op:hasRelatedArtery`, and `tara-op:hasRelatedVein`. See the  example for  `LU 1` below:
@@ -71,6 +71,7 @@ This section will be updated periodically based on the release of the newer vers
   * Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. Ch. 6, An Introduction to Acupunture Points, Sec. III, Specific Points. ISBN 978-7-119-01758-7.
 
 **This version is available in BioPortal**
+
 * BioPortal Link: https://purl.bioontology.org/ontology/TARA
 
 ### Version 1.2.0 (April 20, 2026)
