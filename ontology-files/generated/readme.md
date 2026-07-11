@@ -37,7 +37,7 @@ This section will be updated periodically based on the release of the newer vers
 
 ### Version 1.5.0 (July 9, 2026)
 
-Addition of subsurface anatomy of nerves and vasculature for the Acupoints
+**Addition of subsurface anatomy of nerves and vasculature for the Acupoints**
 
 * This version includes the subsurface nerves and vasulature (arteries and veins) for the acupoints of the following meridinas
   * Acupoints of the LU (11 acupoints), LI (20 acupoints), ST (45 acupoints), SP (21 acupoints), HT (9 acupoints), and SI (19 acupoints ).
@@ -59,18 +59,18 @@ Addition of subsurface anatomy of nerves and vasculature for the Acupoints
 * The source for the subsurface anatomy is the following:
   * Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. Ch. 7, Acupuncture Points of the Taiyin and Yangming Meridians. ISBN 978-7-119-01758-7.
 
-Inclusion of additional synonyms
+**Inclusion of additional synonyms**
 
 * This version includes additional synonyms for meridian acupoints extracted from different literarute sources to support more automated mapping of acupoints for articles knowldgebase.
 * This version also includes additional synonyms for the Extra Acupoints used in TARA based on the following source:
   * [Additional Synonyms] Acupuncture: A Comprehensive Text. Shanghai College of Traditional Medicine. Translated and edited by J. O'Connor and D. Bensky. Chicago: Eastland Press, 1981. Section II, Ch. 8: Other New and Miscellaneous Points.
 
-Enhanced descriptions and added provinance for Special Points
+**Enhanced descriptions and added provinance for Special Points**
 
 * This version includes enhanced descriptions and added provinance for Special Points and their classifications based on the following source:
   * Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. Ch. 6, An Introduction to Acupunture Points, Sec. III, Specific Points. ISBN 978-7-119-01758-7.
 
-This version is available in BioPortal
+**This version is available in BioPortal**
 * BioPortal Link: https://purl.bioontology.org/ontology/TARA
 
 ### Version 1.2.0 (April 20, 2026)
