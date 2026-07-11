@@ -70,6 +70,9 @@ Enhanced descriptions and added provinance for Special Points
 * This version includes enhanced descriptions and added provinance for Special Points and their classifications based on the following source:
   * Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. Ch. 6, An Introduction to Acupunture Points, Sec. III, Specific Points. ISBN 978-7-119-01758-7.
 
+This version is available in BioPortal
+* BioPortal Link: https://purl.bioontology.org/ontology/TARA
+
 ### Version 1.2.0 (April 20, 2026)
 
 **Chinese Character Labels and Pinyin Labels**
