@@ -79,10 +79,10 @@ The TARA Acupoints Ontology is an OWL-DL ontology developed as part of the [Topo
 **Meridian Linking Properties**
 
 
-| Property                  | Type            | Description                  | Example                                         |
-| ------------------------- | --------------- | ---------------------------- | ----------------------------------------------- |
-| `tara:hasMeridian`        | annotation      | Textual meridian affiliation | LU 1 →`"Lung Meridian"`                        |
-| `tara:isMemberAcupointOf` | object property | Structured OWL relation      | LU 1`→`isMemberAcupointOf`some`'Lung Meridian' |
+| Property                      | Type            | Description                 | Example                                         |
+| ----------------------------- | --------------- | --------------------------- | ----------------------------------------------- |
+| `tara:isLocatedOnMeridian`    | annotation      | meridian class affiliation | LU 1 →`Lung Meridian`                          |
+| `tara-op:isLocatedOnMeridian` | object property | Structured OWL relation     | LU 1`→`isMemberAcupointOf`some`'Lung Meridian' |
 
 **Anatomical Location Properties**
 
