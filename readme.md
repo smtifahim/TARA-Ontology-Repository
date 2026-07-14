@@ -126,7 +126,7 @@ Closely following the [Open Biomedical Ontology Foundry](https://obofoundry.org/
 
 The ontology incorporates anatomical terms from [UBERON](https://www.ebi.ac.uk/ols4/ontologies/uberon) and [InterLex](https://scicrunch.org/scicrunch/interlex/dashboard) to specify the anatomical locations of acupoints on the body surface. It also incorporates terms from the Mondo Disease Ontology ([MONDO](https://www.ebi.ac.uk/ols4/ontologies/mondo)) and Human Phenotype Ontology ([HP](https://www.ebi.ac.uk/ols4/ontologies/hp)) to specify diseases or conditions studied in relation to acupoint use. These imported terms enable annotation of studied conditions using standardized vocabulary and support higher-level semantic search through the hierarchical structures of the source ontologies.
 
-The ontology takes into account both Eastern and Western nomenclature for acupuncture points. The current scope focuses on the semantic modelling of the anatomical and physiological aspects associated with different acupoints located in the main meridians.
+The ontology takes into account both Eastern and Western nomenclature for acupuncture points. The current scope focuses on the semantic modelling of the anatomical and physiological aspects associated with different acupoints located on the main meridians.
 
 ### TARA Ontology - Knowledge Curation Sources
 
@@ -160,11 +160,11 @@ The upper-level ontology ([`tara-acupoints-upper.ttl`](ontology-files/base/tara-
 
 The core ontology ([`tara-acupoints-core.ttl`](ontology-files/base/tara-acupoints-core.ttl)) defines the classes and properties specific to the acupoints domain, together with their logical axioms. It imports the upper ontology and extends the upper-level classes and properties. This file is used as the base by the [ontology generator](./ontology-generator) to generate the full TARA Acupoints Ontology. The Protégé screenshots below show examples of core classes and properties (shown in bold) that are specific to the acupoints ontology and extend the upper-level terms.
 
-![1718296053855](ontology-files/image/readme/1718296053855.png)
+![1784041437086](images/readme/1784041437086.png)
 
 #### TARA Ontology - Basic Relationships Model
 
-![1718304880191](ontology-files/generated/image/readme/1718304880191.png)
+![1784043386879](images/readme/1784043386879.png)
 
 The diagram above provides a high-level depiction of possible relationships for Acupoints in the TARA Acupoints Ontology. It should be noted that not all acupoints require relationships with meridians as there are many acupoints that do not belong to the standard meridian system. Also, not all acupoints have special point designations. Only the acupoints of the 12 main meridians and 2 extra meridians, namely the Governor Vessel and the Conception Vessel, have some special point roles.
 
@@ -173,37 +173,33 @@ The diagram above provides a high-level depiction of possible relationships for 
 The core ontology defines a top-level property called **`hasAcupointAnnotaionProperty`** which groups all acupoint-specific annotation properties. The table below lists the 12 sub-properties of `hasAcupointAnnotaionProperty` along with a brief description of each. LU 1 (Zhongfu) is used as the running example.
 
 
-| Property                        | Label                | Description summary                                                                                                                    |
-| ------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `hasAcupointLocation`           | *(grouping)*         | Groups the two location sub-properties below                                                                                           |
-| `hasSurfaceLocation`            | General Body Region  | General body region on whose surface the acupoint is located (e.g., LU 1 → Anterior Thoracic Region)                                  |
-| `hasRelatedLocation`            | Specific Body Region | Specific anatomical structures within that region (e.g., LU 1 → First Intercostal Space, Infraclavicular Fossa, Anterior Median Line) |
-| `hasAcupointDescription`        | Acupoint Description | Groups the five textual description sub-properties below                                                                               |
-| `hasLocationalDescription`      | Acupuncture Location | Canonical WHO textual location description                                                                                             |
-| `hasMethodDescription`          | Acupuncture Method   | Needling method including angle, depth, and moxibustion applicability                                                                  |
-| `hasIndicationsDescription`     | Indications          | Clinical indications per TCM                                                                                                           |
-| `hasVasculatureDescription`     | Vasculature          | Blood vessels in the vicinity relevant to safe needling                                                                                |
-| `hasInnervationDescription`     | Innervation          | Nerve supply in the vicinity relevant to safe needling                                                                                 |
-| `hasDesignatedOrgan`            | *(no label)*         | Organ designated to be affected per TCM theory (e.g., LU 1 → Lung)                                                                    |
-| `hasDesignatedSpecialPointRole` | Special Point Role   | Named special point role(s) as textual annotation (cross-references`hasSpecialPointDesignation`)                                       |
-| `hasMeridian`                   | Meridian Membership  | Meridian the acupoint belongs to (e.g., LU 1 → Lung Meridian)                                                                         |
+| Property                     | Label                | Description summary                                                                                                                    |
+| ---------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `hasRelated SurfaceAnatomy`  | *(grouping)*         | Groups the two location sub-properties below                                                                                           |
+| `hasGeneralSurfaceLocation`  | General Body Region  | General body region on whose surface the acupoint is located (e.g., LU 1 → Anterior Thoracic Region)                                  |
+| `hasSpecificSurfaceLocation` | Specific Body Region | Specific anatomical structures within that region (e.g., LU 1 → First Intercostal Space, Infraclavicular Fossa, Anterior Median Line) |
+| `hasAcupointDescription`     | Acupoint Description | Groups the five textual description sub-properties below                                                                               |
+| `hasLocationalDescription`   | Acupuncture Location | Canonical WHO textual location description                                                                                             |
+| `hasMethodDescription`       | Acupuncture Method   | Needling method including angle, depth, and moxibustion applicability                                                                  |
+| `hasIndicationsDescription`  | Indications          | Clinical indications per TCM                                                                                                           |
+| `hasVasculatureDescription`  | Vasculature          | Blood vessels in the vicinity relevant to safe needling                                                                                |
+| `hasInnervationDescription`  | Innervation          | Nerve supply in the vicinity relevant to safe needling                                                                                 |
+| `hasDesignatedOrgan`         | *(no label)*         | Organ designated to be affected per TCM theory (e.g., LU 1 → Lung)                                                                    |
+| `hasSpecialPointRole`        | Special Point Role   | Named special point role(s) as textual annotation (cross-references`hasSpecialPointDesignation`)                                       |
+| `hasMeridian`                | Meridian Membership  | Meridian the acupoint belongs to (e.g., LU 1 → Lung Meridian)                                                                         |
 
 #### TARA Acupoints Object Properties
 
-The core ontology defines  9 acupoint-specific  properties under `owl:ObjectProperty`: meridian membership (`hasMemberAcupoint` / `isMemberAcupointOf`), special point designation (`hasSpecialPointDesignation` / `isSpecialPointDesignationOf`), surface location (`locatedOnTheSurfaceOf` / `locatedInRelationTo`), and associated organ (`hasAssociatedOrgan`). The table below lists all 9 TARA-specific object properties, their parent RO relation (ID and label), a concrete example, and the `dc:description` from the core ontology file. Inverse properties and SWRL-inferred properties are noted in the description.
+The table below lists all TARA-specific object properties, their parent RO relation (ID and label), a concrete example, and the `dc:description` from the core ontology file.
 
 
-| Property                      | RO parent  | RO label             | Example                                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ----------------------------- | ---------- | -------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hasAssociatedOrgan`          | —         | —                   | Lung Meridian → Lung                                                        | An object property that relates a meridian to the organ it is associated with according to traditional Chinese medicine theory (e.g., the Lung Meridian is associated with the Lung). Used to express the organ affiliation of a meridian as an OWL axiom.                                                                                                                                                                          |
-| `hasMemberAcupoint`           | RO:0002351 | has member           | Lung Meridian → LU 1 … LU 11                                               | An object property that relates a meridian to an acupoint belonging to it (e.g., the Lung Meridian has member acupoints LU 1 through LU 11). It is the inverse of`isMemberAcupointOf` and is a sub-property of the RO relation 'has member' (RO:0002351).                                                                                                                                                                           |
-| `isMemberAcupointOf`          | RO:0002350 | member of collection | LU 1 → Lung Meridian                                                        | An object property that relates an acupoint to the meridian it belongs to (e.g., LU 1 isMemberAcupointOf Lung Meridian). It is the inverse of`hasMemberAcupoint` and a sub-property of the RO relation 'member of collection' (RO:0002350).                                                                                                                                                                                         |
-| `hasSpecialPointDesignation`  | RO:0000053 | bearer of            | LU 1 → Front-Mu Point of the Lung Role                                      | An object property that relates an acupoint to its designated special acupoint role class (e.g., LU 1 hasSpecialPointDesignation Front-Mu Point of the Lung Role). It is the inverse of`isSpecialPointDesignationOf` and is a sub-property of the RO relation 'bearer of' (RO:0000053). Used in OWL axioms to classify acupoints as special points.                                                                                 |
-| `isSpecialPointDesignationOf` | RO:0000052 | inheres in           | Front-Mu Point of the Lung Role → LU 1                                      | An object property that relates a special acupoint role to the acupoint that holds it (e.g., Front-Mu Point of the Lung Role isSpecialPointDesignationOf LU 1). It is the inverse of`hasSpecialPointDesignation` and a sub-property of the RO relation 'inheres in' (RO:0000052).                                                                                                                                                   |
-| `hasSpecialPointRole`         | RO:0000087 | has role             | LU 1 → Front-Mu Point of the Lung Role                                      | An object property that relates an acupoint to the special role it bears (e.g., LU 1 hasSpecialPointRole Front-Mu Point of the Lung Role). It is the inverse of`isSpecialPointRoleOf` and a sub-property of the RO relation 'has role' (RO:0000087). This property is inferred via a SWRL rule from `hasSpecialPointDesignation`.                                                                                                   |
-| `isSpecialPointRoleOf`        | RO:0000081 | role of              | Front-Mu Point of the Lung Role → LU 1                                      | An object property that relates a special acupoint role to the acupoint that bears it. It is the inverse of`hasSpecialPointRole` and a sub-property of the RO relation 'role of' (RO:0000081). This property is inferred via a SWRL rule from `isSpecialPointDesignationOf`.                                                                                                                                                        |
-| `locatedOnTheSurfaceOf`       | RO:0001025 | located in           | LU 1 → Anterior Thoracic Region                                             | An object property that relates an acupoint to the general body region on whose surface it is located (e.g., LU 1 locatedOnTheSurfaceOf Anterior Thoracic Region). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property`hasSurfaceLocation`.                                                                                                                                |
-| `locatedInRelationTo`         | RO:0001025 | located in           | LU 1 → First Intercostal Space, Infraclavicular Fossa, Anterior Median Line | An object property that relates an acupoint to one or more specific anatomical structures in whose vicinity it is located on the body surface (e.g., LU 1 locatedInRelationTo First Intercostal Space, Infraclavicular Fossa, and Anterior Median Line, all within the Anterior Thoracic Region). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property`hasRelatedLocation`. |
+| Property                             | RO parent  | RO label   | Example                                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------------ | ---------- | ---------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tara-op:hasAssociatedOrgan`         | —         | —         | Lung Meridian → Lung                                                        | An object property that relates a meridian to the organ it is associated with according to traditional Chinese medicine theory (e.g., the Lung Meridian is associated with the Lung). Used to express the organ affiliation of a meridian as an OWL axiom.                                                                                                                                                                                                      |
+| `tara-op:isLocatedOnMeridian`        | RO:0001025 | located in | LU 1 → Lung Meridian                                                        | An object property that relates an acupoint to the meridian it is located on (e.g., LU 1 isLocatedOnMeridian some Lung Meridian).                                                                                                                                                                                                                                                                                                                               |
+| `tara-op:hasSpecialPointRole`        | RO:0000087 | has role   | LU 1 → Front-Mu Point of the Lung Role                                      | An object property that relates an acupoint to the special role it bears (e.g., LU 1 hasSpecialPointRole some 'Front-Mu Point of the Lung Role').                                                                                                                                                                                                                                                                                                               |
+| `tara-op:hasGeneralSurfaceLocation`  | RO:0001025 | located in | LU 1 → Anterior Thoracic Region                                             | An object property that relates an acupoint to the general body region on whose surface it is located (e.g., LU 1 tara-op:hasGeneralSurfaceLocation some 'Anterior Thoracic Region'). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property`tara:hasGeneralSurfaceLocation`.                                                                                                                             |
+| `tara-op:hasSpecificSurfaceLocation` | RO:0001025 | located in | LU 1 → First Intercostal Space, Infraclavicular Fossa, Anterior Median Line | An object property that relates an acupoint to one or more specific anatomical structures in whose vicinity it is located on the body surface (e.g., LU 1 tara-op:hasSpecificSurfaceLocation some 'First Intercostal Space', 'Infraclavicular Fossa', and 'Anterior Median Line', all within the 'Anterior Thoracic Region'). It is a sub-property of the RO relation 'located in' (RO:0001025) and corresponds to the annotation property`hasRelatedLocation`. |
 
 ### TARA Ontology - Example Hierarchies
 
@@ -211,21 +207,21 @@ This section provides a set of Protégé screenshot examples of the basic hierar
 
 #### Hierarchy of the Meridians
 
-![1718384992327](ontology-files/generated/image/readme/1718384992327.png)
+![1784041922138](images/readme/1784041922138.png)
 
-#### Hierarchy of the Meridian Acupoints
+Hierarchy of the Meridian Acupoints
 
-![1718385881339](ontology-files/generated/image/readme/1718385881339.png)
+![1784042395628](images/readme/1784042395628.png)
 
-#### Classification of the Special Acupoints
+Classification of the Special Acupoints
 
-![1718386855618](ontology-files/generated/image/readme/1718386855618.png)
+![1784042582896](images/readme/1784042582896.png)
 
-#### Inferred Special Points Classification of Acupoints
+Inferred Special Points Classification of Acupoints
 
 The example shows the inferred subclasses of a special acupuncture point called the "Xi-Cleft Point". The subclasses are the acupoints of different meridians that are considered to be Xi-Cleft points.
 
-![1718387153546](ontology-files/generated/image/readme/1718387153546.png)
+![1784043063158](images/readme/1784043063158.png)
 
 ### TARA Ontology - DL Query Examples
 
@@ -246,7 +242,7 @@ This section provides a set of example DL queries to test the basic classificati
 Since we have defined a named class called `'Acupoint of the Heart Meridian'` in the ontology that is equivalent to the class expression above, we can achieve the same result by simply typing the named class as the DL Query.
 
 ```
-'Acupoint of the Heart Meridian' 
+'Acupoint of the Heart Meridian'
 ```
 
 ![1718430667694](ontology-files/generated/image/readme/1718430667694.png)
@@ -363,10 +359,8 @@ The screenshot above is from TARA Acupoints Ontology - Version 0.5.
 The inferred version of the TARA Acupoints Ontology is available to explore via **WebProtégé**. WebProtégé is an open source, lightweight, web-based ontology viewer and editor. The ontology is available in WebProtégé *only for viewing and commenting*. The idea is to gather feedback from acupoint experts.
 
 - If you don't have an account in WebProtégé, [create an account using this link](https://webprotege.stanford.edu/).
-- Simply navigate to the following link: [TARA Acupoints Ontology in WebProtégé](https://webprotege.stanford.edu/#projects/3be98cb1-fa54-4ddd-a5e8-a9803783b90d/edit/Classes?selection=Class(%3Chttp://www.acupunctureresearch.org/tara/ontology/TARA_1132428%3E))
+- Simply navigate to the following link: [TARA Acupoints Ontology in WebProtégé](https://webprotege.stanford.edu/#projects/2034c886-40f5-4c5e-92fb-037d54c7e286/edit/Classes?selection=Class(%3Chttp://www.acupunctureresearch.org/tara/ontology/TARA_1132428%3E)))
 - If you are new to WebProtégé, please visit the [WebProtégé User Guide](https://protegewiki.stanford.edu/wiki/WebProtegeUsersGuide).
-
-![1720703169244](ontology-files/generated/image/readme/1720703169244.png)
 
 ### Exploring TARA Ontology in NCBO BioPortal
 
