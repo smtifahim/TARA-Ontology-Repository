@@ -1,0 +1,48 @@
+# This query considers the following relations as simplified ilxtr:isConnectedTo relation:
+# - UBERON classes with 'connected to' OWL relation (RO:0002170)
+# The query excludes CL and GO classes and blank nodes.
+# For testing, you can uncomment the FILTER lines to filter by specific region labels.  
+# - Fahim Imam, July 12, 2026
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX connectTo: <http://purl.obolibrary.org/obo/RO_0002170>
+PREFIX UBERON: <http://purl.obolibrary.org/obo/UBERON_>
+PREFIX RO: <http://purl.obolibrary.org/obo/RO_>
+PREFIX ilxtr: <http://uri.interlex.org/tgbugs/uris/readable/>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+PREFIX ILX: <http://uri.interlex.org/base/ilx_>
+
+INSERT { ?sub_region ilxtr:isConnectedTo ?super_region }
+
+## For testing ..
+## Given a super_region label, this query returns all the sub_regions it is connected to either directly or transitively.
+## Given a sub_region, the query returns the super regions of the sub regions including the immediate one.
+
+# Select DISTINCT ?sub_region ?sub_region_label ?super_region ?super_region_label
+WHERE
+{
+   # FILTER (LCase(?super_region_label) = 'heart') #('visual system', 'optic nerve', 'thalamus', 'visual cortex'))
+   # FILTER (LCase(?sub_region_label) = 'tunica adventitia of the renal artery')
+   # FILTER (LCase(?sub_region_label) = 'renal artery')
+    
+   VALUES ?connected_to {connectTo:} # to include UBERON 'connected to' relation
+
+   ?sub_region rdfs:subClassOf+ [rdf:type owl:Restriction ;
+                                            owl:onProperty ?connected_to ; 
+                                            owl:someValuesFrom ?super_region].
+
+   # For testing, you can uncomment the FILTER lines to filter by specific region labels.    
+   # ?sub_region rdfs:label ?sub_region_label.
+   # ?super_region rdfs:label ?super_region_label 
+
+   Filter (!REGEX(str(?sub_region), "CL_")) #exclude CL classes
+   Filter (!REGEX(str(?super_region), "CL_")) #exclude CL classes
+   Filter (!REGEX(str(?sub_region), "GO_")) #exclude GO classes
+   Filter (!REGEX(str(?super_region), "GO_")) #exclude GO classes
+   FILTER (!isBlank(?sub_region))
+                        
+}
+# ORDER BY ?sub_region_label ?super_region_label
+# limit 1000
