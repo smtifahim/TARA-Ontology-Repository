@@ -2,71 +2,73 @@
 query-acupoints-data.py — TARA Ontology Data Extractor for MAP-CORE
 
 Runs a set of SPARQL queries against the TARA-Acupoints Stardog database and saves
-the results as JSON files for use by MAP-CORE applications.
+the results as JSON and CSV files for use by MAP-CORE applications.
+
+Uses downstream/common-scripts/lib/query_tara_data.py to run the queries and
+write the results, instead of talking to Stardog directly.
 
 Queries run:
-    sparql-queries/acupoints-metadata.rq   → ../data/json/acupoints-metadata.json
-    sparql-queries/acupoints-locations.rq  → ../data/json/acupoints-locations.json
+    sparql-queries/acupoints-metadata.rq   → ../data/json/acupoints-metadata.json, ../data/csv/acupoints-metadata.csv
+    sparql-queries/acupoints-locations.rq  → ../data/json/acupoints-locations.json, ../data/csv/acupoints-locations.csv
 
 Prerequisites:
     - Stardog server must be running and accessible at the configured endpoint
-    - STARDOG_TARA_PASSWORD must be set in a .env file in this directory
+    - STARDOG_TARA_USERNAME and STARDOG_TARA_PASSWORD must be set in a .env
+      file in this directory
     - Install dependencies: pip install pystardog[cloud] python-dotenv
 
 Author: Fahim Imam
-Version: 1.0 (December 18, 2025)
+Version: 1.2 (passes this script's own .env credentials and db name to query_tara_data.py)
 """
 
-import stardog
-import json
 import os
+import sys
+from pathlib import Path
+
 from dotenv import load_dotenv
-load_dotenv()
 
-# Stardog DB connection authentication using stardog cloud endpoint
-conn_details = {
-                'endpoint': 'https://sd-c1e74c63.stardog.cloud:5820',
-                'username': 'TARA',
-                'password': os.getenv('STARDOG_TARA_PASSWORD')
-               }
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parents[2]  # …/TARA-Ontology-Repository
 
-db_name = 'TARA-Acupoints'
+# Load this script's own .env (STARDOG_TARA_USERNAME / STARDOG_TARA_PASSWORD),
+# regardless of the working directory the script is run from.
+load_dotenv(dotenv_path=SCRIPT_DIR / ".env")
 
-# File locations for the queries needed for the TARA app
-query_files = [
-                './sparql-queries/acupoints-metadata.rq',
-                './sparql-queries/acupoints-locations.rq'
-              ]
+# Add downstream/common-scripts/lib to the Python path so we can import
+# query_tara_data without installing it as a package.
+LIB_DIR = REPO_ROOT / "downstream" / "common-scripts" / "lib"
+sys.path.insert(0, str(LIB_DIR))
 
-# File locations for the generated query results in json format
-generated_files = [
-                    '../data/json/acupoints-metadata.json',
-                    '../data/json/acupoints-locations.json'
-                  ]
+from query_tara_data import run_queries
 
-def checkServerStatus(admin):
-    if (admin.healthcheck()):
-        print ("        Server Status: Stardog server is running and able to accept traffic.")
-    else:
-        print ("        Server Status: Stardog server is NOT running. Please start the server and try again.")
-        exit();
+DB_NAME = "TARA-Acupoints"
+USERNAME = os.getenv("STARDOG_TARA_USERNAME")
+PASSWORD = os.getenv("STARDOG_TARA_PASSWORD")
 
-print ("\nProgram execution started...")
-with stardog.Admin(**conn_details) as admin:  
-    print ("\nStep 0: Checking Stardog server status..")
-    checkServerStatus(admin)
-    print ("Step 0: Done!")
+# File locations for the queries needed for the TARA's Map-Core app
+QUERY_FILES = [
+    str(SCRIPT_DIR / "sparql-queries" / "acupoints-metadata.rq"),
+    str(SCRIPT_DIR / "sparql-queries" / "acupoints-locations.rq"),
+]
 
-with stardog.Connection(db_name, **conn_details) as conn: 
-    for i, query_file in enumerate (query_files):
-        print ("\nStep " + str(i+1) + ": Executing query from: " + query_file)
-        with open(query_file, 'r') as file:
-            query = file.read()
-            result = conn.select(query, reasoning=False)
-        print ("        Saving query results...")
-        with open(generated_files[i], 'w') as file:
-            json.dump(result, file, indent=2)
-        print ("        Query results saved to: " + generated_files[i])
-        print ("Step " + str(i+1) + ": Done!")
-    conn.close()
-print ("\nAll queries executed and results are saved successfully!\n")
+# run_queries() writes json/ and csv/ subfolders under this directory,
+# matching the existing ../data/json and ../data/csv layout.
+OUTPUT_DIR = str(SCRIPT_DIR.parent / "data")
+
+
+def main():
+    print("\nProgram execution started...")
+    summary = run_queries(
+        query_files=QUERY_FILES,
+        output_dir=OUTPUT_DIR,
+        db_name=DB_NAME,
+        username=USERNAME,
+        password=PASSWORD,
+    )
+    print("\nAll queries executed and results are saved successfully!")
+    for query_file, info in summary.items():
+        print("> Summary: " + os.path.relpath(query_file) + " -> " + str(info["row_count"]) + " rows")
+
+
+if __name__ == "__main__":
+    main()
