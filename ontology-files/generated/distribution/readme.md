@@ -51,28 +51,24 @@ This section will be updated periodically based on the release of the newer vers
   * **LLM extraction prompts** — properties storing the system/user prompts used to drive AI-assisted metadata extraction from source articles.
 * `imported-conditions/`: imports 1,186 MONDO/HP disease-condition classes (`imported-tara-kb-mondo-hp-terms.ttl`) for KB condition-mapping, rooted under `tara:DiseaseOrCondition` via `tara-kb-mondo-hp-bridge.ttl`.
 * `kb_terms_mapping/`: the automated term-mapping toolkit that produces the mapped columns the generator pipeline consumes:
-  * `acupoints_mapping/` — normalizes and matches free-text acupoint mentions against a Stardog-derived TARA acupoint label/synonym lookup, producing the `Acupoints-Mapped`, `Acupoints-Unmappable`, and `Acupoints_TARA_IDs` columns.
-  * `conditions_mapping/` — a two-pass BioPortal Annotator + Search API pipeline mapping free-text condition mentions to MONDO/HP terms, producing `MONDO-OR-HP-Term`, `MONDO-OR-HP-Term-URI`, and `Exact-OR-Synonym`.
-  * Also includes `kb-src-column-mappings/` (spreadsheet-column → `tara-kb:` property mapping used by the generator), `google_sheets_reconcile/` (cross-references extraction sheets by article title to backfill a shared `Paper_ID`), and `articles-kb-example-sheets/` (a sample extracted-metadata reference sheet).
+  * `acupoints_mapping/` — normalizes and matches free-text acupoint mentions against  TARA acupoint label/synonym lookup, producing the `Acupoints-Mapped`, `Acupoints-Unmappable`, and `Acupoints_TARA_IDs` columns on normalized acupoints extracted from literature.
+  * `conditions_mapping/` — a two-pass BioPortal Annotator + Search API pipeline mapping free-text condition mentions to MONDO/HP terms, producing `MONDO-OR-HP-Term`, `MONDO-OR-HP-Term-URI`, based on extact labels or exact synonyms matches
+  * Also includes `kb-src-column-mappings/` (spreadsheet-column → `tara-kb:` property mapping used by the generator)
 
 **Acupoints Ontology Cleanup and Refactoring**
 
-* Removed the article/study-metadata annotation properties that had lived directly in `tara-acupoints-core.ttl` since Version 0.7 (`hasAcupunctureModality`, `hasControlsInformation`, `hasCountryInformation`, `hasListedAcupointsUsed`, `hasNeedlingInformation`, `hasSampleSizeInformation`, `hasStimulationType`, `hasStudiedCondition*`, `hasTrialType`, `hasUsedAcupoint`, `isStudiedInArticle`) — this responsibility now belongs entirely to the new Articles KB module above.
 * Normalized the property namespace prefix from `TARA:` to lowercase `tara:`, and introduced a dedicated `tara-op:` namespace/prefix for object properties, formally separating annotation-property and object-property IRIs (previously mixed under one namespace).
-* Refactored several relations into paired annotation-property + object-property forms (a plain literal-style annotation for direct querying, alongside a formal OWL object-property restriction for reasoning): `isLocatedOnMeridian`/`isMeridianLocationOf` (replacing `hasMemberAcupoint`/`isMemberAcupointOf`), `hasSpecialPointRole`/`isSpecialPointRoleOf` (replacing `hasSpecialPointDesignation`/`isSpecialPointDesignationOf`), and `hasGeneralSurfaceLocation`/`hasSpecificReferenceLocation` (replacing `locatedOnTheSurfaceOf`/`locatedInRelationTo`).
-* Extended the Version 1.5.0 subsurface-anatomy work with full object-property counterparts: `hasRelatedArtery`, `hasRelatedVein`, `hasRelatedNerve`, `hasRelatedVasculature`, `hasRelatedInnervation`, `hasRelatedSurfaceAnatomy`, `hasRelatedSubSurfaceAnatomy`, `hasTopographicalAnatomy`, and `hasAssociatedOrgan`.
 * Added top-level grouping properties `topTARAAnnotaionProperty` / `topTARAObjectProperty`, with `bfoObjectProperty` / `roObjectProperty` sub-groupings distinguishing BFO-style from RO-style relations.
 * Net effect on `tara-acupoints-core.ttl` (vs. the [Version 1.2.0 archive](../archived/version-1.2.0/)): 50 → 54 annotation properties, 16 → 22 object properties.
 * `tara-acupoints-upper.ttl` was trimmed to a smaller, more focused BFO/RO/IAO class subset (77 → 38 classes; object properties unchanged at 29) with expanded per-term documentation.
-* Reorganized the single 30,000+ line `tara-imported-terms.ttl` monolith into a modular `imported-terms/` directory: `imported-ttl-files/` (the generated UBERON, UBERON-organs, InterLex, MONDO/HP, and upper-level import outputs, plus a shared SKOS/DCTerms vocabulary file), `importer-scripts/` (one generator script per source — UBERON, InterLex, MONDO/HP — plus a merger script), and `archived-imported-terms/` (superseded import snapshots kept for reference).
-* Added `bridge-files/` (BFO-upper-ontology bridge modules for both the acupoints ontology and the new Articles KB, plus a Protégé/OWL catalog file for offline import resolution) and a shared `tara-annotation-properties.ttl` module consolidating common DC/SKOS/IAO annotation-property declarations.
+* Reorganized the single 30,000+ line `tara-imported-terms.ttl` monolith into a modular `imported-terms/` directory: `imported-ttl-files/` (the generated UBERON, InterLex, MONDO/HP, and upper-level import outputs, plus a shared SKOS/DCTerms vocabulary file), `importer-scripts/` (one generator script per source: UBERON, InterLex, MONDO/HP;  plus a merger script).
+* Added `bridge-files/` (BFO-upper-ontology bridge modules for both the acupoints ontology and the new Articles KB.
 
 **`ontology-generator/` Pipeline Changes**
 
 * New `generate_articles_kb.py`: a standalone pipeline that reads the curated KB source spreadsheet (via the column mapping above), populates publication/study/OCSI-score individuals, merges in the mapped acupoint/condition metadata, and produces both "no-upper" and "with-upper" (BFO-merged) Articles KB variants.
-* New `update_ontology_headers.py`: the post-generation header/versioning pass that produces the `distribution/` files above — migrates staging-domain IRIs (`acupunctureresearch.org`) to the permanent PURL namespace (`purl.org`), rotates each variant's prior `owl:versionInfo` into `owl:priorVersion`, and stamps a unique `owl:versionIRI` and `dcterms:created` per variant. It now also bumps the hand-authored base ontology's own `owl:versionInfo` (without adding a `versionIRI`), gated behind a confirmation prompt.
-* `generate_ontology.py`: removed the inline `addArticlesMetadata()` method — that responsibility moved entirely to `generate_articles_kb.py`.
-* `fetch_curated_data.py`: dropped the `pain-related-articles` CSV tab download; KB source-data acquisition is now handled by `curated-data/download_curated_sheets.py` (see below).
+* New `update_ontology_headers.py`: the post-generation header/versioning pass that produces the `distribution/` files above — migrates staging-domain IRIs (`acupunctureresearch.org`) to the permanent PURL namespace (`purl.org`), rotates each variant's prior `owl:versionInfo` into `owl:priorVersion`, and stamps a unique `owl:versionIRI` and `dcterms:created` per variant.
+* `generate_ontology.py`: removed the inline `addArticlesMetadata()` method; that responsibility moved entirely to `generate_articles_kb.py`.
 * `run_all.sh` updated to run the new `generate_articles_kb.py` step as part of the standard pipeline.
 
 **New: `curated-data/download_curated_sheets.py`**
@@ -81,6 +77,43 @@ This section will be updated periodically based on the release of the newer vers
 * Lets the operator pick a specific historical revision of a sheet (listed by timestamp, since the Drive API doesn't expose the human-readable "named version" text) and downloads it as a single multi-tab `.xlsx` workbook.
 * Stamps every downloaded workbook with provenance and navigation aids: a new "Google Sheet Source" tab recording the sheet's URI and the exact revision pulled, plus a per-row "Source-Sheet-Row-Link" column on every original tab linking back to that row on the live sheet.
 * Repairs a Google Sheets → xlsx export bug where partially-hyperlinked cell text (e.g. a citation ending in an auto-linked URL) gets silently dropped, by cross-checking against the live sheet's true text via the Sheets API.
+
+**Articles KB Content and Term-Mapping Coverage**
+
+* The KB's input corpus (`TARA-KB-Source-*.xlsx`, downloaded via `download_curated_sheets.py`) covers **1,770 acupuncture research articles/studies**.
+
+*Acupoint mapping* (`kb_terms_mapping/acupoints_mapping/`) of the 1,070 studies that report actual acupoints (517 more explicitly report "Not specified"):
+
+
+| Outcome                                    | Studies | % of 1,070 |
+| ------------------------------------------ | ------- | ---------- |
+| Fully mapped (every point resolved)        | 747     | 69.8%      |
+| Partially mapped (some resolved, some not) | 273     | 25.5%      |
+| Fully unmappable (none resolved)           | 50      | 4.7%       |
+
+At the individual-mention level: 7,020 of 7,898 acupoint mentions (88.9%) resolved successfully. The unmapped tail is dominated by **auricular (ear) acupuncture points**; e.g. `ear shenmen`, organ-named ear points (`lung`, `liver`, `kidney`, `heart`), and ear-zone codes (`TF 4`, `MS 8`, `AT 3`),  which the TARA acupoint ontology does not yet cover (body-meridian and extra points only). `ashi` points are also correctly left unmapped, since they are patient-specific palpation-located points with no fixed CURIE by definition.
+
+*Western condition mapping* (`kb_terms_mapping/conditions_mapping/`) — 1,770 studies collapse to 961 unique normalized condition phrases:
+
+
+| Level                       | Mapped | Unmapped | Success rate |
+| --------------------------- | ------ | -------- | ------------ |
+| Per study/row               | 1,562  | 208      | 88.2%        |
+| Per unique condition phrase | 792    | 169      | 82.4%        |
+
+Match quality (1,787 term-tags across the 1,562 mapped rows; 110 rows matched more than one term):
+
+
+| Match type       | Count |
+| ---------------- | ----- |
+| Exact – MONDO   | 779   |
+| Exact – HP      | 728   |
+| Synonym – MONDO | 237   |
+| Synonym – HP    | 43    |
+
+84.3% of successful matches were exact-label hits (BioPortal Annotator pass) rather than the fuzzy/synonym-normalization pass. Remaining unmapped conditions skew toward physiological states/symptoms rather than diseases (`labor`, `colic`, `pregnancy`, `gag reflex`, `menopause`, `stress`),  a structural MONDO/HP coverage gap rather than a mapping-script defect. Most-studied conditions in the corpus: Migraine (33), Knee osteoarthritis (30), Stroke (26), Insomnia (22), Depression (21), Infertility and Chronic low back pain (17 each), Primary dysmenorrhea (16), Asthma and PONV (14 each).
+
+* **TCM conditions** are normalized (`TCM-Conditions-Normalized`, also 1,770 rows) but, unlike Western conditions, are not yet mapped to an external vocabulary by the pipeline; `tara-kb:hasMappedTCMCondition` is defined in the schema but currently unpopulated, a natural next target for term-mapping work.
 
 ### Version 1.5.0 (July 9, 2026)
 
