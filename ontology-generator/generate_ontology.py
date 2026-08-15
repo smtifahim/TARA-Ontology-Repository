@@ -20,7 +20,7 @@ Author: Fahim Imam
 Last updated: July 8, 2026
 """
 
-import csv, os
+import csv, os, subprocess, sys
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
 from rdflib.namespace import RDF, RDFS, OWL
 from rdflib.collection import Collection
@@ -37,6 +37,7 @@ namespaces = {
                 "partOf"    :     "http://purl.obolibrary.org/obo/BFO_0000050",
                 "obo"       :     "http://purl.obolibrary.org/obo/",
                 "tara"      :     "http://www.acupunctureresearch.org/tara/ontology/",
+                "tara-kb"   :     "http://www.acupunctureresearch.org/tara/ontology/kb/",
                 "TARA"      :     "http://www.acupunctureresearch.org/tara/ontology/",
                 "tara-op"   :     "http://www.acupunctureresearch.org/tara/ontology/object-property/",
                 "UBERON"    :     "http://purl.obolibrary.org/obo/UBERON_",
@@ -55,30 +56,36 @@ namespaces = {
                 "protege"   :     "http://protege.stanford.edu/plugins/owl/protege#"
              }
 
+ONT_BASE_DIR = "../ontology-files/base/"
+ONT_GEN_DIR = "../ontology-files/generated/temp-files/ttl/"
+
 # Ontology files and their relative paths
 ontology_files = {
-                   "tara-acupoints-upper.ttl"   : "../ontology-files/base/tara-acupoints-upper.ttl",
-                   "tara-acupoints-core.ttl"    : "../ontology-files/base/tara-acupoints-core.ttl",
-                   "tara-imported-terms.ttl"    : "../ontology-files/base/tara-imported-terms.ttl",
-                   "tara-acupoints-temp.ttl"    : "../ontology-files/generated/ttl/tmp/tara-acupoints-temp.ttl",
-                   "tara-articles-kb-temp.ttl"  : "../ontology-files/generated/ttl/tmp/tara-articles-kb-temp.ttl",
-                   "tara-acupoints.ttl"         : "../ontology-files/generated/ttl/tara-acupoints.ttl",
-                   "tara-articles-kb.ttl"       : "../ontology-files/generated/ttl/kb/tara-articles-kb.ttl"
+                   "tara-acupoints-upper.ttl"              : ONT_BASE_DIR + "tara-acupoints-upper.ttl",                      # Input location for upper acupoints ontology
+                   "tara-acupoints-core.ttl"               : ONT_BASE_DIR + "tara-acupoints-core.ttl",                       # Input location for core acupoints ontology
+                   "tara-upper-bridge.ttl"                 : ONT_BASE_DIR + "bridge-files/tara-upper-bridge.ttl",            # Input location for upper bridge ontology
+                   "tara-imported-anatomical-terms.ttl"    : ONT_BASE_DIR + "tara-imported-anatomical-terms.ttl",            # Input location for imported anatomical terms ontology
+                   "tara-annotation-properties.ttl"        : ONT_BASE_DIR + "tara-annotation-properties.ttl",                # Input location for annotation properties ontology
+                   "tara-acupoints-temp.ttl"               : ONT_GEN_DIR + "tmp/tara-acupoints-temp.ttl",          # Temporary location for acupoints ontology
+                   "tara-articles-kb-temp.ttl"             : ONT_GEN_DIR + "tmp/tara-articles-kb-temp.ttl",        # Temporary location for articles KB ontology
+                   "tara-acupoints-no-upper.ttl"           : ONT_GEN_DIR + "no-upper/tara-acupoints.ttl",          # Output location for acupoints ontology without upper ontology
+                   "tara-acupoints-no-upper-inferred.ttl"  : ONT_GEN_DIR + "no-upper/tara-acupoints-inferred.ttl", # Output location for inferred (HermiT) acupoints ontology without upper ontology
+                   "tara-acupoints.ttl"                    : ONT_GEN_DIR + "tara-acupoints.ttl",                   # Output location for acupoints ontology with upper ontology
+                   "tara-acupoints-inferred.ttl"           : ONT_GEN_DIR + "tara-acupoints-inferred.ttl",           # Output location for inferred (HermiT) acupoints ontology with upper ontology
                  }
 
 # CSV input files and their relative paths
+CURATED_DATA_DIR = "../curated-data/ontology-curation-sheet/acupoints/"
 csv_files =  {
-                "meridians.csv"                 : "../curated-data/acupoints/meridians.csv",
-                "acupoints-category.csv"        : "../curated-data/acupoints/acupoints-category.csv",
-                "acupoints.csv"                 : "../curated-data/acupoints/acupoints.csv",
-                "extra-acupoints.csv"           : "../curated-data/acupoints/extra-acupoints.csv",
-                "special-points.csv"            : "../curated-data/acupoints/special-points.csv",
-                "acupoints-locations.csv"       : "../curated-data/acupoints/acupoints-locations.csv",
-                "special-points-association.csv": "../curated-data/acupoints/special-points-association.csv",
-                "acupoints-nerves.csv"          : "../curated-data/acupoints/acupoints-nerves.csv",
-                "acupoints-veins-arteries.csv"  : "../curated-data/acupoints/acupoints-veins-arteries.csv",
-                "pain-related-articles.csv"     : "../curated-data/kb/pain-related-articles.csv"
-
+                "meridians.csv"                 : CURATED_DATA_DIR + "meridians.csv",
+                "acupoints-category.csv"        : CURATED_DATA_DIR + "acupoints-category.csv",
+                "acupoints.csv"                 : CURATED_DATA_DIR + "acupoints.csv",
+                "extra-acupoints.csv"           : CURATED_DATA_DIR + "extra-acupoints.csv",
+                "special-points.csv"            : CURATED_DATA_DIR + "special-points.csv",
+                "acupoints-locations.csv"       : CURATED_DATA_DIR + "acupoints-locations.csv",
+                "special-points-association.csv": CURATED_DATA_DIR + "special-points-association.csv",
+                "acupoints-nerves.csv"          : CURATED_DATA_DIR + "acupoints-nerves.csv",
+                "acupoints-veins-arteries.csv"  : CURATED_DATA_DIR + "acupoints-veins-arteries.csv"
              }
 
 # Serialization namespaces: split the single TARA prefix into two so that
@@ -88,11 +95,13 @@ csv_files =  {
 serialisation_namespaces = {**namespaces,
                              "TARA": "http://www.acupunctureresearch.org/tara/ontology/TARA_",
                              "tara": "http://www.acupunctureresearch.org/tara/ontology/",
-                             "tara-op": "http://www.acupunctureresearch.org/tara/ontology/object-property/"}
+                             "tara-op": "http://www.acupunctureresearch.org/tara/ontology/object-property/",}
 
 # Defined frequently used namespaces
 TARA = Namespace(namespaces["tara"])
 TARA_OP = Namespace(namespaces["tara-op"])
+TARA_KB = Namespace(namespaces["tara-kb"])
+
 UBERON = Namespace(namespaces["UBERON"])
 IAO = Namespace(namespaces["IAO"])
 ILX = Namespace(namespaces["ILX"])
@@ -242,7 +251,7 @@ class AcupointsOntologyAdapter:
                                              TARA_OP.isLocatedOnMeridian, meridian_uri)
         
                 if description:
-                    g.add((acupoint_uri, DC.description, Literal(description)))
+                    g.add((acupoint_uri, DCMI.description, Literal(description)))
                 if reference:
                     g.add((acupoint_uri, DCMI.bibliographicCitation, Literal(reference)))
         self.addGraph(g)
@@ -305,24 +314,31 @@ class AcupointsOntologyAdapter:
                     g.add((acupoint_uri, TARA.hasMethodDescription, Literal(method)))
                 
                 if indications:
-                    g.add((acupoint_uri, TARA.hasIndicationsDescription, Literal(indications))) 
+                    g.add((acupoint_uri, TARA.hasListedIndications, Literal(indications))) 
                 
                 if vasculature:
-                    g.add((acupoint_uri, TARA.hasVasculatureDescription, Literal(vasculature)))
+                    g.add((acupoint_uri, TARA.hasVasculatureInformation, Literal(vasculature)))
                 
                 if innervation:
-                    g.add((acupoint_uri, TARA.hasInnervationDescription, Literal(innervation)))
+                    g.add((acupoint_uri, TARA.hasInnervationInformation, Literal(innervation)))
                 
                 if chinese_label:
                     g.add((acupoint_uri, TARA.hasChineseLabel, Literal(chinese_label)))
                 
                 if meridian:
                     # First add meridian entity as an annotation property
-                    g.add((acupoint_uri, TARA.isLocatedOnMeridian, meridian_uri))     
+                    g.add((acupoint_uri, TARA.isLocatedOnMeridian, meridian_uri))
                     
+                    # Add the inverse relationship for the meridian location
+                    g.add((meridian_uri, TARA.isMeridianLocationOf, acupoint_uri))
+
+                                        
                     if not superclass:
                         g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint,
                                                   TARA_OP.isLocatedOnMeridian, meridian_uri)
+                        
+                        self.addSimpleOWLRestriction(g, meridian_uri, TARA_OP.isMeridianLocationOf, acupoint_uri)
+
                     
                     # Then add OWL restriction to associate the acupoint with corresponding meridan
                     # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Meridian_Acupoint, 
@@ -371,14 +387,14 @@ class AcupointsOntologyAdapter:
                     g.add ((acupoint_uri, TARA.hasLocationalDescription, Literal(location)))
                 
                 if indications:
-                    g.add ((acupoint_uri, TARA.hasIndicationsDescription, Literal(indications)))
+                    g.add ((acupoint_uri, TARA.hasListedIndications, Literal(indications)))
                 
                 if method:
                     g.add ((acupoint_uri, TARA.hasMethodDescription, Literal(method)))
                 
                 if reference:
                     g.add((acupoint_uri, DCMI.bibliographicCitation, Literal(reference)))
-                if reference_syn:    
+                if reference_syn:
                     g.add((acupoint_uri, DCMI.bibliographicCitation, Literal(reference_syn)))
                    
         self.addGraph(g)
@@ -420,7 +436,7 @@ class AcupointsOntologyAdapter:
                 g.add((special_point_uri, TARA.hasSpecialPointRole, special_point_role_uri))
                 
                 if description:
-                    g.add ((special_point_uri, DC.description, Literal(description)))
+                    g.add ((special_point_uri, DCMI.description, Literal(description)))
                 
                 if reference:
                     g.add ((special_point_uri, DCMI.bibliographicCitation, Literal(reference)))
@@ -533,7 +549,7 @@ class AcupointsOntologyAdapter:
                             g.add ((acupoint_uri, TARA.hasGeneralSurfaceLocation, acupoint_location_uri)) # Add annotation
 
                         if locational_relation == "TARA:locatedInRelationTo":
-                            g.add ((acupoint_uri, TARA.hasSpecificSurfaceLocation, acupoint_location_uri)) # Add annotation
+                            g.add ((acupoint_uri, TARA.hasSpecificReferenceLocation, acupoint_location_uri)) # Add annotation
                         
                         if locational_relation == "TARA:locatedOnTheSurfaceOf":
                             # locatedOnTheSurfaceOf some (partOf some acupoint_location_uri)
@@ -548,7 +564,7 @@ class AcupointsOntologyAdapter:
                             g.add((inner_restriction, RDF.type, OWL.Restriction))
                             g.add((inner_restriction, OWL.onProperty, partOf))
                             g.add((inner_restriction, OWL.someValuesFrom, acupoint_location_uri))
-                            self.addSimpleOWLRestriction(g, acupoint_uri, TARA_OP.hasSpecificSurfaceLocation, inner_restriction)
+                            self.addSimpleOWLRestriction(g, acupoint_uri, TARA_OP.hasSpecificReferenceLocation, inner_restriction)
                         else:
                             self.addSimpleOWLRestriction(g, acupoint_uri, URIRef(curie_to_iri(locational_relation)), acupoint_location_uri)
     
@@ -627,81 +643,6 @@ class AcupointsOntologyAdapter:
 
         self.addGraph(g)
         print ("  Vasculature for the Acupoints Added Successfully.")
-
-    # Add articles metadata from the corresponding CSV file
-    def addArticlesMetadata(self, file_path):
-        g = Graph()
-        print("\n> Adding Articles Metadata from: " + file_path)
-        
-        with open(file_path, newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                if not any(row.values()):
-                    continue
-                
-                # ID#	Title	Authors_Info	Venue	Citation Count	DOI	DOI Link	Year	
-                # Trial Type	Acupuncture Modality	Stimulation Type Info	Needling Info	
-                # Sample Size Info	Controls Info	Country Info	Acupoint Names Extracted	
-                # Acupoints Used	Acupoints TARA ID	Condition Treated Note	Condition Treated	
-                # Condition ID	Condition Context				
-                
-                doi_link, title, authors, venue, year = row['DOI Link'], row['Title'], row['Authors_Info'], row['Venue'], row['Year']
-                trial_type, modality, stimulation_type, needling = row['Trial Type'], row['Acupuncture Modality'], row['Stimulation Type Info'], row['Needling Info']
-                sample_size, controls_info, country = row['Sample Size Info'], row['Controls Info'], row['Country Info']
-                listed_acupoints, acupoint_used, condition_treated = row['Acupoints Used'], row['Acupoints TARA ID'], row['Condition ID']
-                condition_note, condition_context = row['Condition Treated Note'], row['Condition Context']
-                
-                # Define the DOI as a Named Individual
-                doi_uri = URIRef(doi_link)
-                g.add((doi_uri, RDF.type, URIRef(IAO["0000013"])))
-                g.add((doi_uri, RDF.type, OWL.NamedIndividual))
-
-                
-                # Add title of the article
-                g.add((doi_uri, DC.title, Literal(title)))
-                g.add((doi_uri, TARA.hasDOI, Literal("DOI: " + doi_link)))
-                g.add((doi_uri, TARA.hasAuthor, Literal(authors)))
-                g.add((doi_uri, TARA.hasPublicationVenue, Literal(venue)))
-                g.add((doi_uri, TARA.hasPublicationDate, Literal(year)))
-                
-                g.add((doi_uri, TARA.hasTrialType, Literal(trial_type)))
-                g.add((doi_uri, TARA.hasAcupunctureModality, Literal(modality)))
-                g.add((doi_uri, TARA.hasStimulationType, Literal(stimulation_type)))
-                g.add((doi_uri, TARA.hasNeedlingInformation, Literal(needling)))
-                
-                g.add((doi_uri, TARA.hasSampleSizeInformation, Literal(sample_size)))
-                g.add((doi_uri, TARA.hasControlsInformation, Literal(controls_info)))
-                g.add((doi_uri, TARA.hasCountryInformation, Literal(country)))
-
-                g.add((doi_uri, TARA.hasListedAcupointsUsed, Literal(listed_acupoints)))
-                
-                # Add each Acupoint ID
-                if acupoint_used:
-                    for each_acupoint in acupoint_used.split(','):
-                        identifier = each_acupoint.strip()
-                        prefix, term = identifier.split(":")
-                        
-                        if prefix == "TARA":
-                            tara_uri = f"http://www.acupunctureresearch.org/tara/ontology/{term}"
-                            g.add((URIRef(tara_uri), TARA.isStudiedInArticle, doi_uri))
-                        else:
-                            raise ValueError("Invalid prefix. Expected 'TARA'.")
-                
-                # Add each condition ID as an annotation property
-                if condition_treated:
-                    for condition in condition_treated.split(','):
-                        g.add((doi_uri, TARA.hasStudiedCondition, URIRef(condition.strip())))
-                
-                if condition_note:
-                    g.add((doi_uri, TARA.hasStudiedConditionNote, Literal(condition_note)))
-                
-                if condition_context:
-                    for each_condition in condition_context.split(','):
-                        g.add((doi_uri, TARA.hasStudiedConditionContext, URIRef(each_condition)))
-
-        
-        self.addGraph(g)
-        print ("  Articles Metadata Added Successfully.")
 
     
     # To add a restriction like :class_x isEquivalentTo (:y and :hasProperty some :z) to the graph
@@ -799,23 +740,44 @@ def main():
         print ("> Converting Textual IRI Suffixes into Numeric Values for: " +  input_ttl_file)  
         convert_iri_suffixes_to_numeric(input_ttl_file, output_ttl_file)
         
+        print ("\n Generating TARA Acupoints Ontology with no upper-level ontology classes...")
+        print ("\n> Merging Generated Ontology with Imported Anatomical Terms from: " + ontology_files.get("tara-imported-anatomical-terms.ttl"))
+        merge_ontologies (output_ttl_file, ontology_files.get("tara-imported-anatomical-terms.ttl"),
+                          ontology_files.get("tara-acupoints-no-upper.ttl"), serialisation_namespaces)
+        merge_ontologies (ontology_files.get("tara-acupoints-no-upper.ttl"), ontology_files.get("tara-annotation-properties.ttl"),
+                                  ontology_files.get("tara-acupoints-no-upper.ttl"), serialisation_namespaces)
+        print ("\n Saved TARA Acupoints Ontology with No Upper-Level Classes At: " + ontology_files.get("tara-acupoints-no-upper.ttl"))
+
+        print ("\n> Running HermiT Reasoner on: " + ontology_files.get("tara-acupoints-no-upper.ttl"))
+        subprocess.run(
+            [sys.executable, "lib/hermit_reasoner.py",
+             ontology_files.get("tara-acupoints-no-upper.ttl"),
+             ontology_files.get("tara-acupoints-no-upper-inferred.ttl")],
+            check=True
+        )
+        print ("\n Saved Inferred TARA Acupoints Ontology At: " + ontology_files.get("tara-acupoints-no-upper-inferred.ttl"))
+
+
+        
         print ("\n> Merging Generated Ontology with Upper Ontology from: " + ontology_files.get("tara-acupoints-upper.ttl"))
         merge_ontologies (output_ttl_file, ontology_files.get("tara-acupoints-upper.ttl"),
                           ontology_files.get("tara-acupoints.ttl"), serialisation_namespaces)
         
-        print ("\n> Merging Generated Ontology with Imported Terms from: " + ontology_files.get("tara-imported-terms.ttl"))
-        merge_ontologies (ontology_files.get("tara-acupoints.ttl"), ontology_files.get("tara-imported-terms.ttl"),
+        # Merge tara-upper-levelbridge ontology next
+        merge_ontologies (ontology_files.get("tara-acupoints.ttl"), ontology_files.get("tara-upper-bridge.ttl"),
+                                  ontology_files.get("tara-acupoints.ttl"), serialisation_namespaces)
+        
+        print ("\n> Merging Generated Ontology with Imported Anatomical Terms from: " + ontology_files.get("tara-imported-anatomical-terms.ttl"))
+        merge_ontologies (ontology_files.get("tara-acupoints.ttl"), ontology_files.get("tara-imported-anatomical-terms.ttl"),
                           ontology_files.get("tara-acupoints.ttl"), serialisation_namespaces)
         
-        # Add articles metadata.
-        b = AcupointsOntologyAdapter()
-        b.addArticlesMetadata (csv_files.get("pain-related-articles.csv"))
-        b.saveUpdatedOntology (ontology_files.get("tara-articles-kb-temp.ttl"))
-        
-        print ("\n> Merging Generated Ontology with Articles Metadata from: " + ontology_files.get("tara-articles-kb-temp.ttl"))
-        merge_ontologies (ontology_files.get("tara-acupoints.ttl"), ontology_files.get("tara-articles-kb-temp.ttl"),
-                          ontology_files.get("tara-articles-kb.ttl"), serialisation_namespaces)
-        
+        print ("\n> Running HermiT Reasoner on: " + ontology_files.get("tara-acupoints.ttl"))
+        subprocess.run(
+            [sys.executable, "lib/hermit_reasoner.py",
+             ontology_files.get("tara-acupoints.ttl"),
+             ontology_files.get("tara-acupoints-inferred.ttl")],
+            check=True)
+        print ("\n Saved Inferred TARA Acupoints Ontology At: " + ontology_files.get("tara-acupoints-inferred.ttl"))   
         print ("\n> End of Program Execution. All Steps Executed Succussfully.\n")
 
 if __name__ == "__main__":
