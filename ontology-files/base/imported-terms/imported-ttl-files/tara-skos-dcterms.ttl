@@ -1,0 +1,653 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tara: <http://www.acupunctureresearch.org/tara/ontology/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology ;
+   rdfs:comment """This file includes a subset of metadata terms from Dublin Core (DC Terms) and SKOS documentation properties. It only includes owl annotation properties specific to TARA Acupoints Ontology.
+- DC Terms Documentation: http://purl.org/dc/terms
+- SKOS Documentation: http://www.w3.org/2004/02/skos/core"""@en
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/contributor
+dc:contributor rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/coverage
+dc:coverage rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty ;
+           rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty ;
+        rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/format
+dc:format rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/publisher
+dc:publisher rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/relation
+dc:relation rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc:rights rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/source
+dc:source rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/subject
+dc:subject rdf:type owl:AnnotationProperty ;
+           rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/abstract
+dcterms:abstract rdf:type owl:AnnotationProperty ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "abstract" ;
+                 skos:definition "A summary of the resource."@en-us ;
+                 rdfs:subPropertyOf dcterms:description .
+
+
+###  http://purl.org/dc/terms/accessRights
+dcterms:accessRights rdf:type owl:AnnotationProperty ;
+                     rdfs:comment "Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."@en-us ;
+                     rdfs:label "Access Rights"@en-us ;
+                     skos:definition "Information about who can access the resource or an indication of its security status."@en-us ;
+                     rdfs:subPropertyOf dcterms:rights ;
+                     rdfs:range dcterms:RightsStatement .
+
+
+###  http://purl.org/dc/terms/alternative
+dcterms:alternative rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "The distinction between titles and alternative titles is application-specific."@en-us ;
+                    rdfs:label "Alternative Title"@en-us ;
+                    skos:definition "An alternative name for the resource."@en-us ;
+                    skos:note "In current practice, this term is used primarily with literal values; however, there are important uses with non-literal values as well. As of December 2007, the DCMI Usage Board is leaving this range unspecified pending an investigation of options."@en-us ;
+                    rdfs:subPropertyOf dcterms:title .
+
+
+###  http://purl.org/dc/terms/available
+dcterms:available rdf:type owl:AnnotationProperty ;
+                  rdfs:label "Date Available"@en-us ;
+                  skos:definition "Date (often a range) that the resource became or will become available."@en-us ;
+                  rdfs:subPropertyOf dcterms:date ;
+                  rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/bibliographicCitation
+dcterms:bibliographicCitation rdf:type owl:AnnotationProperty ;
+                              rdfs:comment "Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible."@en-us ;
+                              rdfs:label "Bibliographic Citation"@en-us ;
+                              skos:definition "A bibliographic reference for the resource."@en-us ;
+                              rdfs:subPropertyOf dcterms:identifier ;
+                              rdfs:range rdfs:Literal ;
+                              rdfs:domain dcterms:BibliographicResource .
+
+
+###  http://purl.org/dc/terms/conformsTo
+dcterms:conformsTo rdf:type owl:AnnotationProperty ;
+                   rdfs:label "Conforms To"@en-us ;
+                   skos:definition "An established standard to which the described resource conforms."@en-us ;
+                   rdfs:subPropertyOf dcterms:relation ;
+                   rdfs:range dcterms:Standard .
+
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity."@en-us ;
+                    rdfs:label "Contributor"@en-us ;
+                    skos:definition "An entity responsible for making contributions to the resource."@en-us ;
+                    rdfs:subPropertyOf dc:contributor .
+
+
+###  http://purl.org/dc/terms/coverage
+dcterms:coverage rdf:type owl:AnnotationProperty ;
+                 dcterms:bibliographicCitation "[TGN] http://www.getty.edu/research/tools/vocabulary/tgn/index.html" ;
+                 rdfs:comment "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges."@en-us ;
+                 rdfs:label "Coverage"@en-us ;
+                 rdfs:seeAlso <http://www.getty.edu/research/tools/vocabulary/tgn/index.html> ;
+                 skos:definition "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant."@en-us ;
+                 rdfs:subPropertyOf dc:coverage ;
+                 rdfs:range dcterms:LocationPeriodOrJurisdiction .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty ;
+                rdfs:label "Date Created"@en-us ;
+                skos:definition "Date of creation of the resource."@en-us ;
+                rdfs:subPropertyOf dcterms:date ;
+                rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty ;
+                rdfs:comment "Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity."@en-us ;
+                rdfs:label "Creator"@en-us ;
+                skos:definition "An entity primarily responsible for making the resource."@en-us ;
+                rdfs:subPropertyOf dc:creator ,
+                                   dcterms:contributor .
+
+
+###  http://purl.org/dc/terms/date
+dcterms:date rdf:type owl:AnnotationProperty ;
+             dcterms:bibliographicCitation "[W3CDTF] http://www.w3.org/TR/NOTE-datetime" ;
+             rdfs:comment "Date may be used to express temporal information at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en-us ;
+             rdfs:label "Date"@en-us ;
+             rdfs:seeAlso <http://www.w3.org/TR/NOTE-datetime> ;
+             skos:definition "A point or period of time associated with an event in the lifecycle of the resource."@en-us ;
+             rdfs:subPropertyOf dc:date ;
+             rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/dateAccepted
+dcterms:dateAccepted rdf:type owl:AnnotationProperty ;
+                     rdfs:comment "Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal)."@en-us ;
+                     rdfs:label "Date Accepted"@en-us ;
+                     skos:definition "Date of acceptance of the resource."@en-us ;
+                     rdfs:subPropertyOf dcterms:date ;
+                     rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/dateCopyrighted
+dcterms:dateCopyrighted rdf:type owl:AnnotationProperty ;
+                        rdfs:label "Date Copyrighted"@en-us ;
+                        skos:definition "Date of copyright."@en-us ;
+                        rdfs:subPropertyOf dcterms:date ;
+                        rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/dateSubmitted
+dcterms:dateSubmitted rdf:type owl:AnnotationProperty ;
+                      rdfs:comment "Examples of resources to which a Date Submitted may be relevant are a thesis (submitted to a university department) or an article (submitted to a journal)."@en-us ;
+                      rdfs:label "Date Submitted"@en-us ;
+                      skos:definition "Date of submission of the resource."@en-us ;
+                      rdfs:subPropertyOf dcterms:date ;
+                      rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en-us ;
+                    rdfs:isDefinedBy dcterms: ;
+                    rdfs:label "description" ;
+                    skos:definition "An account of the resource."@en-us ;
+                    skos:note "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource." ;
+                    rdfs:subPropertyOf dc:description ,
+                                       skos:note .
+
+
+###  http://purl.org/dc/terms/extent
+dcterms:extent rdf:type owl:AnnotationProperty ;
+               rdfs:label "Extent"@en-us ;
+               skos:definition "The size or duration of the resource."@en-us ;
+               rdfs:subPropertyOf dcterms:format ;
+               rdfs:range dcterms:SizeOrDuration .
+
+
+###  http://purl.org/dc/terms/format
+dcterms:format rdf:type owl:AnnotationProperty ;
+               dcterms:bibliographicCitation "[MIME] http://www.iana.org/assignments/media-types/" ;
+               rdfs:comment "Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."@en-us ;
+               rdfs:label "Format"@en-us ;
+               rdfs:seeAlso <http://www.iana.org/assignments/media-types/> ;
+               skos:definition "The file format, physical medium, or dimensions of the resource."@en-us ;
+               rdfs:subPropertyOf dc:format ;
+               rdfs:range dc:contributor .
+
+
+###  http://purl.org/dc/terms/hasFormat
+dcterms:hasFormat rdf:type owl:AnnotationProperty ;
+                  rdfs:label "Has Format"@en-us ;
+                  skos:definition "A related resource that is substantially the same as the pre-existing described resource, but in another format."@en-us ;
+                  skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                  rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:AnnotationProperty ;
+                   rdfs:label "Has Version"@en-us ;
+                   skos:definition "A related resource that is a version, edition, or adaptation of the described resource."@en-us ;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                   rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system."@en-us ;
+                   rdfs:label "Identifier"@en-us ;
+                   skos:definition "An unambiguous reference to the resource within a given context."@en-us ;
+                   rdfs:subPropertyOf dc:identifier ;
+                   rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/instructionalMethod
+dcterms:instructionalMethod rdf:type owl:AnnotationProperty ;
+                            rdfs:comment "Instructional Method will typically include ways of presenting instructional materials or conducting instructional activities, patterns of learner-to-learner and learner-to-instructor interactions, and mechanisms by which group and individual levels of learning are measured. Instructional methods include all aspects of the instruction and learning processes from planning and implementation through evaluation and feedback."@en-us ;
+                            rdfs:label "Instructional Method"@en-us ;
+                            skos:definition "A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support."@en-us ;
+                            rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/isReferencedBy
+dcterms:isReferencedBy rdf:type owl:AnnotationProperty ;
+                       rdfs:label "Is Referenced By"@en-us ;
+                       skos:definition "A related resource that references, cites, or otherwise points to the described resource."@en-us ;
+                       skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                       rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/isReplacedBy
+dcterms:isReplacedBy rdf:type owl:AnnotationProperty ;
+                     rdfs:label "Is Replaced By"@en-us ;
+                     skos:definition "A related resource that supplants, displaces, or supersedes the described resource."@en-us ;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                     rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/isRequiredBy
+dcterms:isRequiredBy rdf:type owl:AnnotationProperty ;
+                     rdfs:label "Is Required By"@en-us ;
+                     skos:definition "A related resource that requires the described resource to support its function, delivery, or coherence."@en-us ;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                     rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/isVersionOf
+dcterms:isVersionOf rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "Changes in version imply substantive changes in content rather than differences in format."@en-us ;
+                    rdfs:label "Is Version Of"@en-us ;
+                    skos:definition "A related resource of which the described resource is a version, edition, or adaptation."@en-us ;
+                    skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                    rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty ;
+               rdfs:label "Date Issued"@en-us ;
+               skos:definition "Date of formal issuance (e.g., publication) of the resource."@en-us ;
+               rdfs:subPropertyOf dcterms:date ;
+               rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty ;
+                rdfs:label "License"@en-us ;
+                skos:definition "A legal document giving official permission to do something with the resource."@en-us ;
+                rdfs:subPropertyOf dcterms:rights ;
+                rdfs:range dcterms:LicenseDocument .
+
+
+###  http://purl.org/dc/terms/medium
+dcterms:medium rdf:type owl:AnnotationProperty ;
+               rdfs:label "Medium"@en-us ;
+               skos:definition "The material or physical carrier of the resource."@en-us ;
+               rdfs:subPropertyOf dcterms:format ;
+               rdfs:range dcterms:PhysicalMedium ;
+               rdfs:domain dcterms:PhysicalResource .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Date Modified"@en-us ;
+                 skos:definition "Date on which the resource was changed."@en-us ;
+                 rdfs:subPropertyOf dcterms:date ;
+                 rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/provenance
+dcterms:provenance rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "The statement may include a description of any changes successive custodians made to the resource."@en-us ;
+                   rdfs:label "Provenance"@en-us ;
+                   skos:definition "A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation."@en-us ;
+                   rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:AnnotationProperty ;
+                  rdfs:comment "Examples of a Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity."@en-us ;
+                  rdfs:label "Publisher"@en-us ;
+                  skos:definition "An entity responsible for making the resource available."@en-us ;
+                  rdfs:subPropertyOf dc:publisher ;
+                  rdfs:range dcterms:Agent .
+
+
+###  http://purl.org/dc/terms/references
+dcterms:references rdf:type owl:AnnotationProperty ;
+                   rdfs:label "References"@en-us ;
+                   skos:definition "A related resource that is referenced, cited, or otherwise pointed to by the described resource."@en-us ;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                   rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:AnnotationProperty ;
+                 rdfs:comment "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en-us ;
+                 rdfs:label "Relation"@en-us ;
+                 skos:definition "A related resource."@en-us ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                 rdfs:subPropertyOf dc:relation .
+
+
+###  http://purl.org/dc/terms/replaces
+dcterms:replaces rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Replaces"@en-us ;
+                 skos:definition "A related resource that is supplanted, displaced, or superseded by the described resource."@en-us ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                 rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/requires
+dcterms:requires rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Requires"@en-us ;
+                 skos:definition "A related resource that is required by the described resource to support its function, delivery, or coherence."@en-us ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                 rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/rights
+dcterms:rights rdf:type owl:AnnotationProperty ;
+               rdfs:comment "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."@en-us ;
+               rdfs:label "Rights"@en-us ;
+               skos:definition "Information about rights held in and over the resource."@en-us ;
+               rdfs:subPropertyOf dc:rights ;
+               rdfs:range dcterms:RightsStatement .
+
+
+###  http://purl.org/dc/terms/rightsHolder
+dcterms:rightsHolder rdf:type owl:AnnotationProperty ;
+                     rdfs:label "Rights Holder"@en-us ;
+                     skos:definition "A person or organization owning or managing rights over the resource."@en-us ;
+                     rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/source
+dcterms:source rdf:type owl:AnnotationProperty ;
+               rdfs:comment "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en-us ;
+               rdfs:label "Source"@en-us ;
+               skos:definition "A related resource from which the described resource is derived."@en-us ;
+               skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+               rdfs:subPropertyOf dc:source ,
+                                  dcterms:relation .
+
+
+###  http://purl.org/dc/terms/spatial
+dcterms:spatial rdf:type owl:AnnotationProperty ;
+                rdfs:label "Spatial Coverage"@en-us ;
+                skos:definition "Spatial characteristics of the resource."@en-us ;
+                rdfs:subPropertyOf dcterms:coverage ;
+                rdfs:range dcterms:Location .
+
+
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:AnnotationProperty ;
+                rdfs:comment "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary. To describe the spatial or temporal topic of the resource, use the Coverage element."@en-us ;
+                rdfs:label "Subject"@en-us ;
+                skos:definition "The topic of the resource."@en-us ;
+                skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us ;
+                rdfs:subPropertyOf dc:subject .
+
+
+###  http://purl.org/dc/terms/tableOfContents
+dcterms:tableOfContents rdf:type owl:AnnotationProperty ;
+                        rdfs:label "table of contents" ;
+                        skos:definition "A list of subunits of the resource." ;
+                        rdfs:subPropertyOf dcterms:description .
+
+
+###  http://purl.org/dc/terms/temporal
+dcterms:temporal rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Temporal Coverage"@en-us ;
+                 skos:definition "Temporal characteristics of the resource."@en-us ;
+                 rdfs:subPropertyOf dcterms:coverage ;
+                 rdfs:range dcterms:PeriodOfTime .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty ;
+              rdfs:label "Title"@en-us ;
+              skos:definition "A name given to the resource."@en-us ;
+              skos:note "In current practice, this term is used primarily with literal values; however, there are important uses with non-literal values as well. As of December 2007, the DCMI Usage Board is leaving this range unspecified pending an investigation of options."@en-us ;
+              rdfs:subPropertyOf dc:title .
+
+
+###  http://purl.org/dc/terms/valid
+dcterms:valid rdf:type owl:AnnotationProperty ;
+              rdfs:label "Date Valid"@en-us ;
+              skos:definition "Date (often a range) of validity of a resource."@en-us ;
+              rdfs:subPropertyOf dcterms:date ;
+              rdfs:range rdfs:Literal .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/dctermsMetadata
+tara:dctermsMetadata rdf:type owl:AnnotationProperty ;
+                     dcterms:description "An annotation property to group all dcterms metadata properties specific to TARA Acupoints Ontology."@en ;
+                     rdfs:label "dcterms:metadataProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/skosAnntotationProperty
+tara:skosAnntotationProperty rdf:type owl:AnnotationProperty ;
+                             dcterms:description "An annotation property to group all skos annotation properties specific to TARA Acupoints Ontology." ;
+                             rdfs:label "skos:annotationProperty" .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty ;
+              rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+              rdfs:label "alternative label" ;
+              skos:definition "an alternative lexical label for a resource" ;
+              skos:example "Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel)." ;
+              skos:note "The range of skos:altLabel is the class of RDF plain literals." ,
+                        "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties." ;
+              rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                                 rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#changeNote
+skos:changeNote rdf:type owl:AnnotationProperty ;
+                rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                rdfs:label "change note" ;
+                skos:definition "a note about a modification to a concept" ;
+                rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty ;
+                rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                rdfs:label "definition" ;
+                skos:definition "a statement or formal explanation of the meaning of a concept" ;
+                rdfs:subPropertyOf dcterms:description ,
+                                   tara:skosAnntotationProperty ,
+                                   skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#editorialNote
+skos:editorialNote rdf:type owl:AnnotationProperty ;
+                   rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                   rdfs:label "editorial note" ;
+                   skos:definition "a note for an editor, translator or maintainer of the vocabulary" ;
+                   rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+skos:example rdf:type owl:AnnotationProperty ;
+             rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+             rdfs:label "example" ;
+             skos:definition "an example of the use of a concept" ;
+             rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#hiddenLabel
+skos:hiddenLabel rdf:type owl:AnnotationProperty ;
+                 rdfs:label "hidden label" ;
+                 skos:definition "The property skos:hiddenLabel is used to assign a hidden lexical label to a resource. A hidden lexical label is a string of characters that a Knowledge Organization System (KOS) designer would like to be accessible to applications performing text-based indexing and search operations, but would not like to be visible to users on visual displays." ;
+                 rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                                    rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#historyNote
+skos:historyNote rdf:type owl:AnnotationProperty ;
+                 rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                 rdfs:label "history note" ;
+                 skos:definition "a note about the past state, use, or meaning of a concept" ;
+                 rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty ;
+          rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+          rdfs:label "note" ;
+          skos:definition "a general note, for any purpose" ;
+          skos:scopeNote "This property may be used directly, or as a super-property for more specific note types." ;
+          rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                             rdfs:comment .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty ;
+               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+               rdfs:label "preferred label" ;
+               skos:definition "the preferred lexical label for a resource, in a given language" ;
+               skos:note "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag." ,
+                         "The range of skos:prefLabel is the class of RDF plain literals." ,
+                         "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties." ;
+               rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                                  rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+skos:scopeNote rdf:type owl:AnnotationProperty ;
+               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+               rdfs:label "scope note" ;
+               skos:definition "a note that helps to clarify the meaning and/or the use of a concept" ;
+               rdfs:subPropertyOf skos:note .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://purl.org/dc/terms/Box
+dcterms:Box rdf:type rdfs:Datatype ;
+            rdfs:isDefinedBy <http://dublincore.org/documents/dcmi-box/> ;
+            rdfs:label "DCMI Box"@en-us ;
+            skos:definition "The set of regions in space defined by their geographic coordinates according to the DCMI Box Encoding Scheme."@en-us .
+
+
+###  http://purl.org/dc/terms/ISO3166
+dcterms:ISO3166 rdf:type rdfs:Datatype ;
+                rdfs:isDefinedBy <http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html> ;
+                rdfs:label "ISO 3166"@en-us ;
+                skos:definition "The set of codes listed in ISO 3166-1 for the representation of names of countries."@en-us .
+
+
+###  http://purl.org/dc/terms/ISO639-2
+dcterms:ISO639-2 rdf:type rdfs:Datatype ;
+                 rdfs:isDefinedBy <http://lcweb.loc.gov/standards/iso639-2/langhome.html> ;
+                 rdfs:label "ISO 639-2"@en-us ;
+                 skos:definition "The three-letter alphabetic codes listed in ISO639-2 for the representation of names of languages."@en-us .
+
+
+###  http://purl.org/dc/terms/ISO639-3
+dcterms:ISO639-3 rdf:type rdfs:Datatype ;
+                 rdfs:isDefinedBy <http://www.sil.org/iso639-3/> ;
+                 rdfs:label "ISO 639-3"@en-us ;
+                 skos:definition "The set of three-letter codes listed in ISO 639-3 for the representation of names of languages."@en-us .
+
+
+###  http://purl.org/dc/terms/Period
+dcterms:Period rdf:type rdfs:Datatype ;
+               rdfs:isDefinedBy <http://dublincore.org/documents/dcmi-period/> ;
+               rdfs:label "DCMI Period"@en-us ;
+               skos:definition "The set of time intervals defined by their limits according to the DCMI Period Encoding Scheme."@en-us .
+
+
+###  http://purl.org/dc/terms/Point
+dcterms:Point rdf:type rdfs:Datatype ;
+              rdfs:isDefinedBy <http://dublincore.org/documents/dcmi-point/> ;
+              rdfs:label "DCMI Point"@en-us ;
+              skos:definition "The set of points in space defined by their geographic coordinates according to the DCMI Point Encoding Scheme."@en-us .
+
+
+###  http://purl.org/dc/terms/RFC1766
+dcterms:RFC1766 rdf:type rdfs:Datatype ;
+                rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc1766.txt> ;
+                rdfs:label "RFC 1766"@en-us ;
+                skos:definition "The set of tags, constructed according to RFC 1766, for the identification of languages."@en-us .
+
+
+###  http://purl.org/dc/terms/RFC3066
+dcterms:RFC3066 rdf:type rdfs:Datatype ;
+                rdfs:comment "RFC 3066 has been obsoleted by RFC 4646."@en-us ;
+                rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc3066.txt> ;
+                rdfs:label "RFC 3066"@en-us ;
+                skos:definition "The set of tags constructed according to RFC 3066 for the identification of languages."@en-us .
+
+
+###  http://purl.org/dc/terms/RFC4646
+dcterms:RFC4646 rdf:type rdfs:Datatype ;
+                rdfs:comment "RFC 4646 obsoletes RFC 3066."@en-us ;
+                rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc4646.txt> ;
+                rdfs:label "RFC 4646"@en-us ;
+                skos:definition "The set of tags constructed according to RFC 4646 for the identification of languages."@en-us .
+
+
+###  http://purl.org/dc/terms/URI
+dcterms:URI rdf:type rdfs:Datatype ;
+            rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc3986.txt> ;
+            rdfs:label "URI"@en-us ;
+            skos:definition "The set of identifiers constructed according to the generic syntax for Uniform Resource Identifiers as specified by the Internet Engineering Task Force."@en-us .
+
+
+###  http://purl.org/dc/terms/W3CDTF
+dcterms:W3CDTF rdf:type rdfs:Datatype ;
+               rdfs:isDefinedBy <http://www.w3.org/TR/NOTE-datetime> ;
+               rdfs:label "W3C-DTF"@en-us ;
+               skos:definition "The set of dates and times constructed according to the W3C Date and Time Formats Specification."@en-us .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
