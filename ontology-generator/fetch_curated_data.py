@@ -32,9 +32,8 @@ GIDS = {
         'acupoints-locations'       : '1094677629',
         'special-points-association': '984678930',
         'acupoints-nerves'          : '542969034',
-        'acupoints-veins-arteries'  : '88026915',
-        'pain-related-articles'     : '732140612'
-       }
+        'acupoints-veins-arteries'  : '88026915'
+        }
 
 # Directories to save the CSV files
 ACUPOINTS_DIR = "../curated-data/acupoints"
@@ -44,17 +43,16 @@ os.makedirs(KB_DIR, exist_ok=True)
 
 # Map each tab to its output directory
 TAB_OUTPUT_DIRS = {
-        'meridians'                 : ACUPOINTS_DIR,
-        'acupoints-category'        : ACUPOINTS_DIR,
-        'acupoints'                 : ACUPOINTS_DIR,
-        'extra-acupoints'           : ACUPOINTS_DIR,
-        'special-points'            : ACUPOINTS_DIR,
-        'acupoints-locations'       : ACUPOINTS_DIR,
-        'special-points-association': ACUPOINTS_DIR,
-        'acupoints-nerves'          : ACUPOINTS_DIR,
-        'acupoints-veins-arteries'  : ACUPOINTS_DIR,
-        'pain-related-articles'     : KB_DIR,
-       }
+                    'meridians'                 : ACUPOINTS_DIR,
+                    'acupoints-category'        : ACUPOINTS_DIR,
+                    'acupoints'                 : ACUPOINTS_DIR,
+                    'extra-acupoints'           : ACUPOINTS_DIR,
+                    'special-points'            : ACUPOINTS_DIR,
+                    'acupoints-locations'       : ACUPOINTS_DIR,
+                    'special-points-association': ACUPOINTS_DIR,
+                    'acupoints-nerves'          : ACUPOINTS_DIR,
+                    'acupoints-veins-arteries'  : ACUPOINTS_DIR
+                 }
 
 # Download and save each tab as a CSV
 def download_tab_as_csv(sheet_id, gid, tab_name, output_dir):
