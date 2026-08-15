@@ -1,12 +1,12 @@
 """
-merge_imported_ttl.py
+merge_imported_anatomical_ttl.py
 
-Merges the two imported-terms TTL files into a single tara-imported-terms.ttl:
+Merges the two imported-terms TTL files into a single tara-imported-anatomical-terms.ttl:
 
   1. imported-tara-uberon-terms.ttl  — UBERON classes extracted by the UBERON importer
   2. imported-tara-ilx-terms.ttl     — InterLex terms used by TARA
 
-Output: ontology-files/base/tara-imported-terms.ttl
+Output: ontology-files/base/tara-imported-anatomical-terms.ttl
 
 Uses ontology-generator/lib/ontology_merger.py so that namespace prefixes are
 preserved cleanly (no auto-generated nsX prefixes in the output).
@@ -15,7 +15,7 @@ Run from the directory containing this script, or from anywhere — paths are
 resolved relative to this file's location.
 
 Usage:
-    python merge_imported_ttl.py
+    python merge_imported_anatomical_ttl.py
 
 Author: Fahim Imam
 Last Updated: 2026-07-04
@@ -31,7 +31,7 @@ REPO_ROOT   = SCRIPT_DIR.parents[4]   # …/TARA-Ontology-Repository
 IMPORTED_TTL_DIR = REPO_ROOT / "ontology-files" / "base" / "imported-terms" / "imported-ttl-files"
 UBERON_TTL  = IMPORTED_TTL_DIR / "imported-tara-uberon-terms.ttl"
 ILX_TTL     = IMPORTED_TTL_DIR / "imported-tara-ilx-terms.ttl"
-OUTPUT_TTL  = REPO_ROOT / "ontology-files" / "base" / "tara-imported-terms.ttl"
+OUTPUT_TTL  = REPO_ROOT / "ontology-files" / "base" / "tara-imported-anatomical-terms.ttl"
 
 # Add the ontology-generator/lib directory to the Python path so we can import
 # ontology_merger without installing it as a package.
@@ -60,7 +60,7 @@ NAMESPACES = {
 
 def main():
     print("=" * 60)
-    print("Merging imported TTL files into tara-imported-terms.ttl")
+    print("Merging imported TTL files into tara-imported-anatomical-terms.ttl")
     print("=" * 60)
 
     for path, label in ((UBERON_TTL, "UBERON terms"), (ILX_TTL, "ILX terms")):
@@ -68,9 +68,14 @@ def main():
             print(f"ERROR: {label} file not found: {path}")
             sys.exit(1)
 
-    print(f"\nFile 1 (base):  {UBERON_TTL.name}")
-    print(f"File 2 (merge): {ILX_TTL.name}")
-    print(f"Output:         {OUTPUT_TTL}")
+    # Display relative paths from repo root for cleaner output
+    uberon_display = UBERON_TTL.relative_to(REPO_ROOT)
+    ilx_display = ILX_TTL.relative_to(REPO_ROOT)
+    output_display = OUTPUT_TTL.relative_to(REPO_ROOT)
+
+    print(f"\nFile 1 (base):  {uberon_display}")
+    print(f"File 2 (merge): {ilx_display}")
+    print(f"Output:         {output_display}")
     print()
 
     merge_ontologies(
@@ -80,7 +85,7 @@ def main():
         bind_namespaces=NAMESPACES,
     )
 
-    print(f"\nDone. Merged file saved to:\n  {OUTPUT_TTL}")
+    print(f"\nDone. Merged file saved to:\n  {output_display}")
 
 
 if __name__ == "__main__":

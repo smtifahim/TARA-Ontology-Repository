@@ -434,8 +434,148 @@ def main():
     with open(output_filename, 'w', encoding='utf-8') as f:
         f.write(ttl_text)
 
-    print(f"\nDone! {len(child_ilx_ids)} primary terms + hierarchy written to: {output_filename}")
+    # Display relative path from script directory for consistent output
+    script_dir = Path(__file__).parent
+    try:
+        rel_path = Path(output_filename).relative_to(script_dir.parent.parent)
+    except ValueError:
+        rel_path = Path(output_filename)
+    print(f"\nDone! {len(child_ilx_ids)} primary terms + hierarchy written to: {rel_path}")
+
+
+def postprocess_ontology(input_file=None):
+    """
+    Post-processing function that can be run independently of the main import.
+
+    Operations:
+    1. Remove the class continuant (BFO_0000002)
+    2. Move 'anatomical entity' (UBERON_0001062) as a root class (directly under owl:Thing)
+    3. Remove 'independent continuant' (BFO_0000004)
+
+    Args:
+        input_file: Path to TTL file to process. If None, uses the default output file.
+    """
+    if input_file is None:
+        input_file = os.path.join(os.path.dirname(__file__), "..", "..", "imported-ttl-files", "imported-tara-ilx-terms.ttl")
+
+    # Display relative path from script directory for consistent output
+    script_dir = Path(__file__).parent
+    try:
+        display_path = Path(input_file).relative_to(script_dir.parent.parent)
+    except ValueError:
+        display_path = Path(input_file)
+
+    print(f"Loading ontology from: {display_path}")
+    if not os.path.exists(input_file):
+        print(f"Error: File not found: {input_file}")
+        return
+
+    # Load existing graph
+    g = Graph()
+    g.parse(input_file, format="turtle")
+
+    # Define URIs
+    CONTINUANT = URIRef("http://purl.obolibrary.org/obo/BFO_0000002")
+    INDEPENDENT_CONTINUANT = URIRef("http://purl.obolibrary.org/obo/BFO_0000004")
+    ANATOMICAL_ENTITY = URIRef("http://purl.obolibrary.org/obo/UBERON_0001062")
+    DATA_ABOUT_ONTOLOGY_PART = URIRef("http://purl.obolibrary.org/obo/IAO_0000102")
+    TERMSET_URI = URIRef("http://uri.interlex.org/base/ilx_0795339")
+
+    # 1. Remove class continuant (BFO_0000002) and all its triples
+    print("  Removing class continuant (BFO_0000002)...")
+    triples_to_remove = list(g.triples((CONTINUANT, None, None)))
+    triples_to_remove.extend(list(g.triples((None, None, CONTINUANT))))
+    for s, p, o in triples_to_remove:
+        g.remove((s, p, o))
+    print(f"    Removed {len(triples_to_remove)} triples")
+
+    # 2. Move anatomical entity as a root class and
+    #    remove independent continuant (BFO_0000004)
+    print("  Making anatomical entity a root class...")
+
+    # Remove any existing subClassOf for anatomical entity
+    for s, p, o in list(g.triples((ANATOMICAL_ENTITY, RDFS.subClassOf, None))):
+        g.remove((s, p, o))
+        print(f"    Removed subClassOf: {o}")
+
+    # 3. Remove independent continuant (BFO_0000004) and all its triples
+    print("  Removing class independent continuant (BFO_0000004)...")
+    triples_to_remove = list(g.triples((INDEPENDENT_CONTINUANT, None, None)))
+    triples_to_remove.extend(list(g.triples((None, None, INDEPENDENT_CONTINUANT))))
+
+    # For triples where independent continuant is the object (i.e., subClassOf),
+    # replace it with anatomical entity
+    for s, p, o in list(g.triples((None, RDFS.subClassOf, INDEPENDENT_CONTINUANT))):
+        g.remove((s, p, o))
+        g.add((s, RDFS.subClassOf, ANATOMICAL_ENTITY))
+        print(f"    Replaced: {s} subClassOf independent continuant → anatomical entity")
+
+    # Remove triples where independent continuant is subject
+    for s, p, o in list(g.triples((INDEPENDENT_CONTINUANT, None, None))):
+        g.remove((s, p, o))
+
+    print(f"    Removed {len(triples_to_remove)} triples")
+
+    # 4. Remove 'data about an ontology part' (IAO_0000102) and its subclass relationships
+    print("  Removing 'data about an ontology part' (IAO_0000102)...")
+    triples_to_remove = list(g.triples((DATA_ABOUT_ONTOLOGY_PART, None, None)))
+    triples_to_remove.extend(list(g.triples((None, None, DATA_ABOUT_ONTOLOGY_PART))))
+    for s, p, o in triples_to_remove:
+        g.remove((s, p, o))
+    print(f"    Removed {len(triples_to_remove)} triples")
+
+    # 5. Remove 'TARA Acupoint Ontology Termset' (ilx_0795339) and all its triples
+    print("  Removing 'TARA Acupoint Ontology Termset' (ilx_0795339)...")
+    triples_to_remove = list(g.triples((TERMSET_URI, None, None)))
+    triples_to_remove.extend(list(g.triples((None, None, TERMSET_URI))))
+    for s, p, o in triples_to_remove:
+        g.remove((s, p, o))
+    print(f"    Removed {len(triples_to_remove)} triples")
+
+    # Rebind namespaces for clean output
+    g.bind("ILX",      Namespace("http://uri.interlex.org/base/ilx_"))
+    g.bind("ilxr",     Namespace("http://uri.interlex.org/base/readable/"))
+    g.bind("ilxtr",    Namespace("http://uri.interlex.org/tgbugs/uris/readable/"))
+    g.bind("UBERON",   Namespace("http://purl.obolibrary.org/obo/UBERON_"))
+    g.bind("IAO",      Namespace("http://purl.obolibrary.org/obo/IAO_"))
+    g.bind("oboInOwl", Namespace("http://www.geneontology.org/formats/oboInOwl#"), override=True)
+    g.bind("FMA",      Namespace("http://purl.org/sig/ont/fma/fma"))
+    g.bind("fma",      Namespace("http://purl.org/sig/ont/fma/"))
+    g.bind("BIRNLEX",  Namespace("http://uri.neuinfo.org/nif/nifstd/birnlex_"))
+    g.bind("NIFRID",   Namespace("http://uri.neuinfo.org/nif/nifstd/readable/"))
+    g.bind("NLX",      Namespace("http://uri.neuinfo.org/nif/nifstd/nlx_"))
+    g.bind("BFO",      Namespace("http://purl.obolibrary.org/obo/BFO_"))
+    g.bind("owl",      OWL)
+    g.bind("rdfs",     RDFS)
+    g.bind("rdf",      RDF)
+
+    # Serialize to TTL
+    ttl_text = g.serialize(format="turtle")
+
+    # Text-level post-processing: fix rdflib-generated namespace prefixes
+    ttl_text = re.sub(r'\bns\d+:', 'oboInOwl:', ttl_text)
+    ttl_text = re.sub(r'@prefix ns\d+:.*?\n', '', ttl_text)
+    ttl_text = ttl_text.replace(
+        '@prefix oboInOwl: <obo:> .',
+        '@prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .'
+    )
+
+    # Write back to the same file
+    with open(input_file, 'w', encoding='utf-8') as f:
+        f.write(ttl_text)
+
+    print(f"\nDone! Post-processing applied to: {display_path}")
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser(description="Import ILX terms or post-process ontology")
+    parser.add_argument("--postprocess", action="store_true", help="Run post-processing only (no API calls)")
+    parser.add_argument("--input", type=str, help="TTL file to post-process (default: imported-tara-ilx-terms.ttl)")
+
+    args = parser.parse_args()
+
+    if args.postprocess:
+        postprocess_ontology(args.input)
+    else:
+        main()
