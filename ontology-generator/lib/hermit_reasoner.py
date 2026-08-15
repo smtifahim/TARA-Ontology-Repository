@@ -38,6 +38,7 @@ NAMESPACES = {
     "obo"      : "http://purl.obolibrary.org/obo/",
     "TARA"     : "http://www.acupunctureresearch.org/tara/ontology/TARA_",
     "tara"     : "http://www.acupunctureresearch.org/tara/ontology/",
+    "tara-kb"     : "http://www.acupunctureresearch.org/tara/ontology/kb/",
     "UBERON"   : "http://purl.obolibrary.org/obo/UBERON_",
     "OboInOwl" : "http://www.geneontology.org/formats/oboInOwl#",
     "swrl"     : "http://www.w3.org/2003/11/swrl#",

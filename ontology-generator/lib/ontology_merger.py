@@ -18,6 +18,7 @@ Author: Fahim Imam
 Last updated: April 19, 2026
 '''
 
+import os
 import re
 from rdflib import Graph, Namespace
 
@@ -52,7 +53,8 @@ def merge_ontologies(ontology1_path, ontology2_path, merged_ontology_path, bind_
 
     # Serialize the merged graph to a new TTL file
     g1.serialize(destination=merged_ontology_path, format="turtle")
-    print ("  Merged Ontology Saved At: " + merged_ontology_path)
+    print ("  Merged Ontology Saved At: " + os.path.relpath(merged_ontology_path))
+
 
 # Example testing usage
 # ontology1_path = '../ontology-files/generated/ttl/tmp/tara-acupoints-temp.ttl'
