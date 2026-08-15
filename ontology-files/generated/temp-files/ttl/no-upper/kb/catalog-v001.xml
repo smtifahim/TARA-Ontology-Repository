@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.acupunctureresearch.org/tara/ontology/acupoints.owl" uri="file:/Users/fahimimam/Library/CloudStorage/OneDrive-UniversityofCalifornia,SanDiegoHealth/GitHub/smtifahim/TARA-Ontology-Repository/ontology-files/generated/ttl/no-upper/tara-acupoints.ttl"/>
+    <uri id="Imports Wizard Entry" name="http://www.acupunctureresearch.org/tara/ontology/acupoints.owl" uri="file:/Users/fahimimam/Library/CloudStorage/OneDrive-UniversityofCalifornia,SanDiegoHealth/GitHub/smtifahim/TARA-Ontology-Repository/ontology-files/generated/ttl/no-upper/tara-acupoints.ttl"/>
+    <uri id="Imports Wizard Entry" name="http://www.acupunctureresearch.org/tara/ontology/acupoints.owl" uri="file:/Users/fahimimam/Library/CloudStorage/OneDrive-UniversityofCalifornia,SanDiegoHealth/GitHub/smtifahim/TARA-Ontology-Repository/ontology-files/generated/ttl/no-upper/tara-acupoints.ttl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+</catalog>
