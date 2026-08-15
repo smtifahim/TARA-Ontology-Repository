@@ -2,8 +2,10 @@
 # run_all.sh
 # Runs the full TARA Acupoints Ontology generation pipeline:
 #   1. Download curated CSV files from the TARA Google Sheet
-#   2. Generate and merge ontology files from the CSV files
-#   3. Run HermiT to produce the inferred ontology files
+#   2. Generate and merge the main TARA ontology files from the CSV files 
+#   2a. Run HermiT to generate inferred ontology files
+#   3. Generate articles metadata knowledgebase 
+#   3a. Run HermiT to generate inferred ontology files
 #
 # Usage:
 #   ./run_all.sh
@@ -40,17 +42,27 @@ echo "Step 2: Running ontology adapter to generate and merge TTL files..."
 python generate_ontology.py
 echo ""
 
-# Step 3a: Run HermiT on tara-acupoints.ttl
-echo "Step 3a: Running HermiT on tara-acupoints.ttl..."
-python lib/hermit_reasoner.py
+# Step 3: Generate articles metadata knowledgebase
+echo "Step 3: Generating articles metadata knowledgebase..."
+python generate_articles_kb.py
 echo ""
 
-# Step 3b: Run HermiT on tara-articles-kb.ttl
-echo "Step 3b: Running HermiT on tara-articles-kb.ttl..."
-python lib/hermit_reasoner.py \
-  "../ontology-files/generated/ttl/kb/tara-articles-kb.ttl" \
-  "../ontology-files/generated/ttl/kb/tara-articles-kb-inferred.ttl"
-echo ""
+# Step 4: Run HermiT to produce the inferred ontology files
+# echo "Step 4: Running HermiT to produce the inferred ontology files..."
+# python lib/hermit_reasoner.py
+# echo ""
+
+# # Step 3a: Run HermiT on tara-acupoints.ttl
+# echo "Step 3a: Running HermiT on tara-acupoints.ttl..."
+# python lib/hermit_reasoner.py
+# echo ""
+
+# # Step 3b: Run HermiT on tara-articles-kb.ttl
+# echo "Step 3b: Running HermiT on tara-articles-kb.ttl..."
+# python lib/hermit_reasoner.py \
+#   "../ontology-files/generated/ttl/kb/tara-articles-kb.ttl" \
+#   "../ontology-files/generated/ttl/kb/tara-articles-kb-inferred.ttl"
+# echo ""
 
 echo "================================================================"
 echo " Pipeline Completed Successfully."
