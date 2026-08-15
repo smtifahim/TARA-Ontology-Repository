@@ -1,0 +1,166 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tara: <http://www.acupunctureresearch.org/tara/ontology/> .
+@prefix tara-kb: <http://www.acupunctureresearch.org/tara/ontology/kb/> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology ;
+   owl:imports tara-kb:metadata.ttl
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.acupunctureresearch.org/tara/ontology/hasCurationSource
+tara:hasCurationSource rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+tara-kb:hasAcupunctureDetailsScore tara:hasSourceSheetColumnLabel "Acupuncture Details Score" .
+
+
+tara-kb:hasAcupunctureProtocol tara:hasSourceSheetColumnLabel "Acupoint Descriptions" .
+
+
+tara-kb:hasAdverseEffectsScore tara:hasSourceSheetColumnLabel "Adverse Effects Score" .
+
+
+tara-kb:hasArticleTitle tara:hasSourceSheetColumnLabel "Title" .
+
+
+tara-kb:hasBlindingQualityScore tara:hasSourceSheetColumnLabel "Blinding Score" .
+
+
+tara-kb:hasClinicalTrialType tara:hasSourceSheetColumnLabel "Trial Type" .
+
+
+tara-kb:hasCointerventionsScore tara:hasSourceSheetColumnLabel "Cointerventions Score" .
+
+
+tara-kb:hasControlGroupsDetails tara:hasSourceSheetColumnLabel "Control groups" .
+
+
+tara-kb:hasControlGroupsScore tara:hasSourceSheetColumnLabel "Control Groups Score" .
+
+
+tara-kb:hasCountryOfStudy tara:hasSourceSheetColumnLabel "Country" .
+
+
+tara-kb:hasDOILink tara:hasSourceSheetColumnLabel "DOI_Link" .
+
+
+tara-kb:hasDatasetLink tara:hasSourceSheetColumnLabel "Dataset Link" .
+
+
+tara-kb:hasEligibilityScore tara:hasSourceSheetColumnLabel "Eligibility Score" .
+
+
+tara-kb:hasExtractedMetadata tara:hasCurationSource "https://docs.google.com/spreadsheets/d/14WIm3G6PoIHYrECjEetgd7pvKjzrntR57HbdMJ2ZNQI/edit?gid=602913291#gid=602913291" .
+
+
+tara-kb:hasFrequencyOfTreatmentScore tara:hasSourceSheetColumnLabel "Frequency of Treatment Score" .
+
+
+tara-kb:hasIntroductionAndHypothesisScore tara:hasSourceSheetColumnLabel "Introduction and Hypothesis Score" .
+
+
+tara-kb:hasLimitationsScore tara:hasSourceSheetColumnLabel "Limitations Score" .
+
+
+tara-kb:hasListedAcupoint tara:hasSourceSheetColumnLabel "Acupoints-Normalized" ;
+                          tara:hasCurationSource "https://docs.google.com/spreadsheets/d/14WIm3G6PoIHYrECjEetgd7pvKjzrntR57HbdMJ2ZNQI/edit?gid=1541369758#gid=1541369758" .
+
+
+tara-kb:hasListedAcupointMap tara:hasSourceSheetColumnLabel "Acupoints_TARA_IDs, Acupoints-Mapped" ;
+                             tara:hasCurationSource "https://docs.google.com/spreadsheets/d/14WIm3G6PoIHYrECjEetgd7pvKjzrntR57HbdMJ2ZNQI/edit?gid=1541369758#gid=1541369758" .
+
+
+tara-kb:hasListedAuthors tara:hasSourceSheetColumnLabel "Authors" .
+
+
+tara-kb:hasMappedAcupoint tara:hasSourceSheetColumnLabel "Acupoints_TARA_IDs" .
+
+
+tara-kb:hasNeedlingDetails tara:hasSourceSheetColumnLabel "Depth" .
+
+
+tara-kb:hasNeedlingParametersScore tara:hasSourceSheetColumnLabel "Needling Parameters Score" .
+
+
+tara-kb:hasOCSITotalPercentage tara:hasSourceSheetColumnLabel "TOTAL %" .
+
+
+tara-kb:hasOtherLink tara:hasSourceSheetColumnLabel "Other_Link" .
+
+
+tara-kb:hasOutcomesMeasureX2Score tara:hasSourceSheetColumnLabel "Outcomes X2 Score" .
+
+
+tara-kb:hasParticipantsScore tara:hasSourceSheetColumnLabel "Participants Score" .
+
+
+tara-kb:hasPractitionerAndSampleSizeScore tara:hasSourceSheetColumnLabel "Practioner and Sample Size Score" .
+
+
+tara-kb:hasPubMedLink tara:hasSourceSheetColumnLabel "PMID_Link" .
+
+
+tara-kb:hasPublicationVenue tara:hasSourceSheetColumnLabel "Journal" .
+
+
+tara-kb:hasPublicationYear tara:hasSourceSheetColumnLabel "Year" .
+
+
+tara-kb:hasRandomAllocationScore tara:hasSourceSheetColumnLabel "Random Allocation Score" .
+
+
+tara-kb:hasResultsOutcomesScore tara:hasSourceSheetColumnLabel "Results Outcomes Score" .
+
+
+tara-kb:hasSampleSizeDetails tara:hasSourceSheetColumnLabel "Sample Size" .
+
+
+tara-kb:hasShamAcupunctureDetails tara:hasSourceSheetColumnLabel "Sham Details" .
+
+
+tara-kb:hasStimulationTypeDetails tara:hasSourceSheetColumnLabel "Stimulation" .
+
+
+tara-kb:hasStudiedTCMCondition tara:hasSourceSheetColumnLabel "Disease/ Condition (TCM)" ,
+                                                              "Normalized-Condition-TCM" ;
+                               tara:hasCurationSource "https://docs.google.com/spreadsheets/d/14WIm3G6PoIHYrECjEetgd7pvKjzrntR57HbdMJ2ZNQI/edit?gid=1217707396#gid=1217707396" .
+
+
+tara-kb:hasStudiedWesternCondition tara:hasSourceSheetColumnLabel "Disease/ Condition (Western)" .
+
+
+tara-kb:hasStudyFindings tara:hasSourceSheetColumnLabel "Results/Conclusion" .
+
+
+tara-kb:hasStudyOutcomeMeasure tara:hasSourceSheetColumnLabel "Outcomes: Primary and secondary" .
+
+
+tara-kb:hasStudyOutcomesMeasure tara:hasSourceSheetColumnLabel "Outcomes: Primary and secondary" .
+
+
+tara-kb:hasSubgroupScore tara:hasSourceSheetColumnLabel "Subgroup Score" .
+
+
+tara-kb:hasTreatmentDuration tara:hasSourceSheetColumnLabel "Length of treatment / Duration Retained" .
+
+
+tara-kb:hasTreatmentFrequency tara:hasSourceSheetColumnLabel "Frequency of Treatment" .
+
+
+tara-kb:hasUnmappableAcupoint tara:hasCurationSource "https://docs.google.com/spreadsheets/d/14WIm3G6PoIHYrECjEetgd7pvKjzrntR57HbdMJ2ZNQI/edit?gid=1541369758#gid=1541369758" ;
+                              tara:hasSourceSheetColumnLabel "Acupoints-Unmappable" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
