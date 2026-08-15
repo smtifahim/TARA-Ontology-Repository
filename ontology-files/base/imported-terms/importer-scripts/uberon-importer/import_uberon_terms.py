@@ -20,11 +20,7 @@ Author: Fahim Imam
 Last Updated: 2026-07-04
 """
 
-import csv
-import io
-import re
-import sys
-import urllib.request
+import csv, io, re, sys, urllib.request
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
 
@@ -90,6 +86,7 @@ SKIP_ANNOTATION_PROPS: Set[URIRef] = {
     URIRef("http://purl.obolibrary.org/obo/RO_0002175"),
     URIRef("http://purl.obolibrary.org/obo/RO_0002171"),
     URIRef("http://purl.obolibrary.org/obo/IAO_0000233"),
+    URIRef("http://purl.obolibrary.org/obo/IAO_0006012"),
     URIRef("http://purl.obolibrary.org/obo/RO_0002161"),
 }
 SKIP_ANNOT_PREFIXES: Tuple[str, ...] = (
@@ -518,7 +515,6 @@ def remove_orphaned_anon_classes(dst: Graph) -> int:
         count += 1
 
     return count
-
 
 # ---------------------------------------------------------------------------
 # Top-level extraction
