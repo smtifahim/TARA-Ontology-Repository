@@ -24,6 +24,7 @@
                                                                                  "Richard Harris, PhD - https://orcid.org/0000-0002-2067-8447" ;
                                                                   dc:creator "Fahim T. Imam, PhD - https://orcid.org/0000-0003-4752-543X" ;
                                                                   dc:description """The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH). The goal of TARA is to establish a new comprehensive resource for the acupuncture research and clinician community. The ontology will be used to support semantic search and annotations for anatomical maps, atlases, and data sets relevant to the TARA project.
+
 - About TARA Project: https://www.acupunctureresearch.org/tara
 - TARA Ontology GitHub Repo: https://purl.org/tara/ontology/repo
 - TARA Ontology Updates: https://purl.org/tara/ontology/updates

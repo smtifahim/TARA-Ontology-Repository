@@ -1,9 +1,19 @@
 @prefix : <http://www.acupunctureresearch.org/tara/ontology/imports/tara-upper.owl#> .
+@prefix RO: <http://purl.obolibrary.org/obo/RO_> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tara: <http://www.acupunctureresearch.org/tara/ontology/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
 @base <http://www.acupunctureresearch.org/tara/ontology/tara-acupoints-upper.owl> .
 
 <http://www.acupunctureresearch.org/tara/ontology/tara-acupoints-upper.owl> rdf:type owl:Ontology ;
@@ -17,13 +27,14 @@
 #################################################################
 
 ###  http://protege.stanford.edu/plugins/owl/protege#defaultLanguage
-<http://protege.stanford.edu/plugins/owl/protege#defaultLanguage> rdf:type owl:AnnotationProperty .
+protege:defaultLanguage rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000111
 <http://purl.obolibrary.org/obo/IAO_0000111> rdf:type owl:AnnotationProperty ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000115> "The value of this annotation property provides the preferred term that an editor has chosen, from among all the alternative terms available, to represent a given class or property in a human readable form." ;
-                                             rdfs:label "editor preferred term" .
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "The value of this annotation property provides the preferred term that an editor has chosen, from among all the alternative terms available, to represent a given class or property in a human readable form."@en ;
+                                             rdfs:label "editor preferred term"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000112
@@ -33,22 +44,25 @@
                                                                                           "The value of this annotation property shows the correct usage of the class or property to which it is attached, in the form of a natural-language sentence or a subject-predicate-object statement." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
                                              rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
-                                             rdfs:label "example of usage"@en .
+                                             rdfs:label "example of usage"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000114
 <http://purl.obolibrary.org/obo/IAO_0000114> rdf:type owl:AnnotationProperty ;
-                                             rdfs:label "has curation status"@en .
+                                             rdfs:label "has curation status"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000115
 <http://purl.obolibrary.org/obo/IAO_0000115> rdf:type owl:AnnotationProperty ;
                                              <http://purl.obolibrary.org/obo/IAO_0000114> <http://purl.obolibrary.org/obo/IAO_0000122> ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000115> "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions."@en ,
-                                                                                          "The official definition, explaining the meaning of a class or property. Shall be a genus-differentia definition wherever the term admits one; for primitive terms that cannot be defined non-circularly, an elucidation is supplied instead." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions."@en ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
+                                             dcterms:description "The official definition, explaining the meaning of a class or property, shall be a genus-differentia definition wherever the term admits one; for primitive terms that cannot be defined non-circularly, an elucidation is supplied instead." ;
                                              rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
-                                             rdfs:label "definition"@en .
+                                             rdfs:label "definition"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000116
@@ -58,7 +72,8 @@
                                                                                           "An administrative note intended for its editor. It might record a rationale for a design decision, flag whether a definition/example is a verbatim quotation from the source ontology versus a paraphrase/reconstruction, or explain how a term connects to a domain ontology (here, TARA) that depends on it." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obofoundry.org/obo/obi>"@en ;
                                              rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
-                                             rdfs:label "editor note"@en .
+                                             rdfs:label "editor note"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000118
@@ -68,8 +83,8 @@
                                                                                           "An alternative name for a class or property, distinct from the editor preferred term (see IAO:0000111)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
                                              rdfs:comment "Consider re-defing to: An alternative name for a class or property which can mean the same thing as the preferred name (semantically equivalent, narrow, broad or related)." ;
-                                             rdfs:label "alternative label"@en ,
-                                                        "alternative term" .
+                                             rdfs:label "alternative label"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000119
@@ -79,7 +94,8 @@
                                                                                           "Formal citation, e.g. identifier in external database to indicate / attribute source(s) for the definition. Free text indicate / attribute source(s) for the definition. EXAMPLE: Author Name, URI, MeSH Term C04, PUBMED ID, Wiki uri on 31.01.2007"@en ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
                                              rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
-                                             rdfs:label "definition source"@en .
+                                             rdfs:label "definition source"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000232
@@ -87,132 +103,661 @@
                                              <http://purl.obolibrary.org/obo/IAO_0000114> <http://purl.obolibrary.org/obo/IAO_0000122> ;
                                              <http://purl.obolibrary.org/obo/IAO_0000115> "An administrative note of use for a curator but of no use for a user"@en ;
                                              rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
-                                             rdfs:label "curator note"@en .
+                                             rdfs:label "curator note"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000412
 <http://purl.obolibrary.org/obo/IAO_0000412> rdf:type owl:AnnotationProperty ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000115> "Annotation property connecting a term to the ontology document, denoted by an IRI, from which it is imported." ;
-                                             rdfs:label "imported from"@en .
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "Annotation property connecting a term to the ontology document, denoted by an IRI, from which it is imported."@en ;
+                                             rdfs:label "imported from"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0006012
+<http://purl.obolibrary.org/obo/IAO_0006012> rdf:type owl:AnnotationProperty ;
+                                             rdfs:label "scheduled for obsoletion on or after" ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/RO_0002475
+<http://purl.obolibrary.org/obo/RO_0002475> rdf:type owl:AnnotationProperty ;
+                                            rdfs:label "has no connections with" ;
+                                            rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
 
 
 ###  http://purl.org/dc/elements/1.1/contributor
-<http://purl.org/dc/elements/1.1/contributor> rdf:type owl:AnnotationProperty .
+dc:contributor rdf:type owl:AnnotationProperty ;
+               rdfs:label "Contributor" ;
+               rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/coverage
-<http://purl.org/dc/elements/1.1/coverage> rdf:type owl:AnnotationProperty .
+dc:coverage rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/creator
-<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+dc:creator rdf:type owl:AnnotationProperty ;
+           rdfs:label "Creator" ;
+           rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/date
-<http://purl.org/dc/elements/1.1/date> rdf:type owl:AnnotationProperty .
+dc:date rdf:type owl:AnnotationProperty ;
+        rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/description
-<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+dc:description rdf:type owl:AnnotationProperty ;
+               rdfs:label "Description" ;
+               rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/format
-<http://purl.org/dc/elements/1.1/format> rdf:type owl:AnnotationProperty .
+dc:format rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/identifier
-<http://purl.org/dc/elements/1.1/identifier> rdf:type owl:AnnotationProperty .
+dc:identifier rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/language
-<http://purl.org/dc/elements/1.1/language> rdf:type owl:AnnotationProperty .
+dc:language rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/member
-<http://purl.org/dc/elements/1.1/member> rdf:type owl:AnnotationProperty .
+dc:member rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/publisher
-<http://purl.org/dc/elements/1.1/publisher> rdf:type owl:AnnotationProperty .
+dc:publisher rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/relation
-<http://purl.org/dc/elements/1.1/relation> rdf:type owl:AnnotationProperty .
+dc:relation rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/rights
-<http://purl.org/dc/elements/1.1/rights> rdf:type owl:AnnotationProperty .
+dc:rights rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/source
-<http://purl.org/dc/elements/1.1/source> rdf:type owl:AnnotationProperty .
+dc:source rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/subject
-<http://purl.org/dc/elements/1.1/subject> rdf:type owl:AnnotationProperty .
+dc:subject rdf:type owl:AnnotationProperty ;
+           rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/title
-<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+dc:title rdf:type owl:AnnotationProperty ;
+         rdfs:label "Title" ;
+         rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/type
-<http://purl.org/dc/elements/1.1/type> rdf:type owl:AnnotationProperty .
+dc:type rdf:type owl:AnnotationProperty ;
+        rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/abstract
+dcterms:abstract rdf:type owl:AnnotationProperty ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "abstract" ;
+                 skos:definition "A summary of the resource."@en ;
+                 rdfs:subPropertyOf dcterms:description .
+
+
+###  http://purl.org/dc/terms/accessRights
+dcterms:accessRights rdf:type owl:AnnotationProperty ;
+                     rdfs:comment "Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."@en ;
+                     rdfs:label "Access Rights"@en ;
+                     skos:definition "Information about who can access the resource or an indication of its security status."@en ;
+                     rdfs:subPropertyOf dcterms:rights ;
+                     rdfs:range dcterms:RightsStatement .
+
+
+###  http://purl.org/dc/terms/alternative
+dcterms:alternative rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "The distinction between titles and alternative titles is application-specific."@en ;
+                    rdfs:label "Alternative Title"@en ;
+                    skos:definition "An alternative name for the resource."@en ;
+                    skos:note "In current practice, this term is used primarily with literal values; however, there are important uses with non-literal values as well. As of December 2007, the DCMI Usage Board is leaving this range unspecified pending an investigation of options."@en ;
+                    rdfs:subPropertyOf dcterms:title .
+
+
+###  http://purl.org/dc/terms/available
+dcterms:available rdf:type owl:AnnotationProperty ;
+                  rdfs:label "Date Available"@en ;
+                  skos:definition "Date (often a range) that the resource became or will become available."@en ;
+                  rdfs:subPropertyOf dcterms:date ;
+                  rdfs:range rdfs:Literal .
 
 
 ###  http://purl.org/dc/terms/bibliographicCitation
-<http://purl.org/dc/terms/bibliographicCitation> rdf:type owl:AnnotationProperty ;
-                                                 <http://purl.obolibrary.org/obo/IAO_0000115> "A bibliographic reference for the resource." ;
-                                                 rdfs:comment "Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible." ;
-                                                 rdfs:label "Bibliographic Citation" .
+dcterms:bibliographicCitation rdf:type owl:AnnotationProperty ;
+                              rdfs:comment "Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible." ;
+                              rdfs:label "Bibliographic Citation"@en ;
+                              skos:definition "A bibliographic reference for the resource."@en ;
+                              rdfs:subPropertyOf dcterms:identifier ;
+                              rdfs:range rdfs:Literal ;
+                              rdfs:domain dcterms:BibliographicResource .
+
+
+###  http://purl.org/dc/terms/conformsTo
+dcterms:conformsTo rdf:type owl:AnnotationProperty ;
+                   rdfs:label "Conforms To"@en ;
+                   skos:definition "An established standard to which the described resource conforms."@en ;
+                   rdfs:subPropertyOf dcterms:relation ;
+                   rdfs:range dcterms:Standard .
+
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity."@en ;
+                    rdfs:label "Contributor"@en ;
+                    skos:definition "An entity responsible for making contributions to the resource."@en ;
+                    rdfs:subPropertyOf dc:contributor .
+
+
+###  http://purl.org/dc/terms/coverage
+dcterms:coverage rdf:type owl:AnnotationProperty ;
+                 rdfs:comment "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges."@en ;
+                 rdfs:label "Coverage"@en ;
+                 skos:definition "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant."@en ;
+                 rdfs:subPropertyOf dc:coverage ;
+                 rdfs:range dcterms:LocationPeriodOrJurisdiction .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty ;
+                rdfs:label "Date Created"@en ;
+                skos:definition "Date of creation of the resource."@en ;
+                rdfs:subPropertyOf dcterms:date ;
+                rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty ;
+                rdfs:comment "Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity."@en ;
+                rdfs:label "Creator"@en ;
+                skos:definition "An entity primarily responsible for making the resource."@en ;
+                rdfs:subPropertyOf dc:creator ,
+                                   dcterms:contributor .
+
+
+###  http://purl.org/dc/terms/date
+dcterms:date rdf:type owl:AnnotationProperty ;
+             dcterms:bibliographicCitation "[W3CDTF] http://www.w3.org/TR/NOTE-datetime" ;
+             rdfs:comment "Date may be used to express temporal information at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en ;
+             rdfs:label "Date"@en ;
+             rdfs:seeAlso <http://www.w3.org/TR/NOTE-datetime> ;
+             skos:definition "A point or period of time associated with an event in the lifecycle of the resource."@en ;
+             rdfs:subPropertyOf dc:date ;
+             rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/dateAccepted
+dcterms:dateAccepted rdf:type owl:AnnotationProperty ;
+                     rdfs:comment "Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal)."@en ;
+                     rdfs:label "Date Accepted"@en ;
+                     skos:definition "Date of acceptance of the resource."@en ;
+                     rdfs:subPropertyOf dcterms:date ;
+                     rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/dateCopyrighted
+dcterms:dateCopyrighted rdf:type owl:AnnotationProperty ;
+                        rdfs:label "Date Copyrighted"@en ;
+                        skos:definition "Date of copyright."@en ;
+                        rdfs:subPropertyOf dcterms:date ;
+                        rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/dateSubmitted
+dcterms:dateSubmitted rdf:type owl:AnnotationProperty ;
+                      rdfs:comment "Examples of resources to which a Date Submitted may be relevant are a thesis (submitted to a university department) or an article (submitted to a journal)."@en ;
+                      rdfs:label "Date Submitted"@en ;
+                      skos:definition "Date of submission of the resource."@en ;
+                      rdfs:subPropertyOf dcterms:date ;
+                      rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+                    rdfs:isDefinedBy dcterms: ;
+                    rdfs:label "description" ;
+                    skos:definition "An account of the resource."@en ;
+                    skos:note "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource." ;
+                    rdfs:subPropertyOf dc:description ,
+                                       skos:note .
+
+
+###  http://purl.org/dc/terms/extent
+dcterms:extent rdf:type owl:AnnotationProperty ;
+               rdfs:label "Extent"@en ;
+               skos:definition "The size or duration of the resource."@en ;
+               rdfs:subPropertyOf dcterms:format ;
+               rdfs:range dcterms:SizeOrDuration .
+
+
+###  http://purl.org/dc/terms/format
+dcterms:format rdf:type owl:AnnotationProperty ;
+               dcterms:bibliographicCitation "[MIME] http://www.iana.org/assignments/media-types/" ;
+               rdfs:comment "Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."@en ;
+               rdfs:label "Format"@en ;
+               rdfs:seeAlso <http://www.iana.org/assignments/media-types/> ;
+               skos:definition "The file format, physical medium, or dimensions of the resource."@en ;
+               rdfs:subPropertyOf dc:format ;
+               rdfs:range dc:contributor .
+
+
+###  http://purl.org/dc/terms/hasFormat
+dcterms:hasFormat rdf:type owl:AnnotationProperty ;
+                  rdfs:label "Has Format"@en ;
+                  skos:definition "A related resource that is substantially the same as the pre-existing described resource, but in another format."@en ;
+                  skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                  rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:AnnotationProperty ;
+                   rdfs:label "Has Version"@en ;
+                   skos:definition "A related resource that is a version, edition, or adaptation of the described resource."@en ;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                   rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system."@en ;
+                   rdfs:label "Identifier"@en ;
+                   skos:definition "An unambiguous reference to the resource within a given context."@en ;
+                   rdfs:subPropertyOf dc:identifier ;
+                   rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/instructionalMethod
+dcterms:instructionalMethod rdf:type owl:AnnotationProperty ;
+                            rdfs:comment "Instructional Method will typically include ways of presenting instructional materials or conducting instructional activities, patterns of learner-to-learner and learner-to-instructor interactions, and mechanisms by which group and individual levels of learning are measured. Instructional methods include all aspects of the instruction and learning processes from planning and implementation through evaluation and feedback."@en ;
+                            rdfs:label "Instructional Method"@en ;
+                            skos:definition "A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support."@en ;
+                            rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/isReferencedBy
+dcterms:isReferencedBy rdf:type owl:AnnotationProperty ;
+                       rdfs:label "Is Referenced By"@en ;
+                       skos:definition "A related resource that references, cites, or otherwise points to the described resource."@en ;
+                       skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                       rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/isReplacedBy
+dcterms:isReplacedBy rdf:type owl:AnnotationProperty ;
+                     rdfs:label "Is Replaced By"@en ;
+                     skos:definition "A related resource that supplants, displaces, or supersedes the described resource."@en ;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                     rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/isRequiredBy
+dcterms:isRequiredBy rdf:type owl:AnnotationProperty ;
+                     rdfs:label "Is Required By"@en ;
+                     skos:definition "A related resource that requires the described resource to support its function, delivery, or coherence."@en ;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                     rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/isVersionOf
+dcterms:isVersionOf rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "Changes in version imply substantive changes in content rather than differences in format."@en ;
+                    rdfs:label "Is Version Of"@en ;
+                    skos:definition "A related resource of which the described resource is a version, edition, or adaptation."@en ;
+                    skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                    rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty ;
+               rdfs:label "Date Issued"@en ;
+               skos:definition "Date of formal issuance (e.g., publication) of the resource."@en ;
+               rdfs:subPropertyOf dcterms:date ;
+               rdfs:range rdfs:Literal .
 
 
 ###  http://purl.org/dc/terms/license
-<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+dcterms:license rdf:type owl:AnnotationProperty ;
+                rdfs:label "License"@en ;
+                skos:definition "A legal document giving official permission to do something with the resource."@en ;
+                rdfs:subPropertyOf dcterms:rights ;
+                rdfs:range dcterms:LicenseDocument .
+
+
+###  http://purl.org/dc/terms/medium
+dcterms:medium rdf:type owl:AnnotationProperty ;
+               rdfs:label "Medium"@en ;
+               skos:definition "The material or physical carrier of the resource."@en ;
+               rdfs:subPropertyOf dcterms:format ;
+               rdfs:range dcterms:PhysicalMedium ;
+               rdfs:domain dcterms:PhysicalResource .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Date Modified"@en ;
+                 skos:definition "Date on which the resource was changed."@en ;
+                 rdfs:subPropertyOf dcterms:date ;
+                 rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/provenance
+dcterms:provenance rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "The statement may include a description of any changes successive custodians made to the resource."@en ;
+                   rdfs:label "Provenance"@en ;
+                   skos:definition "A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation."@en ;
+                   rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:AnnotationProperty ;
+                  rdfs:comment "Examples of a Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity."@en ;
+                  rdfs:label "Publisher"@en ;
+                  skos:definition "An entity responsible for making the resource available."@en ;
+                  rdfs:subPropertyOf dc:publisher ;
+                  rdfs:range dcterms:Agent .
+
+
+###  http://purl.org/dc/terms/references
+dcterms:references rdf:type owl:AnnotationProperty ;
+                   rdfs:label "References"@en ;
+                   skos:definition "A related resource that is referenced, cited, or otherwise pointed to by the described resource."@en ;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                   rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:AnnotationProperty ;
+                 rdfs:comment "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en ;
+                 rdfs:label "Relation"@en ;
+                 skos:definition "A related resource."@en ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                 rdfs:subPropertyOf dc:relation .
+
+
+###  http://purl.org/dc/terms/replaces
+dcterms:replaces rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Replaces"@en ;
+                 skos:definition "A related resource that is supplanted, displaced, or superseded by the described resource."@en ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                 rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/requires
+dcterms:requires rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Requires"@en ;
+                 skos:definition "A related resource that is required by the described resource to support its function, delivery, or coherence."@en ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                 rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/rights
+dcterms:rights rdf:type owl:AnnotationProperty ;
+               rdfs:comment "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."@en ;
+               rdfs:label "Rights"@en ;
+               skos:definition "Information about rights held in and over the resource."@en ;
+               rdfs:subPropertyOf dc:rights ;
+               rdfs:range dcterms:RightsStatement .
+
+
+###  http://purl.org/dc/terms/rightsHolder
+dcterms:rightsHolder rdf:type owl:AnnotationProperty ;
+                     rdfs:label "Rights Holder"@en ;
+                     skos:definition "A person or organization owning or managing rights over the resource."@en ;
+                     rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/terms/source
-<http://purl.org/dc/terms/source> rdf:type owl:AnnotationProperty .
+dcterms:source rdf:type owl:AnnotationProperty ;
+               rdfs:comment "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en ;
+               rdfs:label "Source"@en ;
+               skos:definition "A related resource from which the described resource is derived."@en ;
+               skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+               rdfs:subPropertyOf dc:source ,
+                                  dcterms:relation .
+
+
+###  http://purl.org/dc/terms/spatial
+dcterms:spatial rdf:type owl:AnnotationProperty ;
+                rdfs:label "Spatial Coverage"@en ;
+                skos:definition "Spatial characteristics of the resource."@en ;
+                rdfs:subPropertyOf dcterms:coverage ;
+                rdfs:range dcterms:Location .
+
+
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:AnnotationProperty ;
+                rdfs:comment "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary. To describe the spatial or temporal topic of the resource, use the Coverage element."@en ;
+                rdfs:label "Subject"@en ;
+                skos:definition "The topic of the resource."@en ;
+                skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                rdfs:subPropertyOf dc:subject .
+
+
+###  http://purl.org/dc/terms/tableOfContents
+dcterms:tableOfContents rdf:type owl:AnnotationProperty ;
+                        rdfs:label "table of contents" ;
+                        skos:definition "A list of subunits of the resource." ;
+                        rdfs:subPropertyOf dcterms:description .
+
+
+###  http://purl.org/dc/terms/temporal
+dcterms:temporal rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Temporal Coverage"@en ;
+                 skos:definition "Temporal characteristics of the resource."@en ;
+                 rdfs:subPropertyOf dcterms:coverage ;
+                 rdfs:range dcterms:PeriodOfTime .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty ;
+              rdfs:label "Title"@en ;
+              skos:definition "A name given to the resource."@en ;
+              skos:note "In current practice, this term is used primarily with literal values; however, there are important uses with non-literal values as well. As of December 2007, the DCMI Usage Board is leaving this range unspecified pending an investigation of options."@en ;
+              rdfs:subPropertyOf dc:title .
+
+
+###  http://purl.org/dc/terms/type
+dcterms:type rdf:type owl:AnnotationProperty ;
+             rdfs:comment "Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMI-TYPE]. To describe the file format, physical medium, or dimensions of the resource, use the property Format."@en ;
+             rdfs:label "Type"@en ;
+             skos:definition "The nature or genre of the resource."@en ;
+             rdfs:subPropertyOf dc:type .
+
+
+###  http://purl.org/dc/terms/valid
+dcterms:valid rdf:type owl:AnnotationProperty ;
+              rdfs:label "Date Valid"@en ;
+              skos:definition "Date (often a range) of validity of a resource."@en ;
+              rdfs:subPropertyOf dcterms:date ;
+              rdfs:range rdfs:Literal .
+
+
+###  http://uri.interlex.org/base/ilx_0112785
+<http://uri.interlex.org/base/ilx_0112785> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "isPartOf" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0381387
+<http://uri.interlex.org/base/ilx_0381387> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "hasLaterality" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0383241
+<http://uri.interlex.org/base/ilx_0383241> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "isDeprecated" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0777130
+<http://uri.interlex.org/base/ilx_0777130> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "hasDefinitionSource" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0778161
+<http://uri.interlex.org/base/ilx_0778161> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "subClassOf" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/tgbugs/uris/readable/hasExistingId
+<http://uri.interlex.org/tgbugs/uris/readable/hasExistingId> rdf:type owl:AnnotationProperty ;
+                                                             rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/dctermsMetadata
+tara:dctermsMetadata rdf:type owl:AnnotationProperty ;
+                     dcterms:description "An annotation property to group all dcterms metadata properties specific to TARA Acupoints Ontology."@en ;
+                     rdfs:label "dcterms:topMetadataProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/foafAnnotationProperty
+tara:foafAnnotationProperty rdf:type owl:AnnotationProperty ;
+                            dcterms:description "An annotation property to group all foaf: annotation properties specific to TARA Acupoints Ontology." ;
+                            rdfs:label "foaf:topAnnotationProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/hasCompactURI
+tara:hasCompactURI rdf:type owl:AnnotationProperty ;
+                   <http://purl.obolibrary.org/obo/IAO_0000118> "CURIE" ;
+                   dcterms:description "A CURIE (Compact URI) for an ontology IRI is a shortened, human-readable abbreviation consisting of a prefix and a local identifier separated by a colon. For example, the full IRI http://purl.obolibrary.org/obo/UBERON_0000948 condenses into the CURIE UBERON:0000948."@en ;
+                   rdfs:label "Compact URI"@en ;
+                   rdfs:subPropertyOf dcterms:identifier .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/hasSourceSheetColumnLabel
+tara:hasSourceSheetColumnLabel rdf:type owl:AnnotationProperty ;
+                               dcterms:description "An annotation property used to link a formal concept, property, or class within an ontology to its exact literal string representation used as a column header in a data extraction spreadsheet or CSV file. As a subproperty of skos:hiddenLabel, it preserves the raw, unformatted, and informal terminology of the source data layer for ingestion and mapping purposes, without polluting the clean, formal vocabulary defined by skos:prefLabel."@en ;
+                               rdfs:label "Source Sheet Column Label"@en ;
+                               rdfs:subPropertyOf skos:hiddenLabel .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/iaoAnnotationProperty
+tara:iaoAnnotationProperty rdf:type owl:AnnotationProperty ;
+                           dcterms:description "An annotation property to group all IAO annotation properties specific to TARA Acupoints Ontology." ;
+                           rdfs:label "iao:topAnnotationProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/ilxAnnotationProperty
+tara:ilxAnnotationProperty rdf:type owl:AnnotationProperty ;
+                           dcterms:description "An annotation property to group all ILX annotation properties specific to TARA Acupoints Ontology." ;
+                           rdfs:label "ilx:topAnnotationProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/oboInOwlAnnotationProperty
+tara:oboInOwlAnnotationProperty rdf:type owl:AnnotationProperty ;
+                                dcterms:description "An annotation property to group all oboInOwl annotation properties specific to TARA Acupoints Ontology." ;
+                                rdfs:label "oboInOwl:topAnnotationProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/skosAnntotationProperty
+tara:skosAnntotationProperty rdf:type owl:AnnotationProperty ;
+                             dcterms:description "An annotation property to group all skos annotation properties specific to TARA Acupoints Ontology." ;
+                             rdfs:label "skos:topAnnotationProperty" .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#abbrev
+oboInOwl:abbrev rdf:type owl:AnnotationProperty ;
+                rdfs:label "abbreviation" ;
+                rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#consider
+oboInOwl:consider rdf:type owl:AnnotationProperty ;
+                  rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#created_by
-<http://www.geneontology.org/formats/oboInOwl#created_by> rdf:type owl:AnnotationProperty .
+oboInOwl:created_by rdf:type owl:AnnotationProperty ;
+                    rdfs:label "created by" ;
+                    rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#creation_date
-<http://www.geneontology.org/formats/oboInOwl#creation_date> rdf:type owl:AnnotationProperty .
+oboInOwl:creation_date rdf:type owl:AnnotationProperty ;
+                       rdfs:label "creation date" ;
+                       rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
+oboInOwl:hasAlternativeId rdf:type owl:AnnotationProperty ;
+                          rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
-<http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym> rdf:type owl:AnnotationProperty ;
-                                                               <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property which has a more general meaning than the preferred name/primary label." ;
-                                                               rdfs:label "has broad synonym"@en ;
-                                                               rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/18" ;
-                                                               rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+oboInOwl:hasBroadSynonym rdf:type owl:AnnotationProperty ;
+                         <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property which has a more general meaning than the preferred name/primary label." ;
+                         rdfs:label "has broad synonym"@en ;
+                         rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/18" ;
+                         rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasDbXref
+oboInOwl:hasDbXref rdf:type owl:AnnotationProperty ;
+                   rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
-<http://www.geneontology.org/formats/oboInOwl#hasExactSynonym> rdf:type owl:AnnotationProperty ;
-                                                               <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property which has the exact same meaning than the preferred name/primary label." ;
-                                                               rdfs:label "has exact synonym"@en ;
-                                                               rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/20" ;
-                                                               rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+oboInOwl:hasExactSynonym rdf:type owl:AnnotationProperty ;
+                         <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property which has the exact same meaning than the preferred name/primary label." ;
+                         rdfs:label "has exact synonym"@en ;
+                         rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/20" ;
+                         rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
-<http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym> rdf:type owl:AnnotationProperty ;
-                                                                <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property which has a more specific meaning than the preferred name/primary label." ;
-                                                                rdfs:label "has narrow synonym"@en ;
-                                                                rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/19" ;
-                                                                rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+oboInOwl:hasNarrowSynonym rdf:type owl:AnnotationProperty ;
+                          <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property which has a more specific meaning than the preferred name/primary label." ;
+                          rdfs:label "has narrow synonym"@en ;
+                          rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/19" ;
+                          rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym
-<http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> rdf:type owl:AnnotationProperty ;
-                                                                 <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property that has been used synonymously with the primary term name, but the usage is not strictly correct." ;
-                                                                 rdfs:label "has related synonym"@en ;
-                                                                 rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/21" ;
-                                                                 rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+oboInOwl:hasRelatedSynonym rdf:type owl:AnnotationProperty ;
+                           <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property that has been used synonymously with the primary term name, but the usage is not strictly correct." ;
+                           rdfs:label "has related synonym"@en ;
+                           rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/21" ;
+                           rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#is_class_level
+oboInOwl:is_class_level rdf:type owl:AnnotationProperty ;
+                        rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#is_metadata_tag
+oboInOwl:is_metadata_tag rdf:type owl:AnnotationProperty ;
+                         rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#shorthand
+oboInOwl:shorthand rdf:type owl:AnnotationProperty ;
+                   rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#comment
@@ -231,16 +776,159 @@ rdfs:label rdf:type owl:AnnotationProperty .
 rdfs:seeAlso rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty ;
+              rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+              rdfs:label "alternative label" ;
+              skos:definition "an alternative lexical label for a resource" ;
+              skos:example "Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel)." ;
+              skos:note "The range of skos:altLabel is the class of RDF plain literals." ,
+                        "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties." ;
+              rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                                 rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#broadMatch
+skos:broadMatch rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf tara:skosAnntotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#changeNote
+skos:changeNote rdf:type owl:AnnotationProperty ;
+                rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                rdfs:label "change note" ;
+                skos:definition "a note about a modification to a concept" ;
+                rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#closeMatch
+skos:closeMatch rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf tara:skosAnntotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty ;
+                rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                rdfs:label "definition" ;
+                skos:definition "a statement or formal explanation of the meaning of a concept" ;
+                rdfs:subPropertyOf dcterms:description ,
+                                   tara:skosAnntotationProperty ,
+                                   skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#editorialNote
+skos:editorialNote rdf:type owl:AnnotationProperty ;
+                   rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                   rdfs:label "editorial note" ;
+                   skos:definition "a note for an editor, translator or maintainer of the vocabulary" ;
+                   rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#exactMatch
+skos:exactMatch rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf tara:skosAnntotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+skos:example rdf:type owl:AnnotationProperty ;
+             rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+             rdfs:label "example" ;
+             skos:definition "an example of the use of a concept" ;
+             rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#hiddenLabel
+skos:hiddenLabel rdf:type owl:AnnotationProperty ;
+                 rdfs:label "hidden label" ;
+                 skos:definition "The property skos:hiddenLabel is used to assign a hidden lexical label to a resource. A hidden lexical label is a string of characters that a Knowledge Organization System (KOS) designer would like to be accessible to applications performing text-based indexing and search operations, but would not like to be visible to users on visual displays." ;
+                 rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                                    rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#historyNote
+skos:historyNote rdf:type owl:AnnotationProperty ;
+                 rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                 rdfs:label "history note" ;
+                 skos:definition "a note about the past state, use, or meaning of a concept" ;
+                 rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#narrowMatch
+skos:narrowMatch rdf:type owl:AnnotationProperty ;
+                 rdfs:subPropertyOf tara:skosAnntotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty ;
+          rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+          rdfs:label "note" ;
+          skos:definition "a general note, for any purpose" ;
+          skos:scopeNote "This property may be used directly, or as a super-property for more specific note types." ;
+          rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                             rdfs:comment .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty ;
+               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+               rdfs:label "preferred label" ;
+               skos:definition "the preferred lexical label for a resource, in a given language" ;
+               skos:note "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag." ,
+                         "The range of skos:prefLabel is the class of RDF plain literals." ,
+                         "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties." ;
+               rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                                  rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#relatedMatch
+skos:relatedMatch rdf:type owl:AnnotationProperty ;
+                  rdfs:subPropertyOf tara:skosAnntotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+skos:scopeNote rdf:type owl:AnnotationProperty ;
+               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+               rdfs:label "scope note" ;
+               skos:definition "a note that helps to clarify the meaning and/or the use of a concept" ;
+               rdfs:subPropertyOf skos:note .
+
+
+###  http://xmlns.com/foaf/0.1/depiction
+foaf:depiction rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf tara:foafAnnotationProperty .
+
+
 ###  http://xmlns.com/foaf/0.1/homepage
-<http://xmlns.com/foaf/0.1/homepage> rdf:type owl:AnnotationProperty .
+foaf:homepage rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf tara:foafAnnotationProperty .
 
 
 ###  http://xmlns.com/foaf/0.1/mbox
-<http://xmlns.com/foaf/0.1/mbox> rdf:type owl:AnnotationProperty .
+foaf:mbox rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:foafAnnotationProperty .
 
 
 ###  http://xmlns.com/foaf/0.1/page
-<http://xmlns.com/foaf/0.1/page> rdf:type owl:AnnotationProperty .
+foaf:page rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:foafAnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://purl.org/dc/terms/URI
+dcterms:URI rdf:type rdfs:Datatype ;
+            rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc3986.txt> ;
+            rdfs:label "URI"@en ;
+            skos:definition "The set of identifiers constructed according to the generic syntax for Uniform Resource Identifiers as specified by the Internet Engineering Task Force."@en .
+
+
+###  http://purl.org/dc/terms/W3CDTF
+dcterms:W3CDTF rdf:type rdfs:Datatype ;
+               rdfs:isDefinedBy <http://www.w3.org/TR/NOTE-datetime> ;
+               rdfs:label "W3C-DTF"@en ;
+               skos:definition "The set of dates and times constructed according to the W3C Date and Time Formats Specification."@en .
 
 
 #################################################################
@@ -295,6 +983,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 
 ###  http://purl.obolibrary.org/obo/BFO_0000066
 <http://purl.obolibrary.org/obo/BFO_0000066> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf tara:bfoObjectProperty ;
                                              owl:inverseOf <http://purl.obolibrary.org/obo/BFO_0000067> ;
                                              rdfs:domain <http://purl.obolibrary.org/obo/BFO_0000003> ;
                                              rdfs:range <http://purl.obolibrary.org/obo/BFO_0000004> ;
@@ -316,6 +1005,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 
 ###  http://purl.obolibrary.org/obo/BFO_0000067
 <http://purl.obolibrary.org/obo/BFO_0000067> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf tara:bfoObjectProperty ;
                                              <http://purl.obolibrary.org/obo/IAO_0000111> "site of"@en ;
                                              <http://purl.obolibrary.org/obo/IAO_0000115> "[copied from inverse property 'occurs in'] b occurs_in c =def b is a process and c is a material entity or immaterial entity& there exists a spatiotemporal region r and b occupies_spatiotemporal_region r.& forall(t) if b exists_at t then c exists_at t & there exist spatial regions s and s’ where & b spatially_projects_onto s at t& c is occupies_spatial_region s’ at t& s is a proper_continuant_part_of s’ at t"@en ;
                                              rdfs:comment "Paraphrase of definition: a relation between an independent continuant and a process, in which the process takes place entirely within the independent continuant" ;
@@ -325,12 +1015,13 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 
 ###  http://purl.obolibrary.org/obo/IAO_0000136
 <http://purl.obolibrary.org/obo/IAO_0000136> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf tara:iaoObjectProperty ;
                                              rdfs:label "is about"@en .
 
 
 ###  http://purl.obolibrary.org/obo/RO_0000052
 <http://purl.obolibrary.org/obo/RO_0000052> rdf:type owl:ObjectProperty ;
-                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            rdfs:subPropertyOf tara:roObjectProperty ;
                                             owl:inverseOf <http://purl.obolibrary.org/obo/RO_0000053> ;
                                             rdf:type owl:FunctionalProperty ;
                                             <http://purl.obolibrary.org/obo/IAO_0000111> "characteristic of" ,
@@ -350,7 +1041,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 
 ###  http://purl.obolibrary.org/obo/RO_0000053
 <http://purl.obolibrary.org/obo/RO_0000053> rdf:type owl:ObjectProperty ;
-                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            rdfs:subPropertyOf tara:roObjectProperty ;
                                             rdf:type owl:InverseFunctionalProperty ;
                                             rdfs:range <http://purl.obolibrary.org/obo/BFO_0000020> ;
                                             <http://purl.obolibrary.org/obo/IAO_0000111> "bearer of"@en ;
@@ -410,8 +1101,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                             <http://purl.obolibrary.org/obo/IAO_0000119> "OBO Relations Ontology (RO), http://purl.obolibrary.org/obo/ro.owl." ;
                                             <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/ro.owl> ;
                                             rdfs:comment "This relation is modeled after the BFO relation of the same name which was in BFO2, but is used in a more restricted sense - specifically, we model this relation as functional (inherited from characteristic-of). Note that this relation is now removed from BFO2020." ;
-                                            rdfs:label "role of" ,
-                                                       "role of"@en .
+                                            rdfs:label "role of"@en .
 
 
 ###  http://purl.obolibrary.org/obo/RO_0000085
@@ -470,6 +1160,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 
 ###  http://purl.obolibrary.org/obo/RO_0001015
 <http://purl.obolibrary.org/obo/RO_0001015> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf tara:roObjectProperty ;
                                             owl:inverseOf <http://purl.obolibrary.org/obo/RO_0001025> ;
                                             rdf:type owl:TransitiveProperty ;
                                             <http://purl.obolibrary.org/obo/IAO_0000111> "is location of"@en ;
@@ -482,7 +1173,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 
 ###  http://purl.obolibrary.org/obo/RO_0001025
 <http://purl.obolibrary.org/obo/RO_0001025> rdf:type owl:ObjectProperty ;
-                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            rdfs:subPropertyOf tara:roObjectProperty ;
                                             rdf:type owl:TransitiveProperty ;
                                             rdfs:domain <http://purl.obolibrary.org/obo/BFO_0000004> ,
                                                         [ owl:intersectionOf ( <http://purl.obolibrary.org/obo/BFO_0000004>
@@ -513,7 +1204,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                             <http://purl.obolibrary.org/obo/IAO_0000118> "located_in"@en ;
                                             <http://purl.obolibrary.org/obo/IAO_0000119> "OBO Relations Ontology (RO), http://purl.obolibrary.org/obo/ro.owl." ;
                                             <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/ro.owl> ;
-                                            <http://purl.org/dc/terms/source> "http://www.obofoundry.org/ro/#OBO_REL:located_in" ;
+                                            dcterms:source "http://www.obofoundry.org/ro/#OBO_REL:located_in" ;
                                             rdfs:label "located in"@en .
 
 [ rdf:type owl:Axiom ;
@@ -533,7 +1224,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 
 ###  http://purl.obolibrary.org/obo/RO_0002131
 <http://purl.obolibrary.org/obo/RO_0002131> rdf:type owl:ObjectProperty ;
-                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            rdfs:subPropertyOf tara:roObjectProperty ;
                                             rdf:type owl:SymmetricProperty ;
                                             <http://purl.obolibrary.org/obo/IAO_0000112> "LU1 hasRelatedSubSurfaceAnatomy Axillary Artery." ;
                                             <http://purl.obolibrary.org/obo/IAO_0000115> "x overlaps y if and only if there exists some z such that x has part z and z part of y." ;
@@ -541,6 +1232,24 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                             <http://purl.obolibrary.org/obo/IAO_0000119> "OBO Relations Ontology (RO), http://purl.obolibrary.org/obo/ro.owl." ;
                                             <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/ro.owl> ;
                                             rdfs:label "overlaps" .
+
+
+###  http://purl.obolibrary.org/obo/RO_0002170
+<http://purl.obolibrary.org/obo/RO_0002170> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf tara:roObjectProperty ;
+                                            owl:inverseOf <http://purl.obolibrary.org/obo/RO_0002176> ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000112> "a 'toe distal phalanx bone' that is connected to a 'toe medial phalanx bone' (an interphalangeal joint *connects* these two bones)." ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000115> "a is connected to b if and only if a and b are discrete structure, and there exists some connecting structure c, such that c connects a and b."@en ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/ro.owl> ;
+                                            rdfs:label "connected to"@en .
+
+
+###  http://purl.obolibrary.org/obo/RO_0002176
+<http://purl.obolibrary.org/obo/RO_0002176> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf tara:roObjectProperty ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000115> "c connects a if and only if there exist some b such that a and b are similar parts of the same system, and c connects b, specifically, c connects a with b. When one structure connects two others it unites some aspect of the function or role they play within the system."@en ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/ro.owl> ;
+                                            rdfs:label "connects"@en .
 
 
 ###  http://purl.obolibrary.org/obo/RO_0002350
@@ -562,6 +1271,53 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                             <http://purl.obolibrary.org/obo/IAO_0000115> "has member is a mereological relation between a collection and an item." ;
                                             <http://purl.obolibrary.org/obo/IAO_0000119> "SIO" ;
                                             rdfs:label "has member"@en .
+
+
+###  http://purl.obolibrary.org/obo/RO_0004026
+<http://purl.obolibrary.org/obo/RO_0004026> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf tara:roObjectProperty ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000115> "A relationship between a disease and an anatomical entity where the disease has one or more features that are located in that entity."@en ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/ro.owl> ;
+                                            rdfs:label "disease has location"@en .
+
+
+###  http://purl.obolibrary.org/obo/RO_0004027
+<http://purl.obolibrary.org/obo/RO_0004027> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0004026> ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000115> "A relationship between a disease and an anatomical entity where the disease is triggered by an inflammatory response to stimuli occurring in the anatomical entity."@en ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/ro.owl> ;
+                                            rdfs:label "disease has inflammation site"@en .
+
+
+###  http://purl.obolibrary.org/obo/RO_0004029
+<http://purl.obolibrary.org/obo/RO_0004029> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf tara:roObjectProperty ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000115> "A relationship between a disease and some feature of that disease, where the feature is either a phenotype or an isolated disease."@en ;
+                                            <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/ro.owl> ;
+                                            rdfs:label "disease has feature"@en .
+
+
+###  http://purl.obolibrary.org/obo/mondo#disease_has_major_feature
+<http://purl.obolibrary.org/obo/mondo#disease_has_major_feature> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0004029> .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/bfoObjectProperty
+tara:bfoObjectProperty rdf:type owl:ObjectProperty ;
+                       dcterms:description "A grouping object property to group all the BFO object properties specific to TARA ontology." ;
+                       rdfs:label "bfo:topObjectProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/iaoObjectProperty
+tara:iaoObjectProperty rdf:type owl:ObjectProperty ;
+                       dcterms:description "A grouping object property to group all the IAO object properties specific to TARA ontology." ;
+                       rdfs:label "iao:topObjectProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/roObjectProperty
+tara:roObjectProperty rdf:type owl:ObjectProperty ;
+                      rdfs:comment "A grouping object property to group all the RO object properties specific to TARA ontology." ;
+                      rdfs:label "ro:topObjectProperty" .
 
 
 #################################################################
@@ -633,8 +1389,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                                                 owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000050> ;
                                                                 owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000002>
                                                               ] ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000115> "An entity that has temporal parts and that happens, unfolds or develops through time."@en ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Included as a bare stub solely to carry the owl:disjointWith axiom on BFO:0000002 (continuant), which reflects BFO's fundamental continuant/occurrent bifurcation; not independently used as a TARA class." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) an occurrent is an entity that unfolds itself in time or it is the instantaneous boundary of such an entity (for example a beginning or an ending) or it is a temporal or spatiotemporal region which such an entity occupies_temporal_region or occupies_spatiotemporal_region. (axiom label in BFO2 Reference: [077-002])"@en ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "occurrent" .
@@ -657,7 +1412,8 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 <http://purl.obolibrary.org/obo/BFO_0000006> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000141> ;
                                              owl:disjointWith <http://purl.obolibrary.org/obo/BFO_0000140> ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Included as a bare stub solely to carry the owl:disjointWith axiom on BFO:0000140 (continuant fiat boundary); not independently used as a TARA class." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) a spatial region is a continuant entity that is a continuant_part_of spaceR as defined relative to some frame R. (axiom label in BFO2 Reference: [035-001])" ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Spatial region doesn't have a closure axiom because the subclasses don't exhaust all possibilites. An example would be the union of a spatial point and a spatial line that doesn't overlap the point, or two spatial lines that intersect at a single point. In both cases the resultant spatial region is neither 0-dimensional, 1-dimensional, 2-dimensional, or 3-dimensional." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "spatial region" .
@@ -669,9 +1425,8 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                              owl:disjointWith <http://purl.obolibrary.org/obo/BFO_0000018> ,
                                                               <http://purl.obolibrary.org/obo/BFO_0000146> ;
                                              <http://purl.obolibrary.org/obo/IAO_0000112> "The Equator; all geopolitical boundaries; all lines of latitude and longitude; the median sulcus of the tongue; the line separating the outer surface of the mucosa of the lower lip from the outer surface of the skin of the chin." ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation, reconstructed by analogy with the confirmed BFO definitions of the sibling zero- and two-dimensional continuant fiat boundary classes) A one-dimensional continuant fiat boundary (line) is a self-connected fiat line whose location is defined in relation to some material entity." ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "TARA:Meridian is modeled as a subclass of this class: a TCM meridian is a channel/line demarcated by convention within acupuncture theory, not by any natural physical discontinuity, matching the fiat-line character of this class's own examples (e.g. the Equator, lines of latitude/longitude). NOTE: the exact verbatim BFO source text for this specific class's elucidation could not be independently confirmed at time of writing (unlike its zero- and two-dimensional siblings, which were confirmed verbatim); the definition given here is a faithful reconstruction by direct analogy and should be checked against the live BFO OWL release. The example list, however, is drawn directly from a confirmed source." ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021), axiom family [031-032]." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) a one-dimensional continuant fiat boundary is a continuous fiat line whose location is defined in relation to some material entity." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021), axiom family [032-001]." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "one-dimensional continuant fiat boundary" .
 
@@ -679,6 +1434,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 ###  http://purl.obolibrary.org/obo/BFO_0000015
 <http://purl.obolibrary.org/obo/BFO_0000015> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000003> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "your process of aging; the life of an organism; the flight of a bird." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000115> "p is a process = Def. p is an occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t. (axiom label in BFO2 Reference: [083-003])"@en ;
                                              rdfs:comment "An occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t."@en ;
                                              rdfs:label "process"@en .
@@ -688,7 +1444,8 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 <http://purl.obolibrary.org/obo/BFO_0000016> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000017> ;
                                              owl:disjointWith <http://purl.obolibrary.org/obo/BFO_0000023> ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Included as a bare stub solely to carry the owl:disjointWith axiom on BFO:0000023 (role). Directly relevant to TARA's design history: the Role/Disposition distinction (a role depends on external context; a disposition depends on the bearer's own physical make-up) is exactly the criterion used to justify modeling TARA:Special_Acupoint_Role as a Role rather than a Disposition." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "the cell wall is disposed to filter chemicals in endocytosis and exocytosis; certain people have a predisposition to colon cancer; children are innately disposed to categorize objects in certain ways." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) b is a disposition means: b is a realizable entity & b’s bearer is some material entity & b is such that if it ceases to exist, then its bearer is physically changed, & b’s realization occurs when and because this bearer is in some special physical circumstances, & this realization occurs in virtue of the bearer’s physical make-up. (axiom label in BFO2 Reference: [062-002])" ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "disposition" .
@@ -709,8 +1466,8 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 ###  http://purl.obolibrary.org/obo/BFO_0000018
 <http://purl.obolibrary.org/obo/BFO_0000018> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000140> ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Included as a bare stub solely to carry the owl:disjointWith axiom on BFO:0000009 (one-dimensional continuant fiat boundary). Directly relevant to TARA's design history: this class (a dimensionless fiat point) was the very first alternative considered and rejected for TARA:Acupoint, since a 0-D boundary cannot have parts and so cannot overlap material nerves/vessels." ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) a zero-dimensional continuant fiat boundary is a fiat point whose location is defined in relation to some material entity." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021), axiom family [031-001]." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "zero-dimensional continuant fiat boundary" .
 
@@ -718,7 +1475,8 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 ###  http://purl.obolibrary.org/obo/BFO_0000019
 <http://purl.obolibrary.org/obo/BFO_0000019> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000020> ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Included as a bare stub solely to carry the owl:disjointWith axiom on BFO:0000017 (realizable entity); not independently used as a TARA class." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "the mass of this piece of gold; the length of the circumference of your waist; the shape of your nose." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) a quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized. (axiom label in BFO2 Reference: [055-001])" ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "quality" .
@@ -742,7 +1500,6 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                              <http://purl.obolibrary.org/obo/IAO_0000112> "The priest role; the student role; the role of subject in a clinical trial; the role of a stone in marking a property boundary; the role of a building in serving as a military target." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) A role is a realizable entity that exists because there is some single bearer that is in some special physical, social, or institutional set of circumstances in which this bearer does not have to be, and is not such that, if it ceases to exist, then the physical make-up of the bearer is thereby changed." ,
                                                                                           "A realizable entity  the manifestation of which brings about some result or end that is not essential to a continuant  in virtue of the kind of thing that it is but that can be served or participated in by that kind of continuant  in some kinds of natural, social or institutional contexts."@en ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "TARA:Special_Acupoint_Role is modeled as a subclass of this class: whether an acupoint counts as, e.g., a Front-Mu point is conferred entirely by TCM theory (an external, institutional/doctrinal context) rather than by the acupoint's own physical make-up, matching the defining Role/Disposition distinction given here." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "role" .
@@ -755,7 +1512,6 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                                               <http://purl.obolibrary.org/obo/BFO_0000030> ;
                                              <http://purl.obolibrary.org/obo/IAO_0000112> "The upper and lower lobes of the left lung; the dorsal and ventral surfaces of the body; the Western hemisphere of the Earth; the FMA regional parts of an intact human body." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) A fiat object part b is a material entity which is such that for all times t, if b exists at t then there is some object c such that b is a proper continuant part of c at t and b is demarcated from the remainder of c by one or more fiat surfaces." ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "TARA:Acupoint is modeled as a subclass of this class: an acupoint is a fiat-demarcated volume of pre-existing tissue (skin, fascia, muscle), delimited by needling convention rather than by any natural physical discontinuity, matching the 'not itself a distinct kind of tissue' character of this class's own examples (e.g. the upper/lower lobes of the lung are not a distinct tissue type from the rest of the lung)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "fiat object part" .
@@ -764,7 +1520,8 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 ###  http://purl.obolibrary.org/obo/BFO_0000027
 <http://purl.obolibrary.org/obo/BFO_0000027> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Included as a bare stub solely to carry the owl:disjointWith axiom on BFO:0000024 (fiat object part); not independently used as a TARA class." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) b is an object aggregate means: b is a material entity consisting exactly of a plurality of objects as member_parts at all times at which b exists. (axiom label in BFO2 Reference: [025-004])" ,
+                                                                                          "the aggregate of blood cells in your body; defined by fiat: the aggregate of members of an organization." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "object aggregate" .
@@ -774,7 +1531,8 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 <http://purl.obolibrary.org/obo/BFO_0000029> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000141> ;
                                              owl:disjointWith <http://purl.obolibrary.org/obo/BFO_0000140> ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Included as a bare stub solely to carry the owl:disjointWith axiom on BFO:0000140 (continuant fiat boundary). Directly relevant to TARA's design history: Site was an alternative BFO class considered and rejected for both TARA:Acupoint and TARA:Meridian, precisely because a Site (unlike a Fiat Object Part or a Continuant Fiat Boundary) is immaterial and so cannot overlap the material nerves/vessels those classes need to relate to." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "a rabbit hole; a hole in the interior of a portion of cheese; an air traffic control region defined in the airspace above an airport; the lumen of your gut." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) b is a site means: b is a three-dimensional immaterial entity that is (partially or wholly) bounded by a material entity or it is a three-dimensional immaterial part thereof. (axiom label in BFO2 Reference: [034-002])" ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "site" .
@@ -783,7 +1541,8 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 ###  http://purl.obolibrary.org/obo/BFO_0000030
 <http://purl.obolibrary.org/obo/BFO_0000030> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Included as a bare stub solely to carry the owl:disjointWith axiom on BFO:0000024 (fiat object part), one of the three (pairwise disjoint) direct subclasses of material entity; not independently used as a TARA class." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "molecule; organism; organelle; solid portions of matter." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) b is an object means: b is a material entity which manifests causal unity of one or other of the types CUn listed above & is of a type (a material universal) instances of which are maximal relative to this criterion of causal unity. (axiom label in BFO2 Reference: [024-001])" ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "object" .
@@ -804,6 +1563,9 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 ###  http://purl.obolibrary.org/obo/BFO_0000034
 <http://purl.obolibrary.org/obo/BFO_0000034> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000016> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "the function of a hammer to drive in nails; the function of a heart pacemaker to regulate the beating of a heart through electricity; the function of amylase in saliva to break down starch into sugar;" ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) A function is a disposition that exists in virtue of the bearer’s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. (axiom label in BFO2 Reference: [064-001])" ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
                                              rdfs:label "function" .
 
 
@@ -842,10 +1604,25 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
 ###  http://purl.obolibrary.org/obo/BFO_0000146
 <http://purl.obolibrary.org/obo/BFO_0000146> rdf:type owl:Class ;
                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000140> ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Included as a bare stub solely to carry the owl:disjointWith axiom on BFO:0000009 (one-dimensional continuant fiat boundary); not independently used as a TARA class." ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021)." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "(Elucidation) a two-dimensional continuant fiat boundary (surface) is a self-connected fiat surface whose location is defined in relation to some material entity." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "BFO 2020 (ISO/IEC 21838-2:2021), axiom family [033-001]." ;
                                              <http://purl.obolibrary.org/obo/IAO_0000412> <http://purl.obolibrary.org/obo/bfo.owl> ;
                                              rdfs:label "two-dimensional continuant fiat boundary" .
+
+
+###  http://purl.obolibrary.org/obo/COB_0000035
+<http://purl.obolibrary.org/obo/COB_0000035> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/COB_0000082> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/obi.owl"@en ;
+                                             rdfs:label "completely executed planned process"@en .
+
+
+###  http://purl.obolibrary.org/obo/COB_0000082
+<http://purl.obolibrary.org/obo/COB_0000082> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "A process that is initiated by an agent who intends to carry out a plan to achieve an objective through one or more actions as described in a plan specification."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/obi.owl" ;
+                                             rdfs:label "planned process"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000013
@@ -928,6 +1705,16 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                              rdfs:label "publication about an investigation" .
 
 
+###  http://purl.obolibrary.org/obo/OBI_0000066
+<http://purl.obolibrary.org/obo/OBI_0000066> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/COB_0000035> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000112> "Lung cancer investigation using expression profiling, a stem cell transplant investigation, biobanking is not an investigation, though it may be part of an investigation"@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "a planned process that consists of parts: planning, study design execution, documentation and which produce conclusion(s)."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000118> "study"@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "http://purl.obolibrary.org/obo/obi.owl"@en ;
+                                             rdfs:label "investigation"@en .
+
+
 #################################################################
 #    Individuals
 #################################################################
@@ -1005,13 +1792,6 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                              <http://purl.obolibrary.org/obo/IAO_0000115> "A term that is metadata complete, has been reviewed, and problems have been identified that require discussion before release. Such a term requires editor note(s) to identify the outstanding issues."@en ;
                                              <http://purl.obolibrary.org/obo/IAO_0000119> "group:OBI"@en ;
                                              rdfs:label "requires discussion"@en .
-
-
-###  http://purl.obolibrary.org/obo/OMO_0001000
-<http://purl.obolibrary.org/obo/OMO_0001000> rdf:type owl:NamedIndividual ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000115> "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not."@en ;
-                                             <http://purl.obolibrary.org/obo/IAO_0000116> "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease."@en ;
-                                             rdfs:label "out of scope" .
 
 
 #################################################################

@@ -1,0 +1,933 @@
+@prefix : <http://www.acupunctureresearch.org/tara/ontology/tara-annotation-properties.ttl> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tara: <http://www.acupunctureresearch.org/tara/ontology/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
+@base <http://www.acupunctureresearch.org/tara/ontology/tara-annotation-properties.ttl> .
+
+<http://www.acupunctureresearch.org/tara/ontology/tara-annotation-properties.ttl> rdf:type owl:Ontology ;
+                                                                                   rdfs:comment """This file includes a subset of metadata terms from Dublin Core (DC Terms), SKOS documentation properties, and annotation properties from Information Artifact Ontology (IAO). It only includes owl annotation properties specific to TARA Acupoints Ontology.
+- About DC Terms: http://purl.org/dc/terms
+- About SKOS: http://www.w3.org/2004/02/skos/core
+- About IAO: https://github.com/information-artifact-ontology/IAO"""@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://protege.stanford.edu/plugins/owl/protege#defaultLanguage
+protege:defaultLanguage rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000111
+<http://purl.obolibrary.org/obo/IAO_0000111> rdf:type owl:AnnotationProperty ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "The value of this annotation property provides the preferred term that an editor has chosen, from among all the alternative terms available, to represent a given class or property in a human readable form."@en ;
+                                             rdfs:label "editor preferred term"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000112
+<http://purl.obolibrary.org/obo/IAO_0000112> rdf:type owl:AnnotationProperty ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "A phrase describing how a term should be used and/or a citation to a work which uses it. May also include other kinds of examples that facilitate immediate understanding, such as widely know prototypes or instances of a class, or cases where a relation is said to hold."@en ,
+                                                                                          "The value of this annotation property shows the correct usage of the class or property to which it is attached, in the form of a natural-language sentence or a subject-predicate-object statement." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
+                                             rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
+                                             rdfs:label "example of usage"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000114
+<http://purl.obolibrary.org/obo/IAO_0000114> rdf:type owl:AnnotationProperty ;
+                                             rdfs:label "has curation status"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000115
+<http://purl.obolibrary.org/obo/IAO_0000115> rdf:type owl:AnnotationProperty ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions."@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
+                                             dcterms:description "The official definition, explaining the meaning of a class or property, shall be a genus-differentia definition wherever the term admits one; for primitive terms that cannot be defined non-circularly, an elucidation is supplied instead." ;
+                                             rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
+                                             rdfs:label "definition"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000116
+<http://purl.obolibrary.org/obo/IAO_0000116> rdf:type owl:AnnotationProperty ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "An administrative note intended for its editor. It may not be included in the publication version of the ontology, so it should contain nothing necessary for end users to understand the ontology."@en ,
+                                                                                          "An administrative note intended for its editor. It might record a rationale for a design decision, flag whether a definition/example is a verbatim quotation from the source ontology versus a paraphrase/reconstruction, or explain how a term connects to a domain ontology (here, TARA) that depends on it." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obofoundry.org/obo/obi>"@en ;
+                                             rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
+                                             rdfs:label "editor note"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000118
+<http://purl.obolibrary.org/obo/IAO_0000118> rdf:type owl:AnnotationProperty ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "A label for a class or property that can be used to refer to the class or property instead of the preferred rdfs:label. Alternative labels should be used to indicate community- or context-specific labels, abbreviations, shorthand forms and the like."@en ,
+                                                                                          "An alternative name for a class or property, distinct from the editor preferred term (see IAO:0000111)." ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
+                                             rdfs:comment "Consider re-defing to: An alternative name for a class or property which can mean the same thing as the preferred name (semantically equivalent, narrow, broad or related)." ;
+                                             rdfs:label "alternative label"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000119
+<http://purl.obolibrary.org/obo/IAO_0000119> rdf:type owl:AnnotationProperty ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "Formal citation -- e.g. the identifier of a document, an ISO/IEC standard, a book, a personal communication, or a URI -- for the source of a term's definition." ,
+                                                                                          "Formal citation, e.g. identifier in external database to indicate / attribute source(s) for the definition. Free text indicate / attribute source(s) for the definition. EXAMPLE: Author Name, URI, MeSH Term C04, PUBMED ID, Wiki uri on 31.01.2007"@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000119> "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
+                                             rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
+                                             rdfs:label "definition source"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000232
+<http://purl.obolibrary.org/obo/IAO_0000232> rdf:type owl:AnnotationProperty ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "An administrative note of use for a curator but of no use for a user"@en ;
+                                             rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> ;
+                                             rdfs:label "curator note"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000234
+<http://purl.obolibrary.org/obo/IAO_0000234> rdf:type owl:AnnotationProperty ;
+                                             rdfs:label "ontology term requester"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000412
+<http://purl.obolibrary.org/obo/IAO_0000412> rdf:type owl:AnnotationProperty ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "Annotation property connecting a term to the ontology document, denoted by an IRI, from which it is imported."@en ;
+                                             rdfs:label "imported from"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000589
+<http://purl.obolibrary.org/obo/IAO_0000589> rdf:type owl:AnnotationProperty ;
+                                             rdfs:label "OBO foundry unique label"@en ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0006012
+<http://purl.obolibrary.org/obo/IAO_0006012> rdf:type owl:AnnotationProperty ;
+                                             rdfs:label "scheduled for obsoletion on or after" ;
+                                             rdfs:subPropertyOf tara:iaoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/RO_0002475
+<http://purl.obolibrary.org/obo/RO_0002475> rdf:type owl:AnnotationProperty ;
+                                            rdfs:label "has no connections with" ;
+                                            rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/mondo#curated_content_resource
+<http://purl.obolibrary.org/obo/mondo#curated_content_resource> rdf:type owl:AnnotationProperty ;
+                                                                rdfs:subPropertyOf tara:mondoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/mondo#excluded_from_qc_check
+<http://purl.obolibrary.org/obo/mondo#excluded_from_qc_check> rdf:type owl:AnnotationProperty ;
+                                                              rdfs:subPropertyOf tara:mondoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/mondo#excluded_subClassOf
+<http://purl.obolibrary.org/obo/mondo#excluded_subClassOf> rdf:type owl:AnnotationProperty ;
+                                                           rdfs:subPropertyOf tara:mondoAnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/mondo#should_conform_to
+<http://purl.obolibrary.org/obo/mondo#should_conform_to> rdf:type owl:AnnotationProperty ;
+                                                         rdfs:subPropertyOf tara:mondoAnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+dc:contributor rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/coverage
+dc:coverage rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty ;
+           rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty ;
+        rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/format
+dc:format rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/language
+dc:language rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/member
+dc:member rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/publisher
+dc:publisher rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/relation
+dc:relation rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc:rights rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/source
+dc:source rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/subject
+dc:subject rdf:type owl:AnnotationProperty ;
+           rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/elements/1.1/type
+dc:type rdf:type owl:AnnotationProperty ;
+        rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/abstract
+dcterms:abstract rdf:type owl:AnnotationProperty ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "abstract" ;
+                 skos:definition "A summary of the resource."@en ;
+                 rdfs:subPropertyOf dcterms:description .
+
+
+###  http://purl.org/dc/terms/accessRights
+dcterms:accessRights rdf:type owl:AnnotationProperty ;
+                     rdfs:comment "Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."@en ;
+                     rdfs:label "Access Rights"@en ;
+                     skos:definition "Information about who can access the resource or an indication of its security status."@en ;
+                     rdfs:subPropertyOf dcterms:rights ;
+                     rdfs:range dcterms:RightsStatement .
+
+
+###  http://purl.org/dc/terms/alternative
+dcterms:alternative rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "The distinction between titles and alternative titles is application-specific."@en ;
+                    rdfs:label "Alternative Title"@en ;
+                    skos:definition "An alternative name for the resource."@en ;
+                    skos:note "In current practice, this term is used primarily with literal values; however, there are important uses with non-literal values as well. As of December 2007, the DCMI Usage Board is leaving this range unspecified pending an investigation of options."@en ;
+                    rdfs:subPropertyOf dcterms:title .
+
+
+###  http://purl.org/dc/terms/available
+dcterms:available rdf:type owl:AnnotationProperty ;
+                  rdfs:label "Date Available"@en ;
+                  skos:definition "Date (often a range) that the resource became or will become available."@en ;
+                  rdfs:subPropertyOf dcterms:date ;
+                  rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/bibliographicCitation
+dcterms:bibliographicCitation rdf:type owl:AnnotationProperty ;
+                              rdfs:comment "Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible." ;
+                              rdfs:label "Bibliographic Citation"@en ;
+                              skos:definition "A bibliographic reference for the resource."@en ;
+                              rdfs:subPropertyOf dcterms:identifier ;
+                              rdfs:range rdfs:Literal ;
+                              rdfs:domain dcterms:BibliographicResource .
+
+
+###  http://purl.org/dc/terms/conformsTo
+dcterms:conformsTo rdf:type owl:AnnotationProperty ;
+                   rdfs:label "Conforms To"@en ;
+                   skos:definition "An established standard to which the described resource conforms."@en ;
+                   rdfs:subPropertyOf dcterms:relation ;
+                   rdfs:range dcterms:Standard .
+
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity."@en ;
+                    rdfs:label "Contributor"@en ;
+                    skos:definition "An entity responsible for making contributions to the resource."@en ;
+                    rdfs:subPropertyOf dc:contributor .
+
+
+###  http://purl.org/dc/terms/coverage
+dcterms:coverage rdf:type owl:AnnotationProperty ;
+                 rdfs:comment "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges."@en ;
+                 rdfs:label "Coverage"@en ;
+                 skos:definition "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant."@en ;
+                 rdfs:subPropertyOf dc:coverage ;
+                 rdfs:range dcterms:LocationPeriodOrJurisdiction .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty ;
+                rdfs:label "Date Created"@en ;
+                skos:definition "Date of creation of the resource."@en ;
+                rdfs:subPropertyOf dcterms:date ;
+                rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty ;
+                rdfs:comment "Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity."@en ;
+                rdfs:label "Creator"@en ;
+                skos:definition "An entity primarily responsible for making the resource."@en ;
+                rdfs:subPropertyOf dc:creator ,
+                                   dcterms:contributor .
+
+
+###  http://purl.org/dc/terms/date
+dcterms:date rdf:type owl:AnnotationProperty ;
+             dcterms:bibliographicCitation "[W3CDTF] http://www.w3.org/TR/NOTE-datetime" ;
+             rdfs:comment "Date may be used to express temporal information at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en ;
+             rdfs:label "Date"@en ;
+             rdfs:seeAlso <http://www.w3.org/TR/NOTE-datetime> ;
+             skos:definition "A point or period of time associated with an event in the lifecycle of the resource."@en ;
+             rdfs:subPropertyOf dc:date ;
+             rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/dateAccepted
+dcterms:dateAccepted rdf:type owl:AnnotationProperty ;
+                     rdfs:comment "Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal)."@en ;
+                     rdfs:label "Date Accepted"@en ;
+                     skos:definition "Date of acceptance of the resource."@en ;
+                     rdfs:subPropertyOf dcterms:date ;
+                     rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/dateCopyrighted
+dcterms:dateCopyrighted rdf:type owl:AnnotationProperty ;
+                        rdfs:label "Date Copyrighted"@en ;
+                        skos:definition "Date of copyright."@en ;
+                        rdfs:subPropertyOf dcterms:date ;
+                        rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/dateSubmitted
+dcterms:dateSubmitted rdf:type owl:AnnotationProperty ;
+                      rdfs:comment "Examples of resources to which a Date Submitted may be relevant are a thesis (submitted to a university department) or an article (submitted to a journal)."@en ;
+                      rdfs:label "Date Submitted"@en ;
+                      skos:definition "Date of submission of the resource."@en ;
+                      rdfs:subPropertyOf dcterms:date ;
+                      rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+                    rdfs:isDefinedBy dcterms: ;
+                    rdfs:label "description" ;
+                    skos:definition "An account of the resource."@en ;
+                    skos:note "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource." ;
+                    rdfs:subPropertyOf dc:description ,
+                                       skos:note .
+
+
+###  http://purl.org/dc/terms/extent
+dcterms:extent rdf:type owl:AnnotationProperty ;
+               rdfs:label "Extent"@en ;
+               skos:definition "The size or duration of the resource."@en ;
+               rdfs:subPropertyOf dcterms:format ;
+               rdfs:range dcterms:SizeOrDuration .
+
+
+###  http://purl.org/dc/terms/format
+dcterms:format rdf:type owl:AnnotationProperty ;
+               dcterms:bibliographicCitation "[MIME] http://www.iana.org/assignments/media-types/" ;
+               rdfs:comment "Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."@en ;
+               rdfs:label "Format"@en ;
+               rdfs:seeAlso <http://www.iana.org/assignments/media-types/> ;
+               skos:definition "The file format, physical medium, or dimensions of the resource."@en ;
+               rdfs:subPropertyOf dc:format ;
+               rdfs:range dc:contributor .
+
+
+###  http://purl.org/dc/terms/hasFormat
+dcterms:hasFormat rdf:type owl:AnnotationProperty ;
+                  rdfs:label "Has Format"@en ;
+                  skos:definition "A related resource that is substantially the same as the pre-existing described resource, but in another format."@en ;
+                  skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                  rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:AnnotationProperty ;
+                   rdfs:label "Has Version"@en ;
+                   skos:definition "A related resource that is a version, edition, or adaptation of the described resource."@en ;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                   rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system."@en ;
+                   rdfs:label "Identifier"@en ;
+                   skos:definition "An unambiguous reference to the resource within a given context."@en ;
+                   rdfs:subPropertyOf dc:identifier ;
+                   rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/instructionalMethod
+dcterms:instructionalMethod rdf:type owl:AnnotationProperty ;
+                            rdfs:comment "Instructional Method will typically include ways of presenting instructional materials or conducting instructional activities, patterns of learner-to-learner and learner-to-instructor interactions, and mechanisms by which group and individual levels of learning are measured. Instructional methods include all aspects of the instruction and learning processes from planning and implementation through evaluation and feedback."@en ;
+                            rdfs:label "Instructional Method"@en ;
+                            skos:definition "A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support."@en ;
+                            rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/isReferencedBy
+dcterms:isReferencedBy rdf:type owl:AnnotationProperty ;
+                       rdfs:label "Is Referenced By"@en ;
+                       skos:definition "A related resource that references, cites, or otherwise points to the described resource."@en ;
+                       skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                       rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/isReplacedBy
+dcterms:isReplacedBy rdf:type owl:AnnotationProperty ;
+                     rdfs:label "Is Replaced By"@en ;
+                     skos:definition "A related resource that supplants, displaces, or supersedes the described resource."@en ;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                     rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/isRequiredBy
+dcterms:isRequiredBy rdf:type owl:AnnotationProperty ;
+                     rdfs:label "Is Required By"@en ;
+                     skos:definition "A related resource that requires the described resource to support its function, delivery, or coherence."@en ;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                     rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/isVersionOf
+dcterms:isVersionOf rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "Changes in version imply substantive changes in content rather than differences in format."@en ;
+                    rdfs:label "Is Version Of"@en ;
+                    skos:definition "A related resource of which the described resource is a version, edition, or adaptation."@en ;
+                    skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                    rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty ;
+               rdfs:label "Date Issued"@en ;
+               skos:definition "Date of formal issuance (e.g., publication) of the resource."@en ;
+               rdfs:subPropertyOf dcterms:date ;
+               rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty ;
+                rdfs:label "License"@en ;
+                skos:definition "A legal document giving official permission to do something with the resource."@en ;
+                rdfs:subPropertyOf dcterms:rights ;
+                rdfs:range dcterms:LicenseDocument .
+
+
+###  http://purl.org/dc/terms/medium
+dcterms:medium rdf:type owl:AnnotationProperty ;
+               rdfs:label "Medium"@en ;
+               skos:definition "The material or physical carrier of the resource."@en ;
+               rdfs:subPropertyOf dcterms:format ;
+               rdfs:range dcterms:PhysicalMedium ;
+               rdfs:domain dcterms:PhysicalResource .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Date Modified"@en ;
+                 skos:definition "Date on which the resource was changed."@en ;
+                 rdfs:subPropertyOf dcterms:date ;
+                 rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/provenance
+dcterms:provenance rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "The statement may include a description of any changes successive custodians made to the resource."@en ;
+                   rdfs:label "Provenance"@en ;
+                   skos:definition "A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation."@en ;
+                   rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:AnnotationProperty ;
+                  rdfs:comment "Examples of a Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity."@en ;
+                  rdfs:label "Publisher"@en ;
+                  skos:definition "An entity responsible for making the resource available."@en ;
+                  rdfs:subPropertyOf dc:publisher ;
+                  rdfs:range dcterms:Agent .
+
+
+###  http://purl.org/dc/terms/references
+dcterms:references rdf:type owl:AnnotationProperty ;
+                   rdfs:label "References"@en ;
+                   skos:definition "A related resource that is referenced, cited, or otherwise pointed to by the described resource."@en ;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                   rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:AnnotationProperty ;
+                 rdfs:comment "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en ;
+                 rdfs:label "Relation"@en ;
+                 skos:definition "A related resource."@en ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                 rdfs:subPropertyOf dc:relation .
+
+
+###  http://purl.org/dc/terms/replaces
+dcterms:replaces rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Replaces"@en ;
+                 skos:definition "A related resource that is supplanted, displaced, or superseded by the described resource."@en ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                 rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/requires
+dcterms:requires rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Requires"@en ;
+                 skos:definition "A related resource that is required by the described resource to support its function, delivery, or coherence."@en ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                 rdfs:subPropertyOf dcterms:relation .
+
+
+###  http://purl.org/dc/terms/rights
+dcterms:rights rdf:type owl:AnnotationProperty ;
+               rdfs:comment "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."@en ;
+               rdfs:label "Rights"@en ;
+               skos:definition "Information about rights held in and over the resource."@en ;
+               rdfs:subPropertyOf dc:rights ;
+               rdfs:range dcterms:RightsStatement .
+
+
+###  http://purl.org/dc/terms/rightsHolder
+dcterms:rightsHolder rdf:type owl:AnnotationProperty ;
+                     rdfs:label "Rights Holder"@en ;
+                     skos:definition "A person or organization owning or managing rights over the resource."@en ;
+                     rdfs:subPropertyOf tara:dctermsMetadata .
+
+
+###  http://purl.org/dc/terms/source
+dcterms:source rdf:type owl:AnnotationProperty ;
+               rdfs:comment "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en ;
+               rdfs:label "Source"@en ;
+               skos:definition "A related resource from which the described resource is derived."@en ;
+               skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+               rdfs:subPropertyOf dc:source ,
+                                  dcterms:relation .
+
+
+###  http://purl.org/dc/terms/spatial
+dcterms:spatial rdf:type owl:AnnotationProperty ;
+                rdfs:label "Spatial Coverage"@en ;
+                skos:definition "Spatial characteristics of the resource."@en ;
+                rdfs:subPropertyOf dcterms:coverage ;
+                rdfs:range dcterms:Location .
+
+
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:AnnotationProperty ;
+                rdfs:comment "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary. To describe the spatial or temporal topic of the resource, use the Coverage element."@en ;
+                rdfs:label "Subject"@en ;
+                skos:definition "The topic of the resource."@en ;
+                skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                rdfs:subPropertyOf dc:subject .
+
+
+###  http://purl.org/dc/terms/tableOfContents
+dcterms:tableOfContents rdf:type owl:AnnotationProperty ;
+                        rdfs:label "table of contents" ;
+                        skos:definition "A list of subunits of the resource." ;
+                        rdfs:subPropertyOf dcterms:description .
+
+
+###  http://purl.org/dc/terms/temporal
+dcterms:temporal rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Temporal Coverage"@en ;
+                 skos:definition "Temporal characteristics of the resource."@en ;
+                 rdfs:subPropertyOf dcterms:coverage ;
+                 rdfs:range dcterms:PeriodOfTime .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty ;
+              rdfs:label "Title"@en ;
+              skos:definition "A name given to the resource."@en ;
+              skos:note "In current practice, this term is used primarily with literal values; however, there are important uses with non-literal values as well. As of December 2007, the DCMI Usage Board is leaving this range unspecified pending an investigation of options."@en ;
+              rdfs:subPropertyOf dc:title .
+
+
+###  http://purl.org/dc/terms/type
+dcterms:type rdf:type owl:AnnotationProperty ;
+             rdfs:comment "Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMI-TYPE]. To describe the file format, physical medium, or dimensions of the resource, use the property Format."@en ;
+             rdfs:label "Type"@en ;
+             skos:definition "The nature or genre of the resource."@en ;
+             rdfs:subPropertyOf dc:type .
+
+
+###  http://purl.org/dc/terms/valid
+dcterms:valid rdf:type owl:AnnotationProperty ;
+              rdfs:label "Date Valid"@en ;
+              skos:definition "Date (often a range) of validity of a resource."@en ;
+              rdfs:subPropertyOf dcterms:date ;
+              rdfs:range rdfs:Literal .
+
+
+###  http://uri.interlex.org/base/ilx_0112785
+<http://uri.interlex.org/base/ilx_0112785> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "isPartOf" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0381387
+<http://uri.interlex.org/base/ilx_0381387> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "hasLaterality" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0383241
+<http://uri.interlex.org/base/ilx_0383241> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "isDeprecated" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0777130
+<http://uri.interlex.org/base/ilx_0777130> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "hasDefinitionSource" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/base/ilx_0778161
+<http://uri.interlex.org/base/ilx_0778161> rdf:type owl:AnnotationProperty ;
+                                           rdfs:label "subClassOf" ;
+                                           rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://uri.interlex.org/tgbugs/uris/readable/hasExistingId
+<http://uri.interlex.org/tgbugs/uris/readable/hasExistingId> rdf:type owl:AnnotationProperty ;
+                                                             rdfs:subPropertyOf tara:ilxAnnotationProperty .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/dctermsMetadata
+tara:dctermsMetadata rdf:type owl:AnnotationProperty ;
+                     dcterms:description "An annotation property to group all dcterms metadata properties specific to TARA Acupoints Ontology."@en ;
+                     rdfs:label "dcterms:topMetadataProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/foafAnnotationProperty
+tara:foafAnnotationProperty rdf:type owl:AnnotationProperty ;
+                            dcterms:description "An annotation property to group all foaf: annotation properties specific to TARA Acupoints Ontology." ;
+                            rdfs:label "foaf:topAnnotationProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/hasCompactURI
+tara:hasCompactURI rdf:type owl:AnnotationProperty ;
+                   <http://purl.obolibrary.org/obo/IAO_0000118> "CURIE" ;
+                   dcterms:description "A CURIE (Compact URI) for an ontology IRI is a shortened, human-readable abbreviation consisting of a prefix and a local identifier separated by a colon. For example, the full IRI http://purl.obolibrary.org/obo/UBERON_0000948 condenses into the CURIE UBERON:0000948."@en ;
+                   rdfs:label "Compact URI"@en ;
+                   rdfs:subPropertyOf dcterms:identifier .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/hasSourceSheetColumnLabel
+tara:hasSourceSheetColumnLabel rdf:type owl:AnnotationProperty ;
+                               dcterms:description "An annotation property used to link a formal concept, property, or class within an ontology to its exact literal string representation used as a column header in a data extraction spreadsheet or CSV file. As a subproperty of skos:hiddenLabel, it preserves the raw, unformatted, and informal terminology of the source data layer for ingestion and mapping purposes, without polluting the clean, formal vocabulary defined by skos:prefLabel."@en ;
+                               rdfs:label "Source Sheet Column Label"@en ;
+                               rdfs:subPropertyOf skos:hiddenLabel .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/iaoAnnotationProperty
+tara:iaoAnnotationProperty rdf:type owl:AnnotationProperty ;
+                           dcterms:description "An annotation property to group all IAO annotation properties specific to TARA Acupoints Ontology." ;
+                           rdfs:label "iao:topAnnotationProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/ilxAnnotationProperty
+tara:ilxAnnotationProperty rdf:type owl:AnnotationProperty ;
+                           dcterms:description "An annotation property to group all ILX annotation properties specific to TARA Acupoints Ontology." ;
+                           rdfs:label "ilx:topAnnotationProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/mondoAnnotationProperty
+tara:mondoAnnotationProperty rdf:type owl:AnnotationProperty ;
+                             dcterms:description "An annotation property to group all MONDO annotation properties specific to TARA Acupoints Ontology." ;
+                             rdfs:label "mondo:topAnnotationProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/oboInOwlAnnotationProperty
+tara:oboInOwlAnnotationProperty rdf:type owl:AnnotationProperty ;
+                                dcterms:description "An annotation property to group all oboInOwl annotation properties specific to TARA Acupoints Ontology." ;
+                                rdfs:label "oboInOwl:topAnnotationProperty" .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/skosAnntotationProperty
+tara:skosAnntotationProperty rdf:type owl:AnnotationProperty ;
+                             dcterms:description "An annotation property to group all skos annotation properties specific to TARA Acupoints Ontology." ;
+                             rdfs:label "skos:topAnnotationProperty" .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#abbrev
+oboInOwl:abbrev rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#consider
+oboInOwl:consider rdf:type owl:AnnotationProperty ;
+                  rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#created_by
+oboInOwl:created_by rdf:type owl:AnnotationProperty ;
+                    rdfs:label "created by" ;
+                    rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#creation_date
+oboInOwl:creation_date rdf:type owl:AnnotationProperty ;
+                       rdfs:label "creation date" ;
+                       rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
+oboInOwl:hasAlternativeId rdf:type owl:AnnotationProperty ;
+                          rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
+oboInOwl:hasBroadSynonym rdf:type owl:AnnotationProperty ;
+                         <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property which has a more general meaning than the preferred name/primary label." ;
+                         rdfs:label "has broad synonym"@en ;
+                         rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/18" ;
+                         rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasDbXref
+oboInOwl:hasDbXref rdf:type owl:AnnotationProperty ;
+                   rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
+oboInOwl:hasExactSynonym rdf:type owl:AnnotationProperty ;
+                         <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property which has the exact same meaning than the preferred name/primary label." ;
+                         rdfs:label "has exact synonym"@en ;
+                         rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/20" ;
+                         rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
+oboInOwl:hasNarrowSynonym rdf:type owl:AnnotationProperty ;
+                          <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property which has a more specific meaning than the preferred name/primary label." ;
+                          rdfs:label "has narrow synonym"@en ;
+                          rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/19" ;
+                          rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym
+oboInOwl:hasRelatedSynonym rdf:type owl:AnnotationProperty ;
+                           <http://purl.obolibrary.org/obo/IAO_0000115> "An alternative label for a class or property that has been used synonymously with the primary term name, but the usage is not strictly correct." ;
+                           rdfs:label "has related synonym"@en ;
+                           rdfs:seeAlso "https://github.com/information-artifact-ontology/ontology-metadata/issues/21" ;
+                           rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#is_class_level
+oboInOwl:is_class_level rdf:type owl:AnnotationProperty ;
+                        rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#is_metadata_tag
+oboInOwl:is_metadata_tag rdf:type owl:AnnotationProperty ;
+                         rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#shorthand
+oboInOwl:shorthand rdf:type owl:AnnotationProperty ;
+                   rdfs:subPropertyOf tara:oboInOwlAnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
+rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#seeAlso
+rdfs:seeAlso rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty ;
+              rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+              rdfs:label "alternative label" ;
+              skos:definition "an alternative lexical label for a resource" ;
+              skos:example "Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel)." ;
+              skos:note "The range of skos:altLabel is the class of RDF plain literals." ,
+                        "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties." ;
+              rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                                 rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#changeNote
+skos:changeNote rdf:type owl:AnnotationProperty ;
+                rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                rdfs:label "change note" ;
+                skos:definition "a note about a modification to a concept" ;
+                rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty ;
+                rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                rdfs:label "definition" ;
+                skos:definition "a statement or formal explanation of the meaning of a concept" ;
+                rdfs:subPropertyOf dcterms:description ,
+                                   tara:skosAnntotationProperty ,
+                                   skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#editorialNote
+skos:editorialNote rdf:type owl:AnnotationProperty ;
+                   rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                   rdfs:label "editorial note" ;
+                   skos:definition "a note for an editor, translator or maintainer of the vocabulary" ;
+                   rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+skos:example rdf:type owl:AnnotationProperty ;
+             rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+             rdfs:label "example" ;
+             skos:definition "an example of the use of a concept" ;
+             rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#hiddenLabel
+skos:hiddenLabel rdf:type owl:AnnotationProperty ;
+                 rdfs:label "hidden label" ;
+                 skos:definition "The property skos:hiddenLabel is used to assign a hidden lexical label to a resource. A hidden lexical label is a string of characters that a Knowledge Organization System (KOS) designer would like to be accessible to applications performing text-based indexing and search operations, but would not like to be visible to users on visual displays." ;
+                 rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                                    rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#historyNote
+skos:historyNote rdf:type owl:AnnotationProperty ;
+                 rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                 rdfs:label "history note" ;
+                 skos:definition "a note about the past state, use, or meaning of a concept" ;
+                 rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty ;
+          rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+          rdfs:label "note" ;
+          skos:definition "a general note, for any purpose" ;
+          skos:scopeNote "This property may be used directly, or as a super-property for more specific note types." ;
+          rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                             rdfs:comment .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty ;
+               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+               rdfs:label "preferred label" ;
+               skos:definition "the preferred lexical label for a resource, in a given language" ;
+               skos:note "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag." ,
+                         "The range of skos:prefLabel is the class of RDF plain literals." ,
+                         "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties." ;
+               rdfs:subPropertyOf tara:skosAnntotationProperty ,
+                                  rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+skos:scopeNote rdf:type owl:AnnotationProperty ;
+               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+               rdfs:label "scope note" ;
+               skos:definition "a note that helps to clarify the meaning and/or the use of a concept" ;
+               rdfs:subPropertyOf skos:note .
+
+
+###  http://xmlns.com/foaf/0.1/depiction
+<http://xmlns.com/foaf/0.1/depiction> rdf:type owl:AnnotationProperty ;
+                                      rdfs:subPropertyOf tara:foafAnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/homepage
+<http://xmlns.com/foaf/0.1/homepage> rdf:type owl:AnnotationProperty ;
+                                     rdfs:subPropertyOf tara:foafAnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/mbox
+<http://xmlns.com/foaf/0.1/mbox> rdf:type owl:AnnotationProperty ;
+                                 rdfs:subPropertyOf tara:foafAnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/page
+<http://xmlns.com/foaf/0.1/page> rdf:type owl:AnnotationProperty ;
+                                 rdfs:subPropertyOf tara:foafAnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://purl.org/dc/terms/URI
+dcterms:URI rdf:type rdfs:Datatype ;
+            rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc3986.txt> ;
+            rdfs:label "URI"@en ;
+            skos:definition "The set of identifiers constructed according to the generic syntax for Uniform Resource Identifiers as specified by the Internet Engineering Task Force."@en .
+
+
+###  http://purl.org/dc/terms/W3CDTF
+dcterms:W3CDTF rdf:type rdfs:Datatype ;
+               rdfs:isDefinedBy <http://www.w3.org/TR/NOTE-datetime> ;
+               rdfs:label "W3C-DTF"@en ;
+               skos:definition "The set of dates and times constructed according to the W3C Date and Time Formats Specification."@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
