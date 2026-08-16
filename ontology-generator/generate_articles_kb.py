@@ -176,20 +176,62 @@ def load_column_property_mapping(mapping_file):
     return mapping
 
 
+ROWS_PER_CHUNK = 1
+
+
+def get_data_row_bounds(worksheet):
+    """
+    Scans column A (below the header row) to find how many rows are
+    actually populated and the index of the last populated row. A sheet's
+    declared dimension can extend far past its real data (e.g. formatting
+    left over from a paste or selection), so this can't be trusted alone
+    to size the reading progress bar or bound the read.
+    """
+    count = 0
+    last_row = 1
+    first_column_rows = worksheet.iter_rows(min_col=1, max_col=1, min_row=2, values_only=True)
+    for row_index, (value,) in enumerate(first_column_rows, start=2):
+        if not is_blank(value):
+            count += 1
+            last_row = row_index
+    return count, last_row
+
+
 def read_articles_sheet(xlsx_file, sheet_name):
     """
     Loads every row of `sheet_name` from `xlsx_file` into a list of
     {column_header: cell_value} record dicts, keyed by the header row.
+    The workbook is opened in read-only (streaming) mode and rows are
+    read in small chunks so the progress bar advances as the tab is
+    actually parsed, instead of `load_workbook` eagerly reading the
+    whole file into memory before any progress is shown. The read is
+    bounded to the last populated row so a sheet whose declared
+    dimension overshoots its real data doesn't stream thousands of
+    blank filler rows.
     """
     print(f"\n> Reading Sheet: {sheet_name}")
 
-    workbook = openpyxl.load_workbook(xlsx_file, data_only=True)
+    workbook = openpyxl.load_workbook(xlsx_file, read_only=True, data_only=True)
     worksheet = workbook[sheet_name]
+    total_rows, last_data_row = get_data_row_bounds(worksheet)
 
-    rows = worksheet.iter_rows(values_only=True)
+    rows = worksheet.iter_rows(max_row=last_data_row, values_only=True)
     headers = list(next(rows))
-    records = [dict(zip(headers, row)) for row in rows]
 
+    records = []
+    chunk = []
+    with tqdm(total=total_rows, desc=f"  {sheet_name}", unit="row") as progress:
+        for row in rows:
+            chunk.append(dict(zip(headers, row)))
+            if len(chunk) >= ROWS_PER_CHUNK:
+                records.extend(chunk)
+                progress.update(len(chunk))
+                chunk = []
+        if chunk:
+            records.extend(chunk)
+            progress.update(len(chunk))
+
+    workbook.close()
     print(f"  Read {len(records)} Rows From Sheet: {sheet_name}")
     return headers, records
 

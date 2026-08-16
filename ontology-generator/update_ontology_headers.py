@@ -58,6 +58,8 @@ VERSION_NUMBER = "1.7.0"
 # =====================================================================
 # GLOBAL CONFIGURATION: INPUT PATHS (Existing generated TTL files)
 # =====================================================================
+
+# TARA ACUPOINTS Ontology Input Paths
 GENERATED_DIR = "../ontology-files/generated/temp-files/ttl/"
 INPUT_ASSERTED_BASE = os.path.join(GENERATED_DIR, "no-upper/tara-acupoints.ttl")
 INPUT_INFERRED_BASE = os.path.join(GENERATED_DIR, "no-upper/tara-acupoints-inferred.ttl")
@@ -73,6 +75,8 @@ INPUT_INFERRED_KB_BFO  = os.path.join(GENERATED_DIR, "kb/tara-articles-kb-inferr
 # =====================================================================
 # GLOBAL CONFIGURATION: OUTPUT PATHS (Where to save the updated files)
 # =====================================================================
+
+# TARA ACUPOINTS Ontology Output Paths
 OUTPUT_DIR = "../ontology-files/generated/distribution/"
 OUTPUT_ASSERTED_BASE = os.path.join(OUTPUT_DIR, "no-bfo-upper/tara-ontology/tara-acupoints.ttl")
 OUTPUT_INFERRED_BASE = os.path.join(OUTPUT_DIR, "no-bfo-upper/tara-ontology/tara-acupoints-inferred.ttl")
@@ -187,21 +191,65 @@ def target_version_header(graph, variant_path, flavor_text):
     graph.add((ont_sub, DCTERMS.created, Literal(current_date_str)))
 
 
+def reorder_ontology_header(graph, output_path):
+    """
+    Post-processing step run after a variant file has been saved: pulls every
+    owl:Ontology-typed subject's triples (the ontology declaration itself --
+    title, version info, etc. -- plus any bridged/imported module stubs, but
+    never class/property/individual metadata) out of wherever rdflib's turtle
+    serializer scattered them, and re-emits them as a single block directly
+    under the @prefix declarations at the top of the file.
+    """
+    ontology_subjects = set(graph.subjects(RDF.type, OWL.Ontology))
+    if not ontology_subjects:
+        return
+
+    header_graph = Graph()
+    body_graph = Graph()
+    for prefix, namespace in graph.namespaces():
+        header_graph.bind(prefix, namespace)
+        body_graph.bind(prefix, namespace)
+
+    for s, p, o in graph:
+        (header_graph if s in ontology_subjects else body_graph).add((s, p, o))
+
+    header_lines = [
+        line for line in header_graph.serialize(format="turtle").splitlines()
+        if not line.startswith("@prefix")
+    ]
+    header_block = "\n".join(header_lines).strip("\n")
+
+    body_lines = body_graph.serialize(format="turtle").splitlines()
+    prefix_lines = [line for line in body_lines if line.startswith("@prefix")]
+    rest_block = "\n".join(
+        line for line in body_lines if not line.startswith("@prefix")
+    ).strip("\n")
+
+    final_text = "\n".join(prefix_lines) + "\n\n" + header_block + "\n\n" + rest_block + "\n"
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(final_text)
+
+
 def process_variant(input_path, output_path, variant_key, flavor_text):
     """Helper function to run the full extraction and transformation workflow."""
     print(f"Processing: {input_path} -> {output_path}")
-    
+
     # Load raw file
     raw_graph = Graph().parse(input_path, format="turtle")
-    
+
     # Step 1: Handle global namespace replacement
     migrated_graph = migrate_namespaces(raw_graph)
-    
+
     # Step 2: Handle header history rotation and creation timestamping
     target_version_header(migrated_graph, variant_key, flavor_text)
-    
+
     # Save the output file out
     migrated_graph.serialize(destination=output_path, format="turtle")
+
+    # Post-processing: move the ontology header/metadata block to the top,
+    # right after the namespace declarations
+    reorder_ontology_header(migrated_graph, output_path)
 
 
 def update_base_ontology_version_info(path):

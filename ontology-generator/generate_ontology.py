@@ -10,7 +10,6 @@ and restrictions) into an RDFLib graph. After all CSV data is incorporated, the 
 graphs are merged with the base ontology files to produce the final output.
 
 Input CSV files:   ../curated-data/acupoints/   (meridians, acupoints, special points, etc.)
-                   ../curated-data/kb/           (pain-related articles)
 Base ontology:     ../ontology-files/base/
 Generated output:  ../ontology-files/generated/ttl/
 
@@ -65,7 +64,7 @@ ontology_files = {
                    "tara-acupoints-core.ttl"               : ONT_BASE_DIR + "tara-acupoints-core.ttl",                       # Input location for core acupoints ontology
                    "tara-upper-bridge.ttl"                 : ONT_BASE_DIR + "bridge-files/tara-upper-bridge.ttl",            # Input location for upper bridge ontology
                    "tara-imported-anatomical-terms.ttl"    : ONT_BASE_DIR + "tara-imported-anatomical-terms.ttl",            # Input location for imported anatomical terms ontology
-                   "tara-metadata-properties.ttl"           : ONT_BASE_DIR + "tara-metadata-properties.ttl",                 # Input location for metadata properties ontology
+                   "tara-metadata-properties.ttl"          : ONT_BASE_DIR + "tara-metadata-properties.ttl",                 # Input location for metadata properties ontology
                    "tara-acupoints-temp.ttl"               : ONT_GEN_DIR + "tmp/tara-acupoints-temp.ttl",          # Temporary location for acupoints ontology
                    "tara-articles-kb-temp.ttl"             : ONT_GEN_DIR + "tmp/tara-articles-kb-temp.ttl",        # Temporary location for articles KB ontology
                    "tara-acupoints-no-upper.ttl"           : ONT_GEN_DIR + "no-upper/tara-acupoints.ttl",          # Output location for acupoints ontology without upper ontology
