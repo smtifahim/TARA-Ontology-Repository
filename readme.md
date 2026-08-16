@@ -473,7 +473,7 @@ LIMIT 30
 
 ### TARA Ontology: Versions Summary
 
-* For a detailed per-version change log and release notes, see the [Ontology Versions Summary](./ontology-files/generated/readme.md#ontology-versions-summary) section in the generated files readme.
+* For a detailed per-version change log and release notes, see the [Ontology Versions Summary](./ontology-files/generated/distribution/readme.md#ontology-versions-summary) section in the generated files readme.
 
 ### TARA Ontology: Archived Versions
 
