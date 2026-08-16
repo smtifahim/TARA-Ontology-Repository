@@ -1,54 +1,53 @@
-@prefix RO: <http://purl.obolibrary.org/obo/RO_> .
-@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix : <http://www.acupunctureresearch.org/tara/ontology/tara-bfo-bridge.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix tara-op: <http://www.acupunctureresearch.org/tara/ontology/object-property/> .
-@base <http://www.w3.org/2002/07/owl#> .
+@base <http://www.acupunctureresearch.org/tara/ontology/tara-bfo-bridge.owl> .
 
-[ rdf:type owl:Ontology
- ] .
+<http://www.acupunctureresearch.org/tara/ontology/tara-bfo-bridge.owl> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
 #################################################################
 
 ###  http://purl.obolibrary.org/obo/RO_0000081
-<http://purl.obolibrary.org/obo/RO_0000081> rdf:type owl:ObjectProperty .
+obo:RO_0000081 rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.obolibrary.org/obo/RO_0000087
-<http://purl.obolibrary.org/obo/RO_0000087> rdf:type owl:ObjectProperty .
+obo:RO_0000087 rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.obolibrary.org/obo/RO_0001025
-<http://purl.obolibrary.org/obo/RO_0001025> rdf:type owl:ObjectProperty .
+obo:RO_0001025 rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.obolibrary.org/obo/RO_0002131
-<http://purl.obolibrary.org/obo/RO_0002131> rdf:type owl:ObjectProperty .
+obo:RO_0002131 rdf:type owl:ObjectProperty .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasRelatedSubSurfaceAnatomy
 tara-op:hasRelatedSubSurfaceAnatomy rdf:type owl:ObjectProperty ;
-                                    rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0002131> .
+                                    rdfs:subPropertyOf obo:RO_0002131 .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasRelatedSurfaceAnatomy
 tara-op:hasRelatedSurfaceAnatomy rdf:type owl:ObjectProperty ;
-                                 rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0001025> .
+                                 rdfs:subPropertyOf obo:RO_0001025 .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasSpecialPointRole
 tara-op:hasSpecialPointRole rdf:type owl:ObjectProperty ;
-                            rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000087> .
+                            rdfs:subPropertyOf obo:RO_0000087 .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/isSpecialPointRoleOf
 tara-op:isSpecialPointRoleOf rdf:type owl:ObjectProperty ;
-                             rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0000081> .
+                             rdfs:subPropertyOf obo:RO_0000081 .
 
 
 #################################################################
@@ -56,57 +55,57 @@ tara-op:isSpecialPointRoleOf rdf:type owl:ObjectProperty ;
 #################################################################
 
 ###  http://purl.obolibrary.org/obo/BFO_0000004
-<http://purl.obolibrary.org/obo/BFO_0000004> rdf:type owl:Class .
+obo:BFO_0000004 rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000009
-<http://purl.obolibrary.org/obo/BFO_0000009> rdf:type owl:Class .
+obo:BFO_0000009 rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000023
-<http://purl.obolibrary.org/obo/BFO_0000023> rdf:type owl:Class .
+obo:BFO_0000023 rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000024
-<http://purl.obolibrary.org/obo/BFO_0000024> rdf:type owl:Class .
+obo:BFO_0000024 rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000040
-<http://purl.obolibrary.org/obo/BFO_0000040> rdf:type owl:Class .
+obo:BFO_0000040 rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000141
-<http://purl.obolibrary.org/obo/BFO_0000141> rdf:type owl:Class .
+obo:BFO_0000141 rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/UBERON_0000465
-<http://purl.obolibrary.org/obo/UBERON_0000465> rdf:type owl:Class ;
-                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> .
+obo:UBERON_0000465 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:BFO_0000040 .
 
 
 ###  http://purl.obolibrary.org/obo/UBERON_0000466
-<http://purl.obolibrary.org/obo/UBERON_0000466> rdf:type owl:Class ;
-                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000141> .
+obo:UBERON_0000466 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:BFO_0000141 .
 
 
 ###  http://purl.obolibrary.org/obo/UBERON_0001062
-<http://purl.obolibrary.org/obo/UBERON_0001062> rdf:type owl:Class ;
-                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000004> .
+obo:UBERON_0001062 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:BFO_0000004 .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_1132428
 <http://www.acupunctureresearch.org/tara/ontology/TARA_1132428> rdf:type owl:Class ;
-                                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> .
+                                                                rdfs:subClassOf obo:BFO_0000024 .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_4176111
 <http://www.acupunctureresearch.org/tara/ontology/TARA_4176111> rdf:type owl:Class ;
-                                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000023> .
+                                                                rdfs:subClassOf obo:BFO_0000023 .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_7226516
 <http://www.acupunctureresearch.org/tara/ontology/TARA_7226516> rdf:type owl:Class ;
-                                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000009> .
+                                                                rdfs:subClassOf obo:BFO_0000009 .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

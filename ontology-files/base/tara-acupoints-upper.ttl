@@ -134,6 +134,7 @@ dc:contributor rdf:type owl:AnnotationProperty ;
 
 ###  http://purl.org/dc/elements/1.1/coverage
 dc:coverage rdf:type owl:AnnotationProperty ;
+            rdfs:label "Coverage" ;
             rdfs:subPropertyOf tara:dctermsMetadata .
 
 
@@ -145,6 +146,7 @@ dc:creator rdf:type owl:AnnotationProperty ;
 
 ###  http://purl.org/dc/elements/1.1/date
 dc:date rdf:type owl:AnnotationProperty ;
+        rdfs:label "Date" ;
         rdfs:subPropertyOf tara:dctermsMetadata .
 
 
@@ -156,46 +158,55 @@ dc:description rdf:type owl:AnnotationProperty ;
 
 ###  http://purl.org/dc/elements/1.1/format
 dc:format rdf:type owl:AnnotationProperty ;
+          rdfs:label "Format" ;
           rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/identifier
 dc:identifier rdf:type owl:AnnotationProperty ;
+              rdfs:label "Identifier" ;
               rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/language
 dc:language rdf:type owl:AnnotationProperty ;
+            rdfs:label "Language" ;
             rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/member
 dc:member rdf:type owl:AnnotationProperty ;
+          rdfs:label "Member" ;
           rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/publisher
 dc:publisher rdf:type owl:AnnotationProperty ;
+             rdfs:label "Publisher" ;
              rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/relation
 dc:relation rdf:type owl:AnnotationProperty ;
+            rdfs:label "Relation" ;
             rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/rights
 dc:rights rdf:type owl:AnnotationProperty ;
+          rdfs:label "Rights" ;
           rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/source
 dc:source rdf:type owl:AnnotationProperty ;
+          rdfs:label "Source" ;
           rdfs:subPropertyOf tara:dctermsMetadata .
 
 
 ###  http://purl.org/dc/elements/1.1/subject
 dc:subject rdf:type owl:AnnotationProperty ;
+           rdfs:label "Subject" ;
            rdfs:subPropertyOf tara:dctermsMetadata .
 
 
@@ -207,6 +218,7 @@ dc:title rdf:type owl:AnnotationProperty ;
 
 ###  http://purl.org/dc/elements/1.1/type
 dc:type rdf:type owl:AnnotationProperty ;
+        rdfs:label "Type" ;
         rdfs:subPropertyOf tara:dctermsMetadata .
 
 
@@ -337,7 +349,7 @@ dcterms:dateSubmitted rdf:type owl:AnnotationProperty ;
 dcterms:description rdf:type owl:AnnotationProperty ;
                     rdfs:comment "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
                     rdfs:isDefinedBy dcterms: ;
-                    rdfs:label "description" ;
+                    rdfs:label "Description" ;
                     skos:definition "An account of the resource."@en ;
                     skos:note "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource." ;
                     rdfs:subPropertyOf dc:description ,
@@ -790,6 +802,7 @@ skos:altLabel rdf:type owl:AnnotationProperty ;
 
 ###  http://www.w3.org/2004/02/skos/core#broadMatch
 skos:broadMatch rdf:type owl:AnnotationProperty ;
+                rdfs:label "broad match" ;
                 rdfs:subPropertyOf tara:skosAnntotationProperty .
 
 
@@ -803,6 +816,7 @@ skos:changeNote rdf:type owl:AnnotationProperty ;
 
 ###  http://www.w3.org/2004/02/skos/core#closeMatch
 skos:closeMatch rdf:type owl:AnnotationProperty ;
+                rdfs:label "close match" ;
                 rdfs:subPropertyOf tara:skosAnntotationProperty .
 
 
@@ -826,6 +840,7 @@ skos:editorialNote rdf:type owl:AnnotationProperty ;
 
 ###  http://www.w3.org/2004/02/skos/core#exactMatch
 skos:exactMatch rdf:type owl:AnnotationProperty ;
+                rdfs:label "exact match" ;
                 rdfs:subPropertyOf tara:skosAnntotationProperty .
 
 
@@ -855,6 +870,7 @@ skos:historyNote rdf:type owl:AnnotationProperty ;
 
 ###  http://www.w3.org/2004/02/skos/core#narrowMatch
 skos:narrowMatch rdf:type owl:AnnotationProperty ;
+                 rdfs:label "narrow match" ;
                  rdfs:subPropertyOf tara:skosAnntotationProperty .
 
 
@@ -871,7 +887,7 @@ skos:note rdf:type owl:AnnotationProperty ;
 ###  http://www.w3.org/2004/02/skos/core#prefLabel
 skos:prefLabel rdf:type owl:AnnotationProperty ;
                rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-               rdfs:label "preferred label" ;
+               rdfs:label "Preferred Label" ;
                skos:definition "the preferred lexical label for a resource, in a given language" ;
                skos:note "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag." ,
                          "The range of skos:prefLabel is the class of RDF plain literals." ,
@@ -882,6 +898,7 @@ skos:prefLabel rdf:type owl:AnnotationProperty ;
 
 ###  http://www.w3.org/2004/02/skos/core#relatedMatch
 skos:relatedMatch rdf:type owl:AnnotationProperty ;
+                  rdfs:label "related match" ;
                   rdfs:subPropertyOf tara:skosAnntotationProperty .
 
 
