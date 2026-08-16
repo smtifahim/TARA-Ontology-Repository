@@ -1,1 +1,3 @@
 ontology-files/generated/temp-files/* linguist-generated=true
+ontology-files/generated/temp-files/ttl/* linguist-generated=true
+ontology-files/generated/temp-files/*.ttl linguist-generated=true
