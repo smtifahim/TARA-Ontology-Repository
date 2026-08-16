@@ -65,7 +65,7 @@ ontology_files = {
                    "tara-acupoints-core.ttl"               : ONT_BASE_DIR + "tara-acupoints-core.ttl",                       # Input location for core acupoints ontology
                    "tara-upper-bridge.ttl"                 : ONT_BASE_DIR + "bridge-files/tara-upper-bridge.ttl",            # Input location for upper bridge ontology
                    "tara-imported-anatomical-terms.ttl"    : ONT_BASE_DIR + "tara-imported-anatomical-terms.ttl",            # Input location for imported anatomical terms ontology
-                   "tara-annotation-properties.ttl"        : ONT_BASE_DIR + "tara-annotation-properties.ttl",                # Input location for annotation properties ontology
+                   "tara-metadata-properties.ttl"           : ONT_BASE_DIR + "tara-metadata-properties.ttl",                 # Input location for metadata properties ontology
                    "tara-acupoints-temp.ttl"               : ONT_GEN_DIR + "tmp/tara-acupoints-temp.ttl",          # Temporary location for acupoints ontology
                    "tara-articles-kb-temp.ttl"             : ONT_GEN_DIR + "tmp/tara-articles-kb-temp.ttl",        # Temporary location for articles KB ontology
                    "tara-acupoints-no-upper.ttl"           : ONT_GEN_DIR + "no-upper/tara-acupoints.ttl",          # Output location for acupoints ontology without upper ontology
@@ -744,7 +744,7 @@ def main():
         print ("\n> Merging Generated Ontology with Imported Anatomical Terms from: " + ontology_files.get("tara-imported-anatomical-terms.ttl"))
         merge_ontologies (output_ttl_file, ontology_files.get("tara-imported-anatomical-terms.ttl"),
                           ontology_files.get("tara-acupoints-no-upper.ttl"), serialisation_namespaces)
-        merge_ontologies (ontology_files.get("tara-acupoints-no-upper.ttl"), ontology_files.get("tara-annotation-properties.ttl"),
+        merge_ontologies (ontology_files.get("tara-acupoints-no-upper.ttl"), ontology_files.get("tara-metadata-properties.ttl"),
                                   ontology_files.get("tara-acupoints-no-upper.ttl"), serialisation_namespaces)
         print ("\n Saved TARA Acupoints Ontology with No Upper-Level Classes At: " + ontology_files.get("tara-acupoints-no-upper.ttl"))
 
