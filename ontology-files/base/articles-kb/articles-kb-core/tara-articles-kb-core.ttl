@@ -812,7 +812,7 @@ tara-kb:hasOCSITotalPercentage rdf:type owl:AnnotationProperty ;
                                rdfs:label "OCSI Total Percentage" ;
                                skos:altLabel "OCSI_Total_Percentage" ;
                                rdfs:subPropertyOf tara-kb:hasEvaluativeResultsAndGlobalMetrics ;
-                               rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_6560239> ;
+                               rdfs:range xsd:float ;
                                rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
