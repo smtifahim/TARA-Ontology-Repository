@@ -26,7 +26,7 @@
 - CL, GO, NCBITaxon, and PATO classes excluded
 - OWL Axioms: Only named-class subClassOf restrictions for:
     - BFO:0000050 (part_of), RO_0001025 (located_in)
-    - RO_0002170 (connected_to), and BFO_0000051 (has_part)"""@en ,
+    - RO:0002170 (connected_to), and BFO:0000051 (has_part)"""@en ,
                                                                                                  """This file includes imported terms from InterLex used by the TARA Acupoints Ontology. It includes the basic hierarchy and the partnomy of the imported terms.
 -  TARA Ontology Termset: http://uri.interlex.org/base/ilx_0795339""" .
 
