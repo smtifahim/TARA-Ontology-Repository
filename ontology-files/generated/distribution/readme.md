@@ -64,7 +64,7 @@ This section will be updated periodically based on the release of the newer vers
   @prefix tara-kb: <http://purl.org/tara/ontology/kb/> .
   ```
 
-#### New: TARA Articles Knowledge Base (see [article-kb-core readme](../ontology-files/base/articles-kb/articles-kb-core/README.md))
+#### New: TARA Articles Knowledge Base (see [article-kb-core readme](https://github.com/SciCrunch/TARA-Ontology-Repository/tree/master/ontology-files/base/articles-kb/articles-kb-core))
 
 * Introduces a complete, self-contained Articles KB module,  a sub-ontology plus its full curation/mapping toolkit
 * `articles-kb-core/tara-articles-kb-core.ttl`: the KB's metadata schema includes 83 annotation properties and 13 classes, all rooted under a single `tara-kb:hasTARAArticlesMetadata` grouping property, organized into:
