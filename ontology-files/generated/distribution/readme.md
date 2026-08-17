@@ -64,7 +64,13 @@ This section will be updated periodically based on the release of the newer vers
   @prefix tara-kb: <http://purl.org/tara/ontology/kb/> .
   ```
 
-#### New: TARA Articles Knowledge Base (see [article-kb-core readme](https://github.com/SciCrunch/TARA-Ontology-Repository/tree/master/ontology-files/base/articles-kb/articles-kb-core))
+#### New: TARA Articles KB of Clinical Trial Studies
+
+* Includes clinical trial metadata extracted from **1,770 published journal articles**, including randomized controlled trials, meta-analyses, and systematic reviews of clinical trials. The knowledgebase provides structured metadata to support the systematic retrieval, comparison, and quality assessment of acupuncture research studies.
+* **CAUTION:** The extracted metadata published in the TARA Articles KB may not be fully reliable, as only minimal quality control has been performed. The Elicit AI-extracted data has shown **several reliability issues,** including inconsistent OCSI scores for duplicate articles, confabulated information, duplicated metadata, and conflation of study results and conclusions.
+* **NOTE:** The knowledgebase is being published primarily to finalize and test the ETL pipeline. We intend to re-extract the metadata for the same batch of articles using a more rigorous extraction strategy and a different AI model that is expected to provide greater precision.
+
+#### New: TARA Articles KB Metadata Core (see [article-kb-core readme](https://github.com/SciCrunch/TARA-Ontology-Repository/tree/master/ontology-files/base/articles-kb/articles-kb-core))
 
 * Introduces a complete, self-contained Articles KB module,  a sub-ontology plus its full curation/mapping toolkit
 * `articles-kb-core/tara-articles-kb-core.ttl`: the KB's metadata schema includes 83 annotation properties and 13 classes, all rooted under a single `tara-kb:hasTARAArticlesMetadata` grouping property, organized into:
@@ -137,7 +143,7 @@ Match quality (1,787 term-tags across the 1,562 mapped rows; 110 rows matched mo
 * Stamps every downloaded workbook with provenance and navigation aids: a new "Google Sheet Source" tab recording the sheet's URI and the exact revision pulled, plus a per-row "Source-Sheet-Row-Link" column on every original tab linking back to that row on the live sheet.
 * Repairs a Google Sheets → xlsx export bug where partially-hyperlinked cell text (e.g. a citation ending in an auto-linked URL) gets silently dropped, by cross-checking against the live sheet's true text via the Sheets API.
 
-Version 1.5.0 (July 9, 2026)
+### Version 1.5.0 (July 9, 2026)
 
 **Addition of subsurface anatomy of nerves and vasculature for the Acupoints**
 
