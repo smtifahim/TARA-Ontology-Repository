@@ -213,17 +213,21 @@ def reorder_ontology_header(graph, output_path):
     for s, p, o in graph:
         (header_graph if s in ontology_subjects else body_graph).add((s, p, o))
 
-    header_lines = [
-        line for line in header_graph.serialize(format="turtle").splitlines()
-        if not line.startswith("@prefix")
-    ]
+    header_serialized = header_graph.serialize(format="turtle").splitlines()
+    header_prefix_lines = [line for line in header_serialized if line.startswith("@prefix")]
+    header_lines = [line for line in header_serialized if not line.startswith("@prefix")]
     header_block = "\n".join(header_lines).strip("\n")
 
     body_lines = body_graph.serialize(format="turtle").splitlines()
-    prefix_lines = [line for line in body_lines if line.startswith("@prefix")]
+    body_prefix_lines = [line for line in body_lines if line.startswith("@prefix")]
     rest_block = "\n".join(
         line for line in body_lines if not line.startswith("@prefix")
     ).strip("\n")
+
+    # A prefix used only by the ontology header block (e.g. the bare
+    # ontology IRI namespace, which the body never references) would
+    # otherwise be silently dropped, leaving it unbound in the output.
+    prefix_lines = sorted(set(header_prefix_lines) | set(body_prefix_lines))
 
     final_text = "\n".join(prefix_lines) + "\n\n" + header_block + "\n\n" + rest_block + "\n"
 

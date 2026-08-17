@@ -15,7 +15,7 @@ Called automatically by generate_ontology.py to produce the merged output files.
 Not intended to be run as a standalone script.
 
 Author: Fahim Imam
-Last updated: April 19, 2026
+Last updated: August 16, 2026
 '''
 
 import os

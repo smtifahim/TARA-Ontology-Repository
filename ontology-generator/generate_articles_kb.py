@@ -127,6 +127,11 @@ def split_values(value, separator=","):
     return [v.strip() for v in str(value).split(separator) if v.strip()]
 
 
+def tara_kb_curie(identifier):
+    """Returns the "tara-kb:<id>" CURIE form of a TARA_KB individual's identifier."""
+    return f"tara-kb:{str(identifier).strip()}"
+
+
 def curie_to_tara_uri(curie):
     """
     Converts a "TARA:<id>" CURIE into its full TARA_<id> class IRI.
@@ -250,6 +255,7 @@ def add_publication_metadata(g, records, column_property_mapping, publication_co
     for record in tqdm(records, desc="  Publication Metadata", unit="row"):
         article_id = record.get(ARTICLE_ID_COLUMN)
         study_id = record.get(STUDY_ID_COLUMN)
+        ocsi_id = record.get(OCSI_ID_COLUMN)
 
         if is_blank(article_id):
             continue
@@ -257,10 +263,15 @@ def add_publication_metadata(g, records, column_property_mapping, publication_co
         article_uri = TARA_KB[str(article_id).strip()]
         g.add((article_uri, RDF.type, OWL.NamedIndividual))
         g.add((article_uri, RDF.type, article_class_uri))
+        g.add((article_uri, DC.identifier, Literal(tara_kb_curie(article_id))))
 
         if not is_blank(study_id):
             study_uri = TARA_KB[str(study_id).strip()]
-            g.add((article_uri, TARA_KB.hasReportedStudy, study_uri))
+            g.add((article_uri, TARA_KB.hasReportedStudyID, study_uri))
+
+        if not is_blank(ocsi_id):
+            ocsi_uri = TARA_KB[str(ocsi_id).strip()]
+            g.add((article_uri, TARA_KB.hasOCSIAppraisalID, ocsi_uri))
 
         for column in publication_columns:
             prop = column_property_mapping.get(column)
@@ -293,6 +304,7 @@ def add_study_metadata(g, records, column_property_mapping, study_columns, study
         study_uri = TARA_KB[str(study_id).strip()]
         g.add((study_uri, RDF.type, OWL.NamedIndividual))
         g.add((study_uri, RDF.type, study_class_uri))
+        g.add((study_uri, DC.identifier, Literal(tara_kb_curie(study_id))))
 
         title = record.get(TITLE_COLUMN)
         if not is_blank(title):
@@ -300,12 +312,11 @@ def add_study_metadata(g, records, column_property_mapping, study_columns, study
 
         if not is_blank(article_id):
             article_uri = TARA_KB[str(article_id).strip()]
-            g.add((study_uri, TARA_KB.hasReportingPublication, article_uri))
-            g.add((article_uri, TARA_KB.hasReportedStudy, study_uri))
+            g.add((study_uri, TARA_KB.hasReportingPublicationID, article_uri))
 
         if not is_blank(ocsi_id):
             ocsi_uri = TARA_KB[str(ocsi_id).strip()]
-            g.add((study_uri, TARA_KB.hasOCSIAppraisal, ocsi_uri))
+            g.add((study_uri, TARA_KB.hasOCSIAppraisalID, ocsi_uri))
 
         for column in study_columns:
             prop = column_property_mapping.get(column)
@@ -334,6 +345,7 @@ def add_ocsi_score(g, records, column_property_mapping, ocsi_columns, ocsi_class
         ocsi_uri = TARA_KB[str(ocsi_id).strip()]
         g.add((ocsi_uri, RDF.type, OWL.NamedIndividual))
         g.add((ocsi_uri, RDF.type, ocsi_class_uri))
+        g.add((ocsi_uri, DC.identifier, Literal(tara_kb_curie(ocsi_id))))
 
         title = record.get(TITLE_COLUMN)
         if not is_blank(title):
@@ -343,8 +355,8 @@ def add_ocsi_score(g, records, column_property_mapping, ocsi_columns, ocsi_class
         if not is_blank(study_id):
             article_uri = TARA_KB[str(record.get(ARTICLE_ID_COLUMN)).strip()]
             study_uri = TARA_KB[str(study_id).strip()]
-            g.add((ocsi_uri, TARA_KB.hasOCSIInputStudy, study_uri))
-            g.add((ocsi_uri, TARA_KB.hasReportingPublication, article_uri))
+            g.add((ocsi_uri, TARA_KB.hasOCSIInputStudyID, study_uri))
+            g.add((ocsi_uri, TARA_KB.hasReportingPublicationID, article_uri))
 
         for column in ocsi_columns:
             prop = column_property_mapping.get(column)
@@ -360,7 +372,7 @@ def add_listed_acupoints(g, records):
     """
     From the Acupoints-List-Mapped sheet, populates each study's listed,
     mapped, and unmappable acupoint annotations, along with a JSON
-    CURIE-to-label lookup map (hasListedAcupointMap).
+    CURIE-to-label lookup map (hasListedAcupointsMappedCurie).
     """
     print("\n> Adding Listed Acupoints...")
 
@@ -373,20 +385,21 @@ def add_listed_acupoints(g, records):
 
         normalized_acupoints = record.get("Acupoints-Normalized")
         if not is_blank(normalized_acupoints):
-            g.add((study_uri, TARA_KB.hasListedAcupoint, Literal(str(normalized_acupoints).strip())))
+            g.add((study_uri, TARA_KB.hasListedAcupoints, Literal(str(normalized_acupoints).strip())))
 
         mapped_curies = split_values(record.get("Acupoints_TARA_IDs"))
         for curie in mapped_curies:
-            g.add((study_uri, TARA_KB.hasMappedAcupoint, curie_to_tara_uri(curie)))
+            g.add((study_uri, TARA_KB.hasListedAcupointsMapped, curie_to_tara_uri(curie)))
 
         mapped_labels = split_values(record.get("Acupoints-Mapped"))
         if mapped_curies and mapped_labels:
             acupoint_map = dict(zip(mapped_curies, mapped_labels))
-            g.add((study_uri, TARA_KB.hasListedAcupointMap, Literal(json.dumps(acupoint_map), datatype=RDF.JSON)))
+            g.add((study_uri, TARA_KB.hasListedAcupointsMappedCurie, Literal(json.dumps(acupoint_map), datatype=RDF.JSON)))
 
         unmappable_acupoints = record.get("Acupoints-Unmappable")
         if not is_blank(unmappable_acupoints):
-            g.add((study_uri, TARA_KB.hasUnmappableAcupoint, Literal(str(unmappable_acupoints).strip())))
+            for unmappable_accupoint in split_values(unmappable_acupoints):
+                g.add((study_uri, TARA_KB.hasListedAcupointsUnmappable, Literal(str(unmappable_accupoint).strip())))
 
     print("  Listed Acupoints Added Successfully.")
 

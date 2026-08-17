@@ -35,7 +35,7 @@ namespaces = {
                 "BFO"       :     "http://purl.obolibrary.org/obo/BFO_",
                 "partOf"    :     "http://purl.obolibrary.org/obo/BFO_0000050",
                 "obo"       :     "http://purl.obolibrary.org/obo/",
-                "tara"      :     "http://www.acupunctureresearch.org/tara/ontology/",
+                "tara-ap"   :     "http://www.acupunctureresearch.org/tara/ontology/annotation-property/",
                 "tara-kb"   :     "http://www.acupunctureresearch.org/tara/ontology/kb/",
                 "TARA"      :     "http://www.acupunctureresearch.org/tara/ontology/",
                 "tara-op"   :     "http://www.acupunctureresearch.org/tara/ontology/object-property/",
@@ -89,15 +89,18 @@ csv_files =  {
 
 # Serialization namespaces: split the single TARA prefix into two so that
 # class IRIs (…/TARA_NNNNNNN) serialize as TARA:NNNNNNN and property IRIs
-# (…/hasSynonym etc.) serialize as tara:hasSynonym.  The main `namespaces`
+# (…/hasSynonym etc.) serialize as tara-ap:hasSynonym.  The main `namespaces`
 # dict is kept unchanged so curie_to_iri() continues to work correctly.
 serialisation_namespaces = {**namespaces,
                              "TARA": "http://www.acupunctureresearch.org/tara/ontology/TARA_",
-                             "tara": "http://www.acupunctureresearch.org/tara/ontology/",
-                             "tara-op": "http://www.acupunctureresearch.org/tara/ontology/object-property/",}
+                             "tara-ap": "http://www.acupunctureresearch.org/tara/ontology/annotation-property/",
+                             "tara-op": "http://www.acupunctureresearch.org/tara/ontology/object-property/",
+                             "tara-kb": "http://www.acupunctureresearch.org/tara/ontology/kb/",
+                             }
 
 # Defined frequently used namespaces
-TARA = Namespace(namespaces["tara"])
+TARA = Namespace(namespaces["TARA"])
+TARA_AP = Namespace(namespaces["tara-ap"])
 TARA_OP = Namespace(namespaces["tara-op"])
 TARA_KB = Namespace(namespaces["tara-kb"])
 
@@ -181,17 +184,17 @@ class AcupointsOntologyAdapter:
                 # Add each synonym and abbreviation as an annotation property
                 if synonyms:
                     for synonym in synonyms.split(','):
-                        g.add((meridian_uri, TARA.hasSynonym, Literal(synonym.strip())))
+                        g.add((meridian_uri, TARA_AP.hasSynonym, Literal(synonym.strip())))
                 
                 if abbreviations:
                     for abbrev in abbreviations.split(','):
-                        g.add((meridian_uri, TARA.hasAbbreviation, Literal(abbrev.strip())))
+                        g.add((meridian_uri, TARA_AP.hasAbbreviation, Literal(abbrev.strip())))
                         
                 if reference:
                     g.add((meridian_uri, DCMI.bibliographicCitation, Literal(reference)))
                     
                 if chinese_label:
-                    g.add((meridian_uri, TARA.hasChineseLabel, Literal(chinese_label)))
+                    g.add((meridian_uri, TARA_AP.hasChineseLabel, Literal(chinese_label)))
                 
                 # Add the superclass relationship. No need as it will be added as part of the OWL axiom.
                 # if superclass:
@@ -199,7 +202,7 @@ class AcupointsOntologyAdapter:
             
                 if organ:
                     # First, add organ entity as an annotation property
-                    g.add((meridian_uri, TARA.hasAssociatedOrgan, URIRef(curie_to_iri(organ))))
+                    g.add((meridian_uri, TARA_AP.hasAssociatedOrgan, URIRef(curie_to_iri(organ))))
                     
                     # Then, add OWL restriction for the relation between the meridian category and associated organ.
                     g = g + (self.getOWLAxiom(meridian_uri, RDFS.subClassOf, URIRef(curie_to_iri(superclass)), 
@@ -240,10 +243,10 @@ class AcupointsOntologyAdapter:
                 # Add each synonym as an annotation property
                 if synonyms:
                     for synonym in synonyms.split(','):
-                        g.add((acupoint_uri, TARA.hasSynonym, Literal(synonym.strip())))            
+                        g.add((acupoint_uri, TARA_AP.hasSynonym, Literal(synonym.strip())))            
             
                 if meridian:
-                    g.add((acupoint_uri, TARA.isLocatedOnMeridian, meridian_uri))
+                    g.add((acupoint_uri, TARA_AP.isLocatedOnMeridian, meridian_uri))
                     
                     # Then, add OWL restriction for acupoint category and associated meridian.
                     g = g + self.getOWLAxiom(acupoint_uri, OWL.equivalentClass, TARA.Meridian_Acupoint, 
@@ -294,14 +297,14 @@ class AcupointsOntologyAdapter:
                 # Add each synonym and abbreviation as an annotation property
                 if synonyms:
                     for synonym in synonyms.split(','):
-                        g.add((acupoint_uri, TARA.hasSynonym, Literal(synonym.strip())))
+                        g.add((acupoint_uri, TARA_AP.hasSynonym, Literal(synonym.strip())))
                 
                 if chinese_names:
                     for chinese_name in chinese_names.split(','):
-                        g.add((acupoint_uri, TARA.hasPinyinLabel, Literal(chinese_name.strip())))
+                        g.add((acupoint_uri, TARA_AP.hasPinyinLabel, Literal(chinese_name.strip())))
                 
                 if location_info:
-                    g.add((acupoint_uri, TARA.hasLocationalDescription, Literal(location_info)))
+                    g.add((acupoint_uri, TARA_AP.hasLocationalDescription, Literal(location_info)))
                 
                 if reference:
                     g.add((acupoint_uri, DCMI.bibliographicCitation, Literal(reference)))
@@ -310,26 +313,26 @@ class AcupointsOntologyAdapter:
                     g.add((acupoint_uri, DCMI.bibliographicCitation, Literal(reference_cam)))
                 
                 if method:
-                    g.add((acupoint_uri, TARA.hasMethodDescription, Literal(method)))
+                    g.add((acupoint_uri, TARA_AP.hasMethodDescription, Literal(method)))
                 
                 if indications:
-                    g.add((acupoint_uri, TARA.hasListedIndications, Literal(indications))) 
+                    g.add((acupoint_uri, TARA_AP.hasListedIndications, Literal(indications))) 
                 
                 if vasculature:
-                    g.add((acupoint_uri, TARA.hasVasculatureInformation, Literal(vasculature)))
+                    g.add((acupoint_uri, TARA_AP.hasVasculatureInformation, Literal(vasculature)))
                 
                 if innervation:
-                    g.add((acupoint_uri, TARA.hasInnervationInformation, Literal(innervation)))
+                    g.add((acupoint_uri, TARA_AP.hasInnervationInformation, Literal(innervation)))
                 
                 if chinese_label:
-                    g.add((acupoint_uri, TARA.hasChineseLabel, Literal(chinese_label)))
+                    g.add((acupoint_uri, TARA_AP.hasChineseLabel, Literal(chinese_label)))
                 
                 if meridian:
                     # First add meridian entity as an annotation property
-                    g.add((acupoint_uri, TARA.isLocatedOnMeridian, meridian_uri))
+                    g.add((acupoint_uri, TARA_AP.isLocatedOnMeridian, meridian_uri))
                     
                     # Add the inverse relationship for the meridian location
-                    g.add((meridian_uri, TARA.isMeridianLocationOf, acupoint_uri))
+                    g.add((meridian_uri, TARA_AP.isMeridianLocationOf, acupoint_uri))
 
                                         
                     if not superclass:
@@ -380,16 +383,16 @@ class AcupointsOntologyAdapter:
                 # Add each synonym as an annotation property
                 if synonyms:
                     for synonym in synonyms.split(','):
-                        g.add((acupoint_uri, TARA.hasSynonym, Literal(synonym.strip())))            
+                        g.add((acupoint_uri, TARA_AP.hasSynonym, Literal(synonym.strip())))            
                 
                 if location:
-                    g.add ((acupoint_uri, TARA.hasLocationalDescription, Literal(location)))
+                    g.add ((acupoint_uri, TARA_AP.hasLocationalDescription, Literal(location)))
                 
                 if indications:
-                    g.add ((acupoint_uri, TARA.hasListedIndications, Literal(indications)))
+                    g.add ((acupoint_uri, TARA_AP.hasListedIndications, Literal(indications)))
                 
                 if method:
-                    g.add ((acupoint_uri, TARA.hasMethodDescription, Literal(method)))
+                    g.add ((acupoint_uri, TARA_AP.hasMethodDescription, Literal(method)))
                 
                 if reference:
                     g.add((acupoint_uri, DCMI.bibliographicCitation, Literal(reference)))
@@ -432,7 +435,7 @@ class AcupointsOntologyAdapter:
                 g.add((special_point_role_uri, RDFS.label, Literal(special_point_role)))
                 
                 # Add special point role to the special point as an annotation
-                g.add((special_point_uri, TARA.hasSpecialPointRole, special_point_role_uri))
+                g.add((special_point_uri, TARA_AP.hasSpecialPointRole, special_point_role_uri))
                 
                 if description:
                     g.add ((special_point_uri, DCMI.description, Literal(description)))
@@ -489,7 +492,7 @@ class AcupointsOntologyAdapter:
                     special_point_1_role = special_point_1 + " Role"
                     special_point_1_role_uri = URIRef(create_uri(special_point_1_role))
                     g.add((special_point_1_role_uri, RDF.type, OWL.Class))
-                    g.add((acupoint_uri, TARA.hasSpecialPointRole, URIRef(create_uri(special_point_1)))) # Add annotation
+                    g.add((acupoint_uri, TARA_AP.hasSpecialPointRole, URIRef(create_uri(special_point_1)))) # Add annotation
                     
                     # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
                     #                              TARA.hasSpecialPointRole, special_point_1_role_uri)
@@ -500,7 +503,7 @@ class AcupointsOntologyAdapter:
                     special_point_2_role = special_point_2 + " Role"
                     special_point_2_role_uri = URIRef(create_uri(special_point_2_role))
                     g.add((special_point_2_role_uri, RDF.type, OWL.Class))
-                    g.add((acupoint_uri, TARA.hasSpecialPointRole, URIRef(create_uri(special_point_2)))) # Add annotation
+                    g.add((acupoint_uri, TARA_AP.hasSpecialPointRole, URIRef(create_uri(special_point_2)))) # Add annotation
                     
                     # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
                     #                              TARA.hasSpecialPointRole, special_point_2_role_uri)
@@ -511,7 +514,7 @@ class AcupointsOntologyAdapter:
                     special_point_3_role = special_point_3 + " Role"
                     special_point_3_role_uri = URIRef(create_uri(special_point_3_role))
                     g.add((special_point_3_role_uri, RDF.type, OWL.Class))
-                    g.add((acupoint_uri, TARA.hasSpecialPointRole, URIRef(create_uri(special_point_3)))) # Add annotation
+                    g.add((acupoint_uri, TARA_AP.hasSpecialPointRole, URIRef(create_uri(special_point_3)))) # Add annotation
                     
                     # g = g + self.getOWLAxiom(acupoint_uri, RDFS.subClassOf, TARA.Special_Point, 
                     #                              TARA.hasSpecialPointRole, special_point_3_role_uri)
@@ -545,10 +548,10 @@ class AcupointsOntologyAdapter:
                         g.add((acupoint_location_uri, RDF.type, OWL.Class))
                                         
                         if locational_relation == "TARA:locatedOnTheSurfaceOf":
-                            g.add ((acupoint_uri, TARA.hasGeneralSurfaceLocation, acupoint_location_uri)) # Add annotation
+                            g.add ((acupoint_uri, TARA_AP.hasGeneralSurfaceLocation, acupoint_location_uri)) # Add annotation
 
                         if locational_relation == "TARA:locatedInRelationTo":
-                            g.add ((acupoint_uri, TARA.hasSpecificReferenceLocation, acupoint_location_uri)) # Add annotation
+                            g.add ((acupoint_uri, TARA_AP.hasSpecificReferenceLocation, acupoint_location_uri)) # Add annotation
                         
                         if locational_relation == "TARA:locatedOnTheSurfaceOf":
                             # locatedOnTheSurfaceOf some (partOf some acupoint_location_uri)
@@ -592,7 +595,7 @@ class AcupointsOntologyAdapter:
                     nerve_location_uri = URIRef(nerve_location)
 
                     # Annotation: TARA.hasRelatedNerve with the nerve location URI
-                    g.add((acupoint_uri, TARA.hasRelatedNerve, nerve_location_uri))
+                    g.add((acupoint_uri, TARA_AP.hasRelatedNerve, nerve_location_uri))
 
                     # OWL axiom: subClassOf restriction using TARA_OP.hasRelatedNerve
                     if nerve_relation:
@@ -626,7 +629,7 @@ class AcupointsOntologyAdapter:
 
                     if vasculature_relation == "TARA:hasRelatedVein":
                         # Annotation
-                        g.add((acupoint_uri, TARA.hasRelatedVein, vasculature_uri))
+                        g.add((acupoint_uri, TARA_AP.hasRelatedVein, vasculature_uri))
                         # OWL axiom
                         self.addSimpleOWLRestriction(g, acupoint_uri,
                                                      TARA_OP.hasRelatedVein,
@@ -634,7 +637,7 @@ class AcupointsOntologyAdapter:
 
                     elif vasculature_relation == "TARA:hasRelatedArtery":
                         # Annotation
-                        g.add((acupoint_uri, TARA.hasRelatedArtery, vasculature_uri))
+                        g.add((acupoint_uri, TARA_AP.hasRelatedArtery, vasculature_uri))
                         # OWL axiom
                         self.addSimpleOWLRestriction(g, acupoint_uri,
                                                      TARA_OP.hasRelatedArtery,
