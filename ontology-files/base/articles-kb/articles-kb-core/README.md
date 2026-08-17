@@ -1,0 +1,321 @@
+# TARA Articles KB — Core Ontology
+
+## Purpose
+
+`tara-articles-kb-core.ttl` is the single source of truth for the metadata schema used to capture extracted information from acupuncture clinical trial publications. It exists to solve a recurring ETL problem: metadata extracted via AI tools (Elicit, Gemini, etc.) arrived with inconsistent column names and prompting from batch to batch, which forced the ingestion/transformation scripts to be rewritten every time, and no standardized database schema existed to load into.
+
+This ttl is designed to drive three things directly, so extraction, transformation, and load all stay consistent with one another:
+
+1. **Extraction** — a data dictionary precise enough to generate standardized extraction instructions (prompts) per metadata element for the AI extraction step.
+2. **Transformation** — consistent CSV/Excel headers and SPARQL query templates, generated from the ontology rather than hand-maintained.
+3. **Load** — a relational database schema derived from the same property definitions used in the RDF graph, so the graph and relational representations never drift apart.
+
+Every annotation property carries `rdfs:label` (human name), `skos:altLabel` (machine-safe column/field name), `dcterms:description` (formal definition), `obo:IAO_0000112` (worked examples), `rdfs:comment` (normalization rules), `rdfs:domain`/`rdfs:range` (owning class / expected value type), and `dcterms:type tara-kb:grouping` where the property is purely organizational and never holds a value itself.
+
+**Status note:** the `obo:IAO_0000112` example values and OCSI scoring rubrics currently in the file are a preliminary starting point and have not yet been verified as authoritative — treat them as draft until reviewed. See also the [LLM Extraction Prompt](#llm-extraction-prompt) section below.
+
+## Contents
+
+- **`tara-articles-kb-core.ttl`** — the canonical, hand-authored ontology.
+- **`tara-articles-kb-core-draft.ttl`** — working draft / staging area for property changes before they're promoted into the core file.
+- **`schema-tools/`** — *(scaffolding only, not yet implemented)* scripts that will read the core ttl and generate the derived artifacts below (CSV/Excel templates, DB schema, SPARQL templates, LLM prompt manifests) from a single ontology-reflection query, so every downstream format is regenerated from one source instead of hand-maintained separately.
+  - `queries/` — reusable SPARQL (`.rq`) query files used by the generator scripts.
+- **`generated-artifacts/`** — *(empty scaffolding, populated by `schema-tools/` once implemented)* build output only; never hand-edited.
+  - `manifest/` — the canonical intermediate field manifest (compact URI, column name, definition, example, range, domain, parent grouping) that every other generated artifact is built from.
+  - `csv-templates/` — generated Excel/CSV extraction templates.
+  - `db-schema/` — generated relational DDL.
+  - `sparql-templates/` — generated canned SPARQL query templates.
+  - `llm-prompts/` — generated per-field LLM extraction prompt payloads.
+
+## Metadata Structure
+
+Under `tara-kb:hasTARAArticlesMetadata`, extracted metadata is organized into branches aligned with three core classes — **Acupuncture Study Publication**, **Acupuncture Research Study**, and **Acupuncture Study OCSI Appraisal**. In each diagram below, a dashed node is a pure grouping property (`dcterms:type tara-kb:grouping` — organizational only, never holds a value); a solid node holds an actual extracted value (some solid nodes are also parents of more granular sub-properties); a double-bordered blue node is the cross-linked entity that the diagram's own entity points to via the labeled property — that entity is expanded in its own diagram rather than repeated here. See [Entity Relationships](#entity-relationships) below for the full picture with cardinality.
+
+```mermaid
+flowchart LR
+    classDef group fill:#eee,stroke:#999,stroke-dasharray: 3 3,color:#555
+    classDef field fill:#ffffff,stroke:#333,color:#111
+    classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
+    G["grouping only<br/>(no value)"]:::group
+    F["holds a value"]:::field
+    L[["cross-linked entity<br/>(detailed in another diagram)"]]:::linked
+```
+
+### 1. Acupuncture Study Publication
+
+Bibliographic metadata about the journal article/publication reporting a study.
+
+```mermaid
+flowchart LR
+    classDef group fill:#eee,stroke:#999,stroke-dasharray: 3 3,color:#555
+    classDef field fill:#ffffff,stroke:#333,color:#111
+    classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
+
+    PUB(("Acupuncture Study<br/>Publication")):::field
+    BIB["hasBibliographicMetadata<br/>(Bibliographic Metadata)"]:::field
+    TITLE["hasArticleTitle<br/>(Article Title)"]:::field
+    ATYPE["hasArticleType<br/>(Article Type)"]:::field
+    AUTH["hasListedAuthors<br/>(Listed Author(s))"]:::field
+    PDATE["hasPublicationDate<br/>(Publication Date)"]:::field
+    PYEAR["hasPublicationYear<br/>(Publication Year)"]:::field
+    PLINK["hasPublicationLink<br/>(Publication Link)"]:::field
+    DOI["hasDOILink<br/>(DOI Link)"]:::field
+    OTHER["hasOtherLink<br/>(Other Link)"]:::field
+    PUBMED["hasPubMedLink<br/>(PubMed Link)"]:::field
+    VENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
+
+    PUB --> BIB
+    BIB --> TITLE
+    BIB --> ATYPE
+    BIB --> AUTH
+    BIB --> PDATE --> PYEAR
+    BIB --> PLINK
+    PLINK --> DOI
+    PLINK --> OTHER
+    PLINK --> PUBMED
+    BIB --> VENUE
+
+    PUB -- hasReportedStudyID --> STUDY_EXT[["Acupuncture Research Study"]]:::linked
+    PUB -- hasOCSIAppraisalID --> OCSI_EXT[["Acupuncture Study OCSI Appraisal"]]:::linked
+```
+
+### 2. Acupuncture Research Study
+
+Everything about how the trial was actually conducted: intervention protocol, design, conditions studied, findings, and location.
+
+```mermaid
+flowchart LR
+    classDef group fill:#eee,stroke:#999,stroke-dasharray: 3 3,color:#555
+    classDef field fill:#ffffff,stroke:#333,color:#111
+    classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
+
+    STUDY(("Acupuncture Research<br/>Study")):::field
+    ROOT["hasAcupunctureStudyMetadata<br/>(Acupuncture Study Metadata)"]:::group
+    STUDY --> ROOT
+
+    subgraph PROTO ["Acupuncture Protocol"]
+        direction TB
+        PROT["hasAcupunctureProtocol<br/>(Acupuncture Protocol)"]:::field
+        LIST["hasListedAcupoints<br/>(Listed Acupoint(s))"]:::field
+        LMAP["hasListedAcupointsMapped<br/>(Listed Acupoint(s) Mapped)"]:::field
+        LCURIE["hasListedAcupointsMappedCurie<br/>(Listed Acupoint(s) Mapped Curie)"]:::field
+        LUNMAP["hasListedAcupointsUnmappable<br/>(Listed Acupoint(s) Unmappable)"]:::field
+        NEEDLE["hasNeedlingDetails<br/>(Needling Details)"]:::field
+        SELGROUP["hasAcupointSelectionAndGrouping<br/>(Point Selection and Grouping)"]:::field
+        SEL["hasAcupointSelection<br/>(Acupoint Selection)"]:::field
+        GRP["hasAcupointGrouping<br/>(Acupoint Grouping)"]:::field
+        SHAM["hasShamAcupunctureDetails<br/>(Sham Acupuncture Details)"]:::field
+        STIM["hasStimulationTypeDetails<br/>(Stimulation Type Details)"]:::field
+
+        PROT --> LIST
+        LIST --> LMAP
+        LIST --> LCURIE
+        LIST --> LUNMAP
+        PROT --> NEEDLE
+        PROT --> SELGROUP
+        SELGROUP --> SEL
+        SELGROUP --> GRP
+        PROT --> SHAM
+        PROT --> STIM
+    end
+
+    subgraph COND ["Studied Condition"]
+        direction TB
+        SCOND["hasStudiedCondition<br/>(Studied Condition)"]:::group
+        TCM["hasStudiedTCMCondition<br/>(Studied Condition (TCM))"]:::field
+        TCMMAP["hasMappedTCMCondition<br/>(Mapped Condition (TCM))"]:::field
+        WEST["hasStudiedWesternCondition<br/>(Studied Condition (Western))"]:::field
+        WESTMAP["hasMappedWesternCondition<br/>(Mapped Condition (Western))"]:::field
+
+        SCOND --> TCM --> TCMMAP
+        SCOND --> WEST --> WESTMAP
+    end
+
+    subgraph DESIGN ["Study Design Metadata"]
+        direction TB
+        SDES["hasStudyDesignMetadata<br/>(Study Design Metadata)"]:::group
+        CTRL["hasControlGroupsDetails<br/>(Control Groups Details)"]:::field
+        SAMP["hasSampleSizeDetails<br/>(Sample Size Details)"]:::field
+        OUT["hasStudyOutcomesMeasure<br/>(Study Outcomes Measure)"]:::field
+        POUT["hasPrimaryOutcomeMeasure<br/>(Primary Outcome Measure)"]:::field
+        SOUT["hasSecondaryOutcomeMeasure<br/>(Secondary Outcome Measure)"]:::field
+        STYPE["hasStudyType<br/>(Study Type)"]:::field
+        CTYPE["hasClinicalTrialType<br/>(Clinical Trial Type)"]:::field
+        TDF["hasTreatmentDurationAndFrequency<br/>(Treatment Duration and Frequency)"]:::field
+        TDUR["hasTreatmentDuration<br/>(Treatment Duration)"]:::field
+        TFREQ["hasTreatmentFrequency<br/>(Treatment Frequency)"]:::field
+
+        SDES --> CTRL
+        SDES --> SAMP
+        SDES --> OUT
+        OUT --> POUT
+        OUT --> SOUT
+        SDES --> STYPE --> CTYPE
+        SDES --> TDF
+        TDF --> TDUR
+        TDF --> TFREQ
+    end
+
+    subgraph FINDINGS ["Study Findings"]
+        direction TB
+        SFIND["hasStudyFindings<br/>(Study Findings)"]:::field
+        COMP["hasComparativeFindings<br/>(Comparative Findings)"]:::field
+        MECH["hasProposedMechanism<br/>(Proposed Mechanism)"]:::field
+        CONCL["hasStudyConclusions<br/>(Study Conclusions)"]:::field
+        EFFECT["hasStudyEffectiveness<br/>(Study Effectiveness)"]:::field
+        RESULTS["hasStudyResults<br/>(Study Results)"]:::field
+
+        SFIND --> COMP
+        SFIND --> MECH
+        SFIND --> CONCL
+        SFIND --> EFFECT
+        SFIND --> RESULTS
+    end
+
+    subgraph LOC ["Study Location"]
+        direction TB
+        SLOC["hasStudyLocation<br/>(Study Location)"]:::field
+        COUNTRY["hasCountryOfStudy<br/>(Country of Study)"]:::field
+        SLOC --> COUNTRY
+    end
+
+    DLINK["hasDatasetLink<br/>(Dataset Link)"]:::field
+
+    ROOT --> PROT
+    ROOT --> DLINK
+    ROOT --> SCOND
+    ROOT --> SDES
+    ROOT --> SFIND
+    ROOT --> SLOC
+
+    STUDY -- hasReportingPublicationID --> PUB_EXT[["Acupuncture Study Publication"]]:::linked
+    STUDY -- hasOCSIAppraisalID --> OCSI_EXT[["Acupuncture Study OCSI Appraisal"]]:::linked
+```
+
+### 3. Acupuncture Study OCSI Appraisal
+
+Structured quality appraisal of trial reporting, based on the Oregon CONSORT/STRICTA Instrument (OCSI), organized into four scoring categories.
+
+```mermaid
+flowchart LR
+    classDef group fill:#eee,stroke:#999,stroke-dasharray: 3 3,color:#555
+    classDef field fill:#ffffff,stroke:#333,color:#111
+    classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
+
+    OCSI(("Acupuncture Study<br/>OCSI Appraisal")):::field
+    ROOT["hasOCSIScoreMetadata<br/>(OCSI Score Metadata)"]:::group
+    OCSI --> ROOT
+
+    subgraph A ["Category A: Study Foundation and Background Metrics"]
+        direction TB
+        CATA["hasStudyFoundationAndBackgroundMetrics"]:::group
+        ELIG["hasEligibilityScore<br/>(Eligibility Score)"]:::field
+        INTRO["hasIntroductionAndHypothesisScore<br/>(Introduction and Hypothesis Score)"]:::field
+        LIMIT["hasLimitationsScore<br/>(Limitations Score)"]:::field
+        PART["hasParticipantsScore<br/>(Participants Score)"]:::field
+        CATA --> ELIG
+        CATA --> INTRO
+        CATA --> LIMIT
+        CATA --> PART
+    end
+
+    subgraph B ["Category B: Technical Intervention Quality Metrics"]
+        direction TB
+        CATB["hasTechnicalInterventionQualityMetrics"]:::group
+        ACUDET["hasAcupunctureDetailsScore<br/>(Acupuncture Details Score)"]:::field
+        COINT["hasCointerventionsScore<br/>(Cointerventions Score)"]:::field
+        CTRLSC["hasControlGroupsScore<br/>(Control Groups Score)"]:::field
+        NEEDLESC["hasNeedlingParametersScore<br/>(Needling Parameters Score)"]:::field
+        PRACSAMP["hasPractitionerAndSampleSizeScore<br/>(Practitioner and Sample Size Score)"]:::field
+        PRACSC["hasPractitionerScore<br/>(Practitioner Score)"]:::field
+        SAMPSC["hasSampleSizeScore<br/>(Sample Size Score)"]:::field
+        SHAMSC["hasShamDetailsScore<br/>(Sham Controls Score)"]:::field
+        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
+
+        CATB --> ACUDET
+        CATB --> COINT
+        CATB --> CTRLSC
+        CATB --> NEEDLESC
+        CATB --> PRACSAMP
+        PRACSAMP --> PRACSC
+        PRACSAMP --> SAMPSC
+        CATB --> SHAMSC
+        CATB --> FREQSC
+    end
+
+    subgraph C ["Category C: Methodological and Statistical Allocation Metrics"]
+        direction TB
+        CATC["hasMethodologicalAndStatisticalAllocationMetrics"]:::group
+        ADV["hasAdverseEffectsScore<br/>(Adverse Effects Score)"]:::field
+        BLIND["hasBlindingQualityScore<br/>(Blinding Quality Score)"]:::field
+        RAND["hasRandomAllocationScore<br/>(Random Allocation Score)"]:::field
+        SUBG["hasSubgroupScore<br/>(Subgroup Score)"]:::field
+        CATC --> ADV
+        CATC --> BLIND
+        CATC --> RAND
+        CATC --> SUBG
+    end
+
+    subgraph D ["Category D: Evaluative Results and Global Metrics"]
+        direction TB
+        CATD["hasEvaluativeResultsAndGlobalMetrics"]:::group
+        TOTPCT["hasOCSITotalPercentage<br/>(OCSI Total Percentage)"]:::field
+        X2["hasOutcomesMeasureX2Score<br/>(Outcomes Measure X2 Score)"]:::field
+        RESOUT["hasResultsOutcomesScore<br/>(Results Outcomes Score)"]:::field
+        CATD --> TOTPCT
+        CATD --> X2
+        CATD --> RESOUT
+    end
+
+    ROOT --> CATA
+    ROOT --> CATB
+    ROOT --> CATC
+    ROOT --> CATD
+
+    OCSI -- hasOCSIInputStudyID --> STUDY_EXT[["Acupuncture Research Study"]]:::linked
+    OCSI -- hasReportingPublicationID --> PUB_EXT[["Acupuncture Study Publication"]]:::linked
+```
+
+## Entity Relationships
+
+The three core classes are cross-linked by dedicated annotation properties rather than a single owning hierarchy, forming a triangle: a Publication reports a Study, a Study is reported by a Publication and appraised by an OCSI record, and an OCSI record traces back to both its input Study and its reporting Publication.
+
+```mermaid
+erDiagram
+    PUBLICATION ||--o| STUDY : hasReportedStudyID
+    STUDY ||--o| PUBLICATION : hasReportingPublicationID
+    STUDY ||--o| OCSI_APPRAISAL : hasOCSIAppraisalID
+    OCSI_APPRAISAL ||--o| STUDY : hasOCSIInputStudyID
+    PUBLICATION ||--o| OCSI_APPRAISAL : hasOCSIAppraisalID
+    OCSI_APPRAISAL ||--o| PUBLICATION : hasReportingPublicationID
+
+    PUBLICATION {
+        string dc_identifier "e.g. tara-kb:A-112625-612"
+        string Article_Title
+        string Article_Type
+        string Publication_Venue
+        string Publication_Date
+        string DOI_Link
+    }
+    STUDY {
+        string dc_identifier "e.g. tara-kb:S-112625-612"
+        string Acupuncture_Protocol
+        string Study_Type
+        string Country_Of_Study
+        string Study_Results
+    }
+    OCSI_APPRAISAL {
+        string dc_identifier "e.g. tara-kb:O-112625-612"
+        integer Eligibility_Score
+        integer Blinding_Quality_Score
+        float OCSI_Total_Percentage
+    }
+```
+
+**Class hierarchy:** `Acupuncture Study Publication` is a subclass of `Research Study Publication`; `Acupuncture Research Study` is a subclass of `Research Study`; `Acupuncture Study OCSI Appraisal` is a subclass of `Acupuncture Study Qualty Appraisal`, itself a subclass of `Study Quality Appraisal`.
+
+**Cardinality note:** the `||--o|` (one-to-zero-or-one) cardinality above reflects current pipeline convention — each source spreadsheet row produces exactly one Publication, one Study, and one OCSI Appraisal individual, linked 1:1. This is not an OWL constraint enforced by the ontology (none of these are declared `owl:FunctionalProperty`), so a future scenario such as one Publication reporting multiple Studies (e.g. a multi-arm trial or meta-analysis) is not structurally prevented — just not what the current extraction pipeline produces.
+
+## LLM Extraction Prompt
+
+Work in Progress
