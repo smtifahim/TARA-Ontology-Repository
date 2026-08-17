@@ -638,6 +638,12 @@ TARA:6269212 a owl:Class ;
         "M-UE 16" ;
     rdfs:subClassOf TARA:3535998 .
 
+TARA:6560239 a rdfs:Datatype ;
+    rdfs:comment "To represent the total OCSI Score percentage between 0.0 to 100.0."@en ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:onDatatype xsd:float ;
+            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float ] [ xsd:maxInclusive "100.0"^^xsd:float ] ) ] .
+
 TARA:6941032 a owl:Class ;
     rdfs:label "Baichongwo" ;
     dcterms:bibliographicCitation "Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. Ch. 10, Sec. III, The Extra Points. ISBN 978-7-119-01758-7.",
@@ -1158,7 +1164,7 @@ tara-kb:hasOCSITotalPercentage a owl:AnnotationProperty ;
     dcterms:description "A quality metric within Category D: Evaluative Results & Global Metrics that assigns the global mathematical reporting accuracy value calculated as a raw percentage summarizing compliance across all combined item criteria." ;
     tara-ap:hasCompactURI "tara-kb:hasOCSITotalPercentage" ;
     rdfs:domain TARA:2825659 ;
-    rdfs:range TARA:6560239 ;
+    rdfs:range xsd:float ;
     rdfs:subPropertyOf tara-kb:hasEvaluativeResultsAndGlobalMetrics ;
     skos:altLabel "OCSI_Total_Percentage" .
 
@@ -16585,12 +16591,6 @@ TARA:6308255 a owl:Class ;
                     owl:onProperty partOf: ;
                     owl:someValuesFrom ILX:0795321 ] ],
         TARA:0214009 .
-
-TARA:6560239 a rdfs:Datatype ;
-    rdfs:comment "To represent the total OCSI Score percentage between 0.0 to 100.0."@en ;
-    owl:equivalentClass [ a rdfs:Datatype ;
-            owl:onDatatype xsd:float ;
-            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float ] [ xsd:maxInclusive "100.0"^^xsd:float ] ) ] .
 
 TARA:6703917 a owl:Class ;
     rdfs:label "Disease or Condition (TCM)" ;
