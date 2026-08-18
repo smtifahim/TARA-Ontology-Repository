@@ -50,17 +50,19 @@ flowchart LR
     classDef group fill:#eee,stroke:#999,stroke-dasharray: 3 3,color:#555
     classDef field fill:#ffffff,stroke:#333,color:#111
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
+    style BIB_FIELDS stroke:none
 
     PUB(("Acupuncture<br/>Study Publication")):::field
     BIB["hasBibliographicMetadata<br/>(Bibliographic Metadata)"]:::field
 
-    subgraph BIB_FIELDS [" "]
+    subgraph BIB_FIELDS ["<b>Bibliographic Metadata</b>"]
         TITLE["hasArticleTitle<br/>(Article Title)"]:::field
         ATYPE["hasArticleType<br/>(Article Type)"]:::field
         AUTH["hasListedAuthors<br/>(Listed Author(s))"]:::field
+        PVENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
         PDATE["hasPublicationDate<br/>(Publication Date)"]:::field
-        PLINK["hasPublicationLink<br/>(Publication Link)"]:::field
-        VENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
+        LINK["hasPublicationLink<br/>(Publication Link)"]:::field
+        
         PYEAR["hasPublicationYear<br/>(Publication Year)"]:::field
         DOI["hasDOILink<br/>(DOI Link)"]:::field
         OTHER["hasOtherLink<br/>(Other Link)"]:::field
@@ -68,19 +70,19 @@ flowchart LR
     end
 
     PUB --> BIB
-    BIB --> TITLE
     BIB --> ATYPE
+    BIB --> TITLE
     BIB --> AUTH
     BIB --> PDATE --> PYEAR
-    BIB --> PLINK
-    PLINK --> DOI
-    PLINK --> OTHER
-    PLINK --> PUBMED
-    BIB --> VENUE
+    BIB --> PVENUE
 
-    STUDY_EXT[["Acupuncture Research Study"]] -- hasReportingPublicationID --> PUB:::linked
+    BIB --> LINK
+            LINK --> DOI
+            LINK --> OTHER
+            LINK --> PUBMED
     
-    OCSI_EXT[["Acupuncture Study OCSI Appraisal"]] -- hasReportingPublicationID --> PUB:::linked
+    STUDY_EXT[["Acupuncture<br/>Research Study"]] -- hasReportingPublicationID --> PUB:::linked
+    OCSI_EXT[["Acupuncture<br/>Study OCSI Appraisal"]] -- hasReportingPublicationID --> PUB:::linked
 ```
 
 ### 2. Acupuncture Research Study
@@ -116,7 +118,7 @@ flowchart LR
         DLINK["hasDatasetLink<br/>(Dataset Link)"]:::field
     end
 
-    subgraph FINDINGS ["Study Findings"]
+    subgraph FINDINGS ["<b>Study Findings</b>"]
         direction LR
         SFIND["hasStudyFindings<br/>(Study Findings)"]:::field
         COMP["hasComparativeFindings<br/>(Comparative Findings)"]:::field
@@ -125,41 +127,47 @@ flowchart LR
         EFFECT["hasStudyEffectiveness<br/>(Study Effectiveness)"]:::field
         RESULTS["hasStudyResults<br/>(Study Results)"]:::field
 
-        SFIND --> COMP
-        SFIND --> MECH
+        SFIND --> RESULTS
         SFIND --> CONCL
         SFIND --> EFFECT
-        SFIND --> RESULTS
+        SFIND --> COMP
+        SFIND --> MECH
+        
     end
     
     
-    subgraph PROTO ["Acupuncture Protocol"]
+    subgraph PROTO ["<b>Acupuncture Protocol</b>"]
         direction LR
         PROT["hasAcupunctureProtocol<br/>(Acupuncture Protocol)"]:::field
+        
         LIST["hasListedAcupoints<br/>(Listed Acupoint(s))"]:::field
         LMAP["hasListedAcupointsMapped<br/>(Listed Acupoint(s) Mapped)"]:::field
         LCURIE["hasListedAcupointsMappedCurie<br/>(Listed Acupoint(s) Mapped Curie)"]:::field
         LUNMAP["hasListedAcupointsUnmappable<br/>(Listed Acupoint(s) Unmappable)"]:::field
         NEEDLE["hasNeedlingDetails<br/>(Needling Details)"]:::field
-        SELGROUP["hasAcupointSelectionAndGrouping<br/>(Point Selection and Grouping)"]:::field
-        SEL["hasAcupointSelection<br/>(Acupoint Selection)"]:::field
-        GRP["hasAcupointGrouping<br/>(Acupoint Grouping)"]:::field
         SHAM["hasShamAcupunctureDetails<br/>(Sham Acupuncture Details)"]:::field
         STIM["hasStimulationTypeDetails<br/>(Stimulation Type Details)"]:::field
 
+        ASELGROUP["hasAcupointSelectionAndGrouping<br/>(Point Selection and Grouping)"]:::field
+        GRP["hasAcupointGrouping<br/>(Acupoint Grouping)"]:::field
+        SEL["hasAcupointSelection<br/>(Acupoint Selection)"]:::field
+        
+
+        PROT --> ASELGROUP
+        ASELGROUP --> GRP
+        ASELGROUP --> SEL
+        PROT --> NEEDLE
         PROT --> LIST
         LIST --> LMAP
         LIST --> LCURIE
-        LIST --> LUNMAP
-        PROT --> NEEDLE
-        PROT --> SELGROUP
-        SELGROUP --> SEL
-        SELGROUP --> GRP
-        PROT --> SHAM
+        LIST --> LUNMAP        
         PROT --> STIM
+        PROT --> SHAM
+
+        
     end
     
-    subgraph DESIGN ["Study Design Metadata"]
+    subgraph DESIGN ["<b>Study Design Metadata</b>"]
         direction LR
         SDES["hasStudyDesignMetadata<br/>(Study Design Metadata)"]:::group
         CTRL["hasControlGroupsDetails<br/>(Control Groups Details)"]:::field
@@ -173,18 +181,19 @@ flowchart LR
         TDUR["hasTreatmentDuration<br/>(Treatment Duration)"]:::field
         TFREQ["hasTreatmentFrequency<br/>(Treatment Frequency)"]:::field
 
+        SDES --> STYPE --> CTYPE
         SDES --> CTRL
-        SDES --> SAMP
         SDES --> OUT
+        SDES --> SAMP
+        
         OUT --> POUT
         OUT --> SOUT
-        SDES --> STYPE --> CTYPE
         SDES --> TDF
         TDF --> TDUR
         TDF --> TFREQ
     end
 
-    subgraph COND ["Studied Condition"]
+    subgraph COND ["<b>Studied Condition</b>"]
         direction LR
         SCOND["hasStudiedCondition<br/>(Studied Condition)"]:::group
         TCM["hasStudiedTCMCondition<br/>(Studied Condition (TCM))"]:::field
@@ -196,7 +205,7 @@ flowchart LR
         SCOND --> WEST --> WESTMAP
     end
 
-    subgraph LOC ["Study Location"]
+    subgraph LOC ["<b>Study Location</b>"]
         direction LR
         SLOC["hasStudyLocation<br/>(Study Location)"]:::field
         COUNTRY["hasCountryOfStudy<br/>(Country of Study)"]:::field
@@ -204,9 +213,8 @@ flowchart LR
     end
 %% end
 
-    PUB_EXT[["Acupuncture Study Publication"]] -- hasReportedStudyID --> STUDY:::linked  
-    OCSI_EXT[["Acupuncture Study OCSI Appraisal"]] -- hasOCSIInputStudyID --> STUDY:::linked
-
+    PUB_EXT[["Acupuncture</br>Study Publication"]] -- hasReportedStudyID --> STUDY:::linked  
+    OCSI_EXT[["Acupuncture</br>Study OCSI Appraisal"]] -- hasOCSIInputStudyID --> STUDY:::linked
 ```
 
 ### 3. Acupuncture Study OCSI Appraisal
@@ -223,57 +231,10 @@ flowchart LR
     ROOT["hasOCSIScoreMetadata<br/>(OCSI Score Metadata)"]:::group
     OCSI --> ROOT
 
-    subgraph OCSI_FIELDS [" "]
+    %% subgraph OCSI_FIELDS [" "]
 
-    subgraph A ["<b>Category A: Study Foundation and Background Metrics</b>"]
-        direction LR
-        CATA["hasStudyFoundationAndBackgroundMetrics"]:::group
-        ELIG["hasEligibilityScore<br/>(Eligibility Score)"]:::field
-        INTRO["hasIntroductionAndHypothesisScore<br/>(Introduction and Hypothesis Score)"]:::field
-        LIMIT["hasLimitationsScore<br/>(Limitations Score)"]:::field
-        PART["hasParticipantsScore<br/>(Participants Score)"]:::field
-        CATA --> ELIG
-        CATA --> INTRO
-        CATA --> LIMIT
-        CATA --> PART
-    end
 
-    subgraph B ["<b>Category B: Technical Intervention Quality Metrics</b>"]
-        direction LR
-        CATB["hasTechnicalInterventionQualityMetrics"]:::group
-        ACUDET["hasAcupunctureDetailsScore<br/>(Acupuncture Details Score)"]:::field
-        COINT["hasCointerventionsScore<br/>(Cointerventions Score)"]:::field
-        CTRLSC["hasControlGroupsScore<br/>(Control Groups Score)"]:::field
-        NEEDLESC["hasNeedlingParametersScore<br/>(Needling Parameters Score)"]:::field
-        PRACSAMP["hasPractitionerAndSampleSizeScore<br/>(Practitioner and Sample Size Score)"]:::field
-        PRACSC["hasPractitionerScore<br/>(Practitioner Score)"]:::field
-        SAMPSC["hasSampleSizeScore<br/>(Sample Size Score)"]:::field
-        SHAMSC["hasShamDetailsScore<br/>(Sham Controls Score)"]:::field
-        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
 
-        CATB --> ACUDET
-        CATB --> COINT
-        CATB --> CTRLSC
-        CATB --> NEEDLESC
-        CATB --> PRACSAMP
-        PRACSAMP --> PRACSC
-        PRACSAMP --> SAMPSC
-        CATB --> SHAMSC
-        CATB --> FREQSC
-    end
-
-    subgraph C ["<b>Category C: Methodological and Statistical Allocation Metrics</b>"]
-        direction LR
-        CATC["hasMethodologicalAndStatisticalAllocationMetrics"]:::group
-        ADV["hasAdverseEffectsScore<br/>(Adverse Effects Score)"]:::field
-        BLIND["hasBlindingQualityScore<br/>(Blinding Quality Score)"]:::field
-        RAND["hasRandomAllocationScore<br/>(Random Allocation Score)"]:::field
-        SUBG["hasSubgroupScore<br/>(Subgroup Score)"]:::field
-        CATC --> ADV
-        CATC --> BLIND
-        CATC --> RAND
-        CATC --> SUBG
-    end
 
     subgraph D ["<b>Category D: Evaluative Results and Global Metrics</b>"]
         direction LR
@@ -286,12 +247,68 @@ flowchart LR
         CATD --> RESOUT
     end
 
+
+    subgraph C ["<b>Category C: Methodological and Statistical Allocation Metrics</b>"]
+        direction LR
+        SUBG["hasSubgroupScore<br/>(Subgroup Score)"]:::field
+        BLIND["hasBlindingQualityScore<br/>(Blinding Quality Score)"]:::field
+        CATC["hasMethodologicalAndStatisticalAllocationMetrics"]:::group
+        ADV["hasAdverseEffectsScore<br/>(Adverse Effects Score)"]:::field
+        RAND["hasRandomAllocationScore<br/>(Random Allocation Score)"]:::field
+        
+        CATC --> SUBG
+        CATC --> BLIND
+        CATC --> ADV
+        CATC --> RAND
+    end
+
+    
+    subgraph B ["<b>Category B: Technical Intervention Quality Metrics</b>"]
+        direction LR
+        CATB["hasTechnicalInterventionQualityMetrics"]:::group
+        ACUDET["hasAcupunctureDetailsScore<br/>(Acupuncture Details Score)"]:::field
+        CTRLSC["hasControlGroupsScore<br/>(Control Groups Score)"]:::field
+        COINT["hasCointerventionsScore<br/>(Cointerventions Score)"]:::field
+        NEEDLESC["hasNeedlingParametersScore<br/>(Needling Parameters Score)"]:::field
+        SAMPSC["hasSampleSizeScore<br/>(Sample Size Score)"]:::field
+        SHAMSC["hasShamDetailsScore<br/>(Sham Controls Score)"]:::field
+        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
+        PRACSAMP["hasPractitionerAndSampleSizeScore<br/>(Practitioner and Sample Size Score)"]:::field
+        PRACSC["hasPractitionerScore<br/>(Practitioner Score)"]:::field
+
+
+
+        CATB --> ACUDET
+        CATB --> CTRLSC
+        CATB --> COINT
+        CATB --> NEEDLESC
+        CATB --> SHAMSC
+        CATB --> FREQSC
+        CATB --> PRACSAMP
+                 PRACSAMP --> SAMPSC
+                 PRACSAMP --> PRACSC
+
+    end
+
+    subgraph A ["<b>Category A: Study Foundation and Background Metrics</b>"]
+        direction LR
+        CATA["hasStudyFoundationAndBackgroundMetrics"]:::group
+        INTRO["hasIntroductionAndHypothesisScore<br/>(Introduction and Hypothesis Score)"]:::field
+        ELIG["hasEligibilityScore<br/>(Eligibility Score)"]:::field
+        LIMIT["hasLimitationsScore<br/>(Limitations Score)"]:::field
+        PART["hasParticipantsScore<br/>(Participants Score)"]:::field
+        CATA --> INTRO
+        CATA --> ELIG
+        CATA --> LIMIT
+        CATA --> PART
+    end
+
     ROOT --> CATA
     ROOT --> CATB
     ROOT --> CATC
     ROOT --> CATD
 
-    end
+    %% end
 
     STUDY_EXT[["Acupuncture Research Study"]] -- hasOCSIAppraisalID --> OCSI:::linked
     
