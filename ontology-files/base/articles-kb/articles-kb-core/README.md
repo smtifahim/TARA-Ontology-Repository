@@ -62,7 +62,6 @@ flowchart LR
         PLINK["hasPublicationLink<br/>(Publication Link)"]:::field
         VENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
 
-        TITLE ~~~ AUTH ~~~ VENUE ~~~ ATYPE ~~~ PDATE ~~~ PLINK
     end
 
     PYEAR["hasPublicationYear<br/>(Publication Year)"]:::field
@@ -197,8 +196,6 @@ flowchart LR
     ROOT --> SFIND
     ROOT --> SLOC
 
-    SLOC ~~~ SCOND ~~~ SDES ~~~ PROT ~~~ SFIND ~~~ DLINK
-
     end
 
     PUB_EXT[["Acupuncture Study Publication"]] -- hasReportedStudyID --> STUDY:::linked  
@@ -286,8 +283,6 @@ flowchart LR
     ROOT --> CATB
     ROOT --> CATC
     ROOT --> CATD
-
-    CATA ~~~ CATB ~~~ CATC ~~~ CATD
 
     end
 
