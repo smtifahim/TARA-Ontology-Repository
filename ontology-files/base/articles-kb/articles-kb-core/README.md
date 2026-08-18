@@ -54,33 +54,36 @@ flowchart LR
     PUB(("Acupuncture<br/>Study Publication")):::field
     BIB["hasBibliographicMetadata<br/>(Bibliographic Metadata)"]:::field
     TITLE["hasArticleTitle<br/>(Article Title)"]:::field
-    ATYPE["hasArticleType<br/>(Article Type)"]:::field
     AUTH["hasListedAuthors<br/>(Listed Author(s))"]:::field
+    VENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
+    ATYPE["hasArticleType<br/>(Article Type)"]:::field
     PDATE["hasPublicationDate<br/>(Publication Date)"]:::field
     PYEAR["hasPublicationYear<br/>(Publication Year)"]:::field
     PLINK["hasPublicationLink<br/>(Publication Link)"]:::field
     DOI["hasDOILink<br/>(DOI Link)"]:::field
     OTHER["hasOtherLink<br/>(Other Link)"]:::field
     PUBMED["hasPubMedLink<br/>(PubMed Link)"]:::field
-    VENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
 
     PUB --> BIB
     BIB --> TITLE
-    BIB --> ATYPE
     BIB --> AUTH
+    BIB --> VENUE
+    BIB --> ATYPE
     BIB --> PDATE --> PYEAR
     BIB --> PLINK
     PLINK --> DOI
     PLINK --> OTHER
     PLINK --> PUBMED
-    BIB --> VENUE
 
-    TITLE ~~~ AUTH ~~~ VENUE ~~~ ATYPE ~~~ PDATE ~~~ PLINK
+    subgraph PUB_LINKS [" "]
+        direction TB
+        STUDY_EXT[["Acupuncture Research Study"]]:::linked
+        OCSI_EXT[["Acupuncture Study OCSI Appraisal"]]:::linked
+    end
+    style PUB_LINKS fill:none,stroke:none
 
-
-    STUDY_EXT[["Acupuncture Research Study"]] -- hasReportingPublicationID --> PUB:::linked
-    
-    OCSI_EXT[["Acupuncture Study OCSI Appraisal"]] -- hasReportingPublicationID --> PUB:::linked
+    STUDY_EXT -- hasReportingPublicationID --> PUB
+    OCSI_EXT -- hasReportingPublicationID --> PUB
 ```
 
 ### 2. Acupuncture Research Study
@@ -185,17 +188,22 @@ flowchart LR
 
     DLINK["hasDatasetLink<br/>(Dataset Link)"]:::field
 
-    ROOT --> PROT
-    ROOT --> DLINK
+    ROOT --> SLOC
     ROOT --> SCOND
     ROOT --> SDES
+    ROOT --> PROT
     ROOT --> SFIND
-    ROOT --> SLOC
+    ROOT --> DLINK
 
-    SLOC ~~~ SCOND ~~~ SDES ~~~ PROT ~~~ SFIND ~~~ DLINK
+    subgraph STUDY_LINKS [" "]
+        direction TB
+        PUB_EXT[["Acupuncture Study Publication"]]:::linked
+        OCSI_EXT[["Acupuncture Study OCSI Appraisal"]]:::linked
+    end
+    style STUDY_LINKS fill:none,stroke:none
 
-    PUB_EXT[["Acupuncture Study Publication"]] -- hasReportedStudyID --> STUDY:::linked  
-    OCSI_EXT[["Acupuncture Study OCSI Appraisal"]] -- hasOCSIInputStudyID --> STUDY:::linked
+    PUB_EXT -- hasReportedStudyID --> STUDY
+    OCSI_EXT -- hasOCSIInputStudyID --> STUDY
 ```
 
 ### 3. Acupuncture Study OCSI Appraisal
@@ -212,7 +220,7 @@ flowchart LR
     ROOT["hasOCSIScoreMetadata<br/>(OCSI Score Metadata)"]:::group
     OCSI --> ROOT
 
-    subgraph A [<b>"Category A: Study Foundation and Background Metrics"</b>]
+    subgraph A ["<b>Category A: Study Foundation and Background Metrics</b>"]
         direction LR
         CATA["hasStudyFoundationAndBackgroundMetrics"]:::group
         ELIG["hasEligibilityScore<br/>(Eligibility Score)"]:::field
@@ -278,10 +286,15 @@ flowchart LR
     ROOT --> CATC
     ROOT --> CATD
 
-    CATA ~~~ CATB ~~~ CATC ~~~ CATD
+    subgraph OCSI_LINKS [" "]
+        direction TB
+        STUDY_EXT[["Acupuncture Research Study"]]:::linked
+        PUB_EXT[["Acupuncture Study Publication"]]:::linked
+    end
+    style OCSI_LINKS fill:none,stroke:none
 
-    STUDY_EXT[["Acupuncture Research Study"]] -- hasOCSIAppraisalID --> OCSI:::linked
-    
+    STUDY_EXT -- hasOCSIAppraisalID --> OCSI
+    PUB_EXT -- hasOCSIAppraisalID --> OCSI
 ```
 
 ## Entity Relationships
