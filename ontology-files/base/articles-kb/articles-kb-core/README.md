@@ -51,7 +51,7 @@ flowchart LR
     classDef field fill:#ffffff,stroke:#333,color:#111
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
 
-    PUB(("Acupuncture Study<br/>Publication")):::field
+    PUB(("Acupuncture<br/>Study Publication")):::field
     BIB["hasBibliographicMetadata<br/>(Bibliographic Metadata)"]:::field
     TITLE["hasArticleTitle<br/>(Article Title)"]:::field
     ATYPE["hasArticleType<br/>(Article Type)"]:::field
@@ -75,8 +75,12 @@ flowchart LR
     PLINK --> PUBMED
     BIB --> VENUE
 
-    PUB -- hasReportedStudyID --> STUDY_EXT[["Acupuncture Research Study"]]:::linked
-    PUB -- hasOCSIAppraisalID --> OCSI_EXT[["Acupuncture Study OCSI Appraisal"]]:::linked
+    TITLE ~~~ AUTH ~~~ VENUE ~~~ ATYPE ~~~ PDATE ~~~ PLINK
+
+
+    STUDY_EXT[["Acupuncture Research Study"]] -- hasReportingPublicationID --> PUB:::linked
+    
+    OCSI_EXT[["Acupuncture Study OCSI Appraisal"]] -- hasReportingPublicationID --> PUB:::linked
 ```
 
 ### 2. Acupuncture Research Study
@@ -89,7 +93,7 @@ flowchart LR
     classDef field fill:#ffffff,stroke:#333,color:#111
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
 
-    STUDY(("Acupuncture Research<br/>Study")):::field
+    STUDY(("Acupuncture<br/>Research Study")):::field
     ROOT["hasAcupunctureStudyMetadata<br/>(Acupuncture Study Metadata)"]:::group
     STUDY --> ROOT
 
@@ -188,8 +192,10 @@ flowchart LR
     ROOT --> SFIND
     ROOT --> SLOC
 
-    STUDY -- hasReportingPublicationID --> PUB_EXT[["Acupuncture Study Publication"]]:::linked
-    STUDY -- hasOCSIAppraisalID --> OCSI_EXT[["Acupuncture Study OCSI Appraisal"]]:::linked
+    SLOC ~~~ SCOND ~~~ SDES ~~~ PROT ~~~ SFIND ~~~ DLINK
+
+    PUB_EXT[["Acupuncture Study Publication"]] -- hasReportedStudyID --> STUDY:::linked  
+    OCSI_EXT[["Acupuncture Study OCSI Appraisal"]] -- hasOCSIInputStudyID --> STUDY:::linked
 ```
 
 ### 3. Acupuncture Study OCSI Appraisal
@@ -206,7 +212,7 @@ flowchart LR
     ROOT["hasOCSIScoreMetadata<br/>(OCSI Score Metadata)"]:::group
     OCSI --> ROOT
 
-    subgraph A ["Category A: Study Foundation and Background Metrics"]
+    subgraph A [<b>"Category A: Study Foundation and Background Metrics"</b>]
         direction LR
         CATA["hasStudyFoundationAndBackgroundMetrics"]:::group
         ELIG["hasEligibilityScore<br/>(Eligibility Score)"]:::field
@@ -219,7 +225,7 @@ flowchart LR
         CATA --> PART
     end
 
-    subgraph B ["Category B: Technical Intervention Quality Metrics"]
+    subgraph B ["<b>Category B: Technical Intervention Quality Metrics</b>"]
         direction LR
         CATB["hasTechnicalInterventionQualityMetrics"]:::group
         ACUDET["hasAcupunctureDetailsScore<br/>(Acupuncture Details Score)"]:::field
@@ -243,7 +249,7 @@ flowchart LR
         CATB --> FREQSC
     end
 
-    subgraph C ["Category C: Methodological and Statistical Allocation Metrics"]
+    subgraph C ["<b>Category C: Methodological and Statistical Allocation Metrics</b>"]
         direction LR
         CATC["hasMethodologicalAndStatisticalAllocationMetrics"]:::group
         ADV["hasAdverseEffectsScore<br/>(Adverse Effects Score)"]:::field
@@ -256,7 +262,7 @@ flowchart LR
         CATC --> SUBG
     end
 
-    subgraph D ["Category D: Evaluative Results and Global Metrics"]
+    subgraph D ["<b>Category D: Evaluative Results and Global Metrics</b>"]
         direction LR
         CATD["hasEvaluativeResultsAndGlobalMetrics"]:::group
         TOTPCT["hasOCSITotalPercentage<br/>(OCSI Total Percentage)"]:::field
@@ -272,8 +278,11 @@ flowchart LR
     ROOT --> CATC
     ROOT --> CATD
 
-    OCSI -- hasOCSIInputStudyID --> STUDY_EXT[["Acupuncture Research Study"]]:::linked
-    OCSI -- hasReportingPublicationID --> PUB_EXT[["Acupuncture Study Publication"]]:::linked
+    CATA ~~~ CATB ~~~ CATC ~~~ CATD
+
+    STUDY_EXT[["Acupuncture Research Study"]] -- hasOCSIAppraisalID --> OCSI:::linked
+    %% PUB_EXT[["Acupuncture Study Publication"]] -- hasOCSIAppraisalID --> OCSI:::linked
+    
 ```
 
 ## Entity Relationships
