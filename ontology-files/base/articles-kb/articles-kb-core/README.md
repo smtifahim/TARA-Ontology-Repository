@@ -53,37 +53,37 @@ flowchart LR
 
     PUB(("Acupuncture<br/>Study Publication")):::field
     BIB["hasBibliographicMetadata<br/>(Bibliographic Metadata)"]:::field
-    TITLE["hasArticleTitle<br/>(Article Title)"]:::field
-    AUTH["hasListedAuthors<br/>(Listed Author(s))"]:::field
-    VENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
-    ATYPE["hasArticleType<br/>(Article Type)"]:::field
-    PDATE["hasPublicationDate<br/>(Publication Date)"]:::field
+
+    subgraph BIB_FIELDS [" "]
+        TITLE["hasArticleTitle<br/>(Article Title)"]:::field
+        ATYPE["hasArticleType<br/>(Article Type)"]:::field
+        AUTH["hasListedAuthors<br/>(Listed Author(s))"]:::field
+        PDATE["hasPublicationDate<br/>(Publication Date)"]:::field
+        PLINK["hasPublicationLink<br/>(Publication Link)"]:::field
+        VENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
+
+        TITLE ~~~ AUTH ~~~ VENUE ~~~ ATYPE ~~~ PDATE ~~~ PLINK
+    end
+
     PYEAR["hasPublicationYear<br/>(Publication Year)"]:::field
-    PLINK["hasPublicationLink<br/>(Publication Link)"]:::field
     DOI["hasDOILink<br/>(DOI Link)"]:::field
     OTHER["hasOtherLink<br/>(Other Link)"]:::field
     PUBMED["hasPubMedLink<br/>(PubMed Link)"]:::field
 
     PUB --> BIB
     BIB --> TITLE
-    BIB --> AUTH
-    BIB --> VENUE
     BIB --> ATYPE
+    BIB --> AUTH
     BIB --> PDATE --> PYEAR
     BIB --> PLINK
     PLINK --> DOI
     PLINK --> OTHER
     PLINK --> PUBMED
+    BIB --> VENUE
 
-    subgraph PUB_LINKS [" "]
-        direction TB
-        STUDY_EXT[["Acupuncture Research Study"]]:::linked
-        OCSI_EXT[["Acupuncture Study OCSI Appraisal"]]:::linked
-    end
-    style PUB_LINKS fill:none,stroke:none
-
-    STUDY_EXT -- hasReportingPublicationID --> PUB
-    OCSI_EXT -- hasReportingPublicationID --> PUB
+    STUDY_EXT[["Acupuncture Research Study"]] -- hasReportingPublicationID --> PUB:::linked
+    
+    OCSI_EXT[["Acupuncture Study OCSI Appraisal"]] -- hasReportingPublicationID --> PUB:::linked
 ```
 
 ### 2. Acupuncture Research Study
@@ -99,6 +99,8 @@ flowchart LR
     STUDY(("Acupuncture<br/>Research Study")):::field
     ROOT["hasAcupunctureStudyMetadata<br/>(Acupuncture Study Metadata)"]:::group
     STUDY --> ROOT
+
+    subgraph STUDY_FIELDS [" "]
 
     subgraph PROTO ["Acupuncture Protocol"]
         direction LR
@@ -188,22 +190,19 @@ flowchart LR
 
     DLINK["hasDatasetLink<br/>(Dataset Link)"]:::field
 
-    ROOT --> SLOC
+    ROOT --> PROT
+    ROOT --> DLINK
     ROOT --> SCOND
     ROOT --> SDES
-    ROOT --> PROT
     ROOT --> SFIND
-    ROOT --> DLINK
+    ROOT --> SLOC
 
-    subgraph STUDY_LINKS [" "]
-        direction TB
-        PUB_EXT[["Acupuncture Study Publication"]]:::linked
-        OCSI_EXT[["Acupuncture Study OCSI Appraisal"]]:::linked
+    SLOC ~~~ SCOND ~~~ SDES ~~~ PROT ~~~ SFIND ~~~ DLINK
+
     end
-    style STUDY_LINKS fill:none,stroke:none
 
-    PUB_EXT -- hasReportedStudyID --> STUDY
-    OCSI_EXT -- hasOCSIInputStudyID --> STUDY
+    PUB_EXT[["Acupuncture Study Publication"]] -- hasReportedStudyID --> STUDY:::linked  
+    OCSI_EXT[["Acupuncture Study OCSI Appraisal"]] -- hasOCSIInputStudyID --> STUDY:::linked
 ```
 
 ### 3. Acupuncture Study OCSI Appraisal
@@ -219,6 +218,8 @@ flowchart LR
     OCSI(("Acupuncture Study<br/>OCSI Appraisal")):::field
     ROOT["hasOCSIScoreMetadata<br/>(OCSI Score Metadata)"]:::group
     OCSI --> ROOT
+
+    subgraph OCSI_FIELDS [" "]
 
     subgraph A ["<b>Category A: Study Foundation and Background Metrics</b>"]
         direction LR
@@ -286,15 +287,12 @@ flowchart LR
     ROOT --> CATC
     ROOT --> CATD
 
-    subgraph OCSI_LINKS [" "]
-        direction TB
-        STUDY_EXT[["Acupuncture Research Study"]]:::linked
-        PUB_EXT[["Acupuncture Study Publication"]]:::linked
-    end
-    style OCSI_LINKS fill:none,stroke:none
+    CATA ~~~ CATB ~~~ CATC ~~~ CATD
 
-    STUDY_EXT -- hasOCSIAppraisalID --> OCSI
-    PUB_EXT -- hasOCSIAppraisalID --> OCSI
+    end
+
+    STUDY_EXT[["Acupuncture Research Study"]] -- hasOCSIAppraisalID --> OCSI:::linked
+    
 ```
 
 ## Entity Relationships
