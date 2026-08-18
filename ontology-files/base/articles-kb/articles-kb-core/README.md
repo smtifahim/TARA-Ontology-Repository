@@ -281,7 +281,6 @@ flowchart LR
     CATA ~~~ CATB ~~~ CATC ~~~ CATD
 
     STUDY_EXT[["Acupuncture Research Study"]] -- hasOCSIAppraisalID --> OCSI:::linked
-    %% PUB_EXT[["Acupuncture Study Publication"]] -- hasOCSIAppraisalID --> OCSI:::linked
     
 ```
 
