@@ -95,9 +95,6 @@ flowchart LR
     classDef field fill:#ffffff,stroke:#333,color:#111
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
 
-    style STUDY_FIELDS stroke:none, fill:none
-
-
     STUDY(("Acupuncture<br/>Research Study")):::field
     ROOT["hasAcupunctureStudyMetadata<br/>(Acupuncture Study Metadata)"]:::group
     STUDY --> ROOT
@@ -109,9 +106,6 @@ flowchart LR
     ROOT --> PROT
     ROOT --> SFIND
     ROOT --> DLINK
-
-
-%% subgraph STUDY_FIELDS [" "]
 
     subgraph DLK ["Dataset Link"]
         direction LR
@@ -211,7 +205,6 @@ flowchart LR
         COUNTRY["hasCountryOfStudy<br/>(Country of Study)"]:::field
         SLOC --> COUNTRY
     end
-%% end
 
     PUB_EXT[["Acupuncture</br>Study Publication"]] -- hasReportedStudyID --> STUDY:::linked  
     OCSI_EXT[["Acupuncture</br>Study OCSI Appraisal"]] -- hasOCSIInputStudyID --> STUDY:::linked
