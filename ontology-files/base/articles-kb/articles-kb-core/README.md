@@ -218,7 +218,6 @@ flowchart LR
 ```
 
 ### 3. Acupuncture Study OCSI Appraisal
-
 Structured quality appraisal of trial reporting, based on the Oregon CONSORT/STRICTA Instrument (OCSI), organized into four scoring categories.
 
 ```mermaid
@@ -231,11 +230,6 @@ flowchart LR
     ROOT["hasOCSIScoreMetadata<br/>(OCSI Score Metadata)"]:::group
     OCSI --> ROOT
 
-    %% subgraph OCSI_FIELDS [" "]
-
-
-
-
     subgraph D ["<b>Category D: Evaluative Results and Global Metrics</b>"]
         direction LR
         CATD["hasEvaluativeResultsAndGlobalMetrics"]:::group
@@ -246,7 +240,6 @@ flowchart LR
         CATD --> X2
         CATD --> RESOUT
     end
-
 
     subgraph C ["<b>Category C: Methodological and Statistical Allocation Metrics</b>"]
         direction LR
@@ -261,7 +254,6 @@ flowchart LR
         CATC --> ADV
         CATC --> RAND
     end
-
     
     subgraph B ["<b>Category B: Technical Intervention Quality Metrics</b>"]
         direction LR
@@ -270,24 +262,22 @@ flowchart LR
         CTRLSC["hasControlGroupsScore<br/>(Control Groups Score)"]:::field
         COINT["hasCointerventionsScore<br/>(Cointerventions Score)"]:::field
         NEEDLESC["hasNeedlingParametersScore<br/>(Needling Parameters Score)"]:::field
-        SAMPSC["hasSampleSizeScore<br/>(Sample Size Score)"]:::field
-        SHAMSC["hasShamDetailsScore<br/>(Sham Controls Score)"]:::field
-        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
         PRACSAMP["hasPractitionerAndSampleSizeScore<br/>(Practitioner and Sample Size Score)"]:::field
         PRACSC["hasPractitionerScore<br/>(Practitioner Score)"]:::field
 
-
+        SAMPSC["hasSampleSizeScore<br/>(Sample Size Score)"]:::field
+        SHAMSC["hasShamDetailsScore<br/>(Sham Controls Score)"]:::field
+        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
 
         CATB --> ACUDET
         CATB --> CTRLSC
         CATB --> COINT
-        CATB --> NEEDLESC
-        CATB --> SHAMSC
-        CATB --> FREQSC
         CATB --> PRACSAMP
                  PRACSAMP --> SAMPSC
                  PRACSAMP --> PRACSC
-
+        CATB --> NEEDLESC
+        CATB --> SHAMSC
+        CATB --> FREQSC
     end
 
     subgraph A ["<b>Category A: Study Foundation and Background Metrics</b>"]
@@ -307,8 +297,6 @@ flowchart LR
     ROOT --> CATB
     ROOT --> CATC
     ROOT --> CATD
-
-    %% end
 
     STUDY_EXT[["Acupuncture Research Study"]] -- hasOCSIAppraisalID --> OCSI:::linked
     
