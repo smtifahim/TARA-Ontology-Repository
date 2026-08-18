@@ -61,13 +61,11 @@ flowchart LR
         PDATE["hasPublicationDate<br/>(Publication Date)"]:::field
         PLINK["hasPublicationLink<br/>(Publication Link)"]:::field
         VENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
-
+        PYEAR["hasPublicationYear<br/>(Publication Year)"]:::field
+        DOI["hasDOILink<br/>(DOI Link)"]:::field
+        OTHER["hasOtherLink<br/>(Other Link)"]:::field
+        PUBMED["hasPubMedLink<br/>(PubMed Link)"]:::field
     end
-
-    PYEAR["hasPublicationYear<br/>(Publication Year)"]:::field
-    DOI["hasDOILink<br/>(DOI Link)"]:::field
-    OTHER["hasOtherLink<br/>(Other Link)"]:::field
-    PUBMED["hasPubMedLink<br/>(PubMed Link)"]:::field
 
     PUB --> BIB
     BIB --> TITLE
@@ -95,12 +93,46 @@ flowchart LR
     classDef field fill:#ffffff,stroke:#333,color:#111
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
 
+    style STUDY_FIELDS stroke:none, fill:none
+
+
     STUDY(("Acupuncture<br/>Research Study")):::field
     ROOT["hasAcupunctureStudyMetadata<br/>(Acupuncture Study Metadata)"]:::group
     STUDY --> ROOT
 
-    subgraph STUDY_FIELDS [" "]
 
+    ROOT --> SLOC
+    ROOT --> SDES
+    ROOT --> SCOND
+    ROOT --> PROT
+    ROOT --> SFIND
+    ROOT --> DLINK
+
+
+%% subgraph STUDY_FIELDS [" "]
+
+    subgraph DLK ["Dataset Link"]
+        direction LR
+        DLINK["hasDatasetLink<br/>(Dataset Link)"]:::field
+    end
+
+    subgraph FINDINGS ["Study Findings"]
+        direction LR
+        SFIND["hasStudyFindings<br/>(Study Findings)"]:::field
+        COMP["hasComparativeFindings<br/>(Comparative Findings)"]:::field
+        MECH["hasProposedMechanism<br/>(Proposed Mechanism)"]:::field
+        CONCL["hasStudyConclusions<br/>(Study Conclusions)"]:::field
+        EFFECT["hasStudyEffectiveness<br/>(Study Effectiveness)"]:::field
+        RESULTS["hasStudyResults<br/>(Study Results)"]:::field
+
+        SFIND --> COMP
+        SFIND --> MECH
+        SFIND --> CONCL
+        SFIND --> EFFECT
+        SFIND --> RESULTS
+    end
+    
+    
     subgraph PROTO ["Acupuncture Protocol"]
         direction LR
         PROT["hasAcupunctureProtocol<br/>(Acupuncture Protocol)"]:::field
@@ -126,19 +158,7 @@ flowchart LR
         PROT --> SHAM
         PROT --> STIM
     end
-
-    subgraph COND ["Studied Condition"]
-        direction LR
-        SCOND["hasStudiedCondition<br/>(Studied Condition)"]:::group
-        TCM["hasStudiedTCMCondition<br/>(Studied Condition (TCM))"]:::field
-        TCMMAP["hasMappedTCMCondition<br/>(Mapped Condition (TCM))"]:::field
-        WEST["hasStudiedWesternCondition<br/>(Studied Condition (Western))"]:::field
-        WESTMAP["hasMappedWesternCondition<br/>(Mapped Condition (Western))"]:::field
-
-        SCOND --> TCM --> TCMMAP
-        SCOND --> WEST --> WESTMAP
-    end
-
+    
     subgraph DESIGN ["Study Design Metadata"]
         direction LR
         SDES["hasStudyDesignMetadata<br/>(Study Design Metadata)"]:::group
@@ -164,20 +184,16 @@ flowchart LR
         TDF --> TFREQ
     end
 
-    subgraph FINDINGS ["Study Findings"]
+    subgraph COND ["Studied Condition"]
         direction LR
-        SFIND["hasStudyFindings<br/>(Study Findings)"]:::field
-        COMP["hasComparativeFindings<br/>(Comparative Findings)"]:::field
-        MECH["hasProposedMechanism<br/>(Proposed Mechanism)"]:::field
-        CONCL["hasStudyConclusions<br/>(Study Conclusions)"]:::field
-        EFFECT["hasStudyEffectiveness<br/>(Study Effectiveness)"]:::field
-        RESULTS["hasStudyResults<br/>(Study Results)"]:::field
+        SCOND["hasStudiedCondition<br/>(Studied Condition)"]:::group
+        TCM["hasStudiedTCMCondition<br/>(Studied Condition (TCM))"]:::field
+        TCMMAP["hasMappedTCMCondition<br/>(Mapped Condition (TCM))"]:::field
+        WEST["hasStudiedWesternCondition<br/>(Studied Condition (Western))"]:::field
+        WESTMAP["hasMappedWesternCondition<br/>(Mapped Condition (Western))"]:::field
 
-        SFIND --> COMP
-        SFIND --> MECH
-        SFIND --> CONCL
-        SFIND --> EFFECT
-        SFIND --> RESULTS
+        SCOND --> TCM --> TCMMAP
+        SCOND --> WEST --> WESTMAP
     end
 
     subgraph LOC ["Study Location"]
@@ -186,20 +202,11 @@ flowchart LR
         COUNTRY["hasCountryOfStudy<br/>(Country of Study)"]:::field
         SLOC --> COUNTRY
     end
-
-    DLINK["hasDatasetLink<br/>(Dataset Link)"]:::field
-
-    ROOT --> PROT
-    ROOT --> DLINK
-    ROOT --> SCOND
-    ROOT --> SDES
-    ROOT --> SFIND
-    ROOT --> SLOC
-
-    end
+%% end
 
     PUB_EXT[["Acupuncture Study Publication"]] -- hasReportedStudyID --> STUDY:::linked  
     OCSI_EXT[["Acupuncture Study OCSI Appraisal"]] -- hasOCSIInputStudyID --> STUDY:::linked
+
 ```
 
 ### 3. Acupuncture Study OCSI Appraisal
