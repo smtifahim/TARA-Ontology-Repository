@@ -94,7 +94,7 @@ flowchart LR
     STUDY --> ROOT
 
     subgraph PROTO ["Acupuncture Protocol"]
-        direction TB
+        direction LR
         PROT["hasAcupunctureProtocol<br/>(Acupuncture Protocol)"]:::field
         LIST["hasListedAcupoints<br/>(Listed Acupoint(s))"]:::field
         LMAP["hasListedAcupointsMapped<br/>(Listed Acupoint(s) Mapped)"]:::field
@@ -120,7 +120,7 @@ flowchart LR
     end
 
     subgraph COND ["Studied Condition"]
-        direction TB
+        direction LR
         SCOND["hasStudiedCondition<br/>(Studied Condition)"]:::group
         TCM["hasStudiedTCMCondition<br/>(Studied Condition (TCM))"]:::field
         TCMMAP["hasMappedTCMCondition<br/>(Mapped Condition (TCM))"]:::field
@@ -132,7 +132,7 @@ flowchart LR
     end
 
     subgraph DESIGN ["Study Design Metadata"]
-        direction TB
+        direction LR
         SDES["hasStudyDesignMetadata<br/>(Study Design Metadata)"]:::group
         CTRL["hasControlGroupsDetails<br/>(Control Groups Details)"]:::field
         SAMP["hasSampleSizeDetails<br/>(Sample Size Details)"]:::field
@@ -157,7 +157,7 @@ flowchart LR
     end
 
     subgraph FINDINGS ["Study Findings"]
-        direction TB
+        direction LR
         SFIND["hasStudyFindings<br/>(Study Findings)"]:::field
         COMP["hasComparativeFindings<br/>(Comparative Findings)"]:::field
         MECH["hasProposedMechanism<br/>(Proposed Mechanism)"]:::field
@@ -173,7 +173,7 @@ flowchart LR
     end
 
     subgraph LOC ["Study Location"]
-        direction TB
+        direction LR
         SLOC["hasStudyLocation<br/>(Study Location)"]:::field
         COUNTRY["hasCountryOfStudy<br/>(Country of Study)"]:::field
         SLOC --> COUNTRY
@@ -207,7 +207,7 @@ flowchart LR
     OCSI --> ROOT
 
     subgraph A ["Category A: Study Foundation and Background Metrics"]
-        direction TB
+        direction LR
         CATA["hasStudyFoundationAndBackgroundMetrics"]:::group
         ELIG["hasEligibilityScore<br/>(Eligibility Score)"]:::field
         INTRO["hasIntroductionAndHypothesisScore<br/>(Introduction and Hypothesis Score)"]:::field
@@ -220,7 +220,7 @@ flowchart LR
     end
 
     subgraph B ["Category B: Technical Intervention Quality Metrics"]
-        direction TB
+        direction LR
         CATB["hasTechnicalInterventionQualityMetrics"]:::group
         ACUDET["hasAcupunctureDetailsScore<br/>(Acupuncture Details Score)"]:::field
         COINT["hasCointerventionsScore<br/>(Cointerventions Score)"]:::field
@@ -244,7 +244,7 @@ flowchart LR
     end
 
     subgraph C ["Category C: Methodological and Statistical Allocation Metrics"]
-        direction TB
+        direction LR
         CATC["hasMethodologicalAndStatisticalAllocationMetrics"]:::group
         ADV["hasAdverseEffectsScore<br/>(Adverse Effects Score)"]:::field
         BLIND["hasBlindingQualityScore<br/>(Blinding Quality Score)"]:::field
@@ -257,7 +257,7 @@ flowchart LR
     end
 
     subgraph D ["Category D: Evaluative Results and Global Metrics"]
-        direction TB
+        direction LR
         CATD["hasEvaluativeResultsAndGlobalMetrics"]:::group
         TOTPCT["hasOCSITotalPercentage<br/>(OCSI Total Percentage)"]:::field
         X2["hasOutcomesMeasureX2Score<br/>(Outcomes Measure X2 Score)"]:::field
