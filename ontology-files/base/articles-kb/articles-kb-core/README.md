@@ -43,42 +43,38 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-    %% 1. Apply styles for the subgraphs
+    %% 1. Style definitions for subgraphs
     style INSTANCES stroke:transparent
     style CLASSES stroke:#0000,stroke-width:0px
-
-    %% 2. Missing class definition for the 'field' style used in your code
     %% classDef field fill:#f9f9f9,stroke:#333,stroke-width:1px;
 
     subgraph Class_Instance[" "]
-        direction TB
-
-        %% 3. Define the INSTANCES subgraph and its internal nodes/edges first
+        
+        %% 2. INSTANCES Group (Forced horizontal using standard layout constraints)
         subgraph INSTANCES["<b>Cross-Linked Entity Instances</b>"]
-            direction LR
             PUB_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Study Publication"]]
             STUDY_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Research Study"]]
             OCSI_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture Study<br>OCSI Appraisal"]]
             
+            %% Connections keep these horizontal naturally
             PUB_ENT -- hasReportedStudyID --> STUDY_ENT
             STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
         end
 
-        %% 4. Define the CLASSES subgraph and its internal nodes/spacing next
+        %% 3. CLASSES Group (Forced horizontal using invisible ties)
         subgraph CLASSES["<b>TARA-KB: Core Classes</b>"]
-            direction LR
             PubClass(["Acupuncture<br>Study Publication"])
             StudyClass(["Acupuncture<br>Research Study"])
             OCSIClass(["Acupuncture<br>Study OCSI Appraisal"])
             
-            PubClass ~~~~ StudyClass
-            StudyClass ~~~~ OCSIClass
+            %% Multi-dash links force horizontal alignment in a TB chart
+            PubClass ~~~ StudyClass ~~~ OCSIClass
         end
 
-        %% 5. Structural spacing between the two main subgraph containers
+        %% 4. Push the CLASSES container directly above the INSTANCES container
         CLASSES ~~~~ INSTANCES
 
-        %% 6. CRITICAL FIX: Cross-subgraph connections must go at the very bottom
+        %% 5. CROSS-CONNECTORS: These will now anchor beautifully to the actual nodes
         PUB_ENT -- isTYpeOf --> PubClass
         STUDY_ENT -- isTYpeOf --> StudyClass
         OCSI_ENT -- isTYpeOf --> OCSIClass
