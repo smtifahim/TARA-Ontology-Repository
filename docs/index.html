@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TARA Ontology Documentation</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --panel-bg: #f7f8fa;
+  --border: #dfe2e6;
+  --text: #1a1f27;
+  --text-muted: #5b6472;
+  --accent: #4472c4;
+  --accent-bg: #e8f0ff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171c;
+    --panel-bg: #1b1f26;
+    --border: #2d333d;
+    --text: #e6e9ef;
+    --text-muted: #9aa4b2;
+    --accent: #7fa4e8;
+    --accent-bg: #1e2a44;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+main { width: 100%; max-width: 720px; }
+h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+p.sub { color: var(--text-muted); margin-top: 0; }
+ul.ontologies { list-style: none; margin: 2rem 0; padding: 0; display: flex; flex-direction: column; gap: 0.9rem; }
+ul.ontologies li a {
+  display: block;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel-bg);
+  color: var(--text);
+  text-decoration: none;
+}
+ul.ontologies li a:hover { border-color: var(--accent); background: var(--accent-bg); }
+ul.ontologies li a .title { font-weight: 600; color: var(--accent); }
+ul.ontologies li a .desc { display: block; color: var(--text-muted); font-size: 0.85rem; margin-top: 0.2rem; }
+footer { margin-top: 2rem; color: var(--text-muted); font-size: 0.8rem; }
+footer a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <h1>TARA Ontology Documentation</h1>
+  <p class="sub">Generated, interactive browsers for the ontologies in this repository.</p>
+  <ul class="ontologies">
+    <li>
+      <a href="articles-kb-core/">
+        <span class="title">TARA Articles KB &mdash; Core Ontology</span>
+        <span class="desc">Metadata schema for acupuncture clinical trial publications: classes, annotation properties, domain/range, and the OCSI scoring hierarchy.</span>
+      </a>
+    </li>
+  </ul>
+  <footer>
+    Source: <a href="https://github.com/SciCrunch/TARA-Ontology-Repository">SciCrunch/TARA-Ontology-Repository</a>
+  </footer>
+</main>
+</body>
+</html>

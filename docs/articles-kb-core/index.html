@@ -1,0 +1,2773 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TARA Articles KB &mdash; Core Ontology Browser</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --panel-bg: #f7f8fa;
+  --border: #dfe2e6;
+  --text: #1a1f27;
+  --text-muted: #5b6472;
+  --accent: #4472c4;
+  --accent-bg: #e8f0ff;
+  --grouping-bg: #eeeeee;
+  --grouping-border: #999999;
+  --chip-bg: #eef1f6;
+  --highlight-bg: #fff3b0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171c;
+    --panel-bg: #1b1f26;
+    --border: #2d333d;
+    --text: #e6e9ef;
+    --text-muted: #9aa4b2;
+    --accent: #7fa4e8;
+    --accent-bg: #1e2a44;
+    --grouping-bg: #23272e;
+    --grouping-border: #555c66;
+    --chip-bg: #232833;
+    --highlight-bg: #4a4322;
+  }
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+header h1 { font-size: 1.05rem; margin: 0; white-space: nowrap; }
+header .sub { color: var(--text-muted); font-size: 0.8rem; }
+.search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 480px; }
+#search {
+  width: 100%;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+#autocomplete {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-top: 4px;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 20;
+  display: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+#autocomplete .ac-item {
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+#autocomplete .ac-item:hover, #autocomplete .ac-item.active { background: var(--accent-bg); }
+#autocomplete .ac-badge {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.05rem 0.3rem;
+}
+main { display: flex; flex: 1; min-height: 0; }
+#sidebar {
+  width: 340px;
+  min-width: 220px;
+  max-width: 50vw;
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  resize: horizontal;
+}
+.tab-bar { display: flex; border-bottom: 1px solid var(--border); }
+.tab-btn {
+  flex: 1;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+.tree { padding: 0.4rem 0.4rem 1rem 0.4rem; }
+.tree ul { list-style: none; margin: 0; padding-left: 1.05rem; }
+.tree > ul { padding-left: 0.2rem; }
+.node-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  padding: 0.12rem 0.3rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.node-row:hover { background: var(--panel-bg); }
+.node-row.selected { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+.node-row.grouping .node-label { font-style: italic; color: var(--text-muted); }
+.toggle {
+  width: 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  user-select: none;
+  flex-shrink: 0;
+}
+.toggle.leaf { visibility: hidden; }
+.node-label { overflow-wrap: anywhere; }
+li.hidden-by-filter { display: none; }
+#content { flex: 1; overflow-y: auto; padding: 1.25rem 1.75rem; }
+#content .placeholder { color: var(--text-muted); }
+#content h2 { margin-top: 0; }
+.qname-badge {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  background: var(--chip-bg);
+  padding: 0.15rem 0.45rem;
+  border-radius: 5px;
+  color: var(--text-muted);
+}
+.type-badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  color: var(--text-muted);
+}
+.field-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin: 1.1rem 0 0.3rem; }
+.field-label:first-of-type { margin-top: 1.4rem; }
+.prose { white-space: pre-wrap; line-height: 1.5; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  border: 1px solid var(--border);
+  font-size: 0.82rem;
+  cursor: default;
+}
+.chip.link { cursor: pointer; color: var(--accent); border-color: var(--accent); }
+.chip.link:hover { background: var(--accent-bg); }
+.example-block {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+}
+.flash { animation: flash-anim 1.4s ease; }
+@keyframes flash-anim { 0%, 40% { background: var(--highlight-bg); } 100% { background: transparent; } }
+footer { padding: 0.5rem 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.75rem; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>TARA Articles KB &mdash; Core Ontology Browser</h1>
+    <div class="sub">tara-articles-kb-core.ttl</div>
+  </div>
+  <div class="search-wrap">
+    <input id="search" type="text" placeholder="Search by label or synonym&hellip;" autocomplete="off">
+    <div id="autocomplete"></div>
+  </div>
+</header>
+<main>
+  <div id="sidebar">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="properties">Properties</button>
+      <button class="tab-btn" data-tab="classes">Classes</button>
+    </div>
+    <div id="tree-properties" class="tree"></div>
+    <div id="tree-classes" class="tree" style="display:none"></div>
+  </div>
+  <div id="content"><p class="placeholder">Select a class or property from the left, or search above.</p></div>
+</main>
+<footer>Auto-generated from <code>tara-articles-kb-core.ttl</code> by <code>generated-artifacts/doc-generator/generate_html_docs.py</code>. Do not hand-edit &mdash; re-run the script instead.</footer>
+
+<script id="tara-data" type="application/json">
+{
+  "classes": {
+    "TARA:1132428": {
+      "id": "TARA:1132428",
+      "kind": "class",
+      "label": "Acupuncture Point",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_1132428",
+      "description": null,
+      "parent": null,
+      "children": [],
+      "synonyms": [],
+      "altLabels": [],
+      "propertiesWithThisDomain": []
+    },
+    "TARA:1244992": {
+      "id": "TARA:1244992",
+      "kind": "class",
+      "label": "Disease or Condition (Western)",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_1244992",
+      "description": "A specialized subclass of 'Disease or Condition' representing health impairments conceptualized, diagnosed, and classified according to conventional Western biomedical science. This class categorizes illnesses based on localized structural, cellular, or molecular pathology, objective biomolecular testing, and specific etiologies (such as infectious, genetic, or metabolic agents), focusing primarily on measurable physiological mechanisms.",
+      "parent": "TARA:3448356",
+      "children": [],
+      "synonyms": [],
+      "altLabels": [],
+      "propertiesWithThisDomain": []
+    },
+    "TARA:2825659": {
+      "id": "TARA:2825659",
+      "kind": "class",
+      "label": "Acupuncture Study OCSI Appraisal",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_2825659",
+      "description": "An acupuncture study quality appraisal data item that captures, organizes, and structures the specific multi-item compliance metrics and qualitative evaluation scores defined by the Oregon CONSORT STRICTA Instrument (OCSI) for assessing the reporting quality of acupuncture clinical trials.",
+      "parent": "TARA:9542913",
+      "children": [],
+      "synonyms": [],
+      "altLabels": [],
+      "propertiesWithThisDomain": [
+        "tara-kb:hasAcupunctureDetailsScore",
+        "tara-kb:hasAdverseEffectsScore",
+        "tara-kb:hasBlindingQualityScore",
+        "tara-kb:hasCointerventionsScore",
+        "tara-kb:hasControlGroupsScore",
+        "tara-kb:hasEligibilityScore",
+        "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
+        "tara-kb:hasFrequencyOfTreatmentScore",
+        "tara-kb:hasIntroductionAndHypothesisScore",
+        "tara-kb:hasLimitationsScore",
+        "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+        "tara-kb:hasNeedlingParametersScore",
+        "tara-kb:hasOCSIScoreMetadata",
+        "tara-kb:hasOCSITotalPercentage",
+        "tara-kb:hasOutcomesMeasureX2Score",
+        "tara-kb:hasParticipantsScore",
+        "tara-kb:hasPractitionerAndSampleSizeScore",
+        "tara-kb:hasPractitionerScore",
+        "tara-kb:hasRandomAllocationScore",
+        "tara-kb:hasResultsOutcomesScore",
+        "tara-kb:hasSampleSizeScore",
+        "tara-kb:hasShamDetailsScore",
+        "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+        "tara-kb:hasSubgroupScore",
+        "tara-kb:hasTechnicalInterventionQualityMetrics"
+      ]
+    },
+    "TARA:2894731": {
+      "id": "TARA:2894731",
+      "kind": "class",
+      "label": "Acupuncture Study Journal Article",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_2894731",
+      "description": "A specialized subclass of 'Acupuncture Study Publication' representing a peer-reviewed paper published within a periodic scientific journal. This class specifically designates formalized, citable academic literature that has undergone rigorous editorial evaluation, differentiating it from broader publication types by its structural alignment with journal metadata standardizations and its role in official scholarly records.",
+      "parent": "TARA:8223728",
+      "children": [],
+      "synonyms": [],
+      "altLabels": [],
+      "propertiesWithThisDomain": []
+    },
+    "TARA:3448356": {
+      "id": "TARA:3448356",
+      "kind": "class",
+      "label": "Disease or Condition",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_3448356",
+      "description": "A broad ontology class representing any pathological process, abnormal state, or disruption of normal bodily structure or function manifested by a specific set of symptoms or signs. Within this ontology, it serves as the top-level concept for health impairments, encompassing both holistic pattern-based syndromic classifications and localized, etiology-driven physiological disorders without bias toward a specific medical paradigm.",
+      "parent": null,
+      "children": [
+        "TARA:6703917",
+        "TARA:1244992"
+      ],
+      "synonyms": [],
+      "altLabels": [
+        "Disease_Or_Condition"
+      ],
+      "propertiesWithThisDomain": []
+    },
+    "TARA:3677977": {
+      "id": "TARA:3677977",
+      "kind": "class",
+      "label": "Research Study Publication",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_3677977",
+      "description": "An abstract ontology class representing any formal written, digital, or multimedia artifact that documents, describes, or reports on a research study. Unlike the active, physical execution of a research study represented by the 'Research Study' class, this class encompasses the static conceptual and intellectual outputs, such as journal articles, books, conference proceedings, or preprints, created to communicate methodologies, data, and conclusions to the scientific community.",
+      "parent": null,
+      "children": [
+        "TARA:8223728"
+      ],
+      "synonyms": [],
+      "altLabels": [],
+      "propertiesWithThisDomain": []
+    },
+    "TARA:6701896": {
+      "id": "TARA:6701896",
+      "kind": "class",
+      "label": "Acupuncture Research Study",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_6701896",
+      "description": "A specialized study process wherein the primary intervention under investigation involves acupuncture therapeutics, including needle insertion, point selection logic, needle manipulation methods, and stimulation protocols (manual, electrical, or thermal). It encompasses the physical trial execution from participant recruitment and baseline grouping through the active administration of real or sham acupuncture procedures up to final endpoint evaluation.",
+      "parent": "TARA:7008377",
+      "children": [],
+      "synonyms": [
+        "Acupuncture Study"
+      ],
+      "altLabels": [
+        "Acupuncture_Research_Study"
+      ],
+      "propertiesWithThisDomain": [
+        "tara-kb:hasAcupointGrouping",
+        "tara-kb:hasAcupointSelection",
+        "tara-kb:hasAcupointSelectionAndGrouping",
+        "tara-kb:hasAcupunctureProtocol",
+        "tara-kb:hasAcupunctureStudyMetadata",
+        "tara-kb:hasClinicalTrialType",
+        "tara-kb:hasComparativeFindings",
+        "tara-kb:hasControlGroupsDetails",
+        "tara-kb:hasCountryOfStudy",
+        "tara-kb:hasDatasetLink",
+        "tara-kb:hasListedAcupoints",
+        "tara-kb:hasListedAcupointsMapped",
+        "tara-kb:hasListedAcupointsMappedCurie",
+        "tara-kb:hasListedAcupointsUnmappable",
+        "tara-kb:hasMappedTCMCondition",
+        "tara-kb:hasMappedWesternCondition",
+        "tara-kb:hasNeedlingDetails",
+        "tara-kb:hasPrimaryOutcomeMeasure",
+        "tara-kb:hasProposedMechanism",
+        "tara-kb:hasSampleSizeDetails",
+        "tara-kb:hasSecondaryOutcomeMeasure",
+        "tara-kb:hasShamAcupunctureDetails",
+        "tara-kb:hasStimulationTypeDetails",
+        "tara-kb:hasStudiedCondition",
+        "tara-kb:hasStudiedTCMCondition",
+        "tara-kb:hasStudiedWesternCondition",
+        "tara-kb:hasStudyConclusions",
+        "tara-kb:hasStudyDesignMetadata",
+        "tara-kb:hasStudyEffectiveness",
+        "tara-kb:hasStudyFindings",
+        "tara-kb:hasStudyLocation",
+        "tara-kb:hasStudyOutcomesMeasure",
+        "tara-kb:hasStudyResults",
+        "tara-kb:hasStudyType",
+        "tara-kb:hasTreatmentDuration",
+        "tara-kb:hasTreatmentDurationAndFrequency",
+        "tara-kb:hasTreatmentFrequency"
+      ]
+    },
+    "TARA:6703917": {
+      "id": "TARA:6703917",
+      "kind": "class",
+      "label": "Disease or Condition (TCM)",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_6703917",
+      "description": "A specialized subclass of 'Disease or Condition' representing health impairments conceptualized, diagnosed, and classified according to the principles of Traditional Chinese Medicine. This class categorizes illnesses based on holistic disharmony, encompassing visceral organ patterns (Zang-Fu), channel theories, and pathogenic factors (e.g., Wind, Dampness), where the focus is on the body's overall functional pattern (Zheng) rather than isolated anatomical lesions.",
+      "parent": "TARA:3448356",
+      "children": [],
+      "synonyms": [],
+      "altLabels": [],
+      "propertiesWithThisDomain": []
+    },
+    "TARA:7008377": {
+      "id": "TARA:7008377",
+      "kind": "class",
+      "label": "Research Study",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_7008377",
+      "description": "A planned acupuncture research process consisting of a coordinated group of research activities, methodological designs, and data-gathering evaluations aimed at systematically investigating a scientific hypothesis or clinical question. Within TARA Ontology, it represents the operational and temporal execution of the research project itself in the physical world, functioning as a distinct entity from the written publication artifacts (represented by the 'Research Study Publication' class) that report on its findings.",
+      "parent": null,
+      "children": [
+        "TARA:6701896"
+      ],
+      "synonyms": [],
+      "altLabels": [],
+      "propertiesWithThisDomain": []
+    },
+    "TARA:7227329": {
+      "id": "TARA:7227329",
+      "kind": "class",
+      "label": "Study Quality Appraisal",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_7227329",
+      "description": "A data item consisting of a structured collection of metrics, scores, or evaluations generated during a systematic process to assess the methodological rigor, risk of bias, validity, or reporting completeness of a scientific study or clinical trial.",
+      "parent": null,
+      "children": [
+        "TARA:9542913"
+      ],
+      "synonyms": [],
+      "altLabels": [],
+      "propertiesWithThisDomain": [
+        "tara-kb:hasStudyQualityAppraisalMetadata"
+      ]
+    },
+    "TARA:8223728": {
+      "id": "TARA:8223728",
+      "kind": "class",
+      "label": "Acupuncture Study Publication",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_8223728",
+      "description": "A specialized subclass of 'Research Study Publication' representing any formal written, digital, or multimedia artifact that documents, describes, or reports on an acupuncture research study. Unlike the active, physical execution of an acupuncture research study represented by the 'Acupuncture Research Study' class, this class encompasses the static conceptual and intellectual outputs, such as journal articles, books, conference proceedings, or preprints, created to communicate methodologies, data, and conclusions to the scientific community.",
+      "parent": "TARA:3677977",
+      "children": [
+        "TARA:2894731"
+      ],
+      "synonyms": [],
+      "altLabels": [
+        "Acupuncture_Research_Study_Publication"
+      ],
+      "propertiesWithThisDomain": [
+        "tara-kb:hasArticleTitle",
+        "tara-kb:hasArticleType",
+        "tara-kb:hasBibliographicMetadata",
+        "tara-kb:hasDOILink",
+        "tara-kb:hasListedAuthors",
+        "tara-kb:hasOtherLink",
+        "tara-kb:hasPubMedLink",
+        "tara-kb:hasPublicationDate",
+        "tara-kb:hasPublicationLink",
+        "tara-kb:hasPublicationVenue",
+        "tara-kb:hasPublicationYear"
+      ]
+    },
+    "TARA:9542913": {
+      "id": "TARA:9542913",
+      "kind": "class",
+      "label": "Acupuncture Study Qualty Appraisal",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_9542913",
+      "description": "A study quality appraisal data item specifically designed or adapted to evaluate the methodological rigor and reporting completeness of clinical trials or systematic reviews evaluating acupuncture interventions, capturing specific operational variables unique to needle-based therapeutics.",
+      "parent": "TARA:7227329",
+      "children": [
+        "TARA:2825659"
+      ],
+      "synonyms": [],
+      "altLabels": [
+        "Acupuncture_Study_Qualty_Appraisal"
+      ],
+      "propertiesWithThisDomain": []
+    }
+  },
+  "properties": {
+    "tara-kb:hasTARAArticlesMetadata": {
+      "id": "tara-kb:hasTARAArticlesMetadata",
+      "kind": "property",
+      "label": "TARA-KB: Articles Metadata",
+      "altLabel": "TARA_KB_Articles_Metadata",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasTARAArticlesMetadata",
+      "description": "A grouping annotation property to organize all metadata annotation properties specific to TARA articles knowledgebase.",
+      "comment": null,
+      "examples": [],
+      "grouping": true,
+      "domain": null,
+      "domainLabel": null,
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": null,
+      "children": [
+        "tara-kb:hasExtractedArticleMetadata",
+        "tara-kb:hasLLMExtractionPrompt",
+        "tara-kb:hasStudyQualityAppraisalMetadata"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasExtractedArticleMetadata": {
+      "id": "tara-kb:hasExtractedArticleMetadata",
+      "kind": "property",
+      "label": "Extracted Article Metadata",
+      "altLabel": "Extracted_Article_Metadata",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasExtractedArticleMetadata",
+      "description": "A top-level grouping annotation property that organizes all metadata extracted from a trial study and its reporting publication into the bibliographic metadata and study metadata branches.",
+      "comment": null,
+      "examples": [],
+      "grouping": true,
+      "domain": null,
+      "domainLabel": null,
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasTARAArticlesMetadata",
+      "children": [
+        "tara-kb:hasAcupunctureStudyMetadata",
+        "tara-kb:hasBibliographicMetadata"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasAcupunctureStudyMetadata": {
+      "id": "tara-kb:hasAcupunctureStudyMetadata",
+      "kind": "property",
+      "label": "Acupuncture Study Metadata",
+      "altLabel": "Acupuncture_Study_Metadata",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupunctureStudyMetadata",
+      "description": "A grouping annotation property that organizes the operational, methodological, and outcome-related metadata describing the acupuncture research study itself (as opposed to its reporting publication).",
+      "comment": null,
+      "examples": [],
+      "grouping": true,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasExtractedArticleMetadata",
+      "children": [
+        "tara-kb:hasAcupunctureProtocol",
+        "tara-kb:hasDatasetLink",
+        "tara-kb:hasStudiedCondition",
+        "tara-kb:hasStudyDesignMetadata",
+        "tara-kb:hasStudyFindings",
+        "tara-kb:hasStudyLocation"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasAcupunctureProtocol": {
+      "id": "tara-kb:hasAcupunctureProtocol",
+      "kind": "property",
+      "label": "Acupuncture Protocol",
+      "altLabel": "Acupuncture_Protocol",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupunctureProtocol",
+      "description": "A dual-purpose annotation property that serves as a super-property grouping the granular acupuncture intervention sub-properties (method, needling, stimulation, sham, and acupoints), while simultaneously acting as a direct container for a single, structured free-text summary of the full acupuncture protocol.\n\nThis field should conatin a structured summary combining acupoint selection and grouping, needling details, stimulation details, and sham protocol details into one field (see the 'example of usage' for full worked examples).",
+      "comment": null,
+      "examples": [
+        "The value for this should be a structured information about the acupuncturue protocol used by the trial study. Here is an example structure:\n\nExample 1:\nAcupoints selection and grouping: Combination of scalp, body, and auricular acupuncture specific to the affected areas of the child and inclusive of both sides of the body.\n| Needling details: Not specified.\n| Stimulation details: Not specified.\n| Sham protocol details: No sham arm.\n\nExample 2:\nPoint selection and grouping: Trigger points in the gluteals isolated by palpation ensuring reproduction of symptoms, mostly in the region of the upper outer buttock quadrant, 3 to 5 points per subject.\n| Needling details: Sterile acupuncture needles (Seirin Corp, Shizuoka, Japan), 0.30 mm diameter, 25 mm long; pierced skin and advanced into trigger point until reproduction of pain or local twitch response; partially withdrawn and repeatedly advanced into muscle until pain resolved and no further twitches seen; retention time Not specified.\n| Stimulation details: Manual repeated advancement into the muscle; no electrical or thermal stimulation.\n| Sham protocol details: Non-penetrating modified acupuncture needle with sharp tip removed and glued back in sheath; tip applied to the skin over the trigger point with pressure for 10 or more seconds and moved slightly to simulate real needling, repeated at each point for up to one minute."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupunctureStudyMetadata",
+      "children": [
+        "tara-kb:hasListedAcupoints",
+        "tara-kb:hasNeedlingDetails",
+        "tara-kb:hasAcupointSelectionAndGrouping",
+        "tara-kb:hasShamAcupunctureDetails",
+        "tara-kb:hasStimulationTypeDetails"
+      ],
+      "synonyms": [
+        "hasAcupunctureIntervention"
+      ]
+    },
+    "tara-kb:hasAcupointSelectionAndGrouping": {
+      "id": "tara-kb:hasAcupointSelectionAndGrouping",
+      "kind": "property",
+      "label": "Point Selection and Grouping",
+      "altLabel": null,
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupointSelectionAndGrouping",
+      "description": "A dual-purpose annotation property that serves as a super-property grouping 'Acupoint Selection' and 'Acupoint Grouping', while simultaneously acting as a direct container for a combined free-text statement about Acupoints Seclection and Grouping.",
+      "comment": "In clinical trials evaluating acupuncture, acupoint selection is the specific choice of body sites (the points) where needles are inserted based on traditional theory or modern neuroscience. Acupoint grouping (or combination) refers to how these points are paired together in a treatment prescription to work synergistically for a medical condition.",
+      "examples": [
+        "\"Point selection and grouping: Verum points selected from a prescribed list (part standardisation) consisting of obligatory points and additional points individually chosen based on TCM diagnosis for syndromes, acupuncture channels related to the individual headache area, and Ah Shi points; needling was bilateral.\""
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupunctureProtocol",
+      "children": [
+        "tara-kb:hasAcupointGrouping",
+        "tara-kb:hasAcupointSelection"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasAcupointGrouping": {
+      "id": "tara-kb:hasAcupointGrouping",
+      "kind": "property",
+      "label": "Acupoint Grouping",
+      "altLabel": null,
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupointGrouping",
+      "description": "An annotation property to capture acupoint grouping information, the structural combination, pairing, or categorization of multiple selected acupuncture points, including primary and secondary points, designed to work synergistically within a clinical trial treatment prescription.",
+      "comment": "Acupoint grouping is about organizing multiple points into a single treatment protocol, often divided into primary (core) points for the main condition and secondary (adjuvant) points for specific symptoms.",
+      "examples": [
+        "\"Three pairs of acupuncture points on the right side: LI 4 and PC 6, ST 36 and SP 9, LR 3 and SP 6; PC 6 was located approximately 1 cm radial to the traditional point.\""
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupointSelectionAndGrouping",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasAcupointSelection": {
+      "id": "tara-kb:hasAcupointSelection",
+      "kind": "property",
+      "label": "Acupoint Selection",
+      "altLabel": null,
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupointSelection",
+      "description": "An annotation property to capture specific choice of body sites (anatomical locations) targeted for acupuncture needle insertion within a clinical trial protocol.",
+      "comment": "Acupoint selection is about deciding which exact body locations to target during an intervention, guided by traditional systems (like meridians and specific point attributes) or modern anatomical maps (like local trigger points or nerve distributions). Researchers standardize this to test if a specific set of points delivers reproducible health outcomes.",
+      "examples": [
+        "\"Combination of scalp, body, and auricular acupuncture specific to the affected areas of the child and inclusive of both sides of the body.\"",
+        "\"Trigger points in the gluteals isolated by palpation ensuring reproduction of symptoms, mostly in the region of the upper outer buttock quadrant, 3 to 5 points per subject.\""
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupointSelectionAndGrouping",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasListedAcupoints": {
+      "id": "tara-kb:hasListedAcupoints",
+      "kind": "property",
+      "label": "Listed Acupoint(s)",
+      "altLabel": "Listed_Acupoints",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasListedAcupoints",
+      "description": "A dual-purpose annotation property that serves as a super-property grouping the mapped and unmappable acupoint sub-properties, while simultaneously acting as a direct container for the comma-separated, normalized list of acupoints extracted from the article.",
+      "comment": "The list should exclude sham acupoints from this field. Instruct the LLM to normalize the extracted acupoints as comma-separated values; e.g., BL 1, BL 2, BL 3. Instruct to exclude the texts inside parentheses/brackets (typically synonyms) to normalize the extracted list.",
+      "examples": [
+        "E.g., \"BL 1, BL 2, BL 3\" (see rdfs:comment for normalization rules)."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupunctureProtocol",
+      "children": [
+        "tara-kb:hasListedAcupointsMapped",
+        "tara-kb:hasListedAcupointsMappedCurie",
+        "tara-kb:hasListedAcupointsUnmappable"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasListedAcupointsMapped": {
+      "id": "tara-kb:hasListedAcupointsMapped",
+      "kind": "property",
+      "label": "Listed Acupoint(s) Mapped",
+      "altLabel": "Listed_Acupoints_Mapped",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasListedAcupointsMapped",
+      "description": "A specialized mapping annotation property used to store an individual, authoritative controlled vocabulary IRI from the TARA ontology representing a specific anatomical acupuncture point successfully resolved from a publication's raw text list.",
+      "comment": "Links the mapped TARA IRIs of the listed acupoints used in a study. Each assertion represents a single, un-ordered annotation entry holding an acupoint's full TARA IRI.",
+      "examples": [
+        "E.g., \"TARA:5363236\" representing acupoint \"GB 8\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "class",
+        "id": "TARA:1132428",
+        "label": "Acupuncture Point"
+      },
+      "parent": "tara-kb:hasListedAcupoints",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasListedAcupointsMappedCurie": {
+      "id": "tara-kb:hasListedAcupointsMappedCurie",
+      "kind": "property",
+      "label": "Listed Acupoint(s) Mapped Curie",
+      "altLabel": "Listed_Acupoints_Mapped_Curie",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasListedAcupointsMappedCurie",
+      "description": "This property associates a flat dictionary lookup table of TARA standard CURIE mappings of listed acupoints used in a trial study. The internal payload is formatted as a JSON object string where keys are CURIE identifiers and values are rdfs:label of the points; e.g., {\"TARA:5363236\": \"GB 8\"}. It provides a flat lookup dictionary map for frontend UI execution.",
+      "comment": "Associates a JSON object serving as a key-value data map that associates an acupoint's CURIE (key) with its human-readable display label (value). Intended for direct downstream application consumption to optimize localized UI rendering without graph traversal overhead.",
+      "examples": [
+        "tara-kb:hasListedAcupointsMappedCurie '''{ \"TARA:5363236\": \"GB 8\",\n                                                                     \"TARA:9987270\": \"GB 14\",\n                                                                     \"TARA:2324295\": \"GB 20\",\n                                                                    }'''^^rdf:JSON ."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "rdf:JSON"
+      },
+      "parent": "tara-kb:hasListedAcupoints",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasListedAcupointsUnmappable": {
+      "id": "tara-kb:hasListedAcupointsUnmappable",
+      "kind": "property",
+      "label": "Listed Acupoint(s) Unmappable",
+      "altLabel": "Listed_Acupoints_Unmappable",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasListedAcupointsUnmappable",
+      "description": "A specialized tracking annotation property used to isolate and store individual literal text strings or non-standard acupoints extracted from a publication that could not be successfully resolved to a standard TARA ontology IRI.",
+      "comment": null,
+      "examples": [
+        "e.g., \"Ashi point\" or \"Motor point (non-standard)\" - extracted text with no corresponding TARA acupoint IRI."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasListedAcupoints",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasNeedlingDetails": {
+      "id": "tara-kb:hasNeedlingDetails",
+      "kind": "property",
+      "label": "Needling Details",
+      "altLabel": "Needling_Details",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasNeedlingDetails",
+      "description": "The specific needling technique details reported for the acupuncture intervention, such as needle type, gauge, insertion depth, retention time, and elicitation of de qi.",
+      "comment": null,
+      "examples": [
+        "\"0.30 mm diameter, 25 mm long stainless steel needles inserted to a depth of 15-20 mm and retained for 20 minutes.\"",
+        "\"Sterile, single-use coated acupuncture needles, 0.25-0.30 mm thick, 25-40 mm long; 10 to 25 needles per treatment; inserted 2-20 mm in depth; retained for 30 min.\""
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupunctureProtocol",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasShamAcupunctureDetails": {
+      "id": "tara-kb:hasShamAcupunctureDetails",
+      "kind": "property",
+      "label": "Sham Acupuncture Details",
+      "altLabel": "Sham_Acupuncture_Details",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasShamAcupunctureDetails",
+      "description": "The specific details reported for the sham or control acupuncture intervention used for comparison, describing the device and procedure used to simulate real needling.",
+      "comment": null,
+      "examples": [
+        "\"Non-penetrating Streitberger placebo needle applied at non-acupoint sites.\"",
+        "\"Sham protocol details: Superficial insertion (maximum 3 mm depth) of up to six needles on either side of the upper arm, both thighs, and below both scapulae at areas where no TCM acupuncture points are known; same number and type of needles used as verum; no manual stimulation.\""
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupunctureProtocol",
+      "children": [],
+      "synonyms": [
+        "Control Intervention Details"
+      ]
+    },
+    "tara-kb:hasStimulationTypeDetails": {
+      "id": "tara-kb:hasStimulationTypeDetails",
+      "kind": "property",
+      "label": "Stimulation Type Details",
+      "altLabel": "Stimulation_Type_Details",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStimulationTypeDetails",
+      "description": "The type and parameters of stimulation applied to the inserted needles, such as manual manipulation or electroacupuncture settings.",
+      "comment": null,
+      "examples": [
+        "\"Manual stimulation applied to achieve De Qi; no electrical stimulation or moxibustion.\"",
+        "e.g., \"Manual manipulation to elicit de qi\" or \"Electroacupuncture at 2/100 Hz, 1-3 mA for 20 minutes.\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupunctureProtocol",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasDatasetLink": {
+      "id": "tara-kb:hasDatasetLink",
+      "kind": "property",
+      "label": "Dataset Link",
+      "altLabel": "Dataset_Link",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasDatasetLink",
+      "description": "A resolvable URI pointing to a publicly available raw dataset, supplementary data, or trial registry entry associated with the study.",
+      "comment": null,
+      "examples": [
+        "e.g., \"https://clinicaltrials.gov/study/NCT01234567\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:anyURI"
+      },
+      "parent": "tara-kb:hasAcupunctureStudyMetadata",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudiedCondition": {
+      "id": "tara-kb:hasStudiedCondition",
+      "kind": "property",
+      "label": "Studied Condition",
+      "altLabel": "Studied_Condition",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudiedCondition",
+      "description": "A grouping annotation property that organizes the raw and mapped disease/condition sub-properties for both TCM and Western medicine perspectives on the condition studied by the trial.",
+      "comment": null,
+      "examples": [],
+      "grouping": true,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasAcupunctureStudyMetadata",
+      "children": [
+        "tara-kb:hasStudiedTCMCondition",
+        "tara-kb:hasStudiedWesternCondition"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasStudiedTCMCondition": {
+      "id": "tara-kb:hasStudiedTCMCondition",
+      "kind": "property",
+      "label": "Studied Condition (TCM)",
+      "altLabel": "Studied_TCM_Condition",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudiedTCMCondition",
+      "description": "A dual-purpose annotation property that captures the raw, as-reported Traditional Chinese Medicine (TCM) condition or pattern-differentiation label from the article, while also serving as a super-property for its mapped, standardized counterpart (hasMappedTCMCondition).",
+      "comment": null,
+      "examples": [
+        "e.g., \"Qi and Blood Stagnation\" or \"Kidney Yang Deficiency\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudiedCondition",
+      "children": [
+        "tara-kb:hasMappedTCMCondition"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasMappedTCMCondition": {
+      "id": "tara-kb:hasMappedTCMCondition",
+      "kind": "property",
+      "label": "Mapped Condition (TCM)",
+      "altLabel": "Mapped_TCM_Condition",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasMappedTCMCondition",
+      "description": "An individual, authoritative controlled vocabulary URI from an external biomedical ontology or standard vocabulary successfully resolved from a publication's raw TCM condition text.",
+      "comment": null,
+      "examples": [
+        "e.g., a URI from an external TCM pattern vocabulary corresponding to \"Qi and Blood Stagnation\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "class",
+        "id": "TARA:6703917",
+        "label": "Disease or Condition (TCM)"
+      },
+      "parent": "tara-kb:hasStudiedTCMCondition",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudiedWesternCondition": {
+      "id": "tara-kb:hasStudiedWesternCondition",
+      "kind": "property",
+      "label": "Studied Condition (Western)",
+      "altLabel": "Studied_Western_Condition",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudiedWesternCondition",
+      "description": "A dual-purpose annotation property that captures the raw, as-reported Western/biomedical condition label from the article, while also serving as a super-property for its mapped, standardized counterpart (hasMappedWesternCondition).",
+      "comment": null,
+      "examples": [
+        "e.g., \"Chronic Low Back Pain\" or \"Migraine without Aura\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudiedCondition",
+      "children": [
+        "tara-kb:hasMappedWesternCondition"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasMappedWesternCondition": {
+      "id": "tara-kb:hasMappedWesternCondition",
+      "kind": "property",
+      "label": "Mapped Condition (Western)",
+      "altLabel": "Mapped_Western_Condition",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasMappedWesternCondition",
+      "description": "An individual, authoritative controlled vocabulary URI from an external biomedical ontology (such as MONDO or HP) successfully resolved from a publication's raw Western condition text.",
+      "comment": null,
+      "examples": [
+        "e.g., a MONDO URI such as <http://purl.obolibrary.org/obo/MONDO_0005277> corresponding to \"migraine disorder\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "class",
+        "id": "TARA:1244992",
+        "label": "Disease or Condition (Western)"
+      },
+      "parent": "tara-kb:hasStudiedWesternCondition",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyDesignMetadata": {
+      "id": "tara-kb:hasStudyDesignMetadata",
+      "kind": "property",
+      "label": "Study Design Metadata",
+      "altLabel": "Study_Design_Metadata",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyDesignMetadata",
+      "description": "A grouping annotation property that organizes the sub-properties describing the study's design, comparator groups, sample retention, and treatment schedule.",
+      "comment": null,
+      "examples": [],
+      "grouping": true,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasAcupunctureStudyMetadata",
+      "children": [
+        "tara-kb:hasControlGroupsDetails",
+        "tara-kb:hasSampleSizeDetails",
+        "tara-kb:hasStudyOutcomesMeasure",
+        "tara-kb:hasStudyType",
+        "tara-kb:hasTreatmentDurationAndFrequency"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasControlGroupsDetails": {
+      "id": "tara-kb:hasControlGroupsDetails",
+      "kind": "property",
+      "label": "Control Groups Details",
+      "altLabel": "Control_Groups_Details",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasControlGroupsDetails",
+      "description": "An annotation property to capture structured details about the control group methodologies (control arms) deployed within a clinical trial study, as reported in a journal publication. It explicitly documents the specific type of control utilized, such as sham interventions, non-acupoint/minimal treatments, active controls, or waitlists, along with critical methodological protocols, including patient blinding mechanisms, the physiological nature of the control, and any deviations from standard or traditional practices meant to isolate specific therapeutic variables.",
+      "comment": "Acupuncture control groups are fundamentally classified into four main methodological paradigms:\n1) Sham Acupuncture: Placebo needling using non-penetrating retracting devices to isolate needling-specific effects;\n2) Real Acupuncture at Non-Acupoints: Minimal acupuncture using standard needles at non-meridian locations to isolate point-specificity;\n3) Active Control: Ttreatment-as-usual, standard care, or pharmacotherapy to test clinical superiority/equivalence; and\n4) Waitlist or No-Treatment Control: To measure natural disease progression. \n\nNote: Researchers must account for the 'physiological sham effect,' where even non-penetrating skin pressure or non-acupoint stimulation can trigger local neurological and circulatory responses, meaning these controls are rarely completely inert.",
+      "examples": [
+        "Control Arm 1 - Sham Acupuncture: Deployed Streitberger non-penetrating placebo needles at valid acupoints. Patients were successfully blinded to needle penetration, though mild skin pressure-induced neurological stimulation remains a potential confounding physiological sham effect.\n\nControl Arm 2 - Non-Acupoint Real Needling: Used identical standard 0.25mm stainless steel needles fully inserted to standard depths (15mm), but placed 2-3 cm away from traditional meridians in anatomically neutral zones to test point-specificity.\n\nControl Arm 3 - Active Control: Standard Care regimen consisting of prescribed physical therapy twice weekly and open-label Naproxen (500mg daily) to evaluate clinical superiority.",
+        "Sham acupuncture: Patients received sham acupuncture once a week for 6 weeks, using blunt-tipped needles that did not penetrate the skin, as a control group to compare with true acupuncture."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyDesignMetadata",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasSampleSizeDetails": {
+      "id": "tara-kb:hasSampleSizeDetails",
+      "kind": "property",
+      "label": "Sample Size Details",
+      "altLabel": "Sample_Size_Details",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasSampleSizeDetails",
+      "description": "For the final number of participants who completed the study and were analyzed.",
+      "comment": "For the final number of participants who completed the study and were analyzed (e.g., \"n=84 (42 in intervention, 42 in control)\").",
+      "examples": [
+        "e.g., \"n=84 (42 in intervention, 42 in control)\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyDesignMetadata",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyOutcomesMeasure": {
+      "id": "tara-kb:hasStudyOutcomesMeasure",
+      "kind": "property",
+      "label": "Study Outcomes Measure",
+      "altLabel": "Study_Outcomes_Measure",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyOutcomesMeasure",
+      "description": "A dual-purpose annotation property that serves as a super-property grouping the primary and secondary outcome measure sub-properties, while simultaneously acting as a direct container for structured oucome measures as \"Primary Outcome Measure\" and/or \"Secondary Outcome Measure\". \n\nThis property can also be used to capture the general outcome measure for the studies where primary/secondary distinction is not reported or not applicable.",
+      "comment": null,
+      "examples": [
+        "e.g., \"Primary outcome measure: Proportion of responders (defined as the proportion of patients with a reduction of migraine days by at least 50%).\n\nSecondary outcome measures: Number of migraine days, visual analogue scale (VAS) for pain, physical and mental component summary scores of the 36-item short-form health survey (SF-36), change in migraine days, number of patients with acute medication, adverse events (AE).\""
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyDesignMetadata",
+      "children": [
+        "tara-kb:hasPrimaryOutcomeMeasure",
+        "tara-kb:hasSecondaryOutcomeMeasure"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasPrimaryOutcomeMeasure": {
+      "id": "tara-kb:hasPrimaryOutcomeMeasure",
+      "kind": "property",
+      "label": "Primary Outcome Measure",
+      "altLabel": "Primary_Outcome_Measure",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasPrimaryOutcomeMeasure",
+      "description": "The main, pre-declared endpoint used to judge the success of the intervention, together with its measurement instrument or method.",
+      "comment": null,
+      "examples": [
+        "\"Proportion of responders (defined as the proportion of patients with a reduction of migraine days by at least 50%).\""
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyOutcomesMeasure",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasSecondaryOutcomeMeasure": {
+      "id": "tara-kb:hasSecondaryOutcomeMeasure",
+      "kind": "property",
+      "label": "Secondary Outcome Measure",
+      "altLabel": "Secondary_Outcome_Measure",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasSecondaryOutcomeMeasure",
+      "description": "Any additional, non-primary endpoint(s) measured to support or contextualize the primary outcome, together with its measurement instrument or method.",
+      "comment": null,
+      "examples": [
+        "\"Number of migraine days, visual analogue scale (VAS) for pain, physical and mental component summary scores of the 36-item short-form health survey (SF-36), change in migraine days, number of patients with acute medication, adverse events (AE)\""
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyOutcomesMeasure",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyType": {
+      "id": "tara-kb:hasStudyType",
+      "kind": "property",
+      "label": "Study Type",
+      "altLabel": "Study_Type",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyType",
+      "description": "A dual-purpose annotation property that serves as a super-property for the more granular hasClinicalTrialType, while simultaneously acting as a direct container for the high-level study type categorization.",
+      "comment": "For the high-level study type categorization (e.g., \"Randomized Controlled Trial\", \"Crossover Trial\", \"Meta analysis\", \"Systemetic Review\" ).",
+      "examples": [
+        "e.g., \"Randomized Controlled Trial\", \"Crossover Trial\", \"Meta analysis\", \"Systematic Review\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyDesignMetadata",
+      "children": [
+        "tara-kb:hasClinicalTrialType"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasClinicalTrialType": {
+      "id": "tara-kb:hasClinicalTrialType",
+      "kind": "property",
+      "label": "Clinical Trial Type",
+      "altLabel": "Clinical_Trial_Type",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasClinicalTrialType",
+      "description": "The specific clinical trial design classification, offering a more granular categorization than the general hasStudyType value.",
+      "comment": null,
+      "examples": [
+        "e.g., \"Review of Randomized Controlled Trial\", \"Randomized Controlled Trial\", \"Parallel-group Randomized Controlled Trial\" or \"Double-blind Placebo-controlled Crossover Trial\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyType",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasTreatmentDurationAndFrequency": {
+      "id": "tara-kb:hasTreatmentDurationAndFrequency",
+      "kind": "property",
+      "label": "Treatment Duration and Frequency",
+      "altLabel": "Treatment_Duration_And_Frequency",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasTreatmentDurationAndFrequency",
+      "description": "A dual-purpose annotation property that serves as a super-property grouping hasTreatmentDuration and hasTreatmentFrequency, while simultaneously acting as a direct container for a combined free-text statement of the treatment's duration and frequency.",
+      "comment": null,
+      "examples": [
+        "e.g., \"12 sessions over 6 weeks, administered 2 times per week.\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyDesignMetadata",
+      "children": [
+        "tara-kb:hasTreatmentDuration",
+        "tara-kb:hasTreatmentFrequency"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasTreatmentDuration": {
+      "id": "tara-kb:hasTreatmentDuration",
+      "kind": "property",
+      "label": "Treatment Duration",
+      "altLabel": "Treatment_Duration",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasTreatmentDuration",
+      "description": "Captures the information about the total length of the therapy course.",
+      "comment": "For the total length of the therapy course (e.g., \"6 weeks\", \"12 sessions over 1 month\").",
+      "examples": [
+        "e.g., \"6 weeks\", \"12 sessions over 1 month\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasTreatmentDurationAndFrequency",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasTreatmentFrequency": {
+      "id": "tara-kb:hasTreatmentFrequency",
+      "kind": "property",
+      "label": "Treatment Frequency",
+      "altLabel": "Treatment_Frequency",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasTreatmentFrequency",
+      "description": "Captures the information about how often the intervention was administered.",
+      "comment": "For how often the intervention was administered (e.g., \"3 times per week\", \"Every other day\").",
+      "examples": [
+        "e.g., \"3 times per week\", \"Every other day\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasTreatmentDurationAndFrequency",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyFindings": {
+      "id": "tara-kb:hasStudyFindings",
+      "kind": "property",
+      "label": "Study Findings",
+      "altLabel": "Study_Findings",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyFindings",
+      "description": "A dual-purpose annotation property that serves as a super-property grouping the interpreted findings sub-properties (clinical conclusions, comparative findings, effectiveness, main results, and proposed mechanism), while simultaneously acting as a direct container for a general free-text stuctured summary of the study's findings when a more specific sub-property does not apply.\n\nThis field should faithfully summarize what the paper reports as main results (the core numeric and statistical information of the primary and secondary endpoints) and clinical conclusions in a structured way, potentially including short direct quotations where appropriate.",
+      "comment": "In systematic reviews and clinical trial metadata, \"Findings\" or \"Conclusions\" are explicitly separated from raw outcome measures because they capture the interpreted results, statistical significance, and final takeaways of the research.",
+      "examples": [
+        "\"Main Results: The primary outcome showed a mean reduction of 2·3 days (95% CI 1·9–2·7) in the verum acupuncture group, 1·5 days (1·1–2·0) in the sham acupuncture group, and 2·1 days (1·5–2·7) in the standard therapy group. These differences were statistically significant compared with baseline (p<0·0001), but not across the treatment groups (p=0·09).\n\nClinical Conclusions: Treatment outcomes for migraine do not differ between patients treated with sham acupuncture, verum acupuncture, or standard therapy.\"\n\nThe example above captures the study findings based on the results and conclusions from the study 'Efficacy of acupuncture for the prophylaxis of migraine: a multicentre randomised controlled clinical trial'; PubMed link: https://pubmed.ncbi.nlm.nih.gov/16545747"
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupunctureStudyMetadata",
+      "children": [
+        "tara-kb:hasComparativeFindings",
+        "tara-kb:hasProposedMechanism",
+        "tara-kb:hasStudyConclusions",
+        "tara-kb:hasStudyEffectiveness",
+        "tara-kb:hasStudyResults"
+      ],
+      "synonyms": [
+        "Study Outcomes"
+      ]
+    },
+    "tara-kb:hasComparativeFindings": {
+      "id": "tara-kb:hasComparativeFindings",
+      "kind": "property",
+      "label": "Comparative Findings",
+      "altLabel": "Comparative_Findings",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasComparativeFindings",
+      "description": "Captures how different active treatment arms performed relative to each other across different parameters.",
+      "comment": "Captures how different active treatment arms performed relative to each other across different parameters. Example: \"EA therapy showed functional improvement in the lumbar spine, but the improvement in motion recovery was not significantly different from PRF.\"",
+      "examples": [
+        "e.g., \"EA therapy showed functional improvement in the lumbar spine, but the improvement in motion recovery was not significantly different from PRF.\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyFindings",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasProposedMechanism": {
+      "id": "tara-kb:hasProposedMechanism",
+      "kind": "property",
+      "label": "Proposed Mechanism",
+      "altLabel": "Proposed_Mechanism",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasProposedMechanism",
+      "description": "Captures the authors' theoretical or physiological explanations for why the treatments worked or differed.",
+      "comment": "Captures the authors' theoretical or physiological explanations for why the treatments worked or differed. Example: \"Both PRF and EA therapies are related to electricity effects, but PRF has better electrical penetration due to its higher frequency pulse.\"",
+      "examples": [
+        "e.g., \"Both PRF and EA therapies are related to electricity effects, but PRF has better electrical penetration due to its higher frequency pulse.\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyFindings",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyConclusions": {
+      "id": "tara-kb:hasStudyConclusions",
+      "kind": "property",
+      "label": "Study Conclusions",
+      "altLabel": "Study_Conclusions",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyConclusions",
+      "description": "Captures a faithful summary of what the article reports as clinical conclusions, potentially including short direct quotations where appropriate.",
+      "comment": "This field must not augment inferred \"Yes/No\" effectiveness statements.\nInstead, the field should faithfully summarize what the paper reports as a clinical conclusion, potentially including short direct quotations where appropriate.",
+      "examples": [
+        "e.g., \"Weak evidence was found of an effect of acupuncture on persistent non-specific low back pain at 12 months, but stronger evidence of a small benefit at 24 months. Referral to a qualified traditional acupuncturist for a short course of treatment seems safe and acceptable to patients with low back pain.\" \n\nThe example above captures the \"Clinical Conclusions\" for the study 'Randomised controlled trial of a short course of traditional acupuncture compared with usual care for persistent non-specific low back pain'; Article DOI:https://doi.org/10.1136/bmj.38878.907361.7C"
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyFindings",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyEffectiveness": {
+      "id": "tara-kb:hasStudyEffectiveness",
+      "kind": "property",
+      "label": "Study Effectiveness",
+      "altLabel": "Study_Effectiveness",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyEffectiveness",
+      "description": "Captures the final overall takeaway regarding the effectiveness of the treatment compared to the control group. It should be a focused statement on whether and how effective the studied intervention was, with clearly defined inference based solely on the information already extracted as Study Findings including Main Results and Clinical Conclusions or Comparative narrative. For example:\n* Yes - A concise explanation of why the intervention was considered effective.\n* No – A concise explanation of why the intervention was not considered effective.\n* Inconclusive – A concise explanation of why the evidence is insufficient, mixed, or does not support a definitive conclusion.",
+      "comment": null,
+      "examples": [
+        "Example 1: \"Yes - acupuncture significantly reduced the duration of the active phase of labor and the need for oxytocin infusion compared to the control group.\"\n\nExample 2: \"No - the primary outcome of reduction in migraine days did not differ significantly across the verum acupuncture, sham acupuncture, and standard therapy groups.\"\n\nExample 2 above captures the inferred effectiveness detail based on the results and conclusions of the study 'Efficacy of acupuncture for the prophylaxis of migraine: a multicentre randomised controlled clinical trial'; PubMed link: https://pubmed.ncbi.nlm.nih.gov/16545747"
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyFindings",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyResults": {
+      "id": "tara-kb:hasStudyResults",
+      "kind": "property",
+      "label": "Study Results",
+      "altLabel": "Study_Results",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyResults",
+      "description": "Captures the main results of the clinical trial containing numeric and statistical information of the primary and secondary endpoints.",
+      "comment": null,
+      "examples": [
+        "e.g., \"At 12 months average SF-36 pain scores increased by 33.2 to 64.0 in the acupuncture group and by 27.9 to 58.3 in the control group. Adjusting for baseline score and for any clustering by acupuncturist, the estimated intervention effect was 5.6 points (95% confidence interval − 0.2 to 11.4) at 12 months (n = 213) and 8.0 points (2.8 to 13.2) at 24 months (n = 182).\"\n\nThe example above captures the \"Main Results\" from the study 'Randomised controlled trial of a short course of traditional acupuncture compared with usual care for persistent non-specific low back pain'. Article DOI:https://doi.org/10.1136/bmj.38878.907361.7C"
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyFindings",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyLocation": {
+      "id": "tara-kb:hasStudyLocation",
+      "kind": "property",
+      "label": "Study Location",
+      "altLabel": "Study_Location",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyLocation",
+      "description": "A dual-purpose annotation property that captures the general, as-reported location or site(s) where the trial was conducted, while also serving as a super-property for the normalized hasCountryOfStudy.",
+      "comment": null,
+      "examples": [
+        "e.g., \"Seoul National University Hospital, Seoul, South Korea\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasAcupunctureStudyMetadata",
+      "children": [
+        "tara-kb:hasCountryOfStudy"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasCountryOfStudy": {
+      "id": "tara-kb:hasCountryOfStudy",
+      "kind": "property",
+      "label": "Country of Study",
+      "altLabel": "Country_Of_Study",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasCountryOfStudy",
+      "description": "The country (or countries, for multi-site trials) in which the study was conducted, normalized to a standard country name.",
+      "comment": null,
+      "examples": [
+        "e.g., \"South Korea\" or \"United States\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:6701896",
+      "domainLabel": "Acupuncture Research Study",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasStudyLocation",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasBibliographicMetadata": {
+      "id": "tara-kb:hasBibliographicMetadata",
+      "kind": "property",
+      "label": "Bibliographic Metadata",
+      "altLabel": "Bibliographic_Metadata",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasBibliographicMetadata",
+      "description": "A dual-purpose annotation property that serves as a super-property to logically group granular bibliographic sub-properties (e.g., titles, identifiers, and venues), while simultaneously acting as a direct container for a complete, pre-formatted human-readable citation string (such as APA, MLA, or Chicago styles).",
+      "comment": null,
+      "examples": [
+        "E.g., \"Smith J, et al. (2021). Acupuncture for chronic low back pain. J Altern Complement Med. 27(4):301-310.\" while also grouping hasArticleTitle, hasListedAuthors, hasPublicationDate, hasPublicationVenue, and hasPublicationLink."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasExtractedArticleMetadata",
+      "children": [
+        "tara-kb:hasArticleTitle",
+        "tara-kb:hasArticleType",
+        "tara-kb:hasListedAuthors",
+        "tara-kb:hasPublicationDate",
+        "tara-kb:hasPublicationLink",
+        "tara-kb:hasPublicationVenue"
+      ],
+      "synonyms": [
+        "Publication Metadata"
+      ]
+    },
+    "tara-kb:hasArticleTitle": {
+      "id": "tara-kb:hasArticleTitle",
+      "kind": "property",
+      "label": "Article Title",
+      "altLabel": "Article_Title",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasArticleTitle",
+      "description": "The full, verbatim title of the journal article as published.",
+      "comment": null,
+      "examples": [
+        "e.g., \"Acupuncture for Chronic Low Back Pain: A Randomized Controlled Trial\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasBibliographicMetadata",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasArticleType": {
+      "id": "tara-kb:hasArticleType",
+      "kind": "property",
+      "label": "Article Type",
+      "altLabel": "Article_Type",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasArticleType",
+      "description": "The specific classification of the publication based on its methodology, structure, and evidentiary value (e.g., Primary Article, Review Article, Systematic Review Article, Meta-analysis Article).",
+      "comment": null,
+      "examples": [
+        "e.g., \"Primary Article\", \"Review Article\", \"Systematic Review Article\", or \"Meta-analysis Article\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasBibliographicMetadata",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasListedAuthors": {
+      "id": "tara-kb:hasListedAuthors",
+      "kind": "property",
+      "label": "Listed Author(s)",
+      "altLabel": "Listed_Authors",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasListedAuthors",
+      "description": "The full list of authors credited on the publication, typically recorded as a single delimited string in the order they appear on the article.",
+      "comment": null,
+      "examples": [
+        "e.g., \"Smith J, Lee K, Chen H\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasBibliographicMetadata",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasPublicationDate": {
+      "id": "tara-kb:hasPublicationDate",
+      "kind": "property",
+      "label": "Publication Date",
+      "altLabel": "Publication_Date",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasPublicationDate",
+      "description": "The publication date of the article as reported by the journal, recorded in its original granularity (which may be a full date, a month and year, or a year alone).",
+      "comment": null,
+      "examples": [
+        "e.g., \"2021-08-15\" or \"August 2021\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasBibliographicMetadata",
+      "children": [
+        "tara-kb:hasPublicationYear"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasPublicationYear": {
+      "id": "tara-kb:hasPublicationYear",
+      "kind": "property",
+      "label": "Publication Year",
+      "altLabel": "Publication_Year",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasPublicationYear",
+      "description": "The four-digit calendar year in which the article was published, normalized from hasPublicationDate for consistent chronological filtering and sorting.",
+      "comment": null,
+      "examples": [
+        "e.g., \"2021\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:gYear"
+      },
+      "parent": "tara-kb:hasPublicationDate",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasPublicationLink": {
+      "id": "tara-kb:hasPublicationLink",
+      "kind": "property",
+      "label": "Publication Link",
+      "altLabel": "Publication_Link",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasPublicationLink",
+      "description": "A dual-purpose annotation property that both groups the specific typed publication link sub-properties (DOI, PubMed, and other links) and can directly hold a resolvable URI to the publication when no more specific link type applies.",
+      "comment": null,
+      "examples": [
+        "e.g., \"https://doi.org/10.1089/acm.2021.0142\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:anyURI"
+      },
+      "parent": "tara-kb:hasBibliographicMetadata",
+      "children": [
+        "tara-kb:hasDOILink",
+        "tara-kb:hasOtherLink",
+        "tara-kb:hasPubMedLink"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasDOILink": {
+      "id": "tara-kb:hasDOILink",
+      "kind": "property",
+      "label": "DOI Link",
+      "altLabel": "DOI_Link",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasDOILink",
+      "description": "The resolvable URI (typically expressed as a DOI-based URL) that uniquely and persistently identifies the publication.",
+      "comment": null,
+      "examples": [
+        "e.g., \"https://doi.org/10.1089/acm.2021.0142\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:anyURI"
+      },
+      "parent": "tara-kb:hasPublicationLink",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasOtherLink": {
+      "id": "tara-kb:hasOtherLink",
+      "kind": "property",
+      "label": "Other Link",
+      "altLabel": "Other_Link",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOtherLink",
+      "description": "A resolvable URI to any other authoritative online source for the article that is not captured by hasDOILink or hasPubMedLink.",
+      "comment": null,
+      "examples": [
+        "A publisher landing page link or preprint repository link",
+        "E.g., https://app.southbaylo.net/c1/library/uploads/daom/DAOM%20John%20Fang.pdf"
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:anyURI"
+      },
+      "parent": "tara-kb:hasPublicationLink",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasPubMedLink": {
+      "id": "tara-kb:hasPubMedLink",
+      "kind": "property",
+      "label": "PubMed Link",
+      "altLabel": "Pub_Med_Link",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasPubMedLink",
+      "description": "The resolvable URI to the article's PubMed or PubMed Central record.",
+      "comment": null,
+      "examples": [
+        "e.g., \"https://pubmed.ncbi.nlm.nih.gov/34567890/\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:anyURI"
+      },
+      "parent": "tara-kb:hasPublicationLink",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasPublicationVenue": {
+      "id": "tara-kb:hasPublicationVenue",
+      "kind": "property",
+      "label": "Publication Venue",
+      "altLabel": "Publication_Venue",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasPublicationVenue",
+      "description": "The name of the journal, conference proceedings, or other outlet in which the article was published.",
+      "comment": null,
+      "examples": [
+        "e.g., \"Journal of Alternative and Complementary Medicine\"."
+      ],
+      "grouping": false,
+      "domain": "TARA:8223728",
+      "domainLabel": "Acupuncture Study Publication",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:string"
+      },
+      "parent": "tara-kb:hasBibliographicMetadata",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasLLMExtractionPrompt": {
+      "id": "tara-kb:hasLLMExtractionPrompt",
+      "kind": "property",
+      "label": "LLM Extraction Prompt",
+      "altLabel": "LLM_Extraction_Prompt",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasLLMExtractionPrompt",
+      "description": "A dual-purpose annotation property that serves as both a unified container for serialized JSON prompt strings and an organizational grouping property for granular sub-directives.",
+      "comment": "Dual-use design:\n1) Direct use: Can hold a single stringified JSON object containing both 'system' and 'user' keys for fast pipeline execution.\n2) Taxonomic use: Acts as a structural parent grouping specialized sub-properties. / This is an abstract parent property designed to organize specific prompting layers. In runtime execution environments, pipelines should query the specialized sub-properties rather than this root property to ensure structural separation between runtime environment configurations and target data tasks. / This property can be used as a contaier for structured payload specifying both system-level behavior and user-level extraction queries.",
+      "examples": [
+        "Paradigm A: Using it directly as a Unified JSON Container\n:hasOutcomesMeasureX2Score rdf:type owl:AnnotationProperty ;\n    :hasLLMExtractionPrompt \"\"\"{\n        \"system\": \"You are an Acupucture clinical trial methodology appraiser. Output raw JSON\",\n        \"user\": \"Check if primary outcomes are explicitly matched by statistical tests in text: {{ARTICLE_TEXT}}\"\n    }\"\"\"^^xsd:string .\n\nParadigm B: Using it purely as a Parent/Grouping Property \n:hasResultsOutcomesScore rdf:type owl:DatatypeProperty ;\n    rdfs:label \"Results Outcomes OCSI Score\" ;\n    :hasLLMSystemPrompt \"You are an expert data transparency evaluator. Output raw JSON\" ;\n    :hasLLMUserPrompt \"Evaluate if exact numeric p-values and CIs are provided in text: {{ARTICLE_TEXT}}\" ."
+      ],
+      "grouping": false,
+      "domain": null,
+      "domainLabel": null,
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "rdf:JSON"
+      },
+      "parent": "tara-kb:hasTARAArticlesMetadata",
+      "children": [
+        "tara-kb:hasLLMSystemPrompt",
+        "tara-kb:hasLLMUserPrompt"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasLLMSystemPrompt": {
+      "id": "tara-kb:hasLLMSystemPrompt",
+      "kind": "property",
+      "label": "LLM System Prompt",
+      "altLabel": "LLM_System_Prompt",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasLLMSystemPrompt",
+      "description": "A specialized annotation property that stores the system-level directives, including agent persona, cognitive constraints, guardrails, formatting parameters (e.g., rigid JSON schemas), and handling instructions for missing data or edge cases.",
+      "comment": "Content stored under this property must be injected into the system role array of the LLM chat completion API payload. It controls how the model operates globally across all evaluations, enforcing objectivity and preventing hallucination.",
+      "examples": [
+        "tara-kb:hasResultsOutcomesScore rdf:type owl:DatatypeProperty ;\n    tara-kb:hasLLMSystemPrompt \"\"\"\n    You are an expert clinical trial methodology annotator. \n    Your task is to analyze scientific text objectively. \n    Strict constraints: \n    1. Base your evaluation solely on explicit statements in the text. \n    2. Do not infer, extrapolate, or assume context.\n    3. Output your final response strictly as a serialized JSON object matching this schema: \n       {\"score\": integer, \"confidence_interval_found\": boolean, \"rationale\": \"string\"}\n    \"\"\" ."
+      ],
+      "grouping": false,
+      "domain": null,
+      "domainLabel": null,
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasLLMExtractionPrompt",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasLLMUserPrompt": {
+      "id": "tara-kb:hasLLMUserPrompt",
+      "kind": "property",
+      "label": "LLM User Prompt",
+      "altLabel": "LLM_User_Prompt",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasLLMUserPrompt",
+      "description": "A specialized annotation property that holds the element-specific extraction task, definitions, and grading criteria used to guide the LLM model's focus to a target variable or metric within the full-text article.",
+      "comment": "Content stored under this property must be injected into the 'user' role array of the LLM chat completion API payload alongside the target article text. It acts as the direct query or instruction set for evaluating the schema field.",
+      "examples": [
+        "tara-kb:hasResultsOutcomesScore rdf:type owl:AnnotationProperty ;\n    tara-kb:hasLLMUserPrompt \"\"\"\n    Review the 'Results' section of the attached full-text article.\n    Locate all reported endpoints associated with the primary and secondary outcomes.\n    Evaluate the completeness of reporting based on these strict rubric parameters:\n    - Score 3: Exact numeric data, effect sizes, 95% Confidence Intervals (CIs), and precise p-values are clearly provided for all outcomes.\n    - Score 2: Main findings are provided, but exact statistical precision reporting is slightly flawed or lacks CIs for minor endpoints.\n    - Score 1: Vague reporting or text-only declarations (e.g., 'differences were non-significant') without underlying data tables or exact values.\n    - Score 0: No empirical data or results are presented for the stated outcomes.\n    \n    Target Text to Evaluate: {{ARTICLE_TEXT}}\n    \"\"\" ."
+      ],
+      "grouping": false,
+      "domain": null,
+      "domainLabel": null,
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasLLMExtractionPrompt",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyQualityAppraisalMetadata": {
+      "id": "tara-kb:hasStudyQualityAppraisalMetadata",
+      "kind": "property",
+      "label": "Study Appraisal Metadata",
+      "altLabel": "Study_Appraisal_Metadata",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyQualityAppraisalMetadata",
+      "description": "An annotation property that serves as a high-level grouping property under which specific quality appraisal properties are defined to record evaluative quality data, risk-of-bias scores, and methodological rigor metrics calculated for a clinical trial study.",
+      "comment": "Crucially, the values asserted by the sub-properties under this property are not raw data elements directly extracted or verbatim copied from the published journal article. Instead, they represent secondary, derived appraisals generated, either algorithmically by automated computational models or manually by human domain experts, by evaluating an extracted set of primary metadata against standardized scoring frameworks and quality assessment criteria (such as OCSI).",
+      "examples": [],
+      "grouping": true,
+      "domain": "TARA:7227329",
+      "domainLabel": "Study Quality Appraisal",
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasTARAArticlesMetadata",
+      "children": [
+        "tara-kb:hasOCSIScoreMetadata"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasOCSIScoreMetadata": {
+      "id": "tara-kb:hasOCSIScoreMetadata",
+      "kind": "property",
+      "label": "OCSI Score Metadata",
+      "altLabel": "OCSI_Score_Metadata",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSIScoreMetadata",
+      "description": "An annotation property that serves as a master grouping property for capturing quality appraisal metrics mapped to individual reporting items within the Oregon CONSORT STRICTA Instrument (OCSI) for acupuncture trials. \n\nCrucially, the scores and details grouped under this property are not native metrics extracted directly or verbatim from the published articles. Instead, they represent secondary, derived appraisals generated, either algorithmically by automated computational models or manually judged by human domain experts by analyzing the extracted textual metadata of the trial against the specific compliance benchmarks defined by the OCSI framework.",
+      "comment": "This sub-grouping property aggregates derived compliance values specifically tied to the combined CONSORT (Consolidated Standards of Reporting Trials) and STRICTA (Standards for Reporting Interventions in Clinical Trials of Acupuncture) guidelines. It organizes granular sub-properties tracking item-by-item compliance scores (e.g., needle stimulation details, control group rationale), separating the calculated evaluation of reporting quality from the raw extracted study parameters.",
+      "examples": [],
+      "grouping": true,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasStudyQualityAppraisalMetadata",
+      "children": [
+        "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
+        "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+        "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+        "tara-kb:hasTechnicalInterventionQualityMetrics"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasEvaluativeResultsAndGlobalMetrics": {
+      "id": "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
+      "kind": "property",
+      "label": "Evaluative Results and Global Metrics",
+      "altLabel": "Evaluative_Results_And_Global_Metrics",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasEvaluativeResultsAndGlobalMetrics",
+      "description": "Category D: Evaluative Results & Global Metrics. Grouping property for mathematical evaluations, dataset scoring, and final percentage parameters.",
+      "comment": null,
+      "examples": [],
+      "grouping": true,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasOCSIScoreMetadata",
+      "children": [
+        "tara-kb:hasOCSITotalPercentage",
+        "tara-kb:hasOutcomesMeasureX2Score",
+        "tara-kb:hasResultsOutcomesScore"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasOCSITotalPercentage": {
+      "id": "tara-kb:hasOCSITotalPercentage",
+      "kind": "property",
+      "label": "OCSI Total Percentage",
+      "altLabel": "OCSI_Total_Percentage",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSITotalPercentage",
+      "description": "A quality metric within Category D: Evaluative Results & Global Metrics that assigns the global mathematical reporting accuracy value calculated as a raw percentage summarizing compliance across all combined item criteria.",
+      "comment": null,
+      "examples": [
+        "e.g., 82.5 (representing 82.5% overall compliance across all OCSI-scored items)."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "xsd:float"
+      },
+      "parent": "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasOutcomesMeasureX2Score": {
+      "id": "tara-kb:hasOutcomesMeasureX2Score",
+      "kind": "property",
+      "label": "Outcomes Measure X2 Score",
+      "altLabel": "Outcomes_Measure_X2_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOutcomesMeasureX2Score",
+      "description": "A quality metric within Category D: Evaluative Results & Global Metrics that assesses whether a study's primary (and, if applicable, secondary) outcome measures are explicitly defined and directly paired with appropriate, transparent statistical testing methods.",
+      "comment": null,
+      "examples": [
+        "Standardized Scoring Rubric (0–3 Scale):\n- 3 (Excellent): All stated outcome measures (Primary only, OR Primary + Secondary) are clearly defined and explicitly paired with a valid statistical test.\n- 2 (Good): Primary outcome measure is clear and mapped, but secondary outcome measures (if present) have ambiguous statistical mapping.\n- 1 (Poor): Outcome measures are vague, or statistical methods are listed generally without showing which test applies to which outcome.\n- 0 (Non-compliant): Primary outcome measures are not defined, or no statistical testing methods are provided.",
+        "e.g., a score of 2 when every declared primary outcome is accompanied by a corresponding statistical test, or 0 when outcomes and statistical tests do not align."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasResultsOutcomesScore": {
+      "id": "tara-kb:hasResultsOutcomesScore",
+      "kind": "property",
+      "label": "Results Outcomes Score",
+      "altLabel": "Results_Outcomes_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasResultsOutcomesScore",
+      "description": "A quality metric within Category D: Evaluative Results & Global Metrics that assesses the completeness, transparency, and accuracy of the reported results for each predefined primary and secondary outcome measure, evaluating whether the text explicitly provides estimated effect sizes, confidence intervals, and precise statistical significance values (e.g., p-values) for each endpoint.",
+      "comment": "To maintain data integrity and prevent construct contamination within the metadata schema, ensure that the data extraction models treat the following two properties separately:\n1. hasOutcomesMeasureX2Score (Methodology/Design Check): Focuses on the definition and planned pairing of tests. (e.g., Did they tell us in the Methods section how they planned to calculate the math?)\n2. hasResultsOutcomesScore (Reporting/Transparency Check): Focuses on the execution and transparency of the actual data. (e.g., Did they actually show us the exact numbers, tables, effect sizes, and p-values in the Results section?)",
+      "examples": [
+        "Standardized Scoring Rubric (0–3 Scale) \nFollowing the standardized OCSI Likert-like scoring structure, the reporting of results should be scored based on the level of statistical disclosure and data transparency:\n- 3 (Full Compliance): The study provides exact data for all predefined outcomes (whether evaluating a single primary outcome or primary + secondary outcomes). This includes specific numbers/estimates, precision metrics (e.g., 95% Confidence Intervals), and exact p-values for each finding.\n- 2 (Substantial Compliance): Results are provided for all main outcomes, but exact statistical precision reporting is slightly flawed (e.g., reporting a generic \"p < 0.05\" or omitting confidence intervals for a minor secondary outcome).\n- 1 (Partial Compliance): The study omits data for a major outcome, or results are reported selectively/vaguely (e.g., stating in text that \"group differences were not significant\" without actually providing the underlying data table or values).\n- 0 (Non-compliance): No empirical results or raw data are presented for the stated primary outcomes, or data reporting is missing entirely.",
+        "e.g., a score of 2 when reported results directly correspond to the pre-registered outcome measures, or 0 when a mismatch or omission exists."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics": {
+      "id": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+      "kind": "property",
+      "label": "Methodological and Statistical Allocation Metrics",
+      "altLabel": "Methodological_And_Statistical_Allocation_Metrics",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasMethodologicalAndStatisticalAllocationMetrics",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). Grouping property for trial management and statistical parameters.",
+      "comment": null,
+      "examples": [],
+      "grouping": true,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasOCSIScoreMetadata",
+      "children": [
+        "tara-kb:hasAdverseEffectsScore",
+        "tara-kb:hasBlindingQualityScore",
+        "tara-kb:hasRandomAllocationScore",
+        "tara-kb:hasSubgroupScore"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasAdverseEffectsScore": {
+      "id": "tara-kb:hasAdverseEffectsScore",
+      "kind": "property",
+      "label": "Adverse Effects Score",
+      "altLabel": "Adverse_Effects_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAdverseEffectsScore",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The quality metric assessing the safety transparency and recording protocols for harmful events or patient side effects.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when adverse events and their monitoring are explicitly reported, or 0 when adverse events are not mentioned."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasBlindingQualityScore": {
+      "id": "tara-kb:hasBlindingQualityScore",
+      "kind": "property",
+      "label": "Blinding Quality Score",
+      "altLabel": "Blinding_Quality_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasBlindingQualityScore",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The quality check score auditing whether the trial describes who was masked to assignments (e.g., patients, operators, assessors).",
+      "comment": null,
+      "examples": [
+        "Standardized Scoring Rubric (0–3 Scale)\n- 3 (Excellent): The study explicitly details active methods used to enhance measurement quality and prevent bias (e.g., using a strictly blinded independent observer).\n- 2 (Good): The study mentions that observers or assessors were \"blinded,\" but lacks hyper-specific details on the logistical execution (e.g., fails to mention when they entered the room).\n- 1 (Poor): The study hints at attempts to keep measurements objective, but blinding is incomplete, or the design makes blinding highly vulnerable to unblinding.\n- 0 (Non-compliant): No measures were taken to enhance measurement quality, or the outcomes were assessed openly by the same individuals who performed the intervention (high risk of bias).",
+        "e.g., a score of 2 when blinding status is stated for participants, practitioners, and outcome assessors, or 0 when blinding is not addressed."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+      "children": [],
+      "synonyms": [
+        "hasDetectionBiasMitigationScore"
+      ]
+    },
+    "tara-kb:hasRandomAllocationScore": {
+      "id": "tara-kb:hasRandomAllocationScore",
+      "kind": "property",
+      "label": "Random Allocation Score",
+      "altLabel": "Random_Allocation_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasRandomAllocationScore",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The core CONSORT-aligned quality score checking whether the sequence generation and allocation concealment methods are valid.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when both the randomization method and allocation concealment procedure are described, or 0 when neither is reported."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasSubgroupScore": {
+      "id": "tara-kb:hasSubgroupScore",
+      "kind": "property",
+      "label": "Subgroup Score",
+      "altLabel": "Subgroup_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasSubgroupScore",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The structural score grading the transparency and tracking of post-hoc stratifications or secondary data analyses.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when pre-specified or post-hoc subgroup analyses are clearly reported, or 0 when no subgroup analysis is mentioned."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStudyFoundationAndBackgroundMetrics": {
+      "id": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+      "kind": "property",
+      "label": "Study Foundation and Background Metrics",
+      "altLabel": "Study_Foundation_And_Background_Metrics",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyFoundationAndBackgroundMetrics",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). Grouping property for foundational framework and scoping layout metrics.",
+      "comment": null,
+      "examples": [],
+      "grouping": true,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasOCSIScoreMetadata",
+      "children": [
+        "tara-kb:hasEligibilityScore",
+        "tara-kb:hasIntroductionAndHypothesisScore",
+        "tara-kb:hasLimitationsScore",
+        "tara-kb:hasParticipantsScore"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasEligibilityScore": {
+      "id": "tara-kb:hasEligibilityScore",
+      "kind": "property",
+      "label": "Eligibility Score",
+      "altLabel": "Eligibility_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasEligibilityScore",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The reporting score tracking how clearly the inclusion and exclusion criteria for study participants were defined.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when both inclusion and exclusion criteria are explicitly listed, 1 when only partially described, or 0 when absent from the article."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasIntroductionAndHypothesisScore": {
+      "id": "tara-kb:hasIntroductionAndHypothesisScore",
+      "kind": "property",
+      "label": "Introduction and Hypothesis Score",
+      "altLabel": "Introduction_And_Hypothesis_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasIntroductionAndHypothesisScore",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The quality score measuring how completely the trial introduction presents clinical context and scientific rationale.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the article states both clinical background and an explicit hypothesis, or 0 when neither is present."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasLimitationsScore": {
+      "id": "tara-kb:hasLimitationsScore",
+      "kind": "property",
+      "label": "Limitations Score",
+      "altLabel": "Limitations_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasLimitationsScore",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The quality grading evaluating whether the study authors adequately identified and discussed potential sources of bias or trial constraints.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when a dedicated limitations discussion is present, or 0 when limitations are not addressed at all."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasParticipantsScore": {
+      "id": "tara-kb:hasParticipantsScore",
+      "kind": "property",
+      "label": "Participants Score",
+      "altLabel": "Participants_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasParticipantsScore",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The structural quality score grading the transparency of reporting baseline participant demographics and flow data.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when age, sex, and enrollment/dropout flow are all reported, or 0 when none of this information is given."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasTechnicalInterventionQualityMetrics": {
+      "id": "tara-kb:hasTechnicalInterventionQualityMetrics",
+      "kind": "property",
+      "label": "Technical Intervention Quality Metrics",
+      "altLabel": "Technical_Intervention_Quality_Metrics",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasTechnicalInterventionQualityMetrics",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). Grouping property for acupuncture needle parameters and clinical protocol parameters.",
+      "comment": null,
+      "examples": [
+        "e.g., an aggregate value of 14 summarizing the combined STRICTA-aligned sub-scores (acupuncture details, needling parameters, stimulation, sham details, control groups, co-interventions, practitioner and sample size)."
+      ],
+      "grouping": true,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": null,
+        "id": null,
+        "label": null
+      },
+      "parent": "tara-kb:hasOCSIScoreMetadata",
+      "children": [
+        "tara-kb:hasAcupunctureDetailsScore",
+        "tara-kb:hasCointerventionsScore",
+        "tara-kb:hasControlGroupsScore",
+        "tara-kb:hasNeedlingParametersScore",
+        "tara-kb:hasPractitionerAndSampleSizeScore",
+        "tara-kb:hasShamDetailsScore",
+        "tara-kb:hasFrequencyOfTreatmentScore"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasAcupunctureDetailsScore": {
+      "id": "tara-kb:hasAcupunctureDetailsScore",
+      "kind": "property",
+      "label": "Acupuncture Details Score",
+      "altLabel": "Acupuncture_Details_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupunctureDetailsScore",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The STRICTA-aligned score evaluating the general description of the acupuncture style and rationale.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the acupuncture style and its rationale are both fully described, 1 when only partially described, or 0 when neither is reported."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasCointerventionsScore": {
+      "id": "tara-kb:hasCointerventionsScore",
+      "kind": "property",
+      "label": "Cointerventions Score",
+      "altLabel": "Cointerventions_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasCointerventionsScore",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The reporting assessment score evaluating whether extra pharmaceutical drugs or parallel therapies are tracked or declared.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when permitted or prohibited co-interventions are explicitly stated, or 0 when co-interventions are not mentioned."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasControlGroupsScore": {
+      "id": "tara-kb:hasControlGroupsScore",
+      "kind": "property",
+      "label": "Control Groups Score",
+      "altLabel": "Control_Groups_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasControlGroupsScore",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The quality check score evaluating how thoroughly the rationales and structural formats of the comparative groups are reported.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the rationale and precise composition of each comparator arm are described, or 0 when comparator groups are only named without detail."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasFrequencyOfTreatmentScore": {
+      "id": "tara-kb:hasFrequencyOfTreatmentScore",
+      "kind": "property",
+      "label": "Treatment Frequency Score",
+      "altLabel": "Frequency_Of_Treatment_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasFrequencyOfTreatmentScore",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The reporting item score checking if treatment intervals, session patterns, and total schedules are documented.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the number, interval, and total duration of sessions are all specified, or 0 when the treatment schedule is not reported."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasNeedlingParametersScore": {
+      "id": "tara-kb:hasNeedlingParametersScore",
+      "kind": "property",
+      "label": "Needling Parameters Score",
+      "altLabel": "Needling_Parameters_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasNeedlingParametersScore",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The technical item score checking the completeness of needle parameters reported (e.g., gauge, depth, de qi sensation).",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when needle gauge, insertion depth, and de qi response are all reported, or 0 when none of these parameters are given."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasPractitionerAndSampleSizeScore": {
+      "id": "tara-kb:hasPractitionerAndSampleSizeScore",
+      "kind": "property",
+      "label": "Practitioner and Sample Size Score",
+      "altLabel": "Practitioner_And_Sample_Size_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasPractitionerAndSampleSizeScore",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The quality score assessing the description of practitioner experience/training and the explicit calculation of sample sizes.",
+      "comment": null,
+      "examples": [
+        "e.g., a combined value of 4 when both the practitioner's qualifications and the sample-size calculation are fully reported (2 each), derived from its hasPractitionerScore and hasSampleSizeScore sub-scores."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
+      "children": [
+        "tara-kb:hasPractitionerScore",
+        "tara-kb:hasSampleSizeScore"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasPractitionerScore": {
+      "id": "tara-kb:hasPractitionerScore",
+      "kind": "property",
+      "label": "Practitioner Score",
+      "altLabel": "Practitioner_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasPractitionerScore",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The sub-score assessing whether the practitioners' background, training, and experience administering acupuncture are reported.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when practitioner qualifications and years of experience are stated, or 0 when no practitioner background is given."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasPractitionerAndSampleSizeScore",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasSampleSizeScore": {
+      "id": "tara-kb:hasSampleSizeScore",
+      "kind": "property",
+      "label": "Sample Size Score",
+      "altLabel": "Sample_Size_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasSampleSizeScore",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The sub-score assessing whether the rationale or calculation used to determine the study's sample size is explicitly reported.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when a formal sample-size/power calculation is described, or 0 when no justification for the sample size is given."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasPractitionerAndSampleSizeScore",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasShamDetailsScore": {
+      "id": "tara-kb:hasShamDetailsScore",
+      "kind": "property",
+      "label": "Sham Controls Score",
+      "altLabel": "Sham_Details_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasShamDetailsScore",
+      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The tracking score assessing whether the procedural, non-penetrating, or placebo physical components of sham controls are fully transparent.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the sham device and procedure are described in enough detail to be reproduced, or 0 when the sham intervention is not described."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "nonNegShortInt"
+      },
+      "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
+      "children": [],
+      "synonyms": []
+    }
+  },
+  "propertyRoot": "tara-kb:hasTARAArticlesMetadata",
+  "classRoots": [
+    "TARA:1132428",
+    "TARA:3448356",
+    "TARA:7008377",
+    "TARA:3677977",
+    "TARA:7227329"
+  ]
+}
+</script>
+<script>
+(function () {
+  const DATA = JSON.parse(document.getElementById('tara-data').textContent);
+  const CLASSES = DATA.classes;
+  const PROPERTIES = DATA.properties;
+
+  function recordOf(id) { return PROPERTIES[id] || CLASSES[id] || null; }
+  function kindOf(id) { return PROPERTIES[id] ? 'properties' : 'classes'; }
+
+  // ---- sidebar tabs ----
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach(btn => btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tree-properties').style.display = btn.dataset.tab === 'properties' ? '' : 'none';
+    document.getElementById('tree-classes').style.display = btn.dataset.tab === 'classes' ? '' : 'none';
+  }));
+  function activateTab(tab) {
+    tabBtns.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    document.getElementById('tree-properties').style.display = tab === 'properties' ? '' : 'none';
+    document.getElementById('tree-classes').style.display = tab === 'classes' ? '' : 'none';
+  }
+
+  // ---- tree rendering ----
+  function buildNode(id, store) {
+    const rec = store[id];
+    const li = document.createElement('li');
+    li.dataset.id = id;
+
+    const row = document.createElement('div');
+    row.className = 'node-row' + (rec.grouping ? ' grouping' : '');
+    row.dataset.id = id;
+
+    const hasChildren = rec.children && rec.children.length > 0;
+    const toggle = document.createElement('span');
+    toggle.className = 'toggle' + (hasChildren ? '' : ' leaf');
+    toggle.textContent = hasChildren ? '▸' : '•';
+    row.appendChild(toggle);
+
+    const label = document.createElement('span');
+    label.className = 'node-label';
+    label.textContent = rec.label;
+    row.appendChild(label);
+
+    li.appendChild(row);
+
+    let childUl = null;
+    if (hasChildren) {
+      childUl = document.createElement('ul');
+      childUl.style.display = 'none';
+      rec.children.forEach(cid => childUl.appendChild(buildNode(cid, store)));
+      li.appendChild(childUl);
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = childUl.style.display !== 'none';
+        childUl.style.display = open ? 'none' : '';
+        toggle.textContent = open ? '▸' : '▾';
+      });
+    }
+
+    row.addEventListener('click', () => selectNode(id));
+    return li;
+  }
+
+  function renderTree(containerId, rootIds, store) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    const ul = document.createElement('ul');
+    rootIds.forEach(rid => ul.appendChild(buildNode(rid, store)));
+    container.appendChild(ul);
+  }
+
+  renderTree('tree-properties', [DATA.propertyRoot], PROPERTIES);
+  renderTree('tree-classes', DATA.classRoots, CLASSES);
+
+  function expandAncestors(id) {
+    const rec = recordOf(id);
+    if (!rec) return;
+    let cur = rec.parent;
+    const store = PROPERTIES[id] ? PROPERTIES : CLASSES;
+    while (cur) {
+      const row = document.querySelector('.node-row[data-id="' + cur + '"]');
+      if (row) {
+        const li = row.parentElement;
+        const ul = li.querySelector(':scope > ul');
+        if (ul) {
+          ul.style.display = '';
+          const t = row.querySelector('.toggle');
+          if (t && !t.classList.contains('leaf')) t.textContent = '▾';
+        }
+      }
+      cur = store[cur] ? store[cur].parent : null;
+    }
+  }
+
+  // ---- selection & detail panel ----
+  let selectedId = null;
+
+  function selectNode(id, opts) {
+    opts = opts || {};
+    selectedId = id;
+    document.querySelectorAll('.node-row.selected').forEach(el => el.classList.remove('selected'));
+    if (opts.switchTab !== false) activateTab(kindOf(id));
+    expandAncestors(id);
+    const row = document.querySelector('.node-row[data-id="' + id + '"]');
+    if (row) {
+      row.classList.add('selected');
+      row.scrollIntoView({ block: 'center' });
+      row.parentElement.classList.add('flash');
+      setTimeout(() => row.parentElement.classList.remove('flash'), 1400);
+    }
+    renderDetail(id);
+  }
+
+  function chip(text, onClick) {
+    const el = document.createElement('span');
+    el.className = 'chip' + (onClick ? ' link' : '');
+    el.textContent = text;
+    if (onClick) el.addEventListener('click', onClick);
+    return el;
+  }
+
+  function fieldLabel(text) {
+    const el = document.createElement('div');
+    el.className = 'field-label';
+    el.textContent = text;
+    return el;
+  }
+
+  function prose(text) {
+    const el = document.createElement('div');
+    el.className = 'prose';
+    el.textContent = text;
+    return el;
+  }
+
+  function renderDetail(id) {
+    const content = document.getElementById('content');
+    content.innerHTML = '';
+    const rec = recordOf(id);
+    if (!rec) { content.innerHTML = '<p class="placeholder">Not found.</p>'; return; }
+
+    const h = document.createElement('h2');
+    h.textContent = rec.label;
+    content.appendChild(h);
+
+    const badgeRow = document.createElement('div');
+    badgeRow.className = 'chip-row';
+    const kindBadge = document.createElement('span');
+    kindBadge.className = 'type-badge';
+    kindBadge.textContent = rec.kind === 'property' ? (rec.grouping ? 'Grouping Property' : 'Property') : 'Class';
+    badgeRow.appendChild(kindBadge);
+    const qBadge = document.createElement('span');
+    qBadge.className = 'qname-badge';
+    qBadge.textContent = rec.id;
+    badgeRow.appendChild(qBadge);
+    content.appendChild(badgeRow);
+
+    if (rec.altLabel) {
+      content.appendChild(fieldLabel('Alt Label (skos:altLabel)'));
+      content.appendChild(prose(rec.altLabel));
+    }
+
+    if (rec.description) {
+      content.appendChild(fieldLabel('Description'));
+      content.appendChild(prose(rec.description));
+    }
+
+    if (rec.comment) {
+      content.appendChild(fieldLabel('Comment / Normalization Rules'));
+      content.appendChild(prose(rec.comment));
+    }
+
+    if (rec.kind === 'property') {
+      if (rec.domain || rec.range.label) {
+        content.appendChild(fieldLabel('Domain · Range'));
+        const row = document.createElement('div');
+        row.className = 'chip-row';
+        if (rec.domain) {
+          row.appendChild(chip('Domain: ' + rec.domainLabel, () => selectNode(rec.domain)));
+        } else {
+          row.appendChild(chip('Domain: not specified'));
+        }
+        if (rec.range.kind === 'class') {
+          row.appendChild(chip('Range: ' + rec.range.label, () => selectNode(rec.range.id)));
+        } else if (rec.range.label) {
+          row.appendChild(chip('Range: ' + rec.range.label));
+        } else {
+          row.appendChild(chip('Range: not specified'));
+        }
+        content.appendChild(row);
+      }
+
+      if (rec.examples && rec.examples.length) {
+        content.appendChild(fieldLabel('Examples (obo:IAO_0000112)'));
+        rec.examples.forEach(ex => {
+          const block = document.createElement('div');
+          block.className = 'example-block';
+          block.textContent = ex;
+          content.appendChild(block);
+        });
+      }
+    }
+
+    if (rec.kind === 'class' && rec.propertiesWithThisDomain && rec.propertiesWithThisDomain.length) {
+      content.appendChild(fieldLabel('Properties with this Domain'));
+      const row = document.createElement('div');
+      row.className = 'chip-row';
+      rec.propertiesWithThisDomain.forEach(pid => {
+        row.appendChild(chip(PROPERTIES[pid].label, () => selectNode(pid)));
+      });
+      content.appendChild(row);
+    }
+
+    if (rec.synonyms && rec.synonyms.length) {
+      content.appendChild(fieldLabel('Synonyms'));
+      const row = document.createElement('div');
+      row.className = 'chip-row';
+      rec.synonyms.forEach(s => row.appendChild(chip(s)));
+      content.appendChild(row);
+    }
+
+    if (rec.altLabels && rec.altLabels.length) {
+      content.appendChild(fieldLabel('Alt Labels'));
+      const row = document.createElement('div');
+      row.className = 'chip-row';
+      rec.altLabels.forEach(s => row.appendChild(chip(s)));
+      content.appendChild(row);
+    }
+
+    if (rec.parent) {
+      const store = rec.kind === 'property' ? PROPERTIES : CLASSES;
+      const parentRec = store[rec.parent];
+      if (parentRec) {
+        content.appendChild(fieldLabel(rec.kind === 'property' ? 'Parent Property' : 'Superclass'));
+        const row = document.createElement('div');
+        row.className = 'chip-row';
+        row.appendChild(chip(parentRec.label, () => selectNode(rec.parent)));
+        content.appendChild(row);
+      }
+    }
+
+    if (rec.children && rec.children.length) {
+      const store = rec.kind === 'property' ? PROPERTIES : CLASSES;
+      content.appendChild(fieldLabel(rec.kind === 'property' ? 'Sub-properties' : 'Subclasses'));
+      const row = document.createElement('div');
+      row.className = 'chip-row';
+      rec.children.forEach(cid => row.appendChild(chip(store[cid].label, () => selectNode(cid))));
+      content.appendChild(row);
+    }
+  }
+
+  // ---- search / autocomplete / filter ----
+  const searchInput = document.getElementById('search');
+  const autocompleteEl = document.getElementById('autocomplete');
+  let acItems = [];
+  let acActiveIndex = -1;
+
+  function searchableText(rec) {
+    return [rec.label, rec.altLabel].concat(rec.synonyms || [], rec.altLabels || [])
+      .filter(Boolean).join(' • ').toLowerCase();
+  }
+
+  function matchIds(query) {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    const results = [];
+    Object.values(PROPERTIES).forEach(rec => { if (searchableText(rec).includes(q)) results.push(rec); });
+    Object.values(CLASSES).forEach(rec => { if (searchableText(rec).includes(q)) results.push(rec); });
+    results.sort((a, b) => a.label.localeCompare(b.label));
+    return results;
+  }
+
+  function ancestorChain(id) {
+    const chain = [];
+    const store = PROPERTIES[id] ? PROPERTIES : CLASSES;
+    let cur = store[id] ? store[id].parent : null;
+    while (cur) { chain.push(cur); cur = store[cur] ? store[cur].parent : null; }
+    return chain;
+  }
+
+  function applyFilter(query) {
+    const matches = matchIds(query);
+    const allTreeItems = document.querySelectorAll('#tree-properties li, #tree-classes li');
+    if (!query.trim()) {
+      allTreeItems.forEach(li => li.classList.remove('hidden-by-filter'));
+      return;
+    }
+    const keep = new Set();
+    matches.forEach(rec => { keep.add(rec.id); ancestorChain(rec.id).forEach(a => keep.add(a)); });
+    allTreeItems.forEach(li => {
+      li.classList.toggle('hidden-by-filter', !keep.has(li.dataset.id));
+    });
+    // auto-expand branches that contain a visible match
+    keep.forEach(id => {
+      const row = document.querySelector('.node-row[data-id="' + id + '"]');
+      if (row) {
+        const ul = row.parentElement.querySelector(':scope > ul');
+        if (ul) {
+          ul.style.display = '';
+          const t = row.querySelector('.toggle');
+          if (t && !t.classList.contains('leaf')) t.textContent = '▾';
+        }
+      }
+    });
+  }
+
+  function renderAutocomplete(query) {
+    acItems = matchIds(query).slice(0, 20);
+    acActiveIndex = -1;
+    autocompleteEl.innerHTML = '';
+    if (!query.trim() || acItems.length === 0) {
+      autocompleteEl.style.display = 'none';
+      return;
+    }
+    acItems.forEach((rec, i) => {
+      const item = document.createElement('div');
+      item.className = 'ac-item';
+      item.dataset.index = i;
+      const badge = document.createElement('span');
+      badge.className = 'ac-badge';
+      badge.textContent = rec.kind === 'property' ? 'Prop' : 'Class';
+      item.appendChild(badge);
+      const label = document.createElement('span');
+      label.textContent = rec.label;
+      item.appendChild(label);
+      item.addEventListener('mousedown', (e) => { e.preventDefault(); chooseAutocomplete(i); });
+      autocompleteEl.appendChild(item);
+    });
+    autocompleteEl.style.display = '';
+  }
+
+  function chooseAutocomplete(i) {
+    const rec = acItems[i];
+    if (!rec) return;
+    searchInput.value = rec.label;
+    autocompleteEl.style.display = 'none';
+    applyFilter('');
+    selectNode(rec.id);
+  }
+
+  searchInput.addEventListener('input', () => {
+    applyFilter(searchInput.value);
+    renderAutocomplete(searchInput.value);
+  });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (autocompleteEl.style.display === 'none') return;
+    const rows = autocompleteEl.querySelectorAll('.ac-item');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      acActiveIndex = Math.min(acActiveIndex + 1, rows.length - 1);
+      rows.forEach((r, i) => r.classList.toggle('active', i === acActiveIndex));
+      rows[acActiveIndex] && rows[acActiveIndex].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      acActiveIndex = Math.max(acActiveIndex - 1, 0);
+      rows.forEach((r, i) => r.classList.toggle('active', i === acActiveIndex));
+      rows[acActiveIndex] && rows[acActiveIndex].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      chooseAutocomplete(acActiveIndex >= 0 ? acActiveIndex : 0);
+    } else if (e.key === 'Escape') {
+      autocompleteEl.style.display = 'none';
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!autocompleteEl.contains(e.target) && e.target !== searchInput) {
+      autocompleteEl.style.display = 'none';
+    }
+  });
+})();
+</script>
+</body>
+</html>

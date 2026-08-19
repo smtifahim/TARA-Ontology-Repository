@@ -1,5 +1,7 @@
 # TARA Articles KB — Core Ontology
 
+**[Browse this ontology interactively &rarr;](https://scicrunch.github.io/TARA-Ontology-Repository/articles-kb-core/)** &mdash; searchable class/property browser, generated from `tara-articles-kb-core.ttl` by `generated-artifacts/doc-generator/generate_html_docs.py`.
+
 ## Purpose
 
 `tara-articles-kb-core.ttl` is the single source of truth for the metadata schema used to capture extracted information from acupuncture clinical trial publications. It exists to solve a recurring ETL problem: metadata extracted via AI tools (Elicit, Gemini, etc.) arrived with inconsistent column names and prompting from batch to batch, which forced the ingestion/transformation scripts to be rewritten every time, and no standardized database schema existed to load into.
@@ -25,7 +27,7 @@ flowchart TB
     classDef artifact fill:#ffffff,stroke:#333,color:#111
     classDef stage fill:#fef6e0,stroke:#c9960c,color:#5c4400
 
-    TTL["<b>tara-articles-kb-core.ttl</b><br/>single source of truth:<br/>fields, labels, definitions, examples,<br/>normalization rules, types"]:::core
+    TTL["<b>tara-articles-kb-core.ttl</b><br/>single source of truth:<br/>fields, labels, definitions, <br/>examples, normalization rules, types"]:::core
 
     subgraph BUILD["schema-tools/ — generated once per ontology change"]
         REFLECT["ontology_manifest.py<br/>(one SPARQL reflection query)"]:::gen
@@ -75,14 +77,19 @@ flowchart TB
 
 - **`tara-articles-kb-core.ttl`** — the canonical, hand-authored ontology.
 - **`tara-articles-kb-core-draft.ttl`** — working draft / staging area for property changes before they're promoted into the core file.
-- **`schema-tools/`** — *(scaffolding only, not yet implemented)* scripts that will read the core ttl and generate the derived artifacts below (CSV/Excel templates, DB schema, SPARQL templates, LLM prompt manifests) from a single ontology-reflection query, so every downstream format is regenerated from one source instead of hand-maintained separately.
-  - `queries/` — reusable SPARQL (`.rq`) query files used by the generator scripts.
-- **`generated-artifacts/`** — *(empty scaffolding, populated by `schema-tools/` once implemented)* build output only; never hand-edited.
-  - `manifest/` — the canonical intermediate field manifest (compact URI, column name, definition, example, range, domain, parent grouping) that every other generated artifact is built from.
-  - `csv-templates/` — generated Excel/CSV extraction templates.
-  - `db-schema/` — generated relational DDL.
-  - `sparql-templates/` — generated canned SPARQL query templates.
-  - `llm-prompts/` — generated per-field LLM extraction prompt payloads.
+- **`Documentation.md`** — hand-authored reference notes (work in progress).
+- **`schema-tools/`** — *(scaffolding only, not yet implemented)* future generator scripts for the other derived artifacts below (CSV/Excel templates, DB schema, SPARQL templates, LLM prompt manifests). Once more than one such generator exists, consider introducing a shared `ontology_manifest.py` reflection step so they don't each re-implement the same ttl traversal.
+  - `queries/` — reusable SPARQL (`.rq`) query files for the generator scripts.
+- **`generated-artifacts/`** — build output, plus the generators that produce it.
+  - `doc-generator/` — two generators, both parsing `tara-articles-kb-core.ttl` directly with `rdflib` (no manifest step); re-run both after any ttl edit.
+    - `generate_documentation.py` — writes `tara-articles-kb-core-doc.md` alongside it: the core class hierarchy, the full `tara-kb:hasTARAArticlesMetadata` property tree with domain/range, and a computed Data Quality Notes section (grouping properties with a stray `rdfs:range`, value properties missing one). Run: `python3 generated-artifacts/doc-generator/generate_documentation.py`.
+    - `tara-articles-kb-core-doc.md` — its generated output; never hand-edited, regenerate instead.
+    - `generate_html_docs.py` — writes a self-contained, interactive HTML ontology browser (search/autocomplete over labels + synonyms, expandable class/property trees, cross-linked detail panel) to `docs/articles-kb-core/index.html` at the repo root by default (served by GitHub Pages), overridable via `--out`. Run: `python3 generated-artifacts/doc-generator/generate_html_docs.py`.
+  - `manifest/` — *(not yet populated)* intended canonical intermediate field manifest (compact URI, column name, definition, example, range, domain, parent grouping) for future generators to share.
+  - `csv-templates/` — *(not yet populated)* generated Excel/CSV extraction templates.
+  - `db-schema/` — *(not yet populated)* generated relational DDL.
+  - `sparql-templates/` — *(not yet populated)* generated canned SPARQL query templates.
+  - `llm-prompts/` — *(not yet populated)* generated per-field LLM extraction prompt payloads.
 
 ## Metadata Structure
 
@@ -95,7 +102,7 @@ style INSTANCES stroke:transparent
         PUB_ENT[["<b>[Class Instance]</b><br>Acupuncture<br>Study Publication"]]
         STUDY_ENT[["<b>[Class Instance]</b><br>Acupuncture<br>Research Study"]]
         OCSI_ENT[["<b>[Class Instance]</b><br>Acupuncture Study<br>OCSI Appraisal"]]
-    
+  
         %% Connections keep these horizontal naturally
         PUB_ENT -- hasReportedStudyID --> STUDY_ENT
         STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
@@ -106,6 +113,7 @@ style INSTANCES stroke:transparent
 ```
 
 In each diagram below,
+
 * A dashed node is a pure grouping property (organizational only, never holds a value)
 * A solid node holds an actual extracted value (some solid nodes are also parents of more granular sub-properties)
 * A double-bordered node on the left represents an instance of a TARA-KB class (see above)
@@ -149,7 +157,7 @@ flowchart LR
         PVENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
         PDATE["hasPublicationDate<br/>(Publication Date)"]:::field
         LINK["hasPublicationLink<br/>(Publication Link)"]:::field
-    
+  
         PYEAR["hasPublicationYear<br/>(Publication Year)"]:::field
         DOI["hasDOILink<br/>(DOI Link)"]:::field
         OTHER["hasOtherLink<br/>(Other Link)"]:::field
@@ -209,14 +217,14 @@ flowchart LR
         SFIND --> EFFECT
         SFIND --> COMP
         SFIND --> MECH
-    
+  
     end
   
   
     subgraph PROTO ["<b>Acupuncture Protocol</b>"]
         direction LR
         PROT["hasAcupunctureProtocol<br/>(Acupuncture Protocol)"]:::linked
-    
+  
         LIST["hasListedAcupoints<br/>(Listed Acupoint(s))"]:::field
         LMAP["hasListedAcupointsMapped<br/>(Listed Acupoint(s) Mapped)"]:::field
         LCURIE["hasListedAcupointsMappedCurie<br/>(Listed Acupoint(s) Mapped Curie)"]:::field
@@ -228,7 +236,7 @@ flowchart LR
         ASELGROUP["hasAcupointSelectionAndGrouping<br/>(Point Selection and Grouping)"]:::field
         GRP["hasAcupointGrouping<br/>(Acupoint Grouping)"]:::field
         SEL["hasAcupointSelection<br/>(Acupoint Selection)"]:::field
-    
+  
 
         PROT --> ASELGROUP
         ASELGROUP --> GRP
@@ -237,11 +245,11 @@ flowchart LR
         PROT --> LIST
         LIST --> LMAP
         LIST --> LCURIE
-        LIST --> LUNMAP    
+        LIST --> LUNMAP  
         PROT --> STIM
         PROT --> SHAM
 
-    
+  
     end
   
     subgraph DESIGN ["<b>Study Design Metadata</b>"]
@@ -262,7 +270,7 @@ flowchart LR
         SDES --> CTRL
         SDES --> OUT
         SDES --> SAMP
-    
+  
         OUT --> POUT
         OUT --> SOUT
         SDES --> TDF
@@ -322,7 +330,7 @@ flowchart LR
         CATC["hasMethodologicalAndStatisticalAllocationMetrics"]:::group
         ADV["hasAdverseEffectsScore<br/>(Adverse Effects Score)"]:::field
         RAND["hasRandomAllocationScore<br/>(Random Allocation Score)"]:::field
-    
+  
         CATC --> SUBG
         CATC --> BLIND
         CATC --> ADV

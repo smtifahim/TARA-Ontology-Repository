@@ -5,6 +5,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix TARA: <http://www.acupunctureresearch.org/tara/ontology/TARA_> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -190,7 +191,9 @@ tara-kb:hasAcupointGrouping rdf:type owl:AnnotationProperty ;
                             tara-ap:hasCompactURI "tara-kb:hasAcupointGrouping" ;
                             rdfs:comment "Acupoint grouping is about organizing multiple points into a single treatment protocol, often divided into primary (core) points for the main condition and secondary (adjuvant) points for specific symptoms." ;
                             rdfs:label "Acupoint Grouping" ;
-                            rdfs:subPropertyOf tara-kb:hasAcupointSelectionAndGrouping .
+                            rdfs:subPropertyOf tara-kb:hasAcupointSelectionAndGrouping ;
+                            rdfs:range xsd:string ;
+                            rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_6701896> .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupointSelection
@@ -202,7 +205,9 @@ tara-kb:hasAcupointSelection rdf:type owl:AnnotationProperty ;
                              tara-ap:hasCompactURI "tara-kb:hasAcupointSelection" ;
                              rdfs:comment "Acupoint selection is about deciding which exact body locations to target during an intervention, guided by traditional systems (like meridians and specific point attributes) or modern anatomical maps (like local trigger points or nerve distributions). Researchers standardize this to test if a specific set of points delivers reproducible health outcomes." ;
                              rdfs:label "Acupoint Selection" ;
-                             rdfs:subPropertyOf tara-kb:hasAcupointSelectionAndGrouping .
+                             rdfs:subPropertyOf tara-kb:hasAcupointSelectionAndGrouping ;
+                             rdfs:range xsd:string ;
+                             rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_6701896> .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupointSelectionAndGrouping
@@ -213,7 +218,9 @@ tara-kb:hasAcupointSelectionAndGrouping rdf:type owl:AnnotationProperty ;
                                         tara-ap:hasCompactURI "tara-kb:hasAcupointSelectionAndGrouping" ;
                                         rdfs:comment "In clinical trials evaluating acupuncture, acupoint selection is the specific choice of body sites (the points) where needles are inserted based on traditional theory or modern neuroscience. Acupoint grouping (or combination) refers to how these points are paired together in a treatment prescription to work synergistically for a medical condition." ;
                                         rdfs:label "Point Selection and Grouping" ;
-                                        rdfs:subPropertyOf tara-kb:hasAcupunctureProtocol .
+                                        rdfs:subPropertyOf tara-kb:hasAcupunctureProtocol ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_6701896> .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupunctureDetailsScore
@@ -225,7 +232,7 @@ tara-kb:hasAcupunctureDetailsScore rdf:type owl:AnnotationProperty ;
                                    rdfs:label "Acupuncture Details Score" ;
                                    skos:altLabel "Acupuncture_Details_Score" ;
                                    rdfs:subPropertyOf tara-kb:hasTechnicalInterventionQualityMetrics ;
-                                   rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                   rdfs:range tara-kb:nonNegShortInt ;
                                    rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -278,7 +285,7 @@ tara-kb:hasAdverseEffectsScore rdf:type owl:AnnotationProperty ;
                                rdfs:label "Adverse Effects Score" ;
                                skos:altLabel "Adverse_Effects_Score" ;
                                rdfs:subPropertyOf tara-kb:hasMethodologicalAndStatisticalAllocationMetrics ;
-                               rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                               rdfs:range tara-kb:nonNegShortInt ;
                                rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -339,7 +346,7 @@ tara-kb:hasBlindingQualityScore rdf:type owl:AnnotationProperty ;
                                 rdfs:label "Blinding Quality Score" ;
                                 skos:altLabel "Blinding_Quality_Score" ;
                                 rdfs:subPropertyOf tara-kb:hasMethodologicalAndStatisticalAllocationMetrics ;
-                                rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                rdfs:range tara-kb:nonNegShortInt ;
                                 rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -366,7 +373,7 @@ tara-kb:hasCointerventionsScore rdf:type owl:AnnotationProperty ;
                                 rdfs:label "Cointerventions Score" ;
                                 skos:altLabel "Cointerventions_Score" ;
                                 rdfs:subPropertyOf tara-kb:hasTechnicalInterventionQualityMetrics ;
-                                rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                rdfs:range tara-kb:nonNegShortInt ;
                                 rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -420,7 +427,7 @@ tara-kb:hasControlGroupsScore rdf:type owl:AnnotationProperty ;
                               rdfs:label "Control Groups Score" ;
                               skos:altLabel "Control_Groups_Score" ;
                               rdfs:subPropertyOf tara-kb:hasTechnicalInterventionQualityMetrics ;
-                              rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                              rdfs:range tara-kb:nonNegShortInt ;
                               rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -475,7 +482,7 @@ tara-kb:hasEligibilityScore rdf:type owl:AnnotationProperty ;
                             rdfs:label "Eligibility Score" ;
                             skos:altLabel "Eligibility_Score" ;
                             rdfs:subPropertyOf tara-kb:hasStudyFoundationAndBackgroundMetrics ;
-                            rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                            rdfs:range tara-kb:nonNegShortInt ;
                             rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -511,7 +518,7 @@ tara-kb:hasFrequencyOfTreatmentScore rdf:type owl:AnnotationProperty ;
                                      rdfs:label "Treatment Frequency Score" ;
                                      skos:altLabel "Frequency_Of_Treatment_Score" ;
                                      rdfs:subPropertyOf tara-kb:hasTechnicalInterventionQualityMetrics ;
-                                     rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                     rdfs:range tara-kb:nonNegShortInt ;
                                      rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -524,7 +531,7 @@ tara-kb:hasIntroductionAndHypothesisScore rdf:type owl:AnnotationProperty ;
                                           rdfs:label "Introduction and Hypothesis Score" ;
                                           skos:altLabel "Introduction_And_Hypothesis_Score" ;
                                           rdfs:subPropertyOf tara-kb:hasStudyFoundationAndBackgroundMetrics ;
-                                          rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                          rdfs:range tara-kb:nonNegShortInt ;
                                           rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -610,7 +617,7 @@ tara-kb:hasLimitationsScore rdf:type owl:AnnotationProperty ;
                             rdfs:label "Limitations Score" ;
                             skos:altLabel "Limitations_Score" ;
                             rdfs:subPropertyOf tara-kb:hasStudyFoundationAndBackgroundMetrics ;
-                            rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                            rdfs:range tara-kb:nonNegShortInt ;
                             rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -749,7 +756,7 @@ tara-kb:hasNeedlingParametersScore rdf:type owl:AnnotationProperty ;
                                    rdfs:label "Needling Parameters Score" ;
                                    skos:altLabel "Needling_Parameters_Score" ;
                                    rdfs:subPropertyOf tara-kb:hasTechnicalInterventionQualityMetrics ;
-                                   rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                   rdfs:range tara-kb:nonNegShortInt ;
                                    rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -845,7 +852,7 @@ tara-kb:hasOutcomesMeasureX2Score rdf:type owl:AnnotationProperty ;
                                   rdfs:label "Outcomes Measure X2 Score" ;
                                   skos:altLabel "Outcomes_Measure_X2_Score" ;
                                   rdfs:subPropertyOf tara-kb:hasEvaluativeResultsAndGlobalMetrics ;
-                                  rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                  rdfs:range tara-kb:nonNegShortInt ;
                                   rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -858,7 +865,7 @@ tara-kb:hasParticipantsScore rdf:type owl:AnnotationProperty ;
                              rdfs:label "Participants Score" ;
                              skos:altLabel "Participants_Score" ;
                              rdfs:subPropertyOf tara-kb:hasStudyFoundationAndBackgroundMetrics ;
-                             rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                             rdfs:range tara-kb:nonNegShortInt ;
                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -871,7 +878,7 @@ tara-kb:hasPractitionerAndSampleSizeScore rdf:type owl:AnnotationProperty ;
                                           rdfs:label "Practitioner and Sample Size Score" ;
                                           skos:altLabel "Practitioner_And_Sample_Size_Score" ;
                                           rdfs:subPropertyOf tara-kb:hasTechnicalInterventionQualityMetrics ;
-                                          rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                          rdfs:range tara-kb:nonNegShortInt ;
                                           rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -884,7 +891,7 @@ tara-kb:hasPractitionerScore rdf:type owl:AnnotationProperty ;
                              rdfs:label "Practitioner Score" ;
                              skos:altLabel "Practitioner_Score" ;
                              rdfs:subPropertyOf tara-kb:hasPractitionerAndSampleSizeScore ;
-                             rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                             rdfs:range tara-kb:nonNegShortInt ;
                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -1006,7 +1013,7 @@ tara-kb:hasRandomAllocationScore rdf:type owl:AnnotationProperty ;
                                  rdfs:label "Random Allocation Score" ;
                                  skos:altLabel "Random_Allocation_Score" ;
                                  rdfs:subPropertyOf tara-kb:hasMethodologicalAndStatisticalAllocationMetrics ;
-                                 rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                 rdfs:range tara-kb:nonNegShortInt ;
                                  rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -1052,7 +1059,7 @@ Following the standardized OCSI Likert-like scoring structure, the reporting of 
                                 rdfs:label "Results Outcomes Score" ;
                                 skos:altLabel "Results_Outcomes_Score" ;
                                 rdfs:subPropertyOf tara-kb:hasEvaluativeResultsAndGlobalMetrics ;
-                                rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                                rdfs:range tara-kb:nonNegShortInt ;
                                 rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -1080,7 +1087,7 @@ tara-kb:hasSampleSizeScore rdf:type owl:AnnotationProperty ;
                            rdfs:label "Sample Size Score" ;
                            skos:altLabel "Sample_Size_Score" ;
                            rdfs:subPropertyOf tara-kb:hasPractitionerAndSampleSizeScore ;
-                           rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                           rdfs:range tara-kb:nonNegShortInt ;
                            rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -1123,7 +1130,7 @@ tara-kb:hasShamDetailsScore rdf:type owl:AnnotationProperty ;
                             rdfs:label "Sham Controls Score" ;
                             skos:altLabel "Sham_Details_Score" ;
                             rdfs:subPropertyOf tara-kb:hasTechnicalInterventionQualityMetrics ;
-                            rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                            rdfs:range tara-kb:nonNegShortInt ;
                             rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -1360,7 +1367,7 @@ tara-kb:hasSubgroupScore rdf:type owl:AnnotationProperty ;
                          rdfs:label "Subgroup Score" ;
                          skos:altLabel "Subgroup_Score" ;
                          rdfs:subPropertyOf tara-kb:hasMethodologicalAndStatisticalAllocationMetrics ;
-                         rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
+                         rdfs:range tara-kb:nonNegShortInt ;
                          rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -1383,7 +1390,6 @@ tara-kb:hasTechnicalInterventionQualityMetrics rdf:type owl:AnnotationProperty ;
                                                rdfs:label "Technical Intervention Quality Metrics" ;
                                                skos:altLabel "Technical_Intervention_Quality_Metrics" ;
                                                rdfs:subPropertyOf tara-kb:hasOCSIScoreMetadata ;
-                                               rdfs:range <http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> ;
                                                rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -1460,21 +1466,6 @@ skos:hiddenLabel rdf:type owl:AnnotationProperty ;
 #    Datatypes
 #################################################################
 
-###  http://www.acupunctureresearch.org/tara/ontology/TARA_5972061
-<http://www.acupunctureresearch.org/tara/ontology/TARA_5972061> rdf:type rdfs:Datatype ;
-                                                                rdfs:comment "To represent individual score for each OCSI Score Category between 0 and 10."@en ;
-                                                                rdfs:label "nonNegShortInt" ;
-                                                                skos:altLabel "nonNegativeShortInterger" ;
-                                                                owl:equivalentClass [ rdf:type rdfs:Datatype ;
-                                                                                      owl:onDatatype xsd:integer ;
-                                                                                      owl:withRestrictions ( [ xsd:minInclusive 0
-                                                                                                             ]
-                                                                                                             [ xsd:maxInclusive 10
-                                                                                                             ]
-                                                                                                           )
-                                                                                    ] .
-
-
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_6560239
 <http://www.acupunctureresearch.org/tara/ontology/TARA_6560239> rdf:type rdfs:Datatype ;
                                                                 rdfs:comment "To represent the total OCSI Score percentage between 0.0 to 100.0."@en ;
@@ -1486,6 +1477,21 @@ skos:hiddenLabel rdf:type owl:AnnotationProperty ;
                                                                                                              ]
                                                                                                            )
                                                                                     ] .
+
+
+###  http://www.acupunctureresearch.org/tara/ontology/kb/nonNegShortInt
+tara-kb:nonNegShortInt rdf:type rdfs:Datatype ;
+                       rdfs:comment "To represent individual score for each OCSI Score Category between 0 and 10."@en ;
+                       rdfs:label "nonNegShortInt" ;
+                       skos:altLabel "nonNegativeShortInterger" ;
+                       owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                             owl:onDatatype xsd:integer ;
+                                             owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                    ]
+                                                                    [ xsd:maxInclusive 10
+                                                                    ]
+                                                                  )
+                                           ] .
 
 
 ###  http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON
