@@ -82,7 +82,7 @@ flowchart LR
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
     style BIB_FIELDS stroke:none
 
-    PUB[["Acupuncture<br>Study Publication"]]:::field
+    PUB[["Acupuncture<br>Study Publication"]]:::linked
     BIB["hasBibliographicMetadata<br/>(Bibliographic Metadata)"]:::field
 
     subgraph BIB_FIELDS ["<b>Bibliographic Metadata</b>"]
@@ -122,7 +122,7 @@ flowchart LR
     classDef field fill:#ffffff,stroke:#333,color:#111
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
 
-    STUDY[["Acupuncture<br/>Research Study"]]:::field
+    STUDY[["Acupuncture<br/>Research Study"]]:::linked
     ROOT["hasAcupunctureStudyMetadata<br/>(Acupuncture Study Metadata)"]:::group
     STUDY --> ROOT
 
@@ -158,7 +158,7 @@ flowchart LR
   
     subgraph PROTO ["<b>Acupuncture Protocol</b>"]
         direction LR
-        PROT["hasAcupunctureProtocol<br/>(Acupuncture Protocol)"]:::field
+        PROT["hasAcupunctureProtocol<br/>(Acupuncture Protocol)"]:::linked
     
         LIST["hasListedAcupoints<br/>(Listed Acupoint(s))"]:::field
         LMAP["hasListedAcupointsMapped<br/>(Listed Acupoint(s) Mapped)"]:::field
@@ -243,7 +243,7 @@ flowchart LR
     classDef field fill:#ffffff,stroke:#333,color:#111
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
 
-    OCSI[["Acupuncture Study<br/>OCSI Appraisal"]]:::field
+    OCSI[["Acupuncture Study<br/>OCSI Appraisal"]]:::linked
     ROOT["hasOCSIScoreMetadata<br/>(OCSI Score Metadata)"]:::group
     OCSI --> ROOT
 
