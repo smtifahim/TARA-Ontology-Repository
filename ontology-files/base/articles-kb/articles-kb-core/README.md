@@ -45,26 +45,35 @@ flowchart LR
 flowchart TB
  style INSTANCES stroke:transparent
  style CLASSES stroke:#0000,stroke-width:0px
+ 
+ subgraph Class_Instance[" "]
+ PUB_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Study Publication"]]:::field
+ STUDY_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Research Study"]]:::field
+ OCSI_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture Study<br>OCSI Appraisal"]]:::field
+
+ PubClass(["Acupuncture<br>Study Publication"]):::field
+ StudyClass(["Acupuncture<br>Research Study"]):::field
+ OCSIClass(["Acupuncture<br>Study OCSI Appraisal"]):::field
+
+ PUB_ENT -- isTYpeOf --> PubClass
+ STUDY_ENT -- isTYpeOf --> StudyClass
+ OCSI_ENT -- isTYpeOf --> OCSIClass  
+
+ direction TB
  subgraph INSTANCES["<b>Cross-Linked Entity Instances</b>"]
-    direction LR
-        PUB_ENT[["<b>[instance]</b><br>Acupuncture<br>Study Publication"]]:::field
-        STUDY_ENT[["<b>[instance]</b><br>Acupuncture<br>Research Study"]]:::field
-        OCSI_ENT[["<b>[instance]</b><br>Acupuncture Study<br>OCSI Appraisal"]]:::field
-        PUB_ENT -- hasReportedStudyID --> STUDY_ENT
-        STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
+    direction LR    
+    PUB_ENT -- hasReportedStudyID --> STUDY_ENT
+    STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
   end
- subgraph CLASSES["<b>TARA-KB Core Classes</b>"]
+ subgraph CLASSES["<b>TARA-KB: Core Classes</b>"]
     direction LR
-        PubClass(["Acupuncture<br>Study Publication"]):::field
-        StudyClass(["Acupuncture<br>Research Study"]):::field
-        OCSIClass(["Acupuncture<br>Study OCSI Appraisal"]):::field
-        PubClass ~~~~~ StudyClass
-        StudyClass ~~~~~ OCSIClass
+    PubClass ~~~~ StudyClass
+    StudyClass ~~~~~ OCSIClass
   end
     CLASSES ~~~~ INSTANCES
-    PUB_ENT -- isTYpeOf --> PubClass
-    STUDY_ENT -- isTYpeOf --> StudyClass
-    OCSI_ENT -- isTYpeOf --> OCSIClass
+
+end
+
 ```
 
 ### 1. Acupuncture Study Publication
