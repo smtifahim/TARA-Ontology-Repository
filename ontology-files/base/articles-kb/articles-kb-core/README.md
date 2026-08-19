@@ -43,37 +43,46 @@ flowchart LR
 
 ```mermaid
 flowchart TB
- style INSTANCES stroke:transparent
- style CLASSES stroke:#0000,stroke-width:0px
- 
- subgraph Class_Instance[" "]
- PUB_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Study Publication"]]:::field
- STUDY_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Research Study"]]:::field
- OCSI_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture Study<br>OCSI Appraisal"]]:::field
+    %% 1. Apply styles for the subgraphs
+    style INSTANCES stroke:transparent
+    style CLASSES stroke:#0000,stroke-width:0px
 
- PubClass(["Acupuncture<br>Study Publication"]):::field
- StudyClass(["Acupuncture<br>Research Study"]):::field
- OCSIClass(["Acupuncture<br>Study OCSI Appraisal"]):::field
+    %% 2. Missing class definition for the 'field' style used in your code
+    %% classDef field fill:#f9f9f9,stroke:#333,stroke-width:1px;
 
- PUB_ENT -- isTYpeOf --> PubClass
- STUDY_ENT -- isTYpeOf --> StudyClass
- OCSI_ENT -- isTYpeOf --> OCSIClass  
+    subgraph Class_Instance[" "]
+        direction TB
 
- direction TB
- subgraph INSTANCES["<b>Cross-Linked Entity Instances</b>"]
-    direction LR    
-    PUB_ENT -- hasReportedStudyID --> STUDY_ENT
-    STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
-  end
- subgraph CLASSES["<b>TARA-KB: Core Classes</b>"]
-    direction LR
-    PubClass ~~~~ StudyClass
-    StudyClass ~~~~~ OCSIClass
-  end
-    CLASSES ~~~~ INSTANCES
+        %% 3. Define the INSTANCES subgraph and its internal nodes/edges first
+        subgraph INSTANCES["<b>Cross-Linked Entity Instances</b>"]
+            direction LR
+            PUB_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Study Publication"]]
+            STUDY_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Research Study"]]
+            OCSI_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture Study<br>OCSI Appraisal"]]
+            
+            PUB_ENT -- hasReportedStudyID --> STUDY_ENT
+            STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
+        end
 
-end
+        %% 4. Define the CLASSES subgraph and its internal nodes/spacing next
+        subgraph CLASSES["<b>TARA-KB: Core Classes</b>"]
+            direction LR
+            PubClass(["Acupuncture<br>Study Publication"])
+            StudyClass(["Acupuncture<br>Research Study"])
+            OCSIClass(["Acupuncture<br>Study OCSI Appraisal"])
+            
+            PubClass ~~~~ StudyClass
+            StudyClass ~~~~ OCSIClass
+        end
 
+        %% 5. Structural spacing between the two main subgraph containers
+        CLASSES ~~~~ INSTANCES
+
+        %% 6. CRITICAL FIX: Cross-subgraph connections must go at the very bottom
+        PUB_ENT -- isTYpeOf --> PubClass
+        STUDY_ENT -- isTYpeOf --> StudyClass
+        OCSI_ENT -- isTYpeOf --> OCSIClass
+    end
 ```
 
 ### 1. Acupuncture Study Publication
