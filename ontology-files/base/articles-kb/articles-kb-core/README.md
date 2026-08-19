@@ -29,7 +29,7 @@ Every annotation property carries `rdfs:label` (human name), `skos:altLabel` (ma
 
 ## Metadata Structure
 
-Under `tara-kb:hasTARAArticlesMetadata`, extracted metadata is organized into branches aligned with three core classes: Acupuncture Study Publication`, `Acupuncture Research Study`, and `Acupuncture Study OCSI Appraisal`.
+Under `tara-kb:hasTARAArticlesMetadata`, extracted metadata is organized into branches aligned with three core classes: `Acupuncture Study Publication`, `Acupuncture Research Study`, and `Acupuncture Study OCSI Appraisal`.
 
 ```mermaid
 flowchart
