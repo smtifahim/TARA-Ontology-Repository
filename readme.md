@@ -2,7 +2,7 @@
 
 This repository contains the source files, curated data, and generation pipeline for the TARA Acupoints Ontology. The ontology project is part of the [Topological Atlas and Repository for Acupoint Research (TARA)](https://www.acupunctureresearch.org/tara) project funded by the National Institute of Health (NIH). The goal of the project is to establish a new comprehensive, computable resource for the acupuncture research and clinician community. The ontology will be used to support semantic search and annotations for anatomical maps, atlases, and data sets relevant to the TARA project.
 
-<!-- **[Browse the generated ontology documentation &rarr;](https://scicrunch.github.io/TARA-Ontology-Repository/)** &mdash; interactive, searchable class/property browsers, generated directly from the ttl source files. -->
+<!-- **[Browse the generated ontology documentation →](https://scicrunch.github.io/TARA-Ontology-Repository/)** — interactive, searchable class/property browsers, generated directly from the ttl source files. -->
 
 * [Accessing and Exploring TARA Ontology](#accessing-and-exploring-tara-ontology)
 * [TARA Acupoints Ontology : An Overview](#tara-acupoints-ontology--an-overview)
@@ -341,28 +341,21 @@ The latest TARA Acupoints Ontology files are always available as raw Turtle (`.t
 
 | File                                                                                                                                                                                  | Description                                                                                                                                                                         | Raw Link                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [tara-acupoints.ttl](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/ttl/tara-acupoints.ttl)                          | **Asserted ontology** — the primary ontology file containing all curated acupoints, meridians, locations, and relationships as authored.                                           | [Download](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/ttl/tara-acupoints.ttl)               |
-| [tara-acupoints-inferred.ttl](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/ttl/tara-acupoints-inferred.ttl)                   | **Inferred ontology** — merges asserted and reasoner-inferred axioms of the acupoints ontology plus the upper ontology into a single Turtle file.                                  | [Download](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/ttl/tara-acupoints-inferred.ttl)                 |
-| [tara-articles-kb-inferred.ttl](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/ttl/kb/tara-articles-kb-inferred.ttl) | **Full knowledge base (inferred)** — merges the asserted and inferred axioms of the acupoints ontology, upper ontology, and annotated articles metadata into a single Turtle file. | [Download](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/ttl/kb/tara-articles-kb-inferred.ttl) |
+| [tara-acupoints.ttl](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/distribution/tara-ontology/tara-acupoints.ttl)                 | **Asserted ontology** — the primary ontology file containing all curated acupoints, meridians, locations, and relationships as authored.                                           | [Download](https://raw.githubusercontent.com/SciCrunch/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/distribution/tara-ontology/tara-acupoints.ttl)               |
+| [tara-acupoints-inferred.ttl](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/master/ontology-files/generated/distribution/tara-ontology/tara-acupoints-inferred.ttl)                   | **Inferred ontology** — merges asserted and reasoner-inferred axioms of the acupoints ontology plus the upper ontology into a single Turtle file.                                  | [Download](https://raw.githubusercontent.com/SciCrunch/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/distribution/tara-ontology/tara-acupoints-inferred.ttl)                 |
+| [tara-articles-kb-inferred.ttl](https://raw.githubusercontent.com/SciCrunch/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/distribution/tara-articles-kb/tara-articles-kb-inferred.ttl) | **Full knowledge base (inferred)** — merges the asserted and inferred axioms of the acupoints ontology, upper ontology, and annotated articles metadata into a single Turtle file. | [Download](https://raw.githubusercontent.com/SciCrunch/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/distribution/tara-articles-kb/tara-articles-kb-inferred.ttl) |
 
 ### Loading TARA Ontology in Protégé Desktop
 
 The easiest way to explore the ontology is to load it in **Protégé**. Protégé is a free, open-source ontology editor which you can download from [this link](https://protege.stanford.edu/software.php#desktop-protege).
 
 - Make sure to download the Protégé Desktop Version 5.5.X or higher. If you are not familiar with the Protégé interface there is a "Getting Started" document [linked here](https://protegeproject.github.io/protege/getting-started/).
-- Click `File > Open From URL..` in Protégé and copy/paste the [**TARA Acupoints Ontology Link**](https://raw.githubusercontent.com/smtifahim/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/ttl/tara-acupoints.ttl) under the `URI` field. Clicking the `OK` button will load the ontology in Protégé.
+- Click `File > Open From URL..` in Protégé and copy/paste the [**TARA Acupoints Ontology Link**](https://raw.githubusercontent.com/SciCrunch/TARA-Ontology-Repository/refs/heads/master/ontology-files/generated/distribution/tara-ontology/tara-acupoints.ttl) under the `URI` field. Clicking the `OK` button will load the ontology in Protégé.
 
 ![1718383103389](ontology-files/generated/image/readme/1718383103389.png)
 
-The screenshot above is from TARA Acupoints Ontology - Version 0.5.
+The screenshot above is from TARA Acupoints Ontology - Version 1.5.
 
-### Exploring TARA Ontology in WebProtégé
-
-The inferred version of the TARA Acupoints Ontology is available to explore via **WebProtégé**. WebProtégé is an open source, lightweight, web-based ontology viewer and editor. The ontology is available in WebProtégé *only for viewing and commenting*. The idea is to gather feedback from acupoint experts.
-
-- If you don't have an account in WebProtégé, [create an account using this link](https://webprotege.stanford.edu/).
-- Simply navigate to the following link: [TARA Acupoints Ontology in WebProtégé](https://webprotege.stanford.edu/#projects/2034c886-40f5-4c5e-92fb-037d54c7e286/edit/Classes?selection=Class(%3Chttp://www.acupunctureresearch.org/tara/ontology/TARA_1132428%3E)))
-- If you are new to WebProtégé, please visit the [WebProtégé User Guide](https://protegewiki.stanford.edu/wiki/WebProtegeUsersGuide).
 
 ### Exploring TARA Ontology in NCBO BioPortal
 
