@@ -48,9 +48,11 @@ This section will be updated periodically based on the release of the newer vers
 
 ### Version 1.7.0 (August 15, 2026)
 
-#### New: Seperations of namespace prefixes
+#### New: Migration to Permanent IRIs and Seperations of Namespace Prefixes
 
-* ```
+* Migrates staging-domain IRIs (`http://acupunctureresearch.org/tara/ontology`) to the permanent PURL IRIs (`http://purl.org/tara/ontology/`),  and also includes the seperations of namespace prefixes.
+
+  ```
   For TARA Classes: e.g., TARA:5541141 (Curie for GB 1); TARA:2125533 (Curie for GB 10), etc.
   @prefix TARA: <http://purl.org/tara/ontology/TARA_/> .
 
@@ -127,8 +129,8 @@ Match quality (1,787 term-tags across the 1,562 mapped rows; 110 rows matched mo
 * Added top-level grouping properties `topTARAAnnotaionProperty` / `topTARAObjectProperty`, with `bfoObjectProperty` / `roObjectProperty` sub-groupings distinguishing BFO-style from RO-style relations.
 * Net effect on `tara-acupoints-core.ttl` (vs. the [Version 1.2.0 archive](../archived/version-1.2.0/)): 50 → 54 annotation properties, 16 → 22 object properties.
 * `tara-acupoints-upper.ttl` was trimmed to a smaller, more focused BFO/RO/IAO class subset (77 → 38 classes; object properties unchanged at 29) with expanded per-term documentation.
-* Reorganized the single 30,000+ line `tara-imported-terms.ttl` monolith into a modular `imported-terms/` directory: `imported-ttl-files/` (the generated UBERON, InterLex, MONDO/HP, and upper-level import outputs, plus a shared SKOS/DCTerms vocabulary file), `importer-scripts/` (one generator script per source: UBERON, InterLex, MONDO/HP;  plus a merger script).
-* Added `bridge-files/` (BFO-upper-ontology bridge modules for both the acupoints ontology and the new Articles KB.
+* Reorganized the single 30,000+ line `tara-imported-terms.ttl` monolith into a modular `imported-terms/` directory: `imported-ttl-files/` (the generated UBERON, InterLex, MONDO/HP, and upper-level import outputs, plus a shared SKOS/DCTerms vocabulary file), `importer-scripts/` (one generator script per source: UBERON, InterLex, MONDO/HP;  plus a merger scripts).
+* Added `bridge-files/` (BFO-upper-ontology bridge modules for both the acupoints ontology and the new Articles KB so that we can reliably include or exclude BFO upper-level entities.
 
 **`ontology-generator/` Pipeline Changes**
 
