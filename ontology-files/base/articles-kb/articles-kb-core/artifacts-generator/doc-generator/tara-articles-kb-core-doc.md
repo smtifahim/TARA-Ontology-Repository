@@ -1,38 +1,38 @@
 # TARA Articles KB: Core Ontology Documentation
 
-Auto-generated from [`tara-articles-kb-core.ttl`](../../tara-articles-kb-core.ttl) by `generated-artifacts/doc-generator/generate_documentation.py`. Do not hand-edit — re-run the script instead.
+Auto-generated from [`tara-articles-kb-core.ttl`](../../tara-articles-kb-core.ttl) by `artifacts-generator/doc-generator/generate_documentation.py`. Do not hand-edit — re-run the script instead.
 
 ## Core Classes
 
 Classes defined in `tara-articles-kb-core.ttl`. Classes marked **(domain)** are used as `rdfs:domain` by at least one property under `tara-kb:hasTARAArticlesMetadata`; classes marked *(range only)* are referenced only as an `rdfs:range` target.
 
-- **Acupuncture Point** — `ns1:TARA_1132428` *(range only)*
-- **Disease or Condition** — `ns1:TARA_3448356`
+- **Acupuncture Point** — `TARA:1132428` *(range only)*
+- **Disease or Condition** — `TARA:3448356`
   A broad ontology class representing any pathological process, abnormal state, or disruption of normal bodily structure or function manifested by a specific set of symptoms or signs.
-  - **Disease or Condition (TCM)** — `ns1:TARA_6703917` *(range only)*
+  - **Disease or Condition (TCM)** — `TARA:6703917` *(range only)*
     A specialized subclass of 'Disease or Condition' representing health impairments conceptualized, diagnosed, and classified according to the principles of Traditional Chinese Medicine.
-  - **Disease or Condition (Western)** — `ns1:TARA_1244992` *(range only)*
+  - **Disease or Condition (Western)** — `TARA:1244992` *(range only)*
     A specialized subclass of 'Disease or Condition' representing health impairments conceptualized, diagnosed, and classified according to conventional Western biomedical science.
-- **Research Study** — `ns1:TARA_7008377`
+- **Research Study** — `TARA:7008377`
   A planned acupuncture research process consisting of a coordinated group of research activities, methodological designs, and data-gathering evaluations aimed at systematically investigating a scientific hypothesis or clinical question.
-  - **Acupuncture Research Study** — `ns1:TARA_6701896` **(domain)**
+  - **Acupuncture Research Study** — `TARA:6701896` **(domain)**
     A specialized study process wherein the primary intervention under investigation involves acupuncture therapeutics, including needle insertion, point selection logic, needle manipulation methods, and stimulation protocols (manual, electrical, or thermal).
-- **Research Study Publication** — `ns1:TARA_3677977`
+- **Research Study Publication** — `TARA:3677977`
   An abstract ontology class representing any formal written, digital, or multimedia artifact that documents, describes, or reports on a research study.
-  - **Acupuncture Study Publication** — `ns1:TARA_8223728` **(domain)**
+  - **Acupuncture Study Publication** — `TARA:8223728` **(domain)**
     A specialized subclass of 'Research Study Publication' representing any formal written, digital, or multimedia artifact that documents, describes, or reports on an acupuncture research study.
-    - **Acupuncture Study Journal Article** — `ns1:TARA_2894731` *(range only)*
+    - **Acupuncture Study Journal Article** — `TARA:2894731` *(range only)*
       A specialized subclass of 'Acupuncture Study Publication' representing a peer-reviewed paper published within a periodic scientific journal.
-- **Study Quality Appraisal** — `ns1:TARA_7227329` **(domain)**
+- **Study Quality Appraisal** — `TARA:7227329` **(domain)**
   A data item consisting of a structured collection of metrics, scores, or evaluations generated during a systematic process to assess the methodological rigor, risk of bias, validity, or reporting completeness of a scientific study or clinical trial.
-  - **Acupuncture Study Qualty Appraisal** — `ns1:TARA_9542913`
+  - **Acupuncture Study Qualty Appraisal** — `TARA:9542913`
     A study quality appraisal data item specifically designed or adapted to evaluate the methodological rigor and reporting completeness of clinical trials or systematic reviews evaluating acupuncture interventions, capturing specific operational variables unique to needle-based therapeutics.
-    - **Acupuncture Study OCSI Appraisal** — `ns1:TARA_2825659` **(domain)**
+    - **Acupuncture Study OCSI Appraisal** — `TARA:2825659` **(domain)**
       An acupuncture study quality appraisal data item that captures, organizes, and structures the specific multi-item compliance metrics and qualitative evaluation scores defined by the Oregon CONSORT STRICTA Instrument (OCSI) for assessing the reporting quality of acupuncture clinical trials.
 
 **Custom datatype(s):**
-- `ns1:TARA_5972061` ("nonNegShortInt") — To represent individual score for each OCSI Score Category between 0 and 10.
-- `ns1:TARA_6560239` ("TARA_6560239") — To represent the total OCSI Score percentage between 0.0 to 100.0.
+- `TARA:6560239` ("TARA_6560239") — To represent the total OCSI Score percentage between 0.0 to 100.0.
+- `tara-kb:nonNegShortInt` ("nonNegShortInt") — To represent individual score for each OCSI Score Category between 0 and 10.
 
 ## Metadata Property Hierarchy
 
@@ -112,7 +112,7 @@ Full hierarchy of `tara-kb:hasTARAArticlesMetadata` and its `rdfs:subPropertyOf`
         - **Cointerventions Score** — `tara-kb:hasCointerventionsScore` — Domain: `Acupuncture Study OCSI Appraisal` · Range: `nonNegShortInt`
         - **Control Groups Score** — `tara-kb:hasControlGroupsScore` — Domain: `Acupuncture Study OCSI Appraisal` · Range: `nonNegShortInt`
         - **Needling Parameters Score** — `tara-kb:hasNeedlingParametersScore` — Domain: `Acupuncture Study OCSI Appraisal` · Range: `nonNegShortInt`
-        - **Practitioner and Sample Size Score** — `tara-kb:hasPractitionerAndSampleSizeScore` — Domain: `Acupuncture Study OCSI Appraisal` · Range: *not specified*
+        - **Practitioner and Sample Size Score** — `tara-kb:hasPractitionerAndSampleSizeScore` — Domain: `Acupuncture Study OCSI Appraisal` · Range: `nonNegShortInt`
           - **Practitioner Score** — `tara-kb:hasPractitionerScore` — Domain: `Acupuncture Study OCSI Appraisal` · Range: `nonNegShortInt`
           - **Sample Size Score** — `tara-kb:hasSampleSizeScore` — Domain: `Acupuncture Study OCSI Appraisal` · Range: `nonNegShortInt`
         - **Sham Controls Score** — `tara-kb:hasShamDetailsScore` — Domain: `Acupuncture Study OCSI Appraisal` · Range: `nonNegShortInt`
@@ -124,4 +124,3 @@ Computed from the current file — re-run this script after edits to refresh:
 
 - `tara-kb:hasLLMSystemPrompt` ("LLM System Prompt") holds a value (not a grouping property) but has no `rdfs:range` asserted.
 - `tara-kb:hasLLMUserPrompt` ("LLM User Prompt") holds a value (not a grouping property) but has no `rdfs:range` asserted.
-- `tara-kb:hasPractitionerAndSampleSizeScore` ("Practitioner and Sample Size Score") holds a value (not a grouping property) but has no `rdfs:range` asserted.

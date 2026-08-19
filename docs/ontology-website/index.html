@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TARA Ontology – Topological Atlas and Repository for Acupuncture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tara-ontology-website.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://www.acupunctureresearch.org/tara" target="_blank" class="nav-logo">
+      <img src="tara-logo.png" alt="TARA – Topological Atlas and Repository for Acupoint Research">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#why">Why</a></li>
+      <li><a href="#contents">Contents</a></li>
+      <li><a href="#usecases">Use Cases</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#access">Get It</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Ontology Core · TARA Project</div>
+      <h1><span>TARA Ontology</span></h1>
+      <p class="hero-subtitle">A formal knowledge framework for acupuncture research</p>
+      <p class="hero-desc">
+        The TARA Ontology provides a machine-readable, semantically rich representation of
+        acupoints, meridians, anatomical relationships, and clinical evidence — enabling
+        powerful search, data integration, and AI-driven discovery across the acupuncture
+        research spectrum.
+        As a core component of the TARA project funded by the National Institute of Health (NIH), 
+        the goal of the ontology is to establish a comprehensive, computable resource for the acupuncture 
+        research and clinician community. 
+
+      </p>
+      <div class="hero-ctas">
+        <a href="https://bioportal.bioontology.org/ontologies/TARA" target="_blank" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Browse on BioPortal
+        </a>
+        <a href="https://github.com/SciCrunch/TARA-Ontology-Repository" target="_blank" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+    <div class="hero-logo-wrap">
+      <a href="https://www.acupunctureresearch.org/tara" target="_blank">
+        <img src="tara-logo.png" alt="TARA Logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="ontology-grid">
+      <div class="ontology-text reveal">
+        <span class="section-tag">Foundation</span>
+        <h2 class="section-title">What is an ontology?</h2>
+        <p>
+          An ontology is an <strong>explicit, formal representation of concepts and
+          relationships</strong> within a particular domain — encoding human knowledge
+          in a machine-readable form that computers can reason over and query.
+        </p>
+        <p>
+          Rooted in the philosophical branch concerned with "what exists," ontologies in
+          biomedicine serve as shared vocabularies that allow disparate datasets, tools,
+          and systems to speak the same language. They underpin semantic search, automated
+          inference, and AI-assisted discovery.
+        </p>
+        <p>
+          The TARA Ontology brings this approach to acupuncture: formalizing acupoints,
+          meridians, anatomical locations, special point roles, and links to clinical
+          evidence in a unified, interoperable knowledge structure aligned with established
+          biomedical standards such as UBERON, MONDO, and the Human Phenotype Ontology.
+        </p>
+      </div>
+
+      <div class="kg-card reveal">
+        <div class="kg-label-top">Core Relationships in TARA</div>
+        <div class="kg-nodes">
+          <svg class="kg-edges" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+            <line x1="180" y1="120" x2="58"  y2="28"  stroke="rgba(62,200,200,0.45)" stroke-width="1.5" stroke-dasharray="5 3"/>
+            <line x1="180" y1="120" x2="305" y2="22"  stroke="rgba(62,200,200,0.3)"  stroke-width="1.5" stroke-dasharray="5 3"/>
+            <line x1="180" y1="120" x2="40"  y2="200" stroke="rgba(62,200,200,0.35)" stroke-width="1.5" stroke-dasharray="5 3"/>
+            <line x1="180" y1="120" x2="315" y2="188" stroke="rgba(62,200,200,0.25)" stroke-width="1.5" stroke-dasharray="5 3"/>
+            <line x1="180" y1="120" x2="228" y2="218" stroke="rgba(62,200,200,0.3)"  stroke-width="1.5" stroke-dasharray="5 3"/>
+            <text x="90"  y="62"  font-family="monospace" font-size="9" fill="rgba(255,255,255,0.3)">isMemberOf</text>
+            <text x="224" y="58"  font-family="monospace" font-size="9" fill="rgba(255,255,255,0.3)">hasRole</text>
+            <text x="60"  y="172" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.3)">isLocatedIn</text>
+            <text x="230" y="162" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.3)">isStudiedIn</text>
+            <text x="185" y="188" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.3)">hasCondition</text>
+          </svg>
+          <div class="kg-node center">Acupoint</div>
+          <div class="kg-node n1">Meridian</div>
+          <div class="kg-node n2">Special Point Role</div>
+          <div class="kg-node n3">Anatomical Region</div>
+          <div class="kg-node n4">Article (DOI)</div>
+          <div class="kg-node n5">Condition</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-inner">
+    <span class="section-tag">Motivation</span>
+    <h2 class="section-title">Why an ontology for acupuncture?</h2>
+    <p class="section-lead">
+      The TARA Ontology serves as the semantic backbone — a "Rosetta Stone" — across all TARA
+      tools, atlases, and data resources, enabling queries and analyses that would otherwise
+      be impossible across heterogeneous datasets.
+    </p>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🔗</div>
+        <h3>Data Integration</h3>
+        <p>Unifies terminology across TARA's atlas, data, and research components, enabling seamless cross-tool interoperability and consistent semantics.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🔍</div>
+        <h3>Semantic Search</h3>
+        <p>Powers intelligent queries across acupoints, meridians, anatomy, and clinical literature — connecting acupoints to conditions studied and the evidence base.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🧠</div>
+        <h3>AI-Ready Knowledge</h3>
+        <p>Structured knowledge that can be fed into AI systems for summarization, pattern discovery, and clinical insight generation across the acupuncture literature.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">📊</div>
+        <h3>Research Discovery</h3>
+        <p>Connects acupoints to published studies and conditions, enabling researchers to identify patterns and evidence gaps at scale.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌐</div>
+        <h3>Interoperability</h3>
+        <p>Grounded in community standards (UBERON, MONDO, HPO), ensuring compatibility with the broader biomedical ontology ecosystem.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🏛️</div>
+        <h3>Standardization</h3>
+        <p>Based on WHO Standard Acupuncture Point Locations and established references, providing a rigorous, citable foundation for acupuncture informatics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENTS -->
+<section id="contents">
+  <div class="section-inner">
+    <h2 class="section-title">What's in the ontology?</h2>
+    <p class="section-lead">
+      The current release covers the full complement of WHO standard meridian acupoints, extra points,
+      special point classifications, anatomical locators, and links to pain-related research literature.
+    </p>
+    <div class="contents-links">
+      <a href="https://github.com/SciCrunch/TARA-Ontology-Repository#tara-acupoints-ontology--an-overview" target="_blank" class="contents-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
+        Learn More About the Ontology
+      </a>
+      <a href="https://github.com/SciCrunch/TARA-Ontology-Repository#accessing-and-exploring-tara-ontology" target="_blank" class="contents-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
+        Accessing and Exploring the Ontology
+      </a>
+      <a href="https://purl.org/tara/ontology/updates" target="_blank" class="contents-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 0 0 4.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 0 1-15.357-2m15.357 2H15"/></svg>
+        Latest Version &amp; Ontology Updates
+      </a>
+    </div>
+    <div class="contents-grid">
+      <div class="content-panel reveal">
+        <h3>🗺️ Acupoints &amp; Meridians</h3>
+        <div class="stat-row"><span>Main Meridians (WHO Standard)</span><span class="stat-num">12</span></div>
+        <div class="stat-row"><span>Extra Meridians (WHO Standard)</span><span class="stat-num">2</span></div>
+        <div class="stat-row"><span>Meridian Acupoints (WHO Standard)</span><span class="stat-num">361</span></div>
+        <div class="stat-row"><span>Extra Acupoints </span><span class="stat-num">40</span></div>
+        <div class="stat-row"><span>Special Points </span><span class="stat-num">58</span></div>
+      </div>
+      <div class="content-panel reveal">
+        <h3>📋 Annotations &amp; Evidence</h3>
+        <div class="stat-row"><span>Standard labels, Pinyin labels, and <br>labels using traditional Chinese characters</span><span class="stat-check"> &#10004 Standard Acupoints</span></div>
+        <div class="stat-row"><span>Textual annotations of anatomical surface <br>locations on human body</span><span class="stat-check">&#10004 All Acupoints</span></div>
+        <div class="stat-row"><span>Modeling of anatomical surface locations <br>on human body</span><span class="stat-check">&#10004 Standard Acupoints</span></div>
+
+        <div class="stat-row"><span>Modeling of Special points associations and <br>classifications</span><span class="stat-check">&#10004 Standard Acupoints</span></div>
+
+      </div>
+      <div class="content-panel content-panel--full reveal">
+        <h3>📚 Reference Sources</h3>
+        <p class="source-intro">The knowledge curated for the TARA Acupoints Ontology is drawn primarily from the following authoritative reference sources:</p>
+        <div class="source-item">
+          <p><em>WHO Standard Acupuncture Point Locations in the Western Pacific Region</em>. World Health Organization (WHO). WHO Regional Office for the Western Pacific, 2008. ISBN 978-92-9061-248-7. <a href="https://iris.who.int/handle/10665/353407" target="_blank">Available online</a>.</p>
+          <ul>
+            <li>Source for standardized alphanumeric codes, phonetic Pinyin spellings, and names using traditional Chinese characters for standard acupoints, along with their surface-anatomy location descriptions on the human body.</li>
+          </ul>
+        </div>
+        <div class="source-item">
+          <p><em>Chinese Acupuncture and Moxibustion</em>. Edited by C. Xinnong. Revised ed. Foreign Languages Press, Beijing, China, 1999. ISBN 978-7-119-01758-7.</p>
+          <ul>
+            <li>Source for Acupuncture Method, Vasculature, Innervation, and Indications.</li>
+            <li>Source for Extra Acupoints, including their standardized Pinyin spellings, synonymous alphanumeric codes, and surface-anatomy location descriptions on the human body.</li>
+            <li>Source for the standard nomenclature and classification of Special Points, as well as the classification schema for standard acupoints based on their Special Point roles.</li>
+          </ul>
+        </div>
+        <div class="source-item">
+          <p><em>Acupuncture: A Comprehensive Text</em>. Shanghai College of Traditional Medicine. Chapter 8: Other New and Miscellaneous Acupuncture. Translated and edited by J. O'Connor and D. Bensky. Chicago: Eastland Press, 1981.</p>
+          <ul>
+            <li>Source for alternative, commonly used alphanumeric codes for Extra Acupoints included in the TARA Ontology.</li>
+          </ul>
+        </div>
+        <div class="source-item">
+          <p><a href="https://obofoundry.org/ontology/uberon.html" target="_blank">Uberon Multi-Species Anatomy Ontology</a>. An integrated cross-species anatomy ontology covering animals and bridging multiple species-specific ontologies.</p>
+          <ul>
+            <li>Source for standard mappings of anatomical entities used in the TARA Ontology, including body-surface regions (e.g., specific regions on the head, chest, and torso) and subsurface anatomical structures (e.g., nerves, veins, and arteries) associated with acupoints based on their descriptions in standards sources.</li>
+          </ul>
+        </div>
+        <div class="source-item">
+          <p>Mondo Disease Ontology (<a href="https://www.ebi.ac.uk/ols4/ontologies/mondo" target="_blank">MONDO</a>) and Human Phenotype Ontology (<a href="https://www.ebi.ac.uk/ols4/ontologies/hp" target="_blank">HP</a>).</p>
+          <ul>
+            <li>Source for standardized mappings of diseases and conditions identified in the scientific literature related to acupoints. These mappings are currently being applied to article metadata curated as part of the TARA Articles Knowledgebase project.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="content-panel reveal">
+        <h3>🚀 Coming in v2.0</h3>
+        <div class="source-item">Subsurface anatomy of the acupoints with related nerves and vasculature</div>
+        <div class="source-item">Expanded conditions studied in acupuncture research</div>
+        <div class="source-item">Fascial nomenclature integration</div>
+        <div class="source-item">AI-based query interface</div>
+        <div class="source-item">Additional community use cases</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="usecases">
+  <div class="section-inner">
+    <span class="section-tag">Competency Queries</span>
+    <h2 class="section-title">What questions can the ontology answer?</h2>
+    <p class="section-lead">
+      Competency queries define what a well-formed ontology must be capable of answering. These
+      use cases — drawn from community surveys — guide TARA's design and provide a testing
+      framework for completeness and accuracy.
+    </p>
+    <div class="queries-list">
+      <div class="query-item reveal"><span class="query-num">Q1</span><span class="query-text">"What acupoints are located on meridian X?"</span></div>
+      <div class="query-item reveal"><span class="query-num">Q2</span><span class="query-text">"What is the anatomy around acupoint X, within a specified scope?"</span></div>
+      <div class="query-item reveal"><span class="query-num">Q3</span><span class="query-text">"What research is connected to acupoint X?"</span></div>
+      <div class="query-item reveal"><span class="query-num">Q4</span><span class="query-text">"Which acupoints are most commonly combined to treat condition X?"</span></div>
+      <div class="query-item reveal"><span class="query-num">Q5</span><span class="query-text">"Are there research studies about condition X related to acupoint Y?"</span></div>
+      <div class="query-item reveal"><span class="query-num">Q6</span><span class="query-text">"What research studies involve acupoints located within meridian X?"</span></div>
+      <div class="query-item reveal"><span class="query-num">Q7</span><span class="query-text">"What acupoints are located on the torso?"</span></div>
+      <div class="query-item reveal"><span class="query-num">Q8</span><span class="query-text">"What are the Front-Mu points and which meridians do they belong to?"</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section-inner">
+    <span class="section-tag">The TARA Project</span>
+    <h2 class="section-title">Project Team</h2>
+    <p class="section-lead">
+      TARA is a multi-site NIH NCCIH-funded collaboration. The Ontology Core is led by UCSD
+      and works in close coordination with the Atlas, Data, and Admin cores.
+    </p>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-core-tag">Ontology Core</div>
+        <div class="team-lead">Maryann Martone, PhD</div>
+        <div class="team-inst">UC San Diego (Lead)</div>
+      </div>
+       <div class="team-card reveal">
+        <div class="team-core-tag">Ontology Development</div>
+        <div class="team-lead">Fahim Imam, PhD</div>
+        <div class="team-inst">UC San Diego</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-core-tag">Ontology Curation</div>
+        <div class="team-lead">Ilias Ziogas, PhD</div>
+        <div class="team-inst">UC San Diego</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-core-tag">Project Management</div>
+        <div class="team-lead">Laura Triplett</div>
+        <div class="team-inst">Society for Acupuncture Research</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-core-tag">Team Core</div>
+        <div class="team-lead">Richard Harris, PhD LAc</div>
+        <div class="team-inst">University of California at Irvine/ SAR (Lead)</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-core-tag">Atlas Core</div>
+        <div class="team-lead">Peter Hunter, PhD</div>
+        <div class="team-inst">University of Auckland (Lead)</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-core-tag">Data Core</div>
+        <div class="team-lead">Karl Helmer, PhD</div>
+        <div class="team-inst">MGH, Harvard Medical School</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-core-tag">Admin Core</div>
+        <div class="team-lead">Vitaly Napadow, PhD LAc</div>
+        <div class="team-inst">Spaulding Rehabilitation Hospital, Harvard Medical School</div>
+      </div>
+     
+    </div>
+    <p style="margin-top:24px; font-size:13px; color:var(--text-lt);">
+      Special thanks to Drs. Lixing Lao and Richard Harris for content expertise and guidance.
+      Funded by the National Center for Complementary and Integrative Health (NCCIH), NIH.
+    </p>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access">
+  <div class="section-inner">
+    <span class="section-tag">Get the Ontology</span>
+    <h2 class="section-title">Access &amp; Download</h2>
+    <p class="section-lead">
+      The TARA Ontology is freely available through BioPortal — the world's largest repository
+      of biomedical ontologies — and GitHub for direct download and contribution.
+    </p>
+    <div class="access-cards">
+      <a href="https://bioportal.bioontology.org/ontologies/TARA" target="_blank" class="access-card reveal">
+        <div class="access-icon bioportal">🧬</div>
+        <h3>BioPortal</h3>
+        <p>Browse the ontology interactively, explore class hierarchies, search terms, and visualize relationships in the NCBO BioPortal.</p>
+        <span class="access-url">bioportal.bioontology.org/ontologies/TARA</span>
+      </a>
+      <a href="https://github.com/SciCrunch/TARA-Ontology-Repository" target="_blank" class="access-card reveal">
+        <div class="access-icon github">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </div>
+        <h3>GitHub</h3>
+        <p>Download OWL files, track releases, contribute to development, and access documentation via the SciCrunch repository.</p>
+        <span class="access-url">github.com/SciCrunch/TARA-Ontology-Repository</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="tara-logo.png" alt="TARA">
+    </div>
+    <div class="footer-links">
+      <a href="https://bioportal.bioontology.org/ontologies/TARA" target="_blank">BioPortal</a>
+      <a href="https://github.com/SciCrunch/TARA-Ontology-Repository" target="_blank">GitHub</a>
+    </div>
+    <p>
+      The TARA Ontology is developed as part of the Topological Atlas and Repository for Acupuncture project,<br>
+      funded by the National Center for Complementary and Integrative Health (NCCIH), NIH.<br>
+      Ontology Core led by Maryann Martone, PhD · University of California, San Diego.
+    </p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 75);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

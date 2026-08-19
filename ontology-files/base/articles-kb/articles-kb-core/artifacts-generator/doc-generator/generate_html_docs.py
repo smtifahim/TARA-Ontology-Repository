@@ -41,7 +41,7 @@ IAO_EXAMPLE = OBO["IAO_0000112"]
 
 ROOT_PROPERTY = TARA_KB.hasTARAArticlesMetadata
 
-# generate_html_docs.py -> doc-generator -> generated-artifacts -> articles-kb-core
+# generate_html_docs.py -> doc-generator -> artifacts-generator -> articles-kb-core
 CORE_DIR = Path(__file__).resolve().parents[2]
 # articles-kb-core -> articles-kb -> base -> ontology-files -> repo root
 REPO_ROOT = Path(__file__).resolve().parents[6]
@@ -197,14 +197,9 @@ def build_payload(g):
 # HTML rendering
 # ---------------------------------------------------------------------------
 
-PAGE_TEMPLATE = """<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TARA Articles KB &mdash; Core Ontology Browser</title>
-<style>
-:root {
+CSS_FILENAME = "styles.css"
+
+CSS_TEMPLATE = """:root {
   --bg: #ffffff;
   --panel-bg: #f7f8fa;
   --border: #dfe2e6;
@@ -216,6 +211,7 @@ PAGE_TEMPLATE = """<!doctype html>
   --grouping-border: #999999;
   --chip-bg: #eef1f6;
   --highlight-bg: #fff3b0;
+  --guide: #a9c2ea;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -230,6 +226,7 @@ PAGE_TEMPLATE = """<!doctype html>
     --grouping-border: #555c66;
     --chip-bg: #232833;
     --highlight-bg: #4a4322;
+    --guide: #3a5480;
   }
 }
 * { box-sizing: border-box; }
@@ -296,12 +293,18 @@ main { display: flex; flex: 1; min-height: 0; }
 #sidebar {
   width: 340px;
   min-width: 220px;
-  max-width: 50vw;
   border-right: 1px solid var(--border);
   overflow-y: auto;
   padding: 0.5rem 0;
-  resize: horizontal;
+  flex-shrink: 0;
 }
+#splitter {
+  width: 6px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  background: var(--border);
+}
+#splitter:hover, #splitter.dragging { background: var(--accent); }
 .tab-bar { display: flex; border-bottom: 1px solid var(--border); }
 .tab-btn {
   flex: 1;
@@ -315,13 +318,14 @@ main { display: flex; flex: 1; min-height: 0; }
 }
 .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
 .tree { padding: 0.4rem 0.4rem 1rem 0.4rem; }
-.tree ul { list-style: none; margin: 0; padding-left: 1.05rem; }
+.tree ul { list-style: none; margin: 0; padding-left: 1.15rem; }
 .tree > ul { padding-left: 0.2rem; }
+.tree li > ul { border-left: 1px dotted var(--guide); margin-left: 0.55rem; }
 .node-row {
   display: flex;
   align-items: baseline;
-  gap: 0.3rem;
-  padding: 0.12rem 0.3rem;
+  gap: 0.35rem;
+  padding: 0.15rem 0.3rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.85rem;
@@ -329,14 +333,18 @@ main { display: flex; flex: 1; min-height: 0; }
 .node-row:hover { background: var(--panel-bg); }
 .node-row.selected { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
 .node-row.grouping .node-label { font-style: italic; color: var(--text-muted); }
+.node-row.connector { opacity: 0.55; cursor: help; }
+.domain-tree { margin-top: 0.2rem; }
 .toggle {
-  width: 1rem;
+  width: 1.1rem;
   text-align: center;
-  color: var(--text-muted);
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 700;
   user-select: none;
   flex-shrink: 0;
 }
-.toggle.leaf { visibility: hidden; }
+.toggle.leaf { color: var(--text-muted); font-weight: 400; font-size: 0.95rem; }
 .node-label { overflow-wrap: anywhere; }
 li.hidden-by-filter { display: none; }
 #content { flex: 1; overflow-y: auto; padding: 1.25rem 1.75rem; }
@@ -386,16 +394,24 @@ li.hidden-by-filter { display: none; }
 .flash { animation: flash-anim 1.4s ease; }
 @keyframes flash-anim { 0%, 40% { background: var(--highlight-bg); } 100% { background: transparent; } }
 footer { padding: 0.5rem 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.75rem; }
-</style>
+"""
+
+PAGE_TEMPLATE = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TARA Articles KB &mdash; Core Metadata Browser</title>
+<link rel="stylesheet" href="__CSS_FILENAME__">
 </head>
 <body>
 <header>
   <div>
-    <h1>TARA Articles KB &mdash; Core Ontology Browser</h1>
+    <h1>TARA Articles KB &mdash; Core Metadata Browser</h1>
     <div class="sub">tara-articles-kb-core.ttl</div>
   </div>
   <div class="search-wrap">
-    <input id="search" type="text" placeholder="Search by label or synonym&hellip;" autocomplete="off">
+    <input id="search" type="text" placeholder="Search or click to browse&hellip;" autocomplete="off">
     <div id="autocomplete"></div>
   </div>
 </header>
@@ -408,9 +424,10 @@ footer { padding: 0.5rem 1rem; border-top: 1px solid var(--border); color: var(-
     <div id="tree-properties" class="tree"></div>
     <div id="tree-classes" class="tree" style="display:none"></div>
   </div>
+  <div id="splitter" title="Drag to resize"></div>
   <div id="content"><p class="placeholder">Select a class or property from the left, or search above.</p></div>
 </main>
-<footer>Auto-generated from <code>tara-articles-kb-core.ttl</code> by <code>generated-artifacts/doc-generator/generate_html_docs.py</code>. Do not hand-edit &mdash; re-run the script instead.</footer>
+<footer>Auto-generated from <code>tara-articles-kb-core.ttl</code> by <code>artifacts-generator/doc-generator/generate_html_docs.py</code>. Do not hand-edit &mdash; re-run the script instead.</footer>
 
 <script id="tara-data" type="application/json">
 __DATA_JSON__
@@ -438,8 +455,38 @@ __DATA_JSON__
     document.getElementById('tree-classes').style.display = tab === 'classes' ? '' : 'none';
   }
 
+  // ---- resizable splitter (sidebar width, capped at 35% of page width) ----
+  const sidebarEl = document.getElementById('sidebar');
+  const splitterEl = document.getElementById('splitter');
+  const SIDEBAR_MIN_WIDTH = 220;
+  let splitterDragging = false;
+
+  splitterEl.addEventListener('mousedown', (e) => {
+    splitterDragging = true;
+    splitterEl.classList.add('dragging');
+    document.body.style.userSelect = 'none';
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (!splitterDragging) return;
+    const maxWidth = window.innerWidth * 0.35;
+    const newWidth = Math.min(Math.max(e.clientX, SIDEBAR_MIN_WIDTH), maxWidth);
+    sidebarEl.style.width = newWidth + 'px';
+  });
+  document.addEventListener('mouseup', () => {
+    if (!splitterDragging) return;
+    splitterDragging = false;
+    splitterEl.classList.remove('dragging');
+    document.body.style.userSelect = '';
+  });
+
   // ---- tree rendering ----
-  function buildNode(id, store) {
+  const TOGGLE_COLLAPSED = '▶'; // ▶
+  const TOGGLE_EXPANDED = '▼'; // ▼
+  const DEFAULT_EXPANDED_DEPTH = 2; // 0-indexed: depths 0 and 1 start expanded, so levels 1-3 are visible by default
+
+  function buildNode(id, store, depth) {
+    depth = depth || 0;
     const rec = store[id];
     const li = document.createElement('li');
     li.dataset.id = id;
@@ -451,7 +498,7 @@ __DATA_JSON__
     const hasChildren = rec.children && rec.children.length > 0;
     const toggle = document.createElement('span');
     toggle.className = 'toggle' + (hasChildren ? '' : ' leaf');
-    toggle.textContent = hasChildren ? '▸' : '•';
+    toggle.textContent = hasChildren ? TOGGLE_COLLAPSED : '-';
     row.appendChild(toggle);
 
     const label = document.createElement('span');
@@ -463,16 +510,18 @@ __DATA_JSON__
 
     let childUl = null;
     if (hasChildren) {
+      const startExpanded = depth < DEFAULT_EXPANDED_DEPTH;
       childUl = document.createElement('ul');
-      childUl.style.display = 'none';
-      rec.children.forEach(cid => childUl.appendChild(buildNode(cid, store)));
+      childUl.style.display = startExpanded ? '' : 'none';
+      toggle.textContent = startExpanded ? TOGGLE_EXPANDED : TOGGLE_COLLAPSED;
+      rec.children.forEach(cid => childUl.appendChild(buildNode(cid, store, depth + 1)));
       li.appendChild(childUl);
 
       toggle.addEventListener('click', (e) => {
         e.stopPropagation();
         const open = childUl.style.display !== 'none';
         childUl.style.display = open ? 'none' : '';
-        toggle.textContent = open ? '▸' : '▾';
+        toggle.textContent = open ? TOGGLE_COLLAPSED : TOGGLE_EXPANDED;
       });
     }
 
@@ -484,7 +533,7 @@ __DATA_JSON__
     const container = document.getElementById(containerId);
     container.innerHTML = '';
     const ul = document.createElement('ul');
-    rootIds.forEach(rid => ul.appendChild(buildNode(rid, store)));
+    rootIds.forEach(rid => ul.appendChild(buildNode(rid, store, 0)));
     container.appendChild(ul);
   }
 
@@ -504,7 +553,7 @@ __DATA_JSON__
         if (ul) {
           ul.style.display = '';
           const t = row.querySelector('.toggle');
-          if (t && !t.classList.contains('leaf')) t.textContent = '▾';
+          if (t && !t.classList.contains('leaf')) t.textContent = TOGGLE_EXPANDED;
         }
       }
       cur = store[cur] ? store[cur].parent : null;
@@ -528,7 +577,38 @@ __DATA_JSON__
       setTimeout(() => row.parentElement.classList.remove('flash'), 1400);
     }
     renderDetail(id);
+    // record this selection as a browser-history entry (deep-linkable via '#id' too),
+    // so the browser's native Back/Forward buttons step through past selections -
+    // skipped when we're the ones restoring a state FROM a popstate/deep-link, to
+    // avoid pushing a duplicate entry on top of the one already being navigated to.
+    if (opts.pushHistory !== false) {
+      history.pushState({ id: id }, '', '#' + id);
+    }
   }
+
+  function clearSelection() {
+    selectedId = null;
+    document.querySelectorAll('.node-row.selected').forEach(el => el.classList.remove('selected'));
+    document.getElementById('content').innerHTML =
+      '<p class="placeholder">Select a class or property from the left, or search above.</p>';
+  }
+
+  window.addEventListener('popstate', (e) => {
+    const id = e.state && e.state.id;
+    if (id && recordOf(id)) {
+      selectNode(id, { pushHistory: false });
+    } else {
+      clearSelection();
+    }
+  });
+
+  // restore a selection from a deep-linked URL (e.g. .../articles-kb-core/#tara-kb:hasBlindingQualityScore)
+  (function restoreFromHash() {
+    const initial = location.hash.slice(1);
+    if (initial && recordOf(initial)) {
+      selectNode(initial, { pushHistory: false });
+    }
+  })();
 
   function chip(text, onClick) {
     const el = document.createElement('span');
@@ -550,6 +630,64 @@ __DATA_JSON__
     el.className = 'prose';
     el.textContent = text;
     return el;
+  }
+
+  // Renders propIds (a flat list of property ids sharing one domain class) as a
+  // nested tree following tara-kb:hasTARAArticlesMetadata structure, instead of
+  // one flat chip list - grouping properties (e.g. "Category B: ...") show their
+  // members nested underneath instead of as unrelated siblings. An ancestor that
+  // isn't itself in propIds (its own domain differs or is unset) is still shown,
+  // dimmed, purely as structural connective tissue to the nearest visible root.
+  function buildDomainTree(propIds) {
+    const include = new Set(propIds);
+    const connectors = new Set();
+    include.forEach(id => {
+      let cur = PROPERTIES[id] ? PROPERTIES[id].parent : null;
+      while (cur && !include.has(cur) && !connectors.has(cur)) {
+        connectors.add(cur);
+        cur = PROPERTIES[cur] ? PROPERTIES[cur].parent : null;
+      }
+    });
+    const all = new Set([...include, ...connectors]);
+    const roots = [...all]
+      .filter(id => { const p = PROPERTIES[id].parent; return !p || !all.has(p); })
+      .sort((a, b) => PROPERTIES[a].label.localeCompare(PROPERTIES[b].label));
+
+    function renderNode(id) {
+      const rec = PROPERTIES[id];
+      const li = document.createElement('li');
+      const row = document.createElement('div');
+      row.className = 'node-row' + (rec.grouping ? ' grouping' : '') + (connectors.has(id) ? ' connector' : '');
+      row.dataset.id = id;
+      if (connectors.has(id)) row.title = 'Shown for structure only — its own domain differs from this class';
+      const bullet = document.createElement('span');
+      bullet.className = 'toggle leaf';
+      bullet.textContent = '-';
+      row.appendChild(bullet);
+      const label = document.createElement('span');
+      label.className = 'node-label';
+      label.textContent = rec.label;
+      row.appendChild(label);
+      row.addEventListener('click', () => selectNode(id));
+      li.appendChild(row);
+
+      const children = (rec.children || [])
+        .filter(cid => all.has(cid))
+        .sort((a, b) => PROPERTIES[a].label.localeCompare(PROPERTIES[b].label));
+      if (children.length) {
+        const ul = document.createElement('ul');
+        children.forEach(cid => ul.appendChild(renderNode(cid)));
+        li.appendChild(ul);
+      }
+      return li;
+    }
+
+    const container = document.createElement('div');
+    container.className = 'tree domain-tree';
+    const ul = document.createElement('ul');
+    roots.forEach(rid => ul.appendChild(renderNode(rid)));
+    container.appendChild(ul);
+    return container;
   }
 
   function renderDetail(id) {
@@ -622,12 +760,7 @@ __DATA_JSON__
 
     if (rec.kind === 'class' && rec.propertiesWithThisDomain && rec.propertiesWithThisDomain.length) {
       content.appendChild(fieldLabel('Properties with this Domain'));
-      const row = document.createElement('div');
-      row.className = 'chip-row';
-      rec.propertiesWithThisDomain.forEach(pid => {
-        row.appendChild(chip(PROPERTIES[pid].label, () => selectNode(pid)));
-      });
-      content.appendChild(row);
+      content.appendChild(buildDomainTree(rec.propertiesWithThisDomain));
     }
 
     if (rec.synonyms && rec.synonyms.length) {
@@ -679,9 +812,15 @@ __DATA_JSON__
       .filter(Boolean).join(' • ').toLowerCase();
   }
 
+  function allEntries() {
+    const all = Object.values(PROPERTIES).concat(Object.values(CLASSES));
+    all.sort((a, b) => a.label.localeCompare(b.label));
+    return all;
+  }
+
   function matchIds(query) {
     const q = query.trim().toLowerCase();
-    if (!q) return [];
+    if (!q) return allEntries(); // empty query -> full pulldown of everything, browsable
     const results = [];
     Object.values(PROPERTIES).forEach(rec => { if (searchableText(rec).includes(q)) results.push(rec); });
     Object.values(CLASSES).forEach(rec => { if (searchableText(rec).includes(q)) results.push(rec); });
@@ -717,17 +856,17 @@ __DATA_JSON__
         if (ul) {
           ul.style.display = '';
           const t = row.querySelector('.toggle');
-          if (t && !t.classList.contains('leaf')) t.textContent = '▾';
+          if (t && !t.classList.contains('leaf')) t.textContent = TOGGLE_EXPANDED;
         }
       }
     });
   }
 
   function renderAutocomplete(query) {
-    acItems = matchIds(query).slice(0, 20);
+    acItems = matchIds(query).slice(0, 60);
     acActiveIndex = -1;
     autocompleteEl.innerHTML = '';
-    if (!query.trim() || acItems.length === 0) {
+    if (acItems.length === 0) {
       autocompleteEl.style.display = 'none';
       return;
     }
@@ -745,7 +884,10 @@ __DATA_JSON__
       item.addEventListener('mousedown', (e) => { e.preventDefault(); chooseAutocomplete(i); });
       autocompleteEl.appendChild(item);
     });
-    autocompleteEl.style.display = '';
+    // #autocomplete's stylesheet rule defaults to display:none, so clearing the
+    // inline style here (display = '') would fall back to that and stay hidden -
+    // must set an explicit visible value instead.
+    autocompleteEl.style.display = 'block';
   }
 
   function chooseAutocomplete(i) {
@@ -761,6 +903,9 @@ __DATA_JSON__
     applyFilter(searchInput.value);
     renderAutocomplete(searchInput.value);
   });
+
+  searchInput.addEventListener('focus', () => renderAutocomplete(searchInput.value));
+  searchInput.addEventListener('click', () => renderAutocomplete(searchInput.value));
 
   searchInput.addEventListener('keydown', (e) => {
     if (autocompleteEl.style.display === 'none') return;
@@ -807,7 +952,8 @@ def generate(ttl_path: Path) -> str:
     # defend against a ttl field ever containing a literal "</script>", which
     # would otherwise prematurely close the embedded <script> tag
     data_json = data_json.replace("</", "<\\/")
-    return PAGE_TEMPLATE.replace("__DATA_JSON__", data_json)
+    html = PAGE_TEMPLATE.replace("__CSS_FILENAME__", CSS_FILENAME)
+    return html.replace("__DATA_JSON__", data_json)
 
 
 def main():
@@ -819,7 +965,10 @@ def main():
     html = generate(args.ttl)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(html, encoding="utf-8")
+    css_path = args.out.parent / CSS_FILENAME
+    css_path.write_text(CSS_TEMPLATE, encoding="utf-8")
     print(f"Wrote {args.out}")
+    print(f"Wrote {css_path}")
 
 
 if __name__ == "__main__":

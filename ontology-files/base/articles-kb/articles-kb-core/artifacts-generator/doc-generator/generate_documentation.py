@@ -269,7 +269,7 @@ def generate(ttl_path: Path) -> str:
         "# TARA Articles KB: Core Ontology Documentation",
         "",
         f"Auto-generated from [`{ttl_path.name}`](../../{ttl_path.name}) by "
-        "`generated-artifacts/doc-generator/generate_documentation.py`. Do not hand-edit — re-run the script instead.",
+        "`artifacts-generator/doc-generator/generate_documentation.py`. Do not hand-edit — re-run the script instead.",
         "",
     ]
     lines.extend(render_classes_section(g))

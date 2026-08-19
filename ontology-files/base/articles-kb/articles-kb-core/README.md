@@ -1,6 +1,6 @@
-# TARA Articles KB — Core Ontology
+# TARA Articles KB Metadata — Core Ontology
 
-**[Browse this ontology interactively &rarr;](https://scicrunch.github.io/TARA-Ontology-Repository/articles-kb-core/)** &mdash; searchable class/property browser, generated from `tara-articles-kb-core.ttl` by `generated-artifacts/doc-generator/generate_html_docs.py`.
+### [Click here to browse this ontology interactively](https://smtifahim.github.io/TARA-Ontology-Repository/articles-kb-core/)
 
 ## Purpose
 
@@ -29,7 +29,7 @@ flowchart TB
 
     TTL["<b>tara-articles-kb-core.ttl</b><br/>single source of truth:<br/>fields, labels, definitions, <br/>examples, normalization rules, types"]:::core
 
-    subgraph BUILD["schema-tools/ — generated once per ontology change"]
+    subgraph BUILD["artifacts-generator/ — generated once per ontology change"]
         REFLECT["ontology_manifest.py<br/>(one SPARQL reflection query)"]:::gen
         MANIFEST["field-manifest.json<br/>(canonical intermediate)"]:::artifact
         PROMPT_GEN["generate_llm_prompts.py"]:::gen
@@ -77,19 +77,20 @@ flowchart TB
 
 - **`tara-articles-kb-core.ttl`** — the canonical, hand-authored ontology.
 - **`tara-articles-kb-core-draft.ttl`** — working draft / staging area for property changes before they're promoted into the core file.
-- **`Documentation.md`** — hand-authored reference notes (work in progress).
-- **`schema-tools/`** — *(scaffolding only, not yet implemented)* future generator scripts for the other derived artifacts below (CSV/Excel templates, DB schema, SPARQL templates, LLM prompt manifests). Once more than one such generator exists, consider introducing a shared `ontology_manifest.py` reflection step so they don't each re-implement the same ttl traversal.
-  - `queries/` — reusable SPARQL (`.rq`) query files for the generator scripts.
-- **`generated-artifacts/`** — build output, plus the generators that produce it.
-  - `doc-generator/` — two generators, both parsing `tara-articles-kb-core.ttl` directly with `rdflib` (no manifest step); re-run both after any ttl edit.
-    - `generate_documentation.py` — writes `tara-articles-kb-core-doc.md` alongside it: the core class hierarchy, the full `tara-kb:hasTARAArticlesMetadata` property tree with domain/range, and a computed Data Quality Notes section (grouping properties with a stray `rdfs:range`, value properties missing one). Run: `python3 generated-artifacts/doc-generator/generate_documentation.py`.
-    - `tara-articles-kb-core-doc.md` — its generated output; never hand-edited, regenerate instead.
-    - `generate_html_docs.py` — writes a self-contained, interactive HTML ontology browser (search/autocomplete over labels + synonyms, expandable class/property trees, cross-linked detail panel) to `docs/articles-kb-core/index.html` at the repo root by default (served by GitHub Pages), overridable via `--out`. Run: `python3 generated-artifacts/doc-generator/generate_html_docs.py`.
-  - `manifest/` — *(not yet populated)* intended canonical intermediate field manifest (compact URI, column name, definition, example, range, domain, parent grouping) for future generators to share.
-  - `csv-templates/` — *(not yet populated)* generated Excel/CSV extraction templates.
-  - `db-schema/` — *(not yet populated)* generated relational DDL.
-  - `sparql-templates/` — *(not yet populated)* generated canned SPARQL query templates.
-  - `llm-prompts/` — *(not yet populated)* generated per-field LLM extraction prompt payloads.
+- **`artifacts-generator/`** — generator scripts, one subdirectory per artifact type, each producing the correspondingly-named folder under `generated-artifacts/`. Each script parses `tara-articles-kb-core.ttl` directly with `rdflib`; introduce a shared `ontology_manifest.py` reflection step once more than one generator needs the same field-level traversal.
+  - `doc-generator/` — implemented. Two generators: `generate_documentation.py` (writes `tara-articles-kb-core-doc.md` alongside it — class hierarchy, full `tara-kb:hasTARAArticlesMetadata` property tree with domain/range, and a computed Data Quality Notes section) and `generate_html_docs.py` (writes the interactive HTML ontology browser — search/pulldown-autocomplete, expandable trees with a resizable sidebar, browser-history navigation — as `index.html` + `styles.css` to `docs/articles-kb-core/` at the repo root by default, served by GitHub Pages). Run either with `python3 artifacts-generator/doc-generator/<script>.py`.
+  - `manifest/` — *(not yet implemented)* will hold `ontology_manifest.py`, the intended canonical field-reflection generator other scripts can share.
+  - `csv-templates/` — *(not yet implemented)* will hold the CSV/Excel extraction-template generator.
+  - `db-schema/` — *(not yet implemented)* will hold the relational DDL generator.
+  - `sparql-templates/` — *(not yet implemented)* will hold the canned SPARQL query-template generator.
+  - `llm-prompts/` — *(not yet implemented)* will hold the per-field LLM extraction-prompt generator.
+  - `queries/` — *(not yet populated)* reusable SPARQL (`.rq`) query files shared across the generator scripts above.
+- **`generated-artifacts/`** — build output only; never hand-edited; regenerated from `artifacts-generator/`.
+  - `manifest/` — the canonical intermediate field manifest (compact URI, column name, definition, example, range, domain, parent grouping) that every other generated artifact is built from.
+  - `csv-templates/` — generated Excel/CSV extraction templates.
+  - `db-schema/` — generated relational DDL.
+  - `sparql-templates/` — generated canned SPARQL query templates.
+  - `llm-prompts/` — generated per-field LLM extraction prompt payloads.
 
 ## Metadata Structure
 
