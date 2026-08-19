@@ -41,6 +41,34 @@ flowchart LR
     L[["cross-linked entity<br/>(detailed in another diagram)"]]:::linked
 ```
 
+```mermaid
+flowchart TB
+style INSTANCES stroke:transparent
+style CLASSES stroke:#0000,stroke-width:0px
+    subgraph INSTANCES["<b>Cross-Linked Entity Instances</b>"]
+        direction LR
+        PUB_ENT[["<b>&lt;instance&gt;</b></br>Acupuncture<br>Study Publication"]]
+        STUDY_ENT[["<b>&lt;instance&gt;</b></br>Acupuncture<br>Research Study"]]
+        OCSI_ENT[["<b>&lt;instance&gt;</b></br>Acupuncture Study<br>OCSI Appraisal"]]
+        
+        PUB_ENT -- hasReportedStudyID --> STUDY_ENT
+        STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
+    end
+    subgraph CLASSES["<b>TARA-KB Core Classes</b>"]
+        direction LR
+        PubClass(["Acupuncture<br>Study Publication"])
+        StudyClass(["Acupuncture<br>Research Study"])
+        OCSIClass(["Acupuncture<br>Study OCSI Appraisal"])
+        PubClass ~~~~~ StudyClass ~~~~~ OCSIClass
+    end
+
+CLASSES ~~~~ INSTANCES
+
+PUB_ENT -- isTYpeOf --> PubClass
+STUDY_ENT -- isTYpeOf --> StudyClass
+OCSI_ENT -- isTYpeOf --> OCSIClass
+```
+
 ### 1. Acupuncture Study Publication
 
 Bibliographic metadata about the journal article/publication reporting a study.
