@@ -29,61 +29,47 @@ Every annotation property carries `rdfs:label` (human name), `skos:altLabel` (ma
 
 ## Metadata Structure
 
-Under `tara-kb:hasTARAArticlesMetadata`, extracted metadata is organized into branches aligned with three core classes — **Acupuncture Study Publication**, **Acupuncture Research Study**, and **Acupuncture Study OCSI Appraisal**. In each diagram below, a dashed node is a pure grouping property (`dcterms:type tara-kb:grouping` — organizational only, never holds a value); a solid node holds an actual extracted value (some solid nodes are also parents of more granular sub-properties); a double-bordered blue node is the cross-linked entity that the diagram's own entity points to via the labeled property — that entity is expanded in its own diagram rather than repeated here. See [Entity Relationships](#entity-relationships) below for the full picture with cardinality.
+Under `tara-kb:hasTARAArticlesMetadata`, extracted metadata is organized into branches aligned with three core classes: Acupuncture Study Publication`, `Acupuncture Research Study`, and `Acupuncture Study OCSI Appraisal`.
+
+```mermaid
+flowchart
+style INSTANCES stroke:transparent
+    subgraph INSTANCES["<b>Cross-Linked Entity Instances</b>"]
+        PUB_ENT[["<b>[Class Instance]</b><br>Acupuncture<br>Study Publication"]]
+        STUDY_ENT[["<b>[Class Instance]</b><br>Acupuncture<br>Research Study"]]
+        OCSI_ENT[["<b>[Class Instance]</b><br>Acupuncture Study<br>OCSI Appraisal"]]
+    
+        %% Connections keep these horizontal naturally
+        PUB_ENT -- hasReportedStudyID --> STUDY_ENT
+        STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
+        OCSI_ENT -- hasOCSIInputStudyID --> STUDY_ENT
+        STUDY_ENT -- hasReportingPublicationID --> PUB_ENT
+    end
+
+```
+
+In each diagram below,
+* A dashed node is a pure grouping property (organizational only, never holds a value)
+* A solid node holds an actual extracted value (some solid nodes are also parents of more granular sub-properties)
+* A double-bordered node on the left represents an instance of a TARA-KB class (see above)
+* See [Entity Relationships](#entity-relationships) below for the full picture with cardinality.
 
 ```mermaid
 flowchart LR
-   %% classDef group fill:#eee,stroke:#999,stroke-dasharray: 3 3,color:#555
-   %% classDef field fill:#ffffff,stroke:#333,color:#111
-   %% classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
-    G["grouping only<br/>(no value)"]:::group
-    F["holds a value"]:::field
-    L[["cross-linked entity<br/>(detailed in another diagram)"]]:::linked
-```
-
-```mermaid
-flowchart TB
-    %% 1. Style definitions for subgraphs
-    style INSTANCES stroke:transparent
-    style CLASSES stroke:#0000,stroke-width:0px
-    %% classDef field fill:#f9f9f9,stroke:#333,stroke-width:1px;
-
-    subgraph Class_Instance[" "]
-        
-        %% 2. INSTANCES Group (Forced horizontal using standard layout constraints)
-        subgraph INSTANCES["<b>Cross-Linked Entity Instances</b>"]
-            PUB_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Study Publication"]]
-            STUDY_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture<br>Research Study"]]
-            OCSI_ENT[["<b>&lt;instance&gt;</b><br>Acupuncture Study<br>OCSI Appraisal"]]
-            
-            %% Connections keep these horizontal naturally
-            PUB_ENT -- hasReportedStudyID --> STUDY_ENT
-            STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
-        end
-
-        %% 3. CLASSES Group (Forced horizontal using invisible ties)
-        subgraph CLASSES["<b>TARA-KB: Core Classes</b>"]
-            PubClass(["Acupuncture<br>Study Publication"])
-            StudyClass(["Acupuncture<br>Research Study"])
-            OCSIClass(["Acupuncture<br>Study OCSI Appraisal"])
-            
-            %% Multi-dash links force horizontal alignment in a TB chart
-            PubClass ~~~ StudyClass ~~~ OCSIClass
-        end
-
-        %% 4. Push the CLASSES container directly above the INSTANCES container
-        CLASSES ~~~~ INSTANCES
-
-        %% 5. CROSS-CONNECTORS: These will now anchor beautifully to the actual nodes
-        PUB_ENT -- isTYpeOf --> PubClass
-        STUDY_ENT -- isTYpeOf --> StudyClass
-        OCSI_ENT -- isTYpeOf --> OCSIClass
-    end
+ subgraph LEGENDS["Diagrams Legend"]
+        L[["Class Instance"]]
+        G["Grouping Only<br>(no value)"]
+        F["Holds a Value"]
+  end
+     G:::group
+     F:::field
+     L:::linked
+    style LEGENDS stroke:transparent
 ```
 
 ### 1. Acupuncture Study Publication
 
-Bibliographic metadata about the journal article/publication reporting a study.
+Bibliographic metadata about an instnace of an Acupuncture Study Publication (e.g., a journal article) reporting a study.
 
 ```mermaid
 flowchart LR
@@ -92,7 +78,7 @@ flowchart LR
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
     style BIB_FIELDS stroke:none
 
-    PUB(("Acupuncture<br/>Study Publication")):::field
+    PUB[["Acupuncture<br>Study Publication"]]:::field
     BIB["hasBibliographicMetadata<br/>(Bibliographic Metadata)"]:::field
 
     subgraph BIB_FIELDS ["<b>Bibliographic Metadata</b>"]
@@ -102,7 +88,7 @@ flowchart LR
         PVENUE["hasPublicationVenue<br/>(Publication Venue)"]:::field
         PDATE["hasPublicationDate<br/>(Publication Date)"]:::field
         LINK["hasPublicationLink<br/>(Publication Link)"]:::field
-        
+    
         PYEAR["hasPublicationYear<br/>(Publication Year)"]:::field
         DOI["hasDOILink<br/>(DOI Link)"]:::field
         OTHER["hasOtherLink<br/>(Other Link)"]:::field
@@ -120,14 +106,11 @@ flowchart LR
             LINK --> DOI
             LINK --> OTHER
             LINK --> PUBMED
-    
-    STUDY_EXT[["Acupuncture<br/>Research Study"]] -- hasReportingPublicationID --> PUB:::linked
-    OCSI_EXT[["Acupuncture<br/>Study OCSI Appraisal"]] -- hasReportingPublicationID --> PUB:::linked
 ```
 
 ### 2. Acupuncture Research Study
 
-Everything about how the trial was actually conducted: intervention protocol, design, conditions studied, findings, and location.
+Everything about an instance of an Acupuncture Research Study ; i.e., how the trial was actually conducted as reported in the publication: intervention protocol, design, conditions studied, findings, and study location.
 
 ```mermaid
 flowchart LR
@@ -135,10 +118,9 @@ flowchart LR
     classDef field fill:#ffffff,stroke:#333,color:#111
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
 
-    STUDY(("Acupuncture<br/>Research Study")):::field
+    STUDY[["Acupuncture<br/>Research Study"]]:::field
     ROOT["hasAcupunctureStudyMetadata<br/>(Acupuncture Study Metadata)"]:::group
     STUDY --> ROOT
-
 
     ROOT --> SLOC
     ROOT --> SDES
@@ -166,14 +148,14 @@ flowchart LR
         SFIND --> EFFECT
         SFIND --> COMP
         SFIND --> MECH
-        
+    
     end
-    
-    
+  
+  
     subgraph PROTO ["<b>Acupuncture Protocol</b>"]
         direction LR
         PROT["hasAcupunctureProtocol<br/>(Acupuncture Protocol)"]:::field
-        
+    
         LIST["hasListedAcupoints<br/>(Listed Acupoint(s))"]:::field
         LMAP["hasListedAcupointsMapped<br/>(Listed Acupoint(s) Mapped)"]:::field
         LCURIE["hasListedAcupointsMappedCurie<br/>(Listed Acupoint(s) Mapped Curie)"]:::field
@@ -185,7 +167,7 @@ flowchart LR
         ASELGROUP["hasAcupointSelectionAndGrouping<br/>(Point Selection and Grouping)"]:::field
         GRP["hasAcupointGrouping<br/>(Acupoint Grouping)"]:::field
         SEL["hasAcupointSelection<br/>(Acupoint Selection)"]:::field
-        
+    
 
         PROT --> ASELGROUP
         ASELGROUP --> GRP
@@ -194,13 +176,13 @@ flowchart LR
         PROT --> LIST
         LIST --> LMAP
         LIST --> LCURIE
-        LIST --> LUNMAP        
+        LIST --> LUNMAP    
         PROT --> STIM
         PROT --> SHAM
 
-        
-    end
     
+    end
+  
     subgraph DESIGN ["<b>Study Design Metadata</b>"]
         direction LR
         SDES["hasStudyDesignMetadata<br/>(Study Design Metadata)"]:::group
@@ -219,7 +201,7 @@ flowchart LR
         SDES --> CTRL
         SDES --> OUT
         SDES --> SAMP
-        
+    
         OUT --> POUT
         OUT --> SOUT
         SDES --> TDF
@@ -245,13 +227,11 @@ flowchart LR
         COUNTRY["hasCountryOfStudy<br/>(Country of Study)"]:::field
         SLOC --> COUNTRY
     end
-
-    PUB_EXT[["Acupuncture</br>Study Publication"]] -- hasReportedStudyID --> STUDY:::linked  
-    OCSI_EXT[["Acupuncture</br>Study OCSI Appraisal"]] -- hasOCSIInputStudyID --> STUDY:::linked
 ```
 
 ### 3. Acupuncture Study OCSI Appraisal
-Structured quality appraisal of trial reporting, based on the Oregon CONSORT/STRICTA Instrument (OCSI), organized into four scoring categories.
+
+Everything about an instance of an Acupuncture Study OCSI Appraisal based on a reported study. Each instance contains  structured quality appraisal of trial reporting, based on the Oregon CONSORT/STRICTA Instrument (OCSI), organized into four scoring categories.
 
 ```mermaid
 flowchart LR
@@ -259,7 +239,7 @@ flowchart LR
     classDef field fill:#ffffff,stroke:#333,color:#111
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
 
-    OCSI(("Acupuncture Study<br/>OCSI Appraisal")):::field
+    OCSI[["Acupuncture Study<br/>OCSI Appraisal"]]:::field
     ROOT["hasOCSIScoreMetadata<br/>(OCSI Score Metadata)"]:::group
     OCSI --> ROOT
 
@@ -281,13 +261,13 @@ flowchart LR
         CATC["hasMethodologicalAndStatisticalAllocationMetrics"]:::group
         ADV["hasAdverseEffectsScore<br/>(Adverse Effects Score)"]:::field
         RAND["hasRandomAllocationScore<br/>(Random Allocation Score)"]:::field
-        
+    
         CATC --> SUBG
         CATC --> BLIND
         CATC --> ADV
         CATC --> RAND
     end
-    
+  
     subgraph B ["<b>Category B: Technical Intervention Quality Metrics</b>"]
         direction LR
         CATB["hasTechnicalInterventionQualityMetrics"]:::group
@@ -330,9 +310,7 @@ flowchart LR
     ROOT --> CATB
     ROOT --> CATC
     ROOT --> CATD
-
-    STUDY_EXT[["Acupuncture Research Study"]] -- hasOCSIAppraisalID --> OCSI:::linked
-    
+  
 ```
 
 ## Entity Relationships
