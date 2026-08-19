@@ -33,9 +33,9 @@ Under `tara-kb:hasTARAArticlesMetadata`, extracted metadata is organized into br
 
 ```mermaid
 flowchart LR
-    classDef group fill:#eee,stroke:#999,stroke-dasharray: 3 3,color:#555
-    classDef field fill:#ffffff,stroke:#333,color:#111
-    classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
+   %% classDef group fill:#eee,stroke:#999,stroke-dasharray: 3 3,color:#555
+   %% classDef field fill:#ffffff,stroke:#333,color:#111
+   %% classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
     G["grouping only<br/>(no value)"]:::group
     F["holds a value"]:::field
     L[["cross-linked entity<br/>(detailed in another diagram)"]]:::linked
@@ -43,30 +43,28 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-style INSTANCES stroke:transparent
-style CLASSES stroke:#0000,stroke-width:0px
-    subgraph INSTANCES["<b>Cross-Linked Entity Instances</b>"]
-        direction LR
-        PUB_ENT[["<b>&lt;instance&gt;</b></br>Acupuncture<br>Study Publication"]]
-        STUDY_ENT[["<b>&lt;instance&gt;</b></br>Acupuncture<br>Research Study"]]
-        OCSI_ENT[["<b>&lt;instance&gt;</b></br>Acupuncture Study<br>OCSI Appraisal"]]
-        
+ style INSTANCES stroke:transparent
+ style CLASSES stroke:#0000,stroke-width:0px
+ subgraph INSTANCES["<b>Cross-Linked Entity Instances</b>"]
+    direction LR
+        PUB_ENT[["<b>[instance]</b><br>Acupuncture<br>Study Publication"]]:::field
+        STUDY_ENT[["<b>[instance]</b><br>Acupuncture<br>Research Study"]]:::field
+        OCSI_ENT[["<b>[instance]</b><br>Acupuncture Study<br>OCSI Appraisal"]]:::field
         PUB_ENT -- hasReportedStudyID --> STUDY_ENT
         STUDY_ENT -- hasOCSIAppraisalID --> OCSI_ENT
-    end
-    subgraph CLASSES["<b>TARA-KB Core Classes</b>"]
-        direction LR
-        PubClass(["Acupuncture<br>Study Publication"])
-        StudyClass(["Acupuncture<br>Research Study"])
-        OCSIClass(["Acupuncture<br>Study OCSI Appraisal"])
-        PubClass ~~~~~ StudyClass ~~~~~ OCSIClass
-    end
-
-CLASSES ~~~~ INSTANCES
-
-PUB_ENT -- isTYpeOf --> PubClass
-STUDY_ENT -- isTYpeOf --> StudyClass
-OCSI_ENT -- isTYpeOf --> OCSIClass
+  end
+ subgraph CLASSES["<b>TARA-KB Core Classes</b>"]
+    direction LR
+        PubClass(["Acupuncture<br>Study Publication"]):::field
+        StudyClass(["Acupuncture<br>Research Study"]):::field
+        OCSIClass(["Acupuncture<br>Study OCSI Appraisal"]):::field
+        PubClass ~~~~~ StudyClass
+        StudyClass ~~~~~ OCSIClass
+  end
+    CLASSES ~~~~ INSTANCES
+    PUB_ENT -- isTYpeOf --> PubClass
+    STUDY_ENT -- isTYpeOf --> StudyClass
+    OCSI_ENT -- isTYpeOf --> OCSIClass
 ```
 
 ### 1. Acupuncture Study Publication
