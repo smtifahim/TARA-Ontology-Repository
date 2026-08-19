@@ -14,6 +14,63 @@ Every annotation property carries `rdfs:label` (human name), `skos:altLabel` (ma
 
 **Status note:** the `obo:IAO_0000112` example values and OCSI scoring rubrics currently in the file are a preliminary starting point and have not yet been verified as authoritative — treat them as draft until reviewed. See also the [LLM Extraction Prompt](#llm-extraction-prompt) section below.
 
+## ETL Architecture
+
+`tara-articles-kb-core.ttl` is not just documentation of the schema — it is the single generation source every downstream artifact is built from. Rather than each ETL stage (extraction prompts, CSV headers, SPARQL, DB schema) hand-maintaining its own copy of "what the fields are," a generator reads the ttl once into a canonical field manifest, and every artifact is derived from that manifest. Adding or renaming a field happens in one place instead of four.
+
+```mermaid
+flowchart TB
+    classDef core fill:#e8f0ff,stroke:#4472c4,stroke-width:2px,color:#1a3a6b
+    classDef gen fill:#eee,stroke:#999,color:#333
+    classDef artifact fill:#ffffff,stroke:#333,color:#111
+    classDef stage fill:#fef6e0,stroke:#c9960c,color:#5c4400
+
+    TTL["<b>tara-articles-kb-core.ttl</b><br/>single source of truth:<br/>fields, labels, definitions, examples,<br/>normalization rules, types"]:::core
+
+    subgraph BUILD["schema-tools/ — generated once per ontology change"]
+        REFLECT["ontology_manifest.py<br/>(one SPARQL reflection query)"]:::gen
+        MANIFEST["field-manifest.json<br/>(canonical intermediate)"]:::artifact
+        PROMPT_GEN["generate_llm_prompts.py"]:::gen
+        CSV_GEN["generate_csv_template.py"]:::gen
+        SPARQL_GEN["generate_sparql_templates.py"]:::gen
+        DB_GEN["generate_db_schema.py"]:::gen
+
+        PROMPTS["extraction-prompts.json"]:::artifact
+        CSV["articles-kb-extraction-template.xlsx<br/>(headers = skos:altLabel)"]:::artifact
+        SPARQL["select_article_metadata.rq"]:::artifact
+        DDL["articles_kb_schema.sql"]:::artifact
+
+        REFLECT --> MANIFEST
+        MANIFEST --> PROMPT_GEN --> PROMPTS
+        MANIFEST --> CSV_GEN --> CSV
+        MANIFEST --> SPARQL_GEN --> SPARQL
+        MANIFEST --> DB_GEN --> DDL
+    end
+
+    TTL --> REFLECT
+
+    subgraph RUN["ETL Pipeline — runs every extraction batch"]
+        direction LR
+        EXTRACT["<b>Extract</b><br/>Elicit / Gemini reads full-text<br/>articles per field-level prompt"]:::stage
+        RAW["Raw Excel<br/>(one row per study)"]:::stage
+        TRANSFORM["<b>Transform</b><br/>ingestion scripts map columns<br/>to ontology properties"]:::stage
+        LOADG["<b>Load</b><br/>RDF graph<br/>(tara-articles-kb.ttl instances)"]:::stage
+        LOADD["<b>Load</b><br/>Relational DB<br/>(Publication / Study / OCSI tables)"]:::stage
+    end
+
+    PROMPTS -. "same prompt,<br/>every batch" .-> EXTRACT
+    EXTRACT --> RAW
+    CSV -. "defines column<br/>headers for" .-> RAW
+    RAW --> TRANSFORM
+    SPARQL -. "used to validate/<br/>query result" .-> LOADG
+    TTL -. "defines classes &<br/>properties asserted by" .-> TRANSFORM
+    TRANSFORM --> LOADG
+    TRANSFORM --> LOADD
+    DDL -. "defines table/column<br/>schema for" .-> LOADD
+```
+
+**Why this fixes the original ETL problem:** the ttl's `skos:altLabel` becomes the column name used by both the CSV template *and* the extraction output, so there's no separate mapping step and no drift between the field the LLM was asked for and the field the transform script expects. The `dcterms:description` / `obo:IAO_0000112` / `rdfs:comment` on each property become the extraction prompt and its scoring rubric, injected verbatim every run instead of re-written by whoever is prompting that batch — the direct fix for inconsistent OCSI scores. And `rdfs:range` / `rdfs:domain` drive the DB column types and table assignment, so the relational schema and the RDF graph are generated from the same definitions and can't drift apart.
+
 ## Contents
 
 - **`tara-articles-kb-core.ttl`** — the canonical, hand-authored ontology.
