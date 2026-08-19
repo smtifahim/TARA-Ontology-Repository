@@ -56,14 +56,18 @@ In each diagram below,
 
 ```mermaid
 flowchart LR
- subgraph LEGENDS["Diagrams Legend"]
+ subgraph LEGENDS["Diagram Legend"]
         L[["Class Instance"]]
         G["Grouping Only<br>(no value)"]
-        F["Holds a Value"]
+        F["Can Hold Value"]
   end
+
+     L:::linked
      G:::group
      F:::field
-     L:::linked
+    classDef group fill:#eee,stroke:#999,stroke-dasharray: 3 3,color:#555
+    classDef field fill:#ffffff,stroke:#333,color:#111
+    classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
     style LEGENDS stroke:transparent
 ```
 
