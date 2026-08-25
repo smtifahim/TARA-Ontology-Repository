@@ -311,67 +311,91 @@ flowchart LR
 
     OCSI[["Acupuncture Study<br/>OCSI Appraisal"]]:::linked
     ROOT["hasOCSIScoreMetadata<br/>(OCSI Score Metadata)"]:::group
+    TOTPCT["hasOCSITotalPercentage<br/>(OCSI Total Percentage)"]:::field
     OCSI --> ROOT
+    ROOT --> TOTPCT
 
     subgraph D ["<b>Category D: Evaluative Results and Global Metrics</b>"]
         direction LR
         CATD["hasEvaluativeResultsAndGlobalMetrics"]:::group
-        TOTPCT["hasOCSITotalPercentage<br/>(OCSI Total Percentage)"]:::field
+        PARTFLOW["hasParticipantFlowScore<br/>(Participant Flow Score)"]:::field
+        RECRUIT["hasRecruitmentAndFollowUpScore<br/>(Recruitment and Follow-Up Score)"]:::field
+        ANALYSPOP["hasAnalysisPopulationScore<br/>(Analysis Population Score)"]:::field
         X2["hasOutcomesMeasureX2Score<br/>(Outcomes Measure X2 Score)"]:::field
+        OUTMEAS["hasOutcomeMeasuresScore<br/>(Outcome Measures Score)"]:::field
+        STATMETH["hasStatisticalMethodsScore<br/>(Statistical Methods Score)"]:::field
         RESOUT["hasResultsOutcomesScore<br/>(Results Outcomes Score)"]:::field
-        CATD --> TOTPCT
+        CATD --> PARTFLOW
+        CATD --> RECRUIT
+        CATD --> ANALYSPOP
         CATD --> X2
+        X2 --> OUTMEAS
+        X2 --> STATMETH
         CATD --> RESOUT
     end
 
     subgraph C ["<b>Category C: Methodological and Statistical Allocation Metrics</b>"]
         direction LR
-        SUBG["hasSubgroupScore<br/>(Subgroup Score)"]:::field
-        BLIND["hasBlindingQualityScore<br/>(Blinding Quality Score)"]:::field
         CATC["hasMethodologicalAndStatisticalAllocationMetrics"]:::group
         ADV["hasAdverseEffectsScore<br/>(Adverse Effects Score)"]:::field
+        RANDSTMT["hasRandomizationStatementScore<br/>(Randomization Statement Score)"]:::field
+        ALLOCPERS["hasAllocationPersonnelScore<br/>(Allocation Personnel Score)"]:::field
+        BLIND["hasBlindingQualityScore<br/>(Blinding Quality Score)"]:::field
         RAND["hasRandomAllocationScore<br/>(Random Allocation Score)"]:::field
-  
-        CATC --> SUBG
-        CATC --> BLIND
+        SEQGEN["hasSequenceGenerationScore<br/>(Sequence Generation Score)"]:::field
+        ALLOCCONCEAL["hasAllocationConcealmentScore<br/>(Allocation Concealment Score)"]:::field
+        SUBG["hasSubgroupScore<br/>(Subgroup Score)"]:::field
+
         CATC --> ADV
+        CATC --> RANDSTMT
+        CATC --> ALLOCPERS
+        CATC --> BLIND
         CATC --> RAND
+        RAND --> SEQGEN
+        RAND --> ALLOCCONCEAL
+        CATC --> SUBG
     end
-  
+
     subgraph B ["<b>Category B: Technical Intervention Quality Metrics</b>"]
         direction LR
         CATB["hasTechnicalInterventionQualityMetrics"]:::group
         ACUDET["hasAcupunctureDetailsScore<br/>(Acupuncture Details Score)"]:::field
-        CTRLSC["hasControlGroupsScore<br/>(Control Groups Score)"]:::field
         COINT["hasCointerventionsScore<br/>(Cointerventions Score)"]:::field
+        CTRLSC["hasControlGroupsScore<br/>(Control Groups Score)"]:::field
+        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
         NEEDLESC["hasNeedlingParametersScore<br/>(Needling Parameters Score)"]:::field
         PRACSAMP["hasPractitionerAndSampleSizeScore<br/>(Practitioner and Sample Size Score)"]:::field
         PRACSC["hasPractitionerScore<br/>(Practitioner Score)"]:::field
-
         SAMPSC["hasSampleSizeScore<br/>(Sample Size Score)"]:::field
-        SHAMSC["hasShamDetailsScore<br/>(Sham Controls Score)"]:::field
-        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
 
         CATB --> ACUDET
-        CATB --> CTRLSC
         CATB --> COINT
-        CATB --> PRACSAMP
-                 PRACSAMP --> SAMPSC
-                 PRACSAMP --> PRACSC
-        CATB --> NEEDLESC
-        CATB --> SHAMSC
+        CATB --> CTRLSC
         CATB --> FREQSC
+        CATB --> NEEDLESC
+        CATB --> PRACSAMP
+        PRACSAMP --> PRACSC
+        PRACSAMP --> SAMPSC
     end
 
     subgraph A ["<b>Category A: Study Foundation and Background Metrics</b>"]
         direction LR
         CATA["hasStudyFoundationAndBackgroundMetrics"]:::group
-        INTRO["hasIntroductionAndHypothesisScore<br/>(Introduction and Hypothesis Score)"]:::field
+        GENERAL["hasGeneralizabilityScore<br/>(Generalizability Score)"]:::field
+        INTERP["hasInterpretationScore<br/>(Interpretation Score)"]:::field
         ELIG["hasEligibilityScore<br/>(Eligibility Score)"]:::field
+        INTRO["hasIntroductionAndHypothesisScore<br/>(Introduction and Hypothesis Score)"]:::field
+        INTROSC["hasIntroductionScore<br/>(Introduction Score)"]:::field
+        HYPO["hasHypothesisScore<br/>(Hypothesis Score)"]:::field
         LIMIT["hasLimitationsScore<br/>(Limitations Score)"]:::field
         PART["hasParticipantsScore<br/>(Participants Score)"]:::field
-        CATA --> INTRO
+
+        CATA --> GENERAL
+        CATA --> INTERP
         CATA --> ELIG
+        CATA --> INTRO
+        INTRO --> INTROSC
+        INTRO --> HYPO
         CATA --> LIMIT
         CATA --> PART
     end
@@ -380,7 +404,6 @@ flowchart LR
     ROOT --> CATB
     ROOT --> CATC
     ROOT --> CATD
-  
 ```
 
 ## Entity Relationships

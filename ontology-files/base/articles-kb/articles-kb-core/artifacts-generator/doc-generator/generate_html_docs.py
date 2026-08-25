@@ -336,15 +336,15 @@ main { display: flex; flex: 1; min-height: 0; }
 .node-row.connector { opacity: 0.55; cursor: help; }
 .domain-tree { margin-top: 0.2rem; }
 .toggle {
-  width: 1.1rem;
+  width: 0.51rem;
   text-align: center;
   color: var(--accent);
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 0.51rem;
+  font-weight: 300;
   user-select: none;
   flex-shrink: 0;
 }
-.toggle.leaf { color: var(--text-muted); font-weight: 400; font-size: 0.95rem; }
+.toggle.leaf { color: var(--accent); font-weight: 800; font-size: 0.95rem; }
 .node-label { overflow-wrap: anywhere; }
 li.hidden-by-filter { display: none; }
 #content { flex: 1; overflow-y: auto; padding: 1.25rem 1.75rem; }

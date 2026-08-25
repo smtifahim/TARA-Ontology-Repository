@@ -71,26 +71,38 @@
       "propertiesWithThisDomain": [
         "tara-kb:hasAcupunctureDetailsScore",
         "tara-kb:hasAdverseEffectsScore",
+        "tara-kb:hasAllocationConcealmentScore",
+        "tara-kb:hasAllocationPersonnelScore",
+        "tara-kb:hasAnalysisPopulationScore",
         "tara-kb:hasBlindingQualityScore",
         "tara-kb:hasCointerventionsScore",
         "tara-kb:hasControlGroupsScore",
         "tara-kb:hasEligibilityScore",
         "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
         "tara-kb:hasFrequencyOfTreatmentScore",
+        "tara-kb:hasGeneralizabilityScore",
+        "tara-kb:hasHypothesisScore",
+        "tara-kb:hasInterpretationScore",
         "tara-kb:hasIntroductionAndHypothesisScore",
+        "tara-kb:hasIntroductionScore",
         "tara-kb:hasLimitationsScore",
         "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
         "tara-kb:hasNeedlingParametersScore",
         "tara-kb:hasOCSIScoreMetadata",
         "tara-kb:hasOCSITotalPercentage",
+        "tara-kb:hasOutcomeMeasuresScore",
         "tara-kb:hasOutcomesMeasureX2Score",
+        "tara-kb:hasParticipantFlowScore",
         "tara-kb:hasParticipantsScore",
         "tara-kb:hasPractitionerAndSampleSizeScore",
         "tara-kb:hasPractitionerScore",
         "tara-kb:hasRandomAllocationScore",
+        "tara-kb:hasRandomizationStatementScore",
+        "tara-kb:hasRecruitmentAndFollowUpScore",
         "tara-kb:hasResultsOutcomesScore",
         "tara-kb:hasSampleSizeScore",
-        "tara-kb:hasShamDetailsScore",
+        "tara-kb:hasSequenceGenerationScore",
+        "tara-kb:hasStatisticalMethodsScore",
         "tara-kb:hasStudyFoundationAndBackgroundMetrics",
         "tara-kb:hasSubgroupScore",
         "tara-kb:hasTechnicalInterventionQualityMetrics"
@@ -222,7 +234,7 @@
     "TARA:7227329": {
       "id": "TARA:7227329",
       "kind": "class",
-      "label": "Study Quality Appraisal",
+      "label": "Research Study Quality Appraisal",
       "uri": "http://www.acupunctureresearch.org/tara/ontology/TARA_7227329",
       "description": "A data item consisting of a structured collection of metrics, scores, or evaluations generated during a systematic process to assess the methodological rigor, risk of bias, validity, or reporting completeness of a scientific study or clinical trial.",
       "parent": null,
@@ -1587,7 +1599,7 @@
       "examples": [],
       "grouping": true,
       "domain": "TARA:7227329",
-      "domainLabel": "Study Quality Appraisal",
+      "domainLabel": "Research Study Quality Appraisal",
       "range": {
         "kind": null,
         "id": null,
@@ -1606,7 +1618,7 @@
       "altLabel": "OCSI_Score_Metadata",
       "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSIScoreMetadata",
       "description": "An annotation property that serves as a master grouping property for capturing quality appraisal metrics mapped to individual reporting items within the Oregon CONSORT STRICTA Instrument (OCSI) for acupuncture trials. \n\nCrucially, the scores and details grouped under this property are not native metrics extracted directly or verbatim from the published articles. Instead, they represent secondary, derived appraisals generated, either algorithmically by automated computational models or manually judged by human domain experts by analyzing the extracted textual metadata of the trial against the specific compliance benchmarks defined by the OCSI framework.",
-      "comment": "This sub-grouping property aggregates derived compliance values specifically tied to the combined CONSORT (Consolidated Standards of Reporting Trials) and STRICTA (Standards for Reporting Interventions in Clinical Trials of Acupuncture) guidelines. It organizes granular sub-properties tracking item-by-item compliance scores (e.g., needle stimulation details, control group rationale), separating the calculated evaluation of reporting quality from the raw extracted study parameters.",
+      "comment": "General scoring instructions (OCSI Manual, Appendix A.1): (i) When scoring each question, consider whether a reviewer would be satisfied with what is reported, and whether the details given would be sufficient to reproduce the findings. (ii) When multiple components or \"and\" statements are listed for a question, all aspects must be met to receive full credit. (iii) Except for item no. 1, if the information is placed anywhere in the document, the question can receive full credit. (iv) For items 4-9 (from STRICTA), nos. 4-8 pertain only to the acupuncture aspects of the study, while no. 9 pertains to all types of control or comparison groups. (v) Practitioners are almost always NOT blinded in acupuncture research; hence item 16(b) is usually scored N/A. / Item questions (Table 1) and scoring rubrics (Appendix A) reproduced under the CC-BY license, with attribution to the original authors. / Scoring scale and total score formula (Hammerschlag et al. 2011, Section 2.1 and 2.3): each of the 27 OCSI questions is scored yes = 2, partial = 1, no = 0, or Not Applicable = N/A, based on the composite scoring of its lettered sub-questions -- a question is scored partial if its sub-questions receive a mix of ratings. An article's total OCSI score is calculated as: raw score ÷ (2 × [27 − n items scored N/A]) × 100, i.e., items scored N/A are excluded from both the numerator and the denominator rather than counted as zero. / This sub-grouping property aggregates derived compliance values specifically tied to the combined CONSORT (Consolidated Standards of Reporting Trials) and STRICTA (Standards for Reporting Interventions in Clinical Trials of Acupuncture) guidelines. It organizes granular sub-properties tracking item-by-item compliance scores (e.g., needle stimulation details, control group rationale), separating the calculated evaluation of reporting quality from the raw extracted study parameters.",
       "examples": [],
       "grouping": true,
       "domain": "TARA:2825659",
@@ -1620,6 +1632,7 @@
       "children": [
         "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
         "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+        "tara-kb:hasOCSITotalPercentage",
         "tara-kb:hasStudyFoundationAndBackgroundMetrics",
         "tara-kb:hasTechnicalInterventionQualityMetrics"
       ],
@@ -1644,22 +1657,24 @@
       },
       "parent": "tara-kb:hasOCSIScoreMetadata",
       "children": [
-        "tara-kb:hasOCSITotalPercentage",
+        "tara-kb:hasAnalysisPopulationScore",
         "tara-kb:hasOutcomesMeasureX2Score",
+        "tara-kb:hasParticipantFlowScore",
+        "tara-kb:hasRecruitmentAndFollowUpScore",
         "tara-kb:hasResultsOutcomesScore"
       ],
       "synonyms": []
     },
-    "tara-kb:hasOCSITotalPercentage": {
-      "id": "tara-kb:hasOCSITotalPercentage",
+    "tara-kb:hasParticipantFlowScore": {
+      "id": "tara-kb:hasParticipantFlowScore",
       "kind": "property",
-      "label": "OCSI Total Percentage",
-      "altLabel": "OCSI_Total_Percentage",
-      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSITotalPercentage",
-      "description": "A quality metric within Category D: Evaluative Results & Global Metrics that assigns the global mathematical reporting accuracy value calculated as a raw percentage summarizing compliance across all combined item criteria.",
+      "label": "Participant Flow Score",
+      "altLabel": "Participant_Flow_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasParticipantFlowScore",
+      "description": "Category D: Evaluative Results & Global Metrics (CONSORT). The reporting score assessing whether the flow of participants through each stage of the trial is quantitatively described, including reasons for any protocol deviations.",
       "comment": null,
       "examples": [
-        "e.g., 82.5 (representing 82.5% overall compliance across all OCSI-scored items)."
+        "e.g., a score of 2 when a participant flow diagram or equivalent quantitative account is given along with reasons for protocol deviations, or 0 when participant flow is not described."
       ],
       "grouping": false,
       "domain": "TARA:2825659",
@@ -1667,7 +1682,53 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "xsd:float"
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasRecruitmentAndFollowUpScore": {
+      "id": "tara-kb:hasRecruitmentAndFollowUpScore",
+      "kind": "property",
+      "label": "Recruitment and Follow-Up Score",
+      "altLabel": "Recruitment_And_Follow_Up_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasRecruitmentAndFollowUpScore",
+      "description": "Category D: Evaluative Results & Global Metrics (CONSORT). The reporting score assessing whether the recruitment period and the length of follow-up are stated.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when both the recruitment period dates and the follow-up duration are stated, or 0 when neither is reported."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasAnalysisPopulationScore": {
+      "id": "tara-kb:hasAnalysisPopulationScore",
+      "kind": "property",
+      "label": "Analysis Population Score",
+      "altLabel": "Analysis_Population_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAnalysisPopulationScore",
+      "description": "Category D: Evaluative Results & Global Metrics (CONSORT). The reporting score assessing whether the number of participants included in each analysis, use of an intention-to-treat analysis, and results in absolute numbers are stated.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when per-analysis sample sizes, an intention-to-treat analysis, and absolute numbers are all reported, or 0 when none of these are given."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
       "children": [],
@@ -1679,11 +1740,10 @@
       "label": "Outcomes Measure X2 Score",
       "altLabel": "Outcomes_Measure_X2_Score",
       "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOutcomesMeasureX2Score",
-      "description": "A quality metric within Category D: Evaluative Results & Global Metrics that assesses whether a study's primary (and, if applicable, secondary) outcome measures are explicitly defined and directly paired with appropriate, transparent statistical testing methods.",
+      "description": "A quality metric within Category D: Evaluative Results & Global Metrics that assesses whether a study's outcome measures are explicitly defined and directly paired with appropriate, transparent statistical testing methods, derived as the sum of its two sub-scores.",
       "comment": null,
       "examples": [
-        "Standardized Scoring Rubric (0–3 Scale):\n- 3 (Excellent): All stated outcome measures (Primary only, OR Primary + Secondary) are clearly defined and explicitly paired with a valid statistical test.\n- 2 (Good): Primary outcome measure is clear and mapped, but secondary outcome measures (if present) have ambiguous statistical mapping.\n- 1 (Poor): Outcome measures are vague, or statistical methods are listed generally without showing which test applies to which outcome.\n- 0 (Non-compliant): Primary outcome measures are not defined, or no statistical testing methods are provided.",
-        "e.g., a score of 2 when every declared primary outcome is accompanied by a corresponding statistical test, or 0 when outcomes and statistical tests do not align."
+        "e.g., a combined value of 4 when both the outcome-measure definitions and the statistical methods are fully reported (2 each), derived from its hasOutcomeMeasuresScore and hasStatisticalMethodsScore sub-scores."
       ],
       "grouping": false,
       "domain": "TARA:2825659",
@@ -1694,6 +1754,55 @@
         "label": "nonNegShortInt"
       },
       "parent": "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
+      "children": [
+        "tara-kb:hasOutcomeMeasuresScore",
+        "tara-kb:hasStatisticalMethodsScore"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasOutcomeMeasuresScore": {
+      "id": "tara-kb:hasOutcomeMeasuresScore",
+      "kind": "property",
+      "label": "Outcome Measures Score",
+      "altLabel": "Outcome_Measures_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOutcomeMeasuresScore",
+      "description": "Category D: Evaluative Results & Global Metrics (CONSORT). The sub-score assessing whether the primary (and, if applicable, secondary) outcome measures are clearly defined, including any methods used to enhance measurement quality.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the primary outcome and how it was measured are both clearly defined, or 0 when neither is stated."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasOutcomesMeasureX2Score",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasStatisticalMethodsScore": {
+      "id": "tara-kb:hasStatisticalMethodsScore",
+      "kind": "property",
+      "label": "Statistical Methods Score",
+      "altLabel": "Statistical_Methods_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasStatisticalMethodsScore",
+      "description": "Category D: Evaluative Results & Global Metrics (CONSORT). The sub-score assessing whether the statistical methods used to compare groups for primary outcomes, and for any additional analyses, are stated.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when statistical methods are stated for both primary and additional analyses, or 0 when neither is reported."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasOutcomesMeasureX2Score",
       "children": [],
       "synonyms": []
     },
@@ -1715,7 +1824,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasEvaluativeResultsAndGlobalMetrics",
       "children": [],
@@ -1741,8 +1850,10 @@
       "parent": "tara-kb:hasOCSIScoreMetadata",
       "children": [
         "tara-kb:hasAdverseEffectsScore",
+        "tara-kb:hasAllocationPersonnelScore",
         "tara-kb:hasBlindingQualityScore",
         "tara-kb:hasRandomAllocationScore",
+        "tara-kb:hasRandomizationStatementScore",
         "tara-kb:hasSubgroupScore"
       ],
       "synonyms": []
@@ -1764,7 +1875,53 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScoreRequired"
+      },
+      "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasRandomizationStatementScore": {
+      "id": "tara-kb:hasRandomizationStatementScore",
+      "kind": "property",
+      "label": "Randomization Statement Score",
+      "altLabel": "Randomization_Statement_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasRandomizationStatementScore",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The reporting score assessing whether the article explicitly states, in the abstract or title, that participants were randomly assigned to interventions.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the abstract or title explicitly states random allocation, or 0 when randomization is not mentioned in the abstract or title."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasAllocationPersonnelScore": {
+      "id": "tara-kb:hasAllocationPersonnelScore",
+      "kind": "property",
+      "label": "Allocation Personnel Score",
+      "altLabel": "Allocation_Personnel_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAllocationPersonnelScore",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The reporting score assessing whether the article states who generated the randomization sequence, who enrolled participants, and who assigned participants to their groups.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the article names who generated the allocation sequence, who enrolled participants, and who assigned them to groups, or 0 when none of these roles are reported."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
       "children": [],
@@ -1788,7 +1945,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
       "children": [],
@@ -1802,10 +1959,10 @@
       "label": "Random Allocation Score",
       "altLabel": "Random_Allocation_Score",
       "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasRandomAllocationScore",
-      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The core CONSORT-aligned quality score checking whether the sequence generation and allocation concealment methods are valid.",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The core CONSORT-aligned quality score checking whether the sequence generation and allocation concealment methods are valid, derived as the sum of its two sub-scores.",
       "comment": null,
       "examples": [
-        "e.g., a score of 2 when both the randomization method and allocation concealment procedure are described, or 0 when neither is reported."
+        "e.g., a combined value of 4 when both the sequence-generation method and the allocation-concealment method are fully reported (2 each), derived from its hasSequenceGenerationScore and hasAllocationConcealmentScore sub-scores."
       ],
       "grouping": false,
       "domain": "TARA:2825659",
@@ -1816,6 +1973,55 @@
         "label": "nonNegShortInt"
       },
       "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+      "children": [
+        "tara-kb:hasAllocationConcealmentScore",
+        "tara-kb:hasSequenceGenerationScore"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasSequenceGenerationScore": {
+      "id": "tara-kb:hasSequenceGenerationScore",
+      "kind": "property",
+      "label": "Sequence Generation Score",
+      "altLabel": "Sequence_Generation_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasSequenceGenerationScore",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The sub-score assessing whether the method used to generate the random allocation sequence, and any restrictions (e.g., blocking, stratification), are described.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the method used to generate the random allocation sequence, and any restrictions, are described, or 0 when neither is reported."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasRandomAllocationScore",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasAllocationConcealmentScore": {
+      "id": "tara-kb:hasAllocationConcealmentScore",
+      "kind": "property",
+      "label": "Allocation Concealment Score",
+      "altLabel": "Allocation_Concealment_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasAllocationConcealmentScore",
+      "description": "Category C: Methodological & Statistical Allocation Metrics (CONSORT). The sub-score assessing whether the method used to implement the random allocation sequence is described, and whether the sequence was concealed until interventions were assigned.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when both the implementation method and concealment status of the allocation sequence are described, or 0 when neither is reported."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasRandomAllocationScore",
       "children": [],
       "synonyms": []
     },
@@ -1836,9 +2042,32 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasMethodologicalAndStatisticalAllocationMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasOCSITotalPercentage": {
+      "id": "tara-kb:hasOCSITotalPercentage",
+      "kind": "property",
+      "label": "OCSI Total Percentage",
+      "altLabel": "OCSI_Total_Percentage",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSITotalPercentage",
+      "description": "The global reporting-quality percentage for a study's OCSI appraisal, calculated per Hammerschlag et al. 2011 as: raw score / (2 x [27 - n items scored N/A]) x 100. Unlike the 27 item-level score properties nested under the four OCSI categories, this is a derived summary value and is therefore attached directly to hasOCSIScoreMetadata rather than to any single category.",
+      "comment": null,
+      "examples": [
+        "e.g., 82.5 (representing 82.5% overall compliance across all OCSI-scored items)."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "percentFloat"
+      },
+      "parent": "tara-kb:hasOCSIScoreMetadata",
       "children": [],
       "synonyms": []
     },
@@ -1862,10 +2091,58 @@
       "parent": "tara-kb:hasOCSIScoreMetadata",
       "children": [
         "tara-kb:hasEligibilityScore",
+        "tara-kb:hasGeneralizabilityScore",
+        "tara-kb:hasInterpretationScore",
         "tara-kb:hasIntroductionAndHypothesisScore",
         "tara-kb:hasLimitationsScore",
         "tara-kb:hasParticipantsScore"
       ],
+      "synonyms": []
+    },
+    "tara-kb:hasGeneralizabilityScore": {
+      "id": "tara-kb:hasGeneralizabilityScore",
+      "kind": "property",
+      "label": "Generalizability Score",
+      "altLabel": "Generalizability_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasGeneralizabilityScore",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The reporting score assessing whether the generalizability (external validity) of the trial findings is discussed.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the external validity of the findings is explicitly discussed, or 0 when generalizability is not addressed."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasInterpretationScore": {
+      "id": "tara-kb:hasInterpretationScore",
+      "kind": "property",
+      "label": "Interpretation Score",
+      "altLabel": "Interpretation_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasInterpretationScore",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The reporting score assessing whether a general interpretation of the results is presented in the context of current evidence.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when the results are interpreted in the context of prior evidence, or 0 when no such interpretation is offered."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+      "children": [],
       "synonyms": []
     },
     "tara-kb:hasEligibilityScore": {
@@ -1885,7 +2162,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
       "children": [],
@@ -1897,10 +2174,10 @@
       "label": "Introduction and Hypothesis Score",
       "altLabel": "Introduction_And_Hypothesis_Score",
       "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasIntroductionAndHypothesisScore",
-      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The quality score measuring how completely the trial introduction presents clinical context and scientific rationale.",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The quality score measuring how completely the trial introduction presents clinical context, scientific rationale, and the stated objectives/hypothesis, derived as the sum of its two sub-scores.",
       "comment": null,
       "examples": [
-        "e.g., a score of 2 when the article states both clinical background and an explicit hypothesis, or 0 when neither is present."
+        "e.g., a combined value of 4 when both the background/rationale and the objectives/hypothesis are fully reported (2 each), derived from its hasIntroductionScore and hasHypothesisScore sub-scores."
       ],
       "grouping": false,
       "domain": "TARA:2825659",
@@ -1911,6 +2188,55 @@
         "label": "nonNegShortInt"
       },
       "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
+      "children": [
+        "tara-kb:hasHypothesisScore",
+        "tara-kb:hasIntroductionScore"
+      ],
+      "synonyms": []
+    },
+    "tara-kb:hasIntroductionScore": {
+      "id": "tara-kb:hasIntroductionScore",
+      "kind": "property",
+      "label": "Introduction Score",
+      "altLabel": "Introduction_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasIntroductionScore",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The sub-score assessing whether the article's introduction provides scientific background and explains the rationale for the trial.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when both scientific background and rationale are provided, or 0 when neither is present."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasIntroductionAndHypothesisScore",
+      "children": [],
+      "synonyms": []
+    },
+    "tara-kb:hasHypothesisScore": {
+      "id": "tara-kb:hasHypothesisScore",
+      "kind": "property",
+      "label": "Hypothesis Score",
+      "altLabel": "Hypothesis_Score",
+      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasHypothesisScore",
+      "description": "Category A: Study Foundation & Background Metrics (CONSORT). The sub-score assessing whether the article states specific objectives and a hypothesis to be tested.",
+      "comment": null,
+      "examples": [
+        "e.g., a score of 2 when both specific objectives and a stated hypothesis are given, or 0 when neither is present."
+      ],
+      "grouping": false,
+      "domain": "TARA:2825659",
+      "domainLabel": "Acupuncture Study OCSI Appraisal",
+      "range": {
+        "kind": "literal",
+        "id": null,
+        "label": "ocsiItemScore"
+      },
+      "parent": "tara-kb:hasIntroductionAndHypothesisScore",
       "children": [],
       "synonyms": []
     },
@@ -1931,7 +2257,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
       "children": [],
@@ -1954,7 +2280,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasStudyFoundationAndBackgroundMetrics",
       "children": [],
@@ -1986,7 +2312,6 @@
         "tara-kb:hasControlGroupsScore",
         "tara-kb:hasNeedlingParametersScore",
         "tara-kb:hasPractitionerAndSampleSizeScore",
-        "tara-kb:hasShamDetailsScore",
         "tara-kb:hasFrequencyOfTreatmentScore"
       ],
       "synonyms": []
@@ -2008,7 +2333,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
       "children": [],
@@ -2031,7 +2356,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
       "children": [],
@@ -2054,7 +2379,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
       "children": [],
@@ -2077,7 +2402,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
       "children": [],
@@ -2100,7 +2425,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
       "children": [],
@@ -2149,7 +2474,7 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasPractitionerAndSampleSizeScore",
       "children": [],
@@ -2172,32 +2497,9 @@
       "range": {
         "kind": "literal",
         "id": null,
-        "label": "nonNegShortInt"
+        "label": "ocsiItemScore"
       },
       "parent": "tara-kb:hasPractitionerAndSampleSizeScore",
-      "children": [],
-      "synonyms": []
-    },
-    "tara-kb:hasShamDetailsScore": {
-      "id": "tara-kb:hasShamDetailsScore",
-      "kind": "property",
-      "label": "Sham Controls Score",
-      "altLabel": "Sham_Details_Score",
-      "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasShamDetailsScore",
-      "description": "Category B: Technical Intervention Quality Metrics (STRICTA). The tracking score assessing whether the procedural, non-penetrating, or placebo physical components of sham controls are fully transparent.",
-      "comment": null,
-      "examples": [
-        "e.g., a score of 2 when the sham device and procedure are described in enough detail to be reproduced, or 0 when the sham intervention is not described."
-      ],
-      "grouping": false,
-      "domain": "TARA:2825659",
-      "domainLabel": "Acupuncture Study OCSI Appraisal",
-      "range": {
-        "kind": "literal",
-        "id": null,
-        "label": "nonNegShortInt"
-      },
-      "parent": "tara-kb:hasTechnicalInterventionQualityMetrics",
       "children": [],
       "synonyms": []
     }
