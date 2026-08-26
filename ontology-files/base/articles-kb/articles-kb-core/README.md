@@ -309,6 +309,31 @@ flowchart LR
     OCSI --> ITEM
     ITEM --> TOTPCT
 
+   
+    subgraph C ["<b>Category C: Study Design & Analysis Metrics</b>"]
+        direction LR
+        CATC["hasStudyDesignAndAnalysisMetrics"]:::group
+        ALLOCPERS["hasAllocationPersonnelScore<br/>(Allocation Personnel Score)"]:::field
+        BLIND["hasBlindingQualityScore<br/>(Blinding Quality Score)"]:::field
+        X2["hasOutcomesMeasureX2Score<br/>(Outcomes Measure X2 Score)"]:::field
+        OUTMEAS["hasOutcomeMeasuresScore<br/>(Outcome Measures Score)"]:::field
+        STATMETH["hasStatisticalMethodsScore<br/>(Statistical Methods Score)"]:::field
+        RAND["hasRandomAllocationScore<br/>(Random Allocation Score)"]:::field
+        ALLOCCONCEAL["hasAllocationConcealmentScore<br/>(Allocation Concealment Score)"]:::field
+        SEQGEN["hasSequenceGenerationScore<br/>(Sequence Generation Score)"]:::field
+        SAMPSC["hasSampleSizeScore<br/>(Sample Size Score)"]:::field
+
+        CATC --> ALLOCPERS
+        CATC --> BLIND
+        CATC --> X2
+        X2 --> OUTMEAS
+        X2 --> STATMETH
+        CATC --> RAND
+        RAND --> ALLOCCONCEAL
+        RAND --> SEQGEN
+        CATC --> SAMPSC
+    end
+
     subgraph D ["<b>Category D: Results & Discussion Metrics</b>"]
         direction LR
         CATD["hasResultsAndDiscussionMetrics"]:::group
@@ -335,29 +360,6 @@ flowchart LR
         CATD --> SUBG
     end
 
-    subgraph C ["<b>Category C: Study Design & Analysis Metrics</b>"]
-        direction LR
-        CATC["hasStudyDesignAndAnalysisMetrics"]:::group
-        ALLOCPERS["hasAllocationPersonnelScore<br/>(Allocation Personnel Score)"]:::field
-        BLIND["hasBlindingQualityScore<br/>(Blinding Quality Score)"]:::field
-        X2["hasOutcomesMeasureX2Score<br/>(Outcomes Measure X2 Score)"]:::field
-        OUTMEAS["hasOutcomeMeasuresScore<br/>(Outcome Measures Score)"]:::field
-        STATMETH["hasStatisticalMethodsScore<br/>(Statistical Methods Score)"]:::field
-        RAND["hasRandomAllocationScore<br/>(Random Allocation Score)"]:::field
-        ALLOCCONCEAL["hasAllocationConcealmentScore<br/>(Allocation Concealment Score)"]:::field
-        SEQGEN["hasSequenceGenerationScore<br/>(Sequence Generation Score)"]:::field
-        SAMPSC["hasSampleSizeScore<br/>(Sample Size Score)"]:::field
-
-        CATC --> ALLOCPERS
-        CATC --> BLIND
-        CATC --> X2
-        X2 --> OUTMEAS
-        X2 --> STATMETH
-        CATC --> RAND
-        RAND --> ALLOCCONCEAL
-        RAND --> SEQGEN
-        CATC --> SAMPSC
-    end
 
     subgraph B ["<b>Category B: Acupuncture Intervention Metrics</b>"]
         direction LR
@@ -393,9 +395,10 @@ flowchart LR
         CATA --> RANDSTMT
     end
 
-    ITEM --> CATB
+  
     ITEM --> CATD
     ITEM --> CATC
+    ITEM --> CATB
     ITEM --> CATA
 ```
 
