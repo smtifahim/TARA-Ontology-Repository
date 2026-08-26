@@ -302,30 +302,12 @@ flowchart LR
     classDef linked fill:#e8f0ff,stroke:#4472c4,stroke-dasharray: 2 2,color:#1a3a6b
 
     OCSI[["Acupuncture Study<br/>OCSI Assessment"]]:::linked
-    ROOT["hasStudyQualityAssessmentMetadata<br/>(Study Assessment Metadata)"]:::group
+    %% ROOT["hasStudyQualityAssessmentMetadata<br/>(Study Assessment Metadata)"]:::group
     ITEM["hasOCSIItemScoringMetadata<br/>(OCSI Item Scoring Metadata)"]:::group
     TOTPCT["hasOCSITotalPercentage<br/>(OCSI Total Percentage)"]:::field
-    OCSI --> ROOT
-    ROOT --> ITEM
+    %% OCSI --> ROOT
+    OCSI --> ITEM
     ITEM --> TOTPCT
-
-    subgraph B ["<b>Category B: Acupuncture Intervention Metrics</b>"]
-        direction LR
-        CATB["hasAcupunctureInterventionMetrics"]:::group
-        ACUDET["hasAcupunctureDetailsScore<br/>(Acupuncture Details Score)"]:::field
-        COINT["hasCointerventionsScore<br/>(Cointerventions Score)"]:::field
-        CTRLSC["hasControlGroupsScore<br/>(Control Groups Score)"]:::field
-        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
-        NEEDLESC["hasNeedlingParametersScore<br/>(Needling Parameters Score)"]:::field
-        PRACSC["hasPractitionerScore<br/>(Practitioner Score)"]:::field
-
-        CATB --> ACUDET
-        CATB --> COINT
-        CATB --> CTRLSC
-        CATB --> FREQSC
-        CATB --> NEEDLESC
-        CATB --> PRACSC
-    end
 
     subgraph D ["<b>Category D: Results & Discussion Metrics</b>"]
         direction LR
@@ -375,6 +357,24 @@ flowchart LR
         RAND --> ALLOCCONCEAL
         RAND --> SEQGEN
         CATC --> SAMPSC
+    end
+
+    subgraph B ["<b>Category B: Acupuncture Intervention Metrics</b>"]
+        direction LR
+        CATB["hasAcupunctureInterventionMetrics"]:::group
+        ACUDET["hasAcupunctureDetailsScore<br/>(Acupuncture Details Score)"]:::field
+        COINT["hasCointerventionsScore<br/>(Cointerventions Score)"]:::field
+        CTRLSC["hasControlGroupsScore<br/>(Control Groups Score)"]:::field
+        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
+        NEEDLESC["hasNeedlingParametersScore<br/>(Needling Parameters Score)"]:::field
+        PRACSC["hasPractitionerScore<br/>(Practitioner Score)"]:::field
+
+        CATB --> ACUDET
+        CATB --> COINT
+        CATB --> CTRLSC
+        CATB --> FREQSC
+        CATB --> NEEDLESC
+        CATB --> PRACSC
     end
 
     subgraph A ["<b>Category A: Study Rationale & Scope Metrics</b>"]
