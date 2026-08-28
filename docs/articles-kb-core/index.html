@@ -38,8 +38,10 @@
     <div id="settings-body" class="settings-body"></div>
     <div id="settings-lock-status" class="settings-lock-status" hidden></div>
     <div class="settings-panel-footer">
-      <button id="settings-lock" type="button" class="settings-lock">Lock as default for all viewers</button>
-      <button id="settings-unlock" type="button" class="settings-unlock" hidden>Unlock (remove default)</button>
+      <button id="settings-export" type="button" class="settings-export">Copy config for script</button>
+      <p class="settings-footer-hint">Makes this the default for <strong>every</strong> browser and computer: click to copy, paste into <code>articles-kb-core-default-settings.json</code> in the repo, then re-run the generator script.</p>
+      <button id="settings-lock" type="button" class="settings-lock">Lock as default (this browser only)</button>
+      <button id="settings-unlock" type="button" class="settings-unlock" hidden>Unlock (remove local default)</button>
       <button id="settings-reset" type="button" class="settings-reset">Reset to defaults</button>
     </div>
   </div>
@@ -1472,16 +1474,16 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasTARAArticlesMetadata",
-              "id": null
-            }
-          ],
           "extra__dcterms_type": [
             {
               "label": "grouping",
               "id": "tara-kb:grouping"
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasTARAArticlesMetadata",
+              "id": null
             }
           ]
         },
@@ -1511,10 +1513,10 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
+          "extra__dcterms_type": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -1523,10 +1525,10 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_creator": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
             }
           ]
         },
@@ -1560,10 +1562,10 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
+          "extra__dcterms_type": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -1572,10 +1574,10 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_creator": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
             }
           ]
         },
@@ -1612,15 +1614,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasAcupunctureProtocol",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -1653,15 +1655,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasAcupointSelectionAndGrouping",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -1691,15 +1693,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasAcupointGrouping",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -1730,15 +1732,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasAcupointSelection",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -1772,15 +1774,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasListedAcupoints",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -1810,15 +1812,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasListedAcupointsMapped",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -1848,15 +1850,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasListedAcupointsMappedCurie",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -1886,15 +1888,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasListedAcupointsUnmappable",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -1925,15 +1927,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasNeedlingDetails",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -1966,15 +1968,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasShamAcupunctureDetails",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2005,15 +2007,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStimulationTypeDetails",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2043,15 +2045,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasDatasetLink",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2082,10 +2084,10 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
+          "extra__dcterms_type": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -2094,10 +2096,10 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_creator": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
             }
           ]
         },
@@ -2128,15 +2130,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudiedTCMCondition",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2166,15 +2168,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasMappedTCMCondition",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2206,15 +2208,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudiedWesternCondition",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2244,15 +2246,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasMappedWesternCondition",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2286,10 +2288,10 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
+          "extra__dcterms_type": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -2298,10 +2300,10 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_creator": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
             }
           ]
         },
@@ -2331,15 +2333,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasControlGroupsDetails",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2369,15 +2371,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasSampleSizeDetails",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2410,15 +2412,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyOutcomesMeasure",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2448,15 +2450,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasPrimaryOutcomeMeasure",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2486,15 +2488,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasSecondaryOutcomeMeasure",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2524,15 +2526,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyType",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2565,15 +2567,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasTreatmentDurationAndFrequency",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2603,15 +2605,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasTreatmentDuration",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2641,15 +2643,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasTreatmentFrequency",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2687,15 +2689,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyFindings",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2725,15 +2727,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasComparativeFindings",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2763,15 +2765,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasProposedMechanism",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2801,15 +2803,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyConclusions",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2839,15 +2841,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyEffectiveness",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2877,15 +2879,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyResults",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2917,15 +2919,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyLocation",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -2955,15 +2957,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasCountryOfStudy",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3002,15 +3004,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasBibliographicMetadata",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3040,15 +3042,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasArticleTitle",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3078,15 +3080,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasArticleType",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3116,15 +3118,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasListedAuthors",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3156,15 +3158,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasPublicationDate",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3194,15 +3196,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasPublicationYear",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3236,15 +3238,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasPublicationLink",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3274,15 +3276,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasDOILink",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3313,15 +3315,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasOtherLink",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3351,15 +3353,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasPubMedLink",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3389,15 +3391,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasPublicationVenue",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3427,10 +3429,10 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
+          "extra__dcterms_type": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -3439,10 +3441,10 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_creator": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
             }
           ]
         },
@@ -3477,24 +3479,6 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011;2011:183910. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasScoringInstructions": [
-            {
-              "label": "General scoring instructions (OCSI Manual, Appendix A.1): \n\n(i) When scoring each question, consider whether a reviewer would be satisfied with what is reported, and whether the details given would be sufficient to reproduce the findings. \n\n(ii) When multiple components or \"and\" statements are listed for a question, all aspects must be met to receive full credit.\n\n(iii) Except for item no. 1, if the information is placed anywhere in the document, the question can receive full credit.\n\n(iv) For items 4-9 (from STRICTA), nos. 4-8 pertain only to the acupuncture aspects of the study, while no. 9 pertains to all types of control or comparison groups. \n\n(v) Practitioners are almost always NOT blinded in acupuncture research; hence item 16(b) is usually scored N/A.",
-              "id": null
-            }
-          ],
-          "extra__dcterms_license": [
-            {
-              "label": "",
-              "id": "https://creativecommons.org/licenses/by/4.0/"
-            }
-          ],
           "extra__dcterms_type": [
             {
               "label": "grouping",
@@ -3504,6 +3488,24 @@
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasOCSIItemScoringMetadata",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__dcterms_license": [
+            {
+              "label": "",
+              "id": "https://creativecommons.org/licenses/by/4.0/"
+            }
+          ],
+          "extra__tara_ap_hasScoringInstructions": [
+            {
+              "label": "General scoring instructions (OCSI Manual, Appendix A.1): \n\n(i) When scoring each question, consider whether a reviewer would be satisfied with what is reported, and whether the details given would be sufficient to reproduce the findings. \n\n(ii) When multiple components or \"and\" statements are listed for a question, all aspects must be met to receive full credit.\n\n(iii) Except for item no. 1, if the information is placed anywhere in the document, the question can receive full credit.\n\n(iv) For items 4-9 (from STRICTA), nos. 4-8 pertain only to the acupuncture aspects of the study, while no. 9 pertains to all types of control or comparison groups. \n\n(v) Practitioners are almost always NOT blinded in acupuncture research; hence item 16(b) is usually scored N/A.",
               "id": null
             }
           ]
@@ -3544,10 +3546,10 @@
           "citation": [
             "MacPherson H, Altman DG, Hammerschlag R, Youping L, Taixiang W, White A, Moher D; STRICTA Revision Group. Revised STandards for Reporting Interventions in Clinical Trials of Acupuncture (STRICTA): extending the CONSORT statement. PLoS Med. 2010;7(6):e1000261. doi:10.1371/journal.pmed.1000261. (Concurrently published in Acupuncture in Medicine 2010;28(2):83-93, doi:10.1136/aim.2009.001370, and Journal of Alternative and Complementary Medicine 2010;16(10):ST-1-14.)"
           ],
-          "extra__dcterms_creator": [
+          "extra__dcterms_type": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -3556,10 +3558,10 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_creator": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
             }
           ]
         },
@@ -3588,9 +3590,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "4",
+              "label": "tara-kb:hasAcupunctureDetailsScore",
               "id": null
             }
           ],
@@ -3600,9 +3602,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Is the style of acupuncture stated?\n\n(b) Is the rationale presented for the selection of acupuncture points?\n\n(c) Was the rationale justified?",
+              "label": "4",
               "id": null
             }
           ],
@@ -3612,9 +3614,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasAcupunctureDetailsScore",
+              "label": "(a) Is the style of acupuncture stated?\n\n(b) Is the rationale presented for the selection of acupuncture points?\n\n(c) Was the rationale justified?",
               "id": null
             }
           ]
@@ -3644,9 +3646,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "7",
+              "label": "tara-kb:hasCointerventionsScore",
               "id": null
             }
           ],
@@ -3656,9 +3658,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Are details of the acupuncture group cointervention(s) presented? (e.g., moxa, cupping, life-style advice, plum-blossom needling, Chinese herbs)",
+              "label": "7",
               "id": null
             }
           ],
@@ -3668,9 +3670,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasCointerventionsScore",
+              "label": "Are details of the acupuncture group cointervention(s) presented? (e.g., moxa, cupping, life-style advice, plum-blossom needling, Chinese herbs)",
               "id": null
             }
           ]
@@ -3700,9 +3702,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "9",
+              "label": "tara-kb:hasControlGroupsScore",
               "id": null
             }
           ],
@@ -3712,9 +3714,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Is the intended effect of the control or comparison intervention presented?\n\n(b) Were the specific explanations given to patients of the treatment and control interventions presented?\n\n(c) Are details for the control or comparison intervention presented?\n\n(d) Are sources provided, that justify the choice of the control or comparison intervention?",
+              "label": "9",
               "id": null
             }
           ],
@@ -3724,9 +3726,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasControlGroupsScore",
+              "label": "(a) Is the intended effect of the control or comparison intervention presented?\n\n(b) Were the specific explanations given to patients of the treatment and control interventions presented?\n\n(c) Are details for the control or comparison intervention presented?\n\n(d) Are sources provided, that justify the choice of the control or comparison intervention?",
               "id": null
             }
           ]
@@ -3756,9 +3758,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "6",
+              "label": "tara-kb:hasFrequencyOfTreatmentScore",
               "id": null
             }
           ],
@@ -3768,9 +3770,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Are the\n\n(a) number and\n\n(b) frequency of treatments stated?",
+              "label": "6",
               "id": null
             }
           ],
@@ -3780,9 +3782,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasFrequencyOfTreatmentScore",
+              "label": "Are the\n\n(a) number and\n\n(b) frequency of treatments stated?",
               "id": null
             }
           ]
@@ -3812,9 +3814,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "5",
+              "label": "tara-kb:hasNeedlingParametersScore",
               "id": null
             }
           ],
@@ -3824,9 +3826,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Are the following parameters of needling presented?\n\n(a) Points used (uni/bilateral)\n\n(b) Number of needles inserted\n\n(c) Depth(s) of insertion\n\n(d) Response elicited (e.g., de qi)\n\n(e) Needle stimulation (manual or electrical)\n\n(f) Needle retention time\n\n(g) Needle type (Material and/or manufacturer, gauge, and length)",
+              "label": "5",
               "id": null
             }
           ],
@@ -3836,9 +3838,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasNeedlingParametersScore",
+              "label": "Are the following parameters of needling presented?\n\n(a) Points used (uni/bilateral)\n\n(b) Number of needles inserted\n\n(c) Depth(s) of insertion\n\n(d) Response elicited (e.g., de qi)\n\n(e) Needle stimulation (manual or electrical)\n\n(f) Needle retention time\n\n(g) Needle type (Material and/or manufacturer, gauge, and length)",
               "id": null
             }
           ]
@@ -3868,9 +3870,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "8",
+              "label": "tara-kb:hasPractitionerScore",
               "id": null
             }
           ],
@@ -3880,9 +3882,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Are descriptions provided of the\n\n(a) duration of practitioner training,\n\n(b) length of clinical experience, and\n\n(c) expertise in specific condition?",
+              "label": "8",
               "id": null
             }
           ],
@@ -3892,9 +3894,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasPractitionerScore",
+              "label": "Are descriptions provided of the\n\n(a) duration of practitioner training,\n\n(b) length of clinical experience, and\n\n(c) expertise in specific condition?",
               "id": null
             }
           ]
@@ -3924,15 +3926,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasOCSITotalPercentage",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -3971,10 +3973,10 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
+          "extra__dcterms_type": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -3983,10 +3985,10 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_creator": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
             }
           ]
         },
@@ -4015,9 +4017,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "24",
+              "label": "tara-kb:hasAdverseEffectsScore",
               "id": null
             }
           ],
@@ -4027,9 +4029,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Are all important adverse events or side effects presented for each intervention group?",
+              "label": "24",
               "id": null
             }
           ],
@@ -4039,9 +4041,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasAdverseEffectsScore",
+              "label": "Are all important adverse events or side effects presented for each intervention group?",
               "id": null
             }
           ]
@@ -4071,9 +4073,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "21",
+              "label": "tara-kb:hasAnalysisPopulationScore",
               "id": null
             }
           ],
@@ -4083,9 +4085,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Is the number of participants in each group included in each analysis?\n\n(b) Was the intention to treat analysis presented?\n\n(c) When feasible, are the results stated in absolute numbers (e.g., 10 of 20, not just 50%)?",
+              "label": "21",
               "id": null
             }
           ],
@@ -4095,9 +4097,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasAnalysisPopulationScore",
+              "label": "(a) Is the number of participants in each group included in each analysis?\n\n(b) Was the intention to treat analysis presented?\n\n(c) When feasible, are the results stated in absolute numbers (e.g., 10 of 20, not just 50%)?",
               "id": null
             }
           ]
@@ -4127,9 +4129,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "26",
+              "label": "tara-kb:hasGeneralizabilityScore",
               "id": null
             }
           ],
@@ -4139,9 +4141,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Is the generalizability (external validity) of the trial findings discussed?",
+              "label": "26",
               "id": null
             }
           ],
@@ -4151,9 +4153,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasGeneralizabilityScore",
+              "label": "Is the generalizability (external validity) of the trial findings discussed?",
               "id": null
             }
           ]
@@ -4183,9 +4185,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "27",
+              "label": "tara-kb:hasInterpretationScore",
               "id": null
             }
           ],
@@ -4195,9 +4197,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Is a general interpretation of the results presented, in the context of current evidence?",
+              "label": "27",
               "id": null
             }
           ],
@@ -4207,9 +4209,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasInterpretationScore",
+              "label": "Is a general interpretation of the results presented, in the context of current evidence?",
               "id": null
             }
           ]
@@ -4239,9 +4241,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "25",
+              "label": "tara-kb:hasLimitationsScore",
               "id": null
             }
           ],
@@ -4251,9 +4253,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Is an interpretation of the results presented that takes into account\n\n(a) study hypotheses,\n\n(b) sources of potential bias or imprecision, and\n\n(c) the potential dangers associated with multiple analyses and outcomes?",
+              "label": "25",
               "id": null
             }
           ],
@@ -4263,9 +4265,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasLimitationsScore",
+              "label": "Is an interpretation of the results presented that takes into account\n\n(a) study hypotheses,\n\n(b) sources of potential bias or imprecision, and\n\n(c) the potential dangers associated with multiple analyses and outcomes?",
               "id": null
             }
           ]
@@ -4295,9 +4297,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "18",
+              "label": "tara-kb:hasParticipantFlowScore",
               "id": null
             }
           ],
@@ -4307,9 +4309,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Is the flow of participants through each stage quantitatively described, and\n\n(b) if protocol deviations are reported, were reasons presented?",
+              "label": "18",
               "id": null
             }
           ],
@@ -4319,9 +4321,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasParticipantFlowScore",
+              "label": "(a) Is the flow of participants through each stage quantitatively described, and\n\n(b) if protocol deviations are reported, were reasons presented?",
               "id": null
             }
           ]
@@ -4351,9 +4353,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "20",
+              "label": "tara-kb:hasParticipantsScore",
               "id": null
             }
           ],
@@ -4363,9 +4365,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Are baseline demographics and\n\n(b) clinical characteristics presented for each group?",
+              "label": "20",
               "id": null
             }
           ],
@@ -4375,9 +4377,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasParticipantsScore",
+              "label": "(a) Are baseline demographics and\n\n(b) clinical characteristics presented for each group?",
               "id": null
             }
           ]
@@ -4407,9 +4409,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "19",
+              "label": "tara-kb:hasRecruitmentAndFollowUpScore",
               "id": null
             }
           ],
@@ -4419,9 +4421,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Are dates provided that define the period of recruitment?\n\n(b) Is the length of followup (on-treatment and posttreatment) reported?",
+              "label": "19",
               "id": null
             }
           ],
@@ -4431,9 +4433,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasRecruitmentAndFollowUpScore",
+              "label": "(a) Are dates provided that define the period of recruitment?\n\n(b) Is the length of followup (on-treatment and posttreatment) reported?",
               "id": null
             }
           ]
@@ -4464,9 +4466,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "22",
+              "label": "tara-kb:hasResultsOutcomesScore",
               "id": null
             }
           ],
@@ -4476,9 +4478,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "For each primary and (if applicable) secondary outcome, is\n\n(a) a summary of results presented for each group,\n\n(b) the estimated effect size presented for each between-group difference (e.g., SD), and\n\n(c) the precision of the effect size presented for each between-group difference (e.g., confidence interval (CI))?",
+              "label": "22",
               "id": null
             }
           ],
@@ -4488,9 +4490,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasResultsOutcomesScore",
+              "label": "For each primary and (if applicable) secondary outcome, is\n\n(a) a summary of results presented for each group,\n\n(b) the estimated effect size presented for each between-group difference (e.g., SD), and\n\n(c) the precision of the effect size presented for each between-group difference (e.g., confidence interval (CI))?",
               "id": null
             }
           ]
@@ -4520,9 +4522,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "23",
+              "label": "tara-kb:hasSubgroupScore",
               "id": null
             }
           ],
@@ -4532,9 +4534,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "If additional subgroup analyses and/or adjusted analyses are reported, is it stated whether they were prespecified or exploratory, that is, not prespecified?",
+              "label": "23",
               "id": null
             }
           ],
@@ -4544,9 +4546,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasSubgroupScore",
+              "label": "If additional subgroup analyses and/or adjusted analyses are reported, is it stated whether they were prespecified or exploratory, that is, not prespecified?",
               "id": null
             }
           ]
@@ -4582,10 +4584,10 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
+          "extra__dcterms_type": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -4594,10 +4596,10 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_creator": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
             }
           ]
         },
@@ -4626,9 +4628,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "15",
+              "label": "tara-kb:hasAllocationPersonnelScore",
               "id": null
             }
           ],
@@ -4638,9 +4640,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Are there statements as to\n\n(a) who generated the allocation sequence,\n\n(b) who enrolled participants, and\n\n(c) who assigned participants to their groups?",
+              "label": "15",
               "id": null
             }
           ],
@@ -4650,9 +4652,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasAllocationPersonnelScore",
+              "label": "Are there statements as to\n\n(a) who generated the allocation sequence,\n\n(b) who enrolled participants, and\n\n(c) who assigned participants to their groups?",
               "id": null
             }
           ]
@@ -4685,9 +4687,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "16",
+              "label": "tara-kb:hasBlindingScore",
               "id": null
             }
           ],
@@ -4697,9 +4699,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Is it stated whether or not\n\n(a) participants,\n\n(b) those administering the interventions, and\n\n(c) those assessing the outcomes were blinded? and\n\n(d) was the success of participant blinding evaluated?",
+              "label": "16",
               "id": null
             }
           ],
@@ -4709,9 +4711,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasBlindingScore",
+              "label": "Is it stated whether or not\n\n(a) participants,\n\n(b) those administering the interventions, and\n\n(c) those assessing the outcomes were blinded? and\n\n(d) was the success of participant blinding evaluated?",
               "id": null
             }
           ]
@@ -4744,15 +4746,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasOutcomesMeasureX2Score",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -4782,9 +4784,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "11",
+              "label": "tara-kb:hasOutcomeMeasuresScore",
               "id": null
             }
           ],
@@ -4794,9 +4796,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Are primary and (if applicable) secondary outcome measures clearly defined?\n\n(b) Are there statements (when applicable), regarding any methods used to enhance the quality of measurements, for example, multiple observers or training of assessors?",
+              "label": "11",
               "id": null
             }
           ],
@@ -4806,9 +4808,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasOutcomeMeasuresScore",
+              "label": "(a) Are primary and (if applicable) secondary outcome measures clearly defined?\n\n(b) Are there statements (when applicable), regarding any methods used to enhance the quality of measurements, for example, multiple observers or training of assessors?",
               "id": null
             }
           ]
@@ -4838,9 +4840,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "17",
+              "label": "tara-kb:hasStatisticalMethodsScore",
               "id": null
             }
           ],
@@ -4850,9 +4852,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Were the statistical methods stated that were used to compare groups for primary outcomes?\n\n(b) Were the statistical methods stated that were used for additional analyses such as subgroup or adjusted analyses?",
+              "label": "17",
               "id": null
             }
           ],
@@ -4862,9 +4864,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasStatisticalMethodsScore",
+              "label": "(a) Were the statistical methods stated that were used to compare groups for primary outcomes?\n\n(b) Were the statistical methods stated that were used for additional analyses such as subgroup or adjusted analyses?",
               "id": null
             }
           ]
@@ -4897,15 +4899,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasRandomAllocationScore",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -4935,9 +4937,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "14",
+              "label": "tara-kb:hasAllocationConcealmentScore",
               "id": null
             }
           ],
@@ -4947,9 +4949,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Is the method presented that was used to implement the random allocation sequence,\n\n(b) with clarification as to whether the sequence was concealed until interventions were assigned?",
+              "label": "14",
               "id": null
             }
           ],
@@ -4959,9 +4961,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasAllocationConcealmentScore",
+              "label": "(a) Is the method presented that was used to implement the random allocation sequence,\n\n(b) with clarification as to whether the sequence was concealed until interventions were assigned?",
               "id": null
             }
           ]
@@ -4991,9 +4993,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "13",
+              "label": "tara-kb:hasSequenceGenerationScore",
               "id": null
             }
           ],
@@ -5003,9 +5005,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Is the method presented that was used to generate the random allocation sequence, and\n\n(b) if applicable, details of any restriction (e.g., blocking, stratification)?",
+              "label": "13",
               "id": null
             }
           ],
@@ -5015,9 +5017,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasSequenceGenerationScore",
+              "label": "(a) Is the method presented that was used to generate the random allocation sequence, and\n\n(b) if applicable, details of any restriction (e.g., blocking, stratification)?",
               "id": null
             }
           ]
@@ -5047,9 +5049,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "12",
+              "label": "tara-kb:hasSampleSizeScore",
               "id": null
             }
           ],
@@ -5059,9 +5061,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Is there a statement regarding how the sample size was determined, and\n\n(b) if applicable, an explanation of any interim analyses and stopping rules?",
+              "label": "12",
               "id": null
             }
           ],
@@ -5071,9 +5073,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasSampleSizeScore",
+              "label": "(a) Is there a statement regarding how the sample size was determined, and\n\n(b) if applicable, an explanation of any interim analyses and stopping rules?",
               "id": null
             }
           ]
@@ -5108,10 +5110,10 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
+          "extra__dcterms_type": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -5120,10 +5122,10 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_creator": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
             }
           ]
         },
@@ -5152,9 +5154,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "3",
+              "label": "tara-kb:hasEligibilityScore",
               "id": null
             }
           ],
@@ -5164,9 +5166,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Are the eligibility criteria (inclusion and exclusion criteria) stated and\n\n(b) are the setting(s) and location(s) where the data was collected described?",
+              "label": "3",
               "id": null
             }
           ],
@@ -5176,9 +5178,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasEligibilityScore",
+              "label": "(a) Are the eligibility criteria (inclusion and exclusion criteria) stated and\n\n(b) are the setting(s) and location(s) where the data was collected described?",
               "id": null
             }
           ]
@@ -5211,15 +5213,15 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasIntroductionAndHypothesisScore",
+              "id": null
+            }
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ]
@@ -5249,9 +5251,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "10",
+              "label": "tara-kb:hasHypothesisScore",
               "id": null
             }
           ],
@@ -5261,9 +5263,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Are there statements of\n\n(a) specific objectives and\n\n(b) hypotheses to be tested?",
+              "label": "10",
               "id": null
             }
           ],
@@ -5273,9 +5275,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasHypothesisScore",
+              "label": "Are there statements of\n\n(a) specific objectives and\n\n(b) hypotheses to be tested?",
               "id": null
             }
           ]
@@ -5305,9 +5307,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "2",
+              "label": "tara-kb:hasIntroductionScore",
               "id": null
             }
           ],
@@ -5317,9 +5319,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "(a) Is scientific background provided and\n\n(b) is the rationale explained?",
+              "label": "2",
               "id": null
             }
           ],
@@ -5329,9 +5331,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasIntroductionScore",
+              "label": "(a) Is scientific background provided and\n\n(b) is the rationale explained?",
               "id": null
             }
           ]
@@ -5361,9 +5363,9 @@
           ],
           "source": [],
           "citation": [],
-          "extra__tara_ap_hasOCSIItemNumber": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "1",
+              "label": "tara-kb:hasRandomizationStatementScore",
               "id": null
             }
           ],
@@ -5373,9 +5375,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasAssessmentQuestion": [
+          "extra__tara_ap_hasOCSIItemNumber": [
             {
-              "label": "Is there an explicit statement that patients were randomly assigned to interventions?",
+              "label": "1",
               "id": null
             }
           ],
@@ -5385,9 +5387,9 @@
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_ap_hasAssessmentQuestion": [
             {
-              "label": "tara-kb:hasRandomizationStatementScore",
+              "label": "Is there an explicit statement that patients were randomly assigned to interventions?",
               "id": null
             }
           ]
@@ -5884,7 +5886,249 @@
       ]
     }
   },
-  "baseNamespace": "http://www.acupunctureresearch.org/tara/ontology/"
+  "baseNamespace": "http://www.acupunctureresearch.org/tara/ontology/",
+  "defaultSettings": {
+    "expandedDepth": 2,
+    "panelStyle": {
+      "classes": "compact",
+      "annotationProperties": "compact",
+      "objectProperties": "compact",
+      "dataTypes": "compact",
+      "summary": "compact"
+    },
+    "detailFieldsByKind": {
+      "classes": [
+        {
+          "key": "domain_range",
+          "hidden": true
+        },
+        {
+          "key": "synonyms",
+          "hidden": false
+        },
+        {
+          "key": "altLabel",
+          "hidden": false
+        },
+        {
+          "key": "description",
+          "hidden": false
+        },
+        {
+          "key": "dataRangeExpression",
+          "hidden": true
+        },
+        {
+          "key": "comment",
+          "hidden": false
+        },
+        {
+          "key": "examples",
+          "hidden": false
+        },
+        {
+          "key": "source",
+          "hidden": false
+        },
+        {
+          "key": "citation",
+          "hidden": false
+        },
+        {
+          "key": "extra__dcterms_creator",
+          "hidden": true
+        },
+        {
+          "key": "parent",
+          "hidden": false
+        },
+        {
+          "key": "children",
+          "hidden": false
+        }
+      ],
+      "annotationProperties": [
+        {
+          "key": "domain_range",
+          "hidden": false
+        },
+        {
+          "key": "synonyms",
+          "hidden": false
+        },
+        {
+          "key": "altLabel",
+          "hidden": false
+        },
+        {
+          "key": "description",
+          "hidden": false
+        },
+        {
+          "key": "dataRangeExpression",
+          "hidden": true
+        },
+        {
+          "key": "extra__tara_ap_hasOCSIItemNumber",
+          "hidden": false
+        },
+        {
+          "key": "extra__tara_ap_hasAssessmentQuestion",
+          "hidden": false
+        },
+        {
+          "key": "extra__tara_ap_hasScoringInstructions",
+          "hidden": false
+        },
+        {
+          "key": "extra__dcterms_creator",
+          "hidden": true
+        },
+        {
+          "key": "examples",
+          "hidden": true
+        },
+        {
+          "key": "extra__tara_ap_hasCompactURI",
+          "hidden": true
+        },
+        {
+          "key": "comment",
+          "hidden": false
+        },
+        {
+          "key": "extra__dcterms_license",
+          "hidden": true
+        },
+        {
+          "key": "source",
+          "hidden": false
+        },
+        {
+          "key": "citation",
+          "hidden": false
+        },
+        {
+          "key": "extra__dcterms_type",
+          "hidden": false
+        },
+        {
+          "key": "parent",
+          "hidden": false
+        },
+        {
+          "key": "children",
+          "hidden": false
+        }
+      ],
+      "objectProperties": [
+        {
+          "key": "domain_range",
+          "hidden": false
+        },
+        {
+          "key": "synonyms",
+          "hidden": false
+        },
+        {
+          "key": "altLabel",
+          "hidden": false
+        },
+        {
+          "key": "description",
+          "hidden": false
+        },
+        {
+          "key": "dataRangeExpression",
+          "hidden": false
+        },
+        {
+          "key": "comment",
+          "hidden": false
+        },
+        {
+          "key": "examples",
+          "hidden": false
+        },
+        {
+          "key": "source",
+          "hidden": false
+        },
+        {
+          "key": "citation",
+          "hidden": false
+        },
+        {
+          "key": "parent",
+          "hidden": false
+        },
+        {
+          "key": "children",
+          "hidden": false
+        }
+      ],
+      "dataTypes": [
+        {
+          "key": "domain_range",
+          "hidden": false
+        },
+        {
+          "key": "synonyms",
+          "hidden": false
+        },
+        {
+          "key": "altLabel",
+          "hidden": false
+        },
+        {
+          "key": "description",
+          "hidden": false
+        },
+        {
+          "key": "dataRangeExpression",
+          "hidden": false
+        },
+        {
+          "key": "comment",
+          "hidden": false
+        },
+        {
+          "key": "examples",
+          "hidden": true
+        },
+        {
+          "key": "source",
+          "hidden": true
+        },
+        {
+          "key": "citation",
+          "hidden": true
+        },
+        {
+          "key": "parent",
+          "hidden": true
+        },
+        {
+          "key": "children",
+          "hidden": true
+        }
+      ]
+    },
+    "summaryFields": [
+      {
+        "key": "Ontology IRI",
+        "hidden": true
+      },
+      {
+        "key": "Description",
+        "hidden": false
+      },
+      {
+        "key": "Comment",
+        "hidden": false
+      }
+    ]
+  }
 }
 </script>
 <script>
@@ -6575,16 +6819,34 @@
     return true;
   }
 
+  // A discovered predicate's value gets pill treatment even when it doesn't
+  // resolve to an entity (f.alwaysPill / valueInfo.alwaysPill) - right for a
+  // short, token-like value (a database cross-reference code, a compact URI).
+  // But some discovered predicates carry a sentence or two of descriptive
+  // prose (e.g. acupoints' "Acupuncture Method": "Puncture obliquely 0.5-0.7
+  // inch. Moxibustion is applicable.") - cramming that into a single-line,
+  // non-wrapping pill reads badly, so treat a multi-word value past a small
+  // length as prose and let it render as plain (linkified) text instead.
+  // Clickable entity pills and short token pills are unaffected.
+  function isDescriptivePillText(text) {
+    const s = String(text == null ? '' : text).trim();
+    if (!s) return false;
+    if (/^\S+$/.test(s)) return false;              // single token (code / URI) - keep as pill
+    if (s.split(/\s+/).length <= 3 && s.length <= 32) return false;  // short label e.g. "EX-B 3" - keep as pill
+    return true;                                    // prose - render as plain text
+  }
+
   // A list of {label, id} values (render="entity_list") - each becomes a
   // clickable pill when its id resolves to a real record (an actual
   // ontology entity); a non-clickable pill when f.alwaysPill (a discovered
   // field - every value is the same short token-like shape, e.g. a database
   // cross-reference code, whether or not that particular one happens to
-  // resolve); plain (linkified) text otherwise - same convention as the
-  // compact panel's buildAnnValueNode(), so a configured field's genuine
-  // descriptive fallback text (e.g. acupoints' General/Specific Surface
-  // Location, Related Artery/Vein) doesn't look like an entity reference
-  // just because it shares a field with ones that are.
+  // resolve) UNLESS the value is descriptive prose (see isDescriptivePillText);
+  // plain (linkified) text otherwise - same convention as the compact panel's
+  // buildAnnValueNode(), so a configured field's genuine descriptive fallback
+  // text (e.g. acupoints' General/Specific Surface Location, Related
+  // Artery/Vein) doesn't look like an entity reference just because it shares
+  // a field with ones that are.
   function renderEntityListField(content, rec, f) {
     const vals = rec[f.key];
     if (!vals || !vals.length) return false;
@@ -6595,7 +6857,7 @@
       const target = v.id ? recordOf(v.id) : null;
       if (target) {
         row.appendChild(chip(v.label, () => selectNode(v.id)));
-      } else if (f.alwaysPill) {
+      } else if (f.alwaysPill && !isDescriptivePillText(v.label)) {
         row.appendChild(chip(v.label));
       } else {
         const span = document.createElement('span');
@@ -6719,7 +6981,7 @@
         const target = v.id ? recordOf(v.id) : null;
         if (target) {
           wrap.appendChild(chip(v.label, () => selectNode(v.id)));
-        } else if (valueInfo.alwaysPill) {
+        } else if (valueInfo.alwaysPill && !isDescriptivePillText(v.label)) {
           wrap.appendChild(chip(v.label));
         } else {
           const span = document.createElement('span');
@@ -7333,10 +7595,14 @@
     } catch (e) { return null; }
   }
 
-  // Every visitor gets the locked default (if the maintainer has set one) as
-  // their baseline; on top of that, THIS viewer's own live override (if
-  // they're the maintainer and have adjusted something in this browser).
+  // Priority, lowest to highest:
+  //   1. DATA.defaultSettings - baked into the page by the generator from the
+  //      maintainer's exported snapshot (OntologyDocConfig.default_settings_file).
+  //      Travels with the file, so it's the default on every browser and machine.
+  //   2. LOCKED_KEY - a per-browser "lock" (localStorage only; this machine).
+  //   3. SETTINGS_KEY - THIS viewer's own live tweaks in this browser.
   function loadSettings() {
+    applySnapshot(DATA.defaultSettings || null);
     applySnapshot(readJSON(LOCKED_KEY));
     applySnapshot(readJSON(SETTINGS_KEY));
   }
@@ -7620,6 +7886,34 @@
       // back to the locked default if one exists, else the ttl-baked factory default
       try { localStorage.removeItem(SETTINGS_KEY); } catch (e) { /* ignore */ }
       location.reload();
+    });
+    // Copy the current arrangement as JSON to paste into the generator's
+    // per-ontology default-settings file - the portable "default for everyone"
+    // path (unlike the localStorage-only "lock" button below it).
+    const exportBtn = document.getElementById('settings-export');
+    exportBtn.addEventListener('click', () => {
+      const json = JSON.stringify(currentSettingsSnapshot(), null, 2);
+      const done = (ok) => {
+        const original = 'Copy config for script';
+        exportBtn.textContent = ok ? 'Copied ✓' : 'Copy failed - see console';
+        if (!ok) { console.log('Settings snapshot (copy this):\n' + json); }
+        setTimeout(() => { exportBtn.textContent = original; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(json).then(() => done(true), () => done(false));
+      } else {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = json;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          const ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          done(ok);
+        } catch (e) { done(false); }
+      }
     });
     document.getElementById('settings-lock').addEventListener('click', () => {
       try {
