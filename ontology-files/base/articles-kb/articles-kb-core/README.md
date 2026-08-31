@@ -77,14 +77,14 @@ flowchart TB
 
 - **`tara-articles-kb-core.ttl`** — the canonical, hand-authored ontology.
 - **`tara-articles-kb-core-draft.ttl`** — working draft / staging area for property changes before they're promoted into the core file.
-- **`artifacts-generator/`** — generator scripts, one subdirectory per artifact type, each producing the correspondingly-named folder under `generated-artifacts/`. Each script parses `tara-articles-kb-core.ttl` directly with `rdflib`; introduce a shared `ontology_manifest.py` reflection step once more than one generator needs the same field-level traversal.
-  - `doc-generator/` — implemented. Two generators: `generate_documentation.py` (writes `tara-articles-kb-core-doc.md` alongside it — class hierarchy, full `tara-kb:hasTARAArticlesMetadata` property tree with domain/range, and a computed Data Quality Notes section) and `generate_html_docs.py` (writes the interactive HTML ontology browser — search/pulldown-autocomplete, expandable trees with a resizable sidebar, browser-history navigation — as `index.html` + `styles.css` to `docs/articles-kb-core/` at the repo root by default, served by GitHub Pages). Run either with `python3 artifacts-generator/doc-generator/<script>.py`.
+- **`artifacts-generator/`** — generator scripts, one subdirectory per artifact type, each producing the correspondingly-named folder under `generated-artifacts/`. Each script parses `tara-articles-kb-core.ttl` directly with `rdflib`; introduce a shared `ontology_manifest.py` reflection step once more than one generator needs the same field-level traversal. (`docs-generator/` used to live here but has moved — see below — since it's generic across ontologies rather than specific to this one.)
   - `manifest/` — *(not yet implemented)* will hold `ontology_manifest.py`, the intended canonical field-reflection generator other scripts can share.
   - `csv-templates/` — *(not yet implemented)* will hold the CSV/Excel extraction-template generator.
   - `db-schema/` — *(not yet implemented)* will hold the relational DDL generator.
   - `sparql-templates/` — *(not yet implemented)* will hold the canned SPARQL query-template generator.
   - `llm-prompts/` — *(not yet implemented)* will hold the per-field LLM extraction-prompt generator.
   - `queries/` — *(not yet populated)* reusable SPARQL (`.rq`) query files shared across the generator scripts above.
+- Documentation generators now live at repo root in **`ontology-generator/docs-generator/`** (shared across ontologies, not just this one): `generate_documentation.py` (writes `tara-articles-kb-core-doc.md` alongside it — class hierarchy, full `tara-kb:hasTARAArticlesMetadata` property tree with domain/range, and a computed Data Quality Notes section) and `generate_articles_kb_core_html.py` (a thin per-ontology config on top of the shared `lib/ttl_to_html.py` engine, which writes the interactive HTML ontology browser — search/pulldown-autocomplete, expandable trees with a resizable sidebar, browser-history navigation — as `index.html` + `styles.css` to `docs/articles-kb-core/` at the repo root by default, served by GitHub Pages). A future ontology gets its own `generate_<ontology>_html.py` calling into the same `lib/ttl_to_html.py`. Run either with `python3 ontology-generator/docs-generator/<script>.py [--ttl PATH] [--out PATH]`.
 - **`generated-artifacts/`** — build output only; never hand-edited; regenerated from `artifacts-generator/`.
   - `manifest/` — the canonical intermediate field manifest (compact URI, column name, definition, example, range, domain, parent grouping) that every other generated artifact is built from.
   - `csv-templates/` — generated Excel/CSV extraction templates.
@@ -193,6 +193,7 @@ flowchart LR
     STUDY --> ROOT
 
     ROOT --> PROT
+    ROOT --> LIST
     ROOT --> DLINK
     ROOT --> SCOND
     ROOT --> SDES
@@ -206,24 +207,30 @@ flowchart LR
         ASELGROUP["hasAcupointSelectionAndGrouping<br/>(Point Selection and Grouping)"]:::field
         GRP["hasAcupointGrouping<br/>(Acupoint Grouping)"]:::field
         SEL["hasAcupointSelection<br/>(Acupoint Selection)"]:::field
-        LIST["hasListedAcupoints<br/>(Listed Acupoint(s))"]:::field
-        LMAP["hasListedAcupointsMapped<br/>(Listed Acupoint(s) Mapped)"]:::field
-        LCURIE["hasListedAcupointsMappedCurie<br/>(Listed Acupoint(s) Mapped Curie)"]:::field
-        LUNMAP["hasListedAcupointsUnmappable<br/>(Listed Acupoint(s) Unmappable)"]:::field
         NEEDLE["hasNeedlingDetails<br/>(Needling Details)"]:::field
         SHAM["hasShamAcupunctureDetails<br/>(Sham Acupuncture Details)"]:::field
+        SHAMUSED["hasShamAcupunctureUsed<br/>(Sham Acupuncture Used)"]:::field
         STIM["hasStimulationTypeDetails<br/>(Stimulation Type Details)"]:::field
 
         PROT --> ASELGROUP
         ASELGROUP --> GRP
         ASELGROUP --> SEL
-        PROT --> LIST
+        PROT --> NEEDLE
+        PROT --> SHAM
+        PROT --> SHAMUSED
+        PROT --> STIM
+    end
+
+    subgraph LISTED ["<b>Listed Acupoints</b>"]
+        direction LR
+        LIST["hasListedAcupoints<br/>(Listed Acupoint(s))"]:::field
+        LMAP["hasListedAcupointsMapped<br/>(Listed Acupoint(s) Mapped)"]:::field
+        LCURIE["hasListedAcupointsMappedCurie<br/>(Listed Acupoint(s) Mapped Curie)"]:::field
+        LUNMAP["hasListedAcupointsUnmappable<br/>(Listed Acupoint(s) Unmappable)"]:::field
+
         LIST --> LMAP
         LIST --> LCURIE
         LIST --> LUNMAP
-        PROT --> NEEDLE
-        PROT --> SHAM
-        PROT --> STIM
     end
 
     subgraph DLK ["Dataset Link"]
@@ -293,7 +300,7 @@ flowchart LR
 
 ### 3. Acupuncture Study OCSI Assessment
 
-Everything about an instance of an Acupuncture Study OCSI Assessment based on a reported study. Each instance contains  structured quality appraisal of trial reporting, based on the Oregon CONSORT/STRICTA Instrument (OCSI), organized into four scoring categories.
+Everything about an instance of an Acupuncture Study OCSI Assessment based on a reported study. Each instance contains  structured quality appraisal of trial reporting, based on the Oregon CONSORT/STRICTA Instrument (OCSI), organized into five scoring categories (A–E) covering 27 numbered items.
 
 ```mermaid
 flowchart LR
@@ -309,97 +316,95 @@ flowchart LR
     OCSI --> ITEM
     ITEM --> TOTPCT
 
-   
-    subgraph C ["<b>Category C: Study Design & Analysis Metrics</b>"]
+    subgraph A ["<b>Category A: Study Rationale & Scope Metrics</b>"]
         direction LR
-        CATC["hasStudyDesignAndAnalysisMetrics"]:::group
-        ALLOCPERS["hasAllocationPersonnelScore<br/>(Allocation Personnel Score)"]:::field
-        BLIND["hasBlindingQualityScore<br/>(Blinding Quality Score)"]:::field
-        X2["hasOutcomesMeasureX2Score<br/>(Outcomes Measure X2 Score)"]:::field
-        OUTMEAS["hasOutcomeMeasuresScore<br/>(Outcome Measures Score)"]:::field
-        STATMETH["hasStatisticalMethodsScore<br/>(Statistical Methods Score)"]:::field
-        RAND["hasRandomAllocationScore<br/>(Random Allocation Score)"]:::field
-        ALLOCCONCEAL["hasAllocationConcealmentScore<br/>(Allocation Concealment Score)"]:::field
-        SEQGEN["hasSequenceGenerationScore<br/>(Sequence Generation Score)"]:::field
-        SAMPSC["hasSampleSizeScore<br/>(Sample Size Score)"]:::field
+        CATA["hasStudyRationaleAndScopeMetrics"]:::group
+        A1["hasParticipantsRandomizationStatementScore<br/>((1) Participants Randomization Statement)"]:::field
+        A2["hasScientificBackgroundRationaleScore<br/>((2) Scientific Background & Rationale)"]:::field
+        A3["hasParticipantsEligibilityAndStudySettingsScore<br/>((3) Participants Eligibility & Study Settings)"]:::field
+        A10["hasSpecificObjectivesHypothesesScore<br/>((10) Specific Objectives & Hypotheses)"]:::field
 
-        CATC --> ALLOCPERS
-        CATC --> BLIND
-        CATC --> X2
-        X2 --> OUTMEAS
-        X2 --> STATMETH
-        CATC --> RAND
-        RAND --> ALLOCCONCEAL
-        RAND --> SEQGEN
-        CATC --> SAMPSC
+        CATA --> A1
+        CATA --> A2
+        CATA --> A3
+        CATA --> A10
     end
-
-    subgraph D ["<b>Category D: Results & Discussion Metrics</b>"]
-        direction LR
-        CATD["hasResultsAndDiscussionMetrics"]:::group
-        ADV["hasAdverseEffectsScore<br/>(Adverse Effects Score)"]:::field
-        ANALYSPOP["hasAnalysisPopulationScore<br/>(Analysis Population Score)"]:::field
-        GENERAL["hasGeneralizabilityScore<br/>(Generalizability Score)"]:::field
-        INTERP["hasInterpretationScore<br/>(Interpretation Score)"]:::field
-        LIMIT["hasLimitationsScore<br/>(Limitations Score)"]:::field
-        PARTFLOW["hasParticipantFlowScore<br/>(Participant Flow Score)"]:::field
-        PART["hasParticipantsScore<br/>(Participants Score)"]:::field
-        RECRUIT["hasRecruitmentAndFollowUpScore<br/>(Recruitment and Follow-Up Score)"]:::field
-        RESOUT["hasResultsOutcomesScore<br/>(Results Outcomes Score)"]:::field
-        SUBG["hasSubgroupScore<br/>(Subgroup Score)"]:::field
-
-        CATD --> ADV
-        CATD --> ANALYSPOP
-        CATD --> GENERAL
-        CATD --> INTERP
-        CATD --> LIMIT
-        CATD --> PARTFLOW
-        CATD --> PART
-        CATD --> RECRUIT
-        CATD --> RESOUT
-        CATD --> SUBG
-    end
-
 
     subgraph B ["<b>Category B: Acupuncture Intervention Metrics</b>"]
         direction LR
         CATB["hasAcupunctureInterventionMetrics"]:::group
-        ACUDET["hasAcupunctureDetailsScore<br/>(Acupuncture Details Score)"]:::field
-        COINT["hasCointerventionsScore<br/>(Cointerventions Score)"]:::field
-        CTRLSC["hasControlGroupsScore<br/>(Control Groups Score)"]:::field
-        FREQSC["hasFrequencyOfTreatmentScore<br/>(Treatment Frequency Score)"]:::field
-        NEEDLESC["hasNeedlingParametersScore<br/>(Needling Parameters Score)"]:::field
-        PRACSC["hasPractitionerScore<br/>(Practitioner Score)"]:::field
+        B4["hasAcupunctureStyleAndSelectionScore<br/>((4) Acupuncture Style & Acupoints Selection)"]:::field
+        B5["hasAcupunctureNeedlingParametersScore<br/>((5) Acupuncture Needling Parameters)"]:::field
+        B6["hasTreatmentsDurationAndFrequencyScore<br/>((6) Treatments Duration & Frequency)"]:::field
+        B7["hasAcupunctureCointerventionsScore<br/>((7) Acupuncture Group Cointervention(s))"]:::field
+        B8["hasPractitionerTrainingExpertiseScore<br/>((8) Practitioner Training & Expertise)"]:::field
+        B9["hasControlGroupsInterventionScore<br/>((9) Control Groups Intervention)"]:::field
 
-        CATB --> ACUDET
-        CATB --> COINT
-        CATB --> CTRLSC
-        CATB --> FREQSC
-        CATB --> NEEDLESC
-        CATB --> PRACSC
+        CATB --> B4
+        CATB --> B5
+        CATB --> B6
+        CATB --> B7
+        CATB --> B8
+        CATB --> B9
     end
 
-    subgraph A ["<b>Category A: Study Rationale & Scope Metrics</b>"]
+    subgraph C ["<b>Category C: Study Design & Analysis Metrics</b>"]
         direction LR
-        CATA["hasStudyRationaleAndScopeMetrics"]:::group
-        ELIG["hasEligibilityScore<br/>(Eligibility Score)"]:::field
-        INTRO["hasIntroductionAndHypothesisScore<br/>(Introduction and Hypothesis Score)"]:::field
-        HYPO["hasHypothesisScore<br/>(Hypothesis Score)"]:::field
-        INTROSC["hasIntroductionScore<br/>(Introduction Score)"]:::field
-        RANDSTMT["hasRandomizationStatementScore<br/>(Randomization Statement Score)"]:::field
+        CATC["hasStudyDesignAndAnalysisMetrics"]:::group
+        C11["hasOutcomesMeasureDefinitionsScore<br/>((11) Outcomes Measure Definitions)"]:::field
+        C12["hasSampleSizeDeterminationScore<br/>((12) Sample Size Determination)"]:::field
+        C13["hasRandomAllocationSequencingScore<br/>((13) Random Allocation Sequencing)"]:::field
+        C14["hasRandomAllocationConcealmentScore<br/>((14) Random Allocation Concealment)"]:::field
+        C15["hasRandomAllocationPersonnelScore<br/>((15) Random Allocation Personnel)"]:::field
+        C16["hasBlindingStatementsQualityScore<br/>((16) Blinding Statements Quality)"]:::field
+        C17["hasStatisticalMethodsForOutcomesScore<br/>((17) Statistical Methods for Outcomes)"]:::field
 
-        CATA --> ELIG
-        CATA --> INTRO
-        INTRO --> HYPO
-        INTRO --> INTROSC
-        CATA --> RANDSTMT
+        CATC --> C11
+        CATC --> C12
+        CATC --> C13
+        CATC --> C14
+        CATC --> C15
+        CATC --> C16
+        CATC --> C17
     end
 
-  
-    ITEM --> CATD
-    ITEM --> CATC
-    ITEM --> CATB
+    subgraph D ["<b>Category D: Results & Outcomes Metrics</b>"]
+        direction LR
+        CATD["hasResultsAndOutcomesMetrics"]:::group
+        D18["hasParticipantsFlowAndDeviationScore<br/>((18) Participants Flow & Deviation)"]:::field
+        D19["hasParticipantsRecruitmentFollowupScore<br/>((19) Participants Recruitment & Followup)"]:::field
+        D20["hasGroupDemographicsCharacteristicsScore<br/>((20) Group Demographics & Characteristics)"]:::field
+        D21["hasParticipantsIntentionToTreatScore<br/>((21) Participants & Intention to Treat Analysis)"]:::field
+        D22["hasStudyOutcomesAndEffectSizeScore<br/>((22) Study Outcomes & Effect Size)"]:::field
+        D23["hasSubgroupAdjustedAnalysesScore<br/>((23) Subgroup & Adjusted Analyses)"]:::field
+        D24["hasAdverseEventsSideEffectsScore<br/>((24) Adverse Events & Side Effects)"]:::field
+
+        CATD --> D18
+        CATD --> D19
+        CATD --> D20
+        CATD --> D21
+        CATD --> D22
+        CATD --> D23
+        CATD --> D24
+    end
+
+    subgraph E ["<b>Category E: Results Discussion Metrics</b>"]
+        direction LR
+        CATE["hasResultsDiscussionMetrics"]:::group
+        E25["hasTrialStrengthsLimitationsScore<br/>((25) Trial Strengths & Limitations)"]:::field
+        E26["hasTrialGeneralizabilityScore<br/>((26) Trial Findings Generalizability)"]:::field
+        E27["hasInterpretationOfResultsScore<br/>((27) Interpretation of Results)"]:::field
+
+        CATE --> E25
+        CATE --> E26
+        CATE --> E27
+    end
+
     ITEM --> CATA
+    ITEM --> CATB
+    ITEM --> CATC
+    ITEM --> CATD
+    ITEM --> CATE
 ```
 
 ## Entity Relationships
