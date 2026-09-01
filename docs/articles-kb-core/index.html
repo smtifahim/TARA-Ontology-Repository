@@ -87,13 +87,16 @@
       "value": "1.0.0"
     },
     {
-      "label": "Comment",
-      "predicateDisplay": "rdfs:comment",
-      "mode": "multi_block",
-      "values": [
-        "Purpose: This ontology defines the data schema and LLM extraction prompts for the TARA Articles Knowledgebase, a structured, queryable repository of metadata extracted from full-text acupuncture clinical trial publications.\n\nOntology Content:\n\n- Three core classes: Acupuncture Research Study (the trial itself), Acupuncture Study Publication (the reporting article), and Acupuncture Study OCSI Assessment (its structured reporting-quality assessment).\n\n- Three metadata branches, each with its own field-level annotation properties: Bibliographic Metadata, Acupuncture Study Metadata, and OCSI Item Scoring Metadata (27 items scored per the Oregon CONSORT STRICTA Instrument).\n\n- Controlled vocabularies for study design categories, article reporting types, and standardized acupoint/condition terms, each aligned to external sources where available.\n\n- A general and a per-field/per-item LLM extraction prompt (JSON) attached directly to the relevant annotation property for every extractable field, so extraction pipelines and spreadsheet templates can be generated automatically from skos:altLabel without hand-maintained mappings.\n\n- Restricted datatypes (e.g., ocsiItemScore, articleSectionType, ocsiItemNumber) enforcing valid value ranges for scored and categorical fields.",
-        "The ontology includes following classes with a rich set of metadata annotation properties:\n- Acupuncture Research Study: the physical execution of an acupuncture clinical trial, from participant recruitment and baseline grouping through administration of real or sham acupuncture procedures to final endpoint evaluation\n- Acupuncture Study Publication: the documentary artifact (e.g., journal articles) that reports on an acupuncture trial study\n- Acupuncture Study OCSI Assessment: the structured quality assessment of acupuncture trial reporting, based on the Oregon CONSORT STRICTA Instrument (OCSI)\n\nMetadata for each publication instance is captured through a standard set of annotation properties organized into three categories:\n- Bibliographic Metadata: article title, authorship, source, and publication identifiers\n- Study Metadata: intervention design, participant characteristics, sample size, outcome measures, and study outcomes\n- OCSI Item Scoring Metadata: compliance with OCSI criteria for evaluating the completeness and quality of acupuncture trial reporting"
-      ]
+      "label": "Description",
+      "predicateDisplay": "dc:description",
+      "mode": "single",
+      "value": "This ontology includes the metadata schema and LLM extraction prompts for the TARA Articles Knowledgebase (TARA-KB), a structured, queryable repository of metadata extracted from full-text acupuncture clinical trial publications. This ontology includes:\n\n- Three core classes: Acupuncture Research Study (the trial itself), Acupuncture Study Publication (the reporting article), and Acupuncture Study OCSI Assessment (its structured reporting-quality assessment).\n\n- Three metadata branches, each with its own field-level annotation properties: Bibliographic Metadata, Acupuncture Study Metadata, and Study Assessment Metadata. \n\n- OCSI Item Scoring Metadata: A specialized branch of Study Assessment Metadata containing the scoring metadata for 27 OCSI items, strictly based on the Oregon CONSORT STRICTA Instrument (OCSI; Hammerschlag et al., 2011) and organized under five thematic categories (A–E).\n\n- A general and a per-field/per-item LLM extraction prompt (JSON) attached directly to the relevant annotation property for every extractable field, so extraction pipelines and spreadsheet templates can be generated automatically from skos:altLabel without hand-maintained mappings.\n\n- Restricted datatypes (e.g., ocsiItemScore, articleSectionType, ocsiItemNumber) enforcing valid value ranges for scored and categorical fields."
+    },
+    {
+      "label": "Creator",
+      "predicateDisplay": "dc:creator",
+      "mode": "single",
+      "value": "Fahim Imam - https://orcid.org/0000-0003-4752-543X"
     }
   ],
   "detailFieldsByKind": {
@@ -1270,7 +1273,6 @@
             "tara-kb:hasGroupDemographicsCharacteristicsScore",
             "tara-kb:hasInterpretationOfResultsScore",
             "tara-kb:hasOCSIItemScoringMetadata",
-            "tara-kb:hasOCSITotalPercentage",
             "tara-kb:hasOutcomesMeasureDefinitionsScore",
             "tara-kb:hasParticipantsEligibilityAndStudySettingsScore",
             "tara-kb:hasParticipantsFlowAndDeviationScore",
@@ -1282,6 +1284,7 @@
             "tara-kb:hasRandomAllocationPersonnelScore",
             "tara-kb:hasRandomAllocationSequencingScore",
             "tara-kb:hasResultsAndOutcomesMetrics",
+            "tara-kb:hasResultsDiscussionMetrics",
             "tara-kb:hasSampleSizeDeterminationScore",
             "tara-kb:hasScientificBackgroundRationaleScore",
             "tara-kb:hasSpecificObjectivesHypothesesScore",
@@ -1295,7 +1298,7 @@
             "tara-kb:hasTrialStrengthsLimitationsScore"
           ],
           "altLabel": "Acupuncture_Study_OCSI_Assessment",
-          "description": "An acupuncture study quality assessment data item that captures, organizes, and structures the specific multi-item compliance metrics and qualitative evaluation scores defined by the Oregon CONSORT STRICTA Instrument (OCSI) for assessing the reporting quality of acupuncture clinical trials.",
+          "description": "An acupuncture study quality assessment data item that captures, organizes, and structures the specific multi-item compliance metrics and qualitative evaluation scores defined by the Oregon CONSORT STRICTA Instrument (OCSI; Hammerschlag et al., 2011) for assessing the reporting quality of acupuncture clinical trials.",
           "comment": null,
           "examples": [],
           "source": [],
@@ -1717,16 +1720,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ]
         },
@@ -1767,16 +1770,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_kb_hasGeneralStudyMetadataExtractionPrompt": [
@@ -1825,15 +1828,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Acupuncture_Protocol\",\n  \"description\": \"A dual-purpose annotation property that serves as a super-property grouping the granular acupuncture intervention sub-properties (method, needling, stimulation, sham, and acupoints), while simultaneously acting as a direct container for a single, structured free-text summary of the full acupuncture protocol. This field should conatin a structured summary combining acupoint selection and grouping, needling details, stimulation details, and sham protocol details into one field (see the 'example of usage' for full worked examples).\",\n  \"normalization\": \"Produce one structured, uniformly-formatted entry combining four sub-parts, in this exact order and pipe-delimited format (see this property's own obo:IAO_0000112 for full worked examples): 'Point selection and grouping: <text> | Needling details: <text> | Stimulation details: <text> | Sham protocol details: <text>'. Base 'Point selection and grouping' on the context described for hasAcupointSelectionAndGrouping (the acupoints' selection rationale and grouping/combination logic) -- do NOT restate the raw acupoint list itself, which belongs under hasListedAcupoints only. Base 'Needling details' on the context described for hasNeedlingDetails, 'Stimulation details' on hasStimulationTypeDetails, and 'Sham protocol details' on hasShamAcupunctureDetails. If a sub-part is not reported, write 'Not specified' for that sub-part only, not for the whole entry. These four sub-parts are captured here only -- they are not extracted again as separate fields.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Acupuncture_Protocol\",\n  \"description\": \"A dual-purpose annotation property that serves as a super-property grouping the granular acupuncture intervention sub-properties (method, needling, stimulation, sham, and acupoints), while simultaneously acting as a direct container for a single, structured free-text summary of the full acupuncture protocol. This field should conatin a structured summary combining acupoint selection and grouping, needling details, stimulation details, and sham protocol details into one field (see the 'example of usage' for full worked examples).\",\n  \"normalization\": \"Produce one structured, uniformly-formatted entry combining four sub-parts, in this exact order and pipe-delimited format (see this property's own obo:IAO_0000112 for full worked examples): 'Point selection and grouping: <text> | Needling details: <text> | Stimulation details: <text> | Sham protocol details: <text>'. Base 'Point selection and grouping' on the context described for hasAcupointSelectionAndGrouping (the acupoints' selection rationale and grouping/combination logic) -- do NOT restate the raw acupoint list itself, which belongs under hasListedAcupoints only. Base 'Needling details' on the context described for hasNeedlingDetails, 'Stimulation details' on hasStimulationTypeDetails, and 'Sham protocol details' on hasShamAcupunctureDetails. If a sub-part is not reported, write 'Not specified' for that sub-part only, not for the whole entry. These four sub-parts are captured here only -- they are not extracted again as separate fields.\"\n}",
               "id": null
             }
           ]
@@ -2067,15 +2070,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Sham_Acupuncture_Used\",\n  \"description\": \"Whether the study used a sham/placebo acupuncture control arm, stated as a clear yes/no lead-in followed by a concise qualifying statement.\",\n  \"normalization\": \"Prefix the entry with exactly 'Yes -' or 'No -', followed by a concise qualifying statement (one short clause). Base this entry SOLELY on the 'Sham protocol details' sub-part already produced for hasAcupunctureProtocol in this same extraction pass -- do not re-read the article or infer anything new. If that sub-part states a real sham/placebo procedure was used, write 'Yes - ' followed by a brief restatement of what made it a sham (e.g., 'Yes - non-penetrating needle applied at non-acupoint sites'). If it states no sham arm existed, write 'No - no sham or placebo control arm was used.'\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Sham_Acupuncture_Used\",\n  \"description\": \"Whether the study used a sham/placebo acupuncture control arm, stated as a clear yes/no lead-in followed by a concise qualifying statement.\",\n  \"normalization\": \"Prefix the entry with exactly 'Yes -' or 'No -', followed by a concise qualifying statement (one short clause). Base this entry SOLELY on the 'Sham protocol details' sub-part already produced for hasAcupunctureProtocol in this same extraction pass -- do not re-read the article or infer anything new. If that sub-part states a real sham/placebo procedure was used, write 'Yes - ' followed by a brief restatement of what made it a sham (e.g., 'Yes - non-penetrating needle applied at non-acupoint sites'). If it states no sham arm existed, write 'No - no sham or placebo control arm was used.'\"\n}",
               "id": null
             }
           ]
@@ -2150,15 +2153,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Dataset_Link\",\n  \"description\": \"A resolvable URI pointing to a publicly available raw dataset, supplementary data, or trial registry entry associated with the study.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Dataset_Link\",\n  \"description\": \"A resolvable URI pointing to a publicly available raw dataset, supplementary data, or trial registry entry associated with the study.\"\n}",
               "id": null
             }
           ]
@@ -2198,15 +2201,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Listed_Acupoints\",\n  \"description\": \"A dual-purpose annotation property that serves as a super-property grouping the mapped and unmappable acupoint sub-properties, while simultaneously acting as a direct container for the comma-separated, normalized list of acupoints extracted from the article.\",\n  \"normalization\": \"List every specific acupuncture point mentioned anywhere in the article, including those only appearing in figures, regardless of which treatment group or protocol they belong to -- combine into one flat comma-separated list, not grouped by protocol. Standardize each point to the form 'PREFIX NUMBER' (e.g., 'SP 6', 'GB 20', 'EX-HN 5'); ignore hyphens, parentheses, or other punctuation within a single point's own code. If a point has multiple listed names (e.g., a standard code and a pinyin label), use the standard code; if only a pinyin label is given, use that. Exclude sham/control acupoints from this field.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Listed_Acupoints\",\n  \"description\": \"A dual-purpose annotation property that serves as a super-property grouping the mapped and unmappable acupoint sub-properties, while simultaneously acting as a direct container for the comma-separated, normalized list of acupoints extracted from the article.\",\n  \"normalization\": \"List every specific acupuncture point mentioned anywhere in the article, including those only appearing in figures, regardless of which treatment group or protocol they belong to -- combine into one flat comma-separated list, not grouped by protocol. Standardize each point to the form 'PREFIX NUMBER' (e.g., 'SP 6', 'GB 20', 'EX-HN 5'); ignore hyphens, parentheses, or other punctuation within a single point's own code. If a point has multiple listed names (e.g., a standard code and a pinyin label), use the standard code; if only a pinyin label is given, use that. Exclude sham/control acupoints from this field.\"\n}",
               "id": null
             }
           ]
@@ -2242,16 +2245,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ]
         },
@@ -2286,16 +2289,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ]
         },
@@ -2330,16 +2333,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ]
         },
@@ -2375,16 +2378,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ]
         },
@@ -2421,15 +2424,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Studied_TCM_Condition\",\n  \"description\": \"A dual-purpose annotation property that captures the raw, as-reported Traditional Chinese Medicine (TCM) condition or pattern-differentiation label from the article, while also serving as a super-property for its mapped, standardized counterpart (hasMappedTCMCondition).\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Studied_TCM_Condition\",\n  \"description\": \"A dual-purpose annotation property that captures the raw, as-reported Traditional Chinese Medicine (TCM) condition or pattern-differentiation label from the article, while also serving as a super-property for its mapped, standardized counterpart (hasMappedTCMCondition).\"\n}",
               "id": null
             }
           ]
@@ -2465,16 +2468,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ]
         },
@@ -2511,15 +2514,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Studied_Western_Condition\",\n  \"description\": \"A dual-purpose annotation property that captures the raw, as-reported Western/biomedical condition label from the article, while also serving as a super-property for its mapped, standardized counterpart (hasMappedWesternCondition).\",\n  \"normalization\": \"Extract the plain-language Western/biomedical condition studied, with no braces, parentheses, or bracketed abbreviations of any kind. If multiple conditions are combined into one compound phrase (e.g., 'neck and shoulder pain'), split into separate individual condition phrases (e.g., 'neck pain, shoulder pain') rather than keeping the compound form.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Studied_Western_Condition\",\n  \"description\": \"A dual-purpose annotation property that captures the raw, as-reported Western/biomedical condition label from the article, while also serving as a super-property for its mapped, standardized counterpart (hasMappedWesternCondition).\",\n  \"normalization\": \"Extract the plain-language Western/biomedical condition studied, with no braces, parentheses, or bracketed abbreviations of any kind. If multiple conditions are combined into one compound phrase (e.g., 'neck and shoulder pain'), split into separate individual condition phrases (e.g., 'neck pain, shoulder pain') rather than keeping the compound form.\"\n}",
               "id": null
             }
           ]
@@ -2555,16 +2558,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ]
         },
@@ -2603,16 +2606,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ]
         },
@@ -2648,15 +2651,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Control_Groups_Details\",\n  \"description\": \"An annotation property to capture structured details about the control group methodologies (control arms) deployed within a clinical trial study, as reported in a journal publication. It explicitly documents the specific type of control utilized, such as sham interventions, non-acupoint/minimal treatments, active controls, or waitlists, along with critical methodological protocols, including patient blinding mechanisms, the physiological nature of the control, and any deviations from standard or traditional practices meant to isolate specific therapeutic variables.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Control_Groups_Details\",\n  \"description\": \"An annotation property to capture structured details about the control group methodologies (control arms) deployed within a clinical trial study, as reported in a journal publication. It explicitly documents the specific type of control utilized, such as sham interventions, non-acupoint/minimal treatments, active controls, or waitlists, along with critical methodological protocols, including patient blinding mechanisms, the physiological nature of the control, and any deviations from standard or traditional practices meant to isolate specific therapeutic variables.\"\n}",
               "id": null
             }
           ]
@@ -2692,15 +2695,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Sample_Size_Details\",\n  \"description\": \"For the final number of participants who completed the study and were analyzed.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Sample_Size_Details\",\n  \"description\": \"For the final number of participants who completed the study and were analyzed.\"\n}",
               "id": null
             }
           ]
@@ -2739,15 +2742,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Study_Outcomes_Measure\",\n  \"description\": \"A dual-purpose annotation property that serves as a super-property grouping the primary and secondary outcome measure sub-properties, while simultaneously acting as a direct container for structured oucome measures as \\\\\\\"Primary Outcome Measure\\\\\\\" and/or \\\\\\\"Secondary Outcome Measure\\\\\\\". This property can also be used to capture the general outcome measure for the studies where primary/secondary distinction is not reported or not applicable.\",\n  \"normalization\": \"Produce one structured entry combining primary and secondary outcome measures, labeled explicitly, e.g. 'Primary outcome measure: <text>. Secondary outcome measures: <text>.' (see this property's own obo:IAO_0000112 for a full worked example). If the primary/secondary distinction is not reported or not applicable, describe the general outcome measure(s) instead without forcing the primary/secondary labels. These are captured together here only -- they are not extracted again as separate fields, because primary and secondary outcomes are often defined relative to each other and separating them loses that context.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Study_Outcomes_Measure\",\n  \"description\": \"A dual-purpose annotation property that serves as a super-property grouping the primary and secondary outcome measure sub-properties, while simultaneously acting as a direct container for structured oucome measures as \\\\\\\"Primary Outcome Measure\\\\\\\" and/or \\\\\\\"Secondary Outcome Measure\\\\\\\". This property can also be used to capture the general outcome measure for the studies where primary/secondary distinction is not reported or not applicable.\",\n  \"normalization\": \"Produce one structured entry combining primary and secondary outcome measures, labeled explicitly, e.g. 'Primary outcome measure: <text>. Secondary outcome measures: <text>.' (see this property's own obo:IAO_0000112 for a full worked example). If the primary/secondary distinction is not reported or not applicable, describe the general outcome measure(s) instead without forcing the primary/secondary labels. These are captured together here only -- they are not extracted again as separate fields, because primary and secondary outcomes are often defined relative to each other and separating them loses that context.\"\n}",
               "id": null
             }
           ]
@@ -2859,15 +2862,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Study_Type\",\n  \"description\": \"An annotation property that serves as a direct container for the high-level study type categorization (e.g., \\\"Randomized Controlled Trial\\\", \\\"Crossover Trial\\\", \\\"Meta Analysis\\\", \\\"Systemetic Review\\\" ).\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Study_Type\",\n  \"description\": \"An annotation property that serves as a direct container for the high-level study type categorization (e.g., \\\"Randomized Controlled Trial\\\", \\\"Crossover Trial\\\", \\\"Meta Analysis\\\", \\\"Systemetic Review\\\" ).\"\n}",
               "id": null
             }
           ]
@@ -2906,15 +2909,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Treatment_Duration_And_Frequency\",\n  \"description\": \"A dual-purpose annotation property that serves as a super-property grouping hasTreatmentDuration and hasTreatmentFrequency, while simultaneously acting as a direct container for a combined free-text statement of the treatment's duration and frequency.\",\n  \"normalization\": \"Produce one combined statement of both the treatment's duration (total length of the treatment course) and frequency (how often sessions occurred), e.g. '12 sessions over 6 weeks, administered 2 times per week.' Duration and frequency are captured together here only -- they are not extracted again as separate fields, because they are typically reported together and separating them loses that context.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Treatment_Duration_And_Frequency\",\n  \"description\": \"A dual-purpose annotation property that serves as a super-property grouping hasTreatmentDuration and hasTreatmentFrequency, while simultaneously acting as a direct container for a combined free-text statement of the treatment's duration and frequency.\",\n  \"normalization\": \"Produce one combined statement of both the treatment's duration (total length of the treatment course) and frequency (how often sessions occurred), e.g. '12 sessions over 6 weeks, administered 2 times per week.' Duration and frequency are captured together here only -- they are not extracted again as separate fields, because they are typically reported together and separating them loses that context.\"\n}",
               "id": null
             }
           ]
@@ -3072,15 +3075,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Comparative_Findings\",\n  \"description\": \"Captures how different active treatment arms performed relative to each other across different parameters.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Comparative_Findings\",\n  \"description\": \"Captures how different active treatment arms performed relative to each other across different parameters.\"\n}",
               "id": null
             }
           ]
@@ -3116,15 +3119,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Proposed_Mechanism\",\n  \"description\": \"Captures the authors' theoretical or physiological explanations for why the treatments worked or differed.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Proposed_Mechanism\",\n  \"description\": \"Captures the authors' theoretical or physiological explanations for why the treatments worked or differed.\"\n}",
               "id": null
             }
           ]
@@ -3160,15 +3163,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Study_Conclusions\",\n  \"description\": \"Captures a faithful summary of what the article reports as clinical conclusions, potentially including short direct quotations where appropriate.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Study_Conclusions\",\n  \"description\": \"Captures a faithful summary of what the article reports as clinical conclusions, potentially including short direct quotations where appropriate.\"\n}",
               "id": null
             }
           ]
@@ -3204,15 +3207,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Study_Effectiveness\",\n  \"description\": \"Captures the final overall takeaway regarding the effectiveness of the treatment compared to the control group. It should be a focused statement on whether and how effective the studied intervention was, with clearly defined inference based solely on the information already extracted as Study Findings including Main Results and Clinical Conclusions or Comparative narrative. For example: * Yes - A concise explanation of why the intervention was considered effective. * No – A concise explanation of why the intervention was not considered effective. * Inconclusive – A concise explanation of why the evidence is insufficient, mixed, or does not support a definitive conclusion.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Study_Effectiveness\",\n  \"description\": \"Captures the final overall takeaway regarding the effectiveness of the treatment compared to the control group. It should be a focused statement on whether and how effective the studied intervention was, with clearly defined inference based solely on the information already extracted as Study Findings including Main Results and Clinical Conclusions or Comparative narrative. For example: * Yes - A concise explanation of why the intervention was considered effective. * No – A concise explanation of why the intervention was not considered effective. * Inconclusive – A concise explanation of why the evidence is insufficient, mixed, or does not support a definitive conclusion.\"\n}",
               "id": null
             }
           ]
@@ -3248,15 +3251,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Study_Results\",\n  \"description\": \"Captures the main results of the clinical trial containing numeric and statistical information of the primary and secondary endpoints.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Study_Results\",\n  \"description\": \"Captures the main results of the clinical trial containing numeric and statistical information of the primary and secondary endpoints.\"\n}",
               "id": null
             }
           ]
@@ -3332,15 +3335,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Country_Of_Study\",\n  \"description\": \"The country (or countries, for multi-site trials) in which the study was conducted, normalized to a standard country name.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasStudyMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Country_Of_Study\",\n  \"description\": \"The country (or countries, for multi-site trials) in which the study was conducted, normalized to a standard country name.\"\n}",
               "id": null
             }
           ]
@@ -3351,7 +3354,7 @@
           "storeKey": "annotationProperties",
           "label": "Bibliographic Metadata",
           "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasBibliographicMetadata",
-          "grouping": false,
+          "grouping": true,
           "domain": "TARA:8223728",
           "domainLabel": "Acupuncture Study Publication",
           "range": {
@@ -3389,6 +3392,12 @@
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "extra__tara_kb_hasGeneralBibliographicMetadataExtractionPrompt": [
@@ -3429,15 +3438,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Article_Title\",\n  \"description\": \"The full, verbatim title of the journal article as published.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Article_Title\",\n  \"description\": \"The full, verbatim title of the journal article as published.\"\n}",
               "id": null
             }
           ]
@@ -3473,15 +3482,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Article_Type\",\n  \"description\": \"The specific classification of the publication based on its methodology, structure, and evidentiary value (e.g., Primary Article, Review Article, Systematic Review Article, Meta-analysis Article).\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Article_Type\",\n  \"description\": \"The specific classification of the publication based on its methodology, structure, and evidentiary value (e.g., Primary Article, Review Article, Systematic Review Article, Meta-analysis Article).\"\n}",
               "id": null
             }
           ]
@@ -3517,15 +3526,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Listed_Authors\",\n  \"description\": \"The full list of authors credited on the publication, typically recorded as a single delimited string in the order they appear on the article.\",\n  \"normalization\": \"Format as 'Surname Initials' per author (no periods between initials, no space between multiple initials), authors comma-separated in the order listed on the article, e.g. 'Garcia-Lopez J, Lee KH, Muller A'. Preserve accented/diacritical characters exactly as in the source (do not transliterate to ASCII).\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Listed_Authors\",\n  \"description\": \"The full list of authors credited on the publication, typically recorded as a single delimited string in the order they appear on the article.\",\n  \"normalization\": \"Format as 'Surname Initials' per author (no periods between initials, no space between multiple initials), authors comma-separated in the order listed on the article, e.g. 'Garcia-Lopez J, Lee KH, Muller A'. Preserve accented/diacritical characters exactly as in the source (do not transliterate to ASCII).\"\n}",
               "id": null
             }
           ]
@@ -3542,7 +3551,7 @@
           "range": {
             "kind": "literal",
             "id": null,
-            "label": "xsd:string"
+            "label": "xsd:dateTime"
           },
           "parent": "tara-kb:hasBibliographicMetadata",
           "children": [
@@ -3563,15 +3572,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Publication_Date\",\n  \"description\": \"The publication date of the article as reported by the journal, recorded in its original granularity (which may be a full date, a month and year, or a year alone).\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Publication_Date\",\n  \"description\": \"The publication date of the article as reported by the journal, recorded in its original granularity (which may be a full date, a month and year, or a year alone).\"\n}",
               "id": null
             }
           ]
@@ -3607,9 +3616,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
+          "extra__dcterms_creator": [
             {
-              "label": "{\n  \"field\": \"Publication_Year\",\n  \"description\": \"The four-digit calendar year in which the article was published for consistent chronological filtering and sorting.\"\n}",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
             }
           ],
@@ -3619,9 +3628,9 @@
               "id": "tara-kb:mapping"
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "{\n  \"field\": \"Publication_Year\",\n  \"description\": \"The four-digit calendar year in which the article was published for consistent chronological filtering and sorting.\"\n}",
               "id": null
             }
           ]
@@ -3699,15 +3708,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"DOI_Link\",\n  \"description\": \"The resolvable URI (typically expressed as a DOI-based URL) that uniquely and persistently identifies the publication.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"DOI_Link\",\n  \"description\": \"The resolvable URI (typically expressed as a DOI-based URL) that uniquely and persistently identifies the publication.\"\n}",
               "id": null
             }
           ]
@@ -3744,15 +3753,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Other_Link\",\n  \"description\": \"A resolvable URI to any other authoritative online source for the article that is not captured by hasDOILink or hasPubMedLink.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Other_Link\",\n  \"description\": \"A resolvable URI to any other authoritative online source for the article that is not captured by hasDOILink or hasPubMedLink.\"\n}",
               "id": null
             }
           ]
@@ -3788,15 +3797,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Pub_Med_Link\",\n  \"description\": \"The resolvable URI to the article's PubMed or PubMed Central record.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Pub_Med_Link\",\n  \"description\": \"The resolvable URI to the article's PubMed or PubMed Central record.\"\n}",
               "id": null
             }
           ]
@@ -3832,15 +3841,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
-            {
-              "label": "{\n  \"field\": \"Publication_Venue\",\n  \"description\": \"The name of the journal, conference proceedings, or other outlet in which the article was published.\"\n}",
-              "id": null
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasBibliographicMetadataExtractionPrompt": [
+            {
+              "label": "{\n  \"field\": \"Publication_Venue\",\n  \"description\": \"The name of the journal, conference proceedings, or other outlet in which the article was published.\"\n}",
               "id": null
             }
           ]
@@ -3876,16 +3885,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ]
         },
@@ -3909,17 +3918,28 @@
             "tara-kb:hasAcupunctureInterventionMetrics",
             "tara-kb:hasStudyDesignAndAnalysisMetrics",
             "tara-kb:hasResultsAndOutcomesMetrics",
-            "tara-kb:hasResultsDiscussionMetrics",
-            "tara-kb:hasOCSITotalPercentage"
+            "tara-kb:hasResultsDiscussionMetrics"
           ],
           "synonyms": [],
           "altLabel": "OCSI_Item_Scoring_Metadata",
-          "description": "An annotation property that serves as a master grouping property for capturing quality assessment metrics mapped to individual reporting items within the Oregon CONSORT STRICTA Instrument (OCSI) for acupuncture trials (Hammerschlag et al. 2011).\n\n- TARA-KB's sub-grouping of OCSI assessment categories (A-E), aggregate derived compliance values specifically tied to the combined CONSORT (Consolidated Standards of Reporting Trials) and STRICTA (Standards for Reporting Interventions in Clinical Trials of Acupuncture) guidelines. It organizes granular sub-properties tracking item-by-item compliance scores, separating the calculated evaluation of reporting quality from the raw extracted study parameters.\n\n- The OCSI Item Numbers, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al. 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al. 2011) under each subcategories (A-E) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section. \n\n- The sub-grouping properties across all categories (A-E), are reporting-quality metrics; i.e., they assess how completely and transparently a trial was described in its published article, not the intrinsic quality, appropriateness, or clinical merit of the trial's design, intervention, or conduct. A high OCSI score means the article reported its methods and results thoroughly; it does not mean the underlying trial was well-designed or its findings reliable.",
-          "comment": "This five-way category scheme (A/B/C/D/E) under this property is a TARA-KB organizational convention, not sourced from Hammerschlag et al., 2011 (the OCSI paper), the CONSORT 2010 checklist, or the STRICTA 2010 checklist. \n\n- Both CONSORT and STRICTA organize their own checklist items by manuscript section (Title/Abstract, Introduction, Methods, Results, Discussion) or by protocol-description topic, not by a five-category thematic taxonomy used here in this ontology.\n\n- This grouping exists for TARA-KB navigation and LLM-prompt structuring, not as a claim about the instrument's own domain structure.",
+          "description": "An annotation property that serves as a master grouping property for capturing quality assessment metrics mapped to individual reporting items within the Oregon CONSORT STRICTA Instrument (OCSI) for acupuncture trials (OCSI; Hammerschlag et al. 2011).\n\n- TARA-KB's sub-grouping of OCSI assessment categories (A-E), aggregate derived compliance values specifically tied to the combined CONSORT (Consolidated Standards of Reporting Trials) and STRICTA (Standards for Reporting Interventions in Clinical Trials of Acupuncture) guidelines based on Hammerschlag et al., 2011. It organizes granular sub-properties tracking item-by-item compliance scores, separating the calculated evaluation of reporting quality from the raw extracted study parameters.\n\n- The OCSI Item Numbers, Assessment Question(s), and Per Question Instructions(s) under each subcategories (A-E) are reproduced from Hammerschlag et al. 2011, under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "comment": "- The sub-grouping properties across all categories (A-E), are reporting-quality metrics; i.e., they assess how completely and transparently a trial was described in its published article, not the intrinsic quality, appropriateness, or clinical merit of the trial's design, intervention, or conduct.\n- A high OCSI score means the article reported its methods and results thoroughly; it does not mean the underlying trial was well-designed or its findings reliable. / The five-way thematic category scheme (A/B/C/D/E) is a TARA-KB organizational convention used to support navigation, organization, and LLM prompt structuring.\n- This categorization is not sourced from or intended to represent the domain structure of the OCSI (Hammerschlag et al., 2011), CONSORT 2010, or STRICTA 2010.\n- The individual items within the five categories are nevertheless strictly aligned with the standard OCSI, with an exact one-to-one correspondence to all 27 OCSI items.\n- Thus, the five-category grouping is specific to TARA-KB, while the underlying 27 items retain their direct correspondence to the established OCSI instrument.",
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
+          ],
+          "extra__dcterms_creator": [
+            {
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
+            }
           ],
           "extra__tara_ap_hasCompactURI": [
             {
@@ -3933,15 +3953,15 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
+          "extra__dcterms_license": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "",
+              "id": "https://creativecommons.org/licenses/by/4.0/"
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasGeneralOCSIScoringRubrics": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Scoring scale for each individual OCSI item (Section 2.1, Hammerschlag et al., 2011):\n- Each of the 27 OCSI item questions is scored yes = 2, partial = 1, no = 0, or Not Applicable = N/A, based on the composite scoring of its lettered sub-questions. A question is scored partial if its sub-questions receive a mix of ratings.\n\nTotal OCSI score formula (Section 2.3, Hammerschlag et al., 2011):\n- An article's total OCSI score is calculated as: raw score ÷ (2 × [27 − n items scored N/A]) × 100, i.e., items scored N/A are excluded from both the numerator and the denominator rather than counted as zero.",
               "id": null
             }
           ],
@@ -3949,18 +3969,6 @@
             {
               "label": "General scoring instructions (OCSI Manual, Appendix A.1, Hammerschlag et al., 2011): \n\n1. When scoring each question, consider whether a reviewer would be satisfied with what is reported, and whether the details given would be sufficient to reproduce the findings. \n\n2. When multiple components or \"and\" statements are listed for a question, all aspects must be met to receive full credit.\n\n3. Except for item no. 1, if the information is placed anywhere in the document, the question can receive full credit.\n\n4. For items 4-9 (from STRICTA), nos. 4-8 pertain only to the acupuncture aspects of the study, while no. 9 pertains to all types of control or comparison groups. \n\n5. Practitioners are almost always NOT blinded in acupuncture research; hence item 16(b) is usually scored N/A.",
               "id": null
-            }
-          ],
-          "extra__tara_kb_hasGeneralOCSIScoringRubrics": [
-            {
-              "label": "Scoring scale for each individual OCSI item (Section 2.1, Hammerschlag et al., 2011)\n\n- Each of the 27 OCSI item questions is scored yes = 2, partial = 1, no = 0, or Not Applicable = N/A, based on the composite scoring of its lettered sub-questions. A question is scored partial if its sub-questions receive a mix of ratings.\n\nTotal OCSI score formula (Section 2.3, Hammerschlag et al., 2011)\n\n- An article's total OCSI score is calculated as: raw score ÷ (2 × [27 − n items scored N/A]) × 100, i.e., items scored N/A are excluded from both the numerator and the denominator rather than counted as zero.",
-              "id": null
-            }
-          ],
-          "extra__dcterms_license": [
-            {
-              "label": "",
-              "id": "https://creativecommons.org/licenses/by/4.0/"
             }
           ]
         },
@@ -3989,8 +3997,8 @@
           ],
           "synonyms": [],
           "altLabel": "Category_B_Acupuncture_Intervention_Metrics",
-          "description": "Category B, Acupuncture Intervention Metrics, groups OCSI items 4 through 9, which report on the acupuncture intervention itself and correspond one-to-one, in order, to the six official STRICTA 2010 checklist items: (1) Acupuncture rationale, (2) Details of needling, (3) Treatment regimen, (4) Other components of treatment, (5) Practitioner background, (6) Control or comparator interventions. Hammerschlag et al. 2011 state these six items substitute for CONSORT's own item 4.\n\nThe OCSI items included under this category include:\n- Item 4: Acupuncture Style & Acupoints Selection Score\n- Item 5: Acupuncture Needling Parameters\n- Item 6: Treatments Duration and Frequency\n- Item 7: Acupuncture Group Cointervention(s)\n- Item 8: Practitioner Training and Expertise \n- Item 9: Control Groups Intervention",
-          "comment": "The umbrella label 'Acupuncture Intervention Metrics' and its place in this ontology's four-category scheme (A/B/C/D) are a TARA-KB convention, not STRICTA's own terminology. This category's item membership (OCSI items 4-9), however, is directly traceable to STRICTA (MacPherson et al. 2010), with an exact one-to-one, in-order correspondence to STRICTA's six official checklist items.",
+          "description": "Category B, Acupuncture Intervention Metrics, groups OCSI items 4 through 9, which report on the acupuncture intervention itself and correspond one-to-one, in order, to the six official STRICTA (MacPherson, 2010) checklist items: (1) Acupuncture rationale, (2) Details of needling, (3) Treatment regimen, (4) Other components of treatment, (5) Practitioner background, (6) Control or comparator interventions. Hammerschlag et al. 2011 state these six items substitute for CONSORT's own item 4. The OCSI items included under this category include:\n- Item 4: Acupuncture Style & Acupoints Selection Score\n- Item 5: Acupuncture Needling Parameters\n- Item 6: Treatments Duration and Frequency\n- Item 7: Acupuncture Group Cointervention(s)\n- Item 8: Practitioner Training and Expertise \n- Item 9: Control Groups Intervention",
+          "comment": null,
           "examples": [],
           "source": [],
           "citation": [
@@ -4002,16 +4010,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ]
         },
@@ -4033,16 +4041,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "7_Acupuncture_Group_Cointerventions",
-          "description": "The reporting assessment score evaluating whether extra pharmaceutical drugs or parallel therapies are tracked or declared along with the intervention.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score evaluating whether extra pharmaceutical drugs or parallel therapies are tracked or declared along with the intervention.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasAcupunctureCointerventionsScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "7",
               "id": null
             }
           ],
@@ -4058,33 +4072,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasAcupunctureCointerventionsScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "It refers only to cointerventions within the scope of acupuncture licensure. If the protocol specifies the option of prescribed self-help treatments, for example, exercise advice, stretching, or qi gong, these must also be described. Scored N/A if no adjunctive treatment was provided to the acupuncture group.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Are details of the acupuncture group cointervention(s) presented? (e.g., moxa, cupping, life-style advice, plum-blossom needling, Chinese herbs)",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "7",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Are details of the acupuncture group cointervention(s) presented? (e.g., moxa, cupping, life-style advice, plum-blossom needling, Chinese herbs)",
               "id": null
             }
           ]
@@ -4107,16 +4115,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "5_Acupuncture_Needling_Parameters",
-          "description": "The technical STRICTRA-aligned item score checking the completeness of needle parameters reported (e.g., gauge, depth, de qi sensation).\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score checking the completeness of needle parameters reported (e.g., gauge, depth, de qi sensation).\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasAcupunctureNeedlingParametersScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "5",
               "id": null
             }
           ],
@@ -4132,33 +4146,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasAcupunctureNeedlingParametersScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) Unilateral or bilateral can be implied.\n\n(b) If the treatment protocol is individualized, then the authors must state the range of needles utilized (e.g., 8-14 needles). This may be implied from (a).\n\n(c) If the treatments were individualized, the depths must be given as a range, expressed in Cun, mm, or anatomical depth.\n\n(d) Response refers to needle sensations such as de qi (TCM), muscle twitch (trigger point), or muscle contraction (electroacupuncture).\n\n(e) Stimulation refers to techniques in manual acupuncture (lifting, thrusting, or rotating) or electroacupuncture (current, frequency, amplitude).\n\n(f) If treatments were individualized, retention time must be reported as a mean and range.\n\n(g) It must state the gauge, length, and material and/or manufacturer of the needles.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Are the following parameters of needling presented?\n\n(a) Points used (uni/bilateral)\n\n(b) Number of needles inserted\n\n(c) Depth(s) of insertion\n\n(d) Response elicited (e.g., de qi)\n\n(e) Needle stimulation (manual or electrical)\n\n(f) Needle retention time\n\n(g) Needle type (Material and/or manufacturer, gauge, and length)",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "5",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Are the following parameters of needling presented?\n\n(a) Points used (uni/bilateral)\n\n(b) Number of needles inserted\n\n(c) Depth(s) of insertion\n\n(d) Response elicited (e.g., de qi)\n\n(e) Needle stimulation (manual or electrical)\n\n(f) Needle retention time\n\n(g) Needle type (Material and/or manufacturer, gauge, and length)",
               "id": null
             }
           ]
@@ -4181,16 +4189,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "4_Acupuncture_Style_Acupoints_Selection",
-          "description": "The STRICTA-aligned score evaluating the general description of the acupuncture style and acupoints selection rationale for the intervention.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score evaluating the general description of the acupuncture style and acupoints selection rationale for the intervention.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasAcupunctureStyleAndSelectionScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "4",
               "id": null
             }
           ],
@@ -4206,33 +4220,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasAcupunctureStyleAndSelectionScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) Style of acupuncture can be implied from the author affiliation information; for example, authors were from the Beijing TCM hospital, so style is TCM. If the protocol utilized a single acupoint or only lists the names of the acupoint(s), the style still needs to be stated.\n\n(b) For example, the acupoints were chosen on the basis of text books, practitioner survey, or prior research.\n\n(c) Justified, for a YES score, requires citing journals, texts, practitioner survey, or an expert panel.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Is the style of acupuncture stated?\n\n(b) Is the rationale presented for the selection of acupuncture points?\n\n(c) Was the rationale justified?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "4",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Is the style of acupuncture stated?\n\n(b) Is the rationale presented for the selection of acupuncture points?\n\n(c) Was the rationale justified?",
               "id": null
             }
           ]
@@ -4255,16 +4263,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "9_Control_Groups_Intervention",
-          "description": "The quality check score evaluating how thoroughly the rationales and structural formats of the control or comparative groups are reported.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score evaluating how thoroughly the rationales and structural formats of the control or comparative groups are reported.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasControlGroupsInterventionScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "9",
               "id": null
             }
           ],
@@ -4280,33 +4294,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasControlGroupsInterventionScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "A no-treatment control is scored the same as a sham or comparison control.\n\n(a) Intended effect refers to the specific rationale for choosing the control (including no treatment).\n\n(b) Specific explanations refers to the specific wording the patient receives regarding the treatment and control procedures.\n\n(c) Details refers to a precise description of the control intervention, including (if applicable, e.g., invasive sham) the parameters of needling (item 5(a)-(g)). This includes no treatment controls, for example, who may have been required to keep diaries. If no tracking was performed, it must be stated.\n\n(d) Justification refers to citing journals, textbooks, practitioner survey, or an expert consensus panel.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Is the intended effect of the control or comparison intervention presented?\n\n(b) Were the specific explanations given to patients of the treatment and control interventions presented?\n\n(c) Are details for the control or comparison intervention presented?\n\n(d) Are sources provided, that justify the choice of the control or comparison intervention?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "9",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Is the intended effect of the control or comparison intervention presented?\n\n(b) Were the specific explanations given to patients of the treatment and control interventions presented?\n\n(c) Are details for the control or comparison intervention presented?\n\n(d) Are sources provided, that justify the choice of the control or comparison intervention?",
               "id": null
             }
           ]
@@ -4329,16 +4337,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "8_Practitioner_Training_Expertise",
-          "description": "A STRICTA-aligned score assessing whether the practitioners' background, training, and experience administering acupuncture are reported.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the practitioners' background, training, and experience administering acupuncture are reported.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasPractitionerTrainingExpertiseScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "8",
               "id": null
             }
           ],
@@ -4354,33 +4368,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasPractitionerTrainingExpertiseScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) Duration of practitioner training can be implied, for example, LAc or a similar indication of formal training.\n\n(b) Clinical experience refers to number of years in practice as an acupuncturist.\n\n(c) Expertise must include experience, as an acupuncturist, with the condition under investigation.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Are descriptions provided of the\n\n(a) duration of practitioner training,\n\n(b) length of clinical experience, and\n\n(c) expertise in specific condition?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "8",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Are descriptions provided of the\n\n(a) duration of practitioner training,\n\n(b) length of clinical experience, and\n\n(c) expertise in specific condition?",
               "id": null
             }
           ]
@@ -4403,16 +4411,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "6_Treatments_Duration_Frequency",
-          "description": "The STRICTA-aligned reporting item score checking if treatment intervals, session patterns, and total schedules are documented.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing if treatment intervals, session patterns, and total schedules are documented.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasTreatmentsDurationAndFrequencyScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "6",
               "id": null
             }
           ],
@@ -4428,27 +4442,15 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasTreatmentsDurationAndFrequencyScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) If treatments were individualized, then the mean and range of the number of treatments must be stated.\n\n(b) If the protocol was one treatment, then the frequency is N/A.",
-              "id": null
-            }
-          ],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasTypicalArticleSection": [
-            {
-              "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "6",
               "id": null
             }
           ],
@@ -4457,42 +4459,10 @@
               "label": "(a) Are the number and\n\n(b) frequency of treatments stated?",
               "id": null
             }
-          ]
-        },
-        "tara-kb:hasOCSITotalPercentage": {
-          "id": "tara-kb:hasOCSITotalPercentage",
-          "kind": "annotationProperty",
-          "storeKey": "annotationProperties",
-          "label": "OCSI Total Percentage",
-          "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSITotalPercentage",
-          "grouping": false,
-          "domain": "TARA:2825659",
-          "domainLabel": "Acupuncture Study OCSI Assessment",
-          "range": {
-            "kind": "datatype",
-            "id": "tara-kb:percentFloat",
-            "label": "Datatype: OCSI Total Score"
-          },
-          "parent": "tara-kb:hasOCSIItemScoringMetadata",
-          "children": [],
-          "synonyms": [],
-          "altLabel": "OCSI_Total_Percentage",
-          "description": "The global reporting-quality percentage for a study's OCSI assessment, calculated per Hammerschlag et al. 2011 as: \n\n- raw score / (2 x [27 - n items scored N/A]) x 100. \n\nUnlike the 27 item-level score properties nested under the four OCSI categories, this is a derived summary value and is therefore attached directly to hasOCSIItemScoringMetadata rather than to any single category.",
-          "comment": null,
-          "examples": [
-            "e.g., 82.5 (representing 82.5% overall compliance across all OCSI-scored items)."
           ],
-          "source": [],
-          "citation": [],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "tara-kb:hasOCSITotalPercentage",
-              "id": null
-            }
-          ],
-          "extra__dcterms_creator": [
-            {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Methods",
               "id": null
             }
           ]
@@ -4534,16 +4504,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ]
         },
@@ -4565,16 +4535,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "24_Adverse_Events_Side_Effects",
-          "description": "The reporting quality score assessing the transparency of reporting adverse events or side effects for each intervention group.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing the transparency of reporting adverse events or side effects for each intervention group.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasAdverseEventsSideEffectsScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "24",
               "id": null
             }
           ],
@@ -4590,33 +4566,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasAdverseEventsSideEffectsScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "It cannot be scored as N/A. Authors need to state whether there were or were not adverse events (AE) or side effects for each group. If severe AEs occurred, estimates of the frequency should be reported.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Are all important adverse events or side effects presented for each intervention group?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Results",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "24",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Are all important adverse events or side effects presented for each intervention group?",
               "id": null
             }
           ]
@@ -4639,16 +4609,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "20_Group_Demographics_Characteristics",
-          "description": "The structural quality score grading the transparency of reporting baseline participant demographics and clinical characteristics.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score grading the transparency of reporting baseline participant demographics and clinical characteristics.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasGroupDemographicsCharacteristicsScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "20",
               "id": null
             }
           ],
@@ -4664,33 +4640,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasGroupDemographicsCharacteristicsScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) It must present the demographics, for example, age, gender, ethnicity.\n\n(b) It must present the clinical characteristics, for example, duration of condition, for each group.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Are baseline demographics and\n\n(b) clinical characteristics presented for each group?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Results",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "20",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Are baseline demographics and\n\n(b) clinical characteristics presented for each group?",
               "id": null
             }
           ]
@@ -4713,16 +4683,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "18_Participants_Flow_Deviation",
-          "description": "The reporting quality score assessing whether the flow of participants through each stage of the trial is quantitatively described, including reasons for any protocol deviations.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the flow of participants through each stage of the trial is quantitatively described, including reasons for any protocol deviations.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasParticipantsFlowAndDeviationScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "18",
               "id": null
             }
           ],
@@ -4738,33 +4714,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasParticipantsFlowAndDeviationScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a)  A diagram is recommended but not necessary. For full credit, authors must state the number of participants who were (i) evaluated for potential enrollment, for example, excluded due to inclusion/exclusions criteria and declined enrollment, (ii) randomized, (iii) received treatment, (iv) completed treatment, and (v) analyzed for the primary outcome.\n\n(b) 'Protocol deviations' pertains to the nature of protocol deviations after randomization, for example, departures from the protocol including unplanned changes to the intervention, data collection, examinations, and methods of analysis, or the speciﬁc reasons for patient exclusions after randomization, including drop-outs.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Is the flow of participants through each stage quantitatively described, and\n\n(b) if protocol deviations are reported, were reasons presented?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Results",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "18",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Is the flow of participants through each stage quantitatively described, and\n\n(b) if protocol deviations are reported, were reasons presented?",
               "id": null
             }
           ]
@@ -4787,16 +4757,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "21_Participants_Intention_to_Treat_Analysis",
-          "description": "The reporting quality score assessing whether the number of participants included in each analysis, use of an intention-to-treat analysis, and results in absolute numbers are stated.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the number of participants included in each analysis, use of an intention-to-treat analysis, and results in absolute numbers are stated.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasParticipantsIntentionToTreatScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "21",
               "id": null
             }
           ],
@@ -4812,33 +4788,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasParticipantsIntentionToTreatScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) For full credit, it must state the 'n' per each analysis, since the actual 'n' may vary per outcome. If no dropouts occurred, the 'n' can be implied.\n\n(b) Must use an 'intention to treat' analysis (or a valid substitute, e.g., per protocol or on treatment analysis) to avoid bias associated with non-random loss of participants. If there were no dropouts then a 'Yes' is scored.\n\n(c) It must state absolute numbers, for example, reduction of VAS pain from 10 to 5 or from 6 to 3 not just a 50% reduction.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Is the number of participants in each group included in each analysis?\n\n(b) Was the 'intention to treat' analysis presented?\n\n(c) When feasible, are the results stated in absolute numbers (e.g., 10 of 20, not just 50%)?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Results",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "21",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Is the number of participants in each group included in each analysis?\n\n(b) Was the 'intention to treat' analysis presented?\n\n(c) When feasible, are the results stated in absolute numbers (e.g., 10 of 20, not just 50%)?",
               "id": null
             }
           ]
@@ -4861,16 +4831,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "19_Participants_Recruitment_Followup",
-          "description": "The reporting score assessing whether the recruitment period and the length of follow-up are stated.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the recruitment period and the length of follow-up are stated.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasParticipantsRecruitmentFollowupScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "19",
               "id": null
             }
           ],
@@ -4886,33 +4862,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasParticipantsRecruitmentFollowupScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) It must state the start and finish dates of the recruitment period, to place the study in historical context.\n\n(b) It must state the length of time for the followup period, for example, participants were followed for a total of 6 months, 3 months during treatment and 3 months of posttreatment followup.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Are dates provided that define the period of recruitment?\n\n(b) Is the length of followup (on-treatment and posttreatment) reported?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Results",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "19",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Are dates provided that define the period of recruitment?\n\n(b) Is the length of followup (on-treatment and posttreatment) reported?",
               "id": null
             }
           ]
@@ -4935,16 +4905,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "22_Study_Outcomes_Effect_Size",
-          "description": "The reporting quality score that assesses the completeness, transparency, and accuracy of the reported results for each predefined primary and secondary outcome measure, evaluating whether the text explicitly provides estimated effect sizes, confidence intervals, and precise statistical significance values (e.g., p-values) for each endpoint.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
-          "comment": "To maintain data integrity and prevent construct contamination within the metadata schema, ensure that the data extraction models treat the following two properties separately:\n\n1. hasOutcomesMeasureScore (Methodology/Design Check): Focuses on the definition and planned pairing of tests. (e.g., Did they tell us in the Methods section how they planned to calculate the math?)\n\n2. hasStudyOutcomesEffectSize (Reporting/Transparency Check): Focuses on the execution and transparency of the actual data. (e.g., Did they actually show us the exact numbers, tables, effect sizes, and p-values in the Results section?)",
+          "description": "The reporting quality score that assesses the completeness, transparency, and accuracy of the reported results for each predefined primary and secondary outcome measure, evaluating whether the text explicitly provides estimated effect sizes, confidence intervals, and precise statistical significance values (e.g., p-values) for each endpoint.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasStudyOutcomesAndEffectSizeScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "22",
               "id": null
             }
           ],
@@ -4960,33 +4936,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasStudyOutcomesAndEffectSizeScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) It must state the results or use a table/graph, for example, the mean and standard deviation of the measurements.\n\n(b) All results must indicate the effect size, for example, the difference in means, odds ratio, or relative risk ratio.\n\n(c) For full credit, authors must state precision as a confidence interval (CI). Only presenting P-values will score a partial.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "For each primary and (if applicable) secondary outcome, is\n\n(a) a summary of results presented for each group,\n\n(b) the estimated effect size presented for each between-group difference (e.g., SD), and\n\n(c) the precision of the effect size presented for each between-group difference (e.g., confidence interval (CI))?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Results",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "22",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "For each primary and (if applicable) secondary outcome, is\n\n(a) a summary of results presented for each group,\n\n(b) the estimated effect size presented for each between-group difference (e.g., SD), and\n\n(c) the precision of the effect size presented for each between-group difference (e.g., confidence interval (CI))?",
               "id": null
             }
           ]
@@ -5009,16 +4979,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "23_Subgroup_Adjusted_Analyses",
-          "description": "The structural quality score assessing the tracking of subgroups, post-hoc stratifications, or secondary data analyses of the clinical trial.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing the tracking of subgroups, post-hoc stratifications, or secondary data analyses of the clinical trial.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": "",
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasSubgroupAdjustedAnalysesScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "23",
               "id": null
             }
           ],
@@ -5034,33 +5010,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasSubgroupAdjustedAnalysesScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "If additional analyses are prespecified in the research design, the results must be presented, and it must be clearly stated whether or not these were exploratory (e.g., post hoc) analyses.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "If additional subgroup analyses and/or adjusted analyses are reported, is it stated whether they were prespecified or exploratory, that is, not prespecified?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Results",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "23",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "If additional subgroup analyses and/or adjusted analyses are reported, is it stated whether they were prespecified or exploratory, that is, not prespecified?",
               "id": null
             }
           ]
@@ -5071,9 +5041,9 @@
           "storeKey": "annotationProperties",
           "label": "Category E: Results Discussion Metrics",
           "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasResultsDiscussionMetrics",
-          "grouping": false,
-          "domain": null,
-          "domainLabel": null,
+          "grouping": true,
+          "domain": "TARA:2825659",
+          "domainLabel": "Acupuncture Study OCSI Assessment",
           "range": {
             "kind": null,
             "id": null,
@@ -5097,6 +5067,12 @@
               "label": "tara-kb:hasResultsDiscussionMetrics",
               "id": null
             }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
+            }
           ]
         },
         "tara-kb:hasInterpretationOfResultsScore": {
@@ -5117,16 +5093,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "27_Interpretation_of_Results",
-          "description": "The reporting quality score assessing whether a general interpretation of the results is presented in the context of current evidence.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether a general interpretation of the results is presented in the context of current evidence.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasInterpretationOfResultsScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "27",
               "id": null
             }
           ],
@@ -5142,33 +5124,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasInterpretationOfResultsScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "'General interpretation' pertains to how these results relate to previous research. For full credit, authors must (i) cite and (ii) discuss the previous research.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Is a general interpretation of the results presented, in the context of current evidence?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Discussion",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "27",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Is a general interpretation of the results presented, in the context of current evidence?",
               "id": null
             }
           ]
@@ -5191,16 +5167,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "26_Trial_Findings_Generalizability",
-          "description": "The reporting quality score assessing whether the generalizability (external validity) of the trial findings is discussed.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the generalizability (external validity) of the trial findings is discussed.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasTrialGeneralizabilityScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "26",
               "id": null
             }
           ],
@@ -5216,33 +5198,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasTrialGeneralizabilityScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "Generalizability pertains to the external validity or general applicability of the results. For example, to what extent do the results, with the population limited by the eligibility criteria, pertain to the greater population with this condition? Topics to consider are eligibility criteria, setting and location, the intervention protocol, the period of recruitment and followup, and so forth.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Is the generalizability (external validity) of the trial findings discussed?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Discussion",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "26",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Is the generalizability (external validity) of the trial findings discussed?",
               "id": null
             }
           ]
@@ -5265,16 +5241,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "25_Trial_Strengths_Limitations",
-          "description": "The reporting quality score evaluating whether the study authors adequately identified and discussed the strengths and weaknesses of the trial such as potential sources of bias or other trial constraints.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score evaluating whether the study authors adequately identified and discussed the strengths and weaknesses of the trial such as potential sources of bias or other trial constraints.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasTrialStrengthsLimitationsScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "25",
               "id": null
             }
           ],
@@ -5290,33 +5272,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasTrialStrengthsLimitationsScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) The relevance of the findings to the hypotheses or objectives must be discussed.\n\n(b) The strengths and weakness of the trial must be discussed, particularly in the context of potential for bias and imprecision of study findings.\n\n(c) This is usually scored as N/A unless numerous analyses, both prespecified and exploratory, were performed.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Is an interpretation of the results presented that takes into account\n\n(a) study hypotheses,\n\n(b) sources of potential bias or imprecision, and\n\n(c) the potential dangers associated with multiple analyses and outcomes?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Discussion",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "25",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Is an interpretation of the results presented that takes into account\n\n(a) study hypotheses,\n\n(b) sources of potential bias or imprecision, and\n\n(c) the potential dangers associated with multiple analyses and outcomes?",
               "id": null
             }
           ]
@@ -5360,16 +5336,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ]
         },
@@ -5391,16 +5367,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "16_Blinding_Statements_Quality",
-          "description": "The quality check score auditing whether the trial describes who was masked to trial assignments (e.g., patients, operators, assessors).\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score auditing whether the trial describes who was masked to trial assignments (e.g., patients, operators, assessors).\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasBlindingStatementsQualityScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "16",
               "id": null
             }
           ],
@@ -5416,33 +5398,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasBlindingStatementsQualityScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) It must state that patients were blinded to group assignments, for example, a statement that the trial was single-blinded. If the trial was a comparison of active treatments, for example, acupuncture versus massage, this will be scored N/A.\n\n(b) This will usually be scored N/A. In the rare case that the study did blind the practitioners, there must be an explicit statement regarding the method utiliz.\n\n(c) It must state whether or not the persons performing outcome measures were blinded to group assignments.This is more important with subjective outcomes, less so with objective outcomes where there is less chance of bias.\n\n(d) For full credit, authors must (i) state that the success of participant blinding was evaluated and (ii) present the results of the assessment. This is N/A if acupuncture was compared to another active treatment (e.g., standard care or massage).",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Is it stated whether or not\n\n(a) participants,\n\n(b) those administering the interventions, and\n\n(c) those assessing the outcomes were blinded? and\n\n(d) was the success of participant blinding evaluated?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "16",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Is it stated whether or not\n\n(a) participants,\n\n(b) those administering the interventions, and\n\n(c) those assessing the outcomes were blinded? and\n\n(d) was the success of participant blinding evaluated?",
               "id": null
             }
           ]
@@ -5465,16 +5441,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "11_Outcomes_Measure_Definitions",
-          "description": "The reporting quality score assessing whether the primary (and, if applicable, secondary) outcome measures are clearly defined, including any methods used to enhance measurement quality.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the primary (and, if applicable, secondary) outcome measures are clearly defined, including any methods used to enhance measurement quality.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasOutcomesMeasureDefinitionsScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "11",
               "id": null
             }
           ],
@@ -5490,33 +5472,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasOutcomesMeasureDefinitionsScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) It must explicitly state (i) the primary outcome(s) and (ii) how it (they) was measured. If the primary outcome was not speciﬁcally indicated, partial credit can be awarded. (The primary outcome is usually used in the sample size calculation.)\n\n(b) If particular steps were taken to increase the reliability of the measurements, suﬃcient details of the steps must be presented; for example, range of motion was assessed with a goniometer, and three successive measurements were averaged to increase reliability.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Are primary and (if applicable) secondary outcome measures clearly defined?\n\n(b) Are there statements (when applicable), regarding any methods used to enhance the quality of measurements, for example, multiple observers or training of assessors?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "11",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Are primary and (if applicable) secondary outcome measures clearly defined?\n\n(b) Are there statements (when applicable), regarding any methods used to enhance the quality of measurements, for example, multiple observers or training of assessors?",
               "id": null
             }
           ]
@@ -5539,16 +5515,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "14_Random_Allocation_Concealment",
-          "description": "The reporting quality score assessing whether the method used to implement the random allocation sequence is described, and whether the sequence was concealed until interventions were assigned.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the method used to implement the random allocation sequence is described, and whether the sequence was concealed until interventions were assigned.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasRandomAllocationConcealmentScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "14",
               "id": null
             }
           ],
@@ -5564,33 +5546,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasRandomAllocationConcealmentScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) 'Implementation' refers to how the random assignment was applied, for example, a sealed envelope containing the computer-generated group assignment placed in the patient's chart.\n\n(b) Concealment is required to prevent foreknowledge of and introduction of bias in treatment assignment, for example, the sealed envelope with group assignment was opened after the patient passed the baseline neurological exam and received a TCM differential diagnosis.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Is the method presented that was used to implement the random allocation sequence,\n\n(b) with clarification as to whether the sequence was concealed until interventions were assigned?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "14",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Is the method presented that was used to implement the random allocation sequence,\n\n(b) with clarification as to whether the sequence was concealed until interventions were assigned?",
               "id": null
             }
           ]
@@ -5613,16 +5589,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "15_Random_Allocation_Personnel",
-          "description": "The reporting score assessing whether the article states who generated the randomization sequence, who enrolled participants, and who assigned participants to their groups.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting score assessing whether the article states who generated the randomization sequence, who enrolled participants, and who assigned participants to their groups.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasRandomAllocationPersonnelScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "15",
               "id": null
             }
           ],
@@ -5638,33 +5620,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasRandomAllocationPersonnelScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) It must specifically state the person responsible for generating the randomization.\n\n(b) It refers to the specific person(s) responsible for consenting the participants.\n\n(c) It refers to the person who assigned participants to their respective randomized groups; if this person also generated the randomization scheme, the authors should report how the potential for biased group assignments was addressed (e.g., randomization schedule was kept in a locked closet from “this” person).",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Are there statements as to\n\n(a) who generated the allocation sequence,\n\n(b) who enrolled participants, and\n\n(c) who assigned participants to their groups?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "15",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Are there statements as to\n\n(a) who generated the allocation sequence,\n\n(b) who enrolled participants, and\n\n(c) who assigned participants to their groups?",
               "id": null
             }
           ]
@@ -5687,16 +5663,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "13_Random_Allocation_Sequencing",
-          "description": "A reporting quality score assessing whether the method used to generate the random allocation sequence, and any restrictions (e.g., blocking, stratification), are described.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the method used to generate the random allocation sequence, and any restrictions (e.g., blocking, stratification), are described.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasRandomAllocationSequencingScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "13",
               "id": null
             }
           ],
@@ -5712,33 +5694,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasRandomAllocationSequencingScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) Sufficient and specific information must be provided regarding the methods utilized to generate the random allocation scheme, for example, a computer-generated table. Simply stating that patients were randomly assigned is not sufficient.\n\n(b) If randomization restrictions were utilized, for example, stratification or blocking, the methods and details must be stated.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Is the method presented that was used to generate the random allocation sequence, and\n\n(b) if applicable, details of any restriction (e.g., blocking, stratification)?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "13",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Is the method presented that was used to generate the random allocation sequence, and\n\n(b) if applicable, details of any restriction (e.g., blocking, stratification)?",
               "id": null
             }
           ]
@@ -5761,16 +5737,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "12_Sample_Size_Determination",
-          "description": "The reporting quality score assessing whether the rationale or calculation used to determine the study's sample size is explicitly reported.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the rationale or calculation used to determine the study's sample size is explicitly reported.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasSampleSizeDeterminationScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "12",
               "id": null
             }
           ],
@@ -5786,33 +5768,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasSampleSizeDeterminationScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) It must include statements regarding estimated effect size of the intervention based on (i) previous research and (ii) estimated attrition rate. If the study was a pilot, a statement such as 'No data exists upon which to base a sample size calculation' must be included.\n\n(b) 'Interim analysis and stopping rules' pertains to long-term trials and may not be applicable to trials of shorter duration. If authors report that interim analyses were performed, the number of assessments and statistical tests must be reported.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Is there a statement regarding how the sample size was determined, and\n\n(b) if applicable, an explanation of any interim analyses and stopping rules?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "12",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Is there a statement regarding how the sample size was determined, and\n\n(b) if applicable, an explanation of any interim analyses and stopping rules?",
               "id": null
             }
           ]
@@ -5835,16 +5811,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "17_Statistical_Methods_For_Outcomes",
-          "description": "The reporting quality score assessing whether the statistical methods used to compare groups for primary outcomes, and for any additional analyses, are stated.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the statistical methods used to compare groups for primary outcomes, and for any additional analyses, are stated.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasStatisticalMethodsForOutcomesScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "17",
               "id": null
             }
           ],
@@ -5860,33 +5842,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasStatisticalMethodsForOutcomesScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) It must specifically state the statistical methods used to compare groups for primary outcomes.\n\n(b) If additional analyses were performed, the specific statistical methods used must be reported for full credit.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Were the statistical methods stated that were used to compare groups for primary outcomes?\n\n(b) Were the statistical methods stated that were used for additional analyses such as subgroup or adjusted analyses?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "17",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Were the statistical methods stated that were used to compare groups for primary outcomes?\n\n(b) Were the statistical methods stated that were used for additional analyses such as subgroup or adjusted analyses?",
               "id": null
             }
           ]
@@ -5928,16 +5904,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__dcterms_creator": [
             {
               "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ]
         },
@@ -5959,16 +5935,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "3_Participants_Eligibility_Study_Settings",
-          "description": "The reporting score tracking how clearly the inclusion and exclusion criteria for study participants were defined.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting score tracking how clearly the inclusion and exclusion criteria for study participants were defined.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasParticipantsEligibilityAndStudySettingsScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "3",
               "id": null
             }
           ],
@@ -5984,33 +5966,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasParticipantsEligibilityAndStudySettingsScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) The distinction between inclusion and exclusion criteria is unnecessary; for example, an exclusion criterion may be listed as a negative within the inclusion criteria. Stating the patient demographics and clinical characteristics after recruitment (e.g., post hoc demographics) does not qualify as eligibility criteria.\n\n(b) Settings, for example, private practice or outpatient clinic, and Locations, for example, medical center or acupuncture college, can be implied from the author affiliation information.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Are the eligibility criteria (inclusion and exclusion criteria) stated and\n\n(b) are the setting(s) and location(s) where the data was collected described?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "3",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Are the eligibility criteria (inclusion and exclusion criteria) stated and\n\n(b) are the setting(s) and location(s) where the data was collected described?",
               "id": null
             }
           ]
@@ -6033,16 +6009,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "1_Participants_Randomization_Statement",
-          "description": "The reporting quality score assessing whether the article explicitly states, in the abstract or title, that participants were randomly assigned to interventions.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the article explicitly states, in the abstract or title, that participants were randomly assigned to interventions.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasParticipantsRandomizationStatementScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "1",
               "id": null
             }
           ],
@@ -6058,15 +6040,21 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasParticipantsRandomizationStatementScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "It must state in the abstract or title that participants were allocated to interventions in a randomized manner, that is, random allocation, randomized, or randomly assigned.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Is there an explicit statement that patients were randomly assigned to interventions?",
               "id": null
             }
           ],
@@ -6077,18 +6065,6 @@
             },
             {
               "label": "Title",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "1",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Is there an explicit statement that patients were randomly assigned to interventions?",
               "id": null
             }
           ]
@@ -6111,16 +6087,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "2_Scientific_Background_Rationale",
-          "description": "The reporting quality score measuring how completely the article's introduction provides scientific background and explains the rationale for the trial.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score measuring how completely the article's introduction provides scientific background and explains the rationale for the trial.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasScientificBackgroundRationaleScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "2",
               "id": null
             }
           ],
@@ -6136,33 +6118,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasScientificBackgroundRationaleScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) Scientific background pertains to the previous research and the current understanding of the disease.\n\n(b) Rationale pertains to the justification for the trial and/or the expected effects/benefits of the treatment.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "(a) Is scientific background provided and\n\n(b) is the rationale explained?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Introduction",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "2",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "(a) Is scientific background provided and\n\n(b) is the rationale explained?",
               "id": null
             }
           ]
@@ -6185,16 +6161,22 @@
           "children": [],
           "synonyms": [],
           "altLabel": "10_Specific_Objectives_Hypotheses",
-          "description": "The reporting quality score assessing whether the article states specific objectives and hypotheses to be tested.\n\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
+          "description": "The reporting quality score assessing whether the article states specific objectives and hypotheses to be tested.\n- The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__dcterms_creator": [
             {
-              "label": "tara-kb:hasSpecificObjectivesHypothesesScore",
+              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "id": null
+            }
+          ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "10",
               "id": null
             }
           ],
@@ -6210,33 +6192,27 @@
               "id": null
             }
           ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasSpecificObjectivesHypothesesScore",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
               "label": "(a) If objectives are clearly implied but not specifically stated, a Yes may be scored.\n\n(b) The actual word hypothesis or a valid substitute, for example, theory, must be used.",
               "id": null
             }
           ],
-          "extra__dcterms_creator": [
+          "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
-              "label": "Fahim Imam - https://orcid.org/0000-0003-4752-543X",
+              "label": "Are there statements of\n\n(a) specific objectives and\n\n(b) hypotheses to be tested?",
               "id": null
             }
           ],
           "extra__tara_kb_hasTypicalArticleSection": [
             {
               "label": "Methods",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "10",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIAssessmentQuestions": [
-            {
-              "label": "Are there statements of\n\n(a) specific objectives and\n\n(b) hypotheses to be tested?",
               "id": null
             }
           ]
@@ -6603,9 +6579,7 @@
               "v": "]"
             }
           ],
-          "propertiesUsingThisType": [
-            "tara-kb:hasOCSITotalPercentage"
-          ],
+          "propertiesUsingThisType": [],
           "altLabel": null,
           "description": null,
           "comment": "To represent the total OCSI Score percentage between 0.0 to 100.0. \n\nThe global reporting-quality percentage for a study's OCSI assessment, calculated per Hammerschlag et al. 2011 as: raw score / (2 x [27 - n items scored N/A]) x 100.",
