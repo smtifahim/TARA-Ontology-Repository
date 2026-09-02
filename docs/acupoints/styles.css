@@ -337,6 +337,48 @@ li.hidden-by-filter { display: none; }
 }
 .text-list-item { white-space: pre-wrap; line-height: 1.5; }
 .text-list-item + .text-list-item { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--divider); }
+
+/* ---- collapsible, syntax-coloured JSON (Extraction Prompt fields) ---- */
+.json-field { margin: 0.2rem 0 0.5rem; min-width: 0; }
+.ann-vals > .json-field { margin: 0; }   /* compact dense-row value cell */
+.json-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  color: var(--accent);
+  cursor: pointer;
+}
+.json-toggle:hover { background: var(--accent-bg); }
+.json-block {
+  margin: 0.45rem 0 0;
+  padding: 0.7rem 0.85rem;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  max-width: 100%;
+  color: var(--text-muted);
+}
+.json-block .jk { color: #2b6cb0; }   /* key */
+.json-block .js { color: #1a7f37; }   /* string */
+.json-block .jn { color: #b5540b; }   /* number */
+.json-block .jb { color: #8250df; }   /* boolean / null */
+@media (prefers-color-scheme: dark) {
+  .json-block .jk { color: #7ea6e0; }
+  .json-block .js { color: #7ee787; }
+  .json-block .jn { color: #e0a479; }
+  .json-block .jb { color: #d2a8ff; }
+}
 .ann-table { padding-top: 0.6rem; }
 .ann-row { display: flex; gap: 0.9rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; align-items: flex-start; }
 .ann-row:last-child { border-bottom: none; }
