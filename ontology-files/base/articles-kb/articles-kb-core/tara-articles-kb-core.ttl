@@ -1133,9 +1133,7 @@ tara-kb:hasInterpretationOfResultsScore rdf:type owl:AnnotationProperty ;
   }
 }"""^^rdf:JSON ;
                                         tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
-
 (i) the previous research is cited;
-
 (ii) the previous research is discussed.
 
 N = 2 when all 2 are applicable.
@@ -1143,9 +1141,7 @@ N = 2 when all 2 are applicable.
 Combination rule (N = applicable sub-parts among i-ii):
 
 - All N met -> Score 2 (Yes).
-
 - 0 of N met -> Score 0 (No).
-
 - Exactly 1 of N met -> Score 1 (Partial).
 
 OCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.
@@ -2960,11 +2956,10 @@ This property can also be used to capture the general outcome measure for the st
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyQualityAssessmentMetadata
 tara-kb:hasStudyQualityAssessmentMetadata rdf:type owl:AnnotationProperty ;
                                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
-                                          dcterms:description """An annotation property that serves as a high-level grouping property under which specific quality assessment properties are defined to record evaluative quality data, risk-of-bias scores, and methodological rigor metrics calculated for a clinical trial study.
-
-- Crucially, the values asserted by the sub-properties under this property are not raw data elements directly extracted or verbatim copied from the published journal article. Instead, they represent secondary, derived assessment scores generated, either algorithmically by automated computational models or manually by human domain experts, by evaluating an extracted set of primary metadata from the study report against standardized scoring frameworks and quality assessment criteria (such as OCSI)."""@en ;
+                                          dcterms:description "An annotation property that serves as a high-level grouping property under which specific quality assessment properties are defined to record evaluative quality data, risk-of-bias scores, and methodological rigor metrics calculated for a clinical trial study."@en ;
                                           dcterms:type tara-kb:grouping ;
                                           tara-ap:hasCompactURI "tara-kb:hasStudyQualityAssessmentMetadata" ;
+                                          rdfs:comment "Crucially, the values asserted by the sub-properties under this property are not raw data elements directly extracted or verbatim copied from the published journal article. Instead, they represent secondary, derived assessment scores generated, either algorithmically by automated computational models or manually by human domain experts, by evaluating an extracted set of primary metadata from the study report against standardized scoring frameworks and quality assessment criteria (such as OCSI)."@en ;
                                           rdfs:label "Study Assessment Metadata"@en ;
                                           skos:altLabel "Study_Assessment_Metadata"@en ;
                                           rdfs:subPropertyOf tara-kb:hasTARAArticlesMetadata ;
