@@ -281,7 +281,30 @@ li.hidden-by-filter { display: none; }
   font-size: 0.82rem;
 }
 .anat-acu-hierlink:hover { background: var(--accent-bg); }
+.aa-toggle {
+  display: inline-flex;
+  margin: 0.6rem 0 0.2rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.aa-toggle button {
+  background: var(--panel-bg);
+  border: 0;
+  border-right: 1px solid var(--border);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.aa-toggle button:last-child { border-right: 0; }
+.aa-toggle button.active { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+.aa-category-head { font-size: 0.95rem; font-weight: 700; margin: 1.7rem 0 0.2rem; }
+.aa-subcategory-head { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin: 1rem 0 0 0.6rem; }
+.aa-meridian-head { margin: 1rem 0 0.1rem; }
+.aa-meridian-head .chip { font-weight: 600; }
 .anat-acu-table { margin-top: 1rem; border-top: 1px solid var(--divider); }
+.aa-meridian-head + .anat-acu-table { margin-top: 0.1rem; border-top: 0; }
 .anat-acu-row {
   display: grid;
   grid-template-columns: 7.5rem 7rem 1fr;
