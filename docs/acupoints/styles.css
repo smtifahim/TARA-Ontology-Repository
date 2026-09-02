@@ -261,6 +261,48 @@ li.hidden-by-filter { display: none; }
 }
 .chip.link { cursor: pointer; color: var(--accent); border-color: var(--accent); }
 .chip.link:hover { background: var(--accent-bg); }
+.chip.matched {
+  background: var(--highlight-bg);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.chip.matched.link { color: var(--text); }
+
+/* ---- anatomy -> acupoints topography panel ---- */
+.anat-acu-sub { color: var(--text-muted); font-size: 0.9rem; margin: 0.35rem 0 0.6rem; max-width: 60ch; }
+.anat-acu-sub b { color: var(--text); }
+.anat-acu-hierlink {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+.anat-acu-hierlink:hover { background: var(--accent-bg); }
+.anat-acu-table { margin-top: 1rem; border-top: 1px solid var(--divider); }
+.anat-acu-row {
+  display: grid;
+  grid-template-columns: 7.5rem 7rem 1fr;
+  gap: 0.6rem 0.9rem;
+  align-items: baseline;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--divider);
+}
+.anat-acu-row .aa-name { font-weight: 600; }
+.anat-acu-row .aa-name a { color: var(--accent); cursor: pointer; text-decoration: none; }
+.anat-acu-row .aa-name a:hover { text-decoration: underline; }
+.anat-acu-row .aa-group {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+.anat-acu-row .aa-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+@media (max-width: 620px) {
+  .anat-acu-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
 .example-block {
   background: var(--panel-bg);
   border: 1px solid var(--border);
