@@ -169,30 +169,40 @@ li.hidden-by-filter { display: none; }
   border-radius: 5px;
   color: var(--text-muted);
 }
+/* the kind label ([CLASS] / [DOMAIN] / ...) matches the font of the curie badge
+   it sits next to (see .qname-badge / .qname-badge.link) - just uppercased and
+   on a white ground rather than the chip fill - with a faint gray border. */
 .type-badge {
-  font-size: 0.7rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.1rem 0.4rem;
+  border-radius: 5px;
+  padding: 0.15rem 0.45rem;
+  background: #fff;
   color: var(--text-muted);
 }
 .copy-iri {
-  font-family: inherit;
-  font-size: 0.62rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  line-height: 1.1;
+  line-height: 1;
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.1rem 0.4rem;
-  background: transparent;
-  color: var(--text-muted);
+  border-radius: 5px;
+  padding: 0 0.45rem;
+  background: #fff;
+  color: var(--accent);
   cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
 }
-.copy-iri:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
-.copy-iri.done { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+.copy-iri:hover { background: var(--accent-bg); }
+.copy-iri:active { transform: translateY(0.5px); }
+.copy-iri.done { background: var(--accent); color: #fff; }
 .field-label { font-size: 0.75rem; letter-spacing: 0.04em; color: var(--text-muted); margin: 1.1rem 0 0.3rem; }
 .field-label:first-of-type { margin-top: 1.4rem; }
 .detail-pair-row .field-label:first-of-type { margin-top: 0.7rem; }
@@ -224,7 +234,14 @@ li.hidden-by-filter { display: none; }
 .rt-item-text { flex: 1 1 auto; min-width: 0; }
 .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .dc-row { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
-.dc-seg { display: flex; align-items: center; gap: 0.4rem; }
+/* stretch so the kind badge ([CLASS] / [PROPERTY] / ...) and the Copy button
+   match the height of the curie badge to their right (the tallest of the
+   three); each centres its own text within that shared height. */
+.dc-seg { display: flex; align-items: stretch; gap: 0.4rem; }
+.dc-seg > .type-badge,
+.dc-seg > .qname-badge,
+.dc-seg > .copy-iri { display: inline-flex; align-items: center; }
+.dc-seg > .type-badge { padding-top: 0; padding-bottom: 0; }
 .detail-header { display: flex; align-items: stretch; gap: 1.1rem; }
 .detail-header-main { flex: 0 0 auto; }
 .detail-header-main h2 { margin: 0; }
@@ -234,16 +251,30 @@ li.hidden-by-filter { display: none; }
   border-left: 1px solid var(--divider);
   display: grid;
   grid-template-columns: auto auto;
-  align-items: center;
+  align-items: stretch;
   align-content: space-between;
   column-gap: 0.5rem;
   row-gap: 0.3rem;
 }
-.qname-badge.link { cursor: pointer; color: var(--accent); border: 1px solid var(--accent); padding: 0.14rem 0.44rem; }
+/* stretch each [DOMAIN]/[RANGE] label to the height of its value badge on the
+   same row; the badge centres its own text within that height. */
+.detail-header-side > .type-badge,
+.detail-header-side > .qname-badge { display: inline-flex; align-items: center; }
+.detail-header-side > .type-badge { padding-top: 0; padding-bottom: 0; }
+/* value / curie boxes: an accent border, matching the other clickable boxes
+   (see .chip.link); the background tints on hover. */
+.qname-badge.link { cursor: pointer; color: var(--accent); border: 1px solid var(--accent); }
 .qname-badge.link:hover { background: var(--accent-bg); }
 .detail-pair-row { display: flex; align-items: flex-start; flex-wrap: wrap; row-gap: 0.4rem; margin-top: 0; }
 .detail-pair-col { flex: 0 1 auto; min-width: 0; }
 .detail-pair-col + .detail-pair-col { margin-left: 1.1rem; }
+/* SYNONYMS identity block: stays on the same line as the other identity blocks
+   (Pinyin / Chinese / Abbreviation), to their right, and grows to take the
+   rest of that line - flex-basis 0 so its (wide) pill content never bumps it
+   onto a line of its own. Label stays on top; the pills sit below in one
+   wrapping .chip-row, so when they overrun that width the overflow wraps to
+   the next line left-aligned under the first pill (the label never moves). */
+.detail-pair-col.idc-synonyms { flex: 1 1 0; min-width: 0; }
 /* Class header with the first identity line (Pinyin / Chinese Label, Synonyms,
    Exact Synonym) clustered to the right of the main label rather than as a
    full-width row below it. The [CLASS][curie] badge row keeps its own
@@ -287,7 +318,8 @@ li.hidden-by-filter { display: none; }
   text-align: center;
   white-space: nowrap;
   padding: 0.2rem 0.55rem;
-  border-radius: 999px;
+  /* a rounded rectangle, not a full pill - same border/background as before */
+  border-radius: 4px;
   background: var(--chip-bg);
   border: 1px solid var(--border);
   font-size: 0.82rem;
@@ -467,8 +499,9 @@ li.hidden-by-filter { display: none; }
   padding-top: 0.5rem;
 }
 /* one member = 2-line label + its own pill cluster; the cluster wraps
-   internally so wrapped pills stay left-aligned under the first pill */
-.narr-inline-item { display: flex; align-items: flex-start; gap: 0.45rem; min-width: 0; flex: 0 1 auto; }
+   internally so wrapped pills stay left-aligned under the first pill. The
+   label is vertically centred against its value pills. */
+.narr-inline-item { display: flex; align-items: center; gap: 0.45rem; min-width: 0; flex: 0 1 auto; }
 .narr-inline-label {
   flex: 0 0 auto;
   white-space: pre-line;
