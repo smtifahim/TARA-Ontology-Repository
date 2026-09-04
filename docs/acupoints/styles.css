@@ -178,6 +178,21 @@ li.hidden-by-filter { display: none; }
   padding: 0.1rem 0.4rem;
   color: var(--text-muted);
 }
+.copy-iri {
+  font-family: inherit;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.copy-iri:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+.copy-iri.done { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
 .field-label { font-size: 0.75rem; letter-spacing: 0.04em; color: var(--text-muted); margin: 1.1rem 0 0.3rem; }
 .field-label:first-of-type { margin-top: 1.4rem; }
 .detail-pair-row .field-label:first-of-type { margin-top: 0.7rem; }
@@ -229,6 +244,25 @@ li.hidden-by-filter { display: none; }
 .detail-pair-row { display: flex; align-items: flex-start; flex-wrap: wrap; row-gap: 0.4rem; margin-top: 0; }
 .detail-pair-col { flex: 0 1 auto; min-width: 0; }
 .detail-pair-col + .detail-pair-col { margin-left: 1.1rem; }
+/* Class header with the first identity line (Pinyin / Chinese Label, Synonyms,
+   Exact Synonym) clustered to the right of the main label rather than as a
+   full-width row below it. The [CLASS][curie] badge row keeps its own
+   full-width line at the top; on the line below, the main label is vertically
+   centered against the (taller) identity cluster. */
+.detail-header--id { flex-wrap: wrap; align-items: center; gap: 0.35rem 1.1rem; }
+.detail-header--id > .dc-row { flex: 1 1 100%; margin-bottom: 0.25rem; }
+.detail-header--id .detail-header-identity { flex: 1 1 auto; min-width: 0; }
+.detail-header--id .detail-header-identity .detail-pair-row { margin-top: 0; }
+.detail-header--id .detail-header-identity .field-label:first-of-type { margin-top: 0; }
+/* .is-aligned (specific acupoints whose label fits on one line in the column -
+   see renderDetailHeader's measure): box the label to the ~7rem value column
+   so the cluster's left edge lines up with the narrative blocks and every
+   predicate row below it (7rem + the 0.75rem gap). Every other class - and any
+   acupoint with a longer label - keeps the label at its natural single-line
+   width, so it never breaks onto multiple lines. */
+.detail-header--id.is-aligned { column-gap: 0.75rem; }
+.detail-header--id.is-aligned .detail-header-main { flex: 0 0 7rem; width: 7rem; min-width: 0; }
+.detail-header--id.is-aligned .detail-header-main h2 { overflow-wrap: break-word; }
 .dtexpr {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.85rem;
@@ -323,6 +357,10 @@ li.hidden-by-filter { display: none; }
   color: var(--text-muted);
 }
 .anat-acu-row .aa-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+/* narrative row paired ahead of its pills row - hug the pills, no divider */
+.anat-acu-row.aa-desc-row { border-bottom: 0; padding: 0.55rem 0 0.1rem; }
+.anat-acu-row.aa-desc-row + .anat-acu-row { padding-top: 0.1rem; }
+.anat-acu-row .aa-desc-text { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; white-space: pre-wrap; }
 @media (max-width: 620px) {
   .anat-acu-row { grid-template-columns: 1fr; gap: 0.3rem; }
 }
@@ -379,15 +417,85 @@ li.hidden-by-filter { display: none; }
   .json-block .jn { color: #e0a479; }
   .json-block .jb { color: #d2a8ff; }
 }
-.ann-table { padding-top: 0.6rem; }
-.ann-row { display: flex; gap: 0.9rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; align-items: flex-start; }
+.ann-table { padding-top: 0.4rem; }
+.ann-row { display: flex; gap: 0.75rem; padding: 0.28rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; align-items: flex-start; }
+/* per-row borders only divide rows *within* one table; the last row's is
+   dropped because the gap to the next top-level group is drawn by that group's
+   border-top instead (see the sibling rules below) - a narrative block splits
+   the panel into several sibling .ann-table / .ann-narrative groups, so a
+   naive :last-child rule would leave un-separated seams between them. */
 .ann-row:last-child { border-bottom: none; }
-.ann-pred { flex: 0 0 auto; min-width: 11rem; max-width: 11rem; color: var(--text-muted); }
-/* compact_tight_pred fields: don't reserve the table's full fixed
-   label-column width - shrink to fit the label text so the value pill(s)
-   sit right after it, for a short label that would otherwise leave a lot of
-   dead space (e.g. "Related Artery"). */
-.ann-pred.tight { min-width: 0; max-width: none; width: auto; flex: 0 0 auto; }
+/* narrativeGroup block: the prose field as a normal label/value row, then one
+   sub-row indented to the value column - a faint rule on top, then the member
+   fields inline as "Label pill pill | Label pill pill" - so they read as part
+   of the prose value. */
+.ann-narrative .ann-table { padding-top: 0.4rem; }
+.ann-narrative .ann-row { border-bottom: none; }
+/* one faint rule between every pair of consecutive top-level entry groups in
+   the compact panel - plain row-tables and narrative blocks alike - and none
+   before the first or after the last. */
+.ann-table + .ann-table,
+.ann-table + .ann-narrative,
+.ann-narrative + .ann-table,
+.ann-narrative + .ann-narrative { border-top: 1px solid var(--border); }
+/* the rule dividing the header (main label + identity blocks) from the content
+   groups below it - same weight as the inter-group lines, but set off with a
+   clear gap above so the header reads as its own region. */
+.detail-header + .ann-table,
+.detail-header + .ann-narrative,
+.detail-pair-row + .ann-table,
+.detail-pair-row + .ann-narrative { border-top: 1px solid var(--border); margin-top: 0.9rem; }
+/* trim the stray margin a plain-text list leaves at the top/bottom of a value
+   cell, so it doesn't stack with the row padding before the separator. */
+.ann-vals .rt-list:first-child, .ann-val-entry .rt-list:first-child { margin-top: 0; }
+.ann-vals .rt-list:last-child, .ann-val-entry .rt-list:last-child { margin-bottom: 0; }
+.ann-narrative .ann-row.narr-lead { padding-bottom: 0.4rem; }
+.ann-narrative .ann-row.narr-member { padding: 0 0 0.55rem; }
+/* narrative block: same fixed label column width as every other row's
+   .ann-pred, so the lead label, the indented member sub-row, and the
+   surrounding normal rows all line up on one column. */
+.ann-narrative .narr-lead .ann-pred,
+.ann-narrative .narr-spacer { flex: 0 0 auto; width: 7rem; min-width: 7rem; max-width: 7rem; }
+.ann-narrative .narr-inline {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 0.5rem 1.75rem;
+  border-top: 1px solid var(--divider);
+  padding-top: 0.5rem;
+}
+/* one member = 2-line label + its own pill cluster; the cluster wraps
+   internally so wrapped pills stay left-aligned under the first pill */
+.narr-inline-item { display: flex; align-items: flex-start; gap: 0.45rem; min-width: 0; flex: 0 1 auto; }
+.narr-inline-label {
+  flex: 0 0 auto;
+  white-space: pre-line;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+}
+.narr-inline-item .ann-vals { padding-top: 0; }
+.narr-inline-label:hover .pred-hint { opacity: 1; }
+@media (max-width: 620px) {
+  .ann-narrative .narr-spacer { display: none; }
+  .ann-narrative .narr-inline { flex-wrap: wrap; gap: 0.4rem 0.9rem; }
+  .narr-inline-item { flex: 1 1 100%; }
+}
+/* One narrow, fixed label column so every row - and the narrative blocks -
+   line up. It's much tighter than before (dead space after short labels is
+   just the .ann-row gap plus the slack in this column); a label longer than
+   the column wraps within it at word boundaries (white-space: pre-line on
+   .fl-main handles both an embedded "
+" and soft wrapping - words are never
+   split mid-word). Kept in sync with .narr-lead .ann-pred / .narr-spacer. */
+.ann-pred { flex: 0 0 auto; width: 7rem; min-width: 7rem; max-width: 7rem; color: var(--text-muted); }
+/* compact_tight_pred fields opt out of the fixed column entirely - the label
+   shrinks to its text so the value sits immediately after it. */
+.ann-pred.tight { min-width: 0; max-width: none; width: auto; }
 .ann-pred .field-label { margin: 0; }
 /* a "
 " embedded in a field's label text (e.g. "General
@@ -434,14 +542,15 @@ Surface Location")
 .ann-val-entry { display: block; overflow-wrap: break-word; }
 .ann-val-entry + .ann-val-entry { margin-top: 0.35rem; padding-top: 0.35rem; border-top: 1px solid var(--divider); }
 .ann-row-paired { align-items: flex-start; }
-/* first pair item keeps the exact same label width as every other (unpaired)
-   row's .ann-pred, so its value pills line up in the same column as the rest
-   of the table; it doesn't stretch, so the second item sits immediately to
-   its right rather than being pushed to the far edge of the row. */
-.ann-pair-item { display: flex; align-items: flex-start; gap: 0.9rem; }
+/* each pair item is [dynamic label][value], sized to content so the two
+   items sit next to each other rather than being spread to the row edges. */
+.ann-pair-item { display: flex; align-items: flex-start; gap: 0.75rem; }
 .ann-pair-item .ann-vals { flex: 0 1 auto; }
 .ann-pair-item:not(:first-child) { margin-left: 1.5rem; }
-.ann-pair-item:not(:first-child) .ann-pred { min-width: 0; max-width: none; width: auto; flex: 0 0 auto; }
+/* only the first pair item anchors the shared label column; a later item sits
+   mid-row, so let its label shrink to its own text instead of reserving the
+   full fixed column and opening a gap before the value. */
+.ann-pair-item:not(:first-child) .ann-pred { width: auto; min-width: 0; max-width: none; }
 .summary-row { margin-bottom: 1.1rem; }
 .flash { animation: flash-anim 1.4s ease; }
 @keyframes flash-anim { 0%, 40% { background: var(--highlight-bg); } 100% { background: transparent; } }
@@ -600,20 +709,6 @@ footer a { color: inherit; }
 }
 .settings-reset:hover { background: var(--accent-bg); color: var(--accent); }
 .settings-panel-footer { display: flex; flex-direction: column; gap: 0.5rem; }
-.settings-lock, .settings-unlock {
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--panel-bg);
-  color: var(--text);
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-.settings-lock { border-color: var(--accent); color: var(--accent); }
-.settings-lock:hover { background: var(--accent-bg); }
-.settings-unlock:hover { background: var(--highlight-bg); }
-.settings-lock-status { padding: 0 1.25rem 0.6rem; font-size: 0.78rem; color: var(--accent); }
 .settings-export {
   width: 100%;
   padding: 0.5rem;
