@@ -264,7 +264,7 @@ tara-kb:hasAcupunctureCointerventionsScore rdf:type owl:AnnotationProperty ;
 - N/A if no adjunctive treatment was provided to the acupuncture group."""@en ;
                                            tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                            rdfs:label "(7) Acupuncture Group Cointervention(s)" ;
-                                           skos:altLabel "7_Acupuncture_Group_Cointerventions" ;
+                                           skos:altLabel "7_Group_Cointerventions" ;
                                            rdfs:subPropertyOf tara-kb:hasAcupunctureInterventionMetrics ;
                                            rdfs:range tara-kb:ocsiItemScore ;
                                            rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -286,8 +286,9 @@ Note: The article is concurrently published in Acupuncture in Medicine 2010;28(2
                                           dcterms:type tara-kb:grouping ;
                                           tara-ap:hasCompactURI "tara-kb:hasAcupunctureInterventionMetrics" ;
                                           rdfs:label "Category B: Acupuncture Intervention Metrics" ;
-                                          skos:altLabel "Category_B_Acupuncture_Intervention_Metrics" ;
+                                          skos:altLabel "Category_B_Acupuncture_Intervention" ;
                                           rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                          rdfs:range xsd:nonNegativeInteger ;
                                           rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -371,7 +372,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                               tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                               rdfs:label "(5) Acupuncture Needling Parameters" ;
-                                              skos:altLabel "5_Acupuncture_Needling_Parameters" ;
+                                              skos:altLabel "5_Needling_Parameters" ;
                                               rdfs:subPropertyOf tara-kb:hasAcupunctureInterventionMetrics ;
                                               rdfs:range tara-kb:ocsiItemScore ;
                                               rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -492,7 +493,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                              tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                              rdfs:label "(4) Acupuncture Style & Acupoints Selection" ;
-                                             skos:altLabel "4_Acupuncture_Style_Acupoints_Selection" ;
+                                             skos:altLabel "4_Acupuncture_Style_Point_Selection" ;
                                              rdfs:subPropertyOf tara-kb:hasAcupunctureInterventionMetrics ;
                                              rdfs:range tara-kb:ocsiItemScore ;
                                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -695,7 +696,7 @@ Sub-part N/A conditions:
 (d) is N/A under the same active-treatment-comparison condition as (a)."""@en ;
                                           tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                           rdfs:label "(16) Blinding Statements Quality" ;
-                                          skos:altLabel "16_Blinding_Statements_Quality" ;
+                                          skos:altLabel "16_Blinding_Statements" ;
                                           rdfs:subPropertyOf tara-kb:hasStudyDesignAndAnalysisMetrics ;
                                           rdfs:range tara-kb:ocsiItemScore ;
                                           rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1108,7 +1109,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                                  tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                                  rdfs:label "(20) Group Demographics & Characteristics" ;
-                                                 skos:altLabel "20_Group_Demographics_Characteristics" ;
+                                                 skos:altLabel "20_Demographics_Characteristics" ;
                                                  rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                                  rdfs:range tara-kb:ocsiItemScore ;
                                                  rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1780,7 +1781,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                                         tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                                         rdfs:label "(3) Participants Eligibility & Study Settings" ;
-                                                        skos:altLabel "3_Participants_Eligibility_Study_Settings" ;
+                                                        skos:altLabel "3_Eligibility_Study_Settings" ;
                                                         rdfs:subPropertyOf tara-kb:hasStudyRationaleAndScopeMetrics ;
                                                         rdfs:range tara-kb:ocsiItemScore ;
                                                         rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1833,7 +1834,7 @@ Sub-part N/A conditions:
 (b) is N/A if no protocol deviations occurred after randomization (interpretive extension; the source states this sub-part applies 'if protocol deviations are reported')."""@en ;
                                              tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                              rdfs:label "(18) Participants Flow & Deviation" ;
-                                             skos:altLabel "18_Participants_Flow_Deviation" ;
+                                             skos:altLabel "18_Participants_Flow" ;
                                              rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                              rdfs:range tara-kb:ocsiItemScore ;
                                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1893,7 +1894,7 @@ Sub-part N/A conditions:
 (c) is plausibly N/A when absolute numbers cannot feasibly be reported for the outcome measure used (interpretive extension based on the 'when feasible' phrasing; the source does not use the literal term N/A here)."""@en ;
                                              tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                              rdfs:label "(21) Participants & Intention to Treat Analysis" ;
-                                             skos:altLabel "21_Participants_Intention_to_Treat_Analysis" ;
+                                             skos:altLabel "21_Intention_to_Treat" ;
                                              rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                              rdfs:range tara-kb:ocsiItemScore ;
                                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1928,7 +1929,7 @@ Per OCSI General Instruction A.1.3, item 1 is the sole exception to the 'anywher
                                                    tara-kb:hasTypicalArticleSection "Abstract"^^tara-kb:articleSectionType ,
                                                                                     "Title" ;
                                                    rdfs:label "(1) Participants Randomization Statement" ;
-                                                   skos:altLabel "1_Participants_Randomization_Statement" ;
+                                                   skos:altLabel "1_Randomization_Statement" ;
                                                    rdfs:subPropertyOf tara-kb:hasStudyRationaleAndScopeMetrics ;
                                                    rdfs:range tara-kb:ocsiItemScore ;
                                                    rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1977,7 +1978,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                                 tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                                 rdfs:label "(19) Participants Recruitment & Followup" ;
-                                                skos:altLabel "19_Participants_Recruitment_Followup" ;
+                                                skos:altLabel "19_Recruitment_Followup" ;
                                                 rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                                 rdfs:range tara-kb:ocsiItemScore ;
                                                 rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -2370,8 +2371,9 @@ tara-kb:hasResultsAndOutcomesMetrics rdf:type owl:AnnotationProperty ;
                                      tara-ap:hasCompactURI "tara-kb:hasResultsAndOutcomesMetrics" ;
                                      rdfs:comment "This category is a TARA-KB organizational convention, not sourced from Hammerschlag et al. 2011 (the OCSI paper) or the CONSORT 2010 checklist. This category's members do, however, correspond closely to CONSORT's own Results and Discussion sections, distinguishing reported/executed trial content from the planned trial design and analysis content grouped under Category C."@en ;
                                      rdfs:label "Category D: Results & Outcomes Metrics" ;
-                                     skos:altLabel "Category_D_Results_Outcomes_Metrics" ;
+                                     skos:altLabel "Category_D_Results_Outcomes" ;
                                      rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                     rdfs:range xsd:nonNegativeInteger ;
                                      rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -2384,8 +2386,9 @@ tara-kb:hasResultsDiscussionMetrics rdf:type owl:AnnotationProperty ;
                                     dcterms:type tara-kb:grouping ;
                                     tara-ap:hasCompactURI "tara-kb:hasResultsDiscussionMetrics" ;
                                     rdfs:label "Category E: Results Discussion Metrics" ;
-                                    skos:altLabel "Category_E_Results_Discussion_Metrics" ;
+                                    skos:altLabel "Category_E_Results_Discussion" ;
                                     rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                    rdfs:range xsd:nonNegativeInteger ;
                                     rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -2504,7 +2507,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                               tara-kb:hasTypicalArticleSection "Introduction"^^tara-kb:articleSectionType ;
                                               rdfs:label "(2) Scientific Background & Rationale" ;
-                                              skos:altLabel "2_Scientific_Background_Rationale" ;
+                                              skos:altLabel "2_Background_Rationale" ;
                                               rdfs:subPropertyOf tara-kb:hasStudyRationaleAndScopeMetrics ;
                                               rdfs:range tara-kb:ocsiItemScore ;
                                               rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -2603,7 +2606,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                              tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                              rdfs:label "(10) Specific Objectives & Hypotheses" ;
-                                             skos:altLabel "10_Specific_Objectives_Hypotheses" ;
+                                             skos:altLabel "10_Objectives_Hypotheses" ;
                                              rdfs:subPropertyOf tara-kb:hasStudyRationaleAndScopeMetrics ;
                                              rdfs:range tara-kb:ocsiItemScore ;
                                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -2764,8 +2767,9 @@ tara-kb:hasStudyDesignAndAnalysisMetrics rdf:type owl:AnnotationProperty ;
                                          tara-ap:hasSynonym "Trial Methodology and Analysis Planning Metrics" ;
                                          rdfs:comment "This category's members correspond closely to CONSORT's own Methods section (Outcomes, Sample size, Randomisation, Blinding, Statistical methods), distinguishing planned trial design and analysis content from the reported/executed content grouped under Category D."@en ;
                                          rdfs:label "Category C: Study Design & Analysis Metrics" ;
-                                         skos:altLabel "Category_C_Study_Design_And_Analysis_Metrics" ;
+                                         skos:altLabel "Category_C_Study_Design_And_Analysis" ;
                                          rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                         rdfs:range xsd:nonNegativeInteger ;
                                          rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -2924,7 +2928,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                            tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                            rdfs:label "(22) Study Outcomes & Effect Size" ;
-                                           skos:altLabel "22_Study_Outcomes_Effect_Size" ;
+                                           skos:altLabel "22_Outcomes_Effect_Size" ;
                                            rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                            rdfs:range tara-kb:ocsiItemScore ;
                                            rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -2956,10 +2960,10 @@ This property can also be used to capture the general outcome measure for the st
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyQualityAssessmentMetadata
 tara-kb:hasStudyQualityAssessmentMetadata rdf:type owl:AnnotationProperty ;
                                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
-                                          dcterms:description "An annotation property that serves as a high-level grouping property under which specific quality assessment properties are defined to record evaluative quality data, risk-of-bias scores, and methodological rigor metrics calculated for a clinical trial study."@en ;
+                                          dcterms:description "An annotation property that serves as a high-level grouping property under which specific reporting quality assessment properties are defined to record evaluative quality data, risk-of-bias scores, and methodological rigor metrics calculated for a clinical trial study."@en ;
                                           dcterms:type tara-kb:grouping ;
                                           tara-ap:hasCompactURI "tara-kb:hasStudyQualityAssessmentMetadata" ;
-                                          rdfs:comment "Crucially, the values asserted by the sub-properties under this property are not raw data elements directly extracted or verbatim copied from the published journal article. Instead, they represent secondary, derived assessment scores generated, either algorithmically by automated computational models or manually by human domain experts, by evaluating an extracted set of primary metadata from the study report against standardized scoring frameworks and quality assessment criteria (such as OCSI)."@en ;
+                                          rdfs:comment "Crucially, the values asserted by the sub-properties under this property are not raw data elements directly extracted or verbatim copied from the published journal article. Instead, they represent secondary, derived reporting quality scores generated, either algorithmically by automated computational models or manually by human domain experts, by evaluating an extracted set of primary metadata from the study report against standardized scoring frameworks and quality assessment criteria (such as OCSI)."@en ;
                                           rdfs:label "Study Assessment Metadata"@en ;
                                           skos:altLabel "Study_Assessment_Metadata"@en ;
                                           rdfs:subPropertyOf tara-kb:hasTARAArticlesMetadata ;
@@ -2979,8 +2983,9 @@ tara-kb:hasStudyRationaleAndScopeMetrics rdf:type owl:AnnotationProperty ;
                                          tara-ap:hasSynonym "Study Foundation and Background Metrics" ,
                                                             "Trial Framing and Background Metrics" ;
                                          rdfs:label "Category A: Study Rationale & Scope Metrics" ;
-                                         skos:altLabel "Category_A_Study_Rationale_And_Scope_Metrics" ;
+                                         skos:altLabel "Category_A_Study_Rationale_And_Scope" ;
                                          rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                         rdfs:range xsd:nonNegativeInteger ;
                                          rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -3200,7 +3205,7 @@ tara-kb:hasTrialGeneralizabilityScore rdf:type owl:AnnotationProperty ;
 - Score 0 (No): generalizability of the findings is not discussed."""@en ;
                                       tara-kb:hasTypicalArticleSection "Discussion"^^tara-kb:articleSectionType ;
                                       rdfs:label "(26) Trial Findings Generalizability" ;
-                                      skos:altLabel "26_Trial_Findings_Generalizability" ;
+                                      skos:altLabel "26_Trial_Generalizability" ;
                                       rdfs:subPropertyOf tara-kb:hasResultsDiscussionMetrics ;
                                       rdfs:range tara-kb:ocsiItemScore ;
                                       rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .

@@ -268,13 +268,17 @@ li.hidden-by-filter { display: none; }
 .detail-pair-row { display: flex; align-items: flex-start; flex-wrap: wrap; row-gap: 0.4rem; margin-top: 0; }
 .detail-pair-col { flex: 0 1 auto; min-width: 0; }
 .detail-pair-col + .detail-pair-col { margin-left: 1.1rem; }
-/* SYNONYMS identity block: stays on the same line as the other identity blocks
-   (Pinyin / Chinese / Abbreviation), to their right, and grows to take the
-   rest of that line - flex-basis 0 so its (wide) pill content never bumps it
-   onto a line of its own. Label stays on top; the pills sit below in one
-   wrapping .chip-row, so when they overrun that width the overflow wraps to
-   the next line left-aligned under the first pill (the label never moves). */
-.detail-pair-col.idc-synonyms { flex: 1 1 0; min-width: 0; }
+/* SYNONYMS identity block: stays on the same line as the other identity blocks,
+   its label on top and its pills below in one wrapping .chip-row, so when the
+   pills overrun the width the overflow wraps left-aligned under the first pill
+   (the label never moves). When it's the LAST identity block on the line
+   (e.g. acupoints: Pinyin / Chinese / Abbreviation / Synonyms) it also grows
+   to fill the rest of that line - flex-basis 0 so its wide pill content never
+   bumps it onto a line of its own. When another block follows it (e.g.
+   articles-kb-core: Synonyms / Alt Label) it does NOT grow, so that next
+   block stays snug against it instead of being shoved to the far edge. */
+.detail-pair-col.idc-synonyms { min-width: 0; }
+.detail-pair-col.idc-synonyms:last-child { flex: 1 1 0; }
 /* Class header with the first identity line (Pinyin / Chinese Label, Synonyms,
    Exact Synonym) clustered to the right of the main label rather than as a
    full-width row below it. The [CLASS][curie] badge row keeps its own
