@@ -14,7 +14,7 @@
 @base <http://www.acupunctureresearch.org/tara/ontology/tara-metadata-properties.ttl> .
 
 <http://www.acupunctureresearch.org/tara/ontology/tara-metadata-properties.ttl> rdf:type owl:Ontology ;
-                                                                                 rdfs:comment """This file includes a subset of metadata terms from Dublin Core (DC Terms), SKOS documentation properties, and annotation properties from Information Artifact Ontology (IAO). It only includes owl annotation properties specific to TARA Acupoints Ontology.
+                                                                                 rdfs:comment """This ontology includes a subset of metadata terms from Dublin Core (DC Terms), SKOS documentation properties, and annotation properties from Information Artifact Ontology (IAO). It only includes owl annotation properties specific to TARA Acupoints Ontology.
 - About DC Terms: http://purl.org/dc/terms
 - About SKOS: http://www.w3.org/2004/02/skos/core
 - About IAO: https://github.com/information-artifact-ontology/IAO"""@en .
@@ -137,21 +137,25 @@ bfo:RO_0002475 rdf:type owl:AnnotationProperty ;
 
 ###  http://purl.obolibrary.org/obo/mondo#curated_content_resource
 <http://purl.obolibrary.org/obo/mondo#curated_content_resource> rdf:type owl:AnnotationProperty ;
+                                                                rdfs:label "Curated Content Resource" ;
                                                                 rdfs:subPropertyOf tara-ap:mondoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/mondo#excluded_from_qc_check
 <http://purl.obolibrary.org/obo/mondo#excluded_from_qc_check> rdf:type owl:AnnotationProperty ;
+                                                              rdfs:label "Excluded From QC Check" ;
                                                               rdfs:subPropertyOf tara-ap:mondoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/mondo#excluded_subClassOf
 <http://purl.obolibrary.org/obo/mondo#excluded_subClassOf> rdf:type owl:AnnotationProperty ;
+                                                           rdfs:label "Excluded Subclass Of" ;
                                                            rdfs:subPropertyOf tara-ap:mondoAnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/mondo#should_conform_to
 <http://purl.obolibrary.org/obo/mondo#should_conform_to> rdf:type owl:AnnotationProperty ;
+                                                         rdfs:label "Should Conform To" ;
                                                          rdfs:subPropertyOf tara-ap:mondoAnnotationProperty .
 
 
@@ -637,52 +641,54 @@ dcterms:valid rdf:type owl:AnnotationProperty ;
 
 ###  http://uri.interlex.org/base/ilx_0112785
 <http://uri.interlex.org/base/ilx_0112785> rdf:type owl:AnnotationProperty ;
-                                           rdfs:label "isPartOf" ;
+                                           rdfs:label "Is Part Of" ;
                                            rdfs:subPropertyOf tara-ap:ilxAnnotationProperty .
 
 
 ###  http://uri.interlex.org/base/ilx_0381387
 <http://uri.interlex.org/base/ilx_0381387> rdf:type owl:AnnotationProperty ;
-                                           rdfs:label "hasLaterality" ;
+                                           rdfs:label "Laterality" ;
                                            rdfs:subPropertyOf tara-ap:ilxAnnotationProperty .
 
 
 ###  http://uri.interlex.org/base/ilx_0383241
 <http://uri.interlex.org/base/ilx_0383241> rdf:type owl:AnnotationProperty ;
-                                           rdfs:label "isDeprecated" ;
+                                           rdfs:label "Is Deprecated" ;
                                            rdfs:subPropertyOf tara-ap:ilxAnnotationProperty .
 
 
 ###  http://uri.interlex.org/base/ilx_0777130
 <http://uri.interlex.org/base/ilx_0777130> rdf:type owl:AnnotationProperty ;
-                                           rdfs:label "hasDefinitionSource" ;
+                                           rdfs:label "Definition Source" ;
                                            rdfs:subPropertyOf tara-ap:ilxAnnotationProperty .
 
 
 ###  http://uri.interlex.org/base/ilx_0778161
 <http://uri.interlex.org/base/ilx_0778161> rdf:type owl:AnnotationProperty ;
-                                           rdfs:label "subClassOf" ;
+                                           rdfs:label "Is Subclass Of" ,
+                                                      "subClassOf" ;
                                            rdfs:subPropertyOf tara-ap:ilxAnnotationProperty .
 
 
 ###  http://uri.interlex.org/tgbugs/uris/readable/hasExistingId
 <http://uri.interlex.org/tgbugs/uris/readable/hasExistingId> rdf:type owl:AnnotationProperty ;
+                                                             rdfs:label "Existing ID" ;
                                                              rdfs:subPropertyOf tara-ap:ilxAnnotationProperty .
 
 
-###  http://www.acupunctureresearch.org/tara/ontology/dctermsMetadata
+###  http://www.acupunctureresearch.org/tara/ontology/annotation-property/dctermsMetadata
 tara-ap:dctermsMetadata rdf:type owl:AnnotationProperty ;
                         dcterms:description "An annotation property to group all dcterms metadata properties specific to TARA Acupoints Ontology."@en ;
                         rdfs:label "dcterms:topMetadataProperty" .
 
 
-###  http://www.acupunctureresearch.org/tara/ontology/foafAnnotationProperty
+###  http://www.acupunctureresearch.org/tara/ontology/annotation-property/foafAnnotationProperty
 tara-ap:foafAnnotationProperty rdf:type owl:AnnotationProperty ;
                                dcterms:description "An annotation property to group all foaf: annotation properties specific to TARA Acupoints Ontology." ;
                                rdfs:label "foaf:topAnnotationProperty" .
 
 
-###  http://www.acupunctureresearch.org/tara/ontology/hasCompactURI
+###  http://www.acupunctureresearch.org/tara/ontology/annotation-property/hasCompactURI
 tara-ap:hasCompactURI rdf:type owl:AnnotationProperty ;
                       bfo:IAO_0000118 "CURIE" ;
                       dcterms:description "A CURIE (Compact URI) for an ontology IRI is a shortened, human-readable abbreviation consisting of a prefix and a local identifier separated by a colon. For example, the full IRI http://purl.obolibrary.org/obo/UBERON_0000948 condenses into the CURIE UBERON:0000948."@en ;
@@ -690,38 +696,38 @@ tara-ap:hasCompactURI rdf:type owl:AnnotationProperty ;
                       rdfs:subPropertyOf dcterms:identifier .
 
 
-###  http://www.acupunctureresearch.org/tara/ontology/hasSourceSheetColumnLabel
+###  http://www.acupunctureresearch.org/tara/ontology/annotation-property/hasSourceSheetColumnLabel
 tara-ap:hasSourceSheetColumnLabel rdf:type owl:AnnotationProperty ;
                                   dcterms:description "An annotation property used to link a formal concept, property, or class within an ontology to its exact literal string representation used as a column header in a data extraction spreadsheet or CSV file. As a subproperty of skos:hiddenLabel, it preserves the raw, unformatted, and informal terminology of the source data layer for ingestion and mapping purposes, without polluting the clean, formal vocabulary defined by skos:prefLabel."@en ;
                                   rdfs:label "Source Sheet Column Label"@en ;
                                   rdfs:subPropertyOf skos:hiddenLabel .
 
 
-###  http://www.acupunctureresearch.org/tara/ontology/iaoAnnotationProperty
+###  http://www.acupunctureresearch.org/tara/ontology/annotation-property/iaoAnnotationProperty
 tara-ap:iaoAnnotationProperty rdf:type owl:AnnotationProperty ;
                               dcterms:description "An annotation property to group all IAO annotation properties specific to TARA Acupoints Ontology." ;
                               rdfs:label "iao:topAnnotationProperty" .
 
 
-###  http://www.acupunctureresearch.org/tara/ontology/ilxAnnotationProperty
+###  http://www.acupunctureresearch.org/tara/ontology/annotation-property/ilxAnnotationProperty
 tara-ap:ilxAnnotationProperty rdf:type owl:AnnotationProperty ;
                               dcterms:description "An annotation property to group all ILX annotation properties specific to TARA Acupoints Ontology." ;
                               rdfs:label "ilx:topAnnotationProperty" .
 
 
-###  http://www.acupunctureresearch.org/tara/ontology/mondoAnnotationProperty
+###  http://www.acupunctureresearch.org/tara/ontology/annotation-property/mondoAnnotationProperty
 tara-ap:mondoAnnotationProperty rdf:type owl:AnnotationProperty ;
                                 dcterms:description "An annotation property to group all MONDO annotation properties specific to TARA Acupoints Ontology." ;
                                 rdfs:label "mondo:topAnnotationProperty" .
 
 
-###  http://www.acupunctureresearch.org/tara/ontology/oboInOwlAnnotationProperty
+###  http://www.acupunctureresearch.org/tara/ontology/annotation-property/oboInOwlAnnotationProperty
 tara-ap:oboInOwlAnnotationProperty rdf:type owl:AnnotationProperty ;
                                    dcterms:description "An annotation property to group all oboInOwl annotation properties specific to TARA Acupoints Ontology." ;
                                    rdfs:label "oboInOwl:topAnnotationProperty" .
 
 
-###  http://www.acupunctureresearch.org/tara/ontology/skosAnntotationProperty
+###  http://www.acupunctureresearch.org/tara/ontology/annotation-property/skosAnntotationProperty
 tara-ap:skosAnntotationProperty rdf:type owl:AnnotationProperty ;
                                 dcterms:description "An annotation property to group all skos annotation properties specific to TARA Acupoints Ontology." ;
                                 rdfs:label "skos:topAnnotationProperty" .
@@ -729,11 +735,13 @@ tara-ap:skosAnntotationProperty rdf:type owl:AnnotationProperty ;
 
 ###  http://www.geneontology.org/formats/oboInOwl#abbrev
 oboInOwl:abbrev rdf:type owl:AnnotationProperty ;
+                rdfs:label "abbrev" ;
                 rdfs:subPropertyOf tara-ap:oboInOwlAnnotationProperty .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#consider
 oboInOwl:consider rdf:type owl:AnnotationProperty ;
+                  rdfs:label "consider" ;
                   rdfs:subPropertyOf tara-ap:oboInOwlAnnotationProperty .
 
 
@@ -751,6 +759,7 @@ oboInOwl:creation_date rdf:type owl:AnnotationProperty ;
 
 ###  http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
 oboInOwl:hasAlternativeId rdf:type owl:AnnotationProperty ;
+                          rdfs:label "has alternative ID" ;
                           rdfs:subPropertyOf tara-ap:oboInOwlAnnotationProperty .
 
 
@@ -764,6 +773,7 @@ oboInOwl:hasBroadSynonym rdf:type owl:AnnotationProperty ;
 
 ###  http://www.geneontology.org/formats/oboInOwl#hasDbXref
 oboInOwl:hasDbXref rdf:type owl:AnnotationProperty ;
+                   rdfs:label "database cross reference" ;
                    rdfs:subPropertyOf tara-ap:oboInOwlAnnotationProperty .
 
 
@@ -793,16 +803,19 @@ oboInOwl:hasRelatedSynonym rdf:type owl:AnnotationProperty ;
 
 ###  http://www.geneontology.org/formats/oboInOwl#is_class_level
 oboInOwl:is_class_level rdf:type owl:AnnotationProperty ;
+                        rdfs:label "is class level" ;
                         rdfs:subPropertyOf tara-ap:oboInOwlAnnotationProperty .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#is_metadata_tag
 oboInOwl:is_metadata_tag rdf:type owl:AnnotationProperty ;
+                         rdfs:label "is metadata tag" ;
                          rdfs:subPropertyOf tara-ap:oboInOwlAnnotationProperty .
 
 
 ###  http://www.geneontology.org/formats/oboInOwl#shorthand
 oboInOwl:shorthand rdf:type owl:AnnotationProperty ;
+                   rdfs:label "shortened" ;
                    rdfs:subPropertyOf tara-ap:oboInOwlAnnotationProperty .
 
 
@@ -811,7 +824,8 @@ rdfs:comment rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
-rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
+rdfs:isDefinedBy rdf:type owl:AnnotationProperty ;
+                 rdfs:label "Is Defined By" .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#label
@@ -819,7 +833,8 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#seeAlso
-rdfs:seeAlso rdf:type owl:AnnotationProperty .
+rdfs:seeAlso rdf:type owl:AnnotationProperty ;
+             rdfs:label "See Also" .
 
 
 ###  http://www.w3.org/2004/02/skos/core#altLabel
