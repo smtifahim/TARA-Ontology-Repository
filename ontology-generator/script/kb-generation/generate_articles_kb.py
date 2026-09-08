@@ -21,24 +21,34 @@ import os
 import subprocess
 import sys
 
+# This script assumes the working directory is ontology-generator/ (its own
+# `lib/hermit_reasoner.py` subprocess call, and generate_ontology's "../"
+# paths, resolve from there). It now lives under script/kb-generation/, so
+# re-anchor to ontology-generator/ and put it plus the sibling generator
+# directory on the import path.
+_ONTOLOGY_GENERATOR_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), os.pardir, os.pardir)
+)
+os.chdir(_ONTOLOGY_GENERATOR_DIR)
+sys.path.insert(0, os.path.join(_ONTOLOGY_GENERATOR_DIR, "script", "ontology-generation"))
+sys.path.insert(0, _ONTOLOGY_GENERATOR_DIR)
+
 import openpyxl
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DC, OWL, RDF, RDFS
 from tqdm import tqdm
 
 from lib.ontology_merger import merge_ontologies
-
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from generate_ontology import AcupointsOntologyAdapter, serialisation_namespaces, TARA, TARA_KB
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-REPO_ROOT = os.path.dirname(SCRIPT_DIR)
+REPO_ROOT = os.path.dirname(_ONTOLOGY_GENERATOR_DIR)
 
 # --- Base ontology & source file locations ---------------------------------
 ARTICLES_KB_BASE_DIR = os.path.join(REPO_ROOT, "ontology-files/base/articles-kb")
 ONTOLOGY_BASE_DIR = os.path.join(REPO_ROOT, "ontology-files/base")
-
-ARTICLES_KB_CORE_TTL = os.path.join(ARTICLES_KB_BASE_DIR, "articles-kb-core/tara-articles-kb-core.ttl")
+# ontology-files/base/articles-kb/articles-kb-core/archived/version-0.5/tara-articles-kb-core.ttl
+# ARTICLES_KB_CORE_ARCHIVED_TTL = os.path.join(ARTICLES_KB_BASE_DIR, "articles-kb-core/archived/version-0.5/tara-articles-kb-core.ttl")
+ARTICLES_KB_CORE_TTL = os.path.join(ARTICLES_KB_BASE_DIR, "articles-kb-core/archived/version-0.5/tara-articles-kb-core.ttl")
 IMPORTED_MONDO_HP_TTL = os.path.join(ARTICLES_KB_BASE_DIR, "imported-conditions/imported-tara-kb-mondo-hp-terms.ttl")
 MONDO_HP_BRIDGE_TTL = os.path.join(ARTICLES_KB_BASE_DIR, "imported-conditions/tara-kb-mondo-hp-bridge.ttl")
 COLUMN_MAPPING_TTL = os.path.join(ARTICLES_KB_BASE_DIR, "kb-src-column-mappings/tara-kb-src-column-mapping.ttl")

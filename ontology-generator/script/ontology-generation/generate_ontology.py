@@ -20,6 +20,18 @@ Last updated: July 8, 2026
 """
 
 import csv, os, subprocess, sys
+
+# This script (and generate_articles_kb.py, which imports it) assumes the
+# working directory is ontology-generator/ - every "../" path, the `lib.*`
+# imports, and the `lib/hermit_reasoner.py` subprocess call are resolved from
+# there. It now lives two levels down under script/ontology-generation/, so
+# re-anchor to ontology-generator/ before anything path-dependent runs.
+_ONTOLOGY_GENERATOR_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), os.pardir, os.pardir)
+)
+os.chdir(_ONTOLOGY_GENERATOR_DIR)
+sys.path.insert(0, _ONTOLOGY_GENERATOR_DIR)
+
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
 from rdflib.namespace import RDF, RDFS, OWL
 from rdflib.collection import Collection
@@ -316,7 +328,10 @@ class AcupointsOntologyAdapter:
                     g.add((acupoint_uri, TARA_AP.hasMethodDescription, Literal(method)))
                 
                 if indications:
-                    g.add((acupoint_uri, TARA_AP.hasListedIndications, Literal(indications))) 
+                    for indication in indications.split(','):
+                        indication = indication.strip()
+                        if indication:
+                            g.add((acupoint_uri, TARA_AP.hasListedIndications, Literal(indication)))
                 
                 if vasculature:
                     g.add((acupoint_uri, TARA_AP.hasVasculatureInformation, Literal(vasculature)))
@@ -389,7 +404,12 @@ class AcupointsOntologyAdapter:
                     g.add ((acupoint_uri, TARA_AP.hasLocationalDescription, Literal(location)))
                 
                 if indications:
-                    g.add ((acupoint_uri, TARA_AP.hasListedIndications, Literal(indications)))
+                    # one literal per comma-separated indication, same as the
+                    # main acupoints table - so each fills its own value pill
+                    for indication in indications.split(','):
+                        indication = indication.strip()
+                        if indication:
+                            g.add((acupoint_uri, TARA_AP.hasListedIndications, Literal(indication)))
                 
                 if method:
                     g.add ((acupoint_uri, TARA_AP.hasMethodDescription, Literal(method)))
