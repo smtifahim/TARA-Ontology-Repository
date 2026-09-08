@@ -94,6 +94,10 @@ header .sub { color: var(--text-muted); font-size: 0.8rem; }
 #autocomplete .ac-primary { font-weight: 600; }
 #autocomplete .ac-alias-note { color: var(--text-muted); font-size: 0.8rem; }
 #autocomplete .ac-alias-note .ac-alias-kind { font-style: italic; }
+#autocomplete .ac-badge--facet { color: var(--accent); border-color: var(--accent); }
+/* value-facet result view (e.g. "cough" -> every acupoint that lists it) */
+.facet-sub { color: var(--text-muted); font-size: 0.9rem; margin: 0 0 0.9rem; }
+.facet-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .tab-bar { display: flex; border-bottom: 1px solid var(--border); }
 .tab-btn {
   flex: 1;
@@ -492,35 +496,54 @@ li.hidden-by-filter { display: none; }
    surrounding normal rows all line up on one column. */
 .ann-narrative .narr-lead .ann-pred,
 .ann-narrative .narr-spacer { flex: 0 0 auto; width: 7rem; min-width: 7rem; max-width: 7rem; }
+/* flex row, wrapping. Each member takes its natural width (label + a small
+   gap for the "?" hint + its pill cluster right after); the members are set
+   side by side with a column gap. flex-wrap means that when the first
+   member's value list grows wide enough to collide with the second member,
+   the second member drops to the next line instead of overlapping it -
+   dynamic, driven purely by content width. align-items:flex-start keeps the
+   labels level with their first pill. */
 .ann-narrative .narr-inline {
   flex: 1;
   min-width: 0;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: flex-start;
-  gap: 0.5rem 1.75rem;
+  gap: 0.4rem 1.75rem;
   border-top: 1px solid var(--divider);
   padding-top: 0.5rem;
 }
-/* one member = 2-line label + its own pill cluster; the cluster wraps
-   internally so wrapped pills stay left-aligned under the first pill. The
-   label is vertically centred against its value pills. */
-.narr-inline-item { display: flex; align-items: center; gap: 0.45rem; min-width: 0; flex: 0 1 auto; }
+/* one member = label + its own pill cluster, sitting immediately after the
+   label. flex: 0 0 auto - the member keeps its natural width and does not get
+   squeezed to share a line; if it alone is wider than the row, max-width
+   caps it and its pills wrap internally (min-width:0 on the value lets that
+   happen). It is the whole member that wraps to the next line, never the
+   label away from its value. */
+.narr-inline-item { display: flex; align-items: flex-start; gap: 0.35rem; min-width: 0; max-width: 100%; flex: 0 0 auto; }
+.narr-inline-item .ann-vals,
+.narr-inline-item .ann-vals .rt-list { min-width: 0; }
 .narr-inline-label {
   flex: 0 0 auto;
+  /* a narrow cap so a two-word label ("General Location", "Reference
+     Location") wraps at the space to two lines on its own - width, not a
+     hard-coded "
+" - while a one-word label stays on one line. Both members'
+     labels then occupy the same two-line box and line up. */
+  max-width: 4.7rem;
   white-space: pre-line;
   color: var(--text-muted);
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 .narr-inline-item .ann-vals { padding-top: 0; }
 .narr-inline-label:hover .pred-hint { opacity: 1; }
 @media (max-width: 620px) {
   .ann-narrative .narr-spacer { display: none; }
-  .ann-narrative .narr-inline { flex-wrap: wrap; gap: 0.4rem 0.9rem; }
-  .narr-inline-item { flex: 1 1 100%; }
+  /* stack the members, each full width */
+  .ann-narrative .narr-inline { gap: 0.4rem 0; }
+  .narr-inline-item { flex: 0 0 100%; }
 }
 /* One narrow, fixed label column so every row - and the narrative blocks -
    line up. It's much tighter than before (dead space after short labels is

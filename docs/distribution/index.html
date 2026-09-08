@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TARA Ontology Distribution</title>
+<style>
+:root{--bg:#fff;--panel:#f7f8fa;--border:#dfe2e6;--text:#1a1f27;--muted:#5b6472;--accent:#4472c4}
+@media(prefers-color-scheme:dark){:root{--bg:#14171c;--panel:#1b1f26;--border:#2d333d;--text:#e6e9ef;--muted:#9aa4b2;--accent:#7fa4e8}}
+*{box-sizing:border-box}body{margin:0;padding:2.5rem 1.5rem;background:var(--bg);color:var(--text);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+main{max-width:900px;margin:0 auto}h1{font-size:1.4rem;margin:0 0 .25rem}
+p.sub{color:var(--muted);margin:0 0 2rem}
+section{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:1rem 1.2rem;margin-bottom:1.4rem}
+h2{font-size:1.05rem;margin:0 0 .2rem}
+.latest{margin:.2rem 0 .9rem;font-size:.95rem}
+.latest a{font-weight:600}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85em;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:.85rem}
+th,td{text-align:left;padding:.35rem .6rem;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:none}
+a{color:var(--accent)}
+footer{color:var(--muted);font-size:.8rem;margin-top:2rem}
+</style>
+</head>
+<body>
+<main>
+<h1>TARA Ontology Distribution</h1>
+<p class="sub">Released Turtle files. The version-less ontology IRI always resolves to the latest release; a <code>version/&lt;v&gt;/</code> file is an immutable snapshot.</p>
+<section>
+<h2>TARA Acupoints Ontology</h2>
+<div class="latest">Latest: <a href="ontology/version/1.7.1/no-bfo/inferred/acupoints.ttl">1.7.1 (no-bfo/inferred)</a> &middot; ontology IRI <code>http://purl.org/tara/ontology/acupoints.owl</code></div>
+<table>
+<tr><th>Version</th><th>no-bfo/inferred</th><th>no-bfo/asserted</th><th>inferred</th><th>asserted</th></tr>
+<tr><td><strong>1.7.1</strong> &middot; latest</td><td><a href="ontology/version/1.7.1/no-bfo/inferred/acupoints.ttl">no-bfo/inferred</a></td><td><a href="ontology/version/1.7.1/no-bfo/asserted/acupoints.ttl">no-bfo/asserted</a></td><td><a href="ontology/version/1.7.1/inferred/acupoints.ttl">inferred</a></td><td><a href="ontology/version/1.7.1/asserted/acupoints.ttl">asserted</a></td></tr>
+</table>
+</section>
+<section>
+<h2>TARA Articles Knowledge Base</h2>
+<div class="latest">Latest: <a href="kb/version/0.5/no-bfo/inferred/articles-kb.ttl">0.5 (no-bfo/inferred)</a> &middot; ontology IRI <code>http://purl.org/tara/ontology/kb/articles-kb.ttl</code></div>
+<table>
+<tr><th>Version</th><th>no-bfo/inferred</th><th>no-bfo/asserted</th><th>inferred</th><th>asserted</th></tr>
+<tr><td><strong>0.5</strong> &middot; latest</td><td><a href="kb/version/0.5/no-bfo/inferred/articles-kb.ttl">no-bfo/inferred</a></td><td><a href="kb/version/0.5/no-bfo/asserted/articles-kb.ttl">no-bfo/asserted</a></td><td><a href="kb/version/0.5/inferred/articles-kb.ttl">inferred</a></td><td><a href="kb/version/0.5/asserted/articles-kb.ttl">asserted</a></td></tr>
+</table>
+</section>
+<footer>Generated 2026-09-08 &middot; <a href="https://github.com/SciCrunch/TARA-Ontology-Repository">SciCrunch/TARA-Ontology-Repository</a></footer>
+</main>
+</body>
+</html>
