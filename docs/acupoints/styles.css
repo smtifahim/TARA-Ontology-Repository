@@ -95,9 +95,73 @@ header .sub { color: var(--text-muted); font-size: 0.8rem; }
 #autocomplete .ac-alias-note { color: var(--text-muted); font-size: 0.8rem; }
 #autocomplete .ac-alias-note .ac-alias-kind { font-style: italic; }
 #autocomplete .ac-badge--facet { color: var(--accent); border-color: var(--accent); }
-/* value-facet result view (e.g. "cough" -> every acupoint that lists it) */
-.facet-sub { color: var(--text-muted); font-size: 0.9rem; margin: 0 0 0.9rem; }
-.facet-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+/* "no results found" explanation row for an "X + Y" query - not selectable */
+#autocomplete .ac-note {
+  padding: 0.45rem 0.7rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  cursor: default;
+}
+#autocomplete .ac-note b { color: var(--text); }
+/* value-facet result view (e.g. "headache" -> every acupoint that lists it) */
+.facet-h { margin: 0 0 0.4rem; }
+.facet-h .facet-term { background: var(--highlight-bg); border-radius: 4px; padding: 0 0.3rem; }
+.facet-summary { font-size: 0.95rem; margin: 0 0 0.35rem; }
+.facet-summary b { color: var(--text); }
+.facet-note { color: var(--text-muted); font-size: 0.85rem; margin: 0 0 1rem; max-width: 72ch; }
+.facet-note b { color: var(--text); }
+.facet-note i { font-style: italic; }
+/* section 1: every matched acupoint as a clickable pill */
+.facet-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.4rem; }
+/* section 2: per-acupoint breakdown, grouped by meridian */
+.facet-detail-head { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.3rem; }
+.facet-group-head {
+  margin: 1rem 0 0.35rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--divider);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.facet-detail-head + .facet-group-head { margin-top: 0.3rem; }
+.facet-group-head a { color: var(--accent); cursor: pointer; text-decoration: none; }
+.facet-group-head a:hover { text-decoration: underline; }
+.facet-group-head .facet-group-count { color: var(--text-muted); font-weight: 400; }
+/* one grid: acupoint name in column 1, all its listed values (pills) in
+   column 2 on the same line; column 2 lines up across rows via subgrid. */
+.facet-acu-list {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 1rem;
+}
+.facet-acu-item {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: start;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--divider);
+}
+.facet-acu-item:first-of-type { border-top: 0; padding-top: 0.15rem; }
+@supports not (grid-template-columns: subgrid) {
+  .facet-acu-list { display: block; }
+  .facet-acu-item {
+    grid-column: auto;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 1rem;
+  }
+}
+.facet-acu-name {
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+}
+.facet-acu-name:hover { text-decoration: underline; }
+.facet-acu-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; min-width: 0; }
+@media (max-width: 620px) {
+  .facet-acu-list { grid-template-columns: 1fr; }
+  .facet-acu-pills { margin-top: 0.2rem; }
+}
 .tab-bar { display: flex; border-bottom: 1px solid var(--border); }
 .tab-btn {
   flex: 1;
@@ -343,8 +407,18 @@ li.hidden-by-filter { display: none; }
 .chip.matched.link { color: var(--text); }
 
 /* ---- anatomy -> acupoints topography panel ---- */
-.anat-acu-sub { color: var(--text-muted); font-size: 0.9rem; margin: 0.35rem 0 0.6rem; max-width: 60ch; }
-.anat-acu-sub b { color: var(--text); }
+.anat-acu-h .chip { vertical-align: middle; font-size: 0.9rem; }
+/* "Search Results:" line + the breakdown list + the Note all share one type
+   size / colour so the header block reads as one consistent unit. */
+.anat-acu-results { font-size: 0.9rem; margin: 0.15rem 0 0.7rem; }
+.anat-acu-results b { color: var(--text); }
+.anat-acu-breakdown { margin: 0 0 0.7rem; padding-left: 1.2rem; font-size: 0.9rem; }
+.anat-acu-breakdown li { margin: 0.15rem 0; }
+.anat-acu-breakdown b { color: var(--text); }
+.anat-acu-note { font-size: 0.9rem; margin: 0 0 0.25rem; max-width: 72ch; }
+.anat-acu-note b { color: var(--text); }
+.anat-acu-note-list { margin: 0 0 0.7rem; padding-left: 1.2rem; font-size: 0.9rem; }
+.anat-acu-hierlink .hierlink-arrow { font-weight: 700; font-size: 1rem; margin-right: 0.3rem; display: inline-block; }
 .anat-acu-hierlink {
   background: none;
   border: 1px solid var(--border);
@@ -355,54 +429,133 @@ li.hidden-by-filter { display: none; }
   font-size: 0.82rem;
 }
 .anat-acu-hierlink:hover { background: var(--accent-bg); }
-.aa-toggle {
-  display: inline-flex;
-  margin: 0.6rem 0 0.2rem;
+.aa-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem 0.85rem; margin: 0.6rem 0 0.2rem; }
+.aa-viewbtn {
+  background: var(--panel-bg);
   border: 1px solid var(--border);
   border-radius: 6px;
-  overflow: hidden;
-}
-.aa-toggle button {
-  background: var(--panel-bg);
-  border: 0;
-  border-right: 1px solid var(--border);
   padding: 0.3rem 0.8rem;
+  font: inherit;
   font-size: 0.8rem;
   color: var(--text-muted);
   cursor: pointer;
 }
-.aa-toggle button:last-child { border-right: 0; }
-.aa-toggle button.active { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
-.aa-category-head { font-size: 0.95rem; font-weight: 700; margin: 1.7rem 0 0.2rem; }
-.aa-subcategory-head { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin: 1rem 0 0 0.6rem; }
-.aa-meridian-head { margin: 1rem 0 0.1rem; }
-.aa-meridian-head .chip { font-weight: 600; }
-.anat-acu-table { margin-top: 1rem; border-top: 1px solid var(--divider); }
-.aa-meridian-head + .anat-acu-table { margin-top: 0.1rem; border-top: 0; }
-.anat-acu-row {
-  display: grid;
-  grid-template-columns: 7.5rem 7rem 1fr;
-  gap: 0.6rem 0.9rem;
-  align-items: baseline;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--divider);
+.aa-viewbtn.active { background: var(--accent-bg); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.aa-filter { display: flex; align-items: center; gap: 0.45rem; font-size: 0.82rem; }
+.aa-filter label { color: var(--text-muted); }
+.aa-filter select {
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
 }
-.anat-acu-row .aa-name { font-weight: 600; }
-.anat-acu-row .aa-name a { color: var(--accent); cursor: pointer; text-decoration: none; }
-.anat-acu-row .aa-name a:hover { text-decoration: underline; }
-.anat-acu-row .aa-group {
+/* search summary: same size as the breakdown/Note above; extra space above it
+   so it sits clear of the Filter by: row */
+.aa-summary { font-size: 0.9rem; margin: 0.95rem 0 0.35rem; }
+.aa-summary b { color: var(--text); }
+.aa-summary i { font-style: italic; }
+/* meridian section: a plain linked header (no pill) with a faint rule directly
+   under it, before that meridian's acupoints */
+.aa-meridian-head {
+  margin: 1.2rem 0 0.4rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--divider);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.aa-meridian-head a { color: var(--accent); cursor: pointer; text-decoration: none; }
+.aa-meridian-head a:hover { text-decoration: underline; }
+.aa-meridian-head .aa-meridian-count { color: var(--text-muted); font-weight: 400; }
+/* The whole meridian table is ONE grid so the name column's max-content width
+   is measured across every acupoint in it - so column 2 (the relation label)
+   starts at the same x for "ST 8" and "ST 10" alike. Each .aa-acu-block spans
+   all columns and uses subgrid to inherit those tracks while keeping its own
+   box (border between acupoints). */
+.anat-acu-table {
+  margin-top: 0.15rem;
+  display: grid;
+  grid-template-columns: max-content 7rem minmax(0, 1fr);
+  column-gap: 0.9rem;
+  align-items: start;
+}
+/* collapsed meridian: only the first 3 acupoint blocks show */
+.anat-acu-table.aa-collapsed > .aa-acu-block:nth-child(n+4) { display: none; }
+.aa-more-btn {
+  background: none;
+  border: 0;
+  padding: 0.35rem 0 0.1rem;
+  margin: 0;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.aa-more-btn:hover { text-decoration: underline; }
+/* one acupoint = one block, its rows sharing the table's column tracks via
+   subgrid. align-items:start so the relation label / value line up with the
+   TOP of the acupoint name, not its text baseline (their font sizes differ). */
+.aa-acu-block {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: start;
+  border-bottom: 1px solid var(--divider);
+  padding: 0.15rem 0;
+}
+.aa-acu-block:last-child { border-bottom: 0; }
+/* no subgrid (very old browser): fall back to a per-block grid - tight, just
+   without the cross-acupoint column-2 alignment. */
+@supports not (grid-template-columns: subgrid) {
+  .anat-acu-table { display: block; }
+  .aa-acu-block {
+    grid-column: auto;
+    grid-template-columns: max-content 7rem minmax(0, 1fr);
+    column-gap: 0.9rem;
+  }
+}
+.anat-acu-row { display: contents; }
+.aa-acu-block > .anat-acu-row > * { padding: 0.3rem 0; min-width: 0; }
+/* narrative row (Locational Description / ...) hugs the value row beneath it */
+.aa-acu-block > .anat-acu-row.aa-desc-row > * { padding-bottom: 0; }
+.aa-acu-block > .anat-acu-row.aa-desc-row + .anat-acu-row > * { padding-top: 0.1rem; }
+
+.aa-name { font-weight: 600; }
+.aa-name a { color: var(--accent); cursor: pointer; text-decoration: none; }
+.aa-name a:hover { text-decoration: underline; }
+.aa-group {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--text-muted);
 }
-.anat-acu-row .aa-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-/* narrative row paired ahead of its pills row - hug the pills, no divider */
-.anat-acu-row.aa-desc-row { border-bottom: 0; padding: 0.55rem 0 0.1rem; }
-.anat-acu-row.aa-desc-row + .anat-acu-row { padding-top: 0.1rem; }
-.anat-acu-row .aa-desc-text { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; white-space: pre-wrap; }
+.aa-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.aa-desc-text { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; white-space: pre-wrap; }
+
+/* faint rule between relation types within one acupoint block - spans the
+   relation-label + value columns only (grid columns 2..end), name column clear. */
+.aa-unit-sep {
+  grid-column: 2 / -1;
+  margin: 0.15rem 0;
+  border-top: 1px solid var(--divider);
+}
+/* Location / Vasculature value cell - the members' side-by-side / one-line /
+   bold-label / wrap-inside-last-member behaviour is all in the shared
+   .narr-inline-item / .narr-inline-label rules (below). Here just the container
+   box and the value cluster it holds (.aa-pills, not .ann-vals). */
+.aa-inline { display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 0 1.75rem; }
+.aa-inline .narr-inline-item .aa-pills { flex: 1 1 auto; min-width: 0; }
+.aa-inline .aa-pills .chip { white-space: normal; overflow-wrap: anywhere; }
 @media (max-width: 620px) {
-  .anat-acu-row { grid-template-columns: 1fr; gap: 0.3rem; }
+  .anat-acu-table { grid-template-columns: 1fr; }
+  .aa-unit-sep { grid-column: 1; }
+  .aa-acu-block > .anat-acu-row > * { padding: 0.12rem 0; }
+  /* narrow screens: stack the two members (the .narr-inline-item flex reset
+     is in the shared media query) */
+  .aa-inline { flex-direction: column; gap: 0.4rem 0; }
 }
 .example-block {
   background: var(--panel-bg);
@@ -496,55 +649,127 @@ li.hidden-by-filter { display: none; }
    surrounding normal rows all line up on one column. */
 .ann-narrative .narr-lead .ann-pred,
 .ann-narrative .narr-spacer { flex: 0 0 auto; width: 7rem; min-width: 7rem; max-width: 7rem; }
-/* flex row, wrapping. Each member takes its natural width (label + a small
-   gap for the "?" hint + its pill cluster right after); the members are set
-   side by side with a column gap. flex-wrap means that when the first
-   member's value list grows wide enough to collide with the second member,
-   the second member drops to the next line instead of overlapping it -
-   dynamic, driven purely by content width. align-items:flex-start keeps the
-   labels level with their first pill. */
+/* The two members (General/Reference Location, Related Nerve, Related
+   Artery/Vein) stay side by side on one line - no member ever wraps as a
+   unit (flex-wrap:nowrap). The first keeps its natural width (capped so it
+   can't push its pills under the next label); the last takes the leftover
+   width and its own value cluster wraps inside it, wrapped pills left-aligned
+   under the first pill. Shared with the anatomy panel's .aa-inline. */
 .ann-narrative .narr-inline {
   flex: 1;
   min-width: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: flex-start;
-  gap: 0.4rem 1.75rem;
+  gap: 0 1.75rem;
   border-top: 1px solid var(--divider);
   padding-top: 0.5rem;
 }
-/* one member = label + its own pill cluster, sitting immediately after the
-   label. flex: 0 0 auto - the member keeps its natural width and does not get
-   squeezed to share a line; if it alone is wider than the row, max-width
-   caps it and its pills wrap internally (min-width:0 on the value lets that
-   happen). It is the whole member that wraps to the next line, never the
-   label away from its value. */
-.narr-inline-item { display: flex; align-items: flex-start; gap: 0.35rem; min-width: 0; max-width: 100%; flex: 0 0 auto; }
+.narr-inline-item { display: flex; align-items: flex-start; gap: 0.3rem; min-width: 0; }
+.narr-inline-item:not(:last-child) { flex: 0 1 auto; max-width: 55%; }
+.narr-inline-item:last-child { flex: 1 1 0; }
+/* the value cluster fills the space after its own label and wraps within it */
 .narr-inline-item .ann-vals,
 .narr-inline-item .ann-vals .rt-list { min-width: 0; }
+.narr-inline-item .ann-vals { flex: 1 1 auto; padding-top: 0; }
+.narr-inline .ann-vals-mixed .chip { white-space: normal; overflow-wrap: anywhere; }
 .narr-inline-label {
   flex: 0 0 auto;
-  /* a narrow cap so a two-word label ("General Location", "Reference
-     Location") wraps at the space to two lines on its own - width, not a
-     hard-coded "
-" - while a one-word label stays on one line. Both members'
-     labels then occupy the same two-line box and line up. */
-  max-width: 4.7rem;
-  white-space: pre-line;
+  align-self: flex-start;
+  /* one-line label, sized to a single value-row height and centred within it,
+     so it reads as vertically centred against one row of pills and stays on
+     the first row when the pills wrap to several (like the anatomy panel). */
+  min-height: 1.55rem;
+  display: flex;
+  align-items: center;
   color: var(--text-muted);
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1.2;
 }
-.narr-inline-item .ann-vals { padding-top: 0; }
+/* the relation label itself is bold (in both panels) - just the label text,
+   not the "?" hint or the field labels elsewhere in the panel. */
+.narr-inline-label-text { white-space: nowrap; max-width: none; font-weight: 700; }
+/* the "?" hint sits immediately to the RIGHT of the label text, pulled in
+   close (small margin, trimmed box) so it doesn't open a gap before the value. */
+.narr-inline-label .pred-hint {
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-left: 0.15rem;
+  font-size: 0.62rem;
+}
 .narr-inline-label:hover .pred-hint { opacity: 1; }
 @media (max-width: 620px) {
   .ann-narrative .narr-spacer { display: none; }
-  /* stack the members, each full width */
-  .ann-narrative .narr-inline { gap: 0.4rem 0; }
-  .narr-inline-item { flex: 0 0 100%; }
+  /* stack the two members */
+  .ann-narrative .narr-inline { flex-direction: column; gap: 0.4rem 0; }
+  .narr-inline-item,
+  .narr-inline-item:not(:last-child),
+  .narr-inline-item:last-child { flex: none; max-width: none; }
 }
+/* leaf Acupuncture Meridian panel: its acupoints (alphanumeric), acupoint name
+   in column 1 and its Locational Description + General/Reference Location
+   narrative (acupoint-panel style) in column 2 on the same line. One grid so
+   column 2 lines up across rows (subgrid). First 3 shown, then expand by 5 /
+   all / collapse. */
+.meridian-acu { margin-top: 0.5rem; }
+.meridian-acu-head { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.3rem; }
+.meridian-acu-list {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 1rem;
+}
+.meridian-acu-item {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: start;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--divider);
+}
+.meridian-acu-item:first-of-type { border-top: 0; padding-top: 0.2rem; }
+@supports not (grid-template-columns: subgrid) {
+  .meridian-acu-list { display: block; }
+  .meridian-acu-item {
+    grid-column: auto;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 1rem;
+  }
+}
+.meridian-acu-name {
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+}
+.meridian-acu-name:hover { text-decoration: underline; }
+.meridian-acu-body { min-width: 0; }
+/* the narrative's own leading padding would drop "Locational Description" (and
+   its text) below the acupoint name - zero it so columns 2 and 3 top-align
+   with the acupoint in column 1. */
+.meridian-acu-body .ann-narrative .ann-table { padding-top: 0; }
+.meridian-acu-body .ann-narrative .ann-row.narr-lead { padding-top: 0; }
+.meridian-acu-none { color: var(--text-muted); font-size: 0.85rem; }
+@media (max-width: 620px) {
+  .meridian-acu-list { grid-template-columns: 1fr; }
+  .meridian-acu-body { margin-top: 0.15rem; }
+}
+
+/* shared progressive-disclosure controls (long meridian / indication lists) */
+.disclosure-hidden { display: none !important; }
+.disclosure-controls { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; margin-top: 0.55rem; }
+.disclosure-controls:empty { display: none; }
+.disclosure-btn {
+  background: none;
+  border: 0;
+  padding: 0.2rem 0;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.disclosure-btn:hover { text-decoration: underline; }
 /* One narrow, fixed label column so every row - and the narrative blocks -
    line up. It's much tighter than before (dead space after short labels is
    just the .ann-row gap plus the slack in this column); a label longer than
