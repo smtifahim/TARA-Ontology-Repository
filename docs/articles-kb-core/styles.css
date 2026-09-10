@@ -12,9 +12,11 @@
   --highlight-bg: #fff3b0;
   --guide: #a9c2ea;
   --divider: #e5e7eb;
+  --logo-blue: #374e7e;   /* the navy of the "TARA" wordmark in the logo */
 }
 @media (prefers-color-scheme: dark) {
   :root {
+    --logo-blue: #9fb4de;
     --bg: #14171c;
     --panel-bg: #1b1f26;
     --border: #2d333d;
@@ -39,25 +41,63 @@ body {
   display: flex;
   flex-direction: column;
 }
+/* logo on the left (spanning the stack's height); title + subtitle + search
+   centred in the viewport; view/gear on the right. Equal 1fr side tracks keep
+   the centre column truly centred whatever the logo / actions widths are. */
 header {
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 1rem;
   border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 1rem;
+}
+.header-logo {
+  grid-column: 1;
+  justify-self: start;
+  align-self: stretch;
+  width: auto;
+  max-width: 11rem;
+  min-height: 4.75rem;
+  object-fit: contain;
+  object-position: left center;
+}
+.header-main {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  text-align: center;
+}
+.header-titles { display: flex; flex-direction: column; align-items: center; gap: 0.05rem; }
+header h1 { font-size: 1.6rem; font-weight: 700; margin: 0; white-space: nowrap; color: var(--logo-blue); }
+header .sub { color: var(--text-muted); font-size: 0.8rem; }
+.header-controls { display: flex; justify-content: center; width: 100%; }
+.search-wrap { position: relative; width: min(66vw, 580px); min-width: 0; }
+.header-actions {
+  grid-column: 3;
+  justify-self: end;
+  align-self: center;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 0.4rem;
 }
-header h1 { font-size: 1.05rem; margin: 0; white-space: nowrap; }
-header .sub { color: var(--text-muted); font-size: 0.8rem; }
-.search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 480px; }
+@media (max-width: 820px) {
+  header { grid-template-columns: 1fr; }
+  .header-logo, .header-main, .header-actions { grid-column: 1; justify-self: center; }
+  .header-logo { align-self: center; max-height: 4rem; }
+  .search-wrap { width: 100%; }
+}
 #search {
   width: 100%;
-  padding: 0.45rem 0.7rem;
+  padding: 0.6rem 0.95rem;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--panel-bg);
   color: var(--text);
-  font-size: 0.9rem;
+  font-size: 0.98rem;
 }
 #autocomplete {
   position: absolute;
@@ -612,6 +652,11 @@ li.hidden-by-filter { display: none; }
 }
 .ann-table { padding-top: 0.4rem; }
 .ann-row { display: flex; gap: 0.75rem; padding: 0.28rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; align-items: flex-start; }
+/* a row whose value is purely a pill list (Is Required By / Is Referenced By /
+   Requires ...): centre the label vertically against the pill block instead of
+   pinning it to the top. Prose-valued rows keep top alignment. */
+.ann-row:has(> .ann-vals-mixed) { align-items: center; }
+.ann-row:has(> .ann-vals-mixed) > .ann-vals-mixed { padding-top: 0; }
 /* per-row borders only divide rows *within* one table; the last row's is
    dropped because the gap to the next top-level group is drawn by that group's
    border-top instead (see the sibling rules below) - a narrative block splits
@@ -829,8 +874,9 @@ Surface Location")
 .ann-row-paired { align-items: flex-start; }
 /* each pair item is [dynamic label][value], sized to content so the two
    items sit next to each other rather than being spread to the row edges. */
-.ann-pair-item { display: flex; align-items: flex-start; gap: 0.75rem; }
-.ann-pair-item .ann-vals { flex: 0 1 auto; }
+.ann-pair-item { display: flex; align-items: center; gap: 0.75rem; }
+.ann-pair-item .ann-vals { flex: 0 1 auto; padding-top: 0; }
+.ann-pair-item .ann-pred .field-label { display: flex; align-items: center; }
 .ann-pair-item:not(:first-child) { margin-left: 1.5rem; }
 /* only the first pair item anchors the shared label column; a later item sits
    mid-row, so let its label shrink to its own text instead of reserving the

@@ -10,16 +10,23 @@
 </head>
 <body>
 <header>
-  <div>
-    <h1>TARA Standard Articles Metadata Core</h1>
-    <div class="sub">tara-articles-kb-core.ttl</div>
+  <img class="header-logo" src="../ontology-website/tara-logo.png" alt="TARA Standard Articles Metadata Core">
+  <div class="header-main">
+    <div class="header-titles">
+      <h1>TARA Standard Articles Metadata Core</h1>
+      <div class="sub">A metadata schema for acupuncture clinical-trial studies and reporting-quality assessments</div>
+    </div>
+    <div class="header-controls">
+      <div class="search-wrap">
+        <input id="search" type="text" placeholder="Type to search&hellip;" autocomplete="off">
+        <div id="autocomplete"></div>
+      </div>
+    </div>
   </div>
-  <div class="search-wrap">
-    <input id="search" type="text" placeholder="Search or click to browse&hellip;" autocomplete="off">
-    <div id="autocomplete"></div>
+  <div class="header-actions">
+    <button id="style-toggle-btn" type="button" title="Toggle compact/structured view for all tabs" aria-label="Toggle compact/structured view"></button>
+    <button id="settings-btn" type="button" title="Display settings" aria-label="Display settings">&#9881;&#65039;</button>
   </div>
-  <button id="style-toggle-btn" type="button" title="Toggle compact/structured view for all tabs" aria-label="Toggle compact/structured view"></button>
-  <button id="settings-btn" type="button" title="Display settings" aria-label="Display settings">&#9881;&#65039;</button>
 </header>
 <div class="tab-bar" id="main-tabs"></div>
 <main>
@@ -1210,6 +1217,7 @@
     ]
   },
   "defaultExpandedDepth": 2,
+  "defaultTab": "annotationProperties",
   "detailPanelStyleByKind": {
     "classes": "compact",
     "annotationProperties": "compact",
@@ -1667,10 +1675,10 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
+          "extra__tara_kb_hasGeneralArticleExtractionPrompt": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "{\n  \"role\": \"You are extracting structured metadata from one full-text acupuncture clinical trial article into a predefined set of fields, guided by the TARA ontology.\",\n  \"task\": \"Load this article's full text once and reuse it, with prompt caching, across three sequential extraction calls in this fixed order: (1) Bibliographic Metadata (see hasBibliographicMetadata's hasGeneralBibliographicMetadataExtractionPrompt), (2) Acupuncture Study Metadata (see hasAcupunctureStudyMetadata's hasGeneralStudyMetadataExtractionPrompt), (3) OCSI Score Data (see hasOCSIItemScoringMetadata's hasGeneralOCSIScoreExtractionPrompt, a sibling branch of this one, not a structural descendant -- consult it separately). Preserve the same Article_ID_Curie across all three outputs so the resulting spreadsheet rows can be joined.\",\n  \"ontology_grounding\": \"For every field's meaning, expected format, and which spreadsheet column it maps to, the field's own hasBibliographicMetadataExtractionPrompt / hasStudyMetadataExtractionPrompt fragment (and its skos:altLabel) in the ontology are authoritative -- do not infer a field's meaning from its property name alone. If a field is not accompanied by an extraction-prompt fragment, it is a derived/mapped or organizational property and must not be extracted directly.\",\n  \"response_format\": \"Each of the three extraction calls returns its own JSON object/array as specified in that call's own general prompt; this master prompt does not define a combined output shape.\"\n}",
+              "id": null
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -1679,10 +1687,10 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasGeneralArticleExtractionPrompt": [
+          "extra__dcterms_type": [
             {
-              "label": "{\n  \"role\": \"You are extracting structured metadata from one full-text acupuncture clinical trial article into a predefined set of fields, guided by the TARA ontology.\",\n  \"task\": \"Load this article's full text once and reuse it, with prompt caching, across three sequential extraction calls in this fixed order: (1) Bibliographic Metadata (see hasBibliographicMetadata's hasGeneralBibliographicMetadataExtractionPrompt), (2) Acupuncture Study Metadata (see hasAcupunctureStudyMetadata's hasGeneralStudyMetadataExtractionPrompt), (3) OCSI Score Data (see hasOCSIItemScoringMetadata's hasGeneralOCSIScoreExtractionPrompt, a sibling branch of this one, not a structural descendant -- consult it separately). Preserve the same Article_ID_Curie across all three outputs so the resulting spreadsheet rows can be joined.\",\n  \"ontology_grounding\": \"For every field's meaning, expected format, and which spreadsheet column it maps to, the field's own hasBibliographicMetadataExtractionPrompt / hasStudyMetadataExtractionPrompt fragment (and its skos:altLabel) in the ontology are authoritative -- do not infer a field's meaning from its property name alone. If a field is not accompanied by an extraction-prompt fragment, it is a derived/mapped or organizational property and must not be extracted directly.\",\n  \"response_format\": \"Each of the three extraction calls returns its own JSON object/array as specified in that call's own general prompt; this master prompt does not define a combined output shape.\"\n}",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -1718,16 +1726,16 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasExtractedArticleMetadata",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -1768,12 +1776,6 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_kb_hasGeneralStudyMetadataExtractionPrompt": [
             {
               "label": "{\n  \"role\": \"You are extracting acupuncture study design and findings metadata for one acupuncture clinical trial article.\",\n  \"task\": \"You are given the full text of one article and a set of fields, each supplied separately with a compact extraction fragment (field, description, and optional normalization rules). Some fields (e.g. Acupuncture Protocol, Study Outcomes Measure, Treatment Duration and Frequency) intentionally combine several related pieces of information into one structured entry rather than separate fields -- follow each such field's normalization rule exactly for its required internal structure.\",\n  \"output_schema\": {\n    \"type\": \"array\",\n    \"item_fields\": {\n      \"field\": \"the field's skos:altLabel (spreadsheet column name)\",\n      \"value\": \"the extracted string, or 'Not Specified' / empty per the missing-value rule below\"\n    }\n  },\n  \"global_scoring_rules\": [\n    \"If a value is genuinely not found in the article, write the literal string 'Not Specified' -- except for any field whose value is a URI (Dataset Link), where an unfound value must be left as an empty string, never the text 'Not Specified' or a fabricated URL.\",\n    \"Never include Chinese characters (Hanzi) in any extracted value. Where a term appears with both an English/pinyin rendering and Chinese characters, extract only the English or pinyin form.\",\n    \"Before recording any text value, repair likely PDF-extraction artifacts: (1) rejoin words split across a line break or column boundary, whether or not a stray hyphen was retained, judging by whether the joined form is a real word or recognizable term in context; (2) correct a space incorrectly inserted mid-word, and correct two distinct words run together without a space, using context to find the right boundary; (3) do not preserve stray control characters, orphaned hyphens, or ligature-rendering artifacts; (4) if a term remains genuinely ambiguous after repair, extract your best reconstruction rather than leaving it visibly broken, but never fabricate content not present in the source.\",\n    \"Preserve accented and diacritical characters exactly as they appear in the source -- do not strip or transliterate them to unaccented ASCII.\",\n    \"Fields whose normalization rule states they combine multiple sub-parts (Acupuncture Protocol, Study Outcomes Measure, Treatment Duration and Frequency) must be produced as ONE entry each, in the exact structure their normalization rule specifies -- their component sub-parts are not separately-extracted fields.\",\n    \"Apply each field's own 'normalization' rule, where present, in addition to these general rules.\"\n  ],\n  \"response_format\": \"Return a JSON array of one object per field, covering every field supplied, in the order supplied, and nothing else -- no surrounding prose.\"\n}",
@@ -1784,6 +1786,12 @@
             {
               "label": "tara-kb:hasAcupunctureStudyMetadata",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -2251,16 +2259,16 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasListedAcupointsMapped",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ],
           "aliases": [
@@ -2295,16 +2303,16 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasListedAcupointsMappedCurie",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ],
           "aliases": [
@@ -2339,16 +2347,16 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasListedAcupointsUnmappable",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ],
           "aliases": [
@@ -2384,16 +2392,16 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudiedCondition",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -2474,16 +2482,16 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasMappedTCMCondition",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ],
           "aliases": [
@@ -2564,16 +2572,16 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasMappedWesternCondition",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ],
           "aliases": [
@@ -2612,16 +2620,16 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyDesignMetadata",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -3398,10 +3406,10 @@
           ],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
+          "extra__tara_kb_hasGeneralBibliographicMetadataExtractionPrompt": [
             {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
+              "label": "{\n  \"role\": \"You are extracting bibliographic metadata for one acupuncture clinical trial article.\",\n  \"task\": \"You are given the full text of one article and a set of fields, each supplied separately with a compact extraction fragment (field, description, and optional normalization rules).\",\n  \"output_schema\": {\n    \"type\": \"array\",\n    \"item_fields\": {\n      \"field\": \"the field's skos:altLabel (spreadsheet column name)\",\n      \"value\": \"the extracted string, or 'Not Specified' / empty per the missing-value rule below\"\n    }\n  },\n  \"global_scoring_rules\": [\n    \"If a value is genuinely not found in the article, write the literal string 'Not Specified' -- except for any field whose value is a URI (DOI Link, PubMed Link, Other Link, Dataset Link), where an unfound value must be left as an empty string, never the text 'Not Specified' or a fabricated URL.\",\n    \"Never include Chinese characters (Hanzi) in any extracted value. Where a term appears with both an English/pinyin rendering and Chinese characters, extract only the English or pinyin form.\",\n    \"Before recording any text value, repair likely PDF-extraction artifacts: (1) rejoin words split across a line break or column boundary, whether or not a stray hyphen was retained (e.g., 'ran- domized' or 'ran domized' -> 'randomized'), judging by whether the joined form is a real word or recognizable term in context; (2) correct a space incorrectly inserted mid-word, and correct two distinct words run together without a space, using context to find the right boundary; (3) do not preserve stray control characters, orphaned hyphens, or ligature-rendering artifacts; (4) if a term remains genuinely ambiguous after repair, extract your best reconstruction rather than leaving it visibly broken, but never fabricate content not present in the source.\",\n    \"Preserve accented and diacritical characters exactly as they appear in the source (e.g., 'Muller', 'Garcia-Lopez', 'Sondergaard') -- do not strip or transliterate them to unaccented ASCII.\",\n    \"Apply each field's own 'normalization' rule, where present, in addition to these general rules.\"\n  ],\n  \"response_format\": \"Return a JSON array of one object per field, covering every field supplied, in the order supplied, and nothing else -- no surrounding prose.\"\n}",
+              "id": null
             }
           ],
           "extra__tara_ap_hasCompactURI": [
@@ -3410,10 +3418,10 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasGeneralBibliographicMetadataExtractionPrompt": [
+          "extra__dcterms_type": [
             {
-              "label": "{\n  \"role\": \"You are extracting bibliographic metadata for one acupuncture clinical trial article.\",\n  \"task\": \"You are given the full text of one article and a set of fields, each supplied separately with a compact extraction fragment (field, description, and optional normalization rules).\",\n  \"output_schema\": {\n    \"type\": \"array\",\n    \"item_fields\": {\n      \"field\": \"the field's skos:altLabel (spreadsheet column name)\",\n      \"value\": \"the extracted string, or 'Not Specified' / empty per the missing-value rule below\"\n    }\n  },\n  \"global_scoring_rules\": [\n    \"If a value is genuinely not found in the article, write the literal string 'Not Specified' -- except for any field whose value is a URI (DOI Link, PubMed Link, Other Link, Dataset Link), where an unfound value must be left as an empty string, never the text 'Not Specified' or a fabricated URL.\",\n    \"Never include Chinese characters (Hanzi) in any extracted value. Where a term appears with both an English/pinyin rendering and Chinese characters, extract only the English or pinyin form.\",\n    \"Before recording any text value, repair likely PDF-extraction artifacts: (1) rejoin words split across a line break or column boundary, whether or not a stray hyphen was retained (e.g., 'ran- domized' or 'ran domized' -> 'randomized'), judging by whether the joined form is a real word or recognizable term in context; (2) correct a space incorrectly inserted mid-word, and correct two distinct words run together without a space, using context to find the right boundary; (3) do not preserve stray control characters, orphaned hyphens, or ligature-rendering artifacts; (4) if a term remains genuinely ambiguous after repair, extract your best reconstruction rather than leaving it visibly broken, but never fabricate content not present in the source.\",\n    \"Preserve accented and diacritical characters exactly as they appear in the source (e.g., 'Muller', 'Garcia-Lopez', 'Sondergaard') -- do not strip or transliterate them to unaccented ASCII.\",\n    \"Apply each field's own 'normalization' rule, where present, in addition to these general rules.\"\n  ],\n  \"response_format\": \"Return a JSON array of one object per field, covering every field supplied, in the order supplied, and nothing else -- no surrounding prose.\"\n}",
-              "id": null
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -3636,16 +3644,16 @@
               "id": null
             }
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "mapping",
-              "id": "tara-kb:mapping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasPublicationYear",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "mapping",
+              "id": "tara-kb:mapping"
             }
           ],
           "aliases": [
@@ -3899,16 +3907,16 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyQualityAssessmentMetadata",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -3949,6 +3957,18 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasGeneralOCSIScoreExtractionPrompt": [
+            {
+              "label": "{\n  \"role\": \"You are applying the Oregon CONSORT STRICTA Instrument (OCSI) to assess the reporting completeness of an acupuncture clinical trial article.\",\n  \"task\": \"You are given the full text of one article and 27 OCSI items, each supplied separately with its assessment question(s) and a compact scoring rubric fragment (item number, question, and either 'parts' for multi-part items or 'criteria' for single-question items). Score reporting completeness only -- not whether the trial itself was well-designed.\",\n  \"output_schema\": {\n    \"type\": \"array\",\n    \"item_fields\": {\n      \"item_number\": \"integer 1-27\",\n      \"score\": \"0, 1, 2, or the string 'N/A'\",\n      \"rationale\": \"string, 1-2 sentences, <=40 words, citing which sub-parts (if any) were or were not met and why, based only on the article text\",\n      \"supporting_quote\": \"string <=25 words, verbatim from the article, most directly supporting the score, or null if no single quote applies\"\n    }\n  },\n  \"global_scoring_rules\": [\n    \"Use 'N/A' only where the item's own rubric fragment defines a condition, or where 'na_excluded' is true for a single-question item (in which case N/A must never be used).\",\n    \"For multi-part items: if all applicable sub-parts (per the 'parts' field) are met, score 2. If none are met, score 0. Any mix of met/not-met sub-parts, regardless of how many, scores 1 -- there is no graduated partial credit.\",\n    \"Never fabricate a supporting_quote; use null if no single quote directly supports the score.\",\n    \"Except for item 1 (which must specifically appear in the Abstract or Title), credit is given wherever the required information appears anywhere in the article.\",\n    \"Items supply either a 'parts' field (multi-part items -- apply the combination rule above) or a 'criteria' field (single-question items -- match the article directly against the 'yes'/'partial'/'no' descriptions, and 'na'/'na_excluded' where present, to select the score; there is no sub-part tally for these items).\"\n  ],\n  \"reviewer_framing\": {\n    \"usage_note\": \"This field is optional, mirroring section_guidance below: the extraction pipeline may merge 'persona' into the role text and/or append 'tie_breaker_heuristic' to global_scoring_rules, to compare extraction quality with and without expert-persona and holistic-satisfaction framing relative to the rubric-only baseline.\",\n    \"persona\": \"You are an experienced clinical trial methodology reviewer with expertise in acupuncture research.\",\n    \"tie_breaker_heuristic\": \"Apply each item's specific criteria first; only for cases the criteria leave genuinely ambiguous, use this secondary check: would an experienced reviewer be satisfied with what is reported, and would the details given be sufficient to reproduce the findings?\"\n  },\n  \"section_guidance\": {\n    \"usage_note\": \"This field is optional and provided for extraction-pipeline experimentation: the pipeline script may include or omit this field when assembling the final prompt sent to the model, to compare extraction quality with and without section-anchoring guidance.\",\n    \"typical_sections\": {\n      \"7\": [\n        \"Methods\"\n      ],\n      \"5\": [\n        \"Methods\"\n      ],\n      \"4\": [\n        \"Methods\"\n      ],\n      \"24\": [\n        \"Results\"\n      ],\n      \"16\": [\n        \"Methods\"\n      ],\n      \"9\": [\n        \"Methods\"\n      ],\n      \"20\": [\n        \"Results\"\n      ],\n      \"27\": [\n        \"Discussion\"\n      ],\n      \"11\": [\n        \"Methods\"\n      ],\n      \"3\": [\n        \"Methods\"\n      ],\n      \"18\": [\n        \"Results\"\n      ],\n      \"21\": [\n        \"Results\"\n      ],\n      \"1\": [\n        \"Abstract\"\n      ],\n      \"19\": [\n        \"Results\"\n      ],\n      \"8\": [\n        \"Methods\"\n      ],\n      \"14\": [\n        \"Methods\"\n      ],\n      \"15\": [\n        \"Methods\"\n      ],\n      \"13\": [\n        \"Methods\"\n      ],\n      \"12\": [\n        \"Methods\"\n      ],\n      \"2\": [\n        \"Introduction\"\n      ],\n      \"10\": [\n        \"Methods\"\n      ],\n      \"17\": [\n        \"Methods\"\n      ],\n      \"22\": [\n        \"Results\"\n      ],\n      \"23\": [\n        \"Results\"\n      ],\n      \"6\": [\n        \"Methods\"\n      ],\n      \"26\": [\n        \"Discussion\"\n      ],\n      \"25\": [\n        \"Discussion\"\n      ]\n    },\n    \"instruction\": \"Consult typical_sections for where each item is conventionally reported and check there first; if the information is not found there, search the full article text before concluding it is absent. Credit is given wherever the information actually appears, per the global scoring rules above.\"\n  },\n  \"response_format\": \"Return a JSON array of exactly 27 objects, one per item, in item-number order, and nothing else -- no surrounding prose.\"\n}",
+              "id": null
+            }
+          ],
+          "extra__dcterms_license": [
+            {
+              "label": "",
+              "id": "https://creativecommons.org/licenses/by/4.0/"
+            }
+          ],
           "extra__dcterms_type": [
             {
               "label": "grouping",
@@ -3970,18 +3990,6 @@
           "extra__tara_kb_hasGeneralOCSIScoringInstructions": [
             {
               "label": "General scoring instructions (OCSI Manual, Appendix A.1, Hammerschlag et al., 2011): \n\n1. When scoring each question, consider whether a reviewer would be satisfied with what is reported, and whether the details given would be sufficient to reproduce the findings. \n\n2. When multiple components or \"and\" statements are listed for a question, all aspects must be met to receive full credit.\n\n3. Except for item no. 1, if the information is placed anywhere in the document, the question can receive full credit.\n\n4. For items 4-9 (from STRICTA), nos. 4-8 pertain only to the acupuncture aspects of the study, while no. 9 pertains to all types of control or comparison groups. \n\n5. Practitioners are almost always NOT blinded in acupuncture research; hence item 16(b) is usually scored N/A.",
-              "id": null
-            }
-          ],
-          "extra__dcterms_license": [
-            {
-              "label": "",
-              "id": "https://creativecommons.org/licenses/by/4.0/"
-            }
-          ],
-          "extra__tara_kb_hasGeneralOCSIScoreExtractionPrompt": [
-            {
-              "label": "{\n  \"role\": \"You are applying the Oregon CONSORT STRICTA Instrument (OCSI) to assess the reporting completeness of an acupuncture clinical trial article.\",\n  \"task\": \"You are given the full text of one article and 27 OCSI items, each supplied separately with its assessment question(s) and a compact scoring rubric fragment (item number, question, and either 'parts' for multi-part items or 'criteria' for single-question items). Score reporting completeness only -- not whether the trial itself was well-designed.\",\n  \"output_schema\": {\n    \"type\": \"array\",\n    \"item_fields\": {\n      \"item_number\": \"integer 1-27\",\n      \"score\": \"0, 1, 2, or the string 'N/A'\",\n      \"rationale\": \"string, 1-2 sentences, <=40 words, citing which sub-parts (if any) were or were not met and why, based only on the article text\",\n      \"supporting_quote\": \"string <=25 words, verbatim from the article, most directly supporting the score, or null if no single quote applies\"\n    }\n  },\n  \"global_scoring_rules\": [\n    \"Use 'N/A' only where the item's own rubric fragment defines a condition, or where 'na_excluded' is true for a single-question item (in which case N/A must never be used).\",\n    \"For multi-part items: if all applicable sub-parts (per the 'parts' field) are met, score 2. If none are met, score 0. Any mix of met/not-met sub-parts, regardless of how many, scores 1 -- there is no graduated partial credit.\",\n    \"Never fabricate a supporting_quote; use null if no single quote directly supports the score.\",\n    \"Except for item 1 (which must specifically appear in the Abstract or Title), credit is given wherever the required information appears anywhere in the article.\",\n    \"Items supply either a 'parts' field (multi-part items -- apply the combination rule above) or a 'criteria' field (single-question items -- match the article directly against the 'yes'/'partial'/'no' descriptions, and 'na'/'na_excluded' where present, to select the score; there is no sub-part tally for these items).\"\n  ],\n  \"reviewer_framing\": {\n    \"usage_note\": \"This field is optional, mirroring section_guidance below: the extraction pipeline may merge 'persona' into the role text and/or append 'tie_breaker_heuristic' to global_scoring_rules, to compare extraction quality with and without expert-persona and holistic-satisfaction framing relative to the rubric-only baseline.\",\n    \"persona\": \"You are an experienced clinical trial methodology reviewer with expertise in acupuncture research.\",\n    \"tie_breaker_heuristic\": \"Apply each item's specific criteria first; only for cases the criteria leave genuinely ambiguous, use this secondary check: would an experienced reviewer be satisfied with what is reported, and would the details given be sufficient to reproduce the findings?\"\n  },\n  \"section_guidance\": {\n    \"usage_note\": \"This field is optional and provided for extraction-pipeline experimentation: the pipeline script may include or omit this field when assembling the final prompt sent to the model, to compare extraction quality with and without section-anchoring guidance.\",\n    \"typical_sections\": {\n      \"7\": [\n        \"Methods\"\n      ],\n      \"5\": [\n        \"Methods\"\n      ],\n      \"4\": [\n        \"Methods\"\n      ],\n      \"24\": [\n        \"Results\"\n      ],\n      \"16\": [\n        \"Methods\"\n      ],\n      \"9\": [\n        \"Methods\"\n      ],\n      \"20\": [\n        \"Results\"\n      ],\n      \"27\": [\n        \"Discussion\"\n      ],\n      \"11\": [\n        \"Methods\"\n      ],\n      \"3\": [\n        \"Methods\"\n      ],\n      \"18\": [\n        \"Results\"\n      ],\n      \"21\": [\n        \"Results\"\n      ],\n      \"1\": [\n        \"Abstract\"\n      ],\n      \"19\": [\n        \"Results\"\n      ],\n      \"8\": [\n        \"Methods\"\n      ],\n      \"14\": [\n        \"Methods\"\n      ],\n      \"15\": [\n        \"Methods\"\n      ],\n      \"13\": [\n        \"Methods\"\n      ],\n      \"12\": [\n        \"Methods\"\n      ],\n      \"2\": [\n        \"Introduction\"\n      ],\n      \"10\": [\n        \"Methods\"\n      ],\n      \"17\": [\n        \"Methods\"\n      ],\n      \"22\": [\n        \"Results\"\n      ],\n      \"23\": [\n        \"Results\"\n      ],\n      \"6\": [\n        \"Methods\"\n      ],\n      \"26\": [\n        \"Discussion\"\n      ],\n      \"25\": [\n        \"Discussion\"\n      ]\n    },\n    \"instruction\": \"Consult typical_sections for where each item is conventionally reported and check there first; if the information is not found there, search the full article text before concluding it is absent. Credit is given wherever the information actually appears, per the global scoring rules above.\"\n  },\n  \"response_format\": \"Return a JSON array of exactly 27 objects, one per item, in item-number order, and nothing else -- no surrounding prose.\"\n}",
               "id": null
             }
           ],
@@ -4024,16 +4032,16 @@
           "citation": [
             "MacPherson H, Altman DG, Hammerschlag R, Youping L, Taixiang W, White A, Moher D; STRICTA Revision Group. Revised STandards for Reporting Interventions in Clinical Trials of Acupuncture (STRICTA): extending the CONSORT statement. PLoS Med. 2010;7(6):e1000261. doi:10.1371/journal.pmed.1000261. https://doi.org/10.1371/journal.pmed.1000261\n\nNote: The article is concurrently published in Acupuncture in Medicine 2010;28(2):83-93, doi:10.1136/aim.2009.001370, and Journal of Alternative and Complementary Medicine 2010;16(10):ST-1-14."
           ],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasAcupunctureInterventionMetrics",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -4068,21 +4076,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "7",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Are details of the acupuncture group cointervention(s) presented? (e.g., moxa, cupping, life-style advice, plum-blossom needling, Chinese herbs)",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasAcupunctureCointerventionsScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "- Score 2 (Yes): details of the acupuncture group's cointervention(s) are presented (e.g., moxa, cupping, life-style advice, plum-blossom needling, Chinese herbs), including any prescribed self-help treatments.\n\n- Score 1 (Partial): cointerventions are mentioned but not described in sufficient detail.\n\n- Score 0 (No): cointerventions are known or implied to have occurred but are not described at all.\n\n- N/A if no adjunctive treatment was provided to the acupuncture group.",
               "id": null
             }
           ],
@@ -4092,9 +4094,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "- Score 2 (Yes): details of the acupuncture group's cointervention(s) are presented (e.g., moxa, cupping, life-style advice, plum-blossom needling, Chinese herbs), including any prescribed self-help treatments.\n\n- Score 1 (Partial): cointerventions are mentioned but not described in sufficient detail.\n\n- Score 0 (No): cointerventions are known or implied to have occurred but are not described at all.\n\n- N/A if no adjunctive treatment was provided to the acupuncture group.",
               "id": null
             }
           ],
@@ -4104,9 +4106,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "7",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasAcupunctureCointerventionsScore",
               "id": null
             }
           ],
@@ -4142,21 +4150,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "5",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Are the following parameters of needling presented?\n\n(a) Points used (uni/bilateral)\n\n(b) Number of needles inserted\n\n(c) Depth(s) of insertion\n\n(d) Response elicited (e.g., de qi)\n\n(e) Needle stimulation (manual or electrical)\n\n(f) Needle retention time\n\n(g) Needle type (Material and/or manufacturer, gauge, and length)",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasAcupunctureNeedlingParametersScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) points used (uni/bilateral) are stated;\n\n(b) number of needles inserted is stated;\n\n(c) depth(s) of insertion is stated;\n\n(d) response elicited (e.g., de qi) is stated;\n\n(e) needle stimulation (manual or electrical) is stated;\n\n(f) needle retention time is stated;\n\n(g) needle type (material and/or manufacturer, gauge, and length) is stated.\n\nN = 7 when all 7 are applicable.\n\nCombination rule (N = applicable sub-parts among a-g):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 7 or 6 of 7 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4166,9 +4168,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) points used (uni/bilateral) are stated;\n\n(b) number of needles inserted is stated;\n\n(c) depth(s) of insertion is stated;\n\n(d) response elicited (e.g., de qi) is stated;\n\n(e) needle stimulation (manual or electrical) is stated;\n\n(f) needle retention time is stated;\n\n(g) needle type (material and/or manufacturer, gauge, and length) is stated.\n\nN = 7 when all 7 are applicable.\n\nCombination rule (N = applicable sub-parts among a-g):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 7 or 6 of 7 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4178,9 +4180,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "5",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasAcupunctureNeedlingParametersScore",
               "id": null
             }
           ],
@@ -4216,21 +4224,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "4",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Is the style of acupuncture stated?\n\n(b) Is the rationale presented for the selection of acupuncture points?\n\n(c) Was the rationale justified?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasAcupunctureStyleAndSelectionScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the style of acupuncture is stated;\n\n(b) the rationale is presented for the selection of acupuncture points;\n\n(c) the rationale is justified (citing journals, texts, practitioner survey, or an expert panel).\n\nN = 3 when all 3 are applicable.\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4240,9 +4242,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) the style of acupuncture is stated;\n\n(b) the rationale is presented for the selection of acupuncture points;\n\n(c) the rationale is justified (citing journals, texts, practitioner survey, or an expert panel).\n\nN = 3 when all 3 are applicable.\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4252,9 +4254,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "4",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasAcupunctureStyleAndSelectionScore",
               "id": null
             }
           ],
@@ -4290,21 +4298,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "9",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Is the intended effect of the control or comparison intervention presented?\n\n(b) Were the specific explanations given to patients of the treatment and control interventions presented?\n\n(c) Are details for the control or comparison intervention presented?\n\n(d) Are sources provided, that justify the choice of the control or comparison intervention?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasControlGroupsInterventionScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the intended effect of the control or comparison intervention is presented;\n\n(b) the specific explanations given to patients about treatment and control interventions are presented;\n\n(c) details for the control or comparison intervention are presented (including needling parameters, item 5(a)-(g), if applicable);\n\n(d) sources are provided that justify the choice of the control or comparison intervention.\n\nN = 4 when all 4 are applicable.\n\nCombination rule (N = applicable sub-parts among a-d):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 4 or 3 of 4 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4314,9 +4316,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) the intended effect of the control or comparison intervention is presented;\n\n(b) the specific explanations given to patients about treatment and control interventions are presented;\n\n(c) details for the control or comparison intervention are presented (including needling parameters, item 5(a)-(g), if applicable);\n\n(d) sources are provided that justify the choice of the control or comparison intervention.\n\nN = 4 when all 4 are applicable.\n\nCombination rule (N = applicable sub-parts among a-d):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 4 or 3 of 4 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4326,9 +4328,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "9",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasControlGroupsInterventionScore",
               "id": null
             }
           ],
@@ -4364,21 +4372,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "8",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Are descriptions provided of the\n\n(a) duration of practitioner training,\n\n(b) length of clinical experience, and\n\n(c) expertise in specific condition?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasPractitionerTrainingExpertiseScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the duration of practitioner training is described;\n\n(b) the length of clinical experience is described;\n\n(c) expertise with the specific condition under investigation is described.\n\nN = 3 when all 3 are applicable.\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4388,9 +4390,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) the duration of practitioner training is described;\n\n(b) the length of clinical experience is described;\n\n(c) expertise with the specific condition under investigation is described.\n\nN = 3 when all 3 are applicable.\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4400,9 +4402,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "8",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasPractitionerTrainingExpertiseScore",
               "id": null
             }
           ],
@@ -4438,21 +4446,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "6",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Are the number and\n\n(b) frequency of treatments stated?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasTreatmentsDurationAndFrequencyScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the number of treatments is stated;\n\n(b) the frequency of treatments is stated.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is N/A if the protocol was a single treatment.",
               "id": null
             }
           ],
@@ -4462,9 +4464,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) the number of treatments is stated;\n\n(b) the frequency of treatments is stated.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is N/A if the protocol was a single treatment.",
               "id": null
             }
           ],
@@ -4474,9 +4476,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "6",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasTreatmentsDurationAndFrequencyScore",
               "id": null
             }
           ],
@@ -4518,16 +4526,16 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasResultsAndOutcomesMetrics",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -4562,21 +4570,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "24",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Are all important adverse events or side effects presented for each intervention group?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasAdverseEventsSideEffectsScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "- Score 2 (Yes): all important adverse events or side effects are presented for each intervention group, including frequency estimates if severe events occurred.\n\n- Score 1 (Partial): adverse events are mentioned but not broken out by group, or reporting is incomplete.\n\n- Score 0 (No): no statement is made about adverse events or side effects for any group.\n\n- N/A: Not applicable -- this item cannot be scored N/A.\n\nPer Appendix A.2, item 24 cannot be scored N/A: authors must state whether adverse events occurred, even if the answer is that none did.",
               "id": null
             }
           ],
@@ -4586,9 +4588,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Results",
+              "label": "- Score 2 (Yes): all important adverse events or side effects are presented for each intervention group, including frequency estimates if severe events occurred.\n\n- Score 1 (Partial): adverse events are mentioned but not broken out by group, or reporting is incomplete.\n\n- Score 0 (No): no statement is made about adverse events or side effects for any group.\n\n- N/A: Not applicable -- this item cannot be scored N/A.\n\nPer Appendix A.2, item 24 cannot be scored N/A: authors must state whether adverse events occurred, even if the answer is that none did.",
               "id": null
             }
           ],
@@ -4598,9 +4600,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "24",
+              "label": "Results",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasAdverseEventsSideEffectsScore",
               "id": null
             }
           ],
@@ -4636,21 +4644,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "20",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Are baseline demographics and\n\n(b) clinical characteristics presented for each group?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasGroupDemographicsCharacteristicsScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) baseline demographics (e.g., age, gender, ethnicity) are presented for each group;\n\n(b) clinical characteristics (e.g., duration of condition) are presented for each group.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4660,9 +4662,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Results",
+              "label": "Applicable sub-parts:\n\n(a) baseline demographics (e.g., age, gender, ethnicity) are presented for each group;\n\n(b) clinical characteristics (e.g., duration of condition) are presented for each group.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4672,9 +4674,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "20",
+              "label": "Results",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasGroupDemographicsCharacteristicsScore",
               "id": null
             }
           ],
@@ -4710,21 +4718,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "18",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Is the flow of participants through each stage quantitatively described, and\n\n(b) if protocol deviations are reported, were reasons presented?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasParticipantsFlowAndDeviationScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the flow of participants through each stage is quantitatively described (evaluated for enrollment, randomized, received treatment, completed treatment, analyzed for the primary outcome);\n\n(b) reasons for any reported protocol deviations are presented.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is N/A if no protocol deviations occurred after randomization (interpretive extension; the source states this sub-part applies 'if protocol deviations are reported').",
               "id": null
             }
           ],
@@ -4734,9 +4736,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Results",
+              "label": "Applicable sub-parts:\n\n(a) the flow of participants through each stage is quantitatively described (evaluated for enrollment, randomized, received treatment, completed treatment, analyzed for the primary outcome);\n\n(b) reasons for any reported protocol deviations are presented.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is N/A if no protocol deviations occurred after randomization (interpretive extension; the source states this sub-part applies 'if protocol deviations are reported').",
               "id": null
             }
           ],
@@ -4746,9 +4748,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "18",
+              "label": "Results",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasParticipantsFlowAndDeviationScore",
               "id": null
             }
           ],
@@ -4784,21 +4792,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "21",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Is the number of participants in each group included in each analysis?\n\n(b) Was the 'intention to treat' analysis presented?\n\n(c) When feasible, are the results stated in absolute numbers (e.g., 10 of 20, not just 50%)?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasParticipantsIntentionToTreatScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the number of participants in each group included in each analysis is stated;\n\n(b) an intention-to-treat analysis (or a valid substitute) is presented;\n\n(c) results are stated in absolute numbers where feasible.\n\nN = 3 when all 3 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(c) is plausibly N/A when absolute numbers cannot feasibly be reported for the outcome measure used (interpretive extension based on the 'when feasible' phrasing; the source does not use the literal term N/A here).",
               "id": null
             }
           ],
@@ -4808,9 +4810,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Results",
+              "label": "Applicable sub-parts:\n\n(a) the number of participants in each group included in each analysis is stated;\n\n(b) an intention-to-treat analysis (or a valid substitute) is presented;\n\n(c) results are stated in absolute numbers where feasible.\n\nN = 3 when all 3 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(c) is plausibly N/A when absolute numbers cannot feasibly be reported for the outcome measure used (interpretive extension based on the 'when feasible' phrasing; the source does not use the literal term N/A here).",
               "id": null
             }
           ],
@@ -4820,9 +4822,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "21",
+              "label": "Results",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasParticipantsIntentionToTreatScore",
               "id": null
             }
           ],
@@ -4858,21 +4866,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "19",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Are dates provided that define the period of recruitment?\n\n(b) Is the length of followup (on-treatment and posttreatment) reported?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasParticipantsRecruitmentFollowupScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) dates defining the recruitment period are given;\n\n(b) the length of follow-up (on-treatment and post-treatment) is reported.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4882,9 +4884,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Results",
+              "label": "Applicable sub-parts:\n\n(a) dates defining the recruitment period are given;\n\n(b) the length of follow-up (on-treatment and post-treatment) is reported.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4894,9 +4896,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "19",
+              "label": "Results",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasParticipantsRecruitmentFollowupScore",
               "id": null
             }
           ],
@@ -4932,21 +4940,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "22",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "For each primary and (if applicable) secondary outcome, is\n\n(a) a summary of results presented for each group,\n\n(b) the estimated effect size presented for each between-group difference (e.g., SD), and\n\n(c) the precision of the effect size presented for each between-group difference (e.g., confidence interval (CI))?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasStudyOutcomesAndEffectSizeScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) a summary of results is presented for each group, for each primary (and, if applicable, secondary) outcome;\n\n(b) the estimated effect size is presented for each between-group difference;\n\n(c) the precision of the effect size is presented as a confidence interval (CI) -- presenting only P-values does not satisfy this sub-part.\n\nN = 3 when all 3 are applicable.\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4956,9 +4958,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Results",
+              "label": "Applicable sub-parts:\n\n(a) a summary of results is presented for each group, for each primary (and, if applicable, secondary) outcome;\n\n(b) the estimated effect size is presented for each between-group difference;\n\n(c) the precision of the effect size is presented as a confidence interval (CI) -- presenting only P-values does not satisfy this sub-part.\n\nN = 3 when all 3 are applicable.\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -4968,9 +4970,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "22",
+              "label": "Results",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasStudyOutcomesAndEffectSizeScore",
               "id": null
             }
           ],
@@ -5006,21 +5014,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "23",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "If additional subgroup analyses and/or adjusted analyses are reported, is it stated whether they were prespecified or exploratory, that is, not prespecified?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasSubgroupAdjustedAnalysesScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "- Score 2 (Yes): it is clearly stated whether the additional subgroup and/or adjusted analyses reported were prespecified or exploratory (e.g., post hoc).\n\n- Score 1 (Partial): results of additional analyses are presented, but their prespecified/exploratory status is not clearly stated.\n\n- Score 0 (No): additional analyses are reported with no indication of prespecified/exploratory status, or status is stated without presenting results.\n\n- N/A if no additional subgroup or adjusted analyses were reported at all.",
               "id": null
             }
           ],
@@ -5030,9 +5032,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Results",
+              "label": "- Score 2 (Yes): it is clearly stated whether the additional subgroup and/or adjusted analyses reported were prespecified or exploratory (e.g., post hoc).\n\n- Score 1 (Partial): results of additional analyses are presented, but their prespecified/exploratory status is not clearly stated.\n\n- Score 0 (No): additional analyses are reported with no indication of prespecified/exploratory status, or status is stated without presenting results.\n\n- N/A if no additional subgroup or adjusted analyses were reported at all.",
               "id": null
             }
           ],
@@ -5042,9 +5044,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "23",
+              "label": "Results",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasSubgroupAdjustedAnalysesScore",
               "id": null
             }
           ],
@@ -5082,16 +5090,16 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasResultsDiscussionMetrics",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -5126,21 +5134,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "27",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Is a general interpretation of the results presented, in the context of current evidence?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasInterpretationOfResultsScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n(i) the previous research is cited;\n(ii) the previous research is discussed.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among i-ii):\n\n- All N met -> Score 2 (Yes).\n- 0 of N met -> Score 0 (No).\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -5150,9 +5152,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Discussion",
+              "label": "Applicable sub-parts:\n(i) the previous research is cited;\n(ii) the previous research is discussed.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among i-ii):\n\n- All N met -> Score 2 (Yes).\n- 0 of N met -> Score 0 (No).\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -5162,9 +5164,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "27",
+              "label": "Discussion",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasInterpretationOfResultsScore",
               "id": null
             }
           ],
@@ -5200,21 +5208,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "26",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Is the generalizability (external validity) of the trial findings discussed?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasTrialGeneralizabilityScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "- Score 2 (Yes): the generalizability (external validity) of the trial findings is discussed, considering topics such as eligibility criteria, setting and location, the intervention protocol, and the period of recruitment and follow-up.\n\n- Score 1 (Partial): (interpretive extension, not explicit in Hammerschlag et al. 2011) generalizability is briefly mentioned without substantive discussion of the topics above.\n\n- Score 0 (No): generalizability of the findings is not discussed.",
               "id": null
             }
           ],
@@ -5224,9 +5226,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Discussion",
+              "label": "- Score 2 (Yes): the generalizability (external validity) of the trial findings is discussed, considering topics such as eligibility criteria, setting and location, the intervention protocol, and the period of recruitment and follow-up.\n\n- Score 1 (Partial): (interpretive extension, not explicit in Hammerschlag et al. 2011) generalizability is briefly mentioned without substantive discussion of the topics above.\n\n- Score 0 (No): generalizability of the findings is not discussed.",
               "id": null
             }
           ],
@@ -5236,9 +5238,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "26",
+              "label": "Discussion",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasTrialGeneralizabilityScore",
               "id": null
             }
           ],
@@ -5274,21 +5282,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "25",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Is an interpretation of the results presented that takes into account\n\n(a) study hypotheses,\n\n(b) sources of potential bias or imprecision, and\n\n(c) the potential dangers associated with multiple analyses and outcomes?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasTrialStrengthsLimitationsScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the interpretation addresses the study hypotheses;\n\n(b) the interpretation addresses sources of potential bias or imprecision;\n\n(c) the interpretation addresses the potential dangers associated with multiple analyses and outcomes.\n\nN = 3 when all 3 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(c) is usually N/A unless numerous analyses, both prespecified and exploratory, were performed.",
               "id": null
             }
           ],
@@ -5298,9 +5300,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Discussion",
+              "label": "Applicable sub-parts:\n\n(a) the interpretation addresses the study hypotheses;\n\n(b) the interpretation addresses sources of potential bias or imprecision;\n\n(c) the interpretation addresses the potential dangers associated with multiple analyses and outcomes.\n\nN = 3 when all 3 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(c) is usually N/A unless numerous analyses, both prespecified and exploratory, were performed.",
               "id": null
             }
           ],
@@ -5310,9 +5312,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "25",
+              "label": "Discussion",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasTrialStrengthsLimitationsScore",
               "id": null
             }
           ],
@@ -5356,16 +5364,16 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyDesignAndAnalysisMetrics",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -5404,21 +5412,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "16",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Is it stated whether or not\n\n(a) participants,\n\n(b) those administering the interventions, and\n\n(c) those assessing the outcomes were blinded? and\n\n(d) was the success of participant blinding evaluated?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasBlindingStatementsQualityScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) participant blinding is stated;\n\n(b) practitioner blinding is stated or correctly scored N/A;\n\n(c) outcome-assessor blinding is stated;\n\n(d) success of participant blinding is evaluated and reported.\n\nN = 4 when all 4 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-d):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 4 or 3 of 4 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(a) is N/A if the trial compared two active treatments rather than treatment vs. control.\n\n(b) is usually N/A - practitioners are almost never blinded in acupuncture research (OCSI General Instruction A.1.5).\n\n(d) is N/A under the same active-treatment-comparison condition as (a).",
               "id": null
             }
           ],
@@ -5428,9 +5430,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) participant blinding is stated;\n\n(b) practitioner blinding is stated or correctly scored N/A;\n\n(c) outcome-assessor blinding is stated;\n\n(d) success of participant blinding is evaluated and reported.\n\nN = 4 when all 4 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-d):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 4 or 3 of 4 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(a) is N/A if the trial compared two active treatments rather than treatment vs. control.\n\n(b) is usually N/A - practitioners are almost never blinded in acupuncture research (OCSI General Instruction A.1.5).\n\n(d) is N/A under the same active-treatment-comparison condition as (a).",
               "id": null
             }
           ],
@@ -5440,9 +5442,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "16",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasBlindingStatementsQualityScore",
               "id": null
             }
           ],
@@ -5478,21 +5486,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "11",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Are primary and (if applicable) secondary outcome measures clearly defined?\n\n(b) Are there statements (when applicable), regarding any methods used to enhance the quality of measurements, for example, multiple observers or training of assessors?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasOutcomesMeasureDefinitionsScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) primary and (if applicable) secondary outcome measures are clearly defined, including how they were measured;\n\n(b) methods used to enhance the quality of measurements are stated, when applicable (e.g., multiple observers, assessor training).\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -5502,9 +5504,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) primary and (if applicable) secondary outcome measures are clearly defined, including how they were measured;\n\n(b) methods used to enhance the quality of measurements are stated, when applicable (e.g., multiple observers, assessor training).\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -5514,9 +5516,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "11",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasOutcomesMeasureDefinitionsScore",
               "id": null
             }
           ],
@@ -5552,21 +5560,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "14",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Is the method presented that was used to implement the random allocation sequence,\n\n(b) with clarification as to whether the sequence was concealed until interventions were assigned?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasRandomAllocationConcealmentScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the method used to implement the random allocation sequence is presented;\n\n(b) it is clarified whether the sequence was concealed until interventions were assigned.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -5576,9 +5578,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) the method used to implement the random allocation sequence is presented;\n\n(b) it is clarified whether the sequence was concealed until interventions were assigned.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -5588,9 +5590,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "14",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasRandomAllocationConcealmentScore",
               "id": null
             }
           ],
@@ -5626,21 +5634,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "15",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Are there statements as to\n\n(a) who generated the allocation sequence,\n\n(b) who enrolled participants, and\n\n(c) who assigned participants to their groups?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasRandomAllocationPersonnelScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the person responsible for generating the randomization is named;\n\n(b) the person(s) responsible for enrolling (consenting) participants is named;\n\n(c) the person who assigned participants to their groups is named.\n\nN = 3 when all 3 are applicable.\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -5650,9 +5652,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) the person responsible for generating the randomization is named;\n\n(b) the person(s) responsible for enrolling (consenting) participants is named;\n\n(c) the person who assigned participants to their groups is named.\n\nN = 3 when all 3 are applicable.\n\nCombination rule (N = applicable sub-parts among a-c):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Any count strictly between 0 and N met -> Score 1 (Partial). This applies whether 1 of 3 or 2 of 3 sub-parts are met.\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -5662,9 +5664,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "15",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasRandomAllocationPersonnelScore",
               "id": null
             }
           ],
@@ -5700,21 +5708,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "13",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Is the method presented that was used to generate the random allocation sequence, and\n\n(b) if applicable, details of any restriction (e.g., blocking, stratification)?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasRandomAllocationSequencingScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the method used to generate the random allocation sequence is presented;\n\n(b) details of any randomization restriction (e.g., blocking, stratification) are given, if applicable.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is N/A if no randomization restrictions (e.g., blocking, stratification) were used (interpretive extension based on the 'if applicable' phrasing in Appendix A.2).",
               "id": null
             }
           ],
@@ -5724,9 +5726,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) the method used to generate the random allocation sequence is presented;\n\n(b) details of any randomization restriction (e.g., blocking, stratification) are given, if applicable.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is N/A if no randomization restrictions (e.g., blocking, stratification) were used (interpretive extension based on the 'if applicable' phrasing in Appendix A.2).",
               "id": null
             }
           ],
@@ -5736,9 +5738,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "13",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasRandomAllocationSequencingScore",
               "id": null
             }
           ],
@@ -5774,21 +5782,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "12",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Is there a statement regarding how the sample size was determined, and\n\n(b) if applicable, an explanation of any interim analyses and stopping rules?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasSampleSizeDeterminationScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) a statement is given on how the sample size was determined (estimated effect size and attrition rate, or an explicit rationale for omitting the calculation in a pilot study);\n\n(b) an explanation of any interim analyses and stopping rules is given, if applicable.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is plausibly N/A for shorter-duration trials, for which interim analyses and stopping rules may not apply (interpretive extension based on Appendix A.2's 'may not be applicable' phrasing; the source does not use the literal term N/A here).",
               "id": null
             }
           ],
@@ -5798,9 +5800,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) a statement is given on how the sample size was determined (estimated effect size and attrition rate, or an explicit rationale for omitting the calculation in a pilot study);\n\n(b) an explanation of any interim analyses and stopping rules is given, if applicable.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is plausibly N/A for shorter-duration trials, for which interim analyses and stopping rules may not apply (interpretive extension based on Appendix A.2's 'may not be applicable' phrasing; the source does not use the literal term N/A here).",
               "id": null
             }
           ],
@@ -5810,9 +5812,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "12",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasSampleSizeDeterminationScore",
               "id": null
             }
           ],
@@ -5848,21 +5856,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "17",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Were the statistical methods stated that were used to compare groups for primary outcomes?\n\n(b) Were the statistical methods stated that were used for additional analyses such as subgroup or adjusted analyses?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasStatisticalMethodsForOutcomesScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) the statistical methods used to compare groups for primary outcomes are stated;\n\n(b) the statistical methods used for any additional analyses (e.g., subgroup or adjusted analyses) are stated.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is N/A if no additional analyses (e.g., subgroup or adjusted analyses) were performed.",
               "id": null
             }
           ],
@@ -5872,9 +5874,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) the statistical methods used to compare groups for primary outcomes are stated;\n\n(b) the statistical methods used for any additional analyses (e.g., subgroup or adjusted analyses) are stated.\n\nN = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).\n\nSub-part N/A conditions:\n\n(b) is N/A if no additional analyses (e.g., subgroup or adjusted analyses) were performed.",
               "id": null
             }
           ],
@@ -5884,9 +5886,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "17",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasStatisticalMethodsForOutcomesScore",
               "id": null
             }
           ],
@@ -5928,16 +5936,16 @@
           "examples": [],
           "source": [],
           "citation": [],
-          "extra__dcterms_type": [
-            {
-              "label": "grouping",
-              "id": "tara-kb:grouping"
-            }
-          ],
           "extra__tara_ap_hasCompactURI": [
             {
               "label": "tara-kb:hasStudyRationaleAndScopeMetrics",
               "id": null
+            }
+          ],
+          "extra__dcterms_type": [
+            {
+              "label": "grouping",
+              "id": "tara-kb:grouping"
             }
           ],
           "aliases": [
@@ -5980,21 +5988,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "3",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Are the eligibility criteria (inclusion and exclusion criteria) stated and\n\n(b) are the setting(s) and location(s) where the data was collected described?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasParticipantsEligibilityAndStudySettingsScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) eligibility criteria (inclusion and exclusion criteria) are stated;\n\n(b) the setting(s) and location(s) where the data was collected are described.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -6004,9 +6006,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) eligibility criteria (inclusion and exclusion criteria) are stated;\n\n(b) the setting(s) and location(s) where the data was collected are described.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -6016,9 +6018,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "3",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasParticipantsEligibilityAndStudySettingsScore",
               "id": null
             }
           ],
@@ -6054,15 +6062,21 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "1",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Is there an explicit statement that patients were randomly assigned to interventions?",
               "id": null
             }
           ],
-          "extra__tara_ap_hasCompactURI": [
+          "extra__tara_kb_hasOCSIPerQuestionInstructions": [
             {
-              "label": "tara-kb:hasParticipantsRandomizationStatementScore",
+              "label": "It must state in the abstract or title that participants were allocated to interventions in a randomized manner, that is, random allocation, randomized, or randomly assigned.",
               "id": null
             }
           ],
@@ -6072,9 +6086,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIPerQuestionInstructions": [
+          "extra__tara_kb_hasOCSIScoreExtractionPrompt": [
             {
-              "label": "It must state in the abstract or title that participants were allocated to interventions in a randomized manner, that is, random allocation, randomized, or randomly assigned.",
+              "label": "{\n  \"item\": 1,\n  \"question\": \"Is there an explicit statement that patients were randomly assigned to interventions?\",\n  \"criteria\": {\n    \"yes\": \"the abstract or title explicitly states that participants were allocated to interventions in a randomized manner (e.g., 'random allocation', 'randomized', or 'randomly assigned').\",\n    \"partial\": \"the abstract or title implies randomization without using an explicit term of this kind.\",\n    \"no\": \"no statement or implication of randomization appears in the abstract or title.\"\n  }\n}",
               "id": null
             }
           ],
@@ -6088,15 +6102,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIScoreExtractionPrompt": [
+          "extra__tara_ap_hasCompactURI": [
             {
-              "label": "{\n  \"item\": 1,\n  \"question\": \"Is there an explicit statement that patients were randomly assigned to interventions?\",\n  \"criteria\": {\n    \"yes\": \"the abstract or title explicitly states that participants were allocated to interventions in a randomized manner (e.g., 'random allocation', 'randomized', or 'randomly assigned').\",\n    \"partial\": \"the abstract or title implies randomization without using an explicit term of this kind.\",\n    \"no\": \"no statement or implication of randomization appears in the abstract or title.\"\n  }\n}",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIItemNumber": [
-            {
-              "label": "1",
+              "label": "tara-kb:hasParticipantsRandomizationStatementScore",
               "id": null
             }
           ],
@@ -6132,21 +6140,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "2",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "(a) Is scientific background provided and\n\n(b) is the rationale explained?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasScientificBackgroundRationaleScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) scientific background is provided (previous research and current understanding of the disease);\n\n(b) the rationale is explained (justification for the trial and/or expected effects/benefits).\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -6156,9 +6158,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Introduction",
+              "label": "Applicable sub-parts:\n\n(a) scientific background is provided (previous research and current understanding of the disease);\n\n(b) the rationale is explained (justification for the trial and/or expected effects/benefits).\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -6168,9 +6170,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "2",
+              "label": "Introduction",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasScientificBackgroundRationaleScore",
               "id": null
             }
           ],
@@ -6206,21 +6214,15 @@
           "citation": [
             "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"
           ],
+          "extra__tara_kb_hasOCSIItemNumber": [
+            {
+              "label": "10",
+              "id": null
+            }
+          ],
           "extra__tara_kb_hasOCSIAssessmentQuestions": [
             {
               "label": "Are there statements of\n\n(a) specific objectives and\n\n(b) hypotheses to be tested?",
-              "id": null
-            }
-          ],
-          "extra__tara_ap_hasCompactURI": [
-            {
-              "label": "tara-kb:hasSpecificObjectivesHypothesesScore",
-              "id": null
-            }
-          ],
-          "extra__tara_kb_hasOCSIScoringRubric": [
-            {
-              "label": "Applicable sub-parts:\n\n(a) specific objectives are stated;\n\n(b) a hypothesis to be tested is stated.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -6230,9 +6232,9 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasTypicalArticleSection": [
+          "extra__tara_kb_hasOCSIScoringRubric": [
             {
-              "label": "Methods",
+              "label": "Applicable sub-parts:\n\n(a) specific objectives are stated;\n\n(b) a hypothesis to be tested is stated.\n\nN = 2 when all 2 are applicable.\n\nCombination rule (N = applicable sub-parts among a-b):\n\n- All N met -> Score 2 (Yes).\n\n- 0 of N met -> Score 0 (No).\n\n- Exactly 1 of N met -> Score 1 (Partial).\n\nOCSI's scale has no graduated partial; any mix short of full or zero collapses to the same Score 1.\n\n- If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011).",
               "id": null
             }
           ],
@@ -6242,9 +6244,15 @@
               "id": null
             }
           ],
-          "extra__tara_kb_hasOCSIItemNumber": [
+          "extra__tara_kb_hasTypicalArticleSection": [
             {
-              "label": "10",
+              "label": "Methods",
+              "id": null
+            }
+          ],
+          "extra__tara_ap_hasCompactURI": [
+            {
+              "label": "tara-kb:hasSpecificObjectivesHypothesesScore",
               "id": null
             }
           ],
@@ -6254,31 +6262,6 @@
               "p": "Alt Label"
             }
           ]
-        },
-        "tara-ap:hasCompactURI": {
-          "id": "tara-ap:hasCompactURI",
-          "kind": "annotationProperty",
-          "storeKey": "annotationProperties",
-          "label": "hasCompactURI",
-          "uri": "http://www.acupunctureresearch.org/tara/ontology/annotation-property/hasCompactURI",
-          "grouping": false,
-          "domain": null,
-          "domainLabel": null,
-          "range": {
-            "kind": null,
-            "id": null,
-            "label": null
-          },
-          "parent": null,
-          "children": [],
-          "synonyms": [],
-          "altLabel": null,
-          "description": null,
-          "comment": null,
-          "examples": [],
-          "source": [],
-          "citation": [],
-          "aliases": []
         },
         "tara-kb:hasGeneralArticleExtractionPrompt": {
           "id": "tara-kb:hasGeneralArticleExtractionPrompt",
@@ -6311,6 +6294,31 @@
               "p": "Alt Label"
             }
           ]
+        },
+        "tara-ap:hasCompactURI": {
+          "id": "tara-ap:hasCompactURI",
+          "kind": "annotationProperty",
+          "storeKey": "annotationProperties",
+          "label": "hasCompactURI",
+          "uri": "http://www.acupunctureresearch.org/tara/ontology/annotation-property/hasCompactURI",
+          "grouping": false,
+          "domain": null,
+          "domainLabel": null,
+          "range": {
+            "kind": null,
+            "id": null,
+            "label": null
+          },
+          "parent": null,
+          "children": [],
+          "synonyms": [],
+          "altLabel": null,
+          "description": null,
+          "comment": null,
+          "examples": [],
+          "source": [],
+          "citation": [],
+          "aliases": []
         },
         "tara-kb:hasGeneralStudyMetadataExtractionPrompt": {
           "id": "tara-kb:hasGeneralStudyMetadataExtractionPrompt",
@@ -6440,6 +6448,38 @@
             }
           ]
         },
+        "tara-kb:hasGeneralOCSIScoreExtractionPrompt": {
+          "id": "tara-kb:hasGeneralOCSIScoreExtractionPrompt",
+          "kind": "annotationProperty",
+          "storeKey": "annotationProperties",
+          "label": "General OCSI Score Extraction Prompt",
+          "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasGeneralOCSIScoreExtractionPrompt",
+          "grouping": false,
+          "domain": null,
+          "domainLabel": null,
+          "range": {
+            "kind": "literal",
+            "id": null,
+            "label": "rdf:JSON"
+          },
+          "parent": null,
+          "children": [],
+          "synonyms": [],
+          "altLabel": "General_OCSI_Score_Extraction_Prompt",
+          "description": "The single, article-independent LLM extraction prompt covering all 27 OCSI items at once. Asserted on hasOCSIItemScoringMetadata; the extraction pipeline combines this value with each item's hasOCSIScoreExtractionPrompt fragment and the article's full text to assemble one API call per article.\n\nTop-level JSON keys:\n\n- 'role' -- system framing (string).\n\n- 'task' -- what the model is given and asked to do (string).\n\n- 'output_schema' -- the required shape of each per-item result object, via 'item_fields' naming and typing item_number/score/rationale/supporting_quote.\n\n- 'global_scoring_rules' -- array of strings; rules that apply identically across all 27 items (e.g. the multi-part combination logic, the item-1 exception, and how to read a 'parts' vs 'criteria' fragment), so they are not repeated in every item fragment.\n\n- 'reviewer_framing' -- optional, mirroring section_guidance: the extraction script may merge 'persona' (an expert-reviewer framing sentence) into 'role', and/or append 'tie_breaker_heuristic' (OCSI General Instruction A.1.1's reviewer-satisfaction check, applied only as a secondary tie-breaker after the rubric's specific criteria) to 'global_scoring_rules', for A/B testing.\n\n- 'section_guidance' -- optional, for A/B testing: 'typical_sections' is a lookup table of item number to its conventional article section(s); 'instruction' tells the model to check there first before searching the full article.\n\n- 'response_format' -- the required shape of the overall response.\n\nDesigned to be sent once as the cached portion of each API call, with per-article full text appended as the non-cached remainder, so its token cost is paid once per pipeline run rather than once per article.",
+          "comment": null,
+          "examples": [
+            "{\n  \"role\": \"...\",\n  \"task\": \"...\",\n  \"output_schema\": {\n    \"type\": \"array\",\n    \"item_fields\": {\n      \"item_number\": \"integer 1-27\",\n      \"score\": \"0, 1, 2, or 'N/A'\",\n      \"rationale\": \"string, <=40 words\",\n      \"supporting_quote\": \"string or null\"\n    }\n  },\n  \"global_scoring_rules\": [\n    \"...\"\n  ],\n  \"reviewer_framing\": {\n    \"usage_note\": \"...\",\n    \"persona\": \"...\",\n    \"tie_breaker_heuristic\": \"...\"\n  },\n  \"section_guidance\": {\n    \"usage_note\": \"...\",\n    \"typical_sections\": {\n      \"1\": [\n        \"Abstract\"\n      ]\n    },\n    \"instruction\": \"...\"\n  },\n  \"response_format\": \"...\"\n}"
+          ],
+          "source": [],
+          "citation": [],
+          "aliases": [
+            {
+              "v": "General_OCSI_Score_Extraction_Prompt",
+              "p": "Alt Label"
+            }
+          ]
+        },
         "tara-kb:hasGeneralOCSIScoringRubrics": {
           "id": "tara-kb:hasGeneralOCSIScoringRubrics",
           "kind": "annotationProperty",
@@ -6500,34 +6540,34 @@
             }
           ]
         },
-        "tara-kb:hasGeneralOCSIScoreExtractionPrompt": {
-          "id": "tara-kb:hasGeneralOCSIScoreExtractionPrompt",
+        "tara-kb:hasOCSIItemNumber": {
+          "id": "tara-kb:hasOCSIItemNumber",
           "kind": "annotationProperty",
           "storeKey": "annotationProperties",
-          "label": "General OCSI Score Extraction Prompt",
-          "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasGeneralOCSIScoreExtractionPrompt",
+          "label": "OCSI Item Number",
+          "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSIItemNumber",
           "grouping": false,
           "domain": null,
           "domainLabel": null,
           "range": {
-            "kind": "literal",
-            "id": null,
-            "label": "rdf:JSON"
+            "kind": "datatype",
+            "id": "tara-kb:ocsiItemNumber",
+            "label": "Datatype: OCSI Item Number"
           },
           "parent": null,
           "children": [],
           "synonyms": [],
-          "altLabel": "General_OCSI_Score_Extraction_Prompt",
-          "description": "The single, article-independent LLM extraction prompt covering all 27 OCSI items at once. Asserted on hasOCSIItemScoringMetadata; the extraction pipeline combines this value with each item's hasOCSIScoreExtractionPrompt fragment and the article's full text to assemble one API call per article.\n\nTop-level JSON keys:\n\n- 'role' -- system framing (string).\n\n- 'task' -- what the model is given and asked to do (string).\n\n- 'output_schema' -- the required shape of each per-item result object, via 'item_fields' naming and typing item_number/score/rationale/supporting_quote.\n\n- 'global_scoring_rules' -- array of strings; rules that apply identically across all 27 items (e.g. the multi-part combination logic, the item-1 exception, and how to read a 'parts' vs 'criteria' fragment), so they are not repeated in every item fragment.\n\n- 'reviewer_framing' -- optional, mirroring section_guidance: the extraction script may merge 'persona' (an expert-reviewer framing sentence) into 'role', and/or append 'tie_breaker_heuristic' (OCSI General Instruction A.1.1's reviewer-satisfaction check, applied only as a secondary tie-breaker after the rubric's specific criteria) to 'global_scoring_rules', for A/B testing.\n\n- 'section_guidance' -- optional, for A/B testing: 'typical_sections' is a lookup table of item number to its conventional article section(s); 'instruction' tells the model to check there first before searching the full article.\n\n- 'response_format' -- the required shape of the overall response.\n\nDesigned to be sent once as the cached portion of each API call, with per-article full text appended as the non-cached remainder, so its token cost is paid once per pipeline run rather than once per article.",
+          "altLabel": "OCSI_Item_Number",
+          "description": "The standard OCSI item number (1-27) that this property scores.\n\nThe OCSI item numbers and questions (Table 1, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors.",
           "comment": null,
-          "examples": [
-            "{\n  \"role\": \"...\",\n  \"task\": \"...\",\n  \"output_schema\": {\n    \"type\": \"array\",\n    \"item_fields\": {\n      \"item_number\": \"integer 1-27\",\n      \"score\": \"0, 1, 2, or 'N/A'\",\n      \"rationale\": \"string, <=40 words\",\n      \"supporting_quote\": \"string or null\"\n    }\n  },\n  \"global_scoring_rules\": [\n    \"...\"\n  ],\n  \"reviewer_framing\": {\n    \"usage_note\": \"...\",\n    \"persona\": \"...\",\n    \"tie_breaker_heuristic\": \"...\"\n  },\n  \"section_guidance\": {\n    \"usage_note\": \"...\",\n    \"typical_sections\": {\n      \"1\": [\n        \"Abstract\"\n      ]\n    },\n    \"instruction\": \"...\"\n  },\n  \"response_format\": \"...\"\n}"
-          ],
+          "examples": [],
           "source": [],
-          "citation": [],
+          "citation": [
+            "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011;2011:183910. https://doi.org/10.1155/2011/183910"
+          ],
           "aliases": [
             {
-              "v": "General_OCSI_Score_Extraction_Prompt",
+              "v": "OCSI_Item_Number",
               "p": "Alt Label"
             }
           ]
@@ -6566,36 +6606,6 @@
             }
           ]
         },
-        "tara-kb:hasOCSIScoringRubric": {
-          "id": "tara-kb:hasOCSIScoringRubric",
-          "kind": "annotationProperty",
-          "storeKey": "annotationProperties",
-          "label": "OCSI Scoring Rubric",
-          "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSIScoringRubric",
-          "grouping": false,
-          "domain": null,
-          "domainLabel": null,
-          "range": {
-            "kind": null,
-            "id": null,
-            "label": null
-          },
-          "parent": null,
-          "children": [],
-          "synonyms": [],
-          "altLabel": "OCSI_Scoring_Rubric",
-          "description": "TARA-authored operational scoring criteria for this OCSI item, stating what a reviewer should observe in the article to award each score level (2/1/0/'N/A').\n\n- Derived from, but not verbatim reproduced from, the general scoring instructions (Appendix A.1) and per-question instructions (Appendix A.2) of Hammerschlag et al. 2011; unlike hasOCSIAssessmentQuestions and hasOCSIPerQuestionInstructions, this content is not source text under CC-BY and should not be attributed as reproduced.\n\n- Intended for direct human review and as the basis for JSON-structured LLM scoring prompts.",
-          "comment": null,
-          "examples": [],
-          "source": [],
-          "citation": [],
-          "aliases": [
-            {
-              "v": "OCSI_Scoring_Rubric",
-              "p": "Alt Label"
-            }
-          ]
-        },
         "tara-kb:hasOCSIPerQuestionInstructions": {
           "id": "tara-kb:hasOCSIPerQuestionInstructions",
           "kind": "annotationProperty",
@@ -6628,32 +6638,32 @@
             }
           ]
         },
-        "tara-kb:hasTypicalArticleSection": {
-          "id": "tara-kb:hasTypicalArticleSection",
+        "tara-kb:hasOCSIScoringRubric": {
+          "id": "tara-kb:hasOCSIScoringRubric",
           "kind": "annotationProperty",
           "storeKey": "annotationProperties",
-          "label": "Typical Article Section",
-          "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasTypicalArticleSection",
+          "label": "OCSI Scoring Rubric",
+          "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSIScoringRubric",
           "grouping": false,
           "domain": null,
           "domainLabel": null,
           "range": {
-            "kind": "datatype",
-            "id": "tara-kb:articleSectionType",
-            "label": "Datatype: Article Section"
+            "kind": null,
+            "id": null,
+            "label": null
           },
           "parent": null,
           "children": [],
           "synonyms": [],
-          "altLabel": "Typical_Article_Section",
-          "description": "The structural section of a published article (per Table 1, Hammerschlag et al. 2011) in which the information needed to answer this OCSI item is conventionally reported; e.g., Abstract, Introduction, Methods, Results, or Discussion. This documents where the information is typically found, not a strict extraction-location requirement: per OCSI's general scoring instructions, information located anywhere in the document may still receive full credit, with the sole exception of item 1, which must specifically appear in the Abstract or Title.",
+          "altLabel": "OCSI_Scoring_Rubric",
+          "description": "TARA-authored operational scoring criteria for this OCSI item, stating what a reviewer should observe in the article to award each score level (2/1/0/'N/A').\n\n- Derived from, but not verbatim reproduced from, the general scoring instructions (Appendix A.1) and per-question instructions (Appendix A.2) of Hammerschlag et al. 2011; unlike hasOCSIAssessmentQuestions and hasOCSIPerQuestionInstructions, this content is not source text under CC-BY and should not be attributed as reproduced.\n\n- Intended for direct human review and as the basis for JSON-structured LLM scoring prompts.",
           "comment": null,
           "examples": [],
           "source": [],
           "citation": [],
           "aliases": [
             {
-              "v": "Typical_Article_Section",
+              "v": "OCSI_Scoring_Rubric",
               "p": "Alt Label"
             }
           ]
@@ -6690,34 +6700,32 @@
             }
           ]
         },
-        "tara-kb:hasOCSIItemNumber": {
-          "id": "tara-kb:hasOCSIItemNumber",
+        "tara-kb:hasTypicalArticleSection": {
+          "id": "tara-kb:hasTypicalArticleSection",
           "kind": "annotationProperty",
           "storeKey": "annotationProperties",
-          "label": "OCSI Item Number",
-          "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSIItemNumber",
+          "label": "Typical Article Section",
+          "uri": "http://www.acupunctureresearch.org/tara/ontology/kb/hasTypicalArticleSection",
           "grouping": false,
           "domain": null,
           "domainLabel": null,
           "range": {
             "kind": "datatype",
-            "id": "tara-kb:ocsiItemNumber",
-            "label": "Datatype: OCSI Item Number"
+            "id": "tara-kb:articleSectionType",
+            "label": "Datatype: Article Section"
           },
           "parent": null,
           "children": [],
           "synonyms": [],
-          "altLabel": "OCSI_Item_Number",
-          "description": "The standard OCSI item number (1-27) that this property scores.\n\nThe OCSI item numbers and questions (Table 1, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors.",
+          "altLabel": "Typical_Article_Section",
+          "description": "The structural section of a published article (per Table 1, Hammerschlag et al. 2011) in which the information needed to answer this OCSI item is conventionally reported; e.g., Abstract, Introduction, Methods, Results, or Discussion. This documents where the information is typically found, not a strict extraction-location requirement: per OCSI's general scoring instructions, information located anywhere in the document may still receive full credit, with the sole exception of item 1, which must specifically appear in the Abstract or Title.",
           "comment": null,
           "examples": [],
           "source": [],
-          "citation": [
-            "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011;2011:183910. https://doi.org/10.1155/2011/183910"
-          ],
+          "citation": [],
           "aliases": [
             {
-              "v": "OCSI_Item_Number",
+              "v": "Typical_Article_Section",
               "p": "Alt Label"
             }
           ]
@@ -7673,13 +7681,16 @@
     row.dataset.id = id;
 
     const kids = (rec.children || []).filter(c => !(ctx.hidden && ctx.hidden.has(c)));
-    // A group whose children are all leaf meridian acupoints ("Bladder Meridian
+    // A group whose children are all meridian acupoints ("Bladder Meridian
     // Acupoint" -> BL 1 ... BL 67): order them alphanumerically so "BL 2" sits
     // before "BL 10" (the payload's plain string sort puts "BL 10" ... "BL 19"
-    // right after "BL 1"). Every other part of the tree keeps its order.
+    // right after "BL 1"). This also covers acupoints that carry a sex-specific
+    // sub-split (ST 17 -> "ST 17 (Female)"/"ST 17 (Male)"): the parent still has
+    // `acupointOfMeridian`, so it no longer has to be a leaf. Every other part
+    // of the tree keeps its order.
     if (kids.length > 1 && kids.every(c => {
       const k = store[c];
-      return k && (!k.children || !k.children.length) && (k.acupointOfMeridian || []).length;
+      return k && (k.acupointOfMeridian || []).length;
     })) {
       kids.sort((a, b) => naturalCompare(store[a].label, store[b].label));
     }
@@ -9116,7 +9127,18 @@
     content.appendChild(fieldLabel(label, predDisplay));
     const row = document.createElement('div');
     row.className = 'chip-row';
-    rec.children.forEach(cid => row.appendChild(chip(store[cid].label, () => selectNode(cid))));
+    // Same rule as the sidebar tree (buildNode): when every subclass is a
+    // meridian acupoint, list them alphanumerically ("ST 2" before "ST 10",
+    // and each sex-split parent before its "(Female)"/"(Male)" pair) rather
+    // than in the payload's plain string order.
+    let kids = rec.children;
+    if (kids.length > 1 && kids.every(cid => {
+      const k = store[cid];
+      return k && (k.acupointOfMeridian || []).length;
+    })) {
+      kids = kids.slice().sort((a, b) => naturalCompare(store[a].label, store[b].label));
+    }
+    kids.forEach(cid => row.appendChild(chip(store[cid].label, () => selectNode(cid))));
     content.appendChild(row);
     return true;
   }
@@ -10112,6 +10134,14 @@
   }
 
   function renderAutocomplete(query) {
+    // nothing shows on focus/click - only once the user has typed something
+    if (!query || !query.trim()) {
+      acItems = [];
+      acActiveIndex = -1;
+      autocompleteEl.innerHTML = '';
+      autocompleteEl.style.display = 'none';
+      return;
+    }
     acItems = searchMatches(query).slice(0, 60);
     acActiveIndex = -1;
     autocompleteEl.innerHTML = '';
@@ -10830,13 +10860,15 @@
   if (STYLE_TAB_IDS.length) updateStyleToggleBtn();
 
   // ---- initial view ----
-  // sidebar defaults to the first hierarchy tab (Summary has no tree of its own);
-  // the visible tab defaults to Summary when present, else that same first hierarchy tab
+  // the visible tab defaults to OntologyDocConfig.default_tab when it names a
+  // real tab, else Summary when present, else the first hierarchy tab. The
+  // sidebar shows that tab's tree (or the first hierarchy tab's, for Summary).
+  const wantTab = (DATA.defaultTab && DATA.tabs.some(t => t.id === DATA.defaultTab)) ? DATA.defaultTab : null;
   if (CATEGORY_TABS.length) {
-    activeCategory = CATEGORY_TABS[0].id;
+    activeCategory = (wantTab && wantTab !== 'summary') ? wantTab : CATEGORY_TABS[0].id;
     renderSidebarTree(activeCategory);
   }
-  activeTab = HAS_SUMMARY ? 'summary' : (CATEGORY_TABS[0] && CATEGORY_TABS[0].id);
+  activeTab = wantTab || (HAS_SUMMARY ? 'summary' : (CATEGORY_TABS[0] && CATEGORY_TABS[0].id));
   markActiveTabButton();
   if (activeTab === 'summary') {
     renderSummary();
