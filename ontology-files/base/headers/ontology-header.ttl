@@ -1,0 +1,25 @@
+# TARA Acupoints Ontology - distribution header front matter.
+# Spliced into every published acupoints variant by
+# ontology-generator/script/ontology-generation/update_ontology_headers.py.
+# Do NOT add owl:versionInfo / owl:versionIRI / owl:priorVersion / dcterms:issued
+# here - those are generated. See ./README.md.
+
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://purl.org/tara/ontology/acupoints.owl> a owl:Ontology ;
+    dc:title "TARA Acupoints Ontology"@en ;
+    dcterms:description """The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH). The goal of TARA is to establish a new comprehensive resource for the acupuncture research and clinician community. The ontology will be used to support semantic search and annotations for clinical trial studies, anatomical maps, atlases, and datasets relevant to the TARA project.
+- About TARA Research Project: https://www.acupunctureresearch.org/tara
+- TARA Ontology GitHub Repository: https://purl.org/tara/ontology/repo
+- TARA Ontology Files & Updates: https://purl.org/tara/ontology/updates"""@en ;
+    dc:creator "Fahim T. Imam, PhD - https://orcid.org/0000-0003-4752-543X" ;
+    dc:contributor "Fahim T. Imam, PhD - https://orcid.org/0000-0003-4752-543X" ,
+                   "Ilias Ziogas, PhD - https://orcid.org/0000-0002-9210-2455" ,
+                   "Maryann E. Martone, PhD - https://orcid.org/0000-0002-8406-3871" ,
+                   "Richard Harris, PhD - https://orcid.org/0000-0002-2067-8447" ;
+    dc:source "Main Source: WHO Standard Acupuncture Point Locations in the Western Pacific Region. World Health Organization (WHO), WHO Regional Office for the Western Pacific, 2008. https://iris.who.int/handle/10665/353407"@en ,
+              "Supplementary Source: Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. ISBN 978-7-119-01758-7."@en ;
+    dcterms:license "https://creativecommons.org/licenses/by-nc-nd/4.0/" .

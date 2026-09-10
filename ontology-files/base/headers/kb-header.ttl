@@ -1,0 +1,32 @@
+# TARA Articles Knowledge Base - distribution header front matter.
+# Spliced into every published Articles-KB variant by
+# ontology-generator/script/kb-generation/update_kb_headers.py.
+# Do NOT add owl:versionInfo / owl:versionIRI / owl:priorVersion / dcterms:issued
+# here - those are generated. See ./README.md.
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://purl.org/tara/ontology/kb/articles-kb.ttl> rdf:type owl:Ontology ;
+                                                    dc:creator "Fahim T. Imam, PhD - https://orcid.org/0000-0003-4752-543X" ;
+                                                    dc:date "August 30, 2026" ;
+                                                    dc:title "TARA Articles Knowledge Base"@en ;
+                                                    dcterms:description """This ontology includes TARA Clinical Trials Knowledgebase - a structured metadata knowledgebase for acupuncture clinical trial studies developed as part of the TARA Acupoints Research project, encompassing randomized controlled trials, meta-analyses, and systematic reviews of clinical trials. The knowledgebase is derived from metadata extracted from full-text journal publications and is intended to support systematic retrieval, comparison, and quality assessment of acupuncture research studies.
+
+Metadata for each publication instance is captured through a standard set of annotation properties organized into three categories:
+- Bibliographic Metadata: article title, authorship, source, and publication identifiers
+- Study Metadata: intervention design, participant characteristics, sample size, outcome measures, and study outcomes
+- OCSI Score Assessment Metadata: compliance with OCSI criteria for evaluating the completeness and quality of acupuncture trial reporting"""@en ;
+																										
+													dc:contributor "Fahim T. Imam, PhD - https://orcid.org/0000-0003-4752-543X" ,
+																	"Ilias Ziogas, PhD - https://orcid.org/0000-0002-9210-2455" ,
+																	"Maryann E. Martone, PhD - https://orcid.org/0000-0002-8406-3871" ,
+																	"Richard Harris, PhD - https://orcid.org/0000-0002-2067-8447" ;
+							                        dcterms:license "https://creativecommons.org/licenses/by-nc-sa/4.0/" .
+																										
+																																						

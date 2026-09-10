@@ -19,15 +19,14 @@
                                                                                  "Maryann E. Martone, PhD - https://orcid.org/0000-0002-8406-3871" ,
                                                                                  "Richard Harris, PhD - https://orcid.org/0000-0002-2067-8447" ;
                                                                   dc:creator "Fahim T. Imam, PhD - https://orcid.org/0000-0003-4752-543X" ;
-                                                                  dc:description """The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH). The goal of TARA is to establish a new comprehensive resource for the acupuncture research and clinician community. The ontology will be used to support semantic search and annotations for anatomical maps, atlases, and data sets relevant to the TARA project.
-- About TARA Project: https://www.acupunctureresearch.org/tara
-- TARA Ontology GitHub Repo: https://purl.org/tara/ontology/repo
-- TARA Ontology Updates: https://purl.org/tara/ontology/updates
-- TARA Ontology Files: https://purl.org/tara/ontology"""@en ;
-                                                                  dc:source "Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. ISBN 978-7-119-01758-7."@en ,
-                                                                            "WHO Standard Acupuncture Point Locations in the Western Pacific Region. World Health Organization (WHO), WHO Regional Office for the Western Pacific, 2008. Page 26. https://iris.who.int/handle/10665/353407"@en ;
+                                                                  dc:description """The TARA Acupoints Ontology is an ontology developed as part of the Topological Atlas and Repository for Acupoint Research (TARA) project funded by the National Institute of Health (NIH). The goal of TARA is to establish a new comprehensive resource for the acupuncture research and clinician community. The ontology will be used to support semantic search and annotations for clinical trial studies, anatomical maps, atlases, and datasets relevant to the TARA project.
+- About TARA Research Project: https://www.acupunctureresearch.org/tara
+- TARA Ontology GitHub Repository: https://purl.org/tara/ontology/repo
+- TARA Ontology Files & Updates: https://purl.org/tara/ontology/updates"""@en ;
+                                                                  dc:source "Main Source: WHO Standard Acupuncture Point Locations in the Western Pacific Region. World Health Organization (WHO), WHO Regional Office for the Western Pacific, 2008. Page 26. https://iris.who.int/handle/10665/353407"@en ,
+                                                                            "Supplementary Source: Chinese Acupuncture and Moxibustion. Edited by C. Xinnong, Rev. Ed., Foreign Languages Press, Beijing, China, 1999. ISBN 978-7-119-01758-7."@en ;
                                                                   dc:title "TARA Acupoints Ontology"@en ;
-                                                                  owl:versionInfo "1.7.0" .
+                                                                  owl:versionInfo "1.7.2" .
 
 #################################################################
 #    Annotation properties
@@ -558,6 +557,7 @@ obo:RO_0002170 rdf:type owl:ObjectProperty ;
 <http://www.acupunctureresearch.org/tara/ontology/kb/hasMeridianObjectProperty> rdf:type owl:ObjectProperty ;
                                                                                 rdfs:subPropertyOf tara-op:topTARAObjectProperty ;
                                                                                 rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/Meridian> ;
+                                                                                obo:IAO_0000112 "This grouping property is never meant to be used for direct assertion of axioms. Direct axioms must be asserted through its specific, leaf-level subproperties." ;
                                                                                 dcterms:description "An object property grouping all meridian-specific object properties in TARA Acupoints Ontology. Therefore, the domain for this property is 'Acupuncture Meridian' which is inherited by all its subproperties." .
 
 
@@ -570,6 +570,7 @@ tara-op:bfoObjectProperty rdf:type owl:ObjectProperty ;
 tara-op:hasAcupointObjectProperty rdf:type owl:ObjectProperty ;
                                   rdfs:subPropertyOf tara-op:topTARAObjectProperty ;
                                   rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/Acupoint> ;
+                                  obo:IAO_0000112 "This grouping property is never meant to be used for direct assertion of axioms. Direct axioms must be asserted through its specific, leaf-level subproperties." ;
                                   dcterms:description "An object property grouping all acupoint-specific object properties in TARA Acupoints Ontology. Therefore, the domain for this property is 'Acupuncture Point' which is inherited by all its subproperties." ;
                                   dcterms:isReferencedBy tara-ap:hasAcupointAnnotationProperty .
 
@@ -578,7 +579,8 @@ tara-op:hasAcupointObjectProperty rdf:type owl:ObjectProperty ;
 tara-op:hasAssociatedOrgan rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf <http://www.acupunctureresearch.org/tara/ontology/kb/hasMeridianObjectProperty> ;
                            rdfs:range obo:UBERON_0001062 ;
-                           obo:IAO_0000112 "'Lung Meridian' tara-op:hasAssociatedOrgan some 'Lung'."@en ;
+                           obo:IAO_0000112 """Note: Organ affiliation of a meridian is a doctrinal/functional association defined by TCM theory rather than a spatial or mereological relationship.
+- 'Lung Meridian' tara-op:hasAssociatedOrgan some 'Lung'."""@en ;
                            obo:IAO_0000115 "A Meridian x hasAssociatedOrgan an organ y if and only if traditional Chinese medicine theory designates y as the organ system with which x is affiliated."@en ;
                            obo:IAO_0000116 "Not declared as a subproperty of any RO relation, because the organ affiliation of a meridian is a doctrinal/functional association defined by TCM theory rather than a spatial or mereological relationship; located_in, overlaps, and part_of do not accurately describe it, so the property is left ungrounded at the top of the object-property hierarchy. - Fahim Imam"@en ;
                            dcterms:description "An object property that relates a meridian to the organ it is associated with according to traditional Chinese medicine theory. Used to express the organ affiliation of a meridian as an OWL axiom."@en ;
@@ -589,7 +591,16 @@ tara-op:hasAssociatedOrgan rdf:type owl:ObjectProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasGeneralSurfaceLocation
 tara-op:hasGeneralSurfaceLocation rdf:type owl:ObjectProperty ;
                                   rdfs:subPropertyOf tara-op:hasRelatedSurfaceAnatomy ;
-                                  obo:IAO_0000112 "'LU 1' tara-op:hasGeneralSurfaceLocation some 'Anterior Thoracic Region'."@en ;
+                                  obo:IAO_0000112 """The acupoint 'LU 1' has the following locational description:
+- \"On the anterior thoracic region, at the same level as the first intercostal space, lateral to the infraclavicular fossa, 6 B-cun lateral to the anterior median line.\"
+
+Based on the description above, 'LU 1' has three specific reference locations within the general surface of 'Anterior Thoracic Region'. So, we can assert the following axiom for the general location:
+- 'LU 1' tara-op:hasGeneralSurfaceLocation some ( 'part of' some 'Anterior Thoracic Region') .
+
+After assering the general location, we can assert the axioms for its specific reference locations using this property's subproperty, hasSpecificReferenceLocation:
+- 'LU 1' tara-op:hasSpecificReferenceLocation some ( 'part of' some 'First Intercostal Space').
+- 'LU 1' tara-op:hasSpecificReferenceLocation some ( 'part of' some 'Infraclavicular Fossa').
+- 'LU 1' tara-op:hasSpecificReferenceLocation some ( 'part of ' some 'Anterior Median Line')."""@en ;
                                   obo:IAO_0000115 "An Acupoint x hasGeneralSurfaceLocation a region y if and only if x hasRelatedSurfaceAnatomy y, and y is the coarse-grained body region within which x is situated."@en ;
                                   obo:IAO_0000116 "Inherits its subproperty-of relation to RO:0001025 (located_in) from its parent property hasRelatedSurfaceAnatomy; rdfs:subPropertyOf is transitive, so no separate RO assertion is required here. - Fahim Imam"@en ;
                                   dcterms:description "An object property that relates an acupoint to the general body region on whose surface it is located. It provides a coarse-grained anatomical grouping for the acupoint and is used together with hasSpecificReferenceLocation, which further specifies particular anatomical landmarks within this general region."@en ;
@@ -603,8 +614,12 @@ tara-op:hasGeneralSurfaceLocation rdf:type owl:ObjectProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasRelatedArtery
 tara-op:hasRelatedArtery rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf tara-op:hasRelatedVasculature ;
-                         obo:IAO_0000112 """'LU 1' tara-op:hasRelatedArtery some 'Axillary Artery'; 
-'LU 1' tara-op:hasRelatedArtery some 'Thoracoacromial Artery'."""@en ;
+                         obo:IAO_0000112 """The acupoint 'LU 1' has the following vasculature information:
+- \"Superolaterally, the axillary artery and vein, the thoracoacromial artery and vein.\"
+
+Based on the information above, we can assert the following axioms:
+- 'LU 1' tara-op:hasRelatedArtery some 'axillary artery'.
+- 'LU 1' tara-op:hasRelatedArtery some 'thoraco-acromial artery'."""@en ;
                          obo:IAO_0000115 "An acupoint x hasRelatedArtery y if and only if x hasRelatedVasculature y and y is an artery."@en ;
                          obo:IAO_0000116 "Inherits its subproperty-of relation to RO:0002131 (overlaps) from its ancestor properties hasRelatedVasculature and hasRelatedSubSurfaceAnatomy; rdfs:subPropertyOf is transitive, so no separate RO assertion is required here. - Fahim Imam"@en ;
                          dcterms:description "An object property that associates an acupoint to a specific related artery occupying its location."@en ;
@@ -617,11 +632,11 @@ tara-op:hasRelatedArtery rdf:type owl:ObjectProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasRelatedInnervation
 tara-op:hasRelatedInnervation rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf tara-op:hasRelatedSubSurfaceAnatomy ;
-                              obo:IAO_0000112 """This property is not used for asserting direct logical axioms. It can be used to define innervation details based on its subproperty, hasRelatedNerve, where the nerve asserted is the axon location of a neuron population in SCKAN connectivity knowledgebase.
+                              obo:IAO_0000112 """This property is not being currently used for asserting direct logical axioms. It will be used to define innervation details based on its subproperty, hasRelatedNerve, where the nerve asserted is the axon location of a neuron population in SCKAN connectivity knowledgebase.
 - SuperPropertyOf: hasRelatedNerve o isAxonLocationOf""" ;
                               obo:IAO_0000115 "An acupoint x hasRelatedInnervation a neuron population y if and only if x hasRelatedNerve a nerve z and y hasAxonLocation z."@en ;
                               obo:IAO_0000116 "Inherits its subproperty-of relation to RO:0002131 (overlaps) from its parent property hasRelatedSubSurfaceAnatomy; rdfs:subPropertyOf is transitive, so no separate RO assertion is required here. - Fahim Imam"@en ,
-                                              """This property is not used for asserting direct logical axioms. It can be used to define an acupoint's innervation details based on its subproperty connecting with SCKAN connectivity ontology. 
+                                              """This property is not currently used for asserting direct logical axioms. It will be used to define an acupoint's innervation details based on its subproperty's value (hasRelatedNerve) that maps to SCKAN connectivity ontology based on the following rule:
 - If acupoint-x tara-op:hasRelatedNerve some nerve-y; and
 - neuron-x ilxtr:hasAxonLocation some nerve-y; and
 - neuron-x ilxtr:hasSomaLocation some region-a; and
@@ -638,7 +653,15 @@ tara-op:hasRelatedInnervation rdf:type owl:ObjectProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasRelatedNerve
 tara-op:hasRelatedNerve rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf tara-op:hasRelatedInnervation ;
-                        obo:IAO_0000112 "'LU 1' tara-op:hasRelatedNerve some 'Intermediate Supraclavicular Nerve'"@en ;
+                        obo:IAO_0000112 """The acupoint 'LU 1' has the following innervation information: 
+- \"The intermediate supraclavicular nerve, the branches of the anterior thoracic nerve, and the lateral cutaneous branch of the first intercostal nerve.\"
+
+Based on the information above, we can assert the following axioms:
+- 'LU 1' tara-op:hasRelatedNerve some 'Intermediate Supraclavicular Nerve'.
+- 'LU 1' tara-op:hasRelatedNerve some 'medial pectoral nerve'.
+- 'LU 1' tara-op:hasRelatedNerve some 'First intercostal nerve'.
+
+Note: The medial pectoral nerve (also known as the medial anterior thoracic nerve) is (typically) a branch of the medial cord of the brachial plexus and is derived from ventral rami  C8-T1."""@en ;
                         obo:IAO_0000115 """An acupoint x hasRelatedNerve a nerve y if and only if x hasRelatedSubsurfaceAnatomy y.
 
 An acupoint x hasRelatedNerve a nerve y if and only if x hasRelatedInnervation a neuron population z and z hasAxonLocation y."""@en ;
@@ -664,6 +687,7 @@ tara-op:hasRelatedSubSurfaceAnatomy rdf:type owl:ObjectProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasRelatedSurfaceAnatomy
 tara-op:hasRelatedSurfaceAnatomy rdf:type owl:ObjectProperty ;
                                  rdfs:subPropertyOf tara-op:hasTopographicalAnatomy ;
+                                 obo:IAO_0000112 "This grouping property is never meant to be used for direct assertion of axioms. Direct axioms must be asserted through its specific, leaf-level subproperties." ;
                                  obo:IAO_0000115 "An acupoint x hasRelatedSurfaceAnatomy an anatomical entity y if and only if x is located_in y, where y is a surface-level anatomical region, landmark, fossa, or line used to describe the position of x on the body surface."@en ;
                                  obo:IAO_0000116 "Declared as a subproperty of RO:0001025 (located_in) rather than RO:0002131 (overlaps), because the anatomical entities used to describe surface location (e.g., regions, fossae, lines) span a mix of material and immaterial UBERON classes; located_in does not require the related entities to share a common part, so it remains valid across this mixed range, unlike overlaps. - Fahim Imam"@en ;
                                  dcterms:description "An object property that relates an acupoint to an anatomical region, fossa, line, or other surface landmark in the vicinity of its location on the body surface."@en ;
@@ -676,6 +700,16 @@ tara-op:hasRelatedSurfaceAnatomy rdf:type owl:ObjectProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasRelatedVasculature
 tara-op:hasRelatedVasculature rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf tara-op:hasRelatedSubSurfaceAnatomy ;
+                              obo:IAO_0000112 """This grouping property is never meant to be used for direct assertion of axioms. Direct axioms must be asserted through its specific, leaf-level subproperties.
+
+The acupoint 'LU 1' has the following vasculature information:
+- \"Superolaterally, the axillary artery and vein, the thoracoacromial artery and vein.\"
+
+Based on the information above, we can use the following subproperties to assert:
+- 'LU 1' tara-ap:hasRelatedArtery some 'axillary artery'.
+- 'LU 1' tara-ap:hasRelatedArtery some 'thoraco-acromial artery'.
+- 'LU 1' tara-ap:hasRelatedVein some 'axillary vein'.
+- 'LU 1' tara-ap:hasRelatedVein some 'thoracoacromial vein'.""" ;
                               obo:IAO_0000115 "An acupoint x hasRelatedVasculature a vessel y if and only if x hasRelatedSubSurfaceAnatomy y."@en ;
                               obo:IAO_0000116 "Inherits its subproperty-of relation to RO:0002131 (overlaps) from its parent property hasRelatedSubSurfaceAnatomy; rdfs:subPropertyOf is transitive, so no separate RO assertion is required here. - Fahim Imam"@en ;
                               dcterms:description "An object property that relates an acupoint to a blood vessel in the vicinity of its penetrated region, relevant to safe needling."@en ;
@@ -688,8 +722,12 @@ tara-op:hasRelatedVasculature rdf:type owl:ObjectProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasRelatedVein
 tara-op:hasRelatedVein rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf tara-op:hasRelatedVasculature ;
-                       obo:IAO_0000112 """'LU 1' tara-op:hasRelatedVein some 'Axillary Vein'; 
-'LU 1' tara-op:hasRelatedVein some 'Thoracoacromial Vein'."""@en ;
+                       obo:IAO_0000112 """The acupoint 'LU 1' has the following vasculature information:
+- \"Superolaterally, the axillary artery and vein, the thoracoacromial artery and vein.\"
+
+Based on the information above, we can assert the following axioms:
+- 'LU 1' tara-op:hasRelatedVein some 'axillary vein'.
+- 'LU 1' tara-op:hasRelatedVein some 'thoracoacromial vein'."""@en ;
                        obo:IAO_0000115 "An acupoint x hasRelatedVein y if and only if x hasRelatedVasculature y and y is a vein."@en ;
                        obo:IAO_0000116 "Inherits its subproperty-of relation to RO:0002131 (overlaps) from its ancestor properties hasRelatedVasculature and hasRelatedSubSurfaceAnatomy; rdfs:subPropertyOf is transitive, so no separate RO assertion is required here. - Fahim Imam"@en ;
                        dcterms:description "An object property that associates an acupoint to a specific related vein occupying its location."@en ;
@@ -714,9 +752,16 @@ tara-op:hasSpecialPointRole rdf:type owl:ObjectProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/hasSpecificReferenceLocation
 tara-op:hasSpecificReferenceLocation rdf:type owl:ObjectProperty ;
                                      rdfs:subPropertyOf tara-op:hasGeneralSurfaceLocation ;
-                                     obo:IAO_0000112 """The acupoint 'LU 1' has three specific reference locations within the general surface of 'Anterior Thoracic Region':
-'LU 1' tara-op:hasSpecificReferenceLocation some 'First Intercostal Space'; 'LU 1' tara-op:hasSpecificReferenceLocation some 'Infraclavicular Fossa';
-'LU 1' tara-op:hasSpecificReferenceLocation some 'Anterior Median Line'."""@en ;
+                                     obo:IAO_0000112 """The acupoint 'LU 1' has the following locational description:
+- \"On the anterior thoracic region, at the same level as the first intercostal space, lateral to the infraclavicular fossa, 6 B-cun lateral to the anterior median line.\"
+
+Based on the description above, 'LU 1' has three specific reference locations within the general surface of 'Anterior Thoracic Region'. So, for the general location, we can assert the following axiom using this property's superproperty, hasGeneralSurfaceLocation:
+- 'LU 1' tara-op:hasGeneralSurfaceLocation some ( 'part of' some 'Anterior Thoracic Region'.
+
+After asserting the axiom for the general location, we can use this property to assert the axioms for the specific reference locations:
+- 'LU 1' tara-op:hasSpecificReferenceLocation some ( 'part of' some 'First Intercostal Space').
+- 'LU 1' tara-op:hasSpecificReferenceLocation some ( 'part of' some 'Infraclavicular Fossa').
+- 'LU 1' tara-op:hasSpecificReferenceLocation some ( 'part of ' some 'Anterior Median Line')."""@en ;
                                      obo:IAO_0000115 "An acupoint x hasSpecificReferenceLocation a landmark y if and only if x hasGeneralSurfaceLocation y, and y is a specific anatomical landmark, fossa, or line used to further localize x within its general surface region."@en ;
                                      obo:IAO_0000116 "Inherits its subproperty-of relation to RO:0001025 (located_in) from its parent property hasRelatedSurfaceAnatomy; rdfs:subPropertyOf is transitive, so no separate RO assertion is required here. - Fahim Imam"@en ;
                                      dcterms:description "An object property that relates an acupoint to one or more specific anatomical landmarks within the general body region identified by hasGeneralSurfaceLocation, providing a finer-grained localization of the acupoint."@en ;
@@ -731,6 +776,7 @@ tara-op:hasSpecificReferenceLocation rdf:type owl:ObjectProperty ;
 tara-op:hasTopographicalAnatomy rdf:type owl:ObjectProperty ;
                                 rdfs:subPropertyOf tara-op:hasAcupointObjectProperty ;
                                 rdfs:range obo:UBERON_0001062 ;
+                                obo:IAO_0000112 "This grouping property is never meant to be used for direct assertion of axioms. Direct axioms must be asserted through its specific, leaf-level subproperties." ;
                                 obo:IAO_0000115 "A grouping relation between an acupoint and any anatomical entity related to its surface or subsurface topography, holding whenever a more specific subproperty of hasTopographicalAnatomy holds between the same two entities."@en ;
                                 obo:IAO_0000116 "Declared as a direct subproperty of tara-op:topObjectProperty rather than of any RO relation, because it is used purely to organize the Acupoint-specific property hierarchy for browsing and querying and does not itself assert overlap, location, or any other specific spatial relationship; that logical content is carried entirely by its subproperties. - Fahim Imam"@en ;
                                 dcterms:description "An object property that groups all relations between an acupoint and the surface and subsurface anatomical entities associated with its location and needling, including surface regions, landmarks, nerves, arteries, and veins. It is the root organizational property for an acupoint's specific topographical property and carries no independent logical commitment of its own."@en ;
@@ -769,6 +815,7 @@ tara-op:roObjectProperty rdf:type owl:ObjectProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/object-property/topTARAObjectProperty
 tara-op:topTARAObjectProperty rdf:type owl:ObjectProperty ;
+                              obo:IAO_0000112 "This grouping property is never meant to be used for direct assertion of axioms. Direct axioms must be asserted through its specific, leaf-level subproperties." ;
                               dcterms:description "A grouping relation that functions purely as an organizational root for browsing/querying the TARA-specific object property tree, and asserts no independent semantic commitment that a reasoner needs to satisfy."@en ;
                               rdfs:label "tara-op:topObjectProperty" .
 

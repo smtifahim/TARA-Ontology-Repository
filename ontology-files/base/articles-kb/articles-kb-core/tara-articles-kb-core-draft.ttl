@@ -16,7 +16,10 @@
 <http://www.acupunctureresearch.org/tara/ontology/kb/articles-metadata.owl> rdf:type owl:Ontology ;
                                                                              dc:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                              dc:date "August 30, 2026" ;
-                                                                             dc:description """This ontology includes the metadata schema and LLM extraction prompts for the TARA Articles Knowledgebase (TARA-KB), a structured, queryable repository of metadata extracted from full-text acupuncture clinical trial publications. This ontology includes:
+                                                                             dc:description "This ontology includes the metadata schema and LLM extraction prompts for the TARA Articles Knowledgebase (TARA-KB), a structured, queryable repository of metadata extracted from full-text acupuncture clinical trial publications."@en ;
+                                                                             dc:title "TARA Standard Articles Metadata Core" ;
+                                                                             dcterms:license "https://creativecommons.org/licenses/by-nc-sa/4.0/"@en ;
+                                                                             rdfs:comment """This ontology contains TARA Standard Articles Metadata Core which includes:
 
 - Three core classes: Acupuncture Research Study (the trial itself), Acupuncture Study Publication (the reporting article), and Acupuncture Study OCSI Assessment (its structured reporting-quality assessment).
 
@@ -27,8 +30,6 @@
 - A general and a per-field/per-item LLM extraction prompt (JSON) attached directly to the relevant annotation property for every extractable field, so extraction pipelines and spreadsheet templates can be generated automatically from skos:altLabel without hand-maintained mappings.
 
 - Restricted datatypes (e.g., ocsiItemScore, articleSectionType, ocsiItemNumber) enforcing valid value ranges for scored and categorical fields."""@en ;
-                                                                             dc:title "TARA Standard Articles Metadata Core" ;
-                                                                             dcterms:license "https://creativecommons.org/licenses/by-nc-sa/4.0/"@en ;
                                                                              owl:versionInfo "1.0.0"@en .
 
 #################################################################
@@ -195,7 +196,6 @@ tara-ap:skosAnntotationProperty rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupointGrouping
 tara-kb:hasAcupointGrouping rdf:type owl:AnnotationProperty ;
                             obo:IAO_0000112 "\"Three pairs of acupuncture points on the right side: LI 4 and PC 6, ST 36 and SP 9, LR 3 and SP 6; PC 6 was located approximately 1 cm radial to the traditional point.\"" ;
-                            dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                             dcterms:description "An annotation property to capture acupoint grouping information, the structural combination, pairing, or categorization of multiple selected acupuncture points, including primary and secondary points, designed to work synergistically within a clinical trial treatment prescription." ;
                             tara-ap:hasCompactURI "tara-kb:hasAcupointGrouping" ;
                             rdfs:comment "Acupoint grouping is about organizing multiple points into a single treatment protocol, often divided into primary (core) points for the main condition and secondary (adjuvant) points for specific symptoms." ;
@@ -210,7 +210,6 @@ tara-kb:hasAcupointGrouping rdf:type owl:AnnotationProperty ;
 tara-kb:hasAcupointSelection rdf:type owl:AnnotationProperty ;
                              obo:IAO_0000112 "\"Combination of scalp, body, and auricular acupuncture specific to the affected areas of the child and inclusive of both sides of the body.\"" ,
                                              "\"Trigger points in the gluteals isolated by palpation ensuring reproduction of symptoms, mostly in the region of the upper outer buttock quadrant, 3 to 5 points per subject.\"" ;
-                             dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                              dcterms:description "An annotation property to capture specific choice of body sites (anatomical locations) targeted for acupuncture needle insertion within a clinical trial protocol." ;
                              tara-ap:hasCompactURI "tara-kb:hasAcupointSelection" ;
                              rdfs:comment "Acupoint selection is about deciding which exact body locations to target during an intervention, guided by traditional systems (like meridians and specific point attributes) or modern anatomical maps (like local trigger points or nerve distributions). Researchers standardize this to test if a specific set of points delivers reproducible health outcomes." ;
@@ -224,7 +223,6 @@ tara-kb:hasAcupointSelection rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupointSelectionAndGrouping
 tara-kb:hasAcupointSelectionAndGrouping rdf:type owl:AnnotationProperty ;
                                         obo:IAO_0000112 "\"Point selection and grouping: Verum points selected from a prescribed list (part standardisation) consisting of obligatory points and additional points individually chosen based on TCM diagnosis for syndromes, acupuncture channels related to the individual headache area, and Ah Shi points; needling was bilateral.\"" ;
-                                        dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                         dcterms:description "A dual-purpose annotation property that serves as a super-property grouping 'Acupoint Selection' and 'Acupoint Grouping', while simultaneously acting as a direct container for a combined free-text statement about Acupoints Seclection and Grouping." ;
                                         tara-ap:hasCompactURI "tara-kb:hasAcupointSelectionAndGrouping" ;
                                         rdfs:comment "In clinical trials evaluating acupuncture, acupoint selection is the specific choice of body sites (the points) where needles are inserted based on traditional theory or modern neuroscience. Acupoint grouping (or combination) refers to how these points are paired together in a treatment prescription to work synergistically for a medical condition." ;
@@ -238,7 +236,6 @@ tara-kb:hasAcupointSelectionAndGrouping rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupunctureCointerventionsScore
 tara-kb:hasAcupunctureCointerventionsScore rdf:type owl:AnnotationProperty ;
                                            dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                            dcterms:description """The reporting quality score evaluating whether extra pharmaceutical drugs or parallel therapies are tracked or declared along with the intervention.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                            tara-ap:hasCompactURI "tara-kb:hasAcupunctureCointerventionsScore" ;
@@ -264,7 +261,7 @@ tara-kb:hasAcupunctureCointerventionsScore rdf:type owl:AnnotationProperty ;
 - N/A if no adjunctive treatment was provided to the acupuncture group."""@en ;
                                            tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                            rdfs:label "(7) Acupuncture Group Cointervention(s)" ;
-                                           skos:altLabel "7_Acupuncture_Group_Cointerventions" ;
+                                           skos:altLabel "7_Group_Cointerventions" ;
                                            rdfs:subPropertyOf tara-kb:hasAcupunctureInterventionMetrics ;
                                            rdfs:range tara-kb:ocsiItemScore ;
                                            rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -275,7 +272,6 @@ tara-kb:hasAcupunctureInterventionMetrics rdf:type owl:AnnotationProperty ;
                                           dcterms:bibliographicCitation """MacPherson H, Altman DG, Hammerschlag R, Youping L, Taixiang W, White A, Moher D; STRICTA Revision Group. Revised STandards for Reporting Interventions in Clinical Trials of Acupuncture (STRICTA): extending the CONSORT statement. PLoS Med. 2010;7(6):e1000261. doi:10.1371/journal.pmed.1000261. https://doi.org/10.1371/journal.pmed.1000261
 
 Note: The article is concurrently published in Acupuncture in Medicine 2010;28(2):83-93, doi:10.1136/aim.2009.001370, and Journal of Alternative and Complementary Medicine 2010;16(10):ST-1-14."""@en ;
-                                          dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                           dcterms:description """Category B, Acupuncture Intervention Metrics, groups OCSI items 4 through 9, which report on the acupuncture intervention itself and correspond one-to-one, in order, to the six official STRICTA (MacPherson, 2010) checklist items: (1) Acupuncture rationale, (2) Details of needling, (3) Treatment regimen, (4) Other components of treatment, (5) Practitioner background, (6) Control or comparator interventions. Hammerschlag et al. 2011 state these six items substitute for CONSORT's own item 4. The OCSI items included under this category include:
 - Item 4: Acupuncture Style & Acupoints Selection Score
 - Item 5: Acupuncture Needling Parameters
@@ -286,15 +282,15 @@ Note: The article is concurrently published in Acupuncture in Medicine 2010;28(2
                                           dcterms:type tara-kb:grouping ;
                                           tara-ap:hasCompactURI "tara-kb:hasAcupunctureInterventionMetrics" ;
                                           rdfs:label "Category B: Acupuncture Intervention Metrics" ;
-                                          skos:altLabel "Category_B_Acupuncture_Intervention_Metrics" ;
+                                          skos:altLabel "Category_B_Acupuncture_Intervention" ;
                                           rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                          rdfs:range xsd:nonNegativeInteger ;
                                           rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupunctureNeedlingParametersScore
 tara-kb:hasAcupunctureNeedlingParametersScore rdf:type owl:AnnotationProperty ;
                                               dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                              dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                               dcterms:description """The reporting quality score checking the completeness of needle parameters reported (e.g., gauge, depth, de qi sensation).
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                               tara-ap:hasCompactURI "tara-kb:hasAcupunctureNeedlingParametersScore" ;
@@ -371,7 +367,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                               tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                               rdfs:label "(5) Acupuncture Needling Parameters" ;
-                                              skos:altLabel "5_Acupuncture_Needling_Parameters" ;
+                                              skos:altLabel "5_Needling_Parameters" ;
                                               rdfs:subPropertyOf tara-kb:hasAcupunctureInterventionMetrics ;
                                               rdfs:range tara-kb:ocsiItemScore ;
                                               rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -392,7 +388,6 @@ Point selection and grouping: Trigger points in the gluteals isolated by palpati
 | Needling details: Sterile acupuncture needles (Seirin Corp, Shizuoka, Japan), 0.30 mm diameter, 25 mm long; pierced skin and advanced into trigger point until reproduction of pain or local twitch response; partially withdrawn and repeatedly advanced into muscle until pain resolved and no further twitches seen; retention time Not specified.
 | Stimulation details: Manual repeated advancement into the muscle; no electrical or thermal stimulation.
 | Sham protocol details: Non-penetrating modified acupuncture needle with sharp tip removed and glued back in sheath; tip applied to the skin over the trigger point with pressure for 10 or more seconds and moved slightly to simulate real needling, repeated at each point for up to one minute.""" ;
-                               dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                dcterms:description """A dual-purpose annotation property that serves as a super-property grouping the granular acupuncture intervention sub-properties (method, needling, stimulation, sham, and acupoints), while simultaneously acting as a direct container for a single, structured free-text summary of the full acupuncture protocol.
 
 This field should conatin a structured summary combining acupoint selection and grouping, needling details, stimulation details, and sham protocol details into one field (see the 'example of usage' for full worked examples)."""@en ;
@@ -412,7 +407,6 @@ This field should conatin a structured summary combining acupoint selection and 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupunctureStudyMetadata
 tara-kb:hasAcupunctureStudyMetadata rdf:type owl:AnnotationProperty ;
-                                    dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                     dcterms:description "A grouping annotation property that organizes the operational, methodological, and outcome-related metadata describing the acupuncture research study itself (as opposed to its reporting publication)."@en ;
                                     dcterms:type tara-kb:grouping ;
                                     tara-ap:hasCompactURI "tara-kb:hasAcupunctureStudyMetadata" ;
@@ -445,7 +439,6 @@ tara-kb:hasAcupunctureStudyMetadata rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAcupunctureStyleAndSelectionScore
 tara-kb:hasAcupunctureStyleAndSelectionScore rdf:type owl:AnnotationProperty ;
                                              dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                             dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                              dcterms:description """The reporting quality score evaluating the general description of the acupuncture style and acupoints selection rationale for the intervention.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                              tara-ap:hasCompactURI "tara-kb:hasAcupunctureStyleAndSelectionScore" ;
@@ -492,7 +485,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                              tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                              rdfs:label "(4) Acupuncture Style & Acupoints Selection" ;
-                                             skos:altLabel "4_Acupuncture_Style_Acupoints_Selection" ;
+                                             skos:altLabel "4_Acupuncture_Style_Point_Selection" ;
                                              rdfs:subPropertyOf tara-kb:hasAcupunctureInterventionMetrics ;
                                              rdfs:range tara-kb:ocsiItemScore ;
                                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -501,7 +494,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasAdverseEventsSideEffectsScore
 tara-kb:hasAdverseEventsSideEffectsScore rdf:type owl:AnnotationProperty ;
                                          dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                         dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                          dcterms:description """The reporting quality score assessing the transparency of reporting adverse events or side effects for each intervention group.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                          tara-ap:hasCompactURI "tara-kb:hasAdverseEventsSideEffectsScore" ;
@@ -539,7 +531,6 @@ Per Appendix A.2, item 24 cannot be scored N/A: authors must state whether adver
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasArticleTitle
 tara-kb:hasArticleTitle rdf:type owl:AnnotationProperty ;
                         obo:IAO_0000112 "e.g., \"Acupuncture for Chronic Low Back Pain: A Randomized Controlled Trial\"."@en ;
-                        dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                         dcterms:description "The full, verbatim title of the journal article as published."@en ;
                         tara-ap:hasCompactURI "tara-kb:hasArticleTitle" ;
                         tara-kb:hasBibliographicMetadataExtractionPrompt """{
@@ -557,7 +548,6 @@ tara-kb:hasArticleTitle rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasArticleType
 tara-kb:hasArticleType rdf:type owl:AnnotationProperty ;
                        obo:IAO_0000112 "e.g., \"Primary Article\", \"Review Article\", \"Systematic Review Article\", or \"Meta-analysis Article\"."@en ;
-                       dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                        dcterms:description "The specific classification of the publication based on its methodology, structure, and evidentiary value (e.g., Primary Article, Review Article, Systematic Review Article, Meta-analysis Article)."@en ;
                        tara-ap:hasCompactURI "tara-kb:hasArticleType" ;
                        tara-kb:hasBibliographicMetadataExtractionPrompt """{
@@ -575,7 +565,6 @@ tara-kb:hasArticleType rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasBibliographicMetadata
 tara-kb:hasBibliographicMetadata rdf:type owl:AnnotationProperty ;
                                  obo:IAO_0000112 "E.g., \"Smith J, et al. (2021). Acupuncture for chronic low back pain. J Altern Complement Med. 27(4):301-310.\" while also grouping hasArticleTitle, hasListedAuthors, hasPublicationDate, hasPublicationVenue, and hasPublicationLink."@en ;
-                                 dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                  dcterms:description "A dual-purpose annotation property that serves as a super-property to logically group granular bibliographic sub-properties (e.g., titles, identifiers, and venues), while simultaneously acting as a direct container for a complete, pre-formatted human-readable citation string (such as APA, MLA, or Chicago styles)."@en ;
                                  dcterms:type tara-kb:grouping ;
                                  tara-ap:hasCompactURI "tara-kb:hasBibliographicMetadata" ;
@@ -631,7 +620,6 @@ Top-level JSON keys:
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasBlindingStatementsQualityScore
 tara-kb:hasBlindingStatementsQualityScore rdf:type owl:AnnotationProperty ;
                                           dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                          dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                           dcterms:description """The reporting quality score auditing whether the trial describes who was masked to trial assignments (e.g., patients, operators, assessors).
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                           tara-ap:hasCompactURI "tara-kb:hasBlindingStatementsQualityScore" ;
@@ -695,7 +683,7 @@ Sub-part N/A conditions:
 (d) is N/A under the same active-treatment-comparison condition as (a)."""@en ;
                                           tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                           rdfs:label "(16) Blinding Statements Quality" ;
-                                          skos:altLabel "16_Blinding_Statements_Quality" ;
+                                          skos:altLabel "16_Blinding_Statements" ;
                                           rdfs:subPropertyOf tara-kb:hasStudyDesignAndAnalysisMetrics ;
                                           rdfs:range tara-kb:ocsiItemScore ;
                                           rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -704,7 +692,6 @@ Sub-part N/A conditions:
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasComparativeFindings
 tara-kb:hasComparativeFindings rdf:type owl:AnnotationProperty ;
                                obo:IAO_0000112 "e.g., \"EA therapy showed functional improvement in the lumbar spine, but the improvement in motion recovery was not significantly different from PRF.\"."@en ;
-                               dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                dcterms:description "Captures how different active treatment arms performed relative to each other across different parameters."@en ;
                                tara-ap:hasCompactURI "tara-kb:hasComparativeFindings" ;
                                tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -728,7 +715,6 @@ Control Arm 2 - Non-Acupoint Real Needling: Used identical standard 0.25mm stain
 
 Control Arm 3 - Active Control: Standard Care regimen consisting of prescribed physical therapy twice weekly and open-label Naproxen (500mg daily) to evaluate clinical superiority."""@en ,
                                                 "Sham acupuncture: Patients received sham acupuncture once a week for 6 weeks, using blunt-tipped needles that did not penetrate the skin, as a control group to compare with true acupuncture."@en ;
-                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                 dcterms:description "An annotation property to capture structured details about the control group methodologies (control arms) deployed within a clinical trial study, as reported in a journal publication. It explicitly documents the specific type of control utilized, such as sham interventions, non-acupoint/minimal treatments, active controls, or waitlists, along with critical methodological protocols, including patient blinding mechanisms, the physiological nature of the control, and any deviations from standard or traditional practices meant to isolate specific therapeutic variables."@en ;
                                 tara-ap:hasCompactURI "tara-kb:hasControlGroupsDetails" ;
                                 tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -753,7 +739,6 @@ Note: Researchers must account for the 'physiological sham effect,' where even n
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasControlGroupsInterventionScore
 tara-kb:hasControlGroupsInterventionScore rdf:type owl:AnnotationProperty ;
                                           dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                          dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                           dcterms:description """The reporting quality score evaluating how thoroughly the rationales and structural formats of the control or comparative groups are reported.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                           tara-ap:hasCompactURI "tara-kb:hasControlGroupsInterventionScore" ;
@@ -818,7 +803,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasCountryOfStudy
 tara-kb:hasCountryOfStudy rdf:type owl:AnnotationProperty ;
                           obo:IAO_0000112 "e.g., \"South Korea\" or \"United States\"."@en ;
-                          dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                           dcterms:description "The country (or countries, for multi-site trials) in which the study was conducted, normalized to a standard country name."@en ;
                           tara-ap:hasCompactURI "tara-kb:hasCountryOfStudy" ;
                           tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -836,7 +820,6 @@ tara-kb:hasCountryOfStudy rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasDOILink
 tara-kb:hasDOILink rdf:type owl:AnnotationProperty ;
                    obo:IAO_0000112 "e.g., \"https://doi.org/10.1089/acm.2021.0142\"."@en ;
-                   dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                    dcterms:description "The resolvable URI (typically expressed as a DOI-based URL) that uniquely and persistently identifies the publication."@en ;
                    tara-ap:hasCompactURI "tara-kb:hasDOILink" ;
                    tara-kb:hasBibliographicMetadataExtractionPrompt """{
@@ -854,7 +837,6 @@ tara-kb:hasDOILink rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasDatasetLink
 tara-kb:hasDatasetLink rdf:type owl:AnnotationProperty ;
                        obo:IAO_0000112 "e.g., \"https://clinicaltrials.gov/study/NCT01234567\"."@en ;
-                       dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                        dcterms:description "A resolvable URI pointing to a publicly available raw dataset, supplementary data, or trial registry entry associated with the study."@en ;
                        tara-ap:hasCompactURI "tara-kb:hasDatasetLink" ;
                        tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -870,7 +852,6 @@ tara-kb:hasDatasetLink rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasExtractedArticleMetadata
 tara-kb:hasExtractedArticleMetadata rdf:type owl:AnnotationProperty ;
-                                    dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                     dcterms:description "A top-level grouping annotation property that organizes all metadata extracted from a trial study and its reporting publication into the bibliographic metadata and study metadata branches."@en ;
                                     dcterms:type tara-kb:grouping ;
                                     tara-ap:hasCompactURI "tara-kb:hasExtractedArticleMetadata" ;
@@ -1068,7 +1049,6 @@ Top-level JSON keys:
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasGroupDemographicsCharacteristicsScore
 tara-kb:hasGroupDemographicsCharacteristicsScore rdf:type owl:AnnotationProperty ;
                                                  dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                                 dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                  dcterms:description """The reporting quality score grading the transparency of reporting baseline participant demographics and clinical characteristics.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                                  tara-ap:hasCompactURI "tara-kb:hasGroupDemographicsCharacteristicsScore" ;
@@ -1108,7 +1088,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                                  tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                                  rdfs:label "(20) Group Demographics & Characteristics" ;
-                                                 skos:altLabel "20_Group_Demographics_Characteristics" ;
+                                                 skos:altLabel "20_Demographics_Characteristics" ;
                                                  rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                                  rdfs:range tara-kb:ocsiItemScore ;
                                                  rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1117,7 +1097,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasInterpretationOfResultsScore
 tara-kb:hasInterpretationOfResultsScore rdf:type owl:AnnotationProperty ;
                                         dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                        dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                         dcterms:description """The reporting quality score assessing whether a general interpretation of the results is presented in the context of current evidence.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                         tara-ap:hasCompactURI "tara-kb:hasInterpretationOfResultsScore" ;
@@ -1230,7 +1209,6 @@ tara-kb:hasLLMUserPrompt rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasListedAcupoints
 tara-kb:hasListedAcupoints rdf:type owl:AnnotationProperty ;
                            obo:IAO_0000112 "E.g., \"BL 1, BL 2, BL 3\" (see rdfs:comment for normalization rules)."@en ;
-                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                            dcterms:description "A dual-purpose annotation property that serves as a super-property grouping the mapped and unmappable acupoint sub-properties, while simultaneously acting as a direct container for the comma-separated, normalized list of acupoints extracted from the article."@en ;
                            tara-ap:hasCompactURI "tara-kb:hasListedAcupoints" ;
                            tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -1250,7 +1228,6 @@ tara-kb:hasListedAcupoints rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasListedAcupointsMapped
 tara-kb:hasListedAcupointsMapped rdf:type owl:AnnotationProperty ;
                                  obo:IAO_0000112 "E.g., \"TARA:5363236\" representing acupoint \"GB 8\"."@en ;
-                                 dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                  dcterms:description "A specialized mapping annotation property used to store an individual, authoritative controlled vocabulary IRI from the TARA ontology representing a specific anatomical acupuncture point successfully resolved from a publication's raw text list."@en ;
                                  dcterms:type tara-kb:mapping ;
                                  tara-ap:hasCompactURI "tara-kb:hasListedAcupointsMapped" ;
@@ -1268,7 +1245,6 @@ tara-kb:hasListedAcupointsMappedCurie rdf:type owl:AnnotationProperty ;
                                                                      \"TARA:9987270\": \"GB 14\",
                                                                      \"TARA:2324295\": \"GB 20\",
                                                                     }'''^^rdf:JSON ."""@en ;
-                                      dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                       dcterms:description "This property associates a flat dictionary lookup table of TARA standard CURIE mappings of listed acupoints used in a trial study. The internal payload is formatted as a JSON object string where keys are CURIE identifiers and values are rdfs:label of the points; e.g., {\"TARA:5363236\": \"GB 8\"}. It provides a flat lookup dictionary map for frontend UI execution."@en ;
                                       dcterms:type tara-kb:mapping ;
                                       tara-ap:hasCompactURI "tara-kb:hasListedAcupointsMappedCurie" ;
@@ -1283,7 +1259,6 @@ tara-kb:hasListedAcupointsMappedCurie rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasListedAcupointsUnmappable
 tara-kb:hasListedAcupointsUnmappable rdf:type owl:AnnotationProperty ;
                                      obo:IAO_0000112 "e.g., \"Ashi point\" or \"Motor point (non-standard)\" - extracted text with no corresponding TARA acupoint IRI."@en ;
-                                     dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                      dcterms:description "A specialized tracking annotation property used to isolate and store individual literal text strings or non-standard acupoints extracted from a publication that could not be successfully resolved to a standard TARA ontology IRI."@en ;
                                      dcterms:type tara-kb:mapping ;
                                      tara-ap:hasCompactURI "tara-kb:hasListedAcupointsUnmappable" ;
@@ -1297,7 +1272,6 @@ tara-kb:hasListedAcupointsUnmappable rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasListedAuthors
 tara-kb:hasListedAuthors rdf:type owl:AnnotationProperty ;
                          obo:IAO_0000112 "e.g., \"Smith J, Lee K, Chen H\"."@en ;
-                         dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                          dcterms:description "The full list of authors credited on the publication, typically recorded as a single delimited string in the order they appear on the article."@en ;
                          tara-ap:hasCompactURI "tara-kb:hasListedAuthors" ;
                          tara-kb:hasBibliographicMetadataExtractionPrompt """{
@@ -1316,7 +1290,6 @@ tara-kb:hasListedAuthors rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasMappedTCMCondition
 tara-kb:hasMappedTCMCondition rdf:type owl:AnnotationProperty ;
                               obo:IAO_0000112 "e.g., a URI from an external TCM pattern vocabulary corresponding to \"Qi and Blood Stagnation\"."@en ;
-                              dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                               dcterms:description "An individual, authoritative controlled vocabulary URI from an external biomedical ontology or standard vocabulary successfully resolved from a publication's raw TCM condition text." ;
                               dcterms:type tara-kb:mapping ;
                               tara-ap:hasCompactURI "tara-kb:hasMappedTCMCondition" ;
@@ -1330,7 +1303,6 @@ tara-kb:hasMappedTCMCondition rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasMappedWesternCondition
 tara-kb:hasMappedWesternCondition rdf:type owl:AnnotationProperty ;
                                   obo:IAO_0000112 "e.g., a MONDO URI such as <http://purl.obolibrary.org/obo/MONDO_0005277> corresponding to \"migraine disorder\"."@en ;
-                                  dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                   dcterms:description "An individual, authoritative controlled vocabulary URI from an external biomedical ontology (such as MONDO or HP) successfully resolved from a publication's raw Western condition text."@en ;
                                   dcterms:type tara-kb:mapping ;
                                   tara-ap:hasCompactURI "tara-kb:hasMappedWesternCondition" ;
@@ -1345,7 +1317,6 @@ tara-kb:hasMappedWesternCondition rdf:type owl:AnnotationProperty ;
 tara-kb:hasNeedlingDetails rdf:type owl:AnnotationProperty ;
                            obo:IAO_0000112 "\"0.30 mm diameter, 25 mm long stainless steel needles inserted to a depth of 15-20 mm and retained for 20 minutes.\""@en ,
                                            "\"Sterile, single-use coated acupuncture needles, 0.25-0.30 mm thick, 25-40 mm long; 10 to 25 needles per treatment; inserted 2-20 mm in depth; retained for 30 min.\"" ;
-                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                            dcterms:description "The specific needling technique details reported for the acupuncture intervention, such as needle type, gauge, insertion depth, retention time, and elicitation of de qi."@en ;
                            tara-ap:hasCompactURI "tara-kb:hasNeedlingDetails" ;
                            rdfs:label "Needling Details" ;
@@ -1419,7 +1390,6 @@ The OCSI item numbers and questions (Table 1, Hammerschlag et al., 2011) are rep
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasOCSIItemScoringMetadata
 tara-kb:hasOCSIItemScoringMetadata rdf:type owl:AnnotationProperty ;
                                    dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                   dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                    dcterms:description """An annotation property that serves as a master grouping property for capturing quality assessment metrics mapped to individual reporting items within the Oregon CONSORT STRICTA Instrument (OCSI) for acupuncture trials (OCSI; Hammerschlag et al. 2011).
 
 - TARA-KB's sub-grouping of OCSI assessment categories (A-E), aggregate derived compliance values specifically tied to the combined CONSORT (Consolidated Standards of Reporting Trials) and STRICTA (Standards for Reporting Interventions in Clinical Trials of Acupuncture) guidelines based on Hammerschlag et al., 2011. It organizes granular sub-properties tracking item-by-item compliance scores, separating the calculated evaluation of reporting quality from the raw extracted study parameters.
@@ -1673,7 +1643,6 @@ Unlike the 27 item-level score properties nested under the four OCSI categories,
 tara-kb:hasOtherLink rdf:type owl:AnnotationProperty ;
                      obo:IAO_0000112 "A publisher landing page link or preprint repository link" ,
                                      "E.g., https://app.southbaylo.net/c1/library/uploads/daom/DAOM%20John%20Fang.pdf"@en ;
-                     dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                      dcterms:description "A resolvable URI to any other authoritative online source for the article that is not captured by hasDOILink or hasPubMedLink."@en ;
                      tara-ap:hasCompactURI "tara-kb:hasOtherLink" ;
                      tara-kb:hasBibliographicMetadataExtractionPrompt """{
@@ -1691,7 +1660,6 @@ tara-kb:hasOtherLink rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasOutcomesMeasureDefinitionsScore
 tara-kb:hasOutcomesMeasureDefinitionsScore rdf:type owl:AnnotationProperty ;
                                            dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                            dcterms:description """The reporting quality score assessing whether the primary (and, if applicable, secondary) outcome measures are clearly defined, including any methods used to enhance measurement quality.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                            tara-ap:hasCompactURI "tara-kb:hasOutcomesMeasureDefinitionsScore" ;
@@ -1740,7 +1708,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasParticipantsEligibilityAndStudySettingsScore
 tara-kb:hasParticipantsEligibilityAndStudySettingsScore rdf:type owl:AnnotationProperty ;
                                                         dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                                        dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                         dcterms:description """The reporting score tracking how clearly the inclusion and exclusion criteria for study participants were defined.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                                         tara-ap:hasCompactURI "tara-kb:hasParticipantsEligibilityAndStudySettingsScore" ;
@@ -1780,7 +1747,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                                         tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                                         rdfs:label "(3) Participants Eligibility & Study Settings" ;
-                                                        skos:altLabel "3_Participants_Eligibility_Study_Settings" ;
+                                                        skos:altLabel "3_Eligibility_Study_Settings" ;
                                                         rdfs:subPropertyOf tara-kb:hasStudyRationaleAndScopeMetrics ;
                                                         rdfs:range tara-kb:ocsiItemScore ;
                                                         rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1789,7 +1756,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasParticipantsFlowAndDeviationScore
 tara-kb:hasParticipantsFlowAndDeviationScore rdf:type owl:AnnotationProperty ;
                                              dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                             dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                              dcterms:description """The reporting quality score assessing whether the flow of participants through each stage of the trial is quantitatively described, including reasons for any protocol deviations.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                              tara-ap:hasCompactURI "tara-kb:hasParticipantsFlowAndDeviationScore" ;
@@ -1833,7 +1799,7 @@ Sub-part N/A conditions:
 (b) is N/A if no protocol deviations occurred after randomization (interpretive extension; the source states this sub-part applies 'if protocol deviations are reported')."""@en ;
                                              tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                              rdfs:label "(18) Participants Flow & Deviation" ;
-                                             skos:altLabel "18_Participants_Flow_Deviation" ;
+                                             skos:altLabel "18_Participants_Flow" ;
                                              rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                              rdfs:range tara-kb:ocsiItemScore ;
                                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1842,7 +1808,6 @@ Sub-part N/A conditions:
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasParticipantsIntentionToTreatScore
 tara-kb:hasParticipantsIntentionToTreatScore rdf:type owl:AnnotationProperty ;
                                              dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                             dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                              dcterms:description """The reporting quality score assessing whether the number of participants included in each analysis, use of an intention-to-treat analysis, and results in absolute numbers are stated.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                              tara-ap:hasCompactURI "tara-kb:hasParticipantsIntentionToTreatScore" ;
@@ -1893,7 +1858,7 @@ Sub-part N/A conditions:
 (c) is plausibly N/A when absolute numbers cannot feasibly be reported for the outcome measure used (interpretive extension based on the 'when feasible' phrasing; the source does not use the literal term N/A here)."""@en ;
                                              tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                              rdfs:label "(21) Participants & Intention to Treat Analysis" ;
-                                             skos:altLabel "21_Participants_Intention_to_Treat_Analysis" ;
+                                             skos:altLabel "21_Intention_to_Treat" ;
                                              rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                              rdfs:range tara-kb:ocsiItemScore ;
                                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1902,7 +1867,6 @@ Sub-part N/A conditions:
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasParticipantsRandomizationStatementScore
 tara-kb:hasParticipantsRandomizationStatementScore rdf:type owl:AnnotationProperty ;
                                                    dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                                   dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                    dcterms:description """The reporting quality score assessing whether the article explicitly states, in the abstract or title, that participants were randomly assigned to interventions.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                                    tara-ap:hasCompactURI "tara-kb:hasParticipantsRandomizationStatementScore" ;
@@ -1928,7 +1892,7 @@ Per OCSI General Instruction A.1.3, item 1 is the sole exception to the 'anywher
                                                    tara-kb:hasTypicalArticleSection "Abstract"^^tara-kb:articleSectionType ,
                                                                                     "Title" ;
                                                    rdfs:label "(1) Participants Randomization Statement" ;
-                                                   skos:altLabel "1_Participants_Randomization_Statement" ;
+                                                   skos:altLabel "1_Randomization_Statement" ;
                                                    rdfs:subPropertyOf tara-kb:hasStudyRationaleAndScopeMetrics ;
                                                    rdfs:range tara-kb:ocsiItemScore ;
                                                    rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1937,7 +1901,6 @@ Per OCSI General Instruction A.1.3, item 1 is the sole exception to the 'anywher
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasParticipantsRecruitmentFollowupScore
 tara-kb:hasParticipantsRecruitmentFollowupScore rdf:type owl:AnnotationProperty ;
                                                 dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                 dcterms:description """The reporting quality score assessing whether the recruitment period and the length of follow-up are stated.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                                 tara-ap:hasCompactURI "tara-kb:hasParticipantsRecruitmentFollowupScore" ;
@@ -1977,7 +1940,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                                 tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                                 rdfs:label "(19) Participants Recruitment & Followup" ;
-                                                skos:altLabel "19_Participants_Recruitment_Followup" ;
+                                                skos:altLabel "19_Recruitment_Followup" ;
                                                 rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                                 rdfs:range tara-kb:ocsiItemScore ;
                                                 rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -1986,7 +1949,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasPractitionerTrainingExpertiseScore
 tara-kb:hasPractitionerTrainingExpertiseScore rdf:type owl:AnnotationProperty ;
                                               dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                              dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                               dcterms:description """The reporting quality score assessing whether the practitioners' background, training, and experience administering acupuncture are reported.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                               tara-ap:hasCompactURI "tara-kb:hasPractitionerTrainingExpertiseScore" ;
@@ -2044,7 +2006,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasPrimaryOutcomeMeasure
 tara-kb:hasPrimaryOutcomeMeasure rdf:type owl:AnnotationProperty ;
                                  obo:IAO_0000112 "\"Proportion of responders (defined as the proportion of patients with a reduction of migraine days by at least 50%).\""@en ;
-                                 dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                  dcterms:description "The main, pre-declared endpoint used to judge the success of the intervention, together with its measurement instrument or method."@en ;
                                  tara-ap:hasCompactURI "tara-kb:hasPrimaryOutcomeMeasure" ;
                                  rdfs:label "Primary Outcome Measure" ;
@@ -2058,7 +2019,6 @@ tara-kb:hasPrimaryOutcomeMeasure rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasProposedMechanism
 tara-kb:hasProposedMechanism rdf:type owl:AnnotationProperty ;
                              obo:IAO_0000112 "e.g., \"Both PRF and EA therapies are related to electricity effects, but PRF has better electrical penetration due to its higher frequency pulse.\"."@en ;
-                             dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                              dcterms:description "Captures the authors' theoretical or physiological explanations for why the treatments worked or differed."@en ;
                              tara-ap:hasCompactURI "tara-kb:hasProposedMechanism" ;
                              tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -2077,7 +2037,6 @@ tara-kb:hasProposedMechanism rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasPubMedLink
 tara-kb:hasPubMedLink rdf:type owl:AnnotationProperty ;
                       obo:IAO_0000112 "e.g., \"https://pubmed.ncbi.nlm.nih.gov/34567890/\"."@en ;
-                      dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                       dcterms:description "The resolvable URI to the article's PubMed or PubMed Central record."@en ;
                       tara-ap:hasCompactURI "tara-kb:hasPubMedLink" ;
                       tara-kb:hasBibliographicMetadataExtractionPrompt """{
@@ -2095,7 +2054,6 @@ tara-kb:hasPubMedLink rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasPublicationDate
 tara-kb:hasPublicationDate rdf:type owl:AnnotationProperty ;
                            obo:IAO_0000112 "e.g., \"2021-08-15\" or \"August 2021\"."@en ;
-                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                            dcterms:description "The publication date of the article as reported by the journal, recorded in its original granularity (which may be a full date, a month and year, or a year alone)."@en ;
                            tara-ap:hasCompactURI "tara-kb:hasPublicationDate" ;
                            tara-kb:hasBibliographicMetadataExtractionPrompt """{
@@ -2123,7 +2081,6 @@ tara-kb:hasPublicationID rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasPublicationLink
 tara-kb:hasPublicationLink rdf:type owl:AnnotationProperty ;
                            obo:IAO_0000112 "e.g., \"https://doi.org/10.1089/acm.2021.0142\"."@en ;
-                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                            dcterms:description "A dual-purpose annotation property that both groups the specific typed publication link sub-properties (DOI, PubMed, and other links) and can directly hold a resolvable URI to the publication when no more specific link type applies."@en ;
                            tara-ap:hasCompactURI "tara-kb:hasPublicationLink" ;
                            rdfs:label "Publication Link" ;
@@ -2137,7 +2094,6 @@ tara-kb:hasPublicationLink rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasPublicationVenue
 tara-kb:hasPublicationVenue rdf:type owl:AnnotationProperty ;
                             obo:IAO_0000112 "e.g., \"Journal of Alternative and Complementary Medicine\"."@en ;
-                            dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                             dcterms:description "The name of the journal, conference proceedings, or other outlet in which the article was published."@en ;
                             tara-ap:hasCompactURI "tara-kb:hasPublicationVenue" ;
                             tara-kb:hasBibliographicMetadataExtractionPrompt """{
@@ -2155,7 +2111,6 @@ tara-kb:hasPublicationVenue rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasPublicationYear
 tara-kb:hasPublicationYear rdf:type owl:AnnotationProperty ;
                            obo:IAO_0000112 "e.g., \"2021\"."@en ;
-                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                            dcterms:description "The four-digit calendar year in which the article was published, normalized from hasPublicationDate for consistent chronological filtering and sorting."@en ;
                            dcterms:type tara-kb:mapping ;
                            tara-ap:hasCompactURI "tara-kb:hasPublicationYear" ;
@@ -2174,7 +2129,6 @@ tara-kb:hasPublicationYear rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasRandomAllocationConcealmentScore
 tara-kb:hasRandomAllocationConcealmentScore rdf:type owl:AnnotationProperty ;
                                             dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                            dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                             dcterms:description """The reporting quality score assessing whether the method used to implement the random allocation sequence is described, and whether the sequence was concealed until interventions were assigned.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                             tara-ap:hasCompactURI "tara-kb:hasRandomAllocationConcealmentScore" ;
@@ -2223,7 +2177,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasRandomAllocationPersonnelScore
 tara-kb:hasRandomAllocationPersonnelScore rdf:type owl:AnnotationProperty ;
                                           dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                          dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                           dcterms:description """The reporting score assessing whether the article states who generated the randomization sequence, who enrolled participants, and who assigned participants to their groups.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                           tara-ap:hasCompactURI "tara-kb:hasRandomAllocationPersonnelScore" ;
@@ -2281,7 +2234,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasRandomAllocationSequencingScore
 tara-kb:hasRandomAllocationSequencingScore rdf:type owl:AnnotationProperty ;
                                            dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                            dcterms:description """The reporting quality score assessing whether the method used to generate the random allocation sequence, and any restrictions (e.g., blocking, stratification), are described.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                            tara-ap:hasCompactURI "tara-kb:hasRandomAllocationSequencingScore" ;
@@ -2357,7 +2309,6 @@ tara-kb:hasReportingPublicationID rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasResultsAndOutcomesMetrics
 tara-kb:hasResultsAndOutcomesMetrics rdf:type owl:AnnotationProperty ;
-                                     dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                      dcterms:description """Category D, Results and Outcome Metrics, groups the OCSI items reporting what was actually observed in the clinical trial. The OCSI items included under this category are:
 - Item 18: Participants Flow and Protocol Deviation; 
 - Item 19: Participants Recruitment and Followup;
@@ -2370,8 +2321,9 @@ tara-kb:hasResultsAndOutcomesMetrics rdf:type owl:AnnotationProperty ;
                                      tara-ap:hasCompactURI "tara-kb:hasResultsAndOutcomesMetrics" ;
                                      rdfs:comment "This category is a TARA-KB organizational convention, not sourced from Hammerschlag et al. 2011 (the OCSI paper) or the CONSORT 2010 checklist. This category's members do, however, correspond closely to CONSORT's own Results and Discussion sections, distinguishing reported/executed trial content from the planned trial design and analysis content grouped under Category C."@en ;
                                      rdfs:label "Category D: Results & Outcomes Metrics" ;
-                                     skos:altLabel "Category_D_Results_Outcomes_Metrics" ;
+                                     skos:altLabel "Category_D_Results_Outcomes" ;
                                      rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                     rdfs:range xsd:nonNegativeInteger ;
                                      rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -2384,15 +2336,15 @@ tara-kb:hasResultsDiscussionMetrics rdf:type owl:AnnotationProperty ;
                                     dcterms:type tara-kb:grouping ;
                                     tara-ap:hasCompactURI "tara-kb:hasResultsDiscussionMetrics" ;
                                     rdfs:label "Category E: Results Discussion Metrics" ;
-                                    skos:altLabel "Category_E_Results_Discussion_Metrics" ;
+                                    skos:altLabel "Category_E_Results_Discussion" ;
                                     rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                    rdfs:range xsd:nonNegativeInteger ;
                                     rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasSampleSizeDetails
 tara-kb:hasSampleSizeDetails rdf:type owl:AnnotationProperty ;
                              obo:IAO_0000112 "e.g., \"n=84 (42 in intervention, 42 in control)\"."@en ;
-                             dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                              dcterms:description "For the final number of participants who completed the study and were analyzed."@en ;
                              tara-ap:hasCompactURI "tara-kb:hasSampleSizeDetails" ;
                              tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -2411,7 +2363,6 @@ tara-kb:hasSampleSizeDetails rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasSampleSizeDeterminationScore
 tara-kb:hasSampleSizeDeterminationScore rdf:type owl:AnnotationProperty ;
                                         dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                        dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                         dcterms:description """The reporting quality score assessing whether the rationale or calculation used to determine the study's sample size is explicitly reported.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                         tara-ap:hasCompactURI "tara-kb:hasSampleSizeDeterminationScore" ;
@@ -2464,7 +2415,6 @@ Sub-part N/A conditions:
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasScientificBackgroundRationaleScore
 tara-kb:hasScientificBackgroundRationaleScore rdf:type owl:AnnotationProperty ;
                                               dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                              dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                               dcterms:description """The reporting quality score measuring how completely the article's introduction provides scientific background and explains the rationale for the trial.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                               tara-ap:hasCompactURI "tara-kb:hasScientificBackgroundRationaleScore" ;
@@ -2504,7 +2454,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                               tara-kb:hasTypicalArticleSection "Introduction"^^tara-kb:articleSectionType ;
                                               rdfs:label "(2) Scientific Background & Rationale" ;
-                                              skos:altLabel "2_Scientific_Background_Rationale" ;
+                                              skos:altLabel "2_Background_Rationale" ;
                                               rdfs:subPropertyOf tara-kb:hasStudyRationaleAndScopeMetrics ;
                                               rdfs:range tara-kb:ocsiItemScore ;
                                               rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -2513,7 +2463,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasSecondaryOutcomeMeasure
 tara-kb:hasSecondaryOutcomeMeasure rdf:type owl:AnnotationProperty ;
                                    obo:IAO_0000112 "\"Number of migraine days, visual analogue scale (VAS) for pain, physical and mental component summary scores of the 36-item short-form health survey (SF-36), change in migraine days, number of patients with acute medication, adverse events (AE)\""@en ;
-                                   dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                    dcterms:description "Any additional, non-primary endpoint(s) measured to support or contextualize the primary outcome, together with its measurement instrument or method."@en ;
                                    tara-ap:hasCompactURI "tara-kb:hasSecondaryOutcomeMeasure" ;
                                    rdfs:label "Secondary Outcome Measure" ;
@@ -2528,7 +2477,6 @@ tara-kb:hasSecondaryOutcomeMeasure rdf:type owl:AnnotationProperty ;
 tara-kb:hasShamAcupunctureDetails rdf:type owl:AnnotationProperty ;
                                   obo:IAO_0000112 "\"Non-penetrating Streitberger placebo needle applied at non-acupoint sites.\""@en ,
                                                   "\"Sham protocol details: Superficial insertion (maximum 3 mm depth) of up to six needles on either side of the upper arm, both thighs, and below both scapulae at areas where no TCM acupuncture points are known; same number and type of needles used as verum; no manual stimulation.\"" ;
-                                  dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                   dcterms:description "The specific details reported for the sham or control acupuncture intervention used for comparison, describing the device and procedure used to simulate real needling."@en ;
                                   tara-ap:hasCompactURI "tara-kb:hasShamAcupunctureDetails" ;
                                   tara-ap:hasSynonym "Control Intervention Details" ;
@@ -2543,7 +2491,6 @@ tara-kb:hasShamAcupunctureDetails rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasShamAcupunctureUsed
 tara-kb:hasShamAcupunctureUsed rdf:type owl:AnnotationProperty ;
                                obo:IAO_0000112 "e.g., 'Yes - non-penetrating needle applied at non-acupoint sites.' or 'No - no sham or placebo control arm was used.'"@en ;
-                               dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                dcterms:description "A derived-summary annotation property stating, as a clear yes/no lead-in with a concise qualifying statement, whether the study used a sham or placebo acupuncture control arm. Populated from the sham protocol details already captured under hasAcupunctureProtocol, not from an independent re-reading of the article, to avoid introducing a second, potentially inconsistent extraction/inference."@en ;
                                tara-ap:hasCompactURI "tara-kb:hasShamAcupunctureUsed" ;
                                tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -2561,7 +2508,6 @@ tara-kb:hasShamAcupunctureUsed rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasSpecificObjectivesHypothesesScore
 tara-kb:hasSpecificObjectivesHypothesesScore rdf:type owl:AnnotationProperty ;
                                              dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                             dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                              dcterms:description """The reporting quality score assessing whether the article states specific objectives and hypotheses to be tested.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                              tara-ap:hasCompactURI "tara-kb:hasSpecificObjectivesHypothesesScore" ;
@@ -2603,7 +2549,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                              tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                              rdfs:label "(10) Specific Objectives & Hypotheses" ;
-                                             skos:altLabel "10_Specific_Objectives_Hypotheses" ;
+                                             skos:altLabel "10_Objectives_Hypotheses" ;
                                              rdfs:subPropertyOf tara-kb:hasStudyRationaleAndScopeMetrics ;
                                              rdfs:range tara-kb:ocsiItemScore ;
                                              rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -2612,7 +2558,6 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStatisticalMethodsForOutcomesScore
 tara-kb:hasStatisticalMethodsForOutcomesScore rdf:type owl:AnnotationProperty ;
                                               dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                              dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                               dcterms:description """The reporting quality score assessing whether the statistical methods used to compare groups for primary outcomes, and for any additional analyses, are stated.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                               tara-ap:hasCompactURI "tara-kb:hasStatisticalMethodsForOutcomesScore" ;
@@ -2666,7 +2611,6 @@ Sub-part N/A conditions:
 tara-kb:hasStimulationTypeDetails rdf:type owl:AnnotationProperty ;
                                   obo:IAO_0000112 "\"Manual stimulation applied to achieve De Qi; no electrical stimulation or moxibustion.\"" ,
                                                   "e.g., \"Manual manipulation to elicit de qi\" or \"Electroacupuncture at 2/100 Hz, 1-3 mA for 20 minutes.\"."@en ;
-                                  dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                   dcterms:description "The type and parameters of stimulation applied to the inserted needles, such as manual manipulation or electroacupuncture settings."@en ;
                                   tara-ap:hasCompactURI "tara-kb:hasStimulationTypeDetails" ;
                                   rdfs:label "Stimulation Type Details" ;
@@ -2679,7 +2623,6 @@ tara-kb:hasStimulationTypeDetails rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudiedCondition
 tara-kb:hasStudiedCondition rdf:type owl:AnnotationProperty ;
-                            dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                             dcterms:description "A grouping annotation property that organizes the raw and mapped disease/condition sub-properties for both TCM and Western medicine perspectives on the condition studied by the trial."@en ;
                             dcterms:type tara-kb:grouping ;
                             tara-ap:hasCompactURI "tara-kb:hasStudiedCondition" ;
@@ -2692,7 +2635,6 @@ tara-kb:hasStudiedCondition rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudiedTCMCondition
 tara-kb:hasStudiedTCMCondition rdf:type owl:AnnotationProperty ;
                                obo:IAO_0000112 "e.g., \"Qi and Blood Stagnation\" or \"Kidney Yang Deficiency\"."@en ;
-                               dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                dcterms:description "A dual-purpose annotation property that captures the raw, as-reported Traditional Chinese Medicine (TCM) condition or pattern-differentiation label from the article, while also serving as a super-property for its mapped, standardized counterpart (hasMappedTCMCondition)."@en ;
                                tara-ap:hasCompactURI "tara-kb:hasStudiedTCMCondition" ;
                                tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -2710,7 +2652,6 @@ tara-kb:hasStudiedTCMCondition rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudiedWesternCondition
 tara-kb:hasStudiedWesternCondition rdf:type owl:AnnotationProperty ;
                                    obo:IAO_0000112 "e.g., \"Chronic Low Back Pain\" or \"Migraine without Aura\"."@en ;
-                                   dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                    dcterms:description "A dual-purpose annotation property that captures the raw, as-reported Western/biomedical condition label from the article, while also serving as a super-property for its mapped, standardized counterpart (hasMappedWesternCondition)."@en ;
                                    tara-ap:hasCompactURI "tara-kb:hasStudiedWesternCondition" ;
                                    tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -2731,7 +2672,6 @@ tara-kb:hasStudyConclusions rdf:type owl:AnnotationProperty ;
                             obo:IAO_0000112 """e.g., \"Weak evidence was found of an effect of acupuncture on persistent non-specific low back pain at 12 months, but stronger evidence of a small benefit at 24 months. Referral to a qualified traditional acupuncturist for a short course of treatment seems safe and acceptable to patients with low back pain.\" 
 
 The example above captures the \"Clinical Conclusions\" for the study 'Randomised controlled trial of a short course of traditional acupuncture compared with usual care for persistent non-specific low back pain'; Article DOI:https://doi.org/10.1136/bmj.38878.907361.7C"""@en ;
-                            dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                             dcterms:description "Captures a faithful summary of what the article reports as clinical conclusions, potentially including short direct quotations where appropriate."@en ;
                             tara-ap:hasCompactURI "tara-kb:hasStudyConclusions" ;
                             tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -2750,7 +2690,6 @@ Instead, the field should faithfully summarize what the paper reports as a clini
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyDesignAndAnalysisMetrics
 tara-kb:hasStudyDesignAndAnalysisMetrics rdf:type owl:AnnotationProperty ;
-                                         dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                          dcterms:description """Category C, Study Design and Analysis Metrics, groups the OCSI items describing how a trial was planned and how its analysis was designed. The OCSI items under this category include:
 - Item 11: Outcomes Measure Definitions; 
 - Item 12: Sample Size Determination; 
@@ -2764,14 +2703,14 @@ tara-kb:hasStudyDesignAndAnalysisMetrics rdf:type owl:AnnotationProperty ;
                                          tara-ap:hasSynonym "Trial Methodology and Analysis Planning Metrics" ;
                                          rdfs:comment "This category's members correspond closely to CONSORT's own Methods section (Outcomes, Sample size, Randomisation, Blinding, Statistical methods), distinguishing planned trial design and analysis content from the reported/executed content grouped under Category D."@en ;
                                          rdfs:label "Category C: Study Design & Analysis Metrics" ;
-                                         skos:altLabel "Category_C_Study_Design_And_Analysis_Metrics" ;
+                                         skos:altLabel "Category_C_Study_Design_And_Analysis" ;
                                          rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                         rdfs:range xsd:nonNegativeInteger ;
                                          rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyDesignMetadata
 tara-kb:hasStudyDesignMetadata rdf:type owl:AnnotationProperty ;
-                               dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                dcterms:description "A grouping annotation property that organizes the sub-properties describing the study's design, comparator groups, sample retention, and treatment schedule."@en ;
                                dcterms:type tara-kb:grouping ;
                                tara-ap:hasCompactURI "tara-kb:hasStudyDesignMetadata" ;
@@ -2788,7 +2727,6 @@ tara-kb:hasStudyEffectiveness rdf:type owl:AnnotationProperty ;
 Example 2: \"No - the primary outcome of reduction in migraine days did not differ significantly across the verum acupuncture, sham acupuncture, and standard therapy groups.\"
 
 Example 2 above captures the inferred effectiveness detail based on the results and conclusions of the study 'Efficacy of acupuncture for the prophylaxis of migraine: a multicentre randomised controlled clinical trial'; PubMed link: https://pubmed.ncbi.nlm.nih.gov/16545747"""@en ;
-                              dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                               dcterms:description """Captures the final overall takeaway regarding the effectiveness of the treatment compared to the control group. It should be a focused statement on whether and how effective the studied intervention was, with clearly defined inference based solely on the information already extracted as Study Findings including Main Results and Clinical Conclusions or Comparative narrative. For example:
 * Yes - A concise explanation of why the intervention was considered effective.
 * No – A concise explanation of why the intervention was not considered effective.
@@ -2812,7 +2750,6 @@ tara-kb:hasStudyFindings rdf:type owl:AnnotationProperty ;
 Clinical Conclusions: Treatment outcomes for migraine do not differ between patients treated with sham acupuncture, verum acupuncture, or standard therapy.\"
 
 The example above captures the study findings based on the results and conclusions from the study 'Efficacy of acupuncture for the prophylaxis of migraine: a multicentre randomised controlled clinical trial'; PubMed link: https://pubmed.ncbi.nlm.nih.gov/16545747"""@en ;
-                         dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                          dcterms:description """A dual-purpose annotation property that serves as a super-property grouping the interpreted findings sub-properties (clinical conclusions, comparative findings, effectiveness, main results, and proposed mechanism), while simultaneously acting as a direct container for a general free-text stuctured summary of the study's findings when a more specific sub-property does not apply.
 
 This field should faithfully summarize what the paper reports as main results (the core numeric and statistical information of the primary and secondary endpoints) and clinical conclusions in a structured way, potentially including short direct quotations where appropriate."""@en ;
@@ -2839,7 +2776,6 @@ tara-kb:hasStudyID rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyLocation
 tara-kb:hasStudyLocation rdf:type owl:AnnotationProperty ;
                          obo:IAO_0000112 "e.g., \"Seoul National University Hospital, Seoul, South Korea\"."@en ;
-                         dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                          dcterms:description "A dual-purpose annotation property that captures the general, as-reported location or site(s) where the trial was conducted, while also serving as a super-property for the normalized hasCountryOfStudy."@en ;
                          tara-ap:hasCompactURI "tara-kb:hasStudyLocation" ;
                          rdfs:label "Study Location" ;
@@ -2875,7 +2811,6 @@ Top-level JSON keys:
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyOutcomesAndEffectSizeScore
 tara-kb:hasStudyOutcomesAndEffectSizeScore rdf:type owl:AnnotationProperty ;
                                            dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                           dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                            dcterms:description """The reporting quality score that assesses the completeness, transparency, and accuracy of the reported results for each predefined primary and secondary outcome measure, evaluating whether the text explicitly provides estimated effect sizes, confidence intervals, and precise statistical significance values (e.g., p-values) for each endpoint.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                            tara-ap:hasCompactURI "tara-kb:hasStudyOutcomesAndEffectSizeScore" ;
@@ -2924,7 +2859,7 @@ OCSI's scale has no graduated partial; any mix short of full or zero collapses t
 - If all applicable sub-parts are N/A -> item scored N/A (interpretive extension, not explicit in Hammerschlag et al. 2011)."""@en ;
                                            tara-kb:hasTypicalArticleSection "Results"^^tara-kb:articleSectionType ;
                                            rdfs:label "(22) Study Outcomes & Effect Size" ;
-                                           skos:altLabel "22_Study_Outcomes_Effect_Size" ;
+                                           skos:altLabel "22_Outcomes_Effect_Size" ;
                                            rdfs:subPropertyOf tara-kb:hasResultsAndOutcomesMetrics ;
                                            rdfs:range tara-kb:ocsiItemScore ;
                                            rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -2935,7 +2870,6 @@ tara-kb:hasStudyOutcomesMeasure rdf:type owl:AnnotationProperty ;
                                 obo:IAO_0000112 """e.g., \"Primary outcome measure: Proportion of responders (defined as the proportion of patients with a reduction of migraine days by at least 50%).
 
 Secondary outcome measures: Number of migraine days, visual analogue scale (VAS) for pain, physical and mental component summary scores of the 36-item short-form health survey (SF-36), change in migraine days, number of patients with acute medication, adverse events (AE).\""""@en ;
-                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                 dcterms:description """A dual-purpose annotation property that serves as a super-property grouping the primary and secondary outcome measure sub-properties, while simultaneously acting as a direct container for structured oucome measures as \"Primary Outcome Measure\" and/or \"Secondary Outcome Measure\". 
 
 This property can also be used to capture the general outcome measure for the studies where primary/secondary distinction is not reported or not applicable."""@en ;
@@ -2955,11 +2889,10 @@ This property can also be used to capture the general outcome measure for the st
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyQualityAssessmentMetadata
 tara-kb:hasStudyQualityAssessmentMetadata rdf:type owl:AnnotationProperty ;
-                                          dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
-                                          dcterms:description "An annotation property that serves as a high-level grouping property under which specific quality assessment properties are defined to record evaluative quality data, risk-of-bias scores, and methodological rigor metrics calculated for a clinical trial study."@en ;
+                                          dcterms:description "An annotation property that serves as a high-level grouping property under which specific reporting quality assessment properties are defined to record evaluative quality data, risk-of-bias scores, and methodological rigor metrics calculated for a clinical trial study."@en ;
                                           dcterms:type tara-kb:grouping ;
                                           tara-ap:hasCompactURI "tara-kb:hasStudyQualityAssessmentMetadata" ;
-                                          rdfs:comment "Crucially, the values asserted by the sub-properties under this property are not raw data elements directly extracted or verbatim copied from the published journal article. Instead, they represent secondary, derived assessment scores generated, either algorithmically by automated computational models or manually by human domain experts, by evaluating an extracted set of primary metadata from the study report against standardized scoring frameworks and quality assessment criteria (such as OCSI)."@en ;
+                                          rdfs:comment "Crucially, the values asserted by the sub-properties under this property are not raw data elements directly extracted or verbatim copied from the published journal article. Instead, they represent secondary, derived reporting quality scores generated, either algorithmically by automated computational models or manually by human domain experts, by evaluating an extracted set of primary metadata from the study report against standardized scoring frameworks and quality assessment criteria (such as OCSI)."@en ;
                                           rdfs:label "Study Assessment Metadata"@en ;
                                           skos:altLabel "Study_Assessment_Metadata"@en ;
                                           rdfs:subPropertyOf tara-kb:hasTARAArticlesMetadata ;
@@ -2968,7 +2901,6 @@ tara-kb:hasStudyQualityAssessmentMetadata rdf:type owl:AnnotationProperty ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyRationaleAndScopeMetrics
 tara-kb:hasStudyRationaleAndScopeMetrics rdf:type owl:AnnotationProperty ;
-                                         dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                          dcterms:description """Category A, Study Rationale and Scope Metrics, groups the OCSI items that establish why a trial was undertaken and what it covers before its methods and results are reported. The OCSI Items under this category include:
 - Item 1: Participants Randomization Statement;
 - Item 2: Scientific Background and Rationale; 
@@ -2979,8 +2911,9 @@ tara-kb:hasStudyRationaleAndScopeMetrics rdf:type owl:AnnotationProperty ;
                                          tara-ap:hasSynonym "Study Foundation and Background Metrics" ,
                                                             "Trial Framing and Background Metrics" ;
                                          rdfs:label "Category A: Study Rationale & Scope Metrics" ;
-                                         skos:altLabel "Category_A_Study_Rationale_And_Scope_Metrics" ;
+                                         skos:altLabel "Category_A_Study_Rationale_And_Scope" ;
                                          rdfs:subPropertyOf tara-kb:hasOCSIItemScoringMetadata ;
+                                         rdfs:range xsd:nonNegativeInteger ;
                                          rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
 
 
@@ -2989,7 +2922,6 @@ tara-kb:hasStudyResults rdf:type owl:AnnotationProperty ;
                         obo:IAO_0000112 """e.g., \"At 12 months average SF-36 pain scores increased by 33.2 to 64.0 in the acupuncture group and by 27.9 to 58.3 in the control group. Adjusting for baseline score and for any clustering by acupuncturist, the estimated intervention effect was 5.6 points (95% confidence interval − 0.2 to 11.4) at 12 months (n = 213) and 8.0 points (2.8 to 13.2) at 24 months (n = 182).\"
 
 The example above captures the \"Main Results\" from the study 'Randomised controlled trial of a short course of traditional acupuncture compared with usual care for persistent non-specific low back pain'. Article DOI:https://doi.org/10.1136/bmj.38878.907361.7C"""@en ;
-                        dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                         dcterms:description "Captures the main results of the clinical trial containing numeric and statistical information of the primary and secondary endpoints."@en ;
                         tara-ap:hasCompactURI "tara-kb:hasStudyResults" ;
                         tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -3007,7 +2939,6 @@ The example above captures the \"Main Results\" from the study 'Randomised contr
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasStudyType
 tara-kb:hasStudyType rdf:type owl:AnnotationProperty ;
                      obo:IAO_0000112 "e.g., \"Randomized Controlled Trial\", \"Crossover Trial\", \"Meta analysis\", \"Systematic Review\"."@en ;
-                     dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                      dcterms:description "An annotation property that serves as a direct container for the high-level study type categorization (e.g., \"Randomized Controlled Trial\", \"Crossover Trial\", \"Meta Analysis\", \"Systemetic Review\" )."@en ;
                      tara-ap:hasCompactURI "tara-kb:hasStudyType" ;
                      tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -3025,7 +2956,6 @@ tara-kb:hasStudyType rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasSubgroupAdjustedAnalysesScore
 tara-kb:hasSubgroupAdjustedAnalysesScore rdf:type owl:AnnotationProperty ;
                                          dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                         dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                          dcterms:description """The reporting quality score assessing the tracking of subgroups, post-hoc stratifications, or secondary data analyses of the clinical trial.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                          tara-ap:hasCompactURI "tara-kb:hasSubgroupAdjustedAnalysesScore" ;
@@ -3076,7 +3006,6 @@ tara-kb:hasTARAArticlesMetadata rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasTreatmentDuration
 tara-kb:hasTreatmentDuration rdf:type owl:AnnotationProperty ;
                              obo:IAO_0000112 "e.g., \"6 weeks\", \"12 sessions over 1 month\"."@en ;
-                             dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                              dcterms:description "Captures the information about the total length of the therapy course."@en ;
                              tara-ap:hasCompactURI "tara-kb:hasTreatmentDuration" ;
                              rdfs:comment "For the total length of the therapy course (e.g., \"6 weeks\", \"12 sessions over 1 month\")." ;
@@ -3091,7 +3020,6 @@ tara-kb:hasTreatmentDuration rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasTreatmentDurationAndFrequency
 tara-kb:hasTreatmentDurationAndFrequency rdf:type owl:AnnotationProperty ;
                                          obo:IAO_0000112 "e.g., \"12 sessions over 6 weeks, administered 2 times per week.\"."@en ;
-                                         dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                          dcterms:description "A dual-purpose annotation property that serves as a super-property grouping hasTreatmentDuration and hasTreatmentFrequency, while simultaneously acting as a direct container for a combined free-text statement of the treatment's duration and frequency."@en ;
                                          tara-ap:hasCompactURI "tara-kb:hasTreatmentDurationAndFrequency" ;
                                          tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -3109,7 +3037,6 @@ tara-kb:hasTreatmentDurationAndFrequency rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasTreatmentFrequency
 tara-kb:hasTreatmentFrequency rdf:type owl:AnnotationProperty ;
                               obo:IAO_0000112 "e.g., \"3 times per week\", \"Every other day\"."@en ;
-                              dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                               dcterms:description "Captures the information about how often the intervention was administered."@en ;
                               tara-ap:hasCompactURI "tara-kb:hasTreatmentFrequency" ;
                               rdfs:comment "For how often the intervention was administered (e.g., \"3 times per week\", \"Every other day\")." ;
@@ -3124,7 +3051,6 @@ tara-kb:hasTreatmentFrequency rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasTreatmentsDurationAndFrequencyScore
 tara-kb:hasTreatmentsDurationAndFrequencyScore rdf:type owl:AnnotationProperty ;
                                                dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                               dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                dcterms:description """The reporting quality score assessing if treatment intervals, session patterns, and total schedules are documented.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                                tara-ap:hasCompactURI "tara-kb:hasTreatmentsDurationAndFrequencyScore" ;
@@ -3177,7 +3103,6 @@ Sub-part N/A conditions:
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasTrialGeneralizabilityScore
 tara-kb:hasTrialGeneralizabilityScore rdf:type owl:AnnotationProperty ;
                                       dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                      dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                       dcterms:description """The reporting quality score assessing whether the generalizability (external validity) of the trial findings is discussed.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                       tara-ap:hasCompactURI "tara-kb:hasTrialGeneralizabilityScore" ;
@@ -3200,7 +3125,7 @@ tara-kb:hasTrialGeneralizabilityScore rdf:type owl:AnnotationProperty ;
 - Score 0 (No): generalizability of the findings is not discussed."""@en ;
                                       tara-kb:hasTypicalArticleSection "Discussion"^^tara-kb:articleSectionType ;
                                       rdfs:label "(26) Trial Findings Generalizability" ;
-                                      skos:altLabel "26_Trial_Findings_Generalizability" ;
+                                      skos:altLabel "26_Trial_Generalizability" ;
                                       rdfs:subPropertyOf tara-kb:hasResultsDiscussionMetrics ;
                                       rdfs:range tara-kb:ocsiItemScore ;
                                       rdfs:domain <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> .
@@ -3209,7 +3134,6 @@ tara-kb:hasTrialGeneralizabilityScore rdf:type owl:AnnotationProperty ;
 ###  http://www.acupunctureresearch.org/tara/ontology/kb/hasTrialStrengthsLimitationsScore
 tara-kb:hasTrialStrengthsLimitationsScore rdf:type owl:AnnotationProperty ;
                                           dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011. https://doi.org/10.1155/2011/183910"@en ;
-                                          dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                           dcterms:description """The reporting quality score evaluating whether the study authors adequately identified and discussed the strengths and weaknesses of the trial such as potential sources of bias or other trial constraints.
 - The OCSI Item Number, Assessment Question(s) (reproduced from Table 1, Hammerschlag et al., 2011),  and Per Question Instructions(s) (reproduced from Appendix A.2, Hammerschlag et al., 2011) are reproduced under the CC-BY license, with attribution to the original authors. See the Bibliographic Citation section."""@en ;
                                           tara-ap:hasCompactURI "tara-kb:hasTrialStrengthsLimitationsScore" ;
@@ -3459,14 +3383,12 @@ obo:UBERON_0001062 rdf:type owl:Class ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_1132428
 <http://www.acupunctureresearch.org/tara/ontology/TARA_1132428> rdf:type owl:Class ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 rdfs:label "Acupuncture Point"@en .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_1244992
 <http://www.acupunctureresearch.org/tara/ontology/TARA_1244992> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.acupunctureresearch.org/tara/ontology/TARA_3448356> ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "A specialized subclass of 'Disease or Condition' representing health impairments conceptualized, diagnosed, and classified according to conventional Western biomedical science. This class categorizes illnesses based on localized structural, cellular, or molecular pathology, objective biomolecular testing, and specific etiologies (such as infectious, genetic, or metabolic agents), focusing primarily on measurable physiological mechanisms."@en ;
                                                                 rdfs:label "Disease or Condition (Western)" .
 
@@ -3475,7 +3397,6 @@ obo:UBERON_0001062 rdf:type owl:Class ;
 <http://www.acupunctureresearch.org/tara/ontology/TARA_2825659> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.acupunctureresearch.org/tara/ontology/TARA_9542913> ;
                                                                 dcterms:bibliographicCitation "Hammerschlag R, Milley RJ, Colbert A, Weih J, Yohalem-Ilsley B, Mist S, Aickin M. Randomized Controlled Trials of Acupuncture (1997–2007): An Assessment of Reporting Quality with a CONSORT- and STRICTA-Based Instrument. Evidence-Based Complementary and Alternative Medicine. 2011;2011:183910. https://doi.org/10.1155/2011/183910" ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "An acupuncture study quality assessment data item that captures, organizes, and structures the specific multi-item compliance metrics and qualitative evaluation scores defined by the Oregon CONSORT STRICTA Instrument (OCSI; Hammerschlag et al., 2011) for assessing the reporting quality of acupuncture clinical trials."@en ;
                                                                 rdfs:label "Acupuncture Study OCSI Assessment" ;
                                                                 skos:altLabel "Acupuncture_Study_OCSI_Assessment" .
@@ -3484,14 +3405,12 @@ obo:UBERON_0001062 rdf:type owl:Class ;
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_2894731
 <http://www.acupunctureresearch.org/tara/ontology/TARA_2894731> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.acupunctureresearch.org/tara/ontology/TARA_8223728> ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "A specialized subclass of 'Acupuncture Study Publication' representing a peer-reviewed paper published within a periodic scientific journal. This class specifically designates formalized, citable academic literature that has undergone rigorous editorial evaluation, differentiating it from broader publication types by its structural alignment with journal metadata standardizations and its role in official scholarly records."@en ;
                                                                 rdfs:label "Acupuncture Study Journal Article" .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_3448356
 <http://www.acupunctureresearch.org/tara/ontology/TARA_3448356> rdf:type owl:Class ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "A broad ontology class representing any pathological process, abnormal state, or disruption of normal bodily structure or function manifested by a specific set of symptoms or signs. Within this ontology, it serves as the top-level concept for health impairments, encompassing both holistic pattern-based syndromic classifications and localized, etiology-driven physiological disorders without bias toward a specific medical paradigm."@en ;
                                                                 rdfs:label "Disease or Condition" ;
                                                                 skos:altLabel "Disease_Or_Condition" .
@@ -3499,7 +3418,6 @@ obo:UBERON_0001062 rdf:type owl:Class ;
 
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_3677977
 <http://www.acupunctureresearch.org/tara/ontology/TARA_3677977> rdf:type owl:Class ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "An abstract ontology class representing any formal written, digital, or multimedia artifact that documents, describes, or reports on a research study. Unlike the active, physical execution of a research study represented by the 'Research Study' class, this class encompasses the static conceptual and intellectual outputs, such as journal articles, books, conference proceedings, or preprints, created to communicate methodologies, data, and conclusions to the scientific community." ;
                                                                 rdfs:label "Research Study Publication" .
 
@@ -3507,7 +3425,6 @@ obo:UBERON_0001062 rdf:type owl:Class ;
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_6701896
 <http://www.acupunctureresearch.org/tara/ontology/TARA_6701896> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.acupunctureresearch.org/tara/ontology/TARA_7008377> ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "A specialized study process wherein the primary intervention under investigation involves acupuncture therapeutics, including needle insertion, point selection logic, needle manipulation methods, and stimulation protocols (manual, electrical, or thermal). It encompasses the physical trial execution from participant recruitment and baseline grouping through the active administration of real or sham acupuncture procedures up to final endpoint evaluation."@en ;
                                                                 tara-ap:hasSynonym "Acupuncture Study" ;
                                                                 rdfs:label "Acupuncture Research Study"@en ;
@@ -3517,21 +3434,18 @@ obo:UBERON_0001062 rdf:type owl:Class ;
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_6703917
 <http://www.acupunctureresearch.org/tara/ontology/TARA_6703917> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.acupunctureresearch.org/tara/ontology/TARA_3448356> ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "A specialized subclass of 'Disease or Condition' representing health impairments conceptualized, diagnosed, and classified according to the principles of Traditional Chinese Medicine. This class categorizes illnesses based on holistic disharmony, encompassing visceral organ patterns (Zang-Fu), channel theories, and pathogenic factors (e.g., Wind, Dampness), where the focus is on the body's overall functional pattern (Zheng) rather than isolated anatomical lesions."@en ;
                                                                 rdfs:label "Disease or Condition (TCM)" .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_7008377
 <http://www.acupunctureresearch.org/tara/ontology/TARA_7008377> rdf:type owl:Class ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "A planned acupuncture research process consisting of a coordinated group of research activities, methodological designs, and data-gathering evaluations aimed at systematically investigating a scientific hypothesis or clinical question. Within TARA Ontology, it represents the operational and temporal execution of the research project itself in the physical world, functioning as a distinct entity from the written publication artifacts (represented by the 'Research Study Publication' class) that report on its findings." ;
                                                                 rdfs:label "Research Study" .
 
 
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_7227329
 <http://www.acupunctureresearch.org/tara/ontology/TARA_7227329> rdf:type owl:Class ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "A data item consisting of a structured collection of metrics, scores, or evaluations generated during a systematic process to assess the methodological rigor, risk of bias, validity, or reporting completeness of a scientific study or clinical trial." ;
                                                                 rdfs:label "Research Study Quality Assessment" .
 
@@ -3539,7 +3453,6 @@ obo:UBERON_0001062 rdf:type owl:Class ;
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_8223728
 <http://www.acupunctureresearch.org/tara/ontology/TARA_8223728> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.acupunctureresearch.org/tara/ontology/TARA_3677977> ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "A specialized subclass of 'Research Study Publication' representing any formal written, digital, or multimedia artifact that documents, describes, or reports on an acupuncture research study. Unlike the active, physical execution of an acupuncture research study represented by the 'Acupuncture Research Study' class, this class encompasses the static conceptual and intellectual outputs, such as journal articles, books, conference proceedings, or preprints, created to communicate methodologies, data, and conclusions to the scientific community."@en ;
                                                                 rdfs:label "Acupuncture Study Publication" ;
                                                                 skos:altLabel "Acupuncture_Research_Study_Publication" .
@@ -3548,7 +3461,6 @@ obo:UBERON_0001062 rdf:type owl:Class ;
 ###  http://www.acupunctureresearch.org/tara/ontology/TARA_9542913
 <http://www.acupunctureresearch.org/tara/ontology/TARA_9542913> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.acupunctureresearch.org/tara/ontology/TARA_7227329> ;
-                                                                dcterms:creator "Fahim Imam - https://orcid.org/0000-0003-4752-543X" ;
                                                                 dcterms:description "A study quality appraisal data item specifically designed or adapted to evaluate the methodological rigor and reporting completeness of clinical trials or systematic reviews evaluating acupuncture interventions, capturing specific operational variables unique to needle-based therapeutics." ;
                                                                 rdfs:label "Acupuncture Study Qualty Assessment" ;
                                                                 skos:altLabel "Acupuncture_Study_Qualty_Assessment" .
