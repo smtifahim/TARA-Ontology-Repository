@@ -1,7 +1,15 @@
 # TARA Acupoints Ontology — Generated Files
 
+> **The versioned, published distribution has moved to [`docs/distribution/`](../../../docs/distribution/README.md)** —
+> `docs/distribution/{ontology,kb}/version/<VERSION>/…` with `latest.json` and an
+> `index.html`, served by GitHub Pages and resolvable via PURL. The header
+> scripts under `ontology-generator/script/` write there now.
+> The files in *this* folder are the earlier flat, unversioned outputs, kept for
+> reference. The version history below is retained here.
+
 1. [Generated Files](#generated-files)
 2. [Ontology Versions Summary](#ontology-versions-summary)
+   + [Version 1.7.2 (September 9, 2026)](#version-172-september-9-2026)
    + [Version 1.7.0 (August 15, 2026)](#version-170-august-15-2026)
    + [Version 1.5.0 (July 9, 2026)](#version-150-july-9-2026)
    + [Version 1.2.0 (April 20, 2026)](#version-120-april-20-2026)
@@ -45,6 +53,12 @@ To regenerate these files, see the  [ontology generator pipeline](../../../ontol
 ## Ontology Versions Summary
 
 This section will be updated periodically based on the release of the newer versions of the ontology.
+
+### Version 1.7.2 (September 9, 2026)
+
+* Normalization of listed indications for the acupuncture points. The original extracted indications from the reference book (Chinese Acupuncture and Moxibustion, 1999) had several issues with irregular, inconsistent, and misspelled naming of the indications. See the [csv log](../../../curated-data/ontology-curation-sheet/normalization-files/) of what changed for the normalization. Also, this version makes it possible to search acupoints based on listed indications.
+* Normalization of the locational descriptions for the meridan acupoints. The original excrated descriptions of the acupoints  from the source book (WHO Standard Acupuncture Point Locations in the Western Pacific Region, 2008) often had notes but the notes were not structured like a list. Also, the alphaneumeric codes for the acupoints did not have proper spacing (e.g., "BL1" instead of "BL 1" ). See the [csv log](../../../curated-data/ontology-curation-sheet/normalization-files/acupoint_locations_normalized.csv) of what changed for the normalization
+* Enhanced metadata for several annotation and object properties for the TARA ontology with additional example of usage.
 
 ### Version 1.7.0 (August 15, 2026)
 
