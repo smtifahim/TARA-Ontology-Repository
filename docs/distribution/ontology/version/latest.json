@@ -1,0 +1,18 @@
+{
+  "id": "ontology",
+  "title": "TARA Acupoints Ontology",
+  "ontologyIRI": "http://purl.org/tara/ontology/acupoints.owl",
+  "latest": "1.7.2",
+  "versions": [
+    "1.7.2",
+    "1.7.1"
+  ],
+  "canonicalVariant": "no-bfo/inferred",
+  "versionIRIs": {
+    "no-bfo/asserted": "http://purl.org/tara/ontology/release/1.7.2/no-bfo/asserted/acupoints.ttl",
+    "no-bfo/inferred": "http://purl.org/tara/ontology/release/1.7.2/no-bfo/inferred/acupoints.ttl",
+    "asserted": "http://purl.org/tara/ontology/release/1.7.2/asserted/acupoints.ttl",
+    "inferred": "http://purl.org/tara/ontology/release/1.7.2/inferred/acupoints.ttl"
+  },
+  "generated": "2026-09-09"
+}
