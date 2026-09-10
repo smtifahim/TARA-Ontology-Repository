@@ -1,0 +1,17 @@
+{
+  "id": "kb",
+  "title": "TARA Articles Knowledge Base",
+  "ontologyIRI": "http://purl.org/tara/ontology/kb/articles-kb.ttl",
+  "latest": "0.5",
+  "versions": [
+    "0.5"
+  ],
+  "canonicalVariant": "no-bfo/inferred",
+  "versionIRIs": {
+    "no-bfo/asserted": "http://purl.org/tara/ontology/kb/release/0.5/no-bfo/asserted/articles-kb.ttl",
+    "no-bfo/inferred": "http://purl.org/tara/ontology/kb/release/0.5/no-bfo/inferred/articles-kb.ttl",
+    "asserted": "http://purl.org/tara/ontology/kb/release/0.5/asserted/articles-kb.ttl",
+    "inferred": "http://purl.org/tara/ontology/kb/release/0.5/inferred/articles-kb.ttl"
+  },
+  "generated": "2026-09-09"
+}
