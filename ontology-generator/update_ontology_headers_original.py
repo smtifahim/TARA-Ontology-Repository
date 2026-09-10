@@ -194,8 +194,8 @@ def target_version_header(graph, variant_path, flavor_text):
 def reorder_ontology_header(graph, output_path):
     """
     Post-processing step run after a variant file has been saved: pulls every
-    owl:Ontology-typed subject's triples (the ontology declaration itself --
-    title, version info, etc. -- plus any bridged/imported module stubs, but
+    owl:Ontology-typed subject's triples (the ontology declaration itself:
+    title, version info, etc., plus any bridged/imported module stubs, but
     never class/property/individual metadata) out of wherever rdflib's turtle
     serializer scattered them, and re-emits them as a single block directly
     under the @prefix declarations at the top of the file.
