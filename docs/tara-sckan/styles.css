@@ -1,0 +1,125 @@
+
+:root{
+  --bg:#ffffff;--panel:#f7f8fa;--border:#dfe2e6;--text:#1a1f27;--muted:#5b6472;
+  --accent:#4472c4;--accent-weak:#eaf0fb;--highlight:#fff3c4;
+  --pill-bg:#e6f2fb;--pill-border:#b7d9ee;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#14171c;--panel:#1b1f26;--border:#2d333d;--text:#e6e9ef;--muted:#9aa4b2;
+  --accent:#7fa4e8;--accent-weak:#233047;--highlight:#4d431f;
+  --pill-bg:#1e2c3b;--pill-border:#33506b;
+}}
+*{box-sizing:border-box}
+body{margin:0;padding:0;background:var(--bg);color:var(--text);line-height:1.5;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+a{color:var(--accent)}
+main{max-width:1180px;margin:0 auto;padding:2rem 1.4rem 4rem}
+h1{font-size:1.35rem;margin:0 0 .3rem}
+.lede{color:var(--muted);margin:0 0 1.4rem;font-size:.95rem;max-width:70ch}
+.lede code{font-size:.85em}
+
+.controls{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;
+  padding:.85rem 1rem;background:var(--panel);border:1px solid var(--border);border-radius:10px}
+.controls label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+.controls select,.controls input[type=text]{font:inherit;padding:.4rem .55rem;
+  border:1px solid var(--border);border-radius:7px;background:var(--bg);color:var(--text)}
+.controls .search-wrap{position:relative;flex:1 1 22rem;min-width:14rem}
+.controls input[type=text]{width:100%}
+.ac-list{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 3px);max-height:16rem;
+  overflow:auto;background:var(--bg);border:1px solid var(--border);border-radius:8px;
+  box-shadow:0 6px 24px rgba(0,0,0,.14);display:none}
+.ac-list.open{display:block}
+.ac-item{padding:.4rem .6rem;cursor:pointer;display:flex;gap:.5rem;align-items:baseline}
+.ac-item.active,.ac-item:hover{background:var(--accent-weak)}
+.ac-item .k{font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);
+  border:1px solid var(--border);border-radius:4px;padding:0 .3rem}
+.renderer-toggle{margin-left:auto;display:flex;gap:.3rem;align-items:center}
+.renderer-toggle button{font:inherit;font-size:.82rem;padding:.35rem .6rem;border:1px solid var(--border);
+  background:var(--bg);color:var(--text);border-radius:7px;cursor:pointer}
+.renderer-toggle button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.renderer-toggle button:disabled{opacity:.4;cursor:not-allowed}
+
+#results{margin-top:1.6rem;display:flex;flex-direction:column;gap:2rem}
+.result-block{border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.result-head{padding:.9rem 1.1rem;background:var(--panel);border-bottom:1px solid var(--border)}
+.result-head h2{margin:0;font-size:1.05rem}
+.result-head .summary{margin:.3rem 0 0;color:var(--muted);font-size:.9rem;max-width:70ch}
+/* don't let a long pill row or summary line dictate the card width */
+.result-block .pill-row{max-width:min(100%, 68rem)}
+.result-body{padding:1.1rem}
+
+.pill-row{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .4rem;margin:.35rem 0}
+.pill-row .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);
+  align-self:center;margin:0 .1rem 0 .55rem;font-weight:700}
+.pill-row .lbl:first-child{margin-left:0}
+.chip{display:inline-flex;align-items:center;gap:.3rem;background:var(--pill-bg);border:1px solid var(--pill-border);
+  border-radius:5px;padding:.14rem .5rem;font-size:.82rem;text-decoration:none;color:var(--text)}
+a.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip .sub{color:var(--muted);font-size:.75rem}
+
+.neuron-list{margin:.6rem 0 0;display:flex;flex-direction:column;gap:.35rem}
+.neuron-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline;font-size:.85rem}
+.neuron-row .pheno{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+.neuron-row .nlabel{color:var(--muted)}
+.no-pathway{margin:.8rem 0 0;padding:.6rem .8rem;border-left:3px solid var(--border);
+  color:var(--muted);font-size:.88rem;background:var(--panel)}
+
+/* no nested panel - the diagram + its controls sit directly in the result body */
+.diagram-block{margin-top:1.1rem}
+.diagram-controls{display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;
+  margin-bottom:.75rem;font-size:.82rem}
+.diagram-controls .grp{display:flex;gap:.35rem;align-items:center}
+.diagram-controls .grp>span:first-child{color:var(--muted);text-transform:uppercase;
+  letter-spacing:.03em;font-size:.72rem;font-weight:700}
+.diagram-controls button{font:inherit;font-size:.8rem;padding:.28rem .55rem;border:1px solid var(--border);
+  background:var(--bg);color:var(--text);border-radius:6px;cursor:pointer}
+.diagram-controls button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.diagram-controls button:disabled{opacity:.4;cursor:not-allowed}
+.diagram-controls label.chk{display:flex;gap:.3rem;align-items:center;color:var(--text);
+  text-transform:none;letter-spacing:0}
+.diagram-controls select{font:inherit;font-size:.8rem;padding:.24rem .4rem;border:1px solid var(--border);
+  border-radius:6px;background:var(--bg);color:var(--text)}
+.diagram-info{padding:0 0 .5rem}
+.diagram-info:empty{display:none}
+/* the host shrink-wraps the diagram (both axes), capped at the panel width:
+   static -> the SVG's own size; interactive -> set inline from the laid-out
+   graph's bounding box. Anything larger scrolls inside the host. */
+.diagram-host{position:relative;box-sizing:border-box;min-width:260px;max-width:100%;
+  min-height:150px;overflow:auto;background:var(--bg);border:1px solid var(--border);border-radius:8px}
+.diagram-host.static{width:fit-content;padding:.8rem;min-height:0;max-height:85vh}
+.pathway-svg{max-width:none;height:auto;display:block}
+.cy-canvas{position:absolute;inset:0}
+
+.legend{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin-top:.7rem;padding:.1rem 0;
+  font-size:.76rem;color:var(--muted);align-items:center}
+.legend .k{display:inline-flex;gap:.35rem;align-items:center}
+.legend .sw{width:20px;height:14px;border-radius:4px;display:inline-block;border:1.5px solid}
+.sw-soma{background:#e8f5e9;border-color:#43a047}
+.sw-axon{background:#e8eaf6;border-color:#5c6bc0;border-style:dashed}
+.sw-terminal{background:#ffebee;border-color:#e53935}
+.sw-sensory{background:#efebe9;border-color:#8d6e63}
+.sw-synapse{background:#e8f5e9;border-color:#2e7d32;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #2e7d32}
+.legend .ph{display:inline-flex;gap:.3rem;align-items:center}
+.legend .ph i{width:16px;height:3px;display:inline-block;border-radius:2px}
+
+.caption-table{border-collapse:collapse;font-size:.82rem;margin-top:.8rem}
+.caption-table th,.caption-table td{text-align:left;padding:.4rem .6rem;border-bottom:1px solid var(--border);vertical-align:top}
+.caption-table th{color:var(--muted);font-weight:600}
+.caption-table td:last-child{max-width:34rem;white-space:normal;overflow-wrap:anywhere}
+.caption-table tr:last-child td{border-bottom:0}
+/* keep long SCKAN labels from stretching the (shrink-wrapping) card */
+.neuron-row{max-width:44rem}
+.neuron-row .nlabel{overflow-wrap:anywhere}
+
+.disclosure-controls{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin-top:.8rem}
+.disclosure-controls:empty{display:none}
+.disclosure-btn{background:none;border:0;padding:.2rem 0;color:var(--accent);font:inherit;font-size:.85rem;cursor:pointer}
+.disclosure-btn:hover{text-decoration:underline}
+.disclosure-hidden{display:none!important}
+
+.result-body h3{font-size:.95rem;margin:1.6rem 0 .4rem}
+.result-body h4{font-size:.88rem;margin:0 0 .3rem;color:var(--muted)}
+.hint{color:var(--muted);font-size:.9rem}
+.stat-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0 0}
+.stat-pills .chip{cursor:default}
+footer{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);padding-top:1rem}

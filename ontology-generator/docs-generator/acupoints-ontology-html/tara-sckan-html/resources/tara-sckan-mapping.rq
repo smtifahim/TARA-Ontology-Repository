@@ -1,0 +1,46 @@
+# Acopoints-SCKAN mapping test
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX TARA: <http://purl.org/tara/ontology/TARA_>
+PREFIX tara-ap: <http://purl.org/tara/ontology/annotation-property/>
+PREFIX ilxtr: <http://uri.interlex.org/tgbugs/uris/readable/>
+PREFIX gastint: <http://uri.interlex.org/composer/uris/set/gastint/>
+PREFIX portal: <http://uri.interlex.org/composer/uris/set/portal/>
+
+
+SELECT DISTINCT
+?acupoint_iri ?acupoint
+?meridian_iri ?meridian 
+?related_nerve_iri ?related_nerve
+?neuron ?neuron_phenotype ?species
+
+WHERE 
+{
+    # FILTER (?acupoint = 'LU 9').
+    ?neuron rdfs:subClassOf+ ?sckan_neuron . #only consider SCKAN neurons
+    VALUES ?sckan_neuron { ilxtr:NeuronComposer ilxtr:NeuronApinatComplex }
+
+    ?acupoint_iri rdfs:label ?acupoint.
+    
+    ?acupoint_iri tara-ap:isLocatedOnMeridian ?meridian_iri.
+    ?meridian_iri rdfs:label ?meridian.
+    ?acupoint_iri tara-ap:hasRelatedNerve ?related_nerve_iri.
+    ?related_nerve_iri rdfs:label ?related_nerve.
+    
+    #?neuron ilxtr:hasAxonLocation ?x. # |ilxtr:hasAxonLeadingToSensoryTerminal
+    <<?neuron ilxtr:hasAxonLocation ?ax>> ilxtr:hasRegion ?x.
+    
+    ?neuron ilxtr:hasNeuronalPhenotype|ilxtr:hasCircuitRole ?phenotype_iri. 
+    ?phenotype_iri rdfs:label ?neuron_phenotype.
+    ?neuron ilxtr:isObservedInSpecies ?species_iri.
+    ?species_iri rdfs:label ?species.
+    
+    FILTER (?x = ?related_nerve_iri)
+    FILTER (?species = 'Homo sapiens')
+
+}
+ORDER BY ?acupoint ?meridian ?related_nerve ?neuron ?neuron_phenotype ?species
+limit 999

@@ -612,6 +612,11 @@ li.hidden-by-filter { display: none; }
 }
 .ann-table { padding-top: 0.4rem; }
 .ann-row { display: flex; gap: 0.75rem; padding: 0.28rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; align-items: flex-start; }
+/* a row whose value is purely a pill list (Is Required By / Is Referenced By /
+   Requires ...): centre the label vertically against the pill block instead of
+   pinning it to the top. Prose-valued rows keep top alignment. */
+.ann-row:has(> .ann-vals-mixed) { align-items: center; }
+.ann-row:has(> .ann-vals-mixed) > .ann-vals-mixed { padding-top: 0; }
 /* per-row borders only divide rows *within* one table; the last row's is
    dropped because the gap to the next top-level group is drawn by that group's
    border-top instead (see the sibling rules below) - a narrative block splits
@@ -829,8 +834,9 @@ Surface Location")
 .ann-row-paired { align-items: flex-start; }
 /* each pair item is [dynamic label][value], sized to content so the two
    items sit next to each other rather than being spread to the row edges. */
-.ann-pair-item { display: flex; align-items: flex-start; gap: 0.75rem; }
-.ann-pair-item .ann-vals { flex: 0 1 auto; }
+.ann-pair-item { display: flex; align-items: center; gap: 0.75rem; }
+.ann-pair-item .ann-vals { flex: 0 1 auto; padding-top: 0; }
+.ann-pair-item .ann-pred .field-label { display: flex; align-items: center; }
 .ann-pair-item:not(:first-child) { margin-left: 1.5rem; }
 /* only the first pair item anchors the shared label column; a later item sits
    mid-row, so let its label shrink to its own text instead of reserving the
