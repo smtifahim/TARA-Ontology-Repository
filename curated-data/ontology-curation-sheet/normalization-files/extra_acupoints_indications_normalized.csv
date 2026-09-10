@@ -1,0 +1,44 @@
+﻿Acupoint,Indications-Extracted,Indications-Normalized,What Changed
+Taiyang,"Headache, eye diseases, deviation of the eyes and mouth.","headache, eye disease, deviation of the eye, deviation of the mouth",Lowercased; removed trailing period; split 'deviation of the eyes and mouth' into separate items.
+Yintang,"Headache, head heaviness, epistaxis, rhinorrhea, infantile convulsion, frontal headache, insomnia.","headache, head heaviness, epistaxis, rhinorrhea, infantile convulsion, frontal headache, insomnia",Lowercased; removed trailing period.
+Shanglianquan,"Alalia, salivation with stiff tongue, sore throat, difficulty in swallowing, loss of voice.","alalia, salivation with stiff tongue, sore throat, difficulty in swallowing, loss of voice",Lowercased; removed trailing period.
+Erjian,"Redness, swelling and pain of the eyes, febrile disease, nebula.","redness of the eye, swelling of the eye, pain in the eye, febrile disease, nebula","Lowercased; removed trailing period; split 'redness, swelling and pain of the eyes' into separate items."
+Yuyao,"Pain in the supraorbital region, twitching of the eyelids, ptosis, cloudiness of the cornea, redness, swelling and pain of the eyes.","pain in the supraorbital region, twitching of the eyelids, ptosis, cloudiness of the cornea, redness of the eye, swelling of the eye, pain in the eye","Lowercased; removed trailing period; split 'redness, swelling and pain of the eyes' into separate items."
+Sishencong,"Headache, vertigo, insomnia, poor memory, epilepsy.","headache, vertigo, insomnia, poor memory, epilepsy",Lowercased; removed trailing period.
+Qiuhou,Eye diseases.,eye disease,Lowercased; removed trailing period.
+Jiachengjiang,"Pain in the face, deviation of the eyes and mouth, spasm of facial muscle.","pain in the face, deviation of the eye, deviation of the mouth, spasm of facial muscle",Lowercased; removed trailing period; split 'deviation of the eyes and mouth' into separate items.
+Jinjing,"Swelling of the tongue, vomiting, aphasia with stiffness of tongue.","swelling of the tongue, vomiting, aphasia with stiffness of tongue",Lowercased; removed trailing period.
+Yuye,"Swelling of the tongue, vomiting, aphasia with stiffness of tongue.","swelling of the tongue, vomiting, aphasia with stiffness of tongue",Lowercased; removed trailing period.
+Bitong,"Rhinitis, nasal obstruction, nasal boils.","rhinitis, nasal obstruction, nasal boils",Lowercased; removed trailing period.
+Qianzheng,"Deviation of the eyes and mouth, ulceration on tongue and mouth.","deviation of the eye, deviation of the mouth, ulceration on tongue, ulceration on mouth",Lowercased; removed trailing period; split 'deviation of the eyes and mouth' and 'ulceration on tongue and mouth' into separate items.
+Yiming,"Eye diseases, tinnitus, insomma.","eye disease, tinnitus, insomnia",Lowercased; removed trailing period.
+Anmian,"Insomnia, vertigo, headache, palpitation, mental disorders.","insomnia, vertigo, headache, palpitation, mental disorders",Lowercased; removed trailing period.
+Dingchuan,"Asthma, cough, neck rigidity, pain in the shoulder and back, rubella.","asthma, cough, neck rigidity, pain in the shoulder, pain in the back, rubella",Lowercased; removed trailing period; split 'pain in the shoulder and back' into separate items.
+Huatuojiaji,,,
+Bailao,"Scrofula, cough, asthma, whooping cough, neck rigidity.","scrofula, cough, asthma, whooping cough, neck rigidity",Lowercased; removed trailing period.
+Weiwanxiashu,"Diabetes, vomiting, abdominal pain, pain in the chest and hypochondriac region.","diabetes, vomiting, abdominal pain, pain in the chest, pain in the hypochondriac region",Lowercased; removed trailing period; split 'pain in the chest and hypochondriac region' into separate items.
+Shiqizhui,"Lumbar Pain, thigh pain, paralysis of the lower extremities, irregular menstruation, dysmenorrhea.","lumbar pain, thigh pain, paralysis in the lower extremities, irregular menstruation, dysmenorrhea",Lowercased; removed trailing period; changed 'paralysis of the lower extremities' to 'paralysis in the lower extremities' for consistency.
+Yaoqi,"Epilepsy, headache, inomnia, constipation.","epilepsy, headache, insomnia, constipation",Lowercased; removed trailing period; fixed spelling for insomina
+Pigen,"Hepatosplenomegaly, lumbar pain.","hepatosplenomegaly, lumbar pain",Lowercased; removed trailing period.
+Yaoyan,"Lumbar pain, frequency of urine, irregular menstruation.","lumbar pain, frequency of urine, irregular menstruation",Lowercased; removed trailing period.
+Zigongxue,"Prolapse of the uterus, irregular menstruation.","prolapse of the uterus, irregular menstruation",Lowercased; removed trailing period.
+Jianqian,"Pain in the shoulder and arm, paralysis of the upper extremities.","pain in the shoulder, pain in the arm, paralysis in the upper extremities",Lowercased; removed trailing period; split 'pain in the shoulder and arm' into separate items; changed 'paralysis of the upper extremities' to 'paralysis in the upper extremities' for consistency.
+Shixuan,"Apoplexy, coma, epilepsy, high fever, acute tonsillitis, infantile convulsion, numbness of the finger tips.","apoplexy, coma, epilepsy, high fever, acute tonsillitis, infantile convulsion, numbness of the finger tips",Lowercased; removed trailing period.
+Sifeng,"Malnutrition and indigestion syndrome in children, whooping cough.","malnutrition and indigestion syndrome in children, whooping cough",Lowercased; removed trailing period.
+Zhongkui,"Nausea, vomiting, hiccup.","nausea, vomiting, hiccup",Lowercased; removed trailing period.
+Baxie,"Excessive heat, finger numbness, spasm and contracture of the fingers, redness and swelling of the dorsum of the hand.","excessive heat, finger numbness, spasm of the fingers, contracture of the fingers, redness of the dorsum of the hand, swelling of the dorsum of the hand",Lowercased; removed trailing period; split 'spasm and contracture of the fingers' and 'redness and swelling of the dorsum of the hand' into separate items.
+Luozhen,"Sore neck, pain in the shoulder and arm.","sore neck, pain in the shoulder, pain in the arm",Lowercased; removed trailing period; split 'pain in the shoulder and arm' into separate items.
+Yaotongxue,Acute lumbar sprain,acute lumbar sprain,Lowercased.
+Zhongquan,"Stuffy chest, gastric pain, spitting of blood.","stuffy chest, gastric pain, spitting of blood",Lowercased; removed trailing period.
+Erbai,"Hemorrhoids, prolapse of the rectum.","hemorrhoids, prolapse of the rectum",Lowercased; removed trailing period.
+Bizhong,"Paralysis, spasm and contracture of the upper extremities, pain of the forearm.","paralysis, spasm of the upper extremities, contracture of the upper extremities, pain of the forearm",Lowercased; removed trailing period; split 'spasm and contracture of the upper extremities' into separate items.
+Zhoujian,Scrofula,scrofula,Lowercased.
+Huanzhong,"Lumbar pain, thigh pain.","lumbar pain, thigh pain",Lowercased; removed trailing period.
+Baichongwo,"Rubella, eczema, gastrointestinal parasitic diseases.","rubella, eczema, gastrointestinal parasitic disease",Lowercased; removed trailing period.
+Xiyan,"Knee pain, weakness of the lower extremities.","knee pain, weakness of the lower extremities",Lowercased; removed trailing period.
+Medial Xiyan,"Knee pain, weakness of the lower extremities.","knee pain, weakness of the lower extremities",Lowercased; removed trailing period.
+Lateral Xiyan,"Knee pain, weakness of the lower extremities.","knee pain, weakness of the lower extremities",Lowercased; removed trailing period.
+Lanweixue,"Acute and chronic appendicitis, indigestion, paralysis of the lower extremities.","acute appendicitis, chronic appendicitis, indigestion, paralysis in the lower extremities",Lowercased; removed trailing period; split 'acute and chronic appendicitis' into separate items; changed 'paralysis of the lower extremities' to 'paralysis in the lower extremities' for consistency.
+Heding,"Knee pain, weakness of the foot and leg, paralysis.","knee pain, weakness of the foot, weakness of the leg, paralysis",Lowercased; removed trailing period; split 'weakness of the foot and leg' into separate items.
+Dannangxue,"Acute and chronic cholecystitis, cholelithiasis, biliary ascariasis, muscular atrophy and numbness of the lower extremities.","acute cholecystitis, chronic cholecystitis, cholelithiasis, biliary ascariasis, muscular atrophy of the lower extremities, numbness of the lower extremities",Lowercased; removed trailing period; split 'acute and chronic cholecystitis' and 'muscular atrophy and numbness of the lower extremities' into separate items.
+Bafeng,"Beriberi, toe pain, redness and swelling of the dorsum of the foot.","beriberi, toe pain, redness of the dorsum of the foot, swelling of the dorsum of the foot",Lowercased; removed trailing period; split 'redness and swelling of the dorsum of the foot' into separate items.
