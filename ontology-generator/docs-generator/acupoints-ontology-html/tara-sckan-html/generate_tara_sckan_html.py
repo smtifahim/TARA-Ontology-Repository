@@ -152,19 +152,42 @@ def build_model():
     mapping = _load_sparql(MAPPING_JSON)
     partial = _load_sparql(PARTIAL_ORDER_JSON)
 
+    # tara-skan-partial-order.json's Target_Neuron_Phenotype is NOT the
+    # neuron's own phenotype - the query derives it through a pre->post
+    # VALUES pairing meant to describe the pathway's eventual/target segment
+    # (np=sym-pre -> sym-post, np=para-pre -> para-post, post stays post), so
+    # every sympathetic/parasympathetic *pre*-ganglionic neuron in that file
+    # comes out mislabelled "...Post-Ganglionic phenotype" even though its own
+    # soma-in-CNS / terminal-in-ganglion anatomy is textbook pre-ganglionic.
+    # tara-sckan-mapping.json's neuron_phenotype comes straight off the neuron
+    # itself (ilxtr:hasNeuronalPhenotype), so it's the authoritative label.
+    neuron_own_phenotype = {}
+    for r in mapping:
+        if r.get("neuron_phenotype"):
+            neuron_own_phenotype.setdefault(r["neuron"], r["neuron_phenotype"])
+
     # ----- neurons from the partial order (the only ones with a drawable path)
     neurons = {}
     for r in partial:
         niri = r["Neuron_Connected"]
         n = neurons.get(niri)
         if n is None:
+            own_phenotype = neuron_own_phenotype.get(niri) or r.get("Target_Neuron_Phenotype", "")
             n = neurons[niri] = {
                 "iri": niri,
                 "curie": _iri_to_curie(niri),
                 "explorerUrl": SCKAN_EXPLORER + _iri_to_curie(niri),
                 "label": r.get("Neuron_Label", ""),
-                "phenotype": _norm_phenotype(r.get("Target_Neuron_Phenotype")),
-                "phenotypeLabel": r.get("Target_Neuron_Phenotype", ""),
+                "phenotype": _norm_phenotype(own_phenotype),
+                "phenotypeLabel": own_phenotype,
+                # Target_Neuron_Phenotype IS meaningful - just not as this
+                # neuron's own phenotype. Per the query, it's the phenotype of
+                # the post-synaptic neuron reached via hasForwardConnection*,
+                # asserted at the row(s) where this neuron's own terminal is
+                # the synapse (IsSynapse=YES). Kept as "synapsesTo" so a
+                # pre-ganglionic neuron can still show what it hands off to,
+                # without it being mistaken for its own phenotype.
+                "synapsesTo": None,
                 "organs": {},   # label -> IRI (Target_Organ_IRI)
                 "_nodes": {},
                 "_edges": {},
@@ -173,6 +196,8 @@ def build_model():
             n["label"] = r["Neuron_Label"]
         if r.get("Target_Organ"):
             n["organs"].setdefault(r["Target_Organ"], _clean_iri(r.get("Target_Organ_IRI", "")) or None)
+        if r.get("IsSynapse") == "YES" and r.get("Target_Neuron_Phenotype"):
+            n["synapsesTo"] = r["Target_Neuron_Phenotype"]
 
         for side in ("1", "2"):
             nid = _clean_iri(r[f"V{side}_ID"])
@@ -1017,22 +1042,30 @@ APP_JS = r"""
   }
 
   function neuronCaption(drawnNeurons) {
+    var neuronsNow = drawnNeurons.map(function (i) { return DATA.neurons[i]; })
+      .sort(function (a, b) { return natcmp(a.curie, b.curie); });
+    // "Synapses onto" (only shown when at least one listed neuron has it): the
+    // phenotype of the post-synaptic neuron this one hands off to at its
+    // synapse-marked terminal (SCKAN's Target_Neuron_Phenotype) - a real,
+    // useful fact about the pathway's continuation, distinct from this
+    // neuron's own phenotype in the Phenotype column.
+    var showSynapse = neuronsNow.some(function (n) { return n.synapsesTo; });
     var t = el("table", "caption-table");
     var thead = el("thead");
-    thead.innerHTML = "<tr><th>Neuron</th><th>Phenotype</th><th>Population label (SCKAN)</th></tr>";
+    thead.innerHTML = "<tr><th>Neuron</th><th>Phenotype</th><th>Population label (SCKAN)</th>" +
+      (showSynapse ? "<th>Synapses onto</th>" : "") + "</tr>";
     t.appendChild(thead);
     var tb = el("tbody");
-    drawnNeurons.map(function (i) { return DATA.neurons[i]; })
-      .sort(function (a, b) { return natcmp(a.curie, b.curie); })
-      .forEach(function (n) {
-        var tr = el("tr");
-        var td1 = el("td");
-        td1.appendChild(chip(n.curie, n.explorerUrl));
-        tr.appendChild(td1);
-        tr.appendChild(el("td", null, n.phenotypeLabel || "—"));
-        tr.appendChild(el("td", null, n.label || "—"));
-        tb.appendChild(tr);
-      });
+    neuronsNow.forEach(function (n) {
+      var tr = el("tr");
+      var td1 = el("td");
+      td1.appendChild(chip(n.curie, n.explorerUrl));
+      tr.appendChild(td1);
+      tr.appendChild(el("td", null, n.phenotypeLabel || "—"));
+      tr.appendChild(el("td", null, n.label || "—"));
+      if (showSynapse) tr.appendChild(el("td", null, n.synapsesTo || "—"));
+      tb.appendChild(tr);
+    });
     t.appendChild(tb);
     return t;
   }
@@ -1537,11 +1570,17 @@ APP_JS = r"""
     return { block: b, body: body };
   }
 
-  function phenoSummary(acuList) {
+  // organFilter (an end-organ label): only count neurons whose own pathway
+  // actually reaches that organ - so "Target organ: heart" reports the 1
+  // neuron that reaches heart, not every neuron mapped to the same acupoints.
+  function phenoSummary(acuList, organFilter) {
     var withP = acuList.filter(function (a) { return a.hasPathway; });
     var neurons = {}, meridians = {};
     withP.forEach(function (a) {
-      a.pathwayNeurons.forEach(function (n) { neurons[n] = 1; });
+      a.pathwayNeurons.forEach(function (n) {
+        if (organFilter && !(DATA.neurons[n].organs || []).some(function (o) { return o.label === organFilter; })) return;
+        neurons[n] = 1;
+      });
       if (a.meridian) meridians[a.meridian] = 1;
     });
     var parts = [];
@@ -1573,7 +1612,7 @@ APP_JS = r"""
     var label = { meridian: "Meridian", nerve: "Related nerve", neuron: "Mapping neuron",
                   organ: "Target organ", phenotype: "Phenotype" }[kind] || kind;
 
-    var rb = resultBlock(label + ": " + key, phenoSummary(acuList));
+    var rb = resultBlock(label + ": " + key, phenoSummary(acuList, kind === "organ" ? key : null));
 
     var pr = el("div", "pill-row");
     pr.appendChild(el("span", "lbl", "Acupoints"));
