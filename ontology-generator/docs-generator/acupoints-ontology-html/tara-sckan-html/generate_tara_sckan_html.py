@@ -3,8 +3,9 @@
 
 This is NOT an ontology browser. It reads two cached SPARQL result files and
 renders a searchable page that draws, per acupoint, the combined axonal pathway
-(soma -> axon -> axon terminal -> collapsed "Target organ(s)" node) of every
-SCKAN neuron the acupoint's related nerves fall on (via ilxtr:hasAxonLocation).
+(soma -> axon -> axon terminal -> one node per distinct end-organ label the
+terminal classifies under) of every SCKAN neuron the acupoint's related nerves
+fall on (via ilxtr:hasAxonLocation).
 
 Inputs (resources/):
     tara-sckan-mapping.json        acupoint <-> neuron join (+ related nerve,
@@ -343,10 +344,17 @@ def _dot_label(text, width=26):
     return "\\n".join(lines) or safe
 
 
-def build_dot(model, acu_iris, layout="TB"):
+def build_dot(model, acu_iris, layout="TB", organ_filter=None):
     """DOT for one view: the combined pathway of every pathway-neuron of every
-    acupoint in `acu_iris`, each acupoint its own anchor node, all terminals
-    funnelling into one collapsed 'Target organ(s)' node."""
+    acupoint in `acu_iris`, each acupoint its own anchor node, each axon
+    terminal fanning out to a node per distinct end-organ label it classifies
+    under (no single collapsed 'Target organ(s)' node).
+
+    organ_filter: when given, the graph is trimmed to just the edges that lie
+    on a path from some soma to a terminal actually classified under that one
+    organ label (backward reachability from the matching terminals) - i.e.
+    "only the pathways that end in this organ", not every pathway of every
+    acupoint that happens to also reach this organ among others."""
     neurons = model["neurons"]
     by_iri = model["acupointsByIri"]
     acus = [by_iri[i] for i in acu_iris if i in by_iri and by_iri[i]["hasPathway"]]
@@ -384,10 +392,61 @@ def build_dot(model, acu_iris, layout="TB"):
                 if cur["role"] == "axon" and nd["role"] in ("soma", "terminal", "sensory"):
                     cur["role"] = nd["role"]
 
+    # terminal node id -> {organ label: iri} - a terminal's neuron can carry
+    # several organ labels at once (e.g. a colon terminal is also
+    # "intestine"/"digestive tract"/"large intestine")
+    node_organs = {}
+    for niri in drawn_neurons:
+        pn = neurons[niri]
+        if not pn["organs"]:
+            continue
+        for nd in pn["nodes"]:
+            if nd["role"] in ("terminal", "sensory"):
+                dst = node_organs.setdefault(nd["id"], {})
+                for o in pn["organs"]:
+                    dst.setdefault(o["label"], o["iri"])
+
+    # full edge set: ONE edge per ordered node pair (parallel edges from
+    # different neurons are collapsed - `strict` also enforces this at parse
+    # time). Colour = the phenotype if all contributing neurons agree, else grey.
+    edge_phenos = {}
+    for niri in drawn_neurons:
+        ph = neurons[niri]["phenotype"]
+        for e in neurons[niri]["edges"]:
+            edge_phenos.setdefault((e["from"], e["to"]), set()).add(ph)
+
+    keep_node_ids = set(nodes)
+    keep_edges = edge_phenos
+
+    if organ_filter:
+        hit_terminals = {tid for tid, dst in node_organs.items()
+                          if organ_filter in dst and tid in nodes}
+        if not hit_terminals:
+            return None
+        # backward reachability: every node/edge on some soma->...->terminal
+        # path that ends at one of the matching terminals
+        preds = {}
+        for frm, to in edge_phenos:
+            preds.setdefault(to, []).append(frm)
+        reach = set(hit_terminals)
+        queue = list(hit_terminals)
+        while queue:
+            t = queue.pop()
+            for frm in preds.get(t, ()):
+                if frm not in reach:
+                    reach.add(frm)
+                    queue.append(frm)
+        keep_node_ids = reach
+        keep_edges = {(f, t): phs for (f, t), phs in edge_phenos.items() if f in reach and t in reach}
+        node_organs = {tid: {organ_filter: dst[organ_filter]}
+                        for tid, dst in node_organs.items() if tid in hit_terminals}
+
     def nid(x):
         return '"n_' + re.sub(r"[^A-Za-z0-9]", "_", x) + '"'
 
     for x, nd in nodes.items():
+        if x not in keep_node_ids:
+            continue
         style = _SYNAPSE_STYLE if nd["synapse"] else _NODE_STYLE.get(nd["role"], _NODE_STYLE["axon"])
         url = html.escape(nd["iri"], quote=True)
         # synapse nodes get an id="syn__..." so the static view can toggle them
@@ -397,50 +456,52 @@ def build_dot(model, acu_iris, layout="TB"):
                      f'URL="{url}", target="_blank", '
                      f'tooltip="{_dot_escape(nd["curie"] + " — " + nd["label"])}"];')
 
-    # collapsed target-organ node - labelled with the actual end organ(s)
-    organs = {}
-    for a in acus:
-        for o in a["coarseOrgans"]:
-            organs.setdefault(o["label"], o["iri"])
-    org_names = sorted(organs)
-    org_label = ", ".join(org_names) if org_names else "target organ(s)"
-    org_url = ""
-    if len(org_names) == 1 and organs[org_names[0]]:
-        org_url = f', URL="{html.escape(organs[org_names[0]], quote=True)}", target="_blank"'
-    lines.append(f'  "organ" [label="{_dot_label(org_label, width=30)}", {_ORGAN_STYLE}{org_url}];')
+    # one node per distinct end-organ label still in play (all of them, unless
+    # organ_filter narrowed node_organs down to the one requested)
+    organ_all = {}
+    for dst in node_organs.values():
+        for label, iri in dst.items():
+            organ_all.setdefault(label, iri)
+    for label in sorted(organ_all):
+        oid = "organ_" + re.sub(r"[^A-Za-z0-9]", "_", label)
+        iri = organ_all[label]
+        url_attr = f', URL="{html.escape(iri, quote=True)}", target="_blank"' if iri else ""
+        lines.append(f'  "{oid}" [label="{_dot_label(label)}", {_ORGAN_STYLE}{url_attr}];')
 
-    # pathway edges: ONE edge per ordered node pair (parallel edges from
-    # different neurons are collapsed - `strict` also enforces this at parse
-    # time). Colour = the phenotype if all contributing neurons agree, else grey.
-    edge_phenos = {}
-    for niri in drawn_neurons:
-        ph = neurons[niri]["phenotype"]
-        for e in neurons[niri]["edges"]:
-            edge_phenos.setdefault((e["from"], e["to"]), set()).add(ph)
-    for (frm, to), phs in edge_phenos.items():
+    for (frm, to), phs in keep_edges.items():
         color = PHENOTYPE_COLORS.get(next(iter(phs)), PHENOTYPE_COLORS["other"]) \
             if len(phs) == 1 else PHENOTYPE_COLORS["other"]
         lines.append(f'  {nid(frm)} -> {nid(to)} [color="{color}"];')
 
-    # terminals -> organ
-    for x, nd in nodes.items():
-        if nd["role"] in ("terminal", "sensory"):
-            lines.append(f'  {nid(x)} -> "organ" [color="#607d8b", style=solid];')
+    # terminal -> each of its own (surviving) organ label(s)
+    organ_edges = set()
+    for term_id, dst in node_organs.items():
+        if term_id not in keep_node_ids:
+            continue
+        for label in dst:
+            organ_edges.add((term_id, label))
+    for term_id, label in sorted(organ_edges):
+        oid = "organ_" + re.sub(r"[^A-Za-z0-9]", "_", label)
+        lines.append(f'  {nid(term_id)} -> "{oid}" [color="#607d8b", style=solid];')
 
-    # acupoint anchors
+    # acupoint anchors - an acupoint only gets drawn if at least one of its
+    # anchor targets survived the organ filter (i.e. it actually has a
+    # pathway reaching that organ, not just some other pathway of its own)
     for a in acus:
-        an = 'acu_' + re.sub(r"[^A-Za-z0-9]", "_", a["iri"])
-        lines.append(f'  "{an}" [label="{_dot_escape(a["code"])}", {_ACU_STYLE}, '
-                     f'URL="{html.escape(a["url"], quote=True)}", target="_blank"];')
         targets = []
         for niri in a["pathwayNeurons"]:
             targets += a["anchors"].get(niri, [])
         if not targets:  # fall back: attach to that neuron's soma nodes
             for niri in a["pathwayNeurons"]:
                 targets += [nd["id"] for nd in neurons[niri]["nodes"] if nd["role"] == "soma"]
-        for t in dict.fromkeys(targets):
-            if t in nodes:
-                lines.append(f'  "{an}" -> {nid(t)} [style=dashed, color="#fb8c00"];')
+        live_targets = [t for t in dict.fromkeys(targets) if t in nodes and t in keep_node_ids]
+        if not live_targets:
+            continue
+        an = 'acu_' + re.sub(r"[^A-Za-z0-9]", "_", a["iri"])
+        lines.append(f'  "{an}" [label="{_dot_escape(a["code"])}", {_ACU_STYLE}, '
+                     f'URL="{html.escape(a["url"], quote=True)}", target="_blank"];')
+        for t in live_targets:
+            lines.append(f'  "{an}" -> {nid(t)} [style=dashed, color="#fb8c00"];')
 
     lines.append("}")
     return "\n".join(lines)
@@ -464,9 +525,9 @@ def build_all_svgs(model, layouts=("TB",)):
     """Every view the search can land on -> SVG string, keyed 'kind::key::layout'."""
     out = {}
 
-    def add(key, acu_iris):
+    def add(key, acu_iris, organ_filter=None):
         for lay in layouts:
-            dot_src = build_dot(model, acu_iris, layout=lay)
+            dot_src = build_dot(model, acu_iris, layout=lay, organ_filter=organ_filter)
             if dot_src is None:
                 continue
             try:
@@ -480,7 +541,10 @@ def build_all_svgs(model, layouts=("TB",)):
     for kind, vals in model["facets"].items():
         for k, iris in vals.items():
             if any(model["acupointsByIri"][i]["hasPathway"] for i in iris):
-                add(f"{kind}::{k}", iris)
+                # an "organ" facet view is trimmed to just the pathways that
+                # actually end in that organ - not every pathway of every
+                # acupoint that happens to also reach other organs
+                add(f"{kind}::{k}", iris, organ_filter=k if kind == "organ" else None)
     return out
 
 
@@ -503,8 +567,14 @@ body{margin:0;padding:0;background:var(--bg);color:var(--text);line-height:1.5;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
 a{color:var(--accent)}
 main{max-width:1180px;margin:0 auto;padding:2rem 1.4rem 4rem}
+.page-head{display:flex;align-items:stretch;gap:1.2rem;margin-bottom:1.4rem}
+.page-head img{align-self:stretch;width:auto;max-width:13rem;min-height:5.5rem;
+  object-fit:contain;object-position:left center;flex:0 0 auto}
+.page-head .head-text{display:flex;flex-direction:column;justify-content:center;min-width:0}
 h1{font-size:1.35rem;margin:0 0 .3rem}
-.lede{color:var(--muted);margin:0 0 1.4rem;font-size:.95rem;max-width:70ch}
+.lede{color:var(--muted);margin:0 0 .5rem;font-size:.95rem;max-width:70ch}
+.lede-list{color:var(--muted);margin:0;padding-left:1.2rem;font-size:.95rem;max-width:70ch}
+.lede-list li{margin:.2rem 0}
 .lede code{font-size:.85em}
 
 .controls{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;
@@ -528,8 +598,16 @@ h1{font-size:1.35rem;margin:0 0 .3rem}
 .renderer-toggle button.on{background:var(--accent);border-color:var(--accent);color:#fff}
 .renderer-toggle button:disabled{opacity:.4;cursor:not-allowed}
 
-#results{margin-top:1.6rem;display:flex;flex-direction:column;gap:2rem}
+/* full-bleed so a card is centred against the whole browser window, not the
+   1180px text column - a card wider than the column then overflows evenly on
+   both sides instead of only to the right */
+#results{margin-top:1.6rem;display:flex;flex-direction:column;align-items:center;gap:2rem;
+  width:100vw;max-width:100vw;margin-left:calc(50% - 50vw)}
+/* the card grows to exactly fit the diagram it contains (see sizeCard in the
+   script) - no inner scrolling; a very wide diagram widens the card (and the
+   page) rather than being clipped or scaled down */
 .result-block{border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.result-block>*{min-width:0}
 .result-head{padding:.9rem 1.1rem;background:var(--panel);border-bottom:1px solid var(--border)}
 .result-head h2{margin:0;font-size:1.05rem}
 .result-head .summary{margin:.3rem 0 0;color:var(--muted);font-size:.9rem;max-width:70ch}
@@ -546,16 +624,12 @@ h1{font-size:1.35rem;margin:0 0 .3rem}
 a.chip:hover{border-color:var(--accent);color:var(--accent)}
 .chip .sub{color:var(--muted);font-size:.75rem}
 
-.neuron-list{margin:.6rem 0 0;display:flex;flex-direction:column;gap:.35rem}
-.neuron-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline;font-size:.85rem}
-.neuron-row .pheno{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
-.neuron-row .nlabel{color:var(--muted)}
 .no-pathway{margin:.8rem 0 0;padding:.6rem .8rem;border-left:3px solid var(--border);
   color:var(--muted);font-size:.88rem;background:var(--panel)}
 
 /* no nested panel - the diagram + its controls sit directly in the result body */
 .diagram-block{margin-top:1.1rem}
-.diagram-controls{display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;
+.diagram-controls{display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;justify-content:center;
   margin-bottom:.75rem;font-size:.82rem}
 .diagram-controls .grp{display:flex;gap:.35rem;align-items:center}
 .diagram-controls .grp>span:first-child{color:var(--muted);text-transform:uppercase;
@@ -568,19 +642,31 @@ a.chip:hover{border-color:var(--accent);color:var(--accent)}
   text-transform:none;letter-spacing:0}
 .diagram-controls select{font:inherit;font-size:.8rem;padding:.24rem .4rem;border:1px solid var(--border);
   border-radius:6px;background:var(--bg);color:var(--text)}
+.combo{position:relative;display:inline-block}
+.combo-input{font:inherit;font-size:.8rem;padding:.26rem .5rem;border:1px solid var(--border);
+  border-radius:6px;background:var(--bg);color:var(--text);width:12rem;max-width:44vw}
+.combo-list{position:absolute;z-index:30;left:50%;transform:translateX(-50%);top:calc(100% + 4px);
+  min-width:100%;max-height:16rem;overflow:auto;text-align:left;
+  background:var(--bg);border:1px solid var(--border);border-radius:8px;
+  box-shadow:0 8px 26px rgba(0,0,0,.16);display:none}
+.combo-list.open{display:block}
+.combo-group{padding:.35rem .6rem .15rem;font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--muted);font-weight:700}
+.combo-item{padding:.32rem .65rem;cursor:pointer;font-size:.82rem;white-space:nowrap}
+.combo-item:hover{background:var(--pill-bg)}
+.combo-item .combo-sub{color:var(--muted);font-size:.75rem}
 .diagram-info{padding:0 0 .5rem}
 .diagram-info:empty{display:none}
-/* the host shrink-wraps the diagram (both axes), capped at the panel width:
-   static -> the SVG's own size; interactive -> set inline from the laid-out
-   graph's bounding box. Anything larger scrolls inside the host. */
-.diagram-host{position:relative;box-sizing:border-box;min-width:260px;max-width:100%;
-  min-height:150px;overflow:auto;background:var(--bg);border:1px solid var(--border);border-radius:8px}
-.diagram-host.static{width:fit-content;padding:.8rem;min-height:0;max-height:85vh}
+/* no inner panel and no inner scrollbars - the diagram sits directly in the
+   result body at its natural size, centred, and the card (sizeCard) grows to
+   fit it */
+.diagram-host{position:relative;box-sizing:border-box;overflow:visible;margin-inline:auto}
+.diagram-host.static{width:fit-content}
 .pathway-svg{max-width:none;height:auto;display:block}
 .cy-canvas{position:absolute;inset:0}
 
 .legend{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin-top:.7rem;padding:.1rem 0;
-  font-size:.76rem;color:var(--muted);align-items:center}
+  font-size:.76rem;color:var(--muted);align-items:center;justify-content:center}
 .legend .k{display:inline-flex;gap:.35rem;align-items:center}
 .legend .sw{width:20px;height:14px;border-radius:4px;display:inline-block;border:1.5px solid}
 .sw-soma{background:#e8f5e9;border-color:#43a047}
@@ -591,14 +677,11 @@ a.chip:hover{border-color:var(--accent);color:var(--accent)}
 .legend .ph{display:inline-flex;gap:.3rem;align-items:center}
 .legend .ph i{width:16px;height:3px;display:inline-block;border-radius:2px}
 
-.caption-table{border-collapse:collapse;font-size:.82rem;margin-top:.8rem}
+.caption-table{border-collapse:collapse;font-size:.82rem;margin:.8rem auto 0}
 .caption-table th,.caption-table td{text-align:left;padding:.4rem .6rem;border-bottom:1px solid var(--border);vertical-align:top}
 .caption-table th{color:var(--muted);font-weight:600}
 .caption-table td:last-child{max-width:34rem;white-space:normal;overflow-wrap:anywhere}
 .caption-table tr:last-child td{border-bottom:0}
-/* keep long SCKAN labels from stretching the (shrink-wrapping) card */
-.neuron-row{max-width:44rem}
-.neuron-row .nlabel{overflow-wrap:anywhere}
 
 .disclosure-controls{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin-top:.8rem}
 .disclosure-controls:empty{display:none}
@@ -620,18 +703,24 @@ PAGE = r"""<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TARA Acupoint Innervation Pathways</title>
+<title>TARA Acupoints Innervation Pathways</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <main>
-<h1>TARA Acupoint Innervation Pathways</h1>
-<p class="lede">Axonal pathways of the SCKAN neurons whose course
-(<code>ilxtr:hasAxonLocation</code>) passes through an acupoint's related nerves,
-drawn from soma &rarr; axon &rarr; axon terminal into a collapsed
-<em>Target organ(s)</em> node. Acupoint and meridian names link to the
-<a href="__BROWSER__">TARA Acupoints Ontology</a>; neuron names link to the
-SCKAN Explorer.</p>
+<div class="page-head">
+  <img src="../ontology-website/tara-logo.png" alt="TARA">
+  <div class="head-text">
+    <h1>TARA Acupoints Innervation Pathways</h1>
+    <p class="lede">Axonal pathways of the SCKAN neurons whose course passes through an
+    acupoint's related nerves, drawn from soma &rarr; axon &rarr; axon terminal
+    into its end organ(s).</p>
+    <ul class="lede-list">
+    <li>Acupoint and meridian names link to the <a href="__BROWSER__">TARA Acupoints Ontology</a></li>
+    <li>Neuron names link to the SCKAN Explorer.</li>
+    </ul>
+  </div>
+</div>
 
 <div class="controls">
   <label for="by">Search by</label>
@@ -649,8 +738,8 @@ SCKAN Explorer.</p>
   </div>
   <div class="renderer-toggle" id="renderer">
     <span>View</span>
-    <button data-r="interactive" class="on">Interactive</button>
-    <button data-r="graphviz">Static</button>
+    <button data-r="graphviz" class="on">Static</button>
+    <button data-r="interactive">Interactive</button>
   </div>
 </div>
 
@@ -686,8 +775,9 @@ APP_JS = r"""
   DATA.acupoints.forEach(function (a) { byIri[a.iri] = a; });
   if (window.cytoscape && window.cytoscapeDagre) { cytoscape.use(window.cytoscapeDagre); }
 
-  var renderer = "interactive";
-  if (!window.cytoscape) { renderer = HAS_STATIC ? "graphviz" : "interactive"; }
+  // static (pre-rendered SVG) is the default; fall back to interactive only
+  // when no static diagrams were built
+  var renderer = HAS_STATIC ? "graphviz" : "interactive";
 
   // ---------- small helpers ----------
   function el(tag, cls, txt) {
@@ -776,16 +866,29 @@ APP_JS = r"""
       var nd = g.nodes[id];
       els.push({ data: { id: safeId("n_", id), label: nd.label, curie: nd.curie, role: nd.synapse ? "synapse" : nd.role, iri: nd.iri } });
     });
-    var orgMap = {};
-    acuList.forEach(function (a) {
-      (a.coarseOrgans || []).forEach(function (o) { if (!(o.label in orgMap)) orgMap[o.label] = o.iri || null; });
+    // one node per distinct end-organ label, fanned out from the terminal
+    // node(s) whose neuron classifies under it (mirrors build_dot in Python) -
+    // no single collapsed "Target organ(s)" node
+    var nodeOrgans = {};   // terminal node id -> {label: iri}
+    g.drawnNeurons.forEach(function (niri) {
+      var pn = DATA.neurons[niri];
+      if (!pn.organs || !pn.organs.length) return;
+      pn.nodes.forEach(function (nd) {
+        if (nd.role === "terminal" || nd.role === "sensory") {
+          var dst = nodeOrgans[nd.id] || (nodeOrgans[nd.id] = {});
+          pn.organs.forEach(function (o) { if (!(o.label in dst)) dst[o.label] = o.iri || null; });
+        }
+      });
     });
-    var orgNames = Object.keys(orgMap).sort();
-    els.push({ data: {
-      id: "organ", role: "organ",
-      label: orgNames.length ? orgNames.join(", ") : "target organ(s)",
-      iri: orgNames.length === 1 ? orgMap[orgNames[0]] : null
-    } });
+    var organAll = {};
+    Object.keys(nodeOrgans).forEach(function (tid) {
+      Object.keys(nodeOrgans[tid]).forEach(function (label) {
+        if (!(label in organAll)) organAll[label] = nodeOrgans[tid][label];
+      });
+    });
+    Object.keys(organAll).sort().forEach(function (label) {
+      els.push({ data: { id: safeId("organ_", label), role: "organ", label: label, iri: organAll[label] } });
+    });
     Object.keys(g.edges).forEach(function (k) {
       var e = g.edges[k];
       var phs = Object.keys(e.phenos);
@@ -795,11 +898,14 @@ APP_JS = r"""
         color: phs.length === 1 ? (PH[phs[0]] || PH.other) : PH.other,
         kind: "path", phenos: phs, neurons: Object.keys(e.neurons) } });
     });
-    Object.keys(g.nodes).forEach(function (id) {
-      var nd = g.nodes[id];
-      if (nd.role === "terminal" || nd.role === "sensory") {
-        els.push({ data: { id: safeId("eo_", id), source: safeId("n_", id), target: "organ", color: "#607d8b", kind: "organ" } });
-      }
+    Object.keys(nodeOrgans).forEach(function (tid) {
+      if (!g.nodes[tid]) return;
+      Object.keys(nodeOrgans[tid]).forEach(function (label) {
+        els.push({ data: {
+          id: safeId("eo_", tid + "_" + label),
+          source: safeId("n_", tid), target: safeId("organ_", label),
+          color: "#607d8b", kind: "organ" } });
+      });
     });
     acuList.forEach(function (a) {
       var aid = safeId("acu_", a.iri);
@@ -841,22 +947,73 @@ APP_JS = r"""
   ];
 
   // ---------- diagram block ----------
+  // role swatch colours, kept in sync with the .sw-* CSS classes below - the
+  // canvas legend (used by Export PNG) redraws these itself since it can't
+  // read them off the live DOM.
+  var LEGEND_ROLES = [
+    ["soma", "#e8f5e9", "#43a047", "Soma location"],
+    ["axon", "#e8eaf6", "#5c6bc0", "Axon location"],
+    ["terminal", "#ffebee", "#e53935", "Axon terminal"],
+    ["sensory", "#efebe9", "#8d6e63", "Sensory terminal"],
+    ["synapse", "#e8f5e9", "#2e7d32", "Synapse location"]
+  ];
+
   function legend(phenos) {
     var l = el("div", "legend");
-    [["soma", "Soma location"], ["axon", "Axon location"], ["terminal", "Axon terminal"],
-     ["sensory", "Sensory terminal"], ["synapse", "Synapse location"]].forEach(function (p) {
+    LEGEND_ROLES.forEach(function (p) {
       var k = el("span", "k");
       k.appendChild(el("span", "sw sw-" + p[0]));
-      k.appendChild(document.createTextNode(p[1]));
+      k.appendChild(document.createTextNode(p[3]));
       l.appendChild(k);
     });
-    Object.keys(phenos).forEach(function (ph) {
+    Object.keys(phenos).sort().forEach(function (ph) {
       var k = el("span", "ph");
       var i = el("i"); i.style.background = PH[ph] || PH.other; k.appendChild(i);
       k.appendChild(document.createTextNode(ph.charAt(0).toUpperCase() + ph.slice(1)));
       l.appendChild(k);
     });
     return l;
+  }
+
+  // same legend, as flat {kind, color, border, label} items - shared by the
+  // on-page <div> version (legend(), above) and the canvas version drawn into
+  // an Export PNG (legendCanvasItems() + layoutLegend(), below).
+  function legendCanvasItems(phenos) {
+    var items = LEGEND_ROLES.map(function (p) { return { kind: "sw", color: p[1], border: p[2], label: p[3] }; });
+    Object.keys(phenos).sort().forEach(function (ph) {
+      items.push({ kind: "line", color: PH[ph] || PH.other, label: ph.charAt(0).toUpperCase() + ph.slice(1) });
+    });
+    return items;
+  }
+
+  // lays `items` out left-to-right, wrapping like flex-wrap, into a 2D canvas
+  // context; draw=false only measures (returns the total height used) without
+  // painting - used to size the export canvas before actually drawing on it.
+  function layoutLegend(ctx, items, x0, y0, maxWidth, draw, textColor) {
+    var fontSize = 12, gapX = 16, swW = 20, swH = 13, lineH = 22;
+    ctx.font = fontSize + "px -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
+    ctx.textBaseline = "middle";
+    var x = x0, y = y0;
+    items.forEach(function (it) {
+      var itemW = swW + 6 + ctx.measureText(it.label).width;
+      if (x > x0 && x + itemW > x0 + maxWidth) { x = x0; y += lineH; }
+      if (draw) {
+        if (it.kind === "sw") {
+          ctx.fillStyle = it.color; ctx.strokeStyle = it.border; ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          if (ctx.roundRect) ctx.roundRect(x, y - swH / 2, swW, swH, 3);
+          else ctx.rect(x, y - swH / 2, swW, swH);
+          ctx.fill(); ctx.stroke();
+        } else {
+          ctx.strokeStyle = it.color; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + swW, y); ctx.stroke();
+        }
+        ctx.fillStyle = textColor;
+        ctx.fillText(it.label, x + swW + 6, y + 1);
+      }
+      x += itemW + gapX;
+    });
+    return (y - y0) + lineH;
   }
 
   function neuronCaption(drawnNeurons) {
@@ -880,6 +1037,69 @@ APP_JS = r"""
     return t;
   }
 
+  // a small searchable dropdown. groups: [{label, items:[{label,value,sub}]}].
+  // Always carries an "all" row on top. onPick(value) fires on selection.
+  function comboSelect(groups, onPick, opts) {
+    opts = opts || {};
+    var wrap = el("div", "combo");
+    var input = document.createElement("input");
+    input.type = "text"; input.className = "combo-input";
+    input.placeholder = opts.placeholder || "Show all";
+    input.setAttribute("autocomplete", "off");
+    var list = el("div", "combo-list");
+    wrap.appendChild(input); wrap.appendChild(list);
+
+    var flat = [{ label: opts.allLabel || "Show all", value: "", group: "" }];
+    groups.forEach(function (grp) {
+      (grp.items || []).forEach(function (it) {
+        flat.push({ label: it.label, value: it.value, sub: it.sub || "", group: grp.label });
+      });
+    });
+    var value = "";
+
+    function labelFor(v) {
+      var f = flat.filter(function (x) { return x.value === v; })[0];
+      return f ? f.label : "";
+    }
+    function pick(v) {
+      value = v;
+      input.value = v ? labelFor(v) : "";
+      close();
+      onPick(v);
+    }
+    function render(q) {
+      q = (q || "").toLowerCase();
+      list.innerHTML = "";
+      var lastG = null, shown = flat.filter(function (x) { return !q || x.label.toLowerCase().indexOf(q) >= 0; });
+      shown.forEach(function (x) {
+        if (x.group && x.group !== lastG) { lastG = x.group; list.appendChild(el("div", "combo-group", x.group)); }
+        var it = el("div", "combo-item"); it.textContent = x.label;
+        if (x.sub) it.appendChild(el("span", "combo-sub", " — " + x.sub));
+        it.onmousedown = function (e) { e.preventDefault(); pick(x.value); };
+        list.appendChild(it);
+      });
+      list.classList.add("open");
+      return shown;
+    }
+    input.addEventListener("focus", function () { input.select(); render(""); });
+    input.addEventListener("input", function () { render(input.value); });
+    input.addEventListener("blur", function () { setTimeout(close, 150); });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { close(); input.blur(); }
+      else if (e.key === "Enter") {
+        var first = render(input.value)[0];
+        if (first) pick(first.value);
+        e.preventDefault();
+      }
+    });
+    function close() { list.classList.remove("open"); if (!value) input.value = ""; }
+    wrap._setValue = pick;
+    // pre-select a value without firing onPick (the caller already knows and
+    // has set its own state to match - this only syncs the input's display)
+    if (opts.initial) { value = opts.initial; input.value = labelFor(opts.initial); }
+    return wrap;
+  }
+
   function diagramBlock(acuList, opts) {
     opts = opts || {};
     var viewKey = opts.viewKey;                    // 'acupoint::<iri>' | 'meridian::x' ...
@@ -889,8 +1109,16 @@ APP_JS = r"""
     var phenos = {};
     g.drawnNeurons.forEach(function (i) { phenos[DATA.neurons[i].phenotype] = 1; });
 
+    // a facet diagram opened via "Search by: Target organ / Meridian" starts
+    // pre-filtered to that exact value - not just the pre-rendered static SVG
+    // (which is already trimmed to it), but the interactive graph and the
+    // caption/legend too, so all three renderings agree on what's shown.
+    var initialFilter = "";
+    if (viewKey && viewKey.indexOf("organ::") === 0) initialFilter = "org:" + viewKey.slice(7);
+    else if (viewKey && viewKey.indexOf("meridian::") === 0) initialFilter = "mer:" + viewKey.slice(10);
+
     var ctrls = el("div", "diagram-controls");
-    var state = { layout: "TB", synapse: true, isolate: "", phenoOff: {} };
+    var state = { layout: "TB", synapse: true, isolate: "", filter: initialFilter, phenoOff: {} };
 
     // layout
     var gL = el("div", "grp");
@@ -922,24 +1150,48 @@ APP_JS = r"""
     if (Object.keys(phenos).length > 1) ctrls.appendChild(gP);
 
     // isolate: whole view, one acupoint, or one neuron
+    var isoGroups = [];
+    if (acuList.length > 1) {
+      isoGroups.push({ label: "Acupoint", items: acuList.slice()
+        .sort(function (a, b) { return natcmp(a.code, b.code); })
+        .map(function (a) { return { label: a.code, value: "acu:" + a.iri, sub: a.meridian }; }) });
+    }
+    isoGroups.push({ label: "Neuron", items: g.drawnNeurons.map(function (i) { return DATA.neurons[i]; })
+      .sort(function (a, b) { return natcmp(a.curie, b.curie); })
+      .map(function (n) { return { label: n.curie, value: "neu:" + n.iri, sub: n.phenotypeLabel || "" }; }) });
+    var isoCombo = comboSelect(isoGroups, function (v) { state.isolate = v; redraw(); },
+      { placeholder: "Isolate…", allLabel: "Show all" });
     var gI = el("div", "grp");
     gI.appendChild(el("span", null, "Isolate"));
-    var sel = document.createElement("select");
-    sel.appendChild(new Option("Show all", ""));
-    if (acuList.length > 1) {
-      var og1 = document.createElement("optgroup"); og1.label = "Acupoint";
-      acuList.slice().sort(function (a, b) { return natcmp(a.code, b.code); })
-        .forEach(function (a) { og1.appendChild(new Option(a.code, "acu:" + a.iri)); });
-      sel.appendChild(og1);
-    }
-    var og2 = document.createElement("optgroup"); og2.label = "Neuron";
-    g.drawnNeurons.map(function (i) { return DATA.neurons[i]; })
-      .sort(function (a, b) { return natcmp(a.curie, b.curie); })
-      .forEach(function (n) { og2.appendChild(new Option(n.curie, "neu:" + n.iri)); });
-    sel.appendChild(og2);
-    sel.onchange = function () { state.isolate = sel.value; redraw(); };
-    gI.appendChild(sel);
+    gI.appendChild(isoCombo);
     ctrls.appendChild(gI);
+
+    // filter by: one end organ, or one meridian - only for a multi-acupoint
+    // (facet) diagram, and only when there is more than one value to pick
+    var merVals = {}, orgVals = {};
+    acuList.forEach(function (a) {
+      if (a.meridian) merVals[a.meridian] = 1;
+      (a.pathwayNeurons || []).forEach(function (ni) {
+        (DATA.neurons[ni].organs || []).forEach(function (o) { orgVals[o.label] = 1; });
+      });
+    });
+    var fltGroups = [];
+    if (Object.keys(orgVals).length > 1) {
+      fltGroups.push({ label: "End organ", items: Object.keys(orgVals).sort(natcmp)
+        .map(function (o) { return { label: o, value: "org:" + o }; }) });
+    }
+    if (acuList.length > 1 && Object.keys(merVals).length > 1) {
+      fltGroups.push({ label: "Meridian", items: Object.keys(merVals).sort(natcmp)
+        .map(function (m) { return { label: m, value: "mer:" + m }; }) });
+    }
+    if (fltGroups.length) {
+      var fltCombo = comboSelect(fltGroups, function (v) { state.filter = v; redraw(); },
+        { placeholder: "End organ / meridian…", allLabel: "No filter", initial: initialFilter });
+      var gF = el("div", "grp");
+      gF.appendChild(el("span", null, "Filter by"));
+      gF.appendChild(fltCombo);
+      ctrls.appendChild(gF);
+    }
 
     // export
     var bX = el("button", null, "Export PNG"); bX.type = "button";
@@ -959,17 +1211,67 @@ APP_JS = r"""
 
     var host = el("div", "diagram-host");
     block.appendChild(host);
-    block.appendChild(legend(phenos));
-    block.appendChild(neuronCaption(g.drawnNeurons));
+    var legendHost = el("div");
+    var captionHost = el("div");
+    block.appendChild(legendHost);
+    block.appendChild(captionHost);
+
+    // the legend's phenotype key and the neuron caption table only make sense
+    // for what's actually drawn right now - recompute them from the current
+    // isolate/filter state instead of the whole (unfiltered) result set
+    function currentNeurons() {
+      var list = g.drawnNeurons;
+      if (state.isolate.indexOf("acu:") === 0) {
+        var a = byIri[state.isolate.slice(4)];
+        list = a ? (a.pathwayNeurons || []) : [];
+      } else if (state.isolate.indexOf("neu:") === 0) {
+        list = [state.isolate.slice(4)];
+      }
+      if (state.filter.indexOf("org:") === 0) {
+        var org = state.filter.slice(4);
+        list = list.filter(function (ni) {
+          return (DATA.neurons[ni].organs || []).some(function (o) { return o.label === org; });
+        });
+      } else if (state.filter.indexOf("mer:") === 0) {
+        var mer = state.filter.slice(4);
+        list = list.filter(function (ni) {
+          return acuList.some(function (a) { return a.meridian === mer && (a.pathwayNeurons || []).indexOf(ni) >= 0; });
+        });
+      }
+      return list;
+    }
+    function currentPhenos() {
+      var p = {};
+      currentNeurons().forEach(function (i) { p[DATA.neurons[i].phenotype] = 1; });
+      return p;
+    }
+    function refreshCaption() {
+      var neuronsNow = currentNeurons();
+      legendHost.innerHTML = ""; legendHost.appendChild(legend(currentPhenos()));
+      captionHost.innerHTML = ""; captionHost.appendChild(neuronCaption(neuronsNow));
+    }
 
     var cy = null;
+    var card = null;   // the enclosing .result-block, sized to the diagram
+
+    // the card is at least as wide as the top panel (.controls); a diagram that
+    // needs more room widens it further. No cap, no inner scrolling.
+    // null contentW => back to auto.
+    function sizeCard(contentW) {
+      card = card || (block.closest && block.closest(".result-block"));
+      if (!card) return;
+      if (contentW == null) { card.style.width = ""; return; }
+      var topPanel = document.querySelector(".controls");
+      var floor = topPanel ? topPanel.getBoundingClientRect().width : (results.clientWidth || 900);
+      card.style.width = Math.max(Math.round(contentW) + 40, Math.round(floor)) + "px";
+    }
 
     function setStaticControlsEnabled(on) {
       // Layout / synapse / isolate / export work in both renderers. Only the
       // phenotype filter needs the live graph (a pre-rendered SVG can't refilter).
       var layoutOk = on || STATIC_LAYOUTS.length > 1;
       [bTB, bLR].forEach(function (n) { n.disabled = !layoutOk; n.title = layoutOk ? "" : "Needs both layouts pre-rendered"; });
-      [cS, sel, bX].forEach(function (n) { n.disabled = false; n.title = ""; });
+      [cS, bX].forEach(function (n) { n.disabled = false; n.title = ""; });
       Array.prototype.forEach.call(gP.querySelectorAll("button"), function (b) {
         b.disabled = !on; b.title = on ? "" : "Interactive view only";
       });
@@ -977,18 +1279,23 @@ APP_JS = r"""
 
     function redraw() {
       refreshInfo();
+      refreshCaption();
       if (renderer === "graphviz") { drawStatic(); return; }
       drawCy();
     }
 
     function staticKey() {
       var lay = STATIC_LAYOUTS.indexOf(state.layout) >= 0 ? state.layout : STATIC_LAYOUTS[0];
-      var iso = state.isolate;
+      var iso = state.isolate, flt = state.filter;
       if (iso.indexOf("acu:") === 0) return "acupoint::" + iso.slice(4) + "::" + lay;
       if (iso.indexOf("neu:") === 0) {
         var n = DATA.neurons[iso.slice(4)];
         return n ? "neuron::" + n.curie + "::" + lay : null;
       }
+      // no dedicated pre-render for a filter combined with the current facet -
+      // fall back to the whole facet's pre-rendered meridian / organ view
+      if (flt.indexOf("mer:") === 0) return "meridian::" + flt.slice(4) + "::" + lay;
+      if (flt.indexOf("org:") === 0) return "organ::" + flt.slice(4) + "::" + lay;
       return viewKey + "::" + lay;
     }
 
@@ -1006,23 +1313,29 @@ APP_JS = r"""
       var svg = SVGS[staticKey()] || SVGS[viewKey + "::" + STATIC_LAYOUTS[0]];
       host.innerHTML = svg || '<p class="hint" style="padding:1rem">No static diagram for this selection.</p>';
       applyStaticSynapse();
+      var svgEl = host.querySelector("svg");
+      sizeCard(svgEl ? svgEl.getBoundingClientRect().width : null);
     }
 
     function drawCy() {
       host.className = "diagram-host";
       setStaticControlsEnabled(true);
       var isoNeuron = state.isolate.indexOf("neu:") === 0 ? state.isolate.slice(4) : null;
+      var merFilter = state.filter.indexOf("mer:") === 0 ? state.filter.slice(4) : null;
+      var orgFilter = state.filter.indexOf("org:") === 0 ? state.filter.slice(4) : null;
       var acuUse = acuList;
       if (state.isolate.indexOf("acu:") === 0) {
         var only = state.isolate.slice(4);
         acuUse = acuList.filter(function (a) { return a.iri === only; });
       }
+      if (merFilter) acuUse = acuUse.filter(function (a) { return a.meridian === merFilter; });
       var built = cyElements(acuUse);
       var nodeEls = built.els.filter(function (x) { return !x.data.source; });
       var edgeEls = built.els.filter(function (x) { return x.data.source; });
+      var orgFilterId = orgFilter ? safeId("organ_", orgFilter) : null;
 
       // 1. keep path edges allowed by the phenotype / isolate filters
-      var pathEdges = edgeEls.filter(function (x) {
+      var candidateEdges = edgeEls.filter(function (x) {
         var d = x.data;
         if (d.kind !== "path") return false;
         // drop only if every contributing phenotype is toggled off
@@ -1030,11 +1343,36 @@ APP_JS = r"""
         if (isoNeuron && d.neurons.indexOf(isoNeuron) < 0) return false;
         return true;
       });
+      // an organ filter further trims to just the edges that lie on a path
+      // from some soma to a terminal actually classified under that organ
+      // (backward reachability) - not every pathway that happens to also
+      // reach other organs
+      var pathEdges = candidateEdges;
+      if (orgFilterId) {
+        var hitTerminals = edgeEls.filter(function (x) { return x.data.kind === "organ" && x.data.target === orgFilterId; })
+          .map(function (x) { return x.data.source; });
+        var byTarget = {};
+        candidateEdges.forEach(function (e) { (byTarget[e.data.target] = byTarget[e.data.target] || []).push(e); });
+        var keepEdgeId = {}, visited = {}, queue = hitTerminals.slice();
+        hitTerminals.forEach(function (t) { visited[t] = 1; });
+        while (queue.length) {
+          var t = queue.shift();
+          (byTarget[t] || []).forEach(function (e) {
+            keepEdgeId[e.data.id] = 1;
+            if (!visited[e.data.source]) { visited[e.data.source] = 1; queue.push(e.data.source); }
+          });
+        }
+        pathEdges = candidateEdges.filter(function (e) { return keepEdgeId[e.data.id]; });
+      }
       var live = {};
       pathEdges.forEach(function (x) { live[x.data.source] = 1; live[x.data.target] = 1; });
 
       // 2. organ + anchor edges survive only if their pathway endpoint is live
-      var organEdges = edgeEls.filter(function (x) { return x.data.kind === "organ" && live[x.data.source]; });
+      //    (an org filter also drops edges into every other organ node)
+      var organEdges = edgeEls.filter(function (x) {
+        return x.data.kind === "organ" && live[x.data.source] &&
+          (!orgFilterId || x.data.target === orgFilterId);
+      });
       var anchorEdges = edgeEls.filter(function (x) { return x.data.kind === "anchor" && live[x.data.target]; });
       organEdges.forEach(function (x) { live[x.data.target] = 1; });   // 'organ'
       anchorEdges.forEach(function (x) { live[x.data.source] = 1; });  // acupoint node
@@ -1044,6 +1382,7 @@ APP_JS = r"""
 
       if (!pathEdges.length) {
         host.style.height = ""; host.style.width = "";
+        sizeCard(null);
         host.innerHTML = '<p class="hint" style="padding:1rem">Nothing to show for the current filters.</p>';
         if (cy) { cy.destroy(); cy = null; }
         return;
@@ -1077,17 +1416,15 @@ APP_JS = r"""
         if (!cy) return;
         var bb = cy.elements().boundingBox();
         var pad = 28;
-        // measure against the page column, not the (shrink-wrapping) card
-        var avail = (results.clientWidth || 900) - 40;
-        var gw = Math.ceil(bb.w) + pad, gh = Math.ceil(bb.h) + pad;
-        var w, h;
-        if (gw <= avail) { w = Math.max(gw, 300); h = gh; }
-        else { w = avail; h = gh * (avail / gw); }          // keep the graph's aspect
-        h = Math.min(Math.max(h, 220), 900);
-        host.style.width = Math.round(w) + "px";
-        host.style.height = Math.round(h) + "px";
+        // the graph is shown at its natural size; the host (and card) grow to
+        // fit it - no scaling down, no scrollbars
+        var w = Math.max(Math.ceil(bb.w) + pad, 300);
+        var h = Math.max(Math.ceil(bb.h) + pad, 200);
+        host.style.width = w + "px";
+        host.style.height = h + "px";
         cy.resize();
         cy.fit(undefined, 12);
+        sizeCard(w);
       });
     }
 
@@ -1108,6 +1445,28 @@ APP_JS = r"""
     function downloadDataUrl(url) {
       var a = el("a"); a.href = url; a.download = pngName() + ".png"; a.click();
     }
+    // composites a loaded diagram image (at its own css-pixel size) with the
+    // legend drawn underneath it, onto one canvas, then downloads that PNG -
+    // shared by both renderers' export so the legend is always included.
+    function composeAndDownload(img, cssW, cssH) {
+      var scale = 2, pad = 16;
+      var items = legendCanvasItems(currentPhenos());
+      var mctx = document.createElement("canvas").getContext("2d");
+      var legendH = items.length ? layoutLegend(mctx, items, 0, 0, cssW, false, "") : 0;
+      var totalH = cssH + (legendH ? pad + legendH : 0);
+      var c = document.createElement("canvas");
+      c.width = Math.ceil(cssW * scale); c.height = Math.ceil(totalH * scale);
+      var ctx = c.getContext("2d");
+      var bodyStyle = getComputedStyle(document.body);
+      ctx.fillStyle = bodyStyle.backgroundColor || "#ffffff";
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.setTransform(scale, 0, 0, scale, 0, 0);
+      ctx.drawImage(img, 0, 0, cssW, cssH);
+      if (legendH) {
+        layoutLegend(ctx, items, 0, cssH + pad + 6, cssW, true, bodyStyle.color || "#1a1f27");
+      }
+      downloadDataUrl(c.toDataURL("image/png"));
+    }
     function exportStaticPng() {
       var svgEl = host.querySelector("svg");
       if (!svgEl) return;
@@ -1117,24 +1476,19 @@ APP_JS = r"""
       var xml = new XMLSerializer().serializeToString(svgEl);
       var src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(xml)));
       var img = new Image();
-      img.onload = function () {
-        var scale = 2;
-        var c = document.createElement("canvas");
-        c.width = Math.ceil(w * scale); c.height = Math.ceil(h * scale);
-        var ctx = c.getContext("2d");
-        ctx.fillStyle = getComputedStyle(document.body).backgroundColor || "#ffffff";
-        ctx.fillRect(0, 0, c.width, c.height);
-        ctx.setTransform(scale, 0, 0, scale, 0, 0);
-        ctx.drawImage(img, 0, 0, w, h);
-        downloadDataUrl(c.toDataURL("image/png"));
-      };
-      img.onerror = function () { downloadDataUrl(src); };  // fall back to the SVG
+      img.onload = function () { composeAndDownload(img, w, h); };
+      img.onerror = function () { downloadDataUrl(src); };  // fall back to the plain SVG
       img.src = src;
     }
     bX.onclick = function () {
       if (renderer === "graphviz") { exportStaticPng(); return; }
       if (!cy) return;
-      downloadDataUrl(cy.png({ full: true, scale: 2, bg: getComputedStyle(document.body).backgroundColor }));
+      var rect = host.getBoundingClientRect();
+      var pngSrc = cy.png({ full: true, scale: 2, bg: getComputedStyle(document.body).backgroundColor });
+      var img = new Image();
+      img.onload = function () { composeAndDownload(img, rect.width || img.width / 2, rect.height || img.height / 2); };
+      img.onerror = function () { downloadDataUrl(pngSrc); };
+      img.src = pngSrc;
     };
 
     block._redraw = redraw;
@@ -1167,17 +1521,8 @@ APP_JS = r"""
       a.coarseOrgans.forEach(function (o) { pr.appendChild(chip(o.label, o.iri || null)); });
     }
     wrap.appendChild(pr);
-    if (a.neurons.length) {
-      var nl = el("div", "neuron-list");
-      a.neurons.forEach(function (n) {
-        var row = el("div", "neuron-row");
-        row.appendChild(chip(n.curie, n.explorerUrl));
-        row.appendChild(el("span", "pheno", n.phenotype || "—"));
-        row.appendChild(el("span", "nlabel", n.label || (n.hasPathway ? "" : "(no pathway)")));
-        nl.appendChild(row);
-      });
-      wrap.appendChild(nl);
-    }
+    // the mapped-neuron listing lives only in the diagram's own caption table
+    // now (neuronCaption()) - that one reflects what's actually drawn.
     return wrap;
   }
 

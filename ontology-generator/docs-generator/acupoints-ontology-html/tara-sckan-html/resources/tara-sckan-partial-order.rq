@@ -1,7 +1,5 @@
-# Query: Organ innervation query for SCKAN NLI.
-## CQ4: How is sympathetic innervation supplied to an end organ? Show the origins, 
-## terminations and routing for both pre- and post-ganglionic connections.
-## Version: August 26, 2026 - Fahim Imam
+# TARA-SCKAN partial order
+# sep 10, 2026
 
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -27,7 +25,7 @@ SELECT DISTINCT
 # # ?Target_Organ
 
 # ?acupoint_iri 
-?acupoint # ?related_nerve
+?Acupoint # ?related_nerve
 ?Neuron_Connected
 ?Neuron_Label
 ?Target_Neuron_Phenotype
@@ -38,6 +36,7 @@ SELECT DISTINCT
 #?V2
 ?V2_Collapsed ?V2_Type
 ?IsSynapse
+?Target_Organ_IRI
 ?Target_Organ
 
 WHERE 
@@ -48,23 +47,24 @@ WHERE
    #  FILTER (?Target_Neuron_Phenotype = 'Parasympathetic Post-Ganglionic phenotype').
     # FILTER (?Target_Neuron_Phenotype = 'Sensory phenotype').
 
-    # Filter (?acupoint = 'HT 1').
+    # Filter (?Acupoint = 'HT 1').
 
     ?Neuron_Connected rdfs:subClassOf+ ?sckan_neuron . #only consider SCKAN neurons
     VALUES ?sckan_neuron { ilxtr:NeuronComposer ilxtr:NeuronApinatComplex }
 
-    ?acupoint_iri rdfs:label ?acupoint.
-    ?acupoint_iri tara-ap:hasRelatedNerve ?related_nerve_iri.
-    ?related_nerve_iri rdfs:label ?related_nerve.
+    ?Acupoint_iri rdfs:label ?Acupoint.
+    ?Acupoint_iri tara-ap:hasRelatedNerve ?related_nerve_iri.
+    # ?related_nerve_iri rdfs:label ?related_nerve.
     
-    #?neuron ilxtr:hasAxonLocation ?x. # |ilxtr:hasAxonLeadingToSensoryTerminal
+    # ?Neuron_Connected ilxtr:hasAxonLocation ?x. # |ilxtr:hasAxonLeadingToSensoryTerminal
     <<?Neuron_Connected ilxtr:hasAxonLocation ?ax>> ilxtr:hasRegion ?x.
     
+    ?Neuron_Connected ilxtr:hasNeuronalPhenotype|ilxtr:hasCircuitRole ?phenotype_iri.
     ?Neuron_Connected ilxtr:isObservedInSpecies ?species_iri.
     ?species_iri rdfs:label ?species.
     
-    FILTER (?x = ?related_nerve_iri)
-    FILTER (?species = 'Homo sapiens')
+    FILTER (?x = ?related_nerve_iri).
+    FILTER (?species = 'Homo sapiens').
 
  {
    
@@ -88,18 +88,19 @@ WHERE
     <<?Target_Neuron ilxtr:hasAxonTerminalLocation ?X>> ilxtr:hasRegion ?Final_Terminal.
     
     # Final terminal of the Target Neuron must be a part of Target Organ.
-    ?Final_Terminal   (rdfs:subClassOf* | ilxtr:isPartOf*)/rdfs:label ?Target_Organ.
+    ?Final_Terminal   (rdfs:subClassOf* | ilxtr:isPartOf*) ?Target_Organ_IRI.
+    ?Target_Organ_IRI rdfs:label ?Target_Organ.
     FILTER (?Target_Organ in ('heart', 'ovary', 'brain', 'urethra', 'esophagus', 'spinal cord', 'skin of body', 'lung', 'liver', 
                                 'lower urinary tract', 'urinary tract', 'muscle organ','gallbladder', 'colon', 'descending colon','kidney', 'intestine',
                                 'large intestine' ,'small intestine', 'stomach', 'spleen', 'urinary bladder', 'oral gland', 'tongue', 'respiratory tract', 
                                 'lower respiratory tract', 'upper respiratory tract', 'digestive tract',
                                 'eye gland', 'endocrine gland', 'spinal cord', 'vagina', 'hemopoietic organ', 'skin of body', 'adrenal gland','buttock', 
                                 'penis', 'clitoris', 'prostate gland', 'seminal vesicle','pancreas','uterus', 'sweat gland', 'sense organ',
-                                'scapular muscle', 'sphincter muscle', 'flexor muscle', 'muscle of shoulder', 'muscle organ',
+                                'scapular muscle', 'sphincter muscle', 'flexor muscle', 'muscle of shoulder', 'muscle organ'
                                 # added systems
-                                'male reproductive system', 'female reproductive system', 'respiratory system', 'digestive system', 'endocrine system', 
-                                'arterial system', 'lymphoid system', 'renal system', 'integumental system', 'cardiovascular system')
-                              ) # NOTE: known open issue with 'heart'/'bladder' matching
+                                # 'male reproductive system', 'female reproductive system', 'respiratory system', 'digestive system', 'endocrine system', 
+                                # 'arterial system', 'lymphoid system', 'renal system', 'integumental system', 'cardiovascular system')
+                              )) # NOTE: known open issue with 'heart'/'bladder' matching
 
     <<?V1_ID ilxtr:hasNextNode ?V2_ID>> ilxtr:isConnectedBy ?Neuron_Connected .
 
@@ -195,7 +196,7 @@ WHERE
     BIND(
         IF(
             
-            CONTAINS (STR(?Neuron_Connected), "http://uri.interlex.org/tgbugs/uris/readable/neuron-type-" ), # skip apainat neurons from node collapsing
+            CONTAINS (STR(?Neuron_Connected), "http://uri.interlex.org/tgbugs/uris/readable/" ), # skip apainat neurons from node collapsing
 
             # ?Target_Organ IN ('colon', 'heart', 'urinary bladder', 'spleen', 'digestive system', 'rectum', 'small intestine',
             #                 'endocrine system', 'lymphoid system', 'respiratory system', 'intestine',
@@ -207,7 +208,7 @@ WHERE
 
     BIND(
         IF(
-            CONTAINS (STR(?Neuron_Connected), "http://uri.interlex.org/tgbugs/uris/readable/neuron-type-" ), # skip apainat neurons from node collapsing       
+            CONTAINS (STR(?Neuron_Connected), "http://uri.interlex.org/tgbugs/uris/readable/" ), # skip apainat neurons from node collapsing       
             # ?Target_Organ IN ('colon', 'heart', 'urinary bladder', 'spleen', 'digestive system', 'rectum', 'small intestine',
             #                 'endocrine system', 'lymphoid system', 'respiratory system', 'intestine',
             #                 'large intestine', 'liver', 'uterus', 'pancreas'),
@@ -229,9 +230,9 @@ WHERE
     {
         "heart" "ovary" "esophagus" "kidney"  "lung" "liver"
         "colon" "descending colon" "stomach" "urinary bladder" "penis" "skin of body"
-        "male reproductive system" "female reproductive system" "clitoris" "vagina"
-        "seminal vesicle" "uterus" "sweat gland" "scapular muscle" "sphincter muscle" 
-        "flexor muscle" "muscle of shoulder"
+        #"male reproductive system" "female reproductive system" 
+        "clitoris" "vagina" "seminal vesicle" "uterus" "sweat gland" "scapular muscle" "sphincter muscle" 
+        "flexor muscle" "muscle of shoulder" "muscle organ"
     }
 
     VALUES ?hasTerminalLocation { ilxtr:hasAxonSensoryLocation ilxtr:hasAxonTerminalLocation}
@@ -239,7 +240,18 @@ WHERE
     <<?Neuron_Connected ?hasTerminalLocation ?X>> ilxtr:hasRegion ?Final_Terminal .
 
     # Fast property path (merged subclassOf* + isPartOf*)
-    ?Final_Terminal (rdfs:subClassOf* | ilxtr:isPartOf*) / rdfs:label ?Target_Organ .
+    ?Final_Terminal (rdfs:subClassOf* | ilxtr:isPartOf*) ?Target_Organ_IRI.
+    ?Target_Organ_IRI rdfs:label ?Target_Organ .
+    
+        # Final organ list (intentionally not required to match branch 1's list)
+    # Filter (?Target_Organ in 
+    # (
+    #     'heart', 'ovary', 'esophagus', 'kidney',  'lung', 'liver',
+    #     'colon', 'descending colon', 'stomach', 'urinary bladder', 'penis', 'skin of body',
+    #     #"male reproductive system" "female reproductive system" 
+    #     'clitoris', 'vagina', 'seminal vesicle', 'uterus', 'sweat gland', 'scapular muscle', 'sphincter muscle', 
+    #     'flexor muscle', 'muscle of shoulder'
+    # ))
 
     <<?V1_ID ilxtr:hasNextNode ?V2_ID>> ilxtr:isConnectedBy ?Neuron_Connected .
 
@@ -271,7 +283,7 @@ WHERE
         ?Neuron_Connected ilxtr:hasForwardConnection/ilxtr:hasSomaLocation ?Synapse .
         FILTER (?V2_ID = ?Synapse && ?V2_Type = "hasAxonTerminalLocation")
     }
-    BIND( IF(BOUND(?Synapse), "YES", "NO") AS ?IsSynapse )
+    BIND( IF(BOUND(?Synapse), "NO", "NO") AS ?IsSynapse )
 
     # FIX #6 (cont.): same BOUND-guard as branch 1.
     BIND(
