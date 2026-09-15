@@ -1,114 +1,149 @@
 # This query retrieves meridian-associated acupoints from the TARA ontology with labels,
 # synonyms, meridians, locational descriptions, acupuncture methods, and references.
 # A human-readable Locational_Anatomy field is constructed in a format like:
-#   "Skin surface location (list of related regions within the surface)""; 
-#   e.g., "lower back (lumbar vertebra 4, posterior median line)".    
-#   If related region(s) with the skin surface is unknown, only kept the surface location.
+#   "Skin surface location (list of related regions within the surface)";
+#   e.g., "lower back (lumbar vertebra 4, posterior median line)".
+#   If related region(s) with the skin surface is unknown, only the surface location is kept.
 # Uses a subquery to aggregate locational anatomy without exposing intermediate fields.
 # Author: Fahim Imam (December 18, 2025)
+# Updated with acupoints category (January 27, 2026)
+# Updated with version TARA Ontology v.1.7.2 property structures (September 15, 2026)
+# Updated to include Chinese Label Nearby Nerve, Nearby Vein, and Nearby Artery (September 15, 2026)
+# Optimization (September 15, 2026):
+#   - Removed outer OPTIONAL wrapper inside locational subquery (fixes Singleton plan node)
+#   - Moved FILTER regex before OPTIONAL chain to prune early
+#   - Fixed vasculature and nerve subqueries: replaced all-OPTIONAL body with UNION
+#     pattern to anchor ?Acupoint_IRI and avoid Singleton scan
+#   - Merged vasculature and nerve into a single subquery (removed one subquery join)
 
-PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
-PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl:     <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX TARA:    <http://purl.org/tara/ontology/TARA_>
+PREFIX tara-ap: <http://purl.org/tara/ontology/annotation-property/>
 
-SELECT DISTINCT 
+SELECT
   ?Acupoint_IRI
-  ?Acupoint_Curie
-  ?Acupoint
-  ?Acupoint_Category
-  (GROUP_CONCAT(DISTINCT ?acupoint_synonym; separator=", ") AS ?Synonym)
-  (GROUP_CONCAT(DISTINCT ?acupoint_chinese_name; separator=", ") AS ?Chinese_Name)
+  ?Acupoint_Curie ?Acupoint ?Acupoint_Category
+  (GROUP_CONCAT(DISTINCT ?_Synonym;           separator=", ") AS ?Synonym)
+  (GROUP_CONCAT(DISTINCT ?_Pinyin_Name;       separator=", ") AS ?Pinyin_Name)
+  ?Chinese_Name
   ?Meridian
-  (GROUP_CONCAT(DISTINCT ?Acupoint_Special_Point_Role; separator=", ") AS ?Special_Point_Role)
-  ?Location
-  ?Locational_Anatomy
+  (GROUP_CONCAT(DISTINCT ?_Special_Point_Role; separator=", ") AS ?Special_Point_Role)
+
+  ?Location ?Locational_Anatomy
+
   ?Acupuncture_Method
-  ?Indications
-  ?Vasculature 
-  ?Innervation
-  ?Reference
+  (GROUP_CONCAT(DISTINCT ?_Indication; separator=", ") AS ?Indications)
+
+  ?Innervation ?Nearby_Nerve
+  ?Vasculature ?Nearby_Artery ?Nearby_Vein
+
+  (GROUP_CONCAT(DISTINCT ?_Reference; separator="\n") AS ?Reference)
 
 WHERE
 {
+  # FILTER (regex(?Acupoint, "LU"))
 
-  # CHheck for meridan acupoints and extra acupoints.
-  VALUES ?Acupoint_Type {TARA:TARA_3535998 TARA:TARA_5151019}.
-  # VALUES ?Acupoint_Type {"Extra Acupoint" "Meridian Acupoint"}.  
-  ?Acupoint_IRI rdfs:subClassOf+ ?Acupoint_Type;
-                rdfs:label ?Acupoint.
-  
-  OPTIONAL {?Acupoint_Type rdfs:label ?Acupoint_Category.}
+  # Identify meridian acupoints and extra acupoints
+  VALUES ?Acupoint_Type { TARA:3535998 TARA:5151019 }
 
-  OPTIONAL { ?Acupoint_IRI TARA:hasSynonym ?acupoint_synonym }
-  OPTIONAL { ?Acupoint_IRI TARA:hasChineseName ?acupoint_chinese_name }
-  OPTIONAL { ?Acupoint_IRI TARA:hasMeridian/rdfs:label ?Meridian }
-  OPTIONAL { ?Acupoint_IRI TARA:hasLocationalDescription ?Location }
+  ?Acupoint_IRI rdfs:subClassOf* ?Acupoint_Type ;
+                rdfs:label       ?Acupoint .
 
-  OPTIONAL { ?Acupoint_IRI TARA:hasMethodDescription ?Acupuncture_Method }
-  OPTIONAL { ?Acupoint_IRI TARA:hasIndicationsDescription ?Indications }
-  OPTIONAL { ?Acupoint_IRI TARA:hasVasculatureDescription ?Vasculature }
-  OPTIONAL { ?Acupoint_IRI TARA:hasInnervationDescription ?Innervation }
+  # Filter early — before all OPTIONAL joins — to shrink the working set
+  FILTER (!regex(STR(?Acupoint),
+    'Acupoint of|Meridian Acupoint|Point of|Point|Extra Acupoint'))
 
-  OPTIONAL 
+  OPTIONAL { ?Acupoint_Type rdfs:label ?Acupoint_Category }
+
+  OPTIONAL { ?Acupoint_IRI tara-ap:hasSynonym              ?_Synonym }
+  OPTIONAL { ?Acupoint_IRI tara-ap:hasPinyinLabel           ?_Pinyin_Name }
+  OPTIONAL { ?Acupoint_IRI tara-ap:hasChineseLabel          ?Chinese_Name }
+
+  OPTIONAL { ?Acupoint_IRI tara-ap:isLocatedOnMeridian/rdfs:label ?Meridian }
+  OPTIONAL { ?Acupoint_IRI tara-ap:hasLocationalDescription  ?Location }
+  OPTIONAL { ?Acupoint_IRI tara-ap:hasMethodDescription      ?Acupuncture_Method }
+  OPTIONAL { ?Acupoint_IRI tara-ap:hasListedIndications      ?_Indication }
+  OPTIONAL { ?Acupoint_IRI tara-ap:hasVasculatureInformation ?Vasculature }
+  OPTIONAL { ?Acupoint_IRI tara-ap:hasInnervationInformation ?Innervation }
+
+  OPTIONAL { ?Acupoint_IRI dcterms:bibliographicCitation ?_Reference }
+
+  OPTIONAL
   {
-    ?Acupoint_IRI TARA:hasDesignatedSpecialPointRole ?Special_Point_Role_IRI .
-    ?Special_Point_Role_IRI rdfs:label ?Acupoint_Special_Point_Role .
+    ?Acupoint_IRI tara-ap:hasSpecialPointRole ?Special_Point_Role_IRI .
+    ?Special_Point_Role_IRI rdfs:label ?_Special_Point_Role .
   }
 
-  OPTIONAL { ?Acupoint_IRI TARA:hasReference ?Reference }
-
-  # Subquery: aggregation of anatomical terms in a format like: 
-  # "skin surface location (related regions within the surface)"; 
-  # e.g., "lower back (lumbar vertebra 4, posterior median line)"
+  # Locational anatomy subquery.
+  # Subquery body has a required triple to anchor ?Acupoint_IRI — avoids Singleton scan.
+  # The outer OPTIONAL handles acupoints with no surface location.
   OPTIONAL
   {
     {
       SELECT
         ?Acupoint_IRI
-        (GROUP_CONCAT(DISTINCT ?Surface_Location; separator=", ") AS ?_surface)
-        (GROUP_CONCAT(DISTINCT ?Specific_Location; separator=", ") AS ?_region)
+        (GROUP_CONCAT(DISTINCT ?Surface_Location; separator=", ") AS ?_Surface)
+        (GROUP_CONCAT(DISTINCT ?Specific_Location; separator=", ") AS ?_Region)
       WHERE
       {
+        ?Acupoint_IRI tara-ap:hasGeneralSurfaceLocation/rdfs:label ?Surface_Location .
         OPTIONAL
         {
-          ?Acupoint_IRI TARA:hasSurfaceLocation/rdfs:label ?Surface_Location.
-          OPTIONAL {?Acupoint_IRI TARA:hasRelatedLocation/rdfs:label ?Specific_Location .
-          FILTER (?Specific_Location != ?Surface_Location)}
+          ?Acupoint_IRI tara-ap:hasSpecificReferenceLocation/rdfs:label ?Specific_Location .
+          FILTER (?Specific_Location != ?Surface_Location)
         }
       }
       GROUP BY ?Acupoint_IRI
     }
 
-    BIND(COALESCE(?_surface, "") AS ?surface)
-    BIND(COALESCE(?_region, "")  AS ?region)
+    BIND(COALESCE(?_Surface, "") AS ?Surface)
+    BIND(COALESCE(?_Region,   "") AS ?Region)
 
-    BIND # Show suface only when region within the surface is not found. 
-    (
-        IF( STRLEN(?surface) > 0 && STRLEN(?region) > 0,
-            CONCAT(?surface, " (", ?region, ")"),
-            IF(STRLEN(?surface) > 0, ?surface, ?region)
-          ) AS ?Locational_Anatomy
+    # Show surface only when no region within the surface is found
+    BIND(
+      IF( STRLEN(?Surface) > 0 && STRLEN(?Region) > 0,
+          CONCAT(?Surface, " (", ?Region, ")"),
+          IF(STRLEN(?Surface) > 0, ?Surface, ?Region)
+      ) AS ?Locational_Anatomy
     )
   }
 
+  # Combined nearby anatomy subquery (arteries, veins, nerves).
+  # UNION anchors ?Acupoint_IRI with at least one required triple per branch,
+  # preventing the Singleton scan that all-OPTIONAL bodies cause.
+  # The outer OPTIONAL handles acupoints with none of these relationships.
+  OPTIONAL
+  {
+    {
+      SELECT
+        ?Acupoint_IRI
+        (GROUP_CONCAT(DISTINCT ?_Artery; separator=", ") AS ?Nearby_Artery)
+        (GROUP_CONCAT(DISTINCT ?_Vein;   separator=", ") AS ?Nearby_Vein)
+        (GROUP_CONCAT(DISTINCT ?_Nerve;  separator=", ") AS ?Nearby_Nerve)
+      WHERE
+      {
+        { ?Acupoint_IRI tara-ap:hasRelatedArtery/rdfs:label ?_Artery }
+        UNION
+        { ?Acupoint_IRI tara-ap:hasRelatedVein/rdfs:label   ?_Vein   }
+        UNION
+        { ?Acupoint_IRI tara-ap:hasRelatedNerve/rdfs:label  ?_Nerve  }
+      }
+      GROUP BY ?Acupoint_IRI
+    }
+  }
 
-  # Exclude generic categorization classes like 'Acupoint of the X Meridian'. Meridian Acupoint, 'Special Points', etc.
-  FILTER (!regex(STR(?Acupoint),
-    'Acupoint of|Meridian Acupoint|Point of|Point|Extra Acupoint'))
-
-  #FILTER (BOUND(?Meridian)) # To skip the extra acupoints (42) outside the main meridian 
-
-  BIND (
-        REPLACE (STR(?Acupoint_IRI),
-          "http://www.acupunctureresearch.org/tara/ontology/TARA_", 
-          "TARA:") AS ?Acupoint_Curie
-       )
+  BIND(REPLACE(STR(?Acupoint_IRI),
+       "http://purl.org/tara/ontology/TARA_",
+       "TARA:") AS ?Acupoint_Curie)
 }
 GROUP BY
-  ?Acupoint_IRI ?Acupoint_Curie ?Acupoint ?Acupoint_Category ?Meridian ?Location
-  ?Locational_Anatomy ?Acupuncture_Method ?Indications 
-  ?Vasculature ?Innervation ?Reference
-ORDER BY ?Meridian ?Acupoint
+  ?Acupoint_IRI ?Acupoint_Curie ?Acupoint ?Acupoint_Category ?Chinese_Name
+  ?Meridian ?Location ?Locational_Anatomy ?Nearby_Nerve ?Nearby_Artery ?Nearby_Vein
+  ?Vasculature ?Innervation ?Acupuncture_Method
+
+ORDER BY ?Acupoint_Category ?Meridian ?Acupoint
 LIMIT 999

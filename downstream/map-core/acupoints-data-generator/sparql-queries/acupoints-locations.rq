@@ -1,53 +1,97 @@
-# What acupoints are located on a given skin surface region?
-# e.g. what acupoints are located on the face and where in the face they are located?
+# Retrieves all meridian acupoints with their surface anatomy and nearby subsurface anatomy.
+# For each acupoint the query returns:
+#   - The meridian it belongs to
+#   - Its general skin surface location (e.g., face, lower back)
+#   - Its specific reference location within that surface (e.g., nasolabial groove, zygomatic bone)
+#   - Its nearby related nerve (if found)
+#   - Its nearby artery and vein (if found)
+#
+# To filter by surface region, add:     FILTER (?Acupoint_Surface_Location = "face")
+# To filter by meridian, add:           FILTER (?Meridian = "Lung Meridian")
+#
 # Author: Fahim Imam (December 18, 2025)
+# Updated with version 1.7.2 property structures (September 15, 2026)
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX TARA: <http://www.acupunctureresearch.org/tara/ontology/>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl:     <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX TARA:    <http://purl.org/tara/ontology/TARA_>
+PREFIX tara-ap: <http://purl.org/tara/ontology/annotation-property/>
 
-SELECT DISTINCT 
-     
+SELECT DISTINCT
     ?Acupoint_IRI
     ?Acupoint_Curie
     ?Acupoint
     ?Meridian
     ?Acupoint_Surface_Location_IRI ?Acupoint_Surface_Location
-    ?Region_Within_Surface_IRI ?Acupoint_Region_Within_Surface 
+    ?Region_Within_Surface_IRI     ?Acupoint_Region_Within_Surface
+    ?Acupoint_Related_Nerve_IRI    ?Acupoint_Related_Nerve
 
-WHERE 
+    # Uncomment to also project nearby vasculature:
+    ?Acupoint_Related_Artery_IRI ?Acupoint_Related_Artery
+    ?Acupoint_Related_Vein_IRI   ?Acupoint_Related_Vein
+
+WHERE
 {
-   # FILTER (?Meridian = 'Lung Meridian'). 
-    # FILTER (?Meridian = 'Liver Meridian').
-    
-    ?Acupoint_IRI TARA:hasMeridian ?Meridian_IRI.
-    ?Acupoint_IRI rdfs:label ?Acupoint.
-    ?Meridian_IRI rdfs:label ?Meridian.
-        
-    OPTIONAL 
+    # Optional meridian filter — uncomment to restrict to a specific meridian:
+    #  FILTER (?Meridian = "Lung Meridian")
+    #  FILTER (?Meridian = "Liver Meridian")
+
+    ?Acupoint_IRI tara-ap:isLocatedOnMeridian ?Meridian_IRI .
+    ?Acupoint_IRI rdfs:label ?Acupoint .
+    ?Meridian_IRI rdfs:label ?Meridian .
+
+    # Exclude generic categorization classes such as "Acupoint of the X Meridian",
+    # "Meridian Acupoint", "Special Points", etc.
+    # Uncomment the BOUND filter below to also exclude extra acupoints outside the main meridians.
+    # FILTER (BOUND(?Meridian))
+    FILTER (!regex(STR(?Acupoint),
+        'Acupoint of|Meridian Acupoint|Point of|Point|Extra Acupoint'))
+
+    # Surface anatomy: general skin surface location and, where known,
+    # the specific reference location within that surface.
+    # The inner FILTER excludes cases where the specific location duplicates
+    # the surface label (e.g., both would be "face").
+    OPTIONAL
     {
-        ?Acupoint_IRI TARA:hasSurfaceLocation ?Acupoint_Surface_Location_IRI.
-        ?Acupoint_Surface_Location_IRI rdfs:label ?Acupoint_Surface_Location.
-        OPTIONAL 
+        ?Acupoint_IRI tara-ap:hasGeneralSurfaceLocation ?Acupoint_Surface_Location_IRI .
+        ?Acupoint_Surface_Location_IRI rdfs:label ?Acupoint_Surface_Location .
+
+        OPTIONAL
         {
-            ?Acupoint_IRI TARA:hasRelatedLocation ?Region_Within_Surface_IRI.        
-            ?Region_Within_Surface_IRI rdfs:label ?Acupoint_Region_Within_Surface.
-            Filter (?Acupoint_Region_Within_Surface != ?Acupoint_Surface_Location)
+            ?Acupoint_IRI tara-ap:hasSpecificReferenceLocation ?Region_Within_Surface_IRI .
+            ?Region_Within_Surface_IRI rdfs:label ?Acupoint_Region_Within_Surface .
+            FILTER (?Acupoint_Region_Within_Surface != ?Acupoint_Surface_Location)
         }
     }
 
-    # Exclude generic categorization classes like 'Acupoint of the X Meridian'. Meridian Acupoint, 'Special Points', etc.
-    FILTER (!regex(STR(?Acupoint), 'Acupoint of|Meridian Acupoint|Point of|Point|Extra Acupoint'))
+    # Subsurface anatomy: nearby nerve
+    OPTIONAL
+    {
+        ?Acupoint_IRI tara-ap:hasRelatedNerve ?Acupoint_Related_Nerve_IRI .
+        ?Acupoint_Related_Nerve_IRI rdfs:label ?Acupoint_Related_Nerve .
+    }
 
-    BIND (
-          REPLACE(STR(?Acupoint_IRI), 
-          "http://www.acupunctureresearch.org/tara/ontology/TARA_", 
-          "TARA:") AS ?Acupoint_Curie
-          )
+    # Subsurface anatomy: nearby artery and vein
+    # NOTE: these are fetched but not projected in SELECT above.
+    #       Add them to SELECT or remove these blocks if not needed.
+    OPTIONAL
+    {
+        ?Acupoint_IRI tara-ap:hasRelatedArtery ?Acupoint_Related_Artery_IRI .
+        ?Acupoint_Related_Artery_IRI rdfs:label ?Acupoint_Related_Artery .
+    }
 
-    FILTER (BOUND(?Meridian))  # To skip the extra acupoints outside the main meridian
+    OPTIONAL
+    {
+        ?Acupoint_IRI tara-ap:hasRelatedVein ?Acupoint_Related_Vein_IRI .
+        ?Acupoint_Related_Vein_IRI rdfs:label ?Acupoint_Related_Vein .
+    }
+
+    BIND(REPLACE(STR(?Acupoint_IRI),
+         "http://purl.org/tara/ontology/TARA_",
+         "TARA:") AS ?Acupoint_Curie)
 }
 ORDER BY ?Meridian ?Acupoint ?Acupoint_Surface_Location ?Acupoint_Region_Within_Surface
-limit 9999
+LIMIT 9999

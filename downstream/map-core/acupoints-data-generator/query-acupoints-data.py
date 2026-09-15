@@ -41,7 +41,7 @@ sys.path.insert(0, str(LIB_DIR))
 
 from query_tara_data import run_queries
 
-DB_NAME = "TARA-Acupoints"
+DB_NAME = "TARA-Ontology-1-7-2"
 USERNAME = os.getenv("STARDOG_TARA_USERNAME")
 PASSWORD = os.getenv("STARDOG_TARA_PASSWORD")
 
