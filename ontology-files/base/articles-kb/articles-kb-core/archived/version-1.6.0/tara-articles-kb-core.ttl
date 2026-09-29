@@ -30,7 +30,7 @@
 - A general and a per-field/per-item LLM extraction prompt (JSON) attached directly to the relevant annotation property for every extractable field, so extraction pipelines and spreadsheet templates can be generated automatically from skos:altLabel without hand-maintained mappings.
 
 - Restricted datatypes (e.g., ocsiItemScore, articleSectionType, ocsiItemNumber) enforcing valid value ranges for scored and categorical fields."""@en ;
-                                                                             owl:versionInfo "1.6.1"@en .
+                                                                             owl:versionInfo "1.6.0"@en .
 
 #################################################################
 #    Annotation properties
@@ -747,7 +747,7 @@ tara-kb:hasBlindingStatementsQualityScore rdf:type owl:AnnotationProperty ;
     "a": "participant blinding is stated (N/A if the trial compared two active treatments rather than treatment vs. control (e.g., acupuncture versus massage).)",
     "b": "practitioner blinding is stated or correctly scored N/A; in the rare case practitioners were blinded, there must be an explicit statement of the method used, for full credit (usually N/A -- practitioners are almost never blinded in acupuncture research (OCSI General Instruction A.1.5).)",
     "c": "outcome-assessor blinding is stated (this matters more for subjective outcomes and less for objective outcomes, where there is less chance of assessment bias)",
-    "d": "the success of participant blinding is evaluated and reported -- for full credit, authors must (i) state that the success of participant blinding was evaluated and (ii) present the results of that assessment (N/A ONLY if the trial compared two active treatments rather than treatment vs. control (e.g., standard care or massage) -- the same condition as (a). This is NOT N/A merely because participants were unblinded in a treatment-vs-control trial -- score 0 in that case if blinding success was never assessed.)"
+    "d": "the success of participant blinding is evaluated and reported -- for full credit, authors must (i) state that the success of participant blinding was evaluated and (ii) present the results of that assessment (N/A if the trial compared two active treatments rather than treatment vs. control (e.g., standard care or massage) -- the same condition as (a).)"
   }
 }"""^^rdf:JSON ;
                                           tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
@@ -784,7 +784,7 @@ Sub-part N/A conditions:
 
 (b) is usually N/A -- practitioners are almost never blinded in acupuncture research (OCSI General Instruction A.1.5).
 
-(d) is N/A ONLY if the trial compared two active treatments rather than treatment vs. control (e.g., standard care or massage) -- the same condition as (a). This is NOT N/A merely because participants were unblinded in a treatment-vs-control trial -- score 0 in that case if blinding success was never assessed."""@en ;
+(d) is N/A if the trial compared two active treatments rather than treatment vs. control (e.g., standard care or massage) -- the same condition as (a)."""@en ;
                                           tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                           rdfs:label "(16) Blinding Statements Quality" ;
                                           skos:altLabel "16_Blinding_Statements" ;

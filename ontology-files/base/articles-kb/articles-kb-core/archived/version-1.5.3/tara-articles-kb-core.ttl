@@ -30,7 +30,7 @@
 - A general and a per-field/per-item LLM extraction prompt (JSON) attached directly to the relevant annotation property for every extractable field, so extraction pipelines and spreadsheet templates can be generated automatically from skos:altLabel without hand-maintained mappings.
 
 - Restricted datatypes (e.g., ocsiItemScore, articleSectionType, ocsiItemNumber) enforcing valid value ranges for scored and categorical fields."""@en ;
-                                                                             owl:versionInfo "1.6.1"@en .
+                                                                             owl:versionInfo "1.5.3"@en .
 
 #################################################################
 #    Annotation properties
@@ -240,7 +240,6 @@ tara-kb:hasAcupointSelection rdf:type owl:AnnotationProperty ;
 tara-kb:hasAcupointSelectionAndGrouping rdf:type owl:AnnotationProperty ;
                                         obo:IAO_0000112 "\"Point selection and grouping: Verum points selected from a prescribed list (part standardisation) consisting of obligatory points and additional points individually chosen based on TCM diagnosis for syndromes, acupuncture channels related to the individual headache area, and Ah Shi points; needling was bilateral.\"" ;
                                         dcterms:description "A dual-purpose annotation property that serves as a super-property grouping 'Acupoint Selection' and 'Acupoint Grouping', while simultaneously acting as a direct container for a combined free-text statement composed from both. Not itself an independently-requested output field -- its composed value exists only to feed hasAcupunctureProtocol's own 'Point selection and grouping' slot (see dcterms:type tara-kb:contextOnly)."@en ;
-                                        dcterms:type tara-kb:primaryOnly ;
                                         tara-ap:hasCompactURI "tara-kb:hasAcupointSelectionAndGrouping" ;
                                         tara-ap:hasSynonym "Point Selection and Grouping" ;
                                         tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -425,7 +424,6 @@ Point selection and grouping: Trigger points in the gluteals isolated by palpati
 | Stimulation details: Manual repeated advancement into the muscle; no electrical or thermal stimulation.
 | Sham protocol details: Non-penetrating modified acupuncture needle with sharp tip removed and glued back in sheath; tip applied to the skin over the trigger point with pressure for 10 or more seconds and moved slightly to simulate real needling, repeated at each point for up to one minute.""" ;
                                dcterms:description """A single, structured free-text summary of the full acupuncture protocol, composed from the study's acupoint selection, acupoint grouping, needling, stimulation, and sham/control details (see the 'example of usage' for full worked examples)."""@en ;
-                               dcterms:type tara-kb:primaryOnly ;
                                tara-ap:hasCompactURI "tara-kb:hasAcupunctureProtocol" ;
                                tara-ap:hasSynonym "Acupuncture Intervention Protocol" ,
                                                   "Acupuncture Protocol" ;
@@ -744,10 +742,10 @@ tara-kb:hasBlindingStatementsQualityScore rdf:type owl:AnnotationProperty ;
   "item": 16,
   "question": "Is it stated whether or not (a) participants, (b) those administering the interventions, and (c) those assessing the outcomes were blinded? and (d) was the success of participant blinding evaluated?",
   "parts": {
-    "a": "participant blinding is stated (N/A if the trial compared two active treatments rather than treatment vs. control (e.g., acupuncture versus massage).)",
+    "a": "participant blinding is stated (N/A if the trial compared two active treatments rather than treatment vs. control.)",
     "b": "practitioner blinding is stated or correctly scored N/A; in the rare case practitioners were blinded, there must be an explicit statement of the method used, for full credit (usually N/A -- practitioners are almost never blinded in acupuncture research (OCSI General Instruction A.1.5).)",
     "c": "outcome-assessor blinding is stated (this matters more for subjective outcomes and less for objective outcomes, where there is less chance of assessment bias)",
-    "d": "the success of participant blinding is evaluated and reported -- for full credit, authors must (i) state that the success of participant blinding was evaluated and (ii) present the results of that assessment (N/A ONLY if the trial compared two active treatments rather than treatment vs. control (e.g., standard care or massage) -- the same condition as (a). This is NOT N/A merely because participants were unblinded in a treatment-vs-control trial -- score 0 in that case if blinding success was never assessed.)"
+    "d": "success of participant blinding is evaluated and reported (N/A if the trial compared two active treatments rather than treatment vs. control -- the same condition as (a).)"
   }
 }"""^^rdf:JSON ;
                                           tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
@@ -758,7 +756,7 @@ tara-kb:hasBlindingStatementsQualityScore rdf:type owl:AnnotationProperty ;
 
 (c) outcome-assessor blinding is stated (this matters more for subjective outcomes and less for objective outcomes, where there is less chance of assessment bias);
 
-(d) the success of participant blinding is evaluated and reported -- for full credit, authors must (i) state that the success of participant blinding was evaluated and (ii) present the results of that assessment.
+(d) success of participant blinding is evaluated and reported.
 
 N = 4 when all 4 are applicable; N is reduced by however many sub-parts are individually N/A (see below).
 
@@ -780,11 +778,11 @@ No sub-part in this item has a specific, manual-defined partial-credit criterion
 
 Sub-part N/A conditions:
 
-(a) is N/A if the trial compared two active treatments rather than treatment vs. control (e.g., acupuncture versus massage).
+(a) is N/A if the trial compared two active treatments rather than treatment vs. control.
 
 (b) is usually N/A -- practitioners are almost never blinded in acupuncture research (OCSI General Instruction A.1.5).
 
-(d) is N/A ONLY if the trial compared two active treatments rather than treatment vs. control (e.g., standard care or massage) -- the same condition as (a). This is NOT N/A merely because participants were unblinded in a treatment-vs-control trial -- score 0 in that case if blinding success was never assessed."""@en ;
+(d) is N/A under the same active-treatment-comparison condition as (a)."""@en ;
                                           tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                           rdfs:label "(16) Blinding Statements Quality" ;
                                           skos:altLabel "16_Blinding_Statements" ;
@@ -821,7 +819,6 @@ Control Arm 2 - Non-Acupoint Real Needling: Used identical standard 0.25mm stain
 Control Arm 3 - Active Control: Standard Care regimen consisting of prescribed physical therapy twice weekly and open-label Naproxen (500mg daily) to evaluate clinical superiority."""@en ,
                                                 "Sham acupuncture: Patients received sham acupuncture once a week for 6 weeks, using blunt-tipped needles that did not penetrate the skin, as a control group to compare with true acupuncture."@en ;
                                 dcterms:description "An annotation property to capture structured details about the control group methodologies (control arms) deployed within a clinical trial study, as reported in a journal publication. It explicitly documents the specific type of control utilized, such as sham interventions, non-acupoint/minimal treatments, active controls, or waitlists, along with critical methodological protocols, including patient blinding mechanisms, the physiological nature of the control, and any deviations from standard or traditional practices meant to isolate specific therapeutic variables."@en ;
-                                dcterms:type tara-kb:primaryOnly ;
                                 tara-ap:hasCompactURI "tara-kb:hasControlGroupsDetails" ;
                                 tara-ap:hasSynonym "Control Groups" ;
                                 tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -918,7 +915,6 @@ No sub-part in this item has a specific, manual-defined partial-credit criterion
 tara-kb:hasCountryOfStudy rdf:type owl:AnnotationProperty ;
                           obo:IAO_0000112 "e.g., \"South Korea\" or \"United States\"."@en ;
                           dcterms:description "The country (or countries, for multi-site trials) in which the study was conducted, normalized to a standard country name."@en ;
-                          dcterms:type tara-kb:primaryOnly ;
                           tara-ap:hasCompactURI "tara-kb:hasCountryOfStudy" ;
                           tara-kb:hasStudyMetadataExtractionPrompt """{
   "field": "Country_Of_Study",
@@ -1343,7 +1339,6 @@ tara-kb:hasLLMUserPrompt rdf:type owl:AnnotationProperty ;
 tara-kb:hasListedAcupoints rdf:type owl:AnnotationProperty ;
                            obo:IAO_0000112 "E.g., \"BL 1, BL 2, BL 3\" (see rdfs:comment for normalization rules)."@en ;
                            dcterms:description "A dual-purpose annotation property that serves as a super-property grouping the mapped and unmappable acupoint sub-properties, while simultaneously acting as a direct container for the comma-separated, normalized list of acupoints extracted from the article."@en ;
-                           dcterms:type tara-kb:primaryOnly ;
                            tara-ap:hasCompactURI "tara-kb:hasListedAcupoints" ;
                            tara-ap:hasSynonym "Listed Acupuncture Points" ;
                            tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -1457,7 +1452,6 @@ tara-kb:hasNeedlingDetails rdf:type owl:AnnotationProperty ;
                            obo:IAO_0000112 "\"0.30 mm diameter, 25 mm long stainless steel needles inserted to a depth of 15-20 mm and retained for 20 minutes.\""@en ,
                                            "\"Sterile, single-use coated acupuncture needles, 0.25-0.30 mm thick, 25-40 mm long; 10 to 25 needles per treatment; inserted 2-20 mm in depth; retained for 30 min.\"" ;
                            dcterms:description "The specific needling technique details reported for the acupuncture intervention, such as needle type, gauge, insertion depth, retention time, and elicitation of de qi."@en ;
-                           dcterms:type tara-kb:primaryOnly ;
                            tara-ap:hasCompactURI "tara-kb:hasNeedlingDetails" ;
                            tara-kb:hasStudyMetadataExtractionPrompt """{
   "field": "Acupuncture_Needling_Details",
@@ -1842,13 +1836,13 @@ tara-kb:hasOutcomesMeasureDefinitionsScore rdf:type owl:AnnotationProperty ;
   "item": 11,
   "question": "(a) Are primary and (if applicable) secondary outcome measures clearly defined? (b) Are there statements (when applicable), regarding any methods used to enhance the quality of measurements, for example, multiple observers or training of assessors?",
   "parts": {
-    "a": "the primary outcome(s) are explicitly stated, and how they were measured is stated (Partial credit: if the primary outcome measure itself is defined but not specifically indicated as the primary outcome (the primary outcome is usually the one used in the sample size calculation), this sub-part is only partially met.)",
+    "a": "primary and (if applicable) secondary outcome measures are clearly defined, including how they were measured (Partial credit: if the primary outcome measure itself is defined but not specifically indicated as the primary outcome (the primary outcome is usually the one used in the sample size calculation), this sub-part is only partially met.)",
     "b": "methods used to enhance the quality of measurements are stated, when applicable (e.g., multiple observers, assessor training), with sufficient detail (e.g., 'range of motion was assessed with a goniometer, and three successive measurements were averaged')"
   }
 }"""^^rdf:JSON ;
                                            tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
 
-(a) the primary outcome(s) are explicitly stated, and how they were measured is stated;
+(a) primary and (if applicable) secondary outcome measures are clearly defined, including how they were measured;
 
 (b) methods used to enhance the quality of measurements are stated, when applicable (e.g., multiple observers, assessor training), with sufficient detail (e.g., 'range of motion was assessed with a goniometer, and three successive measurements were averaged').
 
@@ -1950,13 +1944,13 @@ tara-kb:hasParticipantsFlowAndDeviationScore rdf:type owl:AnnotationProperty ;
   "item": 18,
   "question": "(a) Is the flow of participants through each stage quantitatively described, and (b) if protocol deviations are reported, were reasons presented?",
   "parts": {
-    "a": "the number of participants who were (i) evaluated for potential enrollment (e.g., excluded due to inclusion/exclusion criteria, declined enrollment), (ii) randomized, (iii) received treatment, (iv) completed treatment, and (v) analyzed for the primary outcome is stated -- a diagram is recommended but not necessary",
+    "a": "the flow of participants through each stage is quantitatively described (evaluated for enrollment, randomized, received treatment, completed treatment, analyzed for the primary outcome) -- a flow diagram is recommended but not required for full credit",
     "b": "reasons for any reported protocol deviations are presented -- 'protocol deviations' includes unplanned changes to the intervention, data collection, examinations, or methods of analysis, as well as reasons for patient exclusions after randomization including drop-outs (N/A if no protocol deviations occurred after randomization.)"
   }
 }"""^^rdf:JSON ;
                                              tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
 
-(a) the number of participants who were (i) evaluated for potential enrollment (e.g., excluded due to inclusion/exclusion criteria, declined enrollment), (ii) randomized, (iii) received treatment, (iv) completed treatment, and (v) analyzed for the primary outcome is stated -- a diagram is recommended but not necessary;
+(a) the flow of participants through each stage is quantitatively described (evaluated for enrollment, randomized, received treatment, completed treatment, analyzed for the primary outcome) -- a flow diagram is recommended but not required for full credit;
 
 (b) reasons for any reported protocol deviations are presented -- 'protocol deviations' includes unplanned changes to the intervention, data collection, examinations, or methods of analysis, as well as reasons for patient exclusions after randomization including drop-outs.
 
@@ -2011,16 +2005,16 @@ tara-kb:hasParticipantsIntentionToTreatScore rdf:type owl:AnnotationProperty ;
   "item": 21,
   "question": "(a) Is the number of participants in each group included in each analysis? (b) Was the 'intention to treat' analysis presented? (c) When feasible, are the results stated in absolute numbers (e.g., 10 of 20, not just 50%)?",
   "parts": {
-    "a": "the number of participants ('n') included in each analysis is stated -- since the actual 'n' may vary per outcome, this must be given per analysis; it can be implied if no dropouts occurred",
-    "b": "an intention-to-treat analysis (or a valid substitute, e.g., per protocol or on treatment analysis) is presented, to avoid bias associated with non-random loss of participants -- if there were no dropouts, this is scored as met regardless",
+    "a": "the number of participants in each group included in each analysis is stated -- this can be implied if no dropouts occurred",
+    "b": "an intention-to-treat analysis (or a valid substitute) is presented -- if there were no dropouts, this is scored as met regardless",
     "c": "results are stated in absolute numbers where feasible (e.g., a reduction of VAS pain from 10 to 5, or from 6 to 3, not just a 50% reduction) (plausibly N/A when absolute numbers cannot feasibly be reported for the outcome measure used.)"
   }
 }"""^^rdf:JSON ;
                                              tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
 
-(a) the number of participants ('n') included in each analysis is stated -- since the actual 'n' may vary per outcome, this must be given per analysis; it can be implied if no dropouts occurred;
+(a) the number of participants in each group included in each analysis is stated -- this can be implied if no dropouts occurred;
 
-(b) an intention-to-treat analysis (or a valid substitute, e.g., per protocol or on treatment analysis) is presented, to avoid bias associated with non-random loss of participants -- if there were no dropouts, this is scored as met regardless;
+(b) an intention-to-treat analysis (or a valid substitute) is presented -- if there were no dropouts, this is scored as met regardless;
 
 (c) results are stated in absolute numbers where feasible (e.g., a reduction of VAS pain from 10 to 5, or from 6 to 3, not just a 50% reduction).
 
@@ -2106,13 +2100,13 @@ tara-kb:hasParticipantsRecruitmentFollowupScore rdf:type owl:AnnotationProperty 
   "item": 19,
   "question": "(a) Are dates provided that define the period of recruitment? (b) Is the length of followup (on-treatment and posttreatment) reported?",
   "parts": {
-    "a": "the start and finish dates of the recruitment period are given, to place the study in historical context",
+    "a": "dates defining the recruitment period are given",
     "b": "the length of follow-up (on-treatment and post-treatment) is reported (e.g., a total of 6 months, comprising 3 months during treatment and 3 months of post-treatment follow-up)"
   }
 }"""^^rdf:JSON ;
                                                 tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
 
-(a) the start and finish dates of the recruitment period are given, to place the study in historical context;
+(a) dates defining the recruitment period are given;
 
 (b) the length of follow-up (on-treatment and post-treatment) is reported (e.g., a total of 6 months, comprising 3 months during treatment and 3 months of post-treatment follow-up).
 
@@ -2208,7 +2202,6 @@ No sub-part in this item has a specific, manual-defined partial-credit criterion
 tara-kb:hasPrimaryOutcomeMeasure rdf:type owl:AnnotationProperty ;
                                  obo:IAO_0000112 "\"Proportion of responders (defined as the proportion of patients with a reduction of migraine days by at least 50%).\""@en ;
                                  dcterms:description "The main, pre-declared endpoint used to judge the success of the intervention, together with its measurement instrument or method."@en ;
-                                 dcterms:type tara-kb:primaryOnly ;
                                  tara-ap:hasCompactURI "tara-kb:hasPrimaryOutcomeMeasure" ;
                                  tara-kb:hasStudyMetadataExtractionPrompt """{
   "field": "Primary_Outcome_Measure",
@@ -2382,14 +2375,14 @@ tara-kb:hasRandomAllocationConcealmentScore rdf:type owl:AnnotationProperty ;
   "question": "(a) Is the method presented that was used to implement the random allocation sequence, (b) with clarification as to whether the sequence was concealed until interventions were assigned?",
   "parts": {
     "a": "the method used to implement the random allocation sequence is presented (e.g., a sealed envelope containing the computer-generated group assignment placed in the patient's chart)",
-    "b": "it is clarified whether the sequence was concealed until interventions were assigned, to prevent foreknowledge of and introduction of bias in treatment assignment (e.g., the sealed envelope with group assignment was opened after the patient passed the baseline neurological exam and received a TCM differential diagnosis)"
+    "b": "it is clarified whether the sequence was concealed until interventions were assigned, to prevent foreknowledge of and introduction of bias in treatment assignment (e.g., the sealed envelope with group assignment was opened only after the patient completed baseline assessment)"
   }
 }"""^^rdf:JSON ;
                                             tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
 
 (a) the method used to implement the random allocation sequence is presented (e.g., a sealed envelope containing the computer-generated group assignment placed in the patient's chart);
 
-(b) it is clarified whether the sequence was concealed until interventions were assigned, to prevent foreknowledge of and introduction of bias in treatment assignment (e.g., the sealed envelope with group assignment was opened after the patient passed the baseline neurological exam and received a TCM differential diagnosis).
+(b) it is clarified whether the sequence was concealed until interventions were assigned, to prevent foreknowledge of and introduction of bias in treatment assignment (e.g., the sealed envelope with group assignment was opened only after the patient completed baseline assessment).
 
 N = 2 when all 2 are applicable.
 
@@ -2608,7 +2601,6 @@ Example 4: 123 patients analyzed (61 in the acupuncture group, 62 in the control
 
 Example 5: Total: 106. Intervention: 53 (Group IA: 31, Group IIA: 22). Control: 53 (Group IB: 31, Group IIB: 22)."""@en ;
                              dcterms:description """Provides the sample size numbers of the total participants randomized/enrolled and the total participants actually analyzed, broken out by treatment group in each case where the article reports it that way. Randomized/enrolled and analyzed counts are reported separately because they often differ (e.g. due to dropouts or exclusions after randomization), and that difference is itself meaningful."""@en ;
-                             dcterms:type tara-kb:primaryOnly ;
                              tara-ap:hasCompactURI "tara-kb:hasSampleSizeDetails" ;
                              tara-ap:hasSynonym "Sample Size" ;
                              tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -2643,15 +2635,15 @@ tara-kb:hasSampleSizeDeterminationScore rdf:type owl:AnnotationProperty ;
   "item": 12,
   "question": "(a) Is there a statement regarding how the sample size was determined, and (b) if applicable, an explanation of any interim analyses and stopping rules?",
   "parts": {
-    "a": "statements regarding the estimated effect size of the intervention (based on previous research) and the estimated attrition rate are included -- or, if the study was a pilot, an explicit statement such as 'No data exists upon which to base a sample size calculation'",
-    "b": "an explanation of any interim analyses and stopping rules is given, if applicable (this pertains to long-term trials and may not apply to shorter-duration trials); if interim analyses were performed, the number of assessments and the statistical tests used must be reported for full credit (plausibly N/A for shorter-duration trials, for which interim analyses and stopping rules may not apply.)"
+    "a": "a statement is given on how the sample size was determined (estimated effect size and attrition rate, or an explicit rationale for omitting the calculation in a pilot study, e.g. a statement that no data exists upon which to base a sample size calculation)",
+    "b": "an explanation of any interim analyses and stopping rules is given, if applicable; if interim analyses were performed, the number of assessments and the statistical tests used must be reported for full credit (plausibly N/A for shorter-duration trials, for which interim analyses and stopping rules may not apply.)"
   }
 }"""^^rdf:JSON ;
                                         tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
 
-(a) statements regarding the estimated effect size of the intervention (based on previous research) and the estimated attrition rate are included -- or, if the study was a pilot, an explicit statement such as 'No data exists upon which to base a sample size calculation';
+(a) a statement is given on how the sample size was determined (estimated effect size and attrition rate, or an explicit rationale for omitting the calculation in a pilot study, e.g. a statement that no data exists upon which to base a sample size calculation);
 
-(b) an explanation of any interim analyses and stopping rules is given, if applicable (this pertains to long-term trials and may not apply to shorter-duration trials); if interim analyses were performed, the number of assessments and the statistical tests used must be reported for full credit.
+(b) an explanation of any interim analyses and stopping rules is given, if applicable; if interim analyses were performed, the number of assessments and the statistical tests used must be reported for full credit.
 
 N = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).
 
@@ -2739,7 +2731,6 @@ No sub-part in this item has a specific, manual-defined partial-credit criterion
 tara-kb:hasSecondaryOutcomeMeasure rdf:type owl:AnnotationProperty ;
                                    obo:IAO_0000112 "\"Number of migraine days, visual analogue scale (VAS) for pain, physical and mental component summary scores of the 36-item short-form health survey (SF-36), change in migraine days, number of patients with acute medication, adverse events (AE)\""@en ;
                                    dcterms:description "Any additional, non-primary endpoint(s) measured to support or contextualize the primary outcome, together with its measurement instrument or method."@en ;
-                                   dcterms:type tara-kb:primaryOnly ;
                                    tara-ap:hasCompactURI "tara-kb:hasSecondaryOutcomeMeasure" ;
                                    tara-kb:hasStudyMetadataExtractionPrompt """{
   "field": "Secondary_Outcome_Measure",
@@ -2759,7 +2750,6 @@ tara-kb:hasShamAcupunctureDetails rdf:type owl:AnnotationProperty ;
                                   obo:IAO_0000112 "\"Non-penetrating Streitberger placebo needle applied at non-acupoint sites.\""@en ,
                                                   "\"Sham protocol details: Superficial insertion (maximum 3 mm depth) of up to six needles on either side of the upper arm, both thighs, and below both scapulae at areas where no TCM acupuncture points are known; same number and type of needles used as verum; no manual stimulation.\"" ;
                                   dcterms:description "The specific details reported for the sham or control acupuncture intervention used for comparison, describing the device and procedure used to simulate real needling."@en ;
-                                  dcterms:type tara-kb:primaryOnly ;
                                   tara-ap:hasCompactURI "tara-kb:hasShamAcupunctureDetails" ;
                                   tara-kb:hasStudyMetadataExtractionPrompt """{
   "field": "Sham_Protocol_Details",
@@ -2781,7 +2771,6 @@ tara-kb:hasShamAcupunctureDetails rdf:type owl:AnnotationProperty ;
 tara-kb:hasShamAcupunctureUsed rdf:type owl:AnnotationProperty ;
                                obo:IAO_0000112 "e.g., 'Yes - non-penetrating needle applied at non-acupoint sites.' or 'No - no sham or placebo control arm was used.'"@en ;
                                dcterms:description "A derived-summary annotation property stating, as a clear yes/no lead-in with a concise qualifying statement, whether the study used a sham or placebo acupuncture control arm. Populated from the sham protocol details already captured under hasAcupunctureProtocol, not from an independent re-reading of the article, to avoid introducing a second, potentially inconsistent extraction/inference."@en ;
-                               dcterms:type tara-kb:primaryOnly ;
                                tara-ap:hasCompactURI "tara-kb:hasShamAcupunctureUsed" ;
                                tara-ap:hasSynonym "Sham Protocol Used" ;
                                tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -2871,14 +2860,14 @@ tara-kb:hasStatisticalMethodsForOutcomesScore rdf:type owl:AnnotationProperty ;
   "question": "(a) Were the statistical methods stated that were used to compare groups for primary outcomes? (b) Were the statistical methods stated that were used for additional analyses such as subgroup or adjusted analyses?",
   "parts": {
     "a": "the statistical methods used to compare groups for primary outcomes are stated",
-    "b": "the statistical methods used for any additional analyses are stated, if performed (N/A if no additional analyses were performed.)"
+    "b": "the statistical methods used for any additional analyses (e.g., subgroup or adjusted analyses) are stated (N/A if no additional analyses (e.g., subgroup or adjusted analyses) were performed.)"
   }
 }"""^^rdf:JSON ;
                                               tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
 
 (a) the statistical methods used to compare groups for primary outcomes are stated;
 
-(b) the statistical methods used for any additional analyses are stated, if performed.
+(b) the statistical methods used for any additional analyses (e.g., subgroup or adjusted analyses) are stated.
 
 N = 2 when all 2 are applicable; N is reduced by however many sub-parts are individually N/A (see below).
 
@@ -2900,7 +2889,7 @@ No sub-part in this item has a specific, manual-defined partial-credit criterion
 
 Sub-part N/A conditions:
 
-(b) is N/A if no additional analyses were performed."""@en ;
+(b) is N/A if no additional analyses (e.g., subgroup or adjusted analyses) were performed."""@en ;
                                               tara-kb:hasTypicalArticleSection "Methods"^^tara-kb:articleSectionType ;
                                               rdfs:label "(17) Statistical Methods for Outcomes" ;
                                               skos:altLabel "17_Statistical_Methods_For_Outcomes" ;
@@ -2914,7 +2903,6 @@ tara-kb:hasStimulationTypeDetails rdf:type owl:AnnotationProperty ;
                                   obo:IAO_0000112 "\"Manual stimulation applied to achieve De Qi; no electrical stimulation or moxibustion.\"" ,
                                                   "e.g., \"Manual manipulation to elicit de qi\" or \"Electroacupuncture at 2/100 Hz, 1-3 mA for 20 minutes.\"."@en ;
                                   dcterms:description "The type and parameters of stimulation applied to the inserted needles, such as manual manipulation or electroacupuncture settings."@en ;
-                                  dcterms:type tara-kb:primaryOnly ;
                                   tara-ap:hasCompactURI "tara-kb:hasStimulationTypeDetails" ;
                                   tara-kb:hasStudyMetadataExtractionPrompt """{
   "field": "Acupuncture_Stimulation_Type",
@@ -3198,7 +3186,6 @@ tara-kb:hasStudyOutcomesMeasure rdf:type owl:AnnotationProperty ;
 
 Secondary outcome measures: Number of migraine days, visual analogue scale (VAS) for pain, physical and mental component summary scores of the 36-item short-form health survey (SF-36), change in migraine days, number of patients with acute medication, adverse events (AE).\""""@en ;
                                 dcterms:description """The study's outcome measure(s), composed from its primary and secondary components when both are reported, or described generally when the primary/secondary distinction is not reported or not applicable (see the 'example of usage' for a full worked example)."""@en ;
-                                dcterms:type tara-kb:primaryOnly ;
                                 tara-ap:hasCompactURI "tara-kb:hasStudyOutcomesMeasure" ;
                                 tara-ap:hasSynonym "Outcomes Measure" ;
                                 tara-kb:hasStudyMetadataExtractionPrompt """{
@@ -3329,10 +3316,9 @@ tara-kb:hasTARAArticlesMetadata rdf:type owl:AnnotationProperty ;
                                 tara-ap:hasCompactURI "tara-kb:hasTARAArticlesMetadata" ;
                                 tara-kb:hasGeneralArticleExtractionPrompt """{
   \"role\": \"You are extracting structured metadata from one full-text acupuncture clinical trial article into a predefined set of fields, guided by the TARA ontology.\",
-  \"task\": \"Load this article's full text once and reuse it, with prompt caching, across up to three sequential extraction calls in this fixed order: (1) Bibliographic Metadata (see hasBibliographicMetadata's hasGeneralBibliographicMetadataExtractionPrompt), (2) Acupuncture Study Metadata (see hasAcupunctureStudyMetadata's hasGeneralStudyMetadataExtractionPrompt), (3) OCSI Score Data (see hasOCSIItemScoringMetadata's hasGeneralOCSIScoreExtractionPrompt, a sibling branch of this one, not a structural descendant -- consult it separately). Preserve the same Article_ID_Curie across all outputs so the resulting spreadsheet rows can be joined.\",
-  \"article_classification\": \"An article's primary/secondary classification is determined during pre-processing and is authoritative -- this pipeline stage consumes that classification, it does not re-derive or second-guess it. Call (3) OCSI Score Data applies only to primary articles: for a secondary article (e.g. a systematic review or meta-analysis), skip call (3) entirely -- no OCSI row is produced for that article. For call (2) Acupuncture Study Metadata, the set of fields requested depends on the article's classification: a primary article receives the full field set; a secondary article receives a reduced set -- any field tagged tara-kb:primaryOnly in the ontology is excluded from both the request and the expected output for that article.\",
+  \"task\": \"Load this article's full text once and reuse it, with prompt caching, across three sequential extraction calls in this fixed order: (1) Bibliographic Metadata (see hasBibliographicMetadata's hasGeneralBibliographicMetadataExtractionPrompt), (2) Acupuncture Study Metadata (see hasAcupunctureStudyMetadata's hasGeneralStudyMetadataExtractionPrompt), (3) OCSI Score Data (see hasOCSIItemScoringMetadata's hasGeneralOCSIScoreExtractionPrompt, a sibling branch of this one, not a structural descendant -- consult it separately). Preserve the same Article_ID_Curie across all three outputs so the resulting spreadsheet rows can be joined.\",
   \"ontology_grounding\": \"For every field's meaning, expected format, and which spreadsheet column it maps to, the field's own hasBibliographicMetadataExtractionPrompt / hasStudyMetadataExtractionPrompt fragment (and its skos:altLabel) in the ontology are authoritative -- do not infer a field's meaning from its property name alone. If a field is not accompanied by an extraction-prompt fragment, it is a derived/mapped or organizational property and must not be extracted directly.\",
-  \"response_format\": \"Each extraction call returns its own JSON object/array as specified in that call's own general prompt; this master prompt does not define a combined output shape.\"
+  \"response_format\": \"Each of the three extraction calls returns its own JSON object/array as specified in that call's own general prompt; this master prompt does not define a combined output shape.\"
 }"""^^rdf:JSON ;
                                 rdfs:label "TARA-KB: Articles Metadata" ;
                                 skos:altLabel "TARA_KB_Articles_Metadata" .
@@ -3342,7 +3328,6 @@ tara-kb:hasTARAArticlesMetadata rdf:type owl:AnnotationProperty ;
 tara-kb:hasTreatmentDuration rdf:type owl:AnnotationProperty ;
                              obo:IAO_0000112 "e.g., \"6 weeks\", \"12 sessions over 1 month\"."@en ;
                              dcterms:description "Captures the information about the total length of the therapy course, derived from Treatment_Duration_Frequency_Details."@en ;
-                             dcterms:type tara-kb:primaryOnly ;
                              tara-ap:hasCompactURI "tara-kb:hasTreatmentDuration" ;
                              tara-kb:hasStudyMetadataExtractionPrompt """{
   "field": "Treatment_Duration",
@@ -3371,7 +3356,6 @@ Example 4: Not specified frequency, total number of sessions, or session duratio
 
 Example 5: 30-minute sessions every second day for 7 days during the third luteal phase of the menstrual cycle (2 to 4 sessions total)."""@en ;
                                          dcterms:description """One coherent free-text statement covering the treatment's duration and frequency together, extracted directly from the article as a single integrated narrative -- duration and frequency are almost always reported as one statement in the source text, and splitting them at extraction time risks losing real context (e.g. an extendable session count, or different schedules for different patient sub-groups)."""@en ;
-                                         dcterms:type tara-kb:primaryOnly ;
                                          tara-ap:hasCompactURI "tara-kb:hasTreatmentDurationAndFrequency" ;
                                          tara-kb:hasStudyMetadataExtractionPrompt """{
   "field": "Treatment_Duration_Frequency_Details",
@@ -3390,7 +3374,6 @@ Example 5: 30-minute sessions every second day for 7 days during the third lutea
 tara-kb:hasTreatmentFrequency rdf:type owl:AnnotationProperty ;
                               obo:IAO_0000112 "e.g., \"3 times per week\", \"Every other day\"."@en ;
                               dcterms:description "Captures the information about how often the intervention was administered, derived from Treatment_Duration_Frequency_Details."@en ;
-                              dcterms:type tara-kb:primaryOnly ;
                               tara-ap:hasCompactURI "tara-kb:hasTreatmentFrequency" ;
                               tara-kb:hasStudyMetadataExtractionPrompt """{
   "field": "Treatment_Frequency",
@@ -3521,16 +3504,16 @@ tara-kb:hasTrialStrengthsLimitationsScore rdf:type owl:AnnotationProperty ;
   "item": 25,
   "question": "Is an interpretation of the results presented that takes into account (a) study hypotheses, (b) sources of potential bias or imprecision, and (c) the potential dangers associated with multiple analyses and outcomes?",
   "parts": {
-    "a": "the interpretation addresses the relevance of the findings to the study hypotheses or objectives",
-    "b": "the interpretation discusses the strengths and weaknesses of the trial, particularly in the context of potential bias and imprecision of the study findings",
+    "a": "the interpretation addresses the study hypotheses",
+    "b": "the interpretation addresses sources of potential bias or imprecision",
     "c": "the interpretation addresses the potential dangers associated with multiple analyses and outcomes (usually N/A unless numerous analyses, both prespecified and exploratory, were performed.)"
   }
 }"""^^rdf:JSON ;
                                           tara-kb:hasOCSIScoringRubric """Applicable sub-parts:
 
-(a) the interpretation addresses the relevance of the findings to the study hypotheses or objectives;
+(a) the interpretation addresses the study hypotheses;
 
-(b) the interpretation discusses the strengths and weaknesses of the trial, particularly in the context of potential bias and imprecision of the study findings;
+(b) the interpretation addresses sources of potential bias or imprecision;
 
 (c) the interpretation addresses the potential dangers associated with multiple analyses and outcomes.
 
@@ -3863,12 +3846,6 @@ tara-kb:lookupOnly rdf:type owl:NamedIndividual ;
 tara-kb:contextOnly rdf:type owl:NamedIndividual ;
                     rdfs:label "Context Only" ;
                     dcterms:description "Marks a property whose fragment IS included in the main per-article LLM extraction call (unlike tara-kb:mapping or tara-kb:lookupOnly, which are excluded from the call entirely) so that a sibling composing property can draw on its content, but which is NOT itself an independently-requested output field or spreadsheet column -- its content is folded into the composing property's own single output value only. The composing property's own 'normalization' text names each contextOnly field it draws on by its 'field' value."@en .
-
-
-###  http://www.acupunctureresearch.org/tara/ontology/kb/primaryOnly
-tara-kb:primaryOnly rdf:type owl:NamedIndividual ;
-                    rdfs:label "Primary Only" ;
-                    dcterms:description "Marks a property that applies only to primary articles (a single clinical trial). For a secondary article (e.g. a systematic review or meta-analysis, per pre-processing's classification), this property is excluded from both the LLM extraction request and the expected output -- its spreadsheet column still exists (columns come from the ontology's full field list, not per-article classification), but the cell is left empty rather than requested."@en .
 
 
 #################################################################

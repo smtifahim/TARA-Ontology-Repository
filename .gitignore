@@ -1,6 +1,17 @@
 # Ignore environment files containing secrets
 .env
 
+# Source article PDFs (copyrighted publisher content) and their pre-processed
+# copies live in a sibling folder outside this repo, TARA-Articles-Source-PDFs/
+# -- never committed. This entry is belt-and-suspenders only: it protects
+# against that folder (or a copy of it) ever landing *inside* the repo by
+# accident, since normally it's outside the working tree entirely and git
+# never sees it at all.
+TARA-Articles-Source-PDFs/
+raw-input/
+pre-processed/
+pre-processed-*/
+
 # Google OAuth client secret / cached token for curated-sheets downloader
 curated-data/.credentials/
 
